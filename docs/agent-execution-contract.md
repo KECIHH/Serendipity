@@ -44,7 +44,7 @@
 
 ## AI 规则
 
-- AI 调用必须通过 `src/lib/ai/provider.ts` 的 Provider 抽象、已激活的不可变 `PromptVersion` 和冻结的 ModelDeployment/ProviderConfigVersion/PlanningPolicyVersion；NEW_BUILD 不创建 PromptConfig/AiModelConfig 过渡表。
+- AI 调用必须通过 `src/lib/ai/provider.ts` 定义的纯 Provider 接口契约、已激活的不可变 `PromptVersion` 和冻结的 ModelDeployment/ProviderConfigVersion/PlanningPolicyVersion；实际 Provider I/O 与 repair 编排在 `src/server/ai`，共享 parser/schema 保持纯函数。NEW_BUILD 不创建 PromptConfig/AiModelConfig 过渡表。
 - AI 负责理解、候选和表达；确定性服务负责事实、ID、时间、金额、引用、权限、状态与质量闸门。输入、输出、修复结果全部经过 Schema 校验，AI 自评不能冒充事实核验。
 - 每次可能计费外呼先预留可证明费用上界，执行 timeout、有限重试、取消和成本护栏；未知计费保持占额并对账，不能因 TTL 到期释放并重复花费。
 - 调用失败必须记录安全错误分类、trace/request 标识、精确版本与调用结果；不向前台泄露系统 Prompt、密钥、堆栈、私人原文和未校验输出。失败不创建正常正式版本，不能用 AI 补造 Provider 缺失的事实。

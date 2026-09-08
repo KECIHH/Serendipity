@@ -1,0 +1,257 @@
+{
+  "testCaseId": "Phase001:negative-documents",
+  "command": "node docs/phase-plans/verify-phase001.mjs --case negative-documents",
+  "status": "PASS",
+  "exitCode": 0,
+  "numerator": 12,
+  "denominator": 12,
+  "inputPath": "docs/phase-plans/Phase001-inputs.json",
+  "inputHash": "2f4a1c99660655d719e79a0411706f107df0f8d8f8888487fc4fffa58f0990e5",
+  "planHash": "254e2241b583dac62906b05cbed0c779d118ef1729ced4ae0f5333f28afac690",
+  "sourceHashes": {
+    "docs/agent-execution-contract.md": "72eb5e5e8da13c02b3aeeb3803b668a440f1cbdee75fddf08f267c0ec9b6b2ed",
+    "docs/code-style.md": "7b2ef781010f47a11b77788241cf6ee660e57b420c0f7a87ad2eae0a42571734",
+    "docs/database.md": "38bb2a4b05b15def09ec0434ca4e4cf6d874109d3d88126333bf1f30209029a0",
+    "docs/directory-structure.md": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df",
+    "docs/git-workflow.md": "8b8289c40de4454996e5fbad71de531bb8d80a6cf3f048dda753e7cf2d120548",
+    "docs/phase-plans/Phase001-inputs.json": "2f4a1c99660655d719e79a0411706f107df0f8d8f8888487fc4fffa58f0990e5",
+    "docs/phase-plans/Phase001.json": "254e2241b583dac62906b05cbed0c779d118ef1729ced4ae0f5333f28afac690",
+    "docs/phase-plans/complete-phase001.mjs": "f89f10fbf32e841d25407dfeeb256bfc0be7abbd2ae6b552e512174ddcaedd41",
+    "docs/phase-plans/prepare-phase001.mjs": "1ad40ee5ac36b56d218235b8c569fd528c6083f8f3e500b43049eb3531266bfd",
+    "docs/phase-plans/replay-historical-phase.ps1": "0c3e1b8f4cdca2713e8617b8155eeb62723bd1a384b8ab5293562f72b5d8a1d1",
+    "docs/phase-plans/retry-phase001.mjs": "5100adbee2e1da40b7d5dd98b2b6b573de551a66ca327367cfd6c5d3563dcf55",
+    "docs/phase-plans/verify-phase001.mjs": "557515daa91865c332601298a4fddeb20368d0e64dedb18d386214bb3ace5c8a",
+    "docs/tech-stack.md": "258620f3e18d042eac1e26165f411e8879ecd4b0d91d8e7986aaed4f3f10d2c7",
+    "docs/ui-design-system.md": "8b232c6742bf846f131ea3040d5892ed7b270940bfd4109ccfb768ed63fdb158",
+    "scripts/check-project-layout.mjs": "101c7c50f12e4d6cc80e1c9fb9667ad06fcc55c687d86cb5295ff81bc0eb68f6",
+    "scripts/phase-evidence.mjs": "3727f8f8e5f00cf7e03d4bc50f71ebdbff483380cbc59df124bf21b473261d95",
+    "scripts/test-validate-phase.mjs": "7495edfe0c582e57d8fee33d8403011eed9d1c97b1edb5e4cb650a7e9d83f521",
+    "scripts/validate-phase.mjs": "4be9ee356a3f5a7d5b9265ee61143d6574617dda83d9ac8d3960f3f8e28fa293",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319"
+  },
+  "startedAt": "2026-09-08T15:32:29.573Z",
+  "completedAt": "2026-09-08T15:32:32.950Z",
+  "durationMs": 3377,
+  "details": {
+    "temporary": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD",
+    "observations": [
+      {
+        "id": "missing-test-command",
+        "inputPath": "docs/git-workflow.md",
+        "mutatedHash": "8a45d51585ae1dd42c502afff33c8fcf6b287008f1db70a8bf601fb233257e70",
+        "restoredHash": "8b8289c40de4454996e5fbad71de531bb8d80a6cf3f048dda753e7cf2d120548",
+        "rejected": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check git-workflow",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "{\"status\":\"FAIL\",\"message\":\"Missing command / zero-exit requirement: npm run test\",\"stack\":\"AssertionError [ERR_ASSERTION]: Missing command / zero-exit requirement: npm run test\\n    at Object.checkGitWorkflow [as git-workflow] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:143:5)\\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:436:71\\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\\n    at async node:internal/modules/esm/loader:643:26\\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\"}\n"
+        },
+        "restored": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check git-workflow",
+          "exitCode": 0,
+          "stdout": "{\"status\":\"PASS\",\"details\":{\"sectionCount\":6,\"requiredCommands\":4,\"productCommandsExecuted\":false}}\n",
+          "stderr": ""
+        }
+      },
+      {
+        "id": "missing-api-layer",
+        "inputPath": "docs/code-style.md",
+        "mutatedHash": "93bf519232a26bc429c58408c5f4397e87c6ae5faddd0683a27c4d75a6daa4e0",
+        "restoredHash": "7b2ef781010f47a11b77788241cf6ee660e57b420c0f7a87ad2eae0a42571734",
+        "rejected": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check code-style",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "{\"status\":\"FAIL\",\"message\":\"Required unique section: API 层职责\\n\\n0 !== 1\\n\",\"stack\":\"AssertionError [ERR_ASSERTION]: Required unique section: API 层职责\\n\\n0 !== 1\\n\\n    at section (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:86:10)\\n    at Object.checkCodeStyle [as code-style] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:153:18)\\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:436:71\\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\\n    at async node:internal/modules/esm/loader:643:26\\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\"}\n"
+        },
+        "restored": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check code-style",
+          "exitCode": 0,
+          "stdout": "{\"status\":\"PASS\",\"details\":{\"layerCharacterCounts\":{\"API\":381,\"service\":384,\"lib\":470},\"errorFixture\":{\"success\":false,\"error\":{\"code\":\"VERSION_CONFLICT\",\"message\":\"计划已更新，请重新读取后提交\"},\"requestId\":\"synthetic-request-001\"}}}\n",
+          "stderr": ""
+        }
+      },
+      {
+        "id": "missing-error-component",
+        "inputPath": "docs/ui-design-system.md",
+        "mutatedHash": "fb0c7e5f27c806c0888435e0bb56a3367523dcbdb629f4f36ea3a37723d3e678",
+        "restoredHash": "8b232c6742bf846f131ea3040d5892ed7b270940bfd4109ccfb768ed63fdb158",
+        "rejected": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check ui-design-system",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "{\"status\":\"FAIL\",\"message\":\"Required unique section: 错误态\\n\\n0 !== 1\\n\",\"stack\":\"AssertionError [ERR_ASSERTION]: Required unique section: 错误态\\n\\n0 !== 1\\n\\n    at section (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:86:10)\\n    at Object.checkUi [as ui-design-system] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:177:28)\\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:436:71\\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\\n    at async node:internal/modules/esm/loader:643:26\\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\"}\n"
+        },
+        "restored": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check ui-design-system",
+          "exitCode": 0,
+          "stdout": "{\"status\":\"PASS\",\"details\":{\"components\":{\"按钮\":[\"primary\",\"secondary\",\"outline\",\"ghost\",\"disabled\",\"loading\",\"focus-visible\"],\"输入框\":[\"default\",\"focus\",\"error\",\"disabled\",\"read-only\"],\"卡片\":[\"default\",\"interactive\",\"selected\",\"loading\"],\"Tabs\":[\"inactive\",\"active\",\"disabled\",\"keyboard-focus\"],\"表格\":[\"normal\",\"hover\",\"selected\",\"loading\",\"empty\",\"error\"],\"弹窗\":[\"open\",\"submitting\",\"error\",\"closed\"],\"Toast\":[\"success\",\"error\",\"info\",\"paused\"],\"加载态\":[\"initial\",\"refreshing\",\"long-running\",\"reduced-motion\"],\"空状态\":[\"first-use\",\"filtered\",\"optional-module\"],\"错误态\":[\"recoverable\",\"not-found\",\"validation\",\"degraded\"]},\"normalTextContrastAgainstWhite\":{\"primary\":5.484,\"secondary\":5.934,\"success\":5.016,\"warning\":4.923,\"error\":6.47,\"info\":5.934,\"text\":17.717,\"text-muted\":7.73,\"text-subtle\":4.833,\"focus\":5.934},\"browserEvaluated\":false}}\n",
+          "stderr": ""
+        }
+      },
+      {
+        "id": "missing-version-definition",
+        "inputPath": "docs/database.md",
+        "mutatedHash": "969290bf3fb209b6a85d0d7a2df87ea3dd2e510ea2bc26ce4d93e27b8bc27630",
+        "restoredHash": "38bb2a4b05b15def09ec0434ca4e4cf6d874109d3d88126333bf1f30209029a0",
+        "rejected": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check database",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "{\"status\":\"FAIL\",\"message\":\"Required unique model definition: TravelPlanVersion\\n\\n0 !== 1\\n\",\"stack\":\"AssertionError [ERR_ASSERTION]: Required unique model definition: TravelPlanVersion\\n\\n0 !== 1\\n\\n    at modelSection (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:92:10)\\n    at fields (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:126:26)\\n    at Object.checkDatabase [as database] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:221:351)\\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:436:71\\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\\n    at async node:internal/modules/esm/loader:643:26\\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\"}\n"
+        },
+        "restored": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check database",
+          "exitCode": 0,
+          "stdout": "{\"status\":\"PASS\",\"details\":{\"modelCount\":66,\"models\":{\"User\":6,\"SystemConfig\":7,\"TravelRecord\":8,\"ChatMessage\":8,\"AuditLog\":9,\"ApiKeyConfig\":10,\"AuthSession\":11,\"AuthLoginAttempt\":11,\"AdminCommandReceipt\":12,\"KeyRotationRun\":12,\"PromptDefinition\":15,\"PromptVersion\":15,\"PromptActivation\":15,\"ModelDeployment\":15,\"ProviderConfigVersion\":15,\"PromptModelActivation\":15,\"PlanningPolicyVersion\":15,\"PlanningPolicyActivation\":15,\"AiOutputRecord\":15,\"AiUsageReservation\":15,\"ChatCommand\":16,\"ChatCommandEvent\":16,\"CommandIdempotency\":16,\"DurableTask\":16,\"TaskPayload\":16,\"Outbox\":16,\"AiDebugRun\":18,\"TravelPlanVersion\":25,\"PlannerRun\":25,\"PlanTrace\":25,\"PlanWorkspaceSnapshot\":25,\"FactSnapshot\":30,\"CacheEnvelope\":30,\"PlanMutation\":53,\"MutationClarification\":53,\"PlanDiff\":53,\"ReplanCommand\":58,\"RestoreCommand\":59,\"TravelReadinessReport\":60,\"PlanFinalization\":60,\"RequirementPatchReceipt\":62,\"AnonymousMergeReceipt\":82,\"UserTravelProfile\":84,\"DataRequest\":84,\"PrivacyRevocationLedger\":84,\"RevalidationCommand\":85,\"ArchiveReceipt\":85,\"FavoritePlan\":86,\"ClonePlanCommand\":87,\"ShareGrant\":88,\"PromptEvaluationRun\":90,\"PromptGatePolicyVersion\":90,\"ModelEvaluationRun\":91,\"ProviderActivation\":92,\"ProviderResolutionPolicyVersion\":92,\"Announcement\":94,\"AnnouncementVersion\":94,\"TravelQualityFeedback\":95,\"RegressionCaseCandidate\":95,\"FileAsset\":96,\"FileDerivative\":96,\"PlaceMedia\":96,\"AssetUsage\":96,\"TraceEvent\":97,\"PlanPublication\":106,\"PromptModelRollout\":90},\"requiredCoreCount\":66,\"prohibitedModelDefinitions\":0}}\n",
+          "stderr": ""
+        }
+      },
+      {
+        "id": "missing-audit-definition",
+        "inputPath": "docs/database.md",
+        "mutatedHash": "cab16d0973024bf9ea0b512be020c3e154e5f6d47f881c2f769ad982d3b6cef0",
+        "restoredHash": "38bb2a4b05b15def09ec0434ca4e4cf6d874109d3d88126333bf1f30209029a0",
+        "rejected": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check database",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "{\"status\":\"FAIL\",\"message\":\"Required unique model definition: AuditLog\\n\\n0 !== 1\\n\",\"stack\":\"AssertionError [ERR_ASSERTION]: Required unique model definition: AuditLog\\n\\n0 !== 1\\n\\n    at modelSection (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:92:10)\\n    at fields (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:126:26)\\n    at Object.checkDatabase [as database] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:221:351)\\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:436:71\\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\\n    at async node:internal/modules/esm/loader:643:26\\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\"}\n"
+        },
+        "restored": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check database",
+          "exitCode": 0,
+          "stdout": "{\"status\":\"PASS\",\"details\":{\"modelCount\":66,\"models\":{\"User\":6,\"SystemConfig\":7,\"TravelRecord\":8,\"ChatMessage\":8,\"AuditLog\":9,\"ApiKeyConfig\":10,\"AuthSession\":11,\"AuthLoginAttempt\":11,\"AdminCommandReceipt\":12,\"KeyRotationRun\":12,\"PromptDefinition\":15,\"PromptVersion\":15,\"PromptActivation\":15,\"ModelDeployment\":15,\"ProviderConfigVersion\":15,\"PromptModelActivation\":15,\"PlanningPolicyVersion\":15,\"PlanningPolicyActivation\":15,\"AiOutputRecord\":15,\"AiUsageReservation\":15,\"ChatCommand\":16,\"ChatCommandEvent\":16,\"CommandIdempotency\":16,\"DurableTask\":16,\"TaskPayload\":16,\"Outbox\":16,\"AiDebugRun\":18,\"TravelPlanVersion\":25,\"PlannerRun\":25,\"PlanTrace\":25,\"PlanWorkspaceSnapshot\":25,\"FactSnapshot\":30,\"CacheEnvelope\":30,\"PlanMutation\":53,\"MutationClarification\":53,\"PlanDiff\":53,\"ReplanCommand\":58,\"RestoreCommand\":59,\"TravelReadinessReport\":60,\"PlanFinalization\":60,\"RequirementPatchReceipt\":62,\"AnonymousMergeReceipt\":82,\"UserTravelProfile\":84,\"DataRequest\":84,\"PrivacyRevocationLedger\":84,\"RevalidationCommand\":85,\"ArchiveReceipt\":85,\"FavoritePlan\":86,\"ClonePlanCommand\":87,\"ShareGrant\":88,\"PromptEvaluationRun\":90,\"PromptGatePolicyVersion\":90,\"ModelEvaluationRun\":91,\"ProviderActivation\":92,\"ProviderResolutionPolicyVersion\":92,\"Announcement\":94,\"AnnouncementVersion\":94,\"TravelQualityFeedback\":95,\"RegressionCaseCandidate\":95,\"FileAsset\":96,\"FileDerivative\":96,\"PlaceMedia\":96,\"AssetUsage\":96,\"TraceEvent\":97,\"PlanPublication\":106,\"PromptModelRollout\":90},\"requiredCoreCount\":66,\"prohibitedModelDefinitions\":0}}\n",
+          "stderr": ""
+        }
+      },
+      {
+        "id": "wrong-clone-state",
+        "inputPath": "docs/database.md",
+        "mutatedHash": "d8f88da3ed416e95b2ab4333cb0125e59578f1c1503c1b32cab15ad6a482dc31",
+        "restoredHash": "38bb2a4b05b15def09ec0434ca4e4cf6d874109d3d88126333bf1f30209029a0",
+        "rejected": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check database",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "{\"status\":\"FAIL\",\"message\":\"Clone target must be NEEDS_REVALIDATION independently of enum definitions\",\"stack\":\"AssertionError [ERR_ASSERTION]: Clone target must be NEEDS_REVALIDATION independently of enum definitions\\n    at Object.checkDatabase [as database] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:227:3)\\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:436:71\\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\\n    at async node:internal/modules/esm/loader:643:26\\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\"}\n"
+        },
+        "restored": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check database",
+          "exitCode": 0,
+          "stdout": "{\"status\":\"PASS\",\"details\":{\"modelCount\":66,\"models\":{\"User\":6,\"SystemConfig\":7,\"TravelRecord\":8,\"ChatMessage\":8,\"AuditLog\":9,\"ApiKeyConfig\":10,\"AuthSession\":11,\"AuthLoginAttempt\":11,\"AdminCommandReceipt\":12,\"KeyRotationRun\":12,\"PromptDefinition\":15,\"PromptVersion\":15,\"PromptActivation\":15,\"ModelDeployment\":15,\"ProviderConfigVersion\":15,\"PromptModelActivation\":15,\"PlanningPolicyVersion\":15,\"PlanningPolicyActivation\":15,\"AiOutputRecord\":15,\"AiUsageReservation\":15,\"ChatCommand\":16,\"ChatCommandEvent\":16,\"CommandIdempotency\":16,\"DurableTask\":16,\"TaskPayload\":16,\"Outbox\":16,\"AiDebugRun\":18,\"TravelPlanVersion\":25,\"PlannerRun\":25,\"PlanTrace\":25,\"PlanWorkspaceSnapshot\":25,\"FactSnapshot\":30,\"CacheEnvelope\":30,\"PlanMutation\":53,\"MutationClarification\":53,\"PlanDiff\":53,\"ReplanCommand\":58,\"RestoreCommand\":59,\"TravelReadinessReport\":60,\"PlanFinalization\":60,\"RequirementPatchReceipt\":62,\"AnonymousMergeReceipt\":82,\"UserTravelProfile\":84,\"DataRequest\":84,\"PrivacyRevocationLedger\":84,\"RevalidationCommand\":85,\"ArchiveReceipt\":85,\"FavoritePlan\":86,\"ClonePlanCommand\":87,\"ShareGrant\":88,\"PromptEvaluationRun\":90,\"PromptGatePolicyVersion\":90,\"ModelEvaluationRun\":91,\"ProviderActivation\":92,\"ProviderResolutionPolicyVersion\":92,\"Announcement\":94,\"AnnouncementVersion\":94,\"TravelQualityFeedback\":95,\"RegressionCaseCandidate\":95,\"FileAsset\":96,\"FileDerivative\":96,\"PlaceMedia\":96,\"AssetUsage\":96,\"TraceEvent\":97,\"PlanPublication\":106,\"PromptModelRollout\":90},\"requiredCoreCount\":66,\"prohibitedModelDefinitions\":0}}\n",
+          "stderr": ""
+        }
+      },
+      {
+        "id": "duplicate-plan-body",
+        "inputPath": "docs/database.md",
+        "mutatedHash": "bd341c8e9f5f11db5ef667505c4528158e195d44349ad8c1b2e5f9b510579d16",
+        "restoredHash": "38bb2a4b05b15def09ec0434ca4e4cf6d874109d3d88126333bf1f30209029a0",
+        "rejected": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check database",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "{\"status\":\"FAIL\",\"message\":\"TravelRecord cannot store planJson\",\"stack\":\"AssertionError [ERR_ASSERTION]: TravelRecord cannot store planJson\\n    at Object.checkDatabase [as database] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:223:3)\\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:436:71\\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\\n    at async node:internal/modules/esm/loader:643:26\\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\"}\n"
+        },
+        "restored": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check database",
+          "exitCode": 0,
+          "stdout": "{\"status\":\"PASS\",\"details\":{\"modelCount\":66,\"models\":{\"User\":6,\"SystemConfig\":7,\"TravelRecord\":8,\"ChatMessage\":8,\"AuditLog\":9,\"ApiKeyConfig\":10,\"AuthSession\":11,\"AuthLoginAttempt\":11,\"AdminCommandReceipt\":12,\"KeyRotationRun\":12,\"PromptDefinition\":15,\"PromptVersion\":15,\"PromptActivation\":15,\"ModelDeployment\":15,\"ProviderConfigVersion\":15,\"PromptModelActivation\":15,\"PlanningPolicyVersion\":15,\"PlanningPolicyActivation\":15,\"AiOutputRecord\":15,\"AiUsageReservation\":15,\"ChatCommand\":16,\"ChatCommandEvent\":16,\"CommandIdempotency\":16,\"DurableTask\":16,\"TaskPayload\":16,\"Outbox\":16,\"AiDebugRun\":18,\"TravelPlanVersion\":25,\"PlannerRun\":25,\"PlanTrace\":25,\"PlanWorkspaceSnapshot\":25,\"FactSnapshot\":30,\"CacheEnvelope\":30,\"PlanMutation\":53,\"MutationClarification\":53,\"PlanDiff\":53,\"ReplanCommand\":58,\"RestoreCommand\":59,\"TravelReadinessReport\":60,\"PlanFinalization\":60,\"RequirementPatchReceipt\":62,\"AnonymousMergeReceipt\":82,\"UserTravelProfile\":84,\"DataRequest\":84,\"PrivacyRevocationLedger\":84,\"RevalidationCommand\":85,\"ArchiveReceipt\":85,\"FavoritePlan\":86,\"ClonePlanCommand\":87,\"ShareGrant\":88,\"PromptEvaluationRun\":90,\"PromptGatePolicyVersion\":90,\"ModelEvaluationRun\":91,\"ProviderActivation\":92,\"ProviderResolutionPolicyVersion\":92,\"Announcement\":94,\"AnnouncementVersion\":94,\"TravelQualityFeedback\":95,\"RegressionCaseCandidate\":95,\"FileAsset\":96,\"FileDerivative\":96,\"PlaceMedia\":96,\"AssetUsage\":96,\"TraceEvent\":97,\"PlanPublication\":106,\"PromptModelRollout\":90},\"requiredCoreCount\":66,\"prohibitedModelDefinitions\":0}}\n",
+          "stderr": ""
+        }
+      },
+      {
+        "id": "premature-ai-output",
+        "inputPath": "docs/database.md",
+        "mutatedHash": "18ea4ba4726e45c8205d8be06f641c2936e994a108f339006b84c9446bb67602",
+        "restoredHash": "38bb2a4b05b15def09ec0434ca4e4cf6d874109d3d88126333bf1f30209029a0",
+        "rejected": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check database",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "{\"status\":\"FAIL\",\"message\":\"Wrong producer: AiOutputRecord\\n\\n8 !== 15\\n\",\"stack\":\"AssertionError [ERR_ASSERTION]: Wrong producer: AiOutputRecord\\n\\n8 !== 15\\n\\n    at Object.checkDatabase [as database] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:210:12)\\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:436:71\\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\\n    at async node:internal/modules/esm/loader:643:26\\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\"}\n"
+        },
+        "restored": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check database",
+          "exitCode": 0,
+          "stdout": "{\"status\":\"PASS\",\"details\":{\"modelCount\":66,\"models\":{\"User\":6,\"SystemConfig\":7,\"TravelRecord\":8,\"ChatMessage\":8,\"AuditLog\":9,\"ApiKeyConfig\":10,\"AuthSession\":11,\"AuthLoginAttempt\":11,\"AdminCommandReceipt\":12,\"KeyRotationRun\":12,\"PromptDefinition\":15,\"PromptVersion\":15,\"PromptActivation\":15,\"ModelDeployment\":15,\"ProviderConfigVersion\":15,\"PromptModelActivation\":15,\"PlanningPolicyVersion\":15,\"PlanningPolicyActivation\":15,\"AiOutputRecord\":15,\"AiUsageReservation\":15,\"ChatCommand\":16,\"ChatCommandEvent\":16,\"CommandIdempotency\":16,\"DurableTask\":16,\"TaskPayload\":16,\"Outbox\":16,\"AiDebugRun\":18,\"TravelPlanVersion\":25,\"PlannerRun\":25,\"PlanTrace\":25,\"PlanWorkspaceSnapshot\":25,\"FactSnapshot\":30,\"CacheEnvelope\":30,\"PlanMutation\":53,\"MutationClarification\":53,\"PlanDiff\":53,\"ReplanCommand\":58,\"RestoreCommand\":59,\"TravelReadinessReport\":60,\"PlanFinalization\":60,\"RequirementPatchReceipt\":62,\"AnonymousMergeReceipt\":82,\"UserTravelProfile\":84,\"DataRequest\":84,\"PrivacyRevocationLedger\":84,\"RevalidationCommand\":85,\"ArchiveReceipt\":85,\"FavoritePlan\":86,\"ClonePlanCommand\":87,\"ShareGrant\":88,\"PromptEvaluationRun\":90,\"PromptGatePolicyVersion\":90,\"ModelEvaluationRun\":91,\"ProviderActivation\":92,\"ProviderResolutionPolicyVersion\":92,\"Announcement\":94,\"AnnouncementVersion\":94,\"TravelQualityFeedback\":95,\"RegressionCaseCandidate\":95,\"FileAsset\":96,\"FileDerivative\":96,\"PlaceMedia\":96,\"AssetUsage\":96,\"TraceEvent\":97,\"PlanPublication\":106,\"PromptModelRollout\":90},\"requiredCoreCount\":66,\"prohibitedModelDefinitions\":0}}\n",
+          "stderr": ""
+        }
+      },
+      {
+        "id": "missing-fk-index-rule",
+        "inputPath": "docs/database.md",
+        "mutatedHash": "65161774a6b2eea567c08e6eb5039ca1e2fc2c1aca7e4d6c82a8ab176082188b",
+        "restoredHash": "38bb2a4b05b15def09ec0434ca4e4cf6d874109d3d88126333bf1f30209029a0",
+        "rejected": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check database",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "{\"status\":\"FAIL\",\"message\":\"Required unique section: 索引规则\\n\\n0 !== 1\\n\",\"stack\":\"AssertionError [ERR_ASSERTION]: Required unique section: 索引规则\\n\\n0 !== 1\\n\\n    at section (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:86:10)\\n    at Object.checkDatabase [as database] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:241:114)\\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:436:71\\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\\n    at async node:internal/modules/esm/loader:643:26\\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\"}\n"
+        },
+        "restored": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check database",
+          "exitCode": 0,
+          "stdout": "{\"status\":\"PASS\",\"details\":{\"modelCount\":66,\"models\":{\"User\":6,\"SystemConfig\":7,\"TravelRecord\":8,\"ChatMessage\":8,\"AuditLog\":9,\"ApiKeyConfig\":10,\"AuthSession\":11,\"AuthLoginAttempt\":11,\"AdminCommandReceipt\":12,\"KeyRotationRun\":12,\"PromptDefinition\":15,\"PromptVersion\":15,\"PromptActivation\":15,\"ModelDeployment\":15,\"ProviderConfigVersion\":15,\"PromptModelActivation\":15,\"PlanningPolicyVersion\":15,\"PlanningPolicyActivation\":15,\"AiOutputRecord\":15,\"AiUsageReservation\":15,\"ChatCommand\":16,\"ChatCommandEvent\":16,\"CommandIdempotency\":16,\"DurableTask\":16,\"TaskPayload\":16,\"Outbox\":16,\"AiDebugRun\":18,\"TravelPlanVersion\":25,\"PlannerRun\":25,\"PlanTrace\":25,\"PlanWorkspaceSnapshot\":25,\"FactSnapshot\":30,\"CacheEnvelope\":30,\"PlanMutation\":53,\"MutationClarification\":53,\"PlanDiff\":53,\"ReplanCommand\":58,\"RestoreCommand\":59,\"TravelReadinessReport\":60,\"PlanFinalization\":60,\"RequirementPatchReceipt\":62,\"AnonymousMergeReceipt\":82,\"UserTravelProfile\":84,\"DataRequest\":84,\"PrivacyRevocationLedger\":84,\"RevalidationCommand\":85,\"ArchiveReceipt\":85,\"FavoritePlan\":86,\"ClonePlanCommand\":87,\"ShareGrant\":88,\"PromptEvaluationRun\":90,\"PromptGatePolicyVersion\":90,\"ModelEvaluationRun\":91,\"ProviderActivation\":92,\"ProviderResolutionPolicyVersion\":92,\"Announcement\":94,\"AnnouncementVersion\":94,\"TravelQualityFeedback\":95,\"RegressionCaseCandidate\":95,\"FileAsset\":96,\"FileDerivative\":96,\"PlaceMedia\":96,\"AssetUsage\":96,\"TraceEvent\":97,\"PlanPublication\":106,\"PromptModelRollout\":90},\"requiredCoreCount\":66,\"prohibitedModelDefinitions\":0}}\n",
+          "stderr": ""
+        }
+      },
+      {
+        "id": "missing-migration-command",
+        "inputPath": "docs/database.md",
+        "mutatedHash": "1dfbddd7e3ae2807f33d5ea7d57b6e26f5120f2fa7317453d9eb258b28b7b5dd",
+        "restoredHash": "38bb2a4b05b15def09ec0434ca4e4cf6d874109d3d88126333bf1f30209029a0",
+        "rejected": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check database",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "{\"status\":\"FAIL\",\"message\":\"Migration commands: missing npx prisma migrate dev --name <description>\",\"stack\":\"AssertionError [ERR_ASSERTION]: Migration commands: missing npx prisma migrate dev --name <description>\\n    at contains (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:63:31)\\n    at Object.checkDatabase [as database] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:244:3)\\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:436:71\\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\\n    at async node:internal/modules/esm/loader:643:26\\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\"}\n"
+        },
+        "restored": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check database",
+          "exitCode": 0,
+          "stdout": "{\"status\":\"PASS\",\"details\":{\"modelCount\":66,\"models\":{\"User\":6,\"SystemConfig\":7,\"TravelRecord\":8,\"ChatMessage\":8,\"AuditLog\":9,\"ApiKeyConfig\":10,\"AuthSession\":11,\"AuthLoginAttempt\":11,\"AdminCommandReceipt\":12,\"KeyRotationRun\":12,\"PromptDefinition\":15,\"PromptVersion\":15,\"PromptActivation\":15,\"ModelDeployment\":15,\"ProviderConfigVersion\":15,\"PromptModelActivation\":15,\"PlanningPolicyVersion\":15,\"PlanningPolicyActivation\":15,\"AiOutputRecord\":15,\"AiUsageReservation\":15,\"ChatCommand\":16,\"ChatCommandEvent\":16,\"CommandIdempotency\":16,\"DurableTask\":16,\"TaskPayload\":16,\"Outbox\":16,\"AiDebugRun\":18,\"TravelPlanVersion\":25,\"PlannerRun\":25,\"PlanTrace\":25,\"PlanWorkspaceSnapshot\":25,\"FactSnapshot\":30,\"CacheEnvelope\":30,\"PlanMutation\":53,\"MutationClarification\":53,\"PlanDiff\":53,\"ReplanCommand\":58,\"RestoreCommand\":59,\"TravelReadinessReport\":60,\"PlanFinalization\":60,\"RequirementPatchReceipt\":62,\"AnonymousMergeReceipt\":82,\"UserTravelProfile\":84,\"DataRequest\":84,\"PrivacyRevocationLedger\":84,\"RevalidationCommand\":85,\"ArchiveReceipt\":85,\"FavoritePlan\":86,\"ClonePlanCommand\":87,\"ShareGrant\":88,\"PromptEvaluationRun\":90,\"PromptGatePolicyVersion\":90,\"ModelEvaluationRun\":91,\"ProviderActivation\":92,\"ProviderResolutionPolicyVersion\":92,\"Announcement\":94,\"AnnouncementVersion\":94,\"TravelQualityFeedback\":95,\"RegressionCaseCandidate\":95,\"FileAsset\":96,\"FileDerivative\":96,\"PlaceMedia\":96,\"AssetUsage\":96,\"TraceEvent\":97,\"PlanPublication\":106,\"PromptModelRollout\":90},\"requiredCoreCount\":66,\"prohibitedModelDefinitions\":0}}\n",
+          "stderr": ""
+        }
+      },
+      {
+        "id": "missing-encryption-rule",
+        "inputPath": "docs/database.md",
+        "mutatedHash": "c3398e6fefd6b2b7b1a2de98d34ac1b581ff87c5ec5ac2c807295998bac3f2a3",
+        "restoredHash": "38bb2a4b05b15def09ec0434ca4e4cf6d874109d3d88126333bf1f30209029a0",
+        "rejected": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check database",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "{\"status\":\"FAIL\",\"message\":\"Sensitive storage: missing AES-256-GCM\",\"stack\":\"AssertionError [ERR_ASSERTION]: Sensitive storage: missing AES-256-GCM\\n    at contains (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:63:31)\\n    at Object.checkDatabase [as database] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:245:3)\\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:436:71\\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\\n    at async node:internal/modules/esm/loader:643:26\\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\"}\n"
+        },
+        "restored": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check database",
+          "exitCode": 0,
+          "stdout": "{\"status\":\"PASS\",\"details\":{\"modelCount\":66,\"models\":{\"User\":6,\"SystemConfig\":7,\"TravelRecord\":8,\"ChatMessage\":8,\"AuditLog\":9,\"ApiKeyConfig\":10,\"AuthSession\":11,\"AuthLoginAttempt\":11,\"AdminCommandReceipt\":12,\"KeyRotationRun\":12,\"PromptDefinition\":15,\"PromptVersion\":15,\"PromptActivation\":15,\"ModelDeployment\":15,\"ProviderConfigVersion\":15,\"PromptModelActivation\":15,\"PlanningPolicyVersion\":15,\"PlanningPolicyActivation\":15,\"AiOutputRecord\":15,\"AiUsageReservation\":15,\"ChatCommand\":16,\"ChatCommandEvent\":16,\"CommandIdempotency\":16,\"DurableTask\":16,\"TaskPayload\":16,\"Outbox\":16,\"AiDebugRun\":18,\"TravelPlanVersion\":25,\"PlannerRun\":25,\"PlanTrace\":25,\"PlanWorkspaceSnapshot\":25,\"FactSnapshot\":30,\"CacheEnvelope\":30,\"PlanMutation\":53,\"MutationClarification\":53,\"PlanDiff\":53,\"ReplanCommand\":58,\"RestoreCommand\":59,\"TravelReadinessReport\":60,\"PlanFinalization\":60,\"RequirementPatchReceipt\":62,\"AnonymousMergeReceipt\":82,\"UserTravelProfile\":84,\"DataRequest\":84,\"PrivacyRevocationLedger\":84,\"RevalidationCommand\":85,\"ArchiveReceipt\":85,\"FavoritePlan\":86,\"ClonePlanCommand\":87,\"ShareGrant\":88,\"PromptEvaluationRun\":90,\"PromptGatePolicyVersion\":90,\"ModelEvaluationRun\":91,\"ProviderActivation\":92,\"ProviderResolutionPolicyVersion\":92,\"Announcement\":94,\"AnnouncementVersion\":94,\"TravelQualityFeedback\":95,\"RegressionCaseCandidate\":95,\"FileAsset\":96,\"FileDerivative\":96,\"PlaceMedia\":96,\"AssetUsage\":96,\"TraceEvent\":97,\"PlanPublication\":106,\"PromptModelRollout\":90},\"requiredCoreCount\":66,\"prohibitedModelDefinitions\":0}}\n",
+          "stderr": ""
+        }
+      },
+      {
+        "id": "forbidden-model",
+        "inputPath": "docs/database.md",
+        "mutatedHash": "be23ff66cf6df918e8bde7022340cc0ac274933494d2d578fb9b30a1b2d1f14d",
+        "restoredHash": "38bb2a4b05b15def09ec0434ca4e4cf6d874109d3d88126333bf1f30209029a0",
+        "rejected": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check database",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "{\"status\":\"FAIL\",\"message\":\"Complete persistent model registry must match the frozen model inventory\\n+ actual - expected\\n... Skipped lines\\n\\n  [\\n    'AdminCommandReceipt',\\n    'AiDebugRun',\\n    'AiOutputRecord',\\n    'AiUsageReservation',\\n...\\n    'MutationClarification',\\n+   'Order',\\n    'Outbox',\\n    'PlaceMedia',\\n    'PlanDiff',\\n    'PlanFinalization',\\n    'PlanMutation',\\n\",\"stack\":\"AssertionError [ERR_ASSERTION]: Complete persistent model registry must match the frozen model inventory\\n+ actual - expected\\n... Skipped lines\\n\\n  [\\n    'AdminCommandReceipt',\\n    'AiDebugRun',\\n    'AiOutputRecord',\\n    'AiUsageReservation',\\n...\\n    'MutationClarification',\\n+   'Order',\\n    'Outbox',\\n    'PlaceMedia',\\n    'PlanDiff',\\n    'PlanFinalization',\\n    'PlanMutation',\\n\\n    at Object.checkDatabase [as database] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:206:10)\\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase001.mjs:436:71\\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\\n    at async node:internal/modules/esm/loader:643:26\\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\"}\n"
+        },
+        "restored": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase001.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-mutations-R8KleD --check database",
+          "exitCode": 0,
+          "stdout": "{\"status\":\"PASS\",\"details\":{\"modelCount\":66,\"models\":{\"User\":6,\"SystemConfig\":7,\"TravelRecord\":8,\"ChatMessage\":8,\"AuditLog\":9,\"ApiKeyConfig\":10,\"AuthSession\":11,\"AuthLoginAttempt\":11,\"AdminCommandReceipt\":12,\"KeyRotationRun\":12,\"PromptDefinition\":15,\"PromptVersion\":15,\"PromptActivation\":15,\"ModelDeployment\":15,\"ProviderConfigVersion\":15,\"PromptModelActivation\":15,\"PlanningPolicyVersion\":15,\"PlanningPolicyActivation\":15,\"AiOutputRecord\":15,\"AiUsageReservation\":15,\"ChatCommand\":16,\"ChatCommandEvent\":16,\"CommandIdempotency\":16,\"DurableTask\":16,\"TaskPayload\":16,\"Outbox\":16,\"AiDebugRun\":18,\"TravelPlanVersion\":25,\"PlannerRun\":25,\"PlanTrace\":25,\"PlanWorkspaceSnapshot\":25,\"FactSnapshot\":30,\"CacheEnvelope\":30,\"PlanMutation\":53,\"MutationClarification\":53,\"PlanDiff\":53,\"ReplanCommand\":58,\"RestoreCommand\":59,\"TravelReadinessReport\":60,\"PlanFinalization\":60,\"RequirementPatchReceipt\":62,\"AnonymousMergeReceipt\":82,\"UserTravelProfile\":84,\"DataRequest\":84,\"PrivacyRevocationLedger\":84,\"RevalidationCommand\":85,\"ArchiveReceipt\":85,\"FavoritePlan\":86,\"ClonePlanCommand\":87,\"ShareGrant\":88,\"PromptEvaluationRun\":90,\"PromptGatePolicyVersion\":90,\"ModelEvaluationRun\":91,\"ProviderActivation\":92,\"ProviderResolutionPolicyVersion\":92,\"Announcement\":94,\"AnnouncementVersion\":94,\"TravelQualityFeedback\":95,\"RegressionCaseCandidate\":95,\"FileAsset\":96,\"FileDerivative\":96,\"PlaceMedia\":96,\"AssetUsage\":96,\"TraceEvent\":97,\"PlanPublication\":106,\"PromptModelRollout\":90},\"requiredCoreCount\":66,\"prohibitedModelDefinitions\":0}}\n",
+          "stderr": ""
+        }
+      }
+    ],
+    "originalFilesUnmodified": true
+  }
+}

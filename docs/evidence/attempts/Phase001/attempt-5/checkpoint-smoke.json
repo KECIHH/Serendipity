@@ -1,0 +1,154 @@
+{
+  "status": "PASS",
+  "scope": "ISOLATED_ROOT_LAYOUT_GIT_PROTOCOL_REGRESSION",
+  "simulation": true,
+  "sourceRepositoryIndexMutated": false,
+  "network": "LOCAL_FILESYSTEM_ONLY",
+  "independentReviewPerformed": false,
+  "reviewFixturePolicy": "Synthetic protocol JSON only; actual phase acceptance requires a separate independent Agent report",
+  "sourceBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+  "testedSourceHashes": {
+    "scripts/validate-phase.mjs": "4be9ee356a3f5a7d5b9265ee61143d6574617dda83d9ac8d3960f3f8e28fa293",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319",
+    "scripts/phase-evidence.mjs": "3727f8f8e5f00cf7e03d4bc50f71ebdbff483380cbc59df124bf21b473261d95",
+    "scripts/test-validate-phase.mjs": "7495edfe0c582e57d8fee33d8403011eed9d1c97b1edb5e4cb650a7e9d83f521",
+    "docs/phase-plans/Phase001-inputs.json": "2f4a1c99660655d719e79a0411706f107df0f8d8f8888487fc4fffa58f0990e5"
+  },
+  "shells": [
+    "node"
+  ],
+  "caseCount": 5,
+  "observationCount": 6,
+  "cases": [
+    {
+      "name": "root-equality-empty-prefix-local-inputs-history-pass",
+      "status": "PASS",
+      "durationMs": 8430
+    },
+    {
+      "name": "report-source-map-empty",
+      "status": "PASS",
+      "durationMs": 5405
+    },
+    {
+      "name": "formal-seal-rejects-synthetic-review",
+      "status": "PASS",
+      "durationMs": 5520
+    },
+    {
+      "name": "recovery-history-pass",
+      "status": "PASS",
+      "durationMs": 8738
+    },
+    {
+      "name": "missing-previous-plan",
+      "status": "PASS",
+      "durationMs": 6852
+    }
+  ],
+  "observations": [
+    {
+      "case": "root-equality-empty-prefix-local-inputs-history-pass",
+      "shell": "node",
+      "command": "C:\\Program Files\\nodejs\\node.exe scripts/validate-phase.mjs --completed-through 1 --strict --json --protocol-fixture",
+      "exitCode": 0,
+      "expectedDiagnostic": null,
+      "result": {
+        "status": "PASS",
+        "scope": "ISOLATED_PROTOCOL_FIXTURE_VALIDATION",
+        "protocolFixture": true,
+        "layoutVersion": 2,
+        "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-YYHZQK\\positive",
+        "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-YYHZQK\\positive",
+        "projectGitPrefix": "",
+        "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+        "completedThrough": 1,
+        "currentPhase": 2,
+        "artifactCommit": "7617b00686da994d7dbcd578a6232a717a558d38",
+        "metadataCommit": "41047158c6a24440065896d4614ac049c2ee23c2",
+        "historicalPhase": 0,
+        "preservedHistoricalFiles": 44,
+        "localIgnoredInputsVerified": 151,
+        "contractCoverage": {
+          "numerator": 20,
+          "denominator": 20
+        },
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "local-fast-forward-sync",
+      "command": "git push <isolated local bare repository> main:refs/heads/main",
+      "exitCode": 0,
+      "metadataCommit": "41047158c6a24440065896d4614ac049c2ee23c2",
+      "network": "LOCAL_FILESYSTEM_ONLY"
+    },
+    {
+      "case": "report-source-map-empty",
+      "shell": "node",
+      "command": "C:\\Program Files\\nodejs\\node.exe scripts/validate-phase.mjs --completed-through 1 --strict --json --protocol-fixture",
+      "exitCode": 1,
+      "expectedDiagnostic": "REPORT_SOURCE_HASH",
+      "result": {
+        "status": "FAIL",
+        "error": "REPORT_SOURCE_HASH: hash map must cover every required file exactly\n+ actual - expected\n\n+ []\n- [\n-   'docs/evidence/attempts/Phase001/protocol-fixture/input.bin',\n-   'docs/phase-plans/Phase001.json'\n- ]\n",
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "formal-seal-rejects-synthetic-review",
+      "shell": "node",
+      "command": "C:\\Program Files\\nodejs\\node.exe scripts/validate-phase.mjs --completed-through 1 --strict --json",
+      "exitCode": 1,
+      "expectedDiagnostic": "REVIEW_IDENTITY",
+      "result": {
+        "status": "FAIL",
+        "error": "REVIEW_IDENTITY: unexpected reviewer kind\n+ actual - expected\n\n+ 'SYNTHETIC_PROTOCOL_FIXTURE_NOT_AGENT_REVIEW'\n- 'INDEPENDENT_CODEX_AGENT'\n",
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "recovery-history-pass",
+      "shell": "node",
+      "command": "C:\\Program Files\\nodejs\\node.exe scripts/validate-phase.mjs --completed-through 1 --strict --json --protocol-fixture",
+      "exitCode": 0,
+      "expectedDiagnostic": null,
+      "result": {
+        "status": "PASS",
+        "scope": "ISOLATED_PROTOCOL_FIXTURE_VALIDATION",
+        "protocolFixture": true,
+        "layoutVersion": 2,
+        "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-YYHZQK\\recovery-history-pass",
+        "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-YYHZQK\\recovery-history-pass",
+        "projectGitPrefix": "",
+        "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+        "completedThrough": 1,
+        "currentPhase": 2,
+        "artifactCommit": "cd4a1c859fc510b71b65221a869abc2a9881a983",
+        "metadataCommit": "f3335320ce78b2168732c5dcad255da6b541de0d",
+        "historicalPhase": 0,
+        "preservedHistoricalFiles": 44,
+        "localIgnoredInputsVerified": 151,
+        "contractCoverage": {
+          "numerator": 20,
+          "denominator": 20
+        },
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "missing-previous-plan",
+      "shell": "node",
+      "command": "C:\\Program Files\\nodejs\\node.exe scripts/validate-phase.mjs --completed-through 1 --strict --json --protocol-fixture",
+      "exitCode": 1,
+      "expectedDiagnostic": "RECOVERY_PLAN",
+      "result": {
+        "status": "FAIL",
+        "error": "RECOVERY_PLAN: Recovery history must preserve each previous artifact plan and its hash",
+        "networkPushEvaluated": false
+      }
+    }
+  ],
+  "durationMs": 34949,
+  "fixtureRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-YYHZQK"
+}

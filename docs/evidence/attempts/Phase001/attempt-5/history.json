@@ -1,0 +1,120 @@
+{
+  "testCaseId": "Phase001:history",
+  "command": "node docs/phase-plans/verify-phase001.mjs --case history",
+  "status": "PASS",
+  "exitCode": 0,
+  "numerator": 2,
+  "denominator": 2,
+  "inputPath": "docs/phase-plans/Phase001-inputs.json",
+  "inputHash": "2f4a1c99660655d719e79a0411706f107df0f8d8f8888487fc4fffa58f0990e5",
+  "planHash": "254e2241b583dac62906b05cbed0c779d118ef1729ced4ae0f5333f28afac690",
+  "sourceHashes": {
+    "docs/agent-execution-contract.md": "72eb5e5e8da13c02b3aeeb3803b668a440f1cbdee75fddf08f267c0ec9b6b2ed",
+    "docs/code-style.md": "7b2ef781010f47a11b77788241cf6ee660e57b420c0f7a87ad2eae0a42571734",
+    "docs/database.md": "38bb2a4b05b15def09ec0434ca4e4cf6d874109d3d88126333bf1f30209029a0",
+    "docs/directory-structure.md": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df",
+    "docs/git-workflow.md": "8b8289c40de4454996e5fbad71de531bb8d80a6cf3f048dda753e7cf2d120548",
+    "docs/phase-plans/Phase001-inputs.json": "2f4a1c99660655d719e79a0411706f107df0f8d8f8888487fc4fffa58f0990e5",
+    "docs/phase-plans/Phase001.json": "254e2241b583dac62906b05cbed0c779d118ef1729ced4ae0f5333f28afac690",
+    "docs/phase-plans/complete-phase001.mjs": "f89f10fbf32e841d25407dfeeb256bfc0be7abbd2ae6b552e512174ddcaedd41",
+    "docs/phase-plans/prepare-phase001.mjs": "1ad40ee5ac36b56d218235b8c569fd528c6083f8f3e500b43049eb3531266bfd",
+    "docs/phase-plans/replay-historical-phase.ps1": "0c3e1b8f4cdca2713e8617b8155eeb62723bd1a384b8ab5293562f72b5d8a1d1",
+    "docs/phase-plans/retry-phase001.mjs": "5100adbee2e1da40b7d5dd98b2b6b573de551a66ca327367cfd6c5d3563dcf55",
+    "docs/phase-plans/verify-phase001.mjs": "557515daa91865c332601298a4fddeb20368d0e64dedb18d386214bb3ace5c8a",
+    "docs/tech-stack.md": "258620f3e18d042eac1e26165f411e8879ecd4b0d91d8e7986aaed4f3f10d2c7",
+    "docs/ui-design-system.md": "8b232c6742bf846f131ea3040d5892ed7b270940bfd4109ccfb768ed63fdb158",
+    "scripts/check-project-layout.mjs": "101c7c50f12e4d6cc80e1c9fb9667ad06fcc55c687d86cb5295ff81bc0eb68f6",
+    "scripts/phase-evidence.mjs": "3727f8f8e5f00cf7e03d4bc50f71ebdbff483380cbc59df124bf21b473261d95",
+    "scripts/test-validate-phase.mjs": "7495edfe0c582e57d8fee33d8403011eed9d1c97b1edb5e4cb650a7e9d83f521",
+    "scripts/validate-phase.mjs": "4be9ee356a3f5a7d5b9265ee61143d6574617dda83d9ac8d3960f3f8e28fa293",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319"
+  },
+  "startedAt": "2026-09-08T15:31:46.010Z",
+  "completedAt": "2026-09-08T15:32:29.571Z",
+  "durationMs": 43561,
+  "details": {
+    "historicalMetadata": "919b82cfbd9f70622a11b60d119f070f50248c93",
+    "historicalArtifact": "ab7f2b957b0cd4ba142c46d64643945ceabc8684",
+    "archiveAudit": {
+      "status": "PASS",
+      "scope": "PROJECT_LAYOUT_AND_HISTORICAL_ARCHIVE",
+      "repositoryRoot": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "projectRoot": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "roadmapTrackedFiles": 0,
+      "roadmapIgnored": true,
+      "localRoadmapPresent": true,
+      "preservedHistoricalFiles": 44,
+      "phaseSealEvaluated": false
+    },
+    "originalValidatorUnmodified": true,
+    "relocationAdapter": {
+      "path": "docs/phase-plans/replay-historical-phase.ps1",
+      "sha256": "0c3e1b8f4cdca2713e8617b8155eeb62723bd1a384b8ab5293562f72b5d8a1d1",
+      "scope": "Exact verified historical absolute roots are relocated during deserialization only; source/file/Git bytes and all assertions are unchanged; wrong mapping rejected in both shells"
+    },
+    "isolatedRepository": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-history-as9MtD\\repository",
+    "observations": [
+      {
+        "shell": "powershell",
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\replay-historical-phase.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-history-as9MtD\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-history-as9MtD\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -OriginalRepositoryRoot 'C:/Users/11295/Desktop/Serendipity · 际遇' -RelocatedRepositoryRoot C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-history-as9MtD\\repository -RoadmapDirectory 'Serendipity · 际遇' -OriginalBaselineCommit af3169f81cce66981d4e67a3c42a8fc6c405f77e -OriginalArtifactCommit ab7f2b957b0cd4ba142c46d64643945ceabc8684",
+        "exitCode": 0,
+        "stdout": "{\r\n    \"status\":  \"PASS\",\r\n    \"mode\":  \"EXECUTION_CHECKPOINT\",\r\n    \"completedThrough\":  0,\r\n    \"manifest\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase001-history-as9MtD\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n    \"manifestHash\":  \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n    \"repositoryRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase001-history-as9MtD\\\\repository\",\r\n    \"roadmapRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase001-history-as9MtD\\\\repository\\\\Serendipity · 际遇\",\r\n    \"projectRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase001-history-as9MtD\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n    \"phaseCount\":  138,\r\n    \"gitHead\":  \"919b82cfbd9f70622a11b60d119f070f50248c93\",\r\n    \"lastArtifactCommit\":  \"ab7f2b957b0cd4ba142c46d64643945ceabc8684\",\r\n    \"baselineCommit\":  \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n    \"errors\":  [\r\n\r\n               ],\r\n    \"warnings\":  [\r\n\r\n                 ],\r\n    \"note\":  \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+        "stderr": "",
+        "report": {
+          "status": "PASS",
+          "mode": "EXECUTION_CHECKPOINT",
+          "completedThrough": 0,
+          "manifest": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-history-as9MtD\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+          "manifestHash": "5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a",
+          "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-history-as9MtD\\repository",
+          "roadmapRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-history-as9MtD\\repository\\Serendipity · 际遇",
+          "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-history-as9MtD\\repository\\Serendipity · 际遇\\project",
+          "phaseCount": 138,
+          "gitHead": "919b82cfbd9f70622a11b60d119f070f50248c93",
+          "lastArtifactCommit": "ab7f2b957b0cd4ba142c46d64643945ceabc8684",
+          "baselineCommit": "af3169f81cce66981d4e67a3c42a8fc6c405f77e",
+          "errors": [],
+          "warnings": [],
+          "note": "PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed."
+        },
+        "rejectedMapping": {
+          "command": "powershell -NoProfile -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\replay-historical-phase.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-history-as9MtD\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-history-as9MtD\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -OriginalRepositoryRoot 'C:/Users/11295/Desktop/Serendipity · 际遇-wrong' -RelocatedRepositoryRoot C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-history-as9MtD\\repository -RoadmapDirectory 'Serendipity · 际遇' -OriginalBaselineCommit af3169f81cce66981d4e67a3c42a8fc6c405f77e -OriginalArtifactCommit ab7f2b957b0cd4ba142c46d64643945ceabc8684",
+          "exitCode": 1,
+          "stdout": "{\r\n    \"status\":  \"FAIL\",\r\n    \"mode\":  \"EXECUTION_CHECKPOINT\",\r\n    \"completedThrough\":  0,\r\n    \"manifest\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase001-history-as9MtD\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n    \"manifestHash\":  \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n    \"repositoryRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase001-history-as9MtD\\\\repository\",\r\n    \"roadmapRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase001-history-as9MtD\\\\repository\\\\Serendipity · 际遇\",\r\n    \"projectRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase001-history-as9MtD\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n    \"phaseCount\":  138,\r\n    \"gitHead\":  \"919b82cfbd9f70622a11b60d119f070f50248c93\",\r\n    \"lastArtifactCommit\":  \"ab7f2b957b0cd4ba142c46d64643945ceabc8684\",\r\n    \"baselineCommit\":  \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n    \"errors\":  [\r\n                   \"Run state repositoryRoot differs from manifest resolution.\",\r\n                   \"Run state roadmapRoot differs from manifest resolution.\",\r\n                   \"Run state projectRoot differs from manifest resolution.\"\r\n               ],\r\n    \"warnings\":  [\r\n\r\n                 ],\r\n    \"note\":  \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": ""
+        }
+      },
+      {
+        "shell": "pwsh",
+        "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\replay-historical-phase.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-history-as9MtD\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-history-as9MtD\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -OriginalRepositoryRoot 'C:/Users/11295/Desktop/Serendipity · 际遇' -RelocatedRepositoryRoot C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-history-as9MtD\\repository -RoadmapDirectory 'Serendipity · 际遇' -OriginalBaselineCommit af3169f81cce66981d4e67a3c42a8fc6c405f77e -OriginalArtifactCommit ab7f2b957b0cd4ba142c46d64643945ceabc8684",
+        "exitCode": 0,
+        "stdout": "{\r\n  \"status\": \"PASS\",\r\n  \"mode\": \"EXECUTION_CHECKPOINT\",\r\n  \"completedThrough\": 0,\r\n  \"manifest\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase001-history-as9MtD\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n  \"manifestHash\": \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n  \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase001-history-as9MtD\\\\repository\",\r\n  \"roadmapRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase001-history-as9MtD\\\\repository\\\\Serendipity · 际遇\",\r\n  \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase001-history-as9MtD\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n  \"phaseCount\": 138,\r\n  \"gitHead\": \"919b82cfbd9f70622a11b60d119f070f50248c93\",\r\n  \"lastArtifactCommit\": \"ab7f2b957b0cd4ba142c46d64643945ceabc8684\",\r\n  \"baselineCommit\": \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n  \"errors\": [],\r\n  \"warnings\": [],\r\n  \"note\": \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+        "stderr": "",
+        "report": {
+          "status": "PASS",
+          "mode": "EXECUTION_CHECKPOINT",
+          "completedThrough": 0,
+          "manifest": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-history-as9MtD\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+          "manifestHash": "5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a",
+          "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-history-as9MtD\\repository",
+          "roadmapRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-history-as9MtD\\repository\\Serendipity · 际遇",
+          "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-history-as9MtD\\repository\\Serendipity · 际遇\\project",
+          "phaseCount": 138,
+          "gitHead": "919b82cfbd9f70622a11b60d119f070f50248c93",
+          "lastArtifactCommit": "ab7f2b957b0cd4ba142c46d64643945ceabc8684",
+          "baselineCommit": "af3169f81cce66981d4e67a3c42a8fc6c405f77e",
+          "errors": [],
+          "warnings": [],
+          "note": "PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed."
+        },
+        "rejectedMapping": {
+          "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\replay-historical-phase.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-history-as9MtD\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-history-as9MtD\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -OriginalRepositoryRoot 'C:/Users/11295/Desktop/Serendipity · 际遇-wrong' -RelocatedRepositoryRoot C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase001-history-as9MtD\\repository -RoadmapDirectory 'Serendipity · 际遇' -OriginalBaselineCommit af3169f81cce66981d4e67a3c42a8fc6c405f77e -OriginalArtifactCommit ab7f2b957b0cd4ba142c46d64643945ceabc8684",
+          "exitCode": 1,
+          "stdout": "{\r\n  \"status\": \"FAIL\",\r\n  \"mode\": \"EXECUTION_CHECKPOINT\",\r\n  \"completedThrough\": 0,\r\n  \"manifest\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase001-history-as9MtD\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n  \"manifestHash\": \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n  \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase001-history-as9MtD\\\\repository\",\r\n  \"roadmapRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase001-history-as9MtD\\\\repository\\\\Serendipity · 际遇\",\r\n  \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase001-history-as9MtD\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n  \"phaseCount\": 138,\r\n  \"gitHead\": \"919b82cfbd9f70622a11b60d119f070f50248c93\",\r\n  \"lastArtifactCommit\": \"ab7f2b957b0cd4ba142c46d64643945ceabc8684\",\r\n  \"baselineCommit\": \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n  \"errors\": [\r\n    \"Run state repositoryRoot differs from manifest resolution.\",\r\n    \"Run state roadmapRoot differs from manifest resolution.\",\r\n    \"Run state projectRoot differs from manifest resolution.\"\r\n  ],\r\n  \"warnings\": [],\r\n  \"note\": \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": ""
+        }
+      }
+    ],
+    "productionTraffic": false
+  }
+}

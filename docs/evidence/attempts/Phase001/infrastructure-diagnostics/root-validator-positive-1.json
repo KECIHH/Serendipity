@@ -1,0 +1,26 @@
+{
+  "status": "FAIL",
+  "scope": "ISOLATED_ROOT_LAYOUT_GIT_PROTOCOL_REGRESSION",
+  "error": "root-equality-empty-prefix-local-inputs-history-pass/node: {\n  \"status\": \"FAIL\",\n  \"error\": \"HISTORY_FILES: Historical archive file set changed\",\n  \"networkPushEvaluated\": false\n}\n\n1 !== 0\n",
+  "sourceBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+  "shells": [
+    "node"
+  ],
+  "cases": [],
+  "observations": [
+    {
+      "case": "root-equality-empty-prefix-local-inputs-history-pass",
+      "shell": "node",
+      "command": "C:\\Program Files\\nodejs\\node.exe scripts/validate-phase.mjs --completed-through 1 --strict --json",
+      "exitCode": 1,
+      "expectedDiagnostic": null,
+      "result": {
+        "status": "FAIL",
+        "error": "HISTORY_FILES: Historical archive file set changed",
+        "networkPushEvaluated": false
+      }
+    }
+  ],
+  "durationMs": 3916,
+  "fixtureRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-UulWEL"
+}

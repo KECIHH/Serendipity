@@ -30,7 +30,7 @@
 
 | 完整路径 | 职责 | 使用规则 |
 |---|---|---|
-| `src/lib/ai/provider.ts` | AI Provider 抽象与统一调用边界 | 实际网络调用只在服务端，经激活配置、秘密引用、预算、timeout 和 trace；不得被客户端导入以获取密钥 |
+| `src/lib/ai/provider.ts` | AI Provider 纯接口与无副作用类型契约 | 实际网络、秘密操作与 repair 编排位于 `src/server/ai`，经激活配置、预算、timeout 和 trace；客户端不能导入服务端实现 |
 | `src/lib/ai/schemas.ts` | AI 输入输出 Schema、结构化需求和计划的引用类型 | 纯校验逻辑；统一 producer/consumer 共享的 Schema，不在页面再定义一套 JSON 格式 |
 | `src/server/services/planner-service.ts` | 旅行规划服务与确定性流程编排 | 组合已授权需求、版本化配置、Provider 事实、质量校验和事务保存；不包含 HTTP 路由处理 |
 
@@ -66,4 +66,4 @@ API 入口统一位于 `src/app/api/`，文件形式为 `src/app/api/**/route.ts
 
 源码目录统一带 `src/` 前缀，包括 `src/components/ui`、`src/lib` 和 `src/server/services`。页面/路由调用服务，服务调用数据和 Provider 边界，组件消费校验后的视图，Schema/类型提供统一定义；不建立 `src/pages`、`src/services` 和自定义 `src/server/api` 的第二实现。
 
-共享目录不代表可以跨越运行边界。秘密配置、Prisma、治理版本和鉴权实现保持服务端可见；可复用纯 parser/schema 不依赖 Next.js、数据库连接和环境变量副作用。新增文件只服务当前 Phase 的明确产物，未来路径说明不授予提前实现权限。
+共享目录不代表可以跨越运行边界。秘密配置、Prisma、治理版本和鉴权实现保持服务端可见；可复用纯 parser/schema 不依赖 Next.js、数据库连接和环境变量副作用。唯一环境入口例外 `src/lib/env.ts` 必须 import server-only，不通过共享 barrel 向客户端导出。新增文件只服务当前 Phase 的明确产物，未来路径说明不授予提前实现权限。

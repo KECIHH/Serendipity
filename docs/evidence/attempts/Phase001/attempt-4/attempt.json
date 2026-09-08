@@ -1,0 +1,109 @@
+{
+  "phase": 1,
+  "attemptId": "attempt-4",
+  "status": "FAIL",
+  "artifactCommit": null,
+  "failureKind": "INDEPENDENT_REVIEW",
+  "reviewPath": "docs/evidence/attempts/Phase001/attempt-4/review.json",
+  "reviewHash": "8ed6cfdfedd5ca09ab6a2c6f2586eed4bba2aa3a5deea5f961fe05dae90b0690",
+  "reviewerRunId": "01a0818e-05c4-70c1-8768-290dc9ef15d1",
+  "issues": [
+    {
+      "id": "PH001-EVIDENCE-003",
+      "status": "OPEN",
+      "priority": 1,
+      "path": "docs/phase-plans/complete-phase001.mjs",
+      "line": 61,
+      "title": "Empty hash maps and a synthetic/main-context review can pass formal acceptance",
+      "problem": "audit() checks only the entries supplied by reports and review. Empty sourceHashes/reportHashes therefore skip every binding check. The review gate checks implementationAuthored=false and nonempty identity strings but does not require INDEPENDENT_CODEX_AGENT or a context different from the implementation context. The default seal validator repeats these weaknesses by allowing absent maps and any nonempty runner kind.",
+      "impact": "A changed verification runner can be accepted after the source maps are cleared; an explicitly synthetic review using the main task context is reported as independentReviewVerified=true. Raw SHA-256 equality for retained entries does not prevent removal of the binding itself.",
+      "relatedLocations": [
+        {
+          "path": "docs/phase-plans/complete-phase001.mjs",
+          "line": 70
+        },
+        {
+          "path": "docs/phase-plans/complete-phase001.mjs",
+          "line": 73
+        },
+        {
+          "path": "scripts/validate-phase.mjs",
+          "line": 281
+        },
+        {
+          "path": "scripts/validate-phase.mjs",
+          "line": 295
+        },
+        {
+          "path": "scripts/test-validate-phase.mjs",
+          "line": 262
+        }
+      ],
+      "evidence": "The read-only VM probe below actually executed the unchanged audit code. The unmodified control and both adversarial in-memory overlays exited 0/PASS. No synthetic PASS review was written to disk.",
+      "recommendation": "Require the declared source set and all frozen output report paths, reject missing/empty/deleted bindings, compare every hash, and require INDEPENDENT_CODEX_AGENT with distinct recorded implementation/reviewer contexts in formal acceptance. Keep synthetic protocol identities behind an explicit isolated fixture mode that cannot report the normal phase-seal scope. Add rejection cases for omitted entries, synthetic identity and same context."
+    },
+    {
+      "id": "PH001-DB-001",
+      "status": "OPEN",
+      "priority": 2,
+      "path": "docs/database.md",
+      "line": 169,
+      "title": "ApiKeyConfig conflicts with its frozen Phase010 storage and producer contract",
+      "problem": "encryptedKey is specified as Prisma Json, while the frozen producer explicitly requires String @db.Text containing canonical JSON. The revision row says it is added in Phase012, but Phase010 already requires revision Int default(0) with a nonnegative CHECK.",
+      "impact": "The unique project database design directs the first migration to a different storage type and delays a field required by the frozen producer; later migration and encryption code cannot simultaneously follow both definitions.",
+      "relatedLocations": [
+        {
+          "path": "docs/database.md",
+          "line": 174
+        },
+        {
+          "path": "docs/database.md",
+          "line": 533
+        },
+        {
+          "path": "Serendipity · 际遇/Phase010.md",
+          "line": 67
+        },
+        {
+          "path": "Serendipity · 际遇/Phase010.md",
+          "line": 72
+        },
+        {
+          "path": "docs/phase-plans/verify-phase001.mjs",
+          "line": 220
+        }
+      ],
+      "evidence": "Independent `node docs/phase-plans/verify-phase001.mjs --check database` exited 0 despite the mismatch. Main agent explicitly acknowledged both conflicts before this report.",
+      "recommendation": "Use String/Text with canonical JSON serialization and schema validation; produce nonnullable revision with ApiKeyConfig in Phase010. Synchronize the later JSON-field paragraph and add exact type/nullability/producer assertions with negative cases."
+    },
+    {
+      "id": "PH001-DB-002",
+      "status": "OPEN",
+      "priority": 2,
+      "path": "docs/database.md",
+      "line": 541,
+      "title": "DurableTask claim index names an unregistered timestamp column",
+      "problem": "The index rules prescribe task claim (status,nextAttemptAt,leaseUntil,id). DurableTask's exact canonical fields use availableAt; nextAttemptAt belongs to DataRequest ERASE continuation and is not a DurableTask field.",
+      "impact": "Implementing the specified claim index in Phase016 either references a nonexistent column or introduces a conflicting task scheduling field.",
+      "relatedLocations": [
+        {
+          "path": "Serendipity · 际遇/docs/roadmap-canonical-contract.md",
+          "line": 241
+        },
+        {
+          "path": "Serendipity · 际遇/Phase016.md",
+          "line": 75
+        },
+        {
+          "path": "docs/database.md",
+          "line": 57
+        }
+      ],
+      "evidence": "Compared the index paragraph against canonical section 3.7 and Phase016's mandatory reuse of that exact schema.",
+      "recommendation": "Specify the DurableTask index with availableAt and retain nextAttemptAt only for the DataRequest continuation contract. Add a focused assertion against the frozen task field name."
+    }
+  ],
+  "planHash": "cf5791eb743acad817722758e9883cd46e45fc686bc79975316ac099f5ed3ae6",
+  "frozenPlanPath": "docs/evidence/attempts/Phase001/attempt-4/frozen-plan.json",
+  "generatedAt": "2026-09-08T15:23:38.893Z"
+}

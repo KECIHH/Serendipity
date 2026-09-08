@@ -1,0 +1,205 @@
+{
+  "phase": 1,
+  "attemptId": "attempt-5",
+  "producer": "Phase001",
+  "consumers": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    15,
+    25,
+    53,
+    65,
+    88,
+    96,
+    106
+  ],
+  "scope": "M0 development and database contracts; root-layout admission and checkpoint validation",
+  "requestedThrough": 1,
+  "implementationContextId": "01a0813d-fd96-7291-bbbc-9127c2ec8008",
+  "sourcePaths": [
+    "docs/git-workflow.md",
+    "docs/code-style.md",
+    "docs/ui-design-system.md",
+    "docs/database.md",
+    "docs/phase-plans/Phase001.json",
+    "docs/phase-plans/Phase001-inputs.json",
+    "docs/phase-plans/verify-phase001.mjs",
+    "docs/phase-plans/prepare-phase001.mjs",
+    "docs/phase-plans/retry-phase001.mjs",
+    "docs/phase-plans/replay-historical-phase.ps1",
+    "docs/phase-plans/complete-phase001.mjs",
+    "docs/agent-execution-contract.md",
+    "docs/tech-stack.md",
+    "docs/directory-structure.md",
+    "scripts/check-project-layout.mjs",
+    "scripts/validate-phase.mjs",
+    "scripts/validate-phase.ps1",
+    "scripts/test-validate-phase.mjs",
+    "scripts/phase-evidence.mjs"
+  ],
+  "modificationScope": [
+    "docs/git-workflow.md",
+    "docs/code-style.md",
+    "docs/ui-design-system.md",
+    "docs/database.md",
+    "docs/agent-execution-contract.md",
+    "docs/tech-stack.md",
+    "docs/directory-structure.md",
+    "docs/phase-plans/",
+    "scripts/check-project-layout.mjs",
+    "scripts/phase-evidence.mjs",
+    "scripts/validate-phase.mjs",
+    "scripts/validate-phase.ps1",
+    "scripts/test-validate-phase.mjs",
+    "docs/evidence/attempts/Phase001/",
+    "docs/evidence/Phase001-gate.json",
+    "docs/roadmap-run.json",
+    "docs/phase-completion-log.md"
+  ],
+  "requiredCaseIds": [
+    "Phase001:git-workflow",
+    "Phase001:code-style",
+    "Phase001:ui-design-system",
+    "Phase001:database",
+    "Phase001:contract-coverage",
+    "Phase001:pinned-inputs",
+    "Phase001:history",
+    "Phase001:negative-documents",
+    "Phase001:checkpoint-regression",
+    "Phase001:contract-regression",
+    "Phase001:evidence-regression"
+  ],
+  "cases": [
+    {
+      "testCaseId": "Phase001:git-workflow",
+      "command": "node docs/phase-plans/verify-phase001.mjs --case git-workflow",
+      "denominator": 1,
+      "inputPath": "docs/git-workflow.md",
+      "outputPath": "docs/evidence/attempts/Phase001/attempt-5/git-workflow.json",
+      "expected": "Required sections, exact phase commit protocol, main-only run, metadata whitelist, evidenceHash, clean, scope protection, and applicability/exit code of every future command"
+    },
+    {
+      "testCaseId": "Phase001:code-style",
+      "command": "node docs/phase-plans/verify-phase001.mjs --case code-style",
+      "denominator": 1,
+      "inputPath": "docs/code-style.md",
+      "outputPath": "docs/evidence/attempts/Phase001/attempt-5/code-style.json",
+      "expected": "Types, naming, exact file paths, three non-overlapping layers with at least 50 characters each, explicit exclusions, server-only env and Provider I/O, safe error response, meaningful comments and scope limits"
+    },
+    {
+      "testCaseId": "Phase001:ui-design-system",
+      "command": "node docs/phase-plans/verify-phase001.mjs --case ui-design-system",
+      "denominator": 10,
+      "inputPath": "docs/ui-design-system.md",
+      "outputPath": "docs/evidence/attempts/Phase001/attempt-5/ui-design-system.json",
+      "expected": "All visual tokens, ten named components each with at least two concrete states, accessible contrast, travel module and compact admin rules; no product implementation"
+    },
+    {
+      "testCaseId": "Phase001:database",
+      "command": "node docs/phase-plans/verify-phase001.mjs --case database",
+      "denominator": 1,
+      "inputPath": "docs/database.md",
+      "outputPath": "docs/evidence/attempts/Phase001/attempt-5/database.json",
+      "expected": "Unique producer registry for every persistent route model, explicit identity/nullability/relations/status/deletion/public projection, required exact fields and enum sets, canonical version-only body, index/migrate/seed/security rules, zero prohibited or transition model definitions"
+    },
+    {
+      "testCaseId": "Phase001:contract-coverage",
+      "command": "node docs/phase-plans/verify-phase001.mjs --case contract-coverage",
+      "denominator": 20,
+      "inputPath": "docs/phase-plans/Phase001-inputs.json",
+      "outputPath": "docs/evidence/attempts/Phase001/attempt-5/contract-coverage.json",
+      "expected": "All 10 manifest localContracts including historical-only references plus all 10 required projectContracts with producerPhase <= 1 are readable; coverage 20/20"
+    },
+    {
+      "testCaseId": "Phase001:pinned-inputs",
+      "command": "node docs/phase-plans/verify-phase001.mjs --case pinned-inputs",
+      "denominator": 1,
+      "inputPath": "docs/phase-plans/Phase001-inputs.json",
+      "outputPath": "docs/evidence/attempts/Phase001/attempt-5/pinned-inputs.json",
+      "expected": "Manifest, eight run-state contracts, current card and read-only model producer cards match recorded local SHA-256; synced baseline and LF bytes; roadmap remains ignored and no future products"
+    },
+    {
+      "testCaseId": "Phase001:history",
+      "command": "node docs/phase-plans/verify-phase001.mjs --case history",
+      "denominator": 2,
+      "inputPath": "docs/phase-plans/Phase001-inputs.json",
+      "outputPath": "docs/evidence/attempts/Phase001/attempt-5/history.json",
+      "expected": "Historical Phase000 raw archive/hash/parent audit and unmodified original validator replay at original metadata commit in isolated clone, PowerShell 5.1 and 7 both exit 0"
+    },
+    {
+      "testCaseId": "Phase001:negative-documents",
+      "command": "node docs/phase-plans/verify-phase001.mjs --case negative-documents",
+      "denominator": 12,
+      "inputPath": "docs/phase-plans/Phase001-inputs.json",
+      "outputPath": "docs/evidence/attempts/Phase001/attempt-5/negative-documents.json",
+      "expected": "Twelve fixed isolated mutations reject missing layer/component/model/command, wrong state/body/producer/index/migration/encryption and forbidden model; restoring each file passes"
+    },
+    {
+      "testCaseId": "Phase001:checkpoint-regression",
+      "command": "node docs/phase-plans/verify-phase001.mjs --case checkpoint-regression",
+      "denominator": 1,
+      "inputPath": "docs/phase-plans/Phase001-inputs.json",
+      "outputPath": "docs/evidence/attempts/Phase001/attempt-5/checkpoint-regression.json",
+      "expected": "Real isolated Git fixtures exercise root equality, empty Git prefix, ignored local pins, historical import, adjacent commits, schema/raw hashes, clean, recovery, required contracts and failure injection under PowerShell 5.1 and 7"
+    },
+    {
+      "testCaseId": "Phase001:contract-regression",
+      "command": "node docs/phase-plans/verify-phase001.mjs --case contract-regression",
+      "denominator": 5,
+      "inputPath": "docs/database.md",
+      "outputPath": "docs/evidence/attempts/Phase001/attempt-5/contract-regression.json",
+      "expected": "Five isolated mutations reject ApiKeyConfig JSON-column storage, deferred revision, nullable revision, unspecified canonical serialization and DurableTask nextAttemptAt index; each restored document passes"
+    },
+    {
+      "testCaseId": "Phase001:evidence-regression",
+      "command": "node docs/phase-plans/verify-phase001.mjs --case evidence-regression",
+      "denominator": 8,
+      "inputPath": "scripts/phase-evidence.mjs",
+      "outputPath": "docs/evidence/attempts/Phase001/attempt-5/evidence-regression.json",
+      "expected": "Eight in-memory failures reject empty or incomplete source/report hashes, changed source bytes, synthetic reviewer kind, identical reviewer/implementation contexts and missing implementation identity"
+    }
+  ],
+  "threshold": {
+    "originalThreshold": 11,
+    "automatedThreshold": 11,
+    "requiredPassRate": 1,
+    "m0ContractCoverage": 1,
+    "prohibitedModelCount": 0,
+    "waived": false
+  },
+  "previousAttempts": [
+    {
+      "attemptId": "attempt-1",
+      "planPath": "docs/evidence/attempts/Phase001/attempt-1/frozen-plan.json",
+      "planHash": "8b84ff5210d6515b0d4bc03971deaf10fedf0b4bc90f098347f8493efa5241da"
+    },
+    {
+      "attemptId": "attempt-2",
+      "planPath": "docs/evidence/attempts/Phase001/attempt-2/frozen-plan.json",
+      "planHash": "88f3182ba1a374180ed4b3a7ad373d362f94c70ac32cb7456da353fed9800547"
+    },
+    {
+      "attemptId": "attempt-3",
+      "planPath": "docs/evidence/attempts/Phase001/attempt-3/frozen-plan.json",
+      "planHash": "733265640cdac16067b63b1fd0b2fd16b3cee944a20452a515f475f4813c606b"
+    },
+    {
+      "attemptId": "attempt-4",
+      "planPath": "docs/evidence/attempts/Phase001/attempt-4/frozen-plan.json",
+      "planHash": "cf5791eb743acad817722758e9883cd46e45fc686bc79975316ac099f5ed3ae6"
+    }
+  ],
+  "notApplicable": [
+    "Product lint/typecheck/build scripts are first produced in Phase003",
+    "Vitest and npm run test are first produced in Phase004",
+    "No application, database, browser or AI runtime is produced by Phase001"
+  ]
+}

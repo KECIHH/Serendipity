@@ -1,0 +1,61 @@
+{
+  "testCaseId": "Phase001:pinned-inputs",
+  "command": "node docs/phase-plans/verify-phase001.mjs --case pinned-inputs",
+  "status": "PASS",
+  "exitCode": 0,
+  "numerator": 1,
+  "denominator": 1,
+  "inputPath": "docs/phase-plans/Phase001-inputs.json",
+  "inputHash": "2f4a1c99660655d719e79a0411706f107df0f8d8f8888487fc4fffa58f0990e5",
+  "planHash": "cf5791eb743acad817722758e9883cd46e45fc686bc79975316ac099f5ed3ae6",
+  "sourceHashes": {
+    "docs/git-workflow.md": "cbd5a7eb54da037541322a29589140f44506f4e4c9146180330b2c3a3f8f4794",
+    "docs/code-style.md": "7b2ef781010f47a11b77788241cf6ee660e57b420c0f7a87ad2eae0a42571734",
+    "docs/ui-design-system.md": "8b232c6742bf846f131ea3040d5892ed7b270940bfd4109ccfb768ed63fdb158",
+    "docs/database.md": "4a84afbc0d252611f6d5fa6505a291d837d8ab4c4d5f0464f03c45c2b35e8869",
+    "docs/phase-plans/Phase001.json": "cf5791eb743acad817722758e9883cd46e45fc686bc79975316ac099f5ed3ae6",
+    "docs/phase-plans/Phase001-inputs.json": "2f4a1c99660655d719e79a0411706f107df0f8d8f8888487fc4fffa58f0990e5",
+    "docs/phase-plans/verify-phase001.mjs": "7693b66c23efbaecaf02658f4c8c30b9ff561fd17bd6fd3680977ea21802424f",
+    "docs/phase-plans/prepare-phase001.mjs": "1ad40ee5ac36b56d218235b8c569fd528c6083f8f3e500b43049eb3531266bfd",
+    "docs/phase-plans/retry-phase001.mjs": "f32cafff9c401dfa88304319db9687bf49e8c42d8e322e37bc8331baafef8b90",
+    "docs/phase-plans/replay-historical-phase.ps1": "0c3e1b8f4cdca2713e8617b8155eeb62723bd1a384b8ab5293562f72b5d8a1d1",
+    "docs/phase-plans/complete-phase001.mjs": "3984e1f3a2a02f213b720bf02cba0293288bdf4591966ea4403ecfffc9196a1a",
+    "docs/agent-execution-contract.md": "72eb5e5e8da13c02b3aeeb3803b668a440f1cbdee75fddf08f267c0ec9b6b2ed",
+    "docs/tech-stack.md": "258620f3e18d042eac1e26165f411e8879ecd4b0d91d8e7986aaed4f3f10d2c7",
+    "docs/directory-structure.md": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df",
+    "scripts/check-project-layout.mjs": "101c7c50f12e4d6cc80e1c9fb9667ad06fcc55c687d86cb5295ff81bc0eb68f6",
+    "scripts/validate-phase.mjs": "52c4caec193fe47dacd00868c10d8bbdd1053acbcb39e45370f64cec3d387a93",
+    "scripts/validate-phase.ps1": "462e6ef7652ab84e3481705e9620ac07946840bb2776db5143be85109fe7e2a0",
+    "scripts/test-validate-phase.mjs": "46c9078216659deee0fbbf7d65c36c403bfa85b6b09533611a0b31ec36161693"
+  },
+  "startedAt": "2026-09-08T15:05:53.899Z",
+  "completedAt": "2026-09-08T15:05:58.047Z",
+  "durationMs": 4149,
+  "details": {
+    "pinnedInputCount": 151,
+    "manifestHash": "497689843e4576c5f8e8a6636d29b04023ac997309a3ffab83cc67d90ea7bf3e",
+    "baselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+    "decisionFieldCount": 15,
+    "layout": {
+      "status": "PASS",
+      "scope": "PROJECT_LAYOUT_AND_HISTORICAL_ARCHIVE",
+      "repositoryRoot": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "projectRoot": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "roadmapTrackedFiles": 0,
+      "roadmapIgnored": true,
+      "localRoadmapPresent": true,
+      "preservedHistoricalFiles": 44,
+      "phaseSealEvaluated": false
+    },
+    "commands": [
+      {
+        "command": "git diff --check",
+        "exitCode": 0
+      },
+      {
+        "command": "'C:\\Program Files\\nodejs\\node.exe' scripts/check-project-layout.mjs",
+        "exitCode": 0
+      }
+    ]
+  }
+}

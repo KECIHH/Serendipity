@@ -1,0 +1,125 @@
+{
+  "phase": 1,
+  "attemptId": "attempt-1",
+  "producer": "Phase001",
+  "consumers": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 25, 53, 65, 88, 96, 106],
+  "scope": "M0 development and database contracts; root-layout admission and checkpoint validation",
+  "requestedThrough": 1,
+  "modificationScope": [
+    "docs/git-workflow.md",
+    "docs/code-style.md",
+    "docs/ui-design-system.md",
+    "docs/database.md",
+    "docs/agent-execution-contract.md",
+    "docs/tech-stack.md",
+    "docs/directory-structure.md",
+    "docs/phase-plans/",
+    "scripts/check-project-layout.mjs",
+    "scripts/validate-phase.mjs",
+    "scripts/validate-phase.ps1",
+    "scripts/test-validate-phase.mjs",
+    "docs/evidence/attempts/Phase001/",
+    "docs/evidence/Phase001-gate.json",
+    "docs/roadmap-run.json",
+    "docs/phase-completion-log.md"
+  ],
+  "requiredCaseIds": [
+    "Phase001:git-workflow",
+    "Phase001:code-style",
+    "Phase001:ui-design-system",
+    "Phase001:database",
+    "Phase001:contract-coverage",
+    "Phase001:pinned-inputs",
+    "Phase001:history",
+    "Phase001:negative-documents",
+    "Phase001:checkpoint-regression"
+  ],
+  "cases": [
+    {
+      "testCaseId": "Phase001:git-workflow",
+      "command": "node docs/phase-plans/verify-phase001.mjs --case git-workflow",
+      "denominator": 1,
+      "inputPath": "docs/git-workflow.md",
+      "outputPath": "docs/evidence/attempts/Phase001/attempt-1/git-workflow.json",
+      "expected": "Required sections, exact phase commit protocol, main-only run, metadata whitelist, evidenceHash, clean, scope protection, and applicability/exit code of every future command"
+    },
+    {
+      "testCaseId": "Phase001:code-style",
+      "command": "node docs/phase-plans/verify-phase001.mjs --case code-style",
+      "denominator": 1,
+      "inputPath": "docs/code-style.md",
+      "outputPath": "docs/evidence/attempts/Phase001/attempt-1/code-style.json",
+      "expected": "Types, naming, exact file paths, three non-overlapping layers with at least 50 characters each, explicit exclusions, server-only env and Provider I/O, safe error response, meaningful comments and scope limits"
+    },
+    {
+      "testCaseId": "Phase001:ui-design-system",
+      "command": "node docs/phase-plans/verify-phase001.mjs --case ui-design-system",
+      "denominator": 10,
+      "inputPath": "docs/ui-design-system.md",
+      "outputPath": "docs/evidence/attempts/Phase001/attempt-1/ui-design-system.json",
+      "expected": "All visual tokens, ten named components each with at least two concrete states, accessible contrast, travel module and compact admin rules; no product implementation"
+    },
+    {
+      "testCaseId": "Phase001:database",
+      "command": "node docs/phase-plans/verify-phase001.mjs --case database",
+      "denominator": 1,
+      "inputPath": "docs/database.md",
+      "outputPath": "docs/evidence/attempts/Phase001/attempt-1/database.json",
+      "expected": "Unique producer registry for every persistent route model, explicit identity/nullability/relations/status/deletion/public projection, required exact fields and enum sets, canonical version-only body, index/migrate/seed/security rules, zero prohibited or transition model definitions"
+    },
+    {
+      "testCaseId": "Phase001:contract-coverage",
+      "command": "node docs/phase-plans/verify-phase001.mjs --case contract-coverage",
+      "denominator": 20,
+      "inputPath": "docs/phase-plans/Phase001-inputs.json",
+      "outputPath": "docs/evidence/attempts/Phase001/attempt-1/contract-coverage.json",
+      "expected": "All 10 manifest localContracts including historical-only references plus all 10 required projectContracts with producerPhase <= 1 are readable; coverage 20/20"
+    },
+    {
+      "testCaseId": "Phase001:pinned-inputs",
+      "command": "node docs/phase-plans/verify-phase001.mjs --case pinned-inputs",
+      "denominator": 1,
+      "inputPath": "docs/phase-plans/Phase001-inputs.json",
+      "outputPath": "docs/evidence/attempts/Phase001/attempt-1/pinned-inputs.json",
+      "expected": "Manifest, eight run-state contracts, current card and read-only model producer cards match recorded local SHA-256; synced baseline and LF bytes; roadmap remains ignored and no future products"
+    },
+    {
+      "testCaseId": "Phase001:history",
+      "command": "node docs/phase-plans/verify-phase001.mjs --case history",
+      "denominator": 2,
+      "inputPath": "docs/phase-plans/Phase001-inputs.json",
+      "outputPath": "docs/evidence/attempts/Phase001/attempt-1/history.json",
+      "expected": "Historical Phase000 raw archive/hash/parent audit and unmodified original validator replay at original metadata commit in isolated clone, PowerShell 5.1 and 7 both exit 0"
+    },
+    {
+      "testCaseId": "Phase001:negative-documents",
+      "command": "node docs/phase-plans/verify-phase001.mjs --case negative-documents",
+      "denominator": 12,
+      "inputPath": "docs/phase-plans/Phase001-inputs.json",
+      "outputPath": "docs/evidence/attempts/Phase001/attempt-1/negative-documents.json",
+      "expected": "Twelve fixed isolated mutations reject missing layer/component/model/command, wrong state/body/producer/index/migration/encryption and forbidden model; restoring each file passes"
+    },
+    {
+      "testCaseId": "Phase001:checkpoint-regression",
+      "command": "node docs/phase-plans/verify-phase001.mjs --case checkpoint-regression",
+      "denominator": 1,
+      "inputPath": "docs/phase-plans/Phase001-inputs.json",
+      "outputPath": "docs/evidence/attempts/Phase001/attempt-1/checkpoint-regression.json",
+      "expected": "Real isolated Git fixtures exercise root equality, empty Git prefix, ignored local pins, historical import, adjacent commits, schema/raw hashes, clean, recovery, required contracts and failure injection under PowerShell 5.1 and 7"
+    }
+  ],
+  "threshold": {
+    "originalThreshold": 9,
+    "automatedThreshold": 9,
+    "requiredPassRate": 1,
+    "m0ContractCoverage": 1,
+    "prohibitedModelCount": 0,
+    "waived": false
+  },
+  "previousAttempts": [],
+  "notApplicable": [
+    "Product lint/typecheck/build scripts are first produced in Phase003",
+    "Vitest and npm run test are first produced in Phase004",
+    "No application, database, browser or AI runtime is produced by Phase001"
+  ]
+}

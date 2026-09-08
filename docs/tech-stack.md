@@ -33,7 +33,7 @@
 
 ## AI Provider
 
-- AI Provider：DeepSeek，使用 OpenAI 兼容接口，经 `src/lib/ai/provider.ts` 统一抽象。
+- AI Provider：DeepSeek，使用 OpenAI 兼容接口，经 `src/lib/ai/provider.ts` 的纯接口契约统一抽象；实际 Provider I/O 与 repair 编排放在 `src/server/ai`。
 - 环境变量：`AI_API_KEY`、`AI_BASE_URL`、`AI_MODEL`、`AI_MOCK`；超时和预算护栏为 `AI_TIMEOUT_MS`、`AI_DAILY_COST_LIMIT`。
 - 配置演进：Phase004 的前三项为 bootstrap 输入，Phase015 起退役为历史 test fixture；Web/worker 只读取已激活的不可变 PromptVersion、ModelDeployment、ProviderConfigVersion 及 secretRef，`AI_MOCK` 保留环境护栏。
 - 验收服务：真实 adapter 连接隔离 HTTP 合同服务和冻结 record-replay，测试数据与密钥均为合成；不在必经 Gate 使用真实公网调用。
@@ -106,7 +106,7 @@
 ## 技术边界
 
 - Prisma 负责服务端数据库访问；Provider 负责模型调用抽象；`src/server/services` 承担业务逻辑，页面和 HTTP 路由只消费服务结果。
-- `src/lib/ai/schemas.ts` 定义纯粹输入输出 Schema，`src/lib/ai/provider.ts` 的网络与秘密操作保持服务端边界；客户端不能导入凭据和治理配置。
+- `src/lib/ai/schemas.ts` 定义纯粹输入输出 Schema，`src/lib/ai/provider.ts` 仅定义无副作用接口；网络、秘密操作与 repair 位于 `src/server/ai`。唯一环境入口 `src/lib/env.ts` 必须 import server-only，客户端不能直接或间接导入凭据和治理配置。
 - 地图、导出、分享和工作台消费同一经过权限投影的结构化版本，不自行生成事实、重算预算或改写质量结论。
 
 ## 禁止替换规则

@@ -44,13 +44,24 @@ function check() {
     assert.equal(state[key], layout[key], `Run state and layout differ: ${key}`);
   }
   assert.equal(state.stateVersion, 2);
-  assert.equal(state.completedThrough, 0, 'This migration audit expects imported Phase000 progress');
-  assert.equal(state.currentPhase, 1);
-  assert.equal(state.progressSource, 'HISTORICAL_CHECKPOINT');
-  assert.equal(state.currentLayoutPhaseSeal, null, 'Migration does not produce a new Phase seal');
-  assert.equal(state.nextPhaseExecutionAuthorized, false, 'Directory migration does not authorize Phase001');
+  assert(Number.isInteger(state.completedThrough) && state.completedThrough >= 0 && state.completedThrough <= 137);
+  assert.equal(state.currentPhase, state.completedThrough + 1);
+  if (state.completedThrough === 0) {
+    assert.equal(state.progressSource, 'HISTORICAL_CHECKPOINT');
+    assert.equal(state.currentLayoutPhaseSeal, null, 'Migration does not produce a new Phase seal');
+    assert.equal(state.nextPhaseExecutionAuthorized, false, 'Directory migration does not authorize Phase001');
+    assert.equal(state.nextRun.baselineCommit, null, 'The next run has not started');
+  } else {
+    assert.equal(state.progressSource, 'CURRENT_LAYOUT_CHECKPOINT');
+    assert.equal(state.baselineCommit, state.executionBaselineCommit);
+    assert.match(state.executionBaselineCommit, /^[0-9a-f]{40,64}$/);
+    assert.equal(state.currentLayoutPhaseSeal.phase, state.completedThrough);
+    assert.equal(state.currentLayoutPhaseSeal.artifactCommit, state.lastArtifactCommit);
+    assert.equal(state.checkpoints.length, state.completedThrough);
+    assert.deepEqual(state.currentLayoutPhaseSeal, state.checkpoints.at(-1));
+    assert.equal(state.nextRun.baselineCommit, state.executionBaselineCommit);
+  }
   assert.equal(state.nextRun.startPhase, 1);
-  assert.equal(state.nextRun.baselineCommit, null, 'The next run has not started');
   assert.equal(state.nextRun.requiresRootAwareRunner, true);
   assert.equal(state.nextRun.legacyValidator, 'HISTORICAL_LAYOUT_ONLY');
 

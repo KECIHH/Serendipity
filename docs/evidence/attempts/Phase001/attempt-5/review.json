@@ -1,0 +1,432 @@
+{
+  "phase": 1,
+  "attemptId": "attempt-5",
+  "reviewerRunId": "01a0818e-05c4-70c1-8768-290dc9ef15d1",
+  "contextId": "01a0818e-05c4-70c1-8768-290dc9ef15d1",
+  "implementationContextId": "01a0813d-fd96-7291-bbbc-9127c2ec8008",
+  "runnerIdentity": {
+    "kind": "INDEPENDENT_CODEX_AGENT",
+    "implementationAuthored": false
+  },
+  "generatedBy": "01a0818e-05c4-70c1-8768-290dc9ef15d1",
+  "generatedAt": "2026-09-08T15:46:45Z",
+  "planPath": "docs/phase-plans/Phase001.json",
+  "planHash": "254e2241b583dac62906b05cbed0c779d118ef1729ced4ae0f5333f28afac690",
+  "decision": "PASS",
+  "issues": [
+    {
+      "id": "PH001-EVIDENCE-003",
+      "status": "RESOLVED",
+      "priority": 1,
+      "path": "scripts/phase-evidence.mjs",
+      "line": 14,
+      "title": "Complete evidence binding and independent identity are now mandatory",
+      "originalProblem": "Attempt-4 accepted empty source/report hash maps and synthetic or implementation-context review identities. Both adversarial overlays actually passed the old complete audit.",
+      "resolution": "The shared helper fixes the formal Phase001 source inventory to exactly 19 paths, requires exact source/report hash coverage and raw-byte equality, binds reports to their frozen command, denominator, input and plan, and requires INDEPENDENT_CODEX_AGENT with implementationAuthored=false and a reviewer context different from the plan's implementation context.",
+      "evidence": [
+        {
+          "path": "docs/phase-plans/complete-phase001.mjs",
+          "line": 40,
+          "detail": "audit invokes requireEvidenceSources, requireReportBinding, requireReviewIdentity and exact review hash checks; metadata calls audit before generating the Gate."
+        },
+        {
+          "path": "scripts/validate-phase.mjs",
+          "line": 297,
+          "detail": "Current-layout Gate validation invokes the same helper against artifact Git blobs, including every plan output. Historical Phase000 remains explicitly separate."
+        },
+        {
+          "path": "scripts/validate-phase.mjs",
+          "line": 99,
+          "detail": "Protocol fixture mode is explicit and restricted to direct child repositories of a serendipity-phase-validator-* directory under the real system temporary directory."
+        },
+        {
+          "path": "scripts/validate-phase.mjs",
+          "line": 486,
+          "detail": "Fixture success reports ISOLATED_PROTOCOL_FIXTURE_VALIDATION, distinct from the default phase checkpoint seal."
+        },
+        {
+          "path": "docs/evidence/attempts/Phase001/attempt-5/evidence-regression.json",
+          "detail": "All eight hash/identity negative cases rejected at their specified diagnostic."
+        },
+        {
+          "path": "docs/evidence/attempts/Phase001/attempt-5/checkpoint-regression.json",
+          "detail": "Both shells reject missing/empty/stale mappings and same-context identity. formal-seal-rejects-synthetic-review runs without ProtocolFixture and fails with REVIEW_IDENTITY in both shells."
+        },
+        {
+          "path": "docs/evidence/attempts/Phase001/attempt-5/review.json",
+          "detail": "probes records actual independent execution of the current complete audit: one unmodified 11-report control passed and ten adversarial overlays failed with the intended diagnostics. Neither synthetic review nor altered source was written to disk."
+        }
+      ]
+    },
+    {
+      "id": "PH001-DB-001",
+      "status": "RESOLVED",
+      "priority": 2,
+      "path": "docs/database.md",
+      "line": 169,
+      "title": "ApiKeyConfig storage, producer and nullability match frozen Phase010",
+      "originalProblem": "encryptedKey was declared Prisma Json rather than String @db.Text canonical JSON; revision was deferred to Phase012 even though Phase010 requires it.",
+      "resolution": "encryptedKey is nonnullable String @db.Text containing RFC8785 JCS canonical JSON validated with the envelope Schema. Nonnullable Int revision is produced in Phase010 with default 0 and a nonnegative CHECK. JSON naming and sensitive-storage paragraphs consistently preserve this exception and the exact envelope fields.",
+      "evidence": [
+        {
+          "path": "docs/database.md",
+          "line": 174,
+          "detail": "revision explicitly states Phase010, Int, nonnullable, default 0, nonnegative CHECK and CAS increments."
+        },
+        {
+          "path": "docs/database.md",
+          "line": 533,
+          "detail": "JSON naming rules explicitly distinguish the canonical JSON text envelope from Prisma Json columns."
+        },
+        {
+          "path": "docs/database.md",
+          "line": 557,
+          "detail": "Exact envelope fields, canonical encoding, column binding and AAD match the frozen producer contract."
+        },
+        {
+          "path": "Serendipity \u00b7 \u9645\u9047/Phase010.md",
+          "line": 67,
+          "detail": "Frozen producer requires encryptedKey String @db.Text, revision in Phase010 and canonical JCS envelope storage."
+        },
+        {
+          "path": "docs/evidence/attempts/Phase001/attempt-5/contract-regression.json",
+          "detail": "api-key-json-column, api-key-revision-deferred, api-key-revision-nullable and api-key-noncanonical-text each exit 1 for the intended field assertion; each restored document exits 0."
+        }
+      ]
+    },
+    {
+      "id": "PH001-DB-002",
+      "status": "RESOLVED",
+      "priority": 2,
+      "path": "docs/database.md",
+      "line": 541,
+      "title": "DurableTask claim index uses canonical availableAt",
+      "originalProblem": "The shared task claim index used nextAttemptAt, a DataRequest ERASE continuation field absent from the canonical DurableTask schema.",
+      "resolution": "The index is now (status,availableAt,leaseUntil,id). The same paragraph explicitly restricts nextAttemptAt to DataRequest ERASE continuation.",
+      "evidence": [
+        {
+          "path": "Serendipity \u00b7 \u9645\u9047/docs/roadmap-canonical-contract.md",
+          "line": 241,
+          "detail": "Canonical section 3.7 fixes the DurableTask schema with availableAt."
+        },
+        {
+          "path": "Serendipity \u00b7 \u9645\u9047/Phase016.md",
+          "line": 75,
+          "detail": "Phase016 first produces and reuses canonical 3.7 for the shared task implementation."
+        },
+        {
+          "path": "docs/evidence/attempts/Phase001/attempt-5/contract-regression.json",
+          "detail": "durable-task-wrong-index replaces availableAt with nextAttemptAt and exits 1 on the intended index assertion; restoration exits 0."
+        }
+      ]
+    }
+  ],
+  "dispositions": [
+    {
+      "issueId": "PH001-EVIDENCE-003",
+      "status": "RESOLVED",
+      "by": "01a0818e-05c4-70c1-8768-290dc9ef15d1",
+      "verifiedAttemptId": "attempt-5",
+      "detail": "Independently reviewed both mandatory integration paths, audited all final bindings, and actually replayed the former audit attacks. The old bypasses are rejected; default synthetic-review rejection is evidenced in both shells."
+    },
+    {
+      "issueId": "PH001-DB-001",
+      "status": "RESOLVED",
+      "by": "01a0818e-05c4-70c1-8768-290dc9ef15d1",
+      "verifiedAttemptId": "attempt-5",
+      "detail": "Compared the corrected field table and cross-cutting paragraphs against frozen Phase010 and inspected the four targeted rejection/restoration observations."
+    },
+    {
+      "issueId": "PH001-DB-002",
+      "status": "RESOLVED",
+      "by": "01a0818e-05c4-70c1-8768-290dc9ef15d1",
+      "verifiedAttemptId": "attempt-5",
+      "detail": "Compared the corrected index to canonical 3.7 and Phase016 and inspected the targeted rejection/restoration observation."
+    }
+  ],
+  "sourceHashes": {
+    "docs/git-workflow.md": "8b8289c40de4454996e5fbad71de531bb8d80a6cf3f048dda753e7cf2d120548",
+    "docs/code-style.md": "7b2ef781010f47a11b77788241cf6ee660e57b420c0f7a87ad2eae0a42571734",
+    "docs/ui-design-system.md": "8b232c6742bf846f131ea3040d5892ed7b270940bfd4109ccfb768ed63fdb158",
+    "docs/database.md": "38bb2a4b05b15def09ec0434ca4e4cf6d874109d3d88126333bf1f30209029a0",
+    "docs/phase-plans/Phase001.json": "254e2241b583dac62906b05cbed0c779d118ef1729ced4ae0f5333f28afac690",
+    "docs/phase-plans/Phase001-inputs.json": "2f4a1c99660655d719e79a0411706f107df0f8d8f8888487fc4fffa58f0990e5",
+    "docs/phase-plans/verify-phase001.mjs": "557515daa91865c332601298a4fddeb20368d0e64dedb18d386214bb3ace5c8a",
+    "docs/phase-plans/prepare-phase001.mjs": "1ad40ee5ac36b56d218235b8c569fd528c6083f8f3e500b43049eb3531266bfd",
+    "docs/phase-plans/retry-phase001.mjs": "5100adbee2e1da40b7d5dd98b2b6b573de551a66ca327367cfd6c5d3563dcf55",
+    "docs/phase-plans/replay-historical-phase.ps1": "0c3e1b8f4cdca2713e8617b8155eeb62723bd1a384b8ab5293562f72b5d8a1d1",
+    "docs/phase-plans/complete-phase001.mjs": "f89f10fbf32e841d25407dfeeb256bfc0be7abbd2ae6b552e512174ddcaedd41",
+    "docs/agent-execution-contract.md": "72eb5e5e8da13c02b3aeeb3803b668a440f1cbdee75fddf08f267c0ec9b6b2ed",
+    "docs/tech-stack.md": "258620f3e18d042eac1e26165f411e8879ecd4b0d91d8e7986aaed4f3f10d2c7",
+    "docs/directory-structure.md": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df",
+    "scripts/check-project-layout.mjs": "101c7c50f12e4d6cc80e1c9fb9667ad06fcc55c687d86cb5295ff81bc0eb68f6",
+    "scripts/validate-phase.mjs": "4be9ee356a3f5a7d5b9265ee61143d6574617dda83d9ac8d3960f3f8e28fa293",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319",
+    "scripts/test-validate-phase.mjs": "7495edfe0c582e57d8fee33d8403011eed9d1c97b1edb5e4cb650a7e9d83f521",
+    "scripts/phase-evidence.mjs": "3727f8f8e5f00cf7e03d4bc50f71ebdbff483380cbc59df124bf21b473261d95"
+  },
+  "reportHashes": {
+    "docs/evidence/attempts/Phase001/attempt-5/git-workflow.json": "d6e4e2a7ca93971d647eef4312de74a26e561972c680a5b7682cbeece5529033",
+    "docs/evidence/attempts/Phase001/attempt-5/code-style.json": "fca762a54f9d19a819a9f15a3078bbe0021d3f97568c9bb9511b03ef6dfdf778",
+    "docs/evidence/attempts/Phase001/attempt-5/ui-design-system.json": "41c238feb580ed9e274c3faea2408f64a1b00cc961b13076419f25d181aae7c6",
+    "docs/evidence/attempts/Phase001/attempt-5/database.json": "a7d8f664b412add13833581e8c939ab82c74d06bf28e88f23415d5c0480dd99d",
+    "docs/evidence/attempts/Phase001/attempt-5/contract-coverage.json": "9f42f7c42a39b3c426282b8eecd78cb68add153d71ef7833a67a65123a2b7ff3",
+    "docs/evidence/attempts/Phase001/attempt-5/pinned-inputs.json": "c4e4865530fa958c8295fb500e5b299883aa47501dc062f1e612aa85a5b7a3c1",
+    "docs/evidence/attempts/Phase001/attempt-5/history.json": "d5860728f50ab31749c0fbf00b79e551052b00130732113b2d7c95cb94c2726b",
+    "docs/evidence/attempts/Phase001/attempt-5/negative-documents.json": "d30f49d963850cc3412faaf95a5056b8279658e8b108f8877aeda4663f4807e8",
+    "docs/evidence/attempts/Phase001/attempt-5/checkpoint-regression.json": "f90fc4be4e2b07e931bfdbdf5e92cb5ec98bc955b12e3b6ea8516e799b2ad41f",
+    "docs/evidence/attempts/Phase001/attempt-5/contract-regression.json": "6b2f32318bacfc4e0c1240012d3ae221658889558e146166fd7bdc9e07f9d0ab",
+    "docs/evidence/attempts/Phase001/attempt-5/evidence-regression.json": "485765abdfa93dfde7130d2766856493295065b185e5b71ae21b2c39cfe443e1"
+  },
+  "reviewedLocalInputHashes": {
+    "Serendipity \u00b7 \u9645\u9047/Phase001.md": "12f9576b1f9feae95ec875dd2765c6d386f91920941f4aaa69fa7c1716d07d6a",
+    "Serendipity \u00b7 \u9645\u9047/Phase006.md": "abe939e72fdef42800ff022dcfca7480f71a7e4efa0c834cde69c67c4c5920f5",
+    "Serendipity \u00b7 \u9645\u9047/Phase007.md": "c20a91d1ff8f6149ef0b74d98a35d16b8a6f6abdb820dfd070440356e3951c3b",
+    "Serendipity \u00b7 \u9645\u9047/Phase008.md": "63426db05da39293037628838e9e876dc1bcfce1e21e6eee61368eb1e93c1480",
+    "Serendipity \u00b7 \u9645\u9047/Phase009.md": "184081aaf5151f3b171747f2672da408eafabacde65b1dda1096eabf23e041e1",
+    "Serendipity \u00b7 \u9645\u9047/Phase010.md": "f3762f3d667f510ea73ed6d5f6a56c78ad0b09ff314e9975c3a3344dcdac3ba6",
+    "Serendipity \u00b7 \u9645\u9047/Phase011.md": "cdf29b7a5656023898a355dd1c70f2f591a462219a3dba7dc5bd6dcb5bb33cad",
+    "Serendipity \u00b7 \u9645\u9047/Phase012.md": "84041e87d9438a0a0c90901b0d74366f67bcc7e1cebe2e53b0a18961ca163a1c",
+    "Serendipity \u00b7 \u9645\u9047/Phase013.md": "52ac1df3cb409c13b9e0e0411e03b4a6644c790cfedbab898097031ef315795e",
+    "Serendipity \u00b7 \u9645\u9047/Phase015.md": "66f4829b90b2afb1b5bb0c30b6166fddbd59cb87e6fa6a6e6b01ea7c35517065",
+    "Serendipity \u00b7 \u9645\u9047/Phase016.md": "70cdb2f29081dc1c2538b41faab3e9a388ad3c42ab60f34199e27486c9e52be3",
+    "Serendipity \u00b7 \u9645\u9047/Phase025.md": "a3dccdcca6a5cba58acbaa41a2cdeb886c4c02a4cd37c273600b813398cf64a8",
+    "Serendipity \u00b7 \u9645\u9047/Phase030.md": "a9f1ab2645b3b43dd4b33a815855dad16007e3525ac44c26981eb49b28cedabb",
+    "Serendipity \u00b7 \u9645\u9047/Phase053.md": "3a01d996430cf4125aadf85c58b6df3e831c4284099af127a1eab8b4dafb6df8",
+    "Serendipity \u00b7 \u9645\u9047/Phase086.md": "a4e3efa6b2005b01dd958d93f774720d025c827960a4ad713e62db48ee3fdf9e",
+    "Serendipity \u00b7 \u9645\u9047/Phase088.md": "0b8a7322f254ba613cdb0ca324a5a413eaf34a446f96d020e383e36e2f93afdf",
+    "Serendipity \u00b7 \u9645\u9047/Phase090.md": "50d7f56fe67540c925c73b59ec00ddf234036ebf1f56ccde025df5148390ca5b",
+    "Serendipity \u00b7 \u9645\u9047/Phase094.md": "6aab0979112b46775ab4e28ecf027ce8f39d22979d467582c34bf1fb26ea105c",
+    "Serendipity \u00b7 \u9645\u9047/Phase096.md": "0e79439da9bb34743e8a54e35d25943dc17444998b4fb1523e7cdad539b46629",
+    "Serendipity \u00b7 \u9645\u9047/docs/roadmap-canonical-contract.md": "06d0ccdb218482a5688d78a9f69a88a0183cedc9d5eac5d0553e224b8d6e27e5",
+    "Serendipity \u00b7 \u9645\u9047/docs/state-machines.md": "3dab632bd549b26908312b09b166947b2a26128a0298749ba1c7efc6d3d6717a",
+    "Serendipity \u00b7 \u9645\u9047/docs/product-requirements.md": "320583e7baa5c0b3ee15b13ce0bc4f264e8ff1ae531feb94eb71e1102040854b",
+    "Serendipity \u00b7 \u9645\u9047/docs/agent-only-execution-contract.md": "032bfac53bce2dff89cb7470ae809f0a802ecf1fdf9f2fc266b465a37f838eff"
+  },
+  "previousReview": {
+    "path": "docs/evidence/attempts/Phase001/attempt-4/review.json",
+    "sha256": "8ed6cfdfedd5ca09ab6a2c6f2586eed4bba2aa3a5deea5f961fe05dae90b0690",
+    "decision": "FAIL",
+    "rawBytesPreserved": true
+  },
+  "hashPolicy": "SHA-256 of actual raw bytes. All 19 project sources and 11 frozen output reports were verified LF-only; no newline conversion was applied while hashing. Local ignored inputs retain their frozen original bytes and are listed separately.",
+  "verification": {
+    "approach": "Independent specification and source review, direct comparison with necessary frozen canonical/producer inputs, lightweight read-only checks, full byte-binding audit of the main runner's completed reports, and actual in-memory adversarial execution of the complete audit. The full checkpoint regression was not rerun by this reviewer.",
+    "actualCommands": [
+      {
+        "command": "node docs/phase-plans/verify-phase001.mjs --check database",
+        "exitCode": 0
+      },
+      {
+        "command": "node docs/phase-plans/verify-phase001.mjs --check evidence-regression",
+        "exitCode": 0
+      },
+      {
+        "command": "node scripts/validate-phase.mjs --protocol-fixture --completed-through 1 --strict --json",
+        "exitCode": 1,
+        "expectedDiagnostic": "PROTOCOL_FIXTURE_ROOT",
+        "detail": "Actual repository root correctly rejects fixture mode."
+      },
+      {
+        "command": "node docs/phase-plans/complete-phase001.mjs --without-review",
+        "exitCode": 0,
+        "requiredCases": 11,
+        "scope": "PHASE001_REPORT_AND_SOURCE_HASH_AUDIT"
+      },
+      {
+        "command": "node --input-type=module (read-only independent final evidence audit via stdin)",
+        "exitCode": 0,
+        "detail": "Independently checked exact inventories, all source/report/input/plan hashes, LF bytes, preserved prior plans, all 52 scenarios and both-shell observations."
+      },
+      {
+        "command": "node --input-type=module (in-memory complete audit recheck via stdin)",
+        "exitCode": 0,
+        "scope": "IN_MEMORY_ADVERSARIAL_COMPLETE_AUDIT_RECHECK",
+        "detail": "The wrapper observed the unmodified control passing and all ten adversarial cases failing; complete probe source and observations are retained below."
+      }
+    ],
+    "independentEvidenceAudit": {
+      "sourceCount": 19,
+      "requiredCaseCount": 11,
+      "sourceSnapshotUnchanged": true,
+      "allSourceAndReportBytesLf": true,
+      "allReportPlanSourceAndInputBindingsMatch": true,
+      "pinnedInputCount": 151,
+      "documentNegativeCount": 12,
+      "contractNegativeCount": 5,
+      "evidenceNegativeCount": 8,
+      "historyPreservedFiles": 44,
+      "historyShells": [
+        "powershell",
+        "pwsh"
+      ],
+      "wrongHistoricalMappingRejectedInBothShells": true,
+      "checkpointScenarioCount": 52,
+      "checkpointObservationCount": 115,
+      "previousCheckpointScenarioCount": 43,
+      "previousCheckpointScenariosRetained": true,
+      "checkpointBothShellsCoverEveryScenario": true,
+      "checkpointRunnerDurationMs": 576615,
+      "fullCheckpointRegressionRerunByReviewer": false,
+      "syntheticReviewRejectedByDefaultInBothShells": true,
+      "protocolFixtureSuccessUsesDistinctScope": true,
+      "contractCoverage": {
+        "numerator": 20,
+        "denominator": 20
+      },
+      "registeredModels": 66,
+      "prohibitedModelDefinitions": 0
+    },
+    "priorFrozenPlansVerified": [
+      {
+        "attemptId": "attempt-1",
+        "sha256": "8b84ff5210d6515b0d4bc03971deaf10fedf0b4bc90f098347f8493efa5241da",
+        "caseCount": 9
+      },
+      {
+        "attemptId": "attempt-2",
+        "sha256": "88f3182ba1a374180ed4b3a7ad373d362f94c70ac32cb7456da353fed9800547",
+        "caseCount": 9
+      },
+      {
+        "attemptId": "attempt-3",
+        "sha256": "733265640cdac16067b63b1fd0b2fd16b3cee944a20452a515f475f4813c606b",
+        "caseCount": 9
+      },
+      {
+        "attemptId": "attempt-4",
+        "sha256": "cf5791eb743acad817722758e9883cd46e45fc686bc79975316ac099f5ed3ae6",
+        "caseCount": 9
+      }
+    ],
+    "verifiedAreas": [
+      "All four project specifications and the 66-model registry were reviewed for Phase001. Necessary producer/canonical sections were compared for exact field semantics, producer phase, nullable relations, state sets, immutable version ownership, deletion and public projections.",
+      "The three root specifications consistently retain src/lib/ai/provider.ts as a pure interface and place Provider I/O and repair in src/server/ai.",
+      "PromptModelRollout is supported by Phase090's persistent challenger requirement; the documented reuse of immutable terminal AdminCommandReceipt.responseJson for Provider health and FACT_EVALUATION for policy dry-run produced no additional conflict in the reviewed sources.",
+      "The history adapter maps only the exact verified original repository/roadmap/project roots on the identified historical state/bootstrap objects. The raw historical files and Git references remain unchanged; correct and wrong mappings are covered in both shells.",
+      "The original nine frozen case groups keep command, denominator, inputPath and expected assertions. All 43 prior checkpoint cases remain in the 52-case regression, with 115 actual observations and both shells covering every scenario.",
+      "New contract negatives cover encryptedKey storage, revision producer/nullability, canonical serialization and DurableTask availableAt. New evidence negatives and independent audit probes cover missing/empty/changed bindings and non-independent identities."
+    ],
+    "notEvaluated": [
+      "This PASS is the independent Phase001 document/evidence review. Final artifact/metadata commits, default real-repository dual-shell seal, clean status and GitHub synchronization remain the implementation task's subsequent responsibilities.",
+      "Phase001 creates no application runtime, Prisma migration, PostgreSQL schema or browser UI; product lint/typecheck/test/build and product behavior are not claimed tested.",
+      "The hash and identity protocol binds recorded evidence and rejects the tested omissions. It does not provide cryptographic attestation of agent identities; this report's actual independent context was verified from CODEX_THREAD_ID.",
+      "Only necessary frozen future producer/consumer sections were reviewed; future product implementations were not executed or approved."
+    ],
+    "conclusion": "All three previously reported blockers are resolved in the frozen attempt-5 bytes. The 19-source and 11-report bindings and required positive/negative evidence pass independent verification; no additional blocking issue was identified."
+  },
+  "probes": {
+    "status": "PASS",
+    "scope": "IN_MEMORY_ADVERSARIAL_COMPLETE_AUDIT_RECHECK",
+    "runtime": "v24.19.0",
+    "sourceHash": "f89f10fbf32e841d25407dfeeb256bfc0be7abbd2ae6b552e512174ddcaedd41",
+    "helperHash": "3727f8f8e5f00cf7e03d4bc50f71ebdbff483380cbc59df124bf21b473261d95",
+    "filesystemWrites": 0,
+    "gitOperations": 0,
+    "observations": [
+      {
+        "name": "unmodified-eleven-report-audit-control",
+        "inMemoryOnly": true,
+        "exitCode": 0,
+        "reportedStatus": "PASS",
+        "expectedDiagnostic": null,
+        "actualDiagnostic": null,
+        "independentReviewVerified": false
+      },
+      {
+        "name": "old-attack-empty-source-maps-and-changed-runner",
+        "inMemoryOnly": true,
+        "exitCode": 1,
+        "reportedStatus": "FAIL",
+        "expectedDiagnostic": "REPORT_SOURCE_HASH",
+        "actualDiagnostic": "REPORT_SOURCE_HASH: hash map must cover every required file exactly",
+        "independentReviewVerified": null
+      },
+      {
+        "name": "omitted-report-source-entry",
+        "inMemoryOnly": true,
+        "exitCode": 1,
+        "reportedStatus": "FAIL",
+        "expectedDiagnostic": "REPORT_SOURCE_HASH",
+        "actualDiagnostic": "REPORT_SOURCE_HASH: hash map must cover every required file exactly",
+        "independentReviewVerified": null
+      },
+      {
+        "name": "changed-runner-with-complete-source-maps",
+        "inMemoryOnly": true,
+        "exitCode": 1,
+        "reportedStatus": "FAIL",
+        "expectedDiagnostic": "REPORT_SOURCE_HASH",
+        "actualDiagnostic": "REPORT_SOURCE_HASH: bytes changed for docs/phase-plans/verify-phase001.mjs",
+        "independentReviewVerified": null
+      },
+      {
+        "name": "old-attack-synthetic-review-and-empty-bindings",
+        "inMemoryOnly": true,
+        "exitCode": 1,
+        "reportedStatus": "FAIL",
+        "expectedDiagnostic": "REVIEW_IDENTITY",
+        "actualDiagnostic": "REVIEW_IDENTITY: unexpected reviewer kind",
+        "independentReviewVerified": null
+      },
+      {
+        "name": "same-implementation-and-review-context",
+        "inMemoryOnly": true,
+        "exitCode": 1,
+        "reportedStatus": "FAIL",
+        "expectedDiagnostic": "REVIEW_IDENTITY",
+        "actualDiagnostic": "REVIEW_IDENTITY: reviewer must use a different context",
+        "independentReviewVerified": null
+      },
+      {
+        "name": "empty-review-source-map",
+        "inMemoryOnly": true,
+        "exitCode": 1,
+        "reportedStatus": "FAIL",
+        "expectedDiagnostic": "REVIEW_FILE_HASH",
+        "actualDiagnostic": "REVIEW_FILE_HASH: hash map must cover every required file exactly",
+        "independentReviewVerified": null
+      },
+      {
+        "name": "empty-review-report-map",
+        "inMemoryOnly": true,
+        "exitCode": 1,
+        "reportedStatus": "FAIL",
+        "expectedDiagnostic": "REVIEW_FILE_HASH",
+        "actualDiagnostic": "REVIEW_FILE_HASH: hash map must cover every required file exactly",
+        "independentReviewVerified": null
+      },
+      {
+        "name": "omitted-review-report-entry",
+        "inMemoryOnly": true,
+        "exitCode": 1,
+        "reportedStatus": "FAIL",
+        "expectedDiagnostic": "REVIEW_FILE_HASH",
+        "actualDiagnostic": "REVIEW_FILE_HASH: hash map must cover every required file exactly",
+        "independentReviewVerified": null
+      },
+      {
+        "name": "missing-implementation-context-binding",
+        "inMemoryOnly": true,
+        "exitCode": 1,
+        "reportedStatus": "FAIL",
+        "expectedDiagnostic": "REVIEW_IDENTITY",
+        "actualDiagnostic": "REVIEW_IDENTITY: implementation context binding differs",
+        "independentReviewVerified": null
+      },
+      {
+        "name": "omitted-plan-source-entry",
+        "inMemoryOnly": true,
+        "exitCode": 1,
+        "reportedStatus": "FAIL",
+        "expectedDiagnostic": "PLAN_SOURCE_PATHS",
+        "actualDiagnostic": "PLAN_SOURCE_PATHS: incomplete Phase001 source inventory",
+        "independentReviewVerified": null
+      }
+    ],
+    "method": "The actual complete-phase001.mjs body was executed with its real shared helper imports using a same-realm Function and a read-only in-memory filesystem overlay. Writes and subprocess creation throw SIDE_EFFECT_FORBIDDEN.",
+    "sourceLanguage": "javascript",
+    "source": "import assert from 'node:assert/strict';\nimport fs from 'node:fs';\nimport path from 'node:path';\nimport { createHash } from 'node:crypto';\nimport { fileURLToPath, pathToFileURL } from 'node:url';\nimport { requireEvidenceSources, requireHashCoverage, requireReviewIdentity, requireReportBinding } from './scripts/phase-evidence.mjs';\nconst modulePath = path.resolve('docs/phase-plans/complete-phase001.mjs');\nconst planPath = 'docs/phase-plans/Phase001.json';\nconst read = (file) => fs.readFileSync(file);\nconst json = (file) => JSON.parse(read(file));\nconst hash = (file) => createHash('sha256').update(read(file)).digest('hex');\nconst encode = (value) => JSON.stringify(value) + '\\n';\nconst plan = json(planPath);\nassert.equal(plan.attemptId, 'attempt-5');\nconst reviewPath = 'docs/evidence/attempts/Phase001/attempt-5/review.json';\nconst source = read(modulePath).toString('utf8').replace(/^import .*;\\r?$/gm, '').replaceAll('import.meta.url', '__moduleUrl');\nconst execute = new Function('assert','fs','path','createHash','spawnSync','fileURLToPath','__moduleUrl','process','console','requireEvidenceSources','requireHashCoverage','requireReviewIdentity','requireReportBinding', source);\nconst observations = [];\nfunction probe(name, files, withReview, expectedDiagnostic) {\n  const overlay = new Map(Object.entries(files).map(([file, value]) => [path.resolve(file), Buffer.from(value)]));\n  const output = [];\n  const fakeProcess = { argv: ['node', modulePath, ...(withReview ? [] : ['--without-review'])], exitCode: 0 };\n  const forbidden = () => { throw new Error('SIDE_EFFECT_FORBIDDEN'); };\n  const proxyFs = { ...fs, readFileSync(file, ...args) { return overlay.get(path.resolve(file)) ?? fs.readFileSync(file, ...args); }, mkdirSync: forbidden, writeFileSync: forbidden };\n  execute(assert, proxyFs, path, createHash, forbidden, fileURLToPath, pathToFileURL(modulePath).href, fakeProcess,\n    { log(value) { output.push(JSON.parse(value)); }, error(value) { output.push(JSON.parse(value)); } },\n    requireEvidenceSources, requireHashCoverage, requireReviewIdentity, requireReportBinding);\n  assert.equal(fakeProcess.exitCode, expectedDiagnostic ? 1 : 0, name);\n  const result = output.at(-1);\n  if (expectedDiagnostic) assert(result.error.includes(expectedDiagnostic), name + ': ' + result.error);\n  else assert.equal(result.status, 'PASS', name);\n  observations.push({ name, inMemoryOnly: true, exitCode: fakeProcess.exitCode, reportedStatus: result.status, expectedDiagnostic: expectedDiagnostic ?? null,\n    actualDiagnostic: result.error?.split('\\n')[0] ?? null, independentReviewVerified: result.independentReviewVerified ?? null });\n}\nprobe('unmodified-eleven-report-audit-control', {}, false);\nconst emptySources = {};\nfor (const item of plan.cases) emptySources[item.outputPath] = encode({ ...json(item.outputPath), sourceHashes: {} });\nemptySources['docs/phase-plans/verify-phase001.mjs'] = read('docs/phase-plans/verify-phase001.mjs').toString('utf8') + '\\n// IN_MEMORY_STALE_RUNNER_PROBE\\n';\nprobe('old-attack-empty-source-maps-and-changed-runner', emptySources, false, 'REPORT_SOURCE_HASH');\nconst item = plan.cases[0];\nconst missing = json(item.outputPath);\ndelete missing.sourceHashes[plan.sourcePaths[0]];\nprobe('omitted-report-source-entry', { [item.outputPath]: encode(missing) }, false, 'REPORT_SOURCE_HASH');\nprobe('changed-runner-with-complete-source-maps', { 'docs/phase-plans/verify-phase001.mjs': emptySources['docs/phase-plans/verify-phase001.mjs'] }, false, 'REPORT_SOURCE_HASH');\nconst testReview = {\n  phase: 1, attemptId: plan.attemptId, planPath, planHash: hash(planPath), decision: 'PASS',\n  implementationContextId: plan.implementationContextId, contextId: 'IN_MEMORY_NEGATIVE_PROBE_CONTEXT',\n  reviewerRunId: 'IN_MEMORY_NEGATIVE_PROBE_RUN', generatedBy: 'IN_MEMORY_NEGATIVE_PROBE_NOT_AN_ACCEPTANCE_REVIEW',\n  runnerIdentity: { kind: 'INDEPENDENT_CODEX_AGENT', implementationAuthored: false }, issues: [], dispositions: [],\n  sourceHashes: Object.fromEntries(plan.sourcePaths.map((file) => [file, hash(file)])),\n  reportHashes: Object.fromEntries(plan.cases.map((test) => [test.outputPath, hash(test.outputPath)])),\n};\nfor (const [name, diagnostic, mutate] of [\n  ['old-attack-synthetic-review-and-empty-bindings', 'REVIEW_IDENTITY', (review) => { review.runnerIdentity.kind = 'SYNTHETIC_PROTOCOL_FIXTURE_NOT_AGENT_REVIEW'; review.contextId = plan.implementationContextId; review.sourceHashes = {}; review.reportHashes = {}; }],\n  ['same-implementation-and-review-context', 'REVIEW_IDENTITY', (review) => { review.contextId = plan.implementationContextId; }],\n  ['empty-review-source-map', 'REVIEW_FILE_HASH', (review) => { review.sourceHashes = {}; }],\n  ['empty-review-report-map', 'REVIEW_FILE_HASH', (review) => { review.reportHashes = {}; }],\n  ['omitted-review-report-entry', 'REVIEW_FILE_HASH', (review) => { delete review.reportHashes[plan.cases[0].outputPath]; }],\n  ['missing-implementation-context-binding', 'REVIEW_IDENTITY', (review) => { delete review.implementationContextId; }],\n]) {\n  const review = structuredClone(testReview);\n  mutate(review);\n  probe(name, { [reviewPath]: encode(review) }, true, diagnostic);\n}\nconst changedPlan = structuredClone(plan);\nchangedPlan.sourcePaths.pop();\nprobe('omitted-plan-source-entry', { [planPath]: encode(changedPlan) }, false, 'PLAN_SOURCE_PATHS');\nconsole.log(JSON.stringify({ status: 'PASS', scope: 'IN_MEMORY_ADVERSARIAL_COMPLETE_AUDIT_RECHECK', runtime: process.version, sourceHash: hash(modulePath), helperHash: hash('scripts/phase-evidence.mjs'), filesystemWrites: 0, gitOperations: 0, observations }));\n",
+    "note": "Deliberately false review objects occur only in negative-test memory and the quoted reproduction source. Every with-review probe is expected to fail; they are not acceptance reviews or this reviewer's identity."
+  }
+}

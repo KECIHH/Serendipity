@@ -1,0 +1,1668 @@
+{
+  "testCaseId": "Phase001:checkpoint-regression",
+  "command": "node docs/phase-plans/verify-phase001.mjs --case checkpoint-regression",
+  "status": "PASS",
+  "exitCode": 0,
+  "numerator": 1,
+  "denominator": 1,
+  "inputPath": "docs/phase-plans/Phase001-inputs.json",
+  "inputHash": "2f4a1c99660655d719e79a0411706f107df0f8d8f8888487fc4fffa58f0990e5",
+  "planHash": "cf5791eb743acad817722758e9883cd46e45fc686bc79975316ac099f5ed3ae6",
+  "sourceHashes": {
+    "docs/git-workflow.md": "cbd5a7eb54da037541322a29589140f44506f4e4c9146180330b2c3a3f8f4794",
+    "docs/code-style.md": "7b2ef781010f47a11b77788241cf6ee660e57b420c0f7a87ad2eae0a42571734",
+    "docs/ui-design-system.md": "8b232c6742bf846f131ea3040d5892ed7b270940bfd4109ccfb768ed63fdb158",
+    "docs/database.md": "4a84afbc0d252611f6d5fa6505a291d837d8ab4c4d5f0464f03c45c2b35e8869",
+    "docs/phase-plans/Phase001.json": "cf5791eb743acad817722758e9883cd46e45fc686bc79975316ac099f5ed3ae6",
+    "docs/phase-plans/Phase001-inputs.json": "2f4a1c99660655d719e79a0411706f107df0f8d8f8888487fc4fffa58f0990e5",
+    "docs/phase-plans/verify-phase001.mjs": "7693b66c23efbaecaf02658f4c8c30b9ff561fd17bd6fd3680977ea21802424f",
+    "docs/phase-plans/prepare-phase001.mjs": "1ad40ee5ac36b56d218235b8c569fd528c6083f8f3e500b43049eb3531266bfd",
+    "docs/phase-plans/retry-phase001.mjs": "f32cafff9c401dfa88304319db9687bf49e8c42d8e322e37bc8331baafef8b90",
+    "docs/phase-plans/replay-historical-phase.ps1": "0c3e1b8f4cdca2713e8617b8155eeb62723bd1a384b8ab5293562f72b5d8a1d1",
+    "docs/phase-plans/complete-phase001.mjs": "3984e1f3a2a02f213b720bf02cba0293288bdf4591966ea4403ecfffc9196a1a",
+    "docs/agent-execution-contract.md": "72eb5e5e8da13c02b3aeeb3803b668a440f1cbdee75fddf08f267c0ec9b6b2ed",
+    "docs/tech-stack.md": "258620f3e18d042eac1e26165f411e8879ecd4b0d91d8e7986aaed4f3f10d2c7",
+    "docs/directory-structure.md": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df",
+    "scripts/check-project-layout.mjs": "101c7c50f12e4d6cc80e1c9fb9667ad06fcc55c687d86cb5295ff81bc0eb68f6",
+    "scripts/validate-phase.mjs": "52c4caec193fe47dacd00868c10d8bbdd1053acbcb39e45370f64cec3d387a93",
+    "scripts/validate-phase.ps1": "462e6ef7652ab84e3481705e9620ac07946840bb2776db5143be85109fe7e2a0",
+    "scripts/test-validate-phase.mjs": "46c9078216659deee0fbbf7d65c36c403bfa85b6b09533611a0b31ec36161693"
+  },
+  "startedAt": "2026-09-08T15:06:46.119Z",
+  "completedAt": "2026-09-08T15:15:12.492Z",
+  "durationMs": 506373,
+  "details": {
+    "command": {
+      "command": "'C:\\Program Files\\nodejs\\node.exe' scripts/test-validate-phase.mjs --shell both --keep",
+      "exitCode": 0,
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"scope\": \"ISOLATED_ROOT_LAYOUT_GIT_PROTOCOL_REGRESSION\",\n  \"simulation\": true,\n  \"sourceRepositoryIndexMutated\": false,\n  \"network\": \"LOCAL_FILESYSTEM_ONLY\",\n  \"independentReviewPerformed\": false,\n  \"reviewFixturePolicy\": \"Synthetic protocol JSON only; actual phase acceptance requires a separate independent Agent report\",\n  \"sourceBaselineCommit\": \"10d5f9554ade36fc94cdbf6c2c9fdff5582e28da\",\n  \"testedSourceHashes\": {\n    \"scripts/validate-phase.mjs\": \"52c4caec193fe47dacd00868c10d8bbdd1053acbcb39e45370f64cec3d387a93\",\n    \"scripts/validate-phase.ps1\": \"462e6ef7652ab84e3481705e9620ac07946840bb2776db5143be85109fe7e2a0\",\n    \"scripts/test-validate-phase.mjs\": \"46c9078216659deee0fbbf7d65c36c403bfa85b6b09533611a0b31ec36161693\",\n    \"docs/phase-plans/Phase001-inputs.json\": \"2f4a1c99660655d719e79a0411706f107df0f8d8f8888487fc4fffa58f0990e5\"\n  },\n  \"shells\": [\n    \"powershell\",\n    \"pwsh\"\n  ],\n  \"caseCount\": 43,\n  \"observationCount\": 97,\n  \"cases\": [\n    {\n      \"name\": \"root-equality-empty-prefix-local-inputs-history-pass\",\n      \"status\": \"PASS\",\n      \"durationMs\": 15463\n    },\n    {\n      \"name\": \"evidence-input-hash\",\n      \"status\": \"PASS\",\n      \"durationMs\": 10677\n    },\n    {\n      \"name\": \"evidence-output-hash\",\n      \"status\": \"PASS\",\n      \"durationMs\": 10768\n    },\n    {\n      \"name\": \"frozen-denominator\",\n      \"status\": \"PASS\",\n      \"durationMs\": 10451\n    },\n    {\n      \"name\": \"frozen-required-cases\",\n      \"status\": \"PASS\",\n      \"durationMs\": 10404\n    },\n    {\n      \"name\": \"duplicate-result\",\n      \"status\": \"PASS\",\n      \"durationMs\": 10274\n    },\n    {\n      \"name\": \"tested-tree\",\n      \"status\": \"PASS\",\n      \"durationMs\": 10415\n    },\n    {\n      \"name\": \"schema-extra-property\",\n      \"status\": \"PASS\",\n      \"durationMs\": 10039\n    },\n    {\n      \"name\": \"simulation-disabled\",\n      \"status\": \"PASS\",\n      \"durationMs\": 9946\n    },\n    {\n      \"name\": \"production-traffic\",\n      \"status\": \"PASS\",\n      \"durationMs\": 9974\n    },\n    {\n      \"name\": \"unsafe-input-path\",\n      \"status\": \"PASS\",\n      \"durationMs\": 10367\n    },\n    {\n      \"name\": \"missing-review\",\n      \"status\": \"PASS\",\n      \"durationMs\": 10488\n    },\n    {\n      \"name\": \"review-hash\",\n      \"status\": \"PASS\",\n      \"durationMs\": 10640\n    },\n    {\n      \"name\": \"gate-plan-hash\",\n      \"status\": \"PASS\",\n      \"durationMs\": 10605\n    },\n    {\n      \"name\": \"checkpoint-evidence-hash\",\n      \"status\": \"PASS\",\n      \"durationMs\": 10149\n    },\n    {\n      \"name\": \"missing-baseline\",\n      \"status\": \"PASS\",\n      \"durationMs\": 5670\n    },\n    {\n      \"name\": \"baseline-after-start\",\n      \"status\": \"PASS\",\n      \"durationMs\": 10089\n    },\n    {\n      \"name\": \"wrong-artifact-parent\",\n      \"status\": \"PASS\",\n      \"durationMs\": 9734\n    },\n    {\n      \"name\": \"metadata-product-change\",\n      \"status\": \"PASS\",\n      \"durationMs\": 11349\n    },\n    {\n      \"name\": \"wrong-progress\",\n      \"status\": \"PASS\",\n      \"durationMs\": 9727\n    },\n    {\n      \"name\": \"missing-checkpoint\",\n      \"status\": \"PASS\",\n      \"durationMs\": 9722\n    },\n    {\n      \"name\": \"waived-threshold\",\n      \"status\": \"PASS\",\n      \"durationMs\": 10469\n    },\n    {\n      \"name\": \"failed-command\",\n      \"status\": \"PASS\",\n      \"durationMs\": 10413\n    },\n    {\n      \"name\": \"review-blocked\",\n      \"status\": \"PASS\",\n      \"durationMs\": 10402\n    },\n    {\n      \"name\": \"review-stale-plan\",\n      \"status\": \"PASS\",\n      \"durationMs\": 10491\n    },\n    {\n      \"name\": \"review-not-independent\",\n      \"status\": \"PASS\",\n      \"durationMs\": 10496\n    },\n    {\n      \"name\": \"review-unresolved-issue\",\n      \"status\": \"PASS\",\n      \"durationMs\": 10550\n    },\n    {\n      \"name\": \"review-source-hash\",\n      \"status\": \"PASS\",\n      \"durationMs\": 10318\n    },\n    {\n      \"name\": \"review-report-hash\",\n      \"status\": \"PASS\",\n      \"durationMs\": 10446\n    },\n    {\n      \"name\": \"local-pinned-input-drift\",\n      \"status\": \"PASS\",\n      \"durationMs\": 21979\n    },\n    {\n      \"name\": \"wrong-origin\",\n      \"status\": \"PASS\",\n      \"durationMs\": 17289\n    },\n    {\n      \"name\": \"dirty-root-worktree\",\n      \"status\": \"PASS\",\n      \"durationMs\": 25185\n    },\n    {\n      \"name\": \"historical-archive-bytes\",\n      \"status\": \"PASS\",\n      \"durationMs\": 19663\n    },\n    {\n      \"name\": \"project-root-not-equal\",\n      \"status\": \"PASS\",\n      \"durationMs\": 16020\n    },\n    {\n      \"name\": \"required-contract-removal\",\n      \"status\": \"PASS\",\n      \"durationMs\": 13920\n    },\n    {\n      \"name\": \"local-roadmap-tracked\",\n      \"status\": \"PASS\",\n      \"durationMs\": 4858\n    },\n    {\n      \"name\": \"artifact-contains-metadata\",\n      \"status\": \"PASS\",\n      \"durationMs\": 11302\n    },\n    {\n      \"name\": \"real-parent-interposition\",\n      \"status\": \"PASS\",\n      \"durationMs\": 12163\n    },\n    {\n      \"name\": \"recovery-history-pass\",\n      \"status\": \"PASS\",\n      \"durationMs\": 16806\n    },\n    {\n      \"name\": \"omitted-recovery-history\",\n      \"status\": \"PASS\",\n      \"durationMs\": 12565\n    },\n    {\n      \"name\": \"missing-previous-plan\",\n      \"status\": \"PASS\",\n      \"durationMs\": 12243\n    },\n    {\n      \"name\": \"previous-required-case-removal\",\n      \"status\": \"PASS\",\n      \"durationMs\": 10511\n    },\n    {\n      \"name\": \"future-phase-history\",\n      \"status\": \"PASS\",\n      \"durationMs\": 11202\n    }\n  ],\n  \"observations\": [\n    {\n      \"case\": \"root-equality-empty-prefix-local-inputs-history-pass\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 0,\n      \"expectedDiagnostic\": null,\n      \"result\": {\n        \"status\": \"PASS\",\n        \"scope\": \"ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL\",\n        \"layoutVersion\": 2,\n        \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\positive\",\n        \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\positive\",\n        \"projectGitPrefix\": \"\",\n        \"executionBaselineCommit\": \"10d5f9554ade36fc94cdbf6c2c9fdff5582e28da\",\n        \"completedThrough\": 1,\n        \"currentPhase\": 2,\n        \"artifactCommit\": \"4680dfd021ebe36628de67d9ad59ae25f682e9f3\",\n        \"metadataCommit\": \"5e694a4048fd9460b031ec7fb60dc9b39e43dd33\",\n        \"historicalPhase\": 0,\n        \"preservedHistoricalFiles\": 44,\n        \"localIgnoredInputsVerified\": 151,\n        \"contractCoverage\": {\n          \"numerator\": 20,\n          \"denominator\": 20\n        },\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"root-equality-empty-prefix-local-inputs-history-pass\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 0,\n      \"expectedDiagnostic\": null,\n      \"result\": {\n        \"status\": \"PASS\",\n        \"scope\": \"ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL\",\n        \"layoutVersion\": 2,\n        \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\positive\",\n        \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\positive\",\n        \"projectGitPrefix\": \"\",\n        \"executionBaselineCommit\": \"10d5f9554ade36fc94cdbf6c2c9fdff5582e28da\",\n        \"completedThrough\": 1,\n        \"currentPhase\": 2,\n        \"artifactCommit\": \"4680dfd021ebe36628de67d9ad59ae25f682e9f3\",\n        \"metadataCommit\": \"5e694a4048fd9460b031ec7fb60dc9b39e43dd33\",\n        \"historicalPhase\": 0,\n        \"preservedHistoricalFiles\": 44,\n        \"localIgnoredInputsVerified\": 151,\n        \"contractCoverage\": {\n          \"numerator\": 20,\n          \"denominator\": 20\n        },\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"local-fast-forward-sync\",\n      \"command\": \"git push <isolated local bare repository> main:refs/heads/main\",\n      \"exitCode\": 0,\n      \"metadataCommit\": \"5e694a4048fd9460b031ec7fb60dc9b39e43dd33\",\n      \"network\": \"LOCAL_FILESYSTEM_ONLY\"\n    },\n    {\n      \"case\": \"evidence-input-hash\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"INPUT_HASH\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"INPUT_HASH: Evidence input hash differs from artifact file: docs/phase-plans/Phase001.json\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"evidence-input-hash\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"INPUT_HASH\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"INPUT_HASH: Evidence input hash differs from artifact file: docs/phase-plans/Phase001.json\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"evidence-output-hash\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"OUTPUT_HASH\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"OUTPUT_HASH: Evidence output hash differs from artifact file: docs/evidence/attempts/Phase001/protocol-fixture/git-version.txt\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"evidence-output-hash\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"OUTPUT_HASH\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"OUTPUT_HASH: Evidence output hash differs from artifact file: docs/evidence/attempts/Phase001/protocol-fixture/git-version.txt\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"frozen-denominator\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"DENOMINATOR\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"DENOMINATOR: Evidence denominator differs from frozen plan\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"frozen-denominator\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"DENOMINATOR\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"DENOMINATOR: Evidence denominator differs from frozen plan\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"frozen-required-cases\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"PLAN_CASES\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"PLAN_CASES: Gate requiredCaseIds differs from frozen plan\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"frozen-required-cases\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"PLAN_CASES\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"PLAN_CASES: Gate requiredCaseIds differs from frozen plan\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"duplicate-result\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"RESULT_CASES\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"RESULT_CASES: Gate results contains duplicates\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"duplicate-result\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"RESULT_CASES\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"RESULT_CASES: Gate results contains duplicates\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"tested-tree\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"TESTED_TREE\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"TESTED_TREE: Evidence testedTree differs from artifact tree\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"tested-tree\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"TESTED_TREE\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"TESTED_TREE: Evidence testedTree differs from artifact tree\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"schema-extra-property\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"GATE_SCHEMA\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"GATE_SCHEMA: gate unknown property requiredTests\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"schema-extra-property\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"GATE_SCHEMA\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"GATE_SCHEMA: gate unknown property requiredTests\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"simulation-disabled\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"GATE_SCHEMA\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"GATE_SCHEMA: gate.simulation differs from schema constant\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"simulation-disabled\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"GATE_SCHEMA\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"GATE_SCHEMA: gate.simulation differs from schema constant\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"production-traffic\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"GATE_SCHEMA\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"GATE_SCHEMA: gate.environment.productionTraffic differs from schema constant\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"production-traffic\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"GATE_SCHEMA\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"GATE_SCHEMA: gate.environment.productionTraffic differs from schema constant\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"unsafe-input-path\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"UNSAFE_PATH\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"UNSAFE_PATH: Unsafe repository file path: ../outside.bin\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"unsafe-input-path\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"UNSAFE_PATH\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"UNSAFE_PATH: Unsafe repository file path: ../outside.bin\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"missing-review\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"GIT_BLOB\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"GIT_BLOB: Artifact file is missing: b99923f55784016e3e69bf246fff702ffffd95b8:docs/missing-review.json\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"missing-review\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"GIT_BLOB\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"GIT_BLOB: Artifact file is missing: b99923f55784016e3e69bf246fff702ffffd95b8:docs/missing-review.json\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"review-hash\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"REVIEW_HASH\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"REVIEW_HASH: Review hash differs from artifact bytes\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"review-hash\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"REVIEW_HASH\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"REVIEW_HASH: Review hash differs from artifact bytes\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"gate-plan-hash\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"PLAN_HASH\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"PLAN_HASH: Plan hash differs from artifact bytes\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"gate-plan-hash\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"PLAN_HASH\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"PLAN_HASH: Plan hash differs from artifact bytes\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"checkpoint-evidence-hash\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"EVIDENCE_HASH\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"EVIDENCE_HASH: Checkpoint evidenceHash mismatch\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"checkpoint-evidence-hash\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"EVIDENCE_HASH\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"EVIDENCE_HASH: Checkpoint evidenceHash mismatch\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"missing-baseline\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"COMMIT_ID\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"COMMIT_ID: executionBaselineCommit must be a full Git commit id\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"missing-baseline\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"COMMIT_ID\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"COMMIT_ID: executionBaselineCommit must be a full Git commit id\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"baseline-after-start\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"BASELINE\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"RECEIPT_BASELINE: Input receipt execution baseline mismatch\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"baseline-after-start\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"BASELINE\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"RECEIPT_BASELINE: Input receipt execution baseline mismatch\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"wrong-artifact-parent\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"CHECKPOINT_ARTIFACT\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"CHECKPOINT_ARTIFACT: lastArtifactCommit must reference the final checkpoint\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"wrong-artifact-parent\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"CHECKPOINT_ARTIFACT\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"CHECKPOINT_ARTIFACT: lastArtifactCommit must reference the final checkpoint\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"metadata-product-change\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"METADATA_PATH\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"METADATA_PATH: Metadata changes non-metadata path: docs/code-style.md\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"metadata-product-change\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"METADATA_PATH\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"METADATA_PATH: Metadata changes non-metadata path: docs/code-style.md\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"wrong-progress\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"RUN_PROGRESS\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"RUN_PROGRESS: Run currentPhase must follow completedThrough\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"wrong-progress\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"RUN_PROGRESS\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"RUN_PROGRESS: Run currentPhase must follow completedThrough\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"missing-checkpoint\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"CHECKPOINTS\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"CHECKPOINTS: New-layout checkpoints must cover phases 1..completedThrough exactly\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"missing-checkpoint\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"CHECKPOINTS\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"CHECKPOINTS: New-layout checkpoints must cover phases 1..completedThrough exactly\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"waived-threshold\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"THRESHOLD\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"THRESHOLD: Gate cannot waive thresholds\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"waived-threshold\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"THRESHOLD\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"THRESHOLD: Gate cannot waive thresholds\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"failed-command\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"COMMANDS\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"COMMANDS: Result command missing from commands\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"failed-command\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"COMMANDS\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"COMMANDS: Result command missing from commands\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"review-blocked\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"REVIEW_DECISION\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"REVIEW_DECISION: Independent review decision must be PASS\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"review-blocked\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"REVIEW_DECISION\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"REVIEW_DECISION: Independent review decision must be PASS\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"review-stale-plan\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"REVIEW_BINDING\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"REVIEW_BINDING: Review does not bind frozen plan\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"review-stale-plan\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"REVIEW_BINDING\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"REVIEW_BINDING: Review does not bind frozen plan\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"review-not-independent\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"REVIEW_IDENTITY\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"REVIEW_IDENTITY: Reviewer cannot author implementation\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"review-not-independent\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"REVIEW_IDENTITY\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"REVIEW_IDENTITY: Reviewer cannot author implementation\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"review-unresolved-issue\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"REVIEW_ISSUES\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"REVIEW_ISSUES: Review has an unresolved issue\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"review-unresolved-issue\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"REVIEW_ISSUES\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"REVIEW_ISSUES: Review has an unresolved issue\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"review-source-hash\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"REVIEW_FILE_HASH\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"REVIEW_FILE_HASH: Review sourceHashes differs from artifact bytes: docs/evidence/attempts/Phase001/protocol-fixture/input.bin\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"review-source-hash\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"REVIEW_FILE_HASH\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"REVIEW_FILE_HASH: Review sourceHashes differs from artifact bytes: docs/evidence/attempts/Phase001/protocol-fixture/input.bin\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"review-report-hash\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"REVIEW_FILE_HASH\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"REVIEW_FILE_HASH: Review reportHashes differs from artifact bytes: docs/evidence/attempts/Phase001/protocol-fixture/git-version.txt\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"review-report-hash\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"REVIEW_FILE_HASH\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"REVIEW_FILE_HASH: Review reportHashes differs from artifact bytes: docs/evidence/attempts/Phase001/protocol-fixture/git-version.txt\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"local-pinned-input-drift\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"LOCAL_INPUT_HASH\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"LOCAL_INPUT_HASH: Local frozen input hash mismatch: phase-card\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"local-pinned-input-drift\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"LOCAL_INPUT_HASH\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"LOCAL_INPUT_HASH: Local frozen input hash mismatch: phase-card\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"local-pinned-input-drift-restored\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 0,\n      \"expectedDiagnostic\": null,\n      \"result\": {\n        \"status\": \"PASS\",\n        \"scope\": \"ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL\",\n        \"layoutVersion\": 2,\n        \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\local-pinned-input-drift\",\n        \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\local-pinned-input-drift\",\n        \"projectGitPrefix\": \"\",\n        \"executionBaselineCommit\": \"10d5f9554ade36fc94cdbf6c2c9fdff5582e28da\",\n        \"completedThrough\": 1,\n        \"currentPhase\": 2,\n        \"artifactCommit\": \"7cc783b143c405d0d5eccf045c603ebd11fb34e9\",\n        \"metadataCommit\": \"dfa30ed7cf8dc1dbed6cef1987a761edaea4348c\",\n        \"historicalPhase\": 0,\n        \"preservedHistoricalFiles\": 44,\n        \"localIgnoredInputsVerified\": 151,\n        \"contractCoverage\": {\n          \"numerator\": 20,\n          \"denominator\": 20\n        },\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"local-pinned-input-drift-restored\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 0,\n      \"expectedDiagnostic\": null,\n      \"result\": {\n        \"status\": \"PASS\",\n        \"scope\": \"ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL\",\n        \"layoutVersion\": 2,\n        \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\local-pinned-input-drift\",\n        \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\local-pinned-input-drift\",\n        \"projectGitPrefix\": \"\",\n        \"executionBaselineCommit\": \"10d5f9554ade36fc94cdbf6c2c9fdff5582e28da\",\n        \"completedThrough\": 1,\n        \"currentPhase\": 2,\n        \"artifactCommit\": \"7cc783b143c405d0d5eccf045c603ebd11fb34e9\",\n        \"metadataCommit\": \"dfa30ed7cf8dc1dbed6cef1987a761edaea4348c\",\n        \"historicalPhase\": 0,\n        \"preservedHistoricalFiles\": 44,\n        \"localIgnoredInputsVerified\": 151,\n        \"contractCoverage\": {\n          \"numerator\": 20,\n          \"denominator\": 20\n        },\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"wrong-origin\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"GIT_REMOTE\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"GIT_REMOTE: Origin fetch/push URL must match manifest\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"wrong-origin\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"GIT_REMOTE\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"GIT_REMOTE: Origin fetch/push URL must match manifest\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"wrong-origin-restored\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 0,\n      \"expectedDiagnostic\": null,\n      \"result\": {\n        \"status\": \"PASS\",\n        \"scope\": \"ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL\",\n        \"layoutVersion\": 2,\n        \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\wrong-origin\",\n        \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\wrong-origin\",\n        \"projectGitPrefix\": \"\",\n        \"executionBaselineCommit\": \"10d5f9554ade36fc94cdbf6c2c9fdff5582e28da\",\n        \"completedThrough\": 1,\n        \"currentPhase\": 2,\n        \"artifactCommit\": \"8ec5e5aac2a1ac8d3c273d02ec01b4941e758ba2\",\n        \"metadataCommit\": \"b6b741ab347396d986f7c9534b4fe9a5e0cc5cfb\",\n        \"historicalPhase\": 0,\n        \"preservedHistoricalFiles\": 44,\n        \"localIgnoredInputsVerified\": 151,\n        \"contractCoverage\": {\n          \"numerator\": 20,\n          \"denominator\": 20\n        },\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"wrong-origin-restored\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 0,\n      \"expectedDiagnostic\": null,\n      \"result\": {\n        \"status\": \"PASS\",\n        \"scope\": \"ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL\",\n        \"layoutVersion\": 2,\n        \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\wrong-origin\",\n        \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\wrong-origin\",\n        \"projectGitPrefix\": \"\",\n        \"executionBaselineCommit\": \"10d5f9554ade36fc94cdbf6c2c9fdff5582e28da\",\n        \"completedThrough\": 1,\n        \"currentPhase\": 2,\n        \"artifactCommit\": \"8ec5e5aac2a1ac8d3c273d02ec01b4941e758ba2\",\n        \"metadataCommit\": \"b6b741ab347396d986f7c9534b4fe9a5e0cc5cfb\",\n        \"historicalPhase\": 0,\n        \"preservedHistoricalFiles\": 44,\n        \"localIgnoredInputsVerified\": 151,\n        \"contractCoverage\": {\n          \"numerator\": 20,\n          \"denominator\": 20\n        },\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"dirty-root-worktree\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"WORKTREE_DIRTY\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"WORKTREE_DIRTY: Entire repository worktree must be clean after metadata commit\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"dirty-root-worktree\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"WORKTREE_DIRTY\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"WORKTREE_DIRTY: Entire repository worktree must be clean after metadata commit\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"dirty-root-worktree-restored\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 0,\n      \"expectedDiagnostic\": null,\n      \"result\": {\n        \"status\": \"PASS\",\n        \"scope\": \"ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL\",\n        \"layoutVersion\": 2,\n        \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\dirty-root-worktree\",\n        \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\dirty-root-worktree\",\n        \"projectGitPrefix\": \"\",\n        \"executionBaselineCommit\": \"10d5f9554ade36fc94cdbf6c2c9fdff5582e28da\",\n        \"completedThrough\": 1,\n        \"currentPhase\": 2,\n        \"artifactCommit\": \"4e1e0ee8d5e085b6efd1bc7658a28d2b12e00e95\",\n        \"metadataCommit\": \"886de0e7061d0be713c0ae677c6daaeb98ffff8f\",\n        \"historicalPhase\": 0,\n        \"preservedHistoricalFiles\": 44,\n        \"localIgnoredInputsVerified\": 151,\n        \"contractCoverage\": {\n          \"numerator\": 20,\n          \"denominator\": 20\n        },\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"dirty-root-worktree-restored\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 0,\n      \"expectedDiagnostic\": null,\n      \"result\": {\n        \"status\": \"PASS\",\n        \"scope\": \"ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL\",\n        \"layoutVersion\": 2,\n        \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\dirty-root-worktree\",\n        \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\dirty-root-worktree\",\n        \"projectGitPrefix\": \"\",\n        \"executionBaselineCommit\": \"10d5f9554ade36fc94cdbf6c2c9fdff5582e28da\",\n        \"completedThrough\": 1,\n        \"currentPhase\": 2,\n        \"artifactCommit\": \"4e1e0ee8d5e085b6efd1bc7658a28d2b12e00e95\",\n        \"metadataCommit\": \"886de0e7061d0be713c0ae677c6daaeb98ffff8f\",\n        \"historicalPhase\": 0,\n        \"preservedHistoricalFiles\": 44,\n        \"localIgnoredInputsVerified\": 151,\n        \"contractCoverage\": {\n          \"numerator\": 20,\n          \"denominator\": 20\n        },\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"historical-archive-bytes\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"HISTORY_BYTES\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"HISTORY_BYTES: Historical archive bytes changed: docs/history/Phase000/docs/project-constitution.md\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"historical-archive-bytes\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"HISTORY_BYTES\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"HISTORY_BYTES: Historical archive bytes changed: docs/history/Phase000/docs/project-constitution.md\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"historical-archive-bytes-restored\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 0,\n      \"expectedDiagnostic\": null,\n      \"result\": {\n        \"status\": \"PASS\",\n        \"scope\": \"ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL\",\n        \"layoutVersion\": 2,\n        \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\historical-archive-bytes\",\n        \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\historical-archive-bytes\",\n        \"projectGitPrefix\": \"\",\n        \"executionBaselineCommit\": \"10d5f9554ade36fc94cdbf6c2c9fdff5582e28da\",\n        \"completedThrough\": 1,\n        \"currentPhase\": 2,\n        \"artifactCommit\": \"c497cb9aa08dea0b53eea418a88f7f6c6e968bdb\",\n        \"metadataCommit\": \"87890681b7889751ca612fa21a181db45e84973a\",\n        \"historicalPhase\": 0,\n        \"preservedHistoricalFiles\": 44,\n        \"localIgnoredInputsVerified\": 151,\n        \"contractCoverage\": {\n          \"numerator\": 20,\n          \"denominator\": 20\n        },\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"historical-archive-bytes-restored\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 0,\n      \"expectedDiagnostic\": null,\n      \"result\": {\n        \"status\": \"PASS\",\n        \"scope\": \"ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL\",\n        \"layoutVersion\": 2,\n        \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\historical-archive-bytes\",\n        \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\historical-archive-bytes\",\n        \"projectGitPrefix\": \"\",\n        \"executionBaselineCommit\": \"10d5f9554ade36fc94cdbf6c2c9fdff5582e28da\",\n        \"completedThrough\": 1,\n        \"currentPhase\": 2,\n        \"artifactCommit\": \"c497cb9aa08dea0b53eea418a88f7f6c6e968bdb\",\n        \"metadataCommit\": \"87890681b7889751ca612fa21a181db45e84973a\",\n        \"historicalPhase\": 0,\n        \"preservedHistoricalFiles\": 44,\n        \"localIgnoredInputsVerified\": 151,\n        \"contractCoverage\": {\n          \"numerator\": 20,\n          \"denominator\": 20\n        },\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"project-root-not-equal\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"ROOT_LAYOUT\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"ROOT_LAYOUT: projectRoot must equal repositoryRoot\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"project-root-not-equal\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"ROOT_LAYOUT\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"ROOT_LAYOUT: projectRoot must equal repositoryRoot\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"project-root-not-equal-restored\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 0,\n      \"expectedDiagnostic\": null,\n      \"result\": {\n        \"status\": \"PASS\",\n        \"scope\": \"ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL\",\n        \"layoutVersion\": 2,\n        \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\project-root-not-equal\",\n        \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\project-root-not-equal\",\n        \"projectGitPrefix\": \"\",\n        \"executionBaselineCommit\": \"10d5f9554ade36fc94cdbf6c2c9fdff5582e28da\",\n        \"completedThrough\": 1,\n        \"currentPhase\": 2,\n        \"artifactCommit\": \"73b2bc22c97838185e324df77596c1136dc3a4a8\",\n        \"metadataCommit\": \"3ec1df2faa7130626776163ccf72e348d8f1a00b\",\n        \"historicalPhase\": 0,\n        \"preservedHistoricalFiles\": 44,\n        \"localIgnoredInputsVerified\": 151,\n        \"contractCoverage\": {\n          \"numerator\": 20,\n          \"denominator\": 20\n        },\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"project-root-not-equal-restored\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 0,\n      \"expectedDiagnostic\": null,\n      \"result\": {\n        \"status\": \"PASS\",\n        \"scope\": \"ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL\",\n        \"layoutVersion\": 2,\n        \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\project-root-not-equal\",\n        \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\project-root-not-equal\",\n        \"projectGitPrefix\": \"\",\n        \"executionBaselineCommit\": \"10d5f9554ade36fc94cdbf6c2c9fdff5582e28da\",\n        \"completedThrough\": 1,\n        \"currentPhase\": 2,\n        \"artifactCommit\": \"73b2bc22c97838185e324df77596c1136dc3a4a8\",\n        \"metadataCommit\": \"3ec1df2faa7130626776163ccf72e348d8f1a00b\",\n        \"historicalPhase\": 0,\n        \"preservedHistoricalFiles\": 44,\n        \"localIgnoredInputsVerified\": 151,\n        \"contractCoverage\": {\n          \"numerator\": 20,\n          \"denominator\": 20\n        },\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"required-contract-removal\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"CONTRACT_COVERAGE\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"CONTRACT_COVERAGE: Required project contract missing: docs/database.md\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"required-contract-removal\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"CONTRACT_COVERAGE\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"CONTRACT_COVERAGE: Required project contract missing: docs/database.md\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"local-roadmap-tracked\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"ROADMAP_TRACKED\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"ROADMAP_TRACKED: Local roadmap inputs must not be tracked\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"local-roadmap-tracked\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"ROADMAP_TRACKED\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"ROADMAP_TRACKED: Local roadmap inputs must not be tracked\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"artifact-contains-metadata\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"ARTIFACT_METADATA\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"ARTIFACT_METADATA: Artifact/recovery changes current metadata path: docs/phase-completion-log.md\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"artifact-contains-metadata\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"ARTIFACT_METADATA\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"ARTIFACT_METADATA: Artifact/recovery changes current metadata path: docs/phase-completion-log.md\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"real-parent-interposition\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"CHECKPOINT_PARENT\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"CHECKPOINT_PARENT: Final metadata subject must be metadata\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"real-parent-interposition\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"CHECKPOINT_PARENT\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"CHECKPOINT_PARENT: Final metadata subject must be metadata\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"recovery-history-pass\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 0,\n      \"expectedDiagnostic\": null,\n      \"result\": {\n        \"status\": \"PASS\",\n        \"scope\": \"ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL\",\n        \"layoutVersion\": 2,\n        \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\recovery-history-pass\",\n        \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\recovery-history-pass\",\n        \"projectGitPrefix\": \"\",\n        \"executionBaselineCommit\": \"10d5f9554ade36fc94cdbf6c2c9fdff5582e28da\",\n        \"completedThrough\": 1,\n        \"currentPhase\": 2,\n        \"artifactCommit\": \"e018cdc0b23cacc4fe09ca99c5633b36605afe23\",\n        \"metadataCommit\": \"2400e7d36b824f28ff41c8db4826ea6f7e47e815\",\n        \"historicalPhase\": 0,\n        \"preservedHistoricalFiles\": 44,\n        \"localIgnoredInputsVerified\": 151,\n        \"contractCoverage\": {\n          \"numerator\": 20,\n          \"denominator\": 20\n        },\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"recovery-history-pass\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 0,\n      \"expectedDiagnostic\": null,\n      \"result\": {\n        \"status\": \"PASS\",\n        \"scope\": \"ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL\",\n        \"layoutVersion\": 2,\n        \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\recovery-history-pass\",\n        \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\\\\recovery-history-pass\",\n        \"projectGitPrefix\": \"\",\n        \"executionBaselineCommit\": \"10d5f9554ade36fc94cdbf6c2c9fdff5582e28da\",\n        \"completedThrough\": 1,\n        \"currentPhase\": 2,\n        \"artifactCommit\": \"e018cdc0b23cacc4fe09ca99c5633b36605afe23\",\n        \"metadataCommit\": \"2400e7d36b824f28ff41c8db4826ea6f7e47e815\",\n        \"historicalPhase\": 0,\n        \"preservedHistoricalFiles\": 44,\n        \"localIgnoredInputsVerified\": 151,\n        \"contractCoverage\": {\n          \"numerator\": 20,\n          \"denominator\": 20\n        },\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"omitted-recovery-history\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"RECOVERY_COMMITS\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"RECOVERY_COMMITS: recoveryCommits must enumerate every intermediate commit in order\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"omitted-recovery-history\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"RECOVERY_COMMITS\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"RECOVERY_COMMITS: recoveryCommits must enumerate every intermediate commit in order\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"missing-previous-plan\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"RECOVERY_PLAN\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"RECOVERY_PLAN: Recovery history must preserve each previous artifact plan and its hash\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"missing-previous-plan\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"RECOVERY_PLAN\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"RECOVERY_PLAN: Recovery history must preserve each previous artifact plan and its hash\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"previous-required-case-removal\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"PRIOR_PLAN_CASES\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"PRIOR_PLAN_CASES: Required case removed: Phase001:original-required-case\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"previous-required-case-removal\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"PRIOR_PLAN_CASES\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"PRIOR_PLAN_CASES: Required case removed: Phase001:original-required-case\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"future-phase-history\",\n      \"shell\": \"powershell\",\n      \"command\": \"powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"COMMIT_SUBJECT\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"COMMIT_SUBJECT: Unexpected phase commit subject: phase(002): recovery\",\n        \"networkPushEvaluated\": false\n      }\n    },\n    {\n      \"case\": \"future-phase-history\",\n      \"shell\": \"pwsh\",\n      \"command\": \"pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json\",\n      \"exitCode\": 1,\n      \"expectedDiagnostic\": \"COMMIT_SUBJECT\",\n      \"result\": {\n        \"status\": \"FAIL\",\n        \"error\": \"COMMIT_SUBJECT: Unexpected phase commit subject: phase(002): recovery\",\n        \"networkPushEvaluated\": false\n      }\n    }\n  ],\n  \"durationMs\": 506247,\n  \"fixtureRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase-validator-ZqXu03\"\n}\n",
+      "stderr": ""
+    },
+    "report": {
+      "status": "PASS",
+      "scope": "ISOLATED_ROOT_LAYOUT_GIT_PROTOCOL_REGRESSION",
+      "simulation": true,
+      "sourceRepositoryIndexMutated": false,
+      "network": "LOCAL_FILESYSTEM_ONLY",
+      "independentReviewPerformed": false,
+      "reviewFixturePolicy": "Synthetic protocol JSON only; actual phase acceptance requires a separate independent Agent report",
+      "sourceBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+      "testedSourceHashes": {
+        "scripts/validate-phase.mjs": "52c4caec193fe47dacd00868c10d8bbdd1053acbcb39e45370f64cec3d387a93",
+        "scripts/validate-phase.ps1": "462e6ef7652ab84e3481705e9620ac07946840bb2776db5143be85109fe7e2a0",
+        "scripts/test-validate-phase.mjs": "46c9078216659deee0fbbf7d65c36c403bfa85b6b09533611a0b31ec36161693",
+        "docs/phase-plans/Phase001-inputs.json": "2f4a1c99660655d719e79a0411706f107df0f8d8f8888487fc4fffa58f0990e5"
+      },
+      "shells": [
+        "powershell",
+        "pwsh"
+      ],
+      "caseCount": 43,
+      "observationCount": 97,
+      "cases": [
+        {
+          "name": "root-equality-empty-prefix-local-inputs-history-pass",
+          "status": "PASS",
+          "durationMs": 15463
+        },
+        {
+          "name": "evidence-input-hash",
+          "status": "PASS",
+          "durationMs": 10677
+        },
+        {
+          "name": "evidence-output-hash",
+          "status": "PASS",
+          "durationMs": 10768
+        },
+        {
+          "name": "frozen-denominator",
+          "status": "PASS",
+          "durationMs": 10451
+        },
+        {
+          "name": "frozen-required-cases",
+          "status": "PASS",
+          "durationMs": 10404
+        },
+        {
+          "name": "duplicate-result",
+          "status": "PASS",
+          "durationMs": 10274
+        },
+        {
+          "name": "tested-tree",
+          "status": "PASS",
+          "durationMs": 10415
+        },
+        {
+          "name": "schema-extra-property",
+          "status": "PASS",
+          "durationMs": 10039
+        },
+        {
+          "name": "simulation-disabled",
+          "status": "PASS",
+          "durationMs": 9946
+        },
+        {
+          "name": "production-traffic",
+          "status": "PASS",
+          "durationMs": 9974
+        },
+        {
+          "name": "unsafe-input-path",
+          "status": "PASS",
+          "durationMs": 10367
+        },
+        {
+          "name": "missing-review",
+          "status": "PASS",
+          "durationMs": 10488
+        },
+        {
+          "name": "review-hash",
+          "status": "PASS",
+          "durationMs": 10640
+        },
+        {
+          "name": "gate-plan-hash",
+          "status": "PASS",
+          "durationMs": 10605
+        },
+        {
+          "name": "checkpoint-evidence-hash",
+          "status": "PASS",
+          "durationMs": 10149
+        },
+        {
+          "name": "missing-baseline",
+          "status": "PASS",
+          "durationMs": 5670
+        },
+        {
+          "name": "baseline-after-start",
+          "status": "PASS",
+          "durationMs": 10089
+        },
+        {
+          "name": "wrong-artifact-parent",
+          "status": "PASS",
+          "durationMs": 9734
+        },
+        {
+          "name": "metadata-product-change",
+          "status": "PASS",
+          "durationMs": 11349
+        },
+        {
+          "name": "wrong-progress",
+          "status": "PASS",
+          "durationMs": 9727
+        },
+        {
+          "name": "missing-checkpoint",
+          "status": "PASS",
+          "durationMs": 9722
+        },
+        {
+          "name": "waived-threshold",
+          "status": "PASS",
+          "durationMs": 10469
+        },
+        {
+          "name": "failed-command",
+          "status": "PASS",
+          "durationMs": 10413
+        },
+        {
+          "name": "review-blocked",
+          "status": "PASS",
+          "durationMs": 10402
+        },
+        {
+          "name": "review-stale-plan",
+          "status": "PASS",
+          "durationMs": 10491
+        },
+        {
+          "name": "review-not-independent",
+          "status": "PASS",
+          "durationMs": 10496
+        },
+        {
+          "name": "review-unresolved-issue",
+          "status": "PASS",
+          "durationMs": 10550
+        },
+        {
+          "name": "review-source-hash",
+          "status": "PASS",
+          "durationMs": 10318
+        },
+        {
+          "name": "review-report-hash",
+          "status": "PASS",
+          "durationMs": 10446
+        },
+        {
+          "name": "local-pinned-input-drift",
+          "status": "PASS",
+          "durationMs": 21979
+        },
+        {
+          "name": "wrong-origin",
+          "status": "PASS",
+          "durationMs": 17289
+        },
+        {
+          "name": "dirty-root-worktree",
+          "status": "PASS",
+          "durationMs": 25185
+        },
+        {
+          "name": "historical-archive-bytes",
+          "status": "PASS",
+          "durationMs": 19663
+        },
+        {
+          "name": "project-root-not-equal",
+          "status": "PASS",
+          "durationMs": 16020
+        },
+        {
+          "name": "required-contract-removal",
+          "status": "PASS",
+          "durationMs": 13920
+        },
+        {
+          "name": "local-roadmap-tracked",
+          "status": "PASS",
+          "durationMs": 4858
+        },
+        {
+          "name": "artifact-contains-metadata",
+          "status": "PASS",
+          "durationMs": 11302
+        },
+        {
+          "name": "real-parent-interposition",
+          "status": "PASS",
+          "durationMs": 12163
+        },
+        {
+          "name": "recovery-history-pass",
+          "status": "PASS",
+          "durationMs": 16806
+        },
+        {
+          "name": "omitted-recovery-history",
+          "status": "PASS",
+          "durationMs": 12565
+        },
+        {
+          "name": "missing-previous-plan",
+          "status": "PASS",
+          "durationMs": 12243
+        },
+        {
+          "name": "previous-required-case-removal",
+          "status": "PASS",
+          "durationMs": 10511
+        },
+        {
+          "name": "future-phase-history",
+          "status": "PASS",
+          "durationMs": 11202
+        }
+      ],
+      "observations": [
+        {
+          "case": "root-equality-empty-prefix-local-inputs-history-pass",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 0,
+          "expectedDiagnostic": null,
+          "result": {
+            "status": "PASS",
+            "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+            "layoutVersion": 2,
+            "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\positive",
+            "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\positive",
+            "projectGitPrefix": "",
+            "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+            "completedThrough": 1,
+            "currentPhase": 2,
+            "artifactCommit": "4680dfd021ebe36628de67d9ad59ae25f682e9f3",
+            "metadataCommit": "5e694a4048fd9460b031ec7fb60dc9b39e43dd33",
+            "historicalPhase": 0,
+            "preservedHistoricalFiles": 44,
+            "localIgnoredInputsVerified": 151,
+            "contractCoverage": {
+              "numerator": 20,
+              "denominator": 20
+            },
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "root-equality-empty-prefix-local-inputs-history-pass",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 0,
+          "expectedDiagnostic": null,
+          "result": {
+            "status": "PASS",
+            "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+            "layoutVersion": 2,
+            "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\positive",
+            "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\positive",
+            "projectGitPrefix": "",
+            "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+            "completedThrough": 1,
+            "currentPhase": 2,
+            "artifactCommit": "4680dfd021ebe36628de67d9ad59ae25f682e9f3",
+            "metadataCommit": "5e694a4048fd9460b031ec7fb60dc9b39e43dd33",
+            "historicalPhase": 0,
+            "preservedHistoricalFiles": 44,
+            "localIgnoredInputsVerified": 151,
+            "contractCoverage": {
+              "numerator": 20,
+              "denominator": 20
+            },
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "local-fast-forward-sync",
+          "command": "git push <isolated local bare repository> main:refs/heads/main",
+          "exitCode": 0,
+          "metadataCommit": "5e694a4048fd9460b031ec7fb60dc9b39e43dd33",
+          "network": "LOCAL_FILESYSTEM_ONLY"
+        },
+        {
+          "case": "evidence-input-hash",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "INPUT_HASH",
+          "result": {
+            "status": "FAIL",
+            "error": "INPUT_HASH: Evidence input hash differs from artifact file: docs/phase-plans/Phase001.json",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "evidence-input-hash",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "INPUT_HASH",
+          "result": {
+            "status": "FAIL",
+            "error": "INPUT_HASH: Evidence input hash differs from artifact file: docs/phase-plans/Phase001.json",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "evidence-output-hash",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "OUTPUT_HASH",
+          "result": {
+            "status": "FAIL",
+            "error": "OUTPUT_HASH: Evidence output hash differs from artifact file: docs/evidence/attempts/Phase001/protocol-fixture/git-version.txt",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "evidence-output-hash",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "OUTPUT_HASH",
+          "result": {
+            "status": "FAIL",
+            "error": "OUTPUT_HASH: Evidence output hash differs from artifact file: docs/evidence/attempts/Phase001/protocol-fixture/git-version.txt",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "frozen-denominator",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "DENOMINATOR",
+          "result": {
+            "status": "FAIL",
+            "error": "DENOMINATOR: Evidence denominator differs from frozen plan",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "frozen-denominator",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "DENOMINATOR",
+          "result": {
+            "status": "FAIL",
+            "error": "DENOMINATOR: Evidence denominator differs from frozen plan",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "frozen-required-cases",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "PLAN_CASES",
+          "result": {
+            "status": "FAIL",
+            "error": "PLAN_CASES: Gate requiredCaseIds differs from frozen plan",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "frozen-required-cases",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "PLAN_CASES",
+          "result": {
+            "status": "FAIL",
+            "error": "PLAN_CASES: Gate requiredCaseIds differs from frozen plan",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "duplicate-result",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "RESULT_CASES",
+          "result": {
+            "status": "FAIL",
+            "error": "RESULT_CASES: Gate results contains duplicates",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "duplicate-result",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "RESULT_CASES",
+          "result": {
+            "status": "FAIL",
+            "error": "RESULT_CASES: Gate results contains duplicates",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "tested-tree",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "TESTED_TREE",
+          "result": {
+            "status": "FAIL",
+            "error": "TESTED_TREE: Evidence testedTree differs from artifact tree",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "tested-tree",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "TESTED_TREE",
+          "result": {
+            "status": "FAIL",
+            "error": "TESTED_TREE: Evidence testedTree differs from artifact tree",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "schema-extra-property",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "GATE_SCHEMA",
+          "result": {
+            "status": "FAIL",
+            "error": "GATE_SCHEMA: gate unknown property requiredTests",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "schema-extra-property",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "GATE_SCHEMA",
+          "result": {
+            "status": "FAIL",
+            "error": "GATE_SCHEMA: gate unknown property requiredTests",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "simulation-disabled",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "GATE_SCHEMA",
+          "result": {
+            "status": "FAIL",
+            "error": "GATE_SCHEMA: gate.simulation differs from schema constant",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "simulation-disabled",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "GATE_SCHEMA",
+          "result": {
+            "status": "FAIL",
+            "error": "GATE_SCHEMA: gate.simulation differs from schema constant",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "production-traffic",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "GATE_SCHEMA",
+          "result": {
+            "status": "FAIL",
+            "error": "GATE_SCHEMA: gate.environment.productionTraffic differs from schema constant",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "production-traffic",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "GATE_SCHEMA",
+          "result": {
+            "status": "FAIL",
+            "error": "GATE_SCHEMA: gate.environment.productionTraffic differs from schema constant",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "unsafe-input-path",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "UNSAFE_PATH",
+          "result": {
+            "status": "FAIL",
+            "error": "UNSAFE_PATH: Unsafe repository file path: ../outside.bin",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "unsafe-input-path",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "UNSAFE_PATH",
+          "result": {
+            "status": "FAIL",
+            "error": "UNSAFE_PATH: Unsafe repository file path: ../outside.bin",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "missing-review",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "GIT_BLOB",
+          "result": {
+            "status": "FAIL",
+            "error": "GIT_BLOB: Artifact file is missing: b99923f55784016e3e69bf246fff702ffffd95b8:docs/missing-review.json",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "missing-review",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "GIT_BLOB",
+          "result": {
+            "status": "FAIL",
+            "error": "GIT_BLOB: Artifact file is missing: b99923f55784016e3e69bf246fff702ffffd95b8:docs/missing-review.json",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "review-hash",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "REVIEW_HASH",
+          "result": {
+            "status": "FAIL",
+            "error": "REVIEW_HASH: Review hash differs from artifact bytes",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "review-hash",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "REVIEW_HASH",
+          "result": {
+            "status": "FAIL",
+            "error": "REVIEW_HASH: Review hash differs from artifact bytes",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "gate-plan-hash",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "PLAN_HASH",
+          "result": {
+            "status": "FAIL",
+            "error": "PLAN_HASH: Plan hash differs from artifact bytes",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "gate-plan-hash",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "PLAN_HASH",
+          "result": {
+            "status": "FAIL",
+            "error": "PLAN_HASH: Plan hash differs from artifact bytes",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "checkpoint-evidence-hash",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "EVIDENCE_HASH",
+          "result": {
+            "status": "FAIL",
+            "error": "EVIDENCE_HASH: Checkpoint evidenceHash mismatch",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "checkpoint-evidence-hash",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "EVIDENCE_HASH",
+          "result": {
+            "status": "FAIL",
+            "error": "EVIDENCE_HASH: Checkpoint evidenceHash mismatch",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "missing-baseline",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "COMMIT_ID",
+          "result": {
+            "status": "FAIL",
+            "error": "COMMIT_ID: executionBaselineCommit must be a full Git commit id",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "missing-baseline",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "COMMIT_ID",
+          "result": {
+            "status": "FAIL",
+            "error": "COMMIT_ID: executionBaselineCommit must be a full Git commit id",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "baseline-after-start",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "BASELINE",
+          "result": {
+            "status": "FAIL",
+            "error": "RECEIPT_BASELINE: Input receipt execution baseline mismatch",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "baseline-after-start",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "BASELINE",
+          "result": {
+            "status": "FAIL",
+            "error": "RECEIPT_BASELINE: Input receipt execution baseline mismatch",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "wrong-artifact-parent",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "CHECKPOINT_ARTIFACT",
+          "result": {
+            "status": "FAIL",
+            "error": "CHECKPOINT_ARTIFACT: lastArtifactCommit must reference the final checkpoint",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "wrong-artifact-parent",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "CHECKPOINT_ARTIFACT",
+          "result": {
+            "status": "FAIL",
+            "error": "CHECKPOINT_ARTIFACT: lastArtifactCommit must reference the final checkpoint",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "metadata-product-change",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "METADATA_PATH",
+          "result": {
+            "status": "FAIL",
+            "error": "METADATA_PATH: Metadata changes non-metadata path: docs/code-style.md",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "metadata-product-change",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "METADATA_PATH",
+          "result": {
+            "status": "FAIL",
+            "error": "METADATA_PATH: Metadata changes non-metadata path: docs/code-style.md",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "wrong-progress",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "RUN_PROGRESS",
+          "result": {
+            "status": "FAIL",
+            "error": "RUN_PROGRESS: Run currentPhase must follow completedThrough",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "wrong-progress",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "RUN_PROGRESS",
+          "result": {
+            "status": "FAIL",
+            "error": "RUN_PROGRESS: Run currentPhase must follow completedThrough",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "missing-checkpoint",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "CHECKPOINTS",
+          "result": {
+            "status": "FAIL",
+            "error": "CHECKPOINTS: New-layout checkpoints must cover phases 1..completedThrough exactly",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "missing-checkpoint",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "CHECKPOINTS",
+          "result": {
+            "status": "FAIL",
+            "error": "CHECKPOINTS: New-layout checkpoints must cover phases 1..completedThrough exactly",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "waived-threshold",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "THRESHOLD",
+          "result": {
+            "status": "FAIL",
+            "error": "THRESHOLD: Gate cannot waive thresholds",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "waived-threshold",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "THRESHOLD",
+          "result": {
+            "status": "FAIL",
+            "error": "THRESHOLD: Gate cannot waive thresholds",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "failed-command",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "COMMANDS",
+          "result": {
+            "status": "FAIL",
+            "error": "COMMANDS: Result command missing from commands",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "failed-command",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "COMMANDS",
+          "result": {
+            "status": "FAIL",
+            "error": "COMMANDS: Result command missing from commands",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "review-blocked",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "REVIEW_DECISION",
+          "result": {
+            "status": "FAIL",
+            "error": "REVIEW_DECISION: Independent review decision must be PASS",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "review-blocked",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "REVIEW_DECISION",
+          "result": {
+            "status": "FAIL",
+            "error": "REVIEW_DECISION: Independent review decision must be PASS",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "review-stale-plan",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "REVIEW_BINDING",
+          "result": {
+            "status": "FAIL",
+            "error": "REVIEW_BINDING: Review does not bind frozen plan",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "review-stale-plan",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "REVIEW_BINDING",
+          "result": {
+            "status": "FAIL",
+            "error": "REVIEW_BINDING: Review does not bind frozen plan",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "review-not-independent",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "REVIEW_IDENTITY",
+          "result": {
+            "status": "FAIL",
+            "error": "REVIEW_IDENTITY: Reviewer cannot author implementation",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "review-not-independent",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "REVIEW_IDENTITY",
+          "result": {
+            "status": "FAIL",
+            "error": "REVIEW_IDENTITY: Reviewer cannot author implementation",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "review-unresolved-issue",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "REVIEW_ISSUES",
+          "result": {
+            "status": "FAIL",
+            "error": "REVIEW_ISSUES: Review has an unresolved issue",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "review-unresolved-issue",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "REVIEW_ISSUES",
+          "result": {
+            "status": "FAIL",
+            "error": "REVIEW_ISSUES: Review has an unresolved issue",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "review-source-hash",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "REVIEW_FILE_HASH",
+          "result": {
+            "status": "FAIL",
+            "error": "REVIEW_FILE_HASH: Review sourceHashes differs from artifact bytes: docs/evidence/attempts/Phase001/protocol-fixture/input.bin",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "review-source-hash",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "REVIEW_FILE_HASH",
+          "result": {
+            "status": "FAIL",
+            "error": "REVIEW_FILE_HASH: Review sourceHashes differs from artifact bytes: docs/evidence/attempts/Phase001/protocol-fixture/input.bin",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "review-report-hash",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "REVIEW_FILE_HASH",
+          "result": {
+            "status": "FAIL",
+            "error": "REVIEW_FILE_HASH: Review reportHashes differs from artifact bytes: docs/evidence/attempts/Phase001/protocol-fixture/git-version.txt",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "review-report-hash",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "REVIEW_FILE_HASH",
+          "result": {
+            "status": "FAIL",
+            "error": "REVIEW_FILE_HASH: Review reportHashes differs from artifact bytes: docs/evidence/attempts/Phase001/protocol-fixture/git-version.txt",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "local-pinned-input-drift",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "LOCAL_INPUT_HASH",
+          "result": {
+            "status": "FAIL",
+            "error": "LOCAL_INPUT_HASH: Local frozen input hash mismatch: phase-card",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "local-pinned-input-drift",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "LOCAL_INPUT_HASH",
+          "result": {
+            "status": "FAIL",
+            "error": "LOCAL_INPUT_HASH: Local frozen input hash mismatch: phase-card",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "local-pinned-input-drift-restored",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 0,
+          "expectedDiagnostic": null,
+          "result": {
+            "status": "PASS",
+            "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+            "layoutVersion": 2,
+            "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\local-pinned-input-drift",
+            "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\local-pinned-input-drift",
+            "projectGitPrefix": "",
+            "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+            "completedThrough": 1,
+            "currentPhase": 2,
+            "artifactCommit": "7cc783b143c405d0d5eccf045c603ebd11fb34e9",
+            "metadataCommit": "dfa30ed7cf8dc1dbed6cef1987a761edaea4348c",
+            "historicalPhase": 0,
+            "preservedHistoricalFiles": 44,
+            "localIgnoredInputsVerified": 151,
+            "contractCoverage": {
+              "numerator": 20,
+              "denominator": 20
+            },
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "local-pinned-input-drift-restored",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 0,
+          "expectedDiagnostic": null,
+          "result": {
+            "status": "PASS",
+            "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+            "layoutVersion": 2,
+            "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\local-pinned-input-drift",
+            "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\local-pinned-input-drift",
+            "projectGitPrefix": "",
+            "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+            "completedThrough": 1,
+            "currentPhase": 2,
+            "artifactCommit": "7cc783b143c405d0d5eccf045c603ebd11fb34e9",
+            "metadataCommit": "dfa30ed7cf8dc1dbed6cef1987a761edaea4348c",
+            "historicalPhase": 0,
+            "preservedHistoricalFiles": 44,
+            "localIgnoredInputsVerified": 151,
+            "contractCoverage": {
+              "numerator": 20,
+              "denominator": 20
+            },
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "wrong-origin",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "GIT_REMOTE",
+          "result": {
+            "status": "FAIL",
+            "error": "GIT_REMOTE: Origin fetch/push URL must match manifest",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "wrong-origin",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "GIT_REMOTE",
+          "result": {
+            "status": "FAIL",
+            "error": "GIT_REMOTE: Origin fetch/push URL must match manifest",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "wrong-origin-restored",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 0,
+          "expectedDiagnostic": null,
+          "result": {
+            "status": "PASS",
+            "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+            "layoutVersion": 2,
+            "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\wrong-origin",
+            "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\wrong-origin",
+            "projectGitPrefix": "",
+            "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+            "completedThrough": 1,
+            "currentPhase": 2,
+            "artifactCommit": "8ec5e5aac2a1ac8d3c273d02ec01b4941e758ba2",
+            "metadataCommit": "b6b741ab347396d986f7c9534b4fe9a5e0cc5cfb",
+            "historicalPhase": 0,
+            "preservedHistoricalFiles": 44,
+            "localIgnoredInputsVerified": 151,
+            "contractCoverage": {
+              "numerator": 20,
+              "denominator": 20
+            },
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "wrong-origin-restored",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 0,
+          "expectedDiagnostic": null,
+          "result": {
+            "status": "PASS",
+            "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+            "layoutVersion": 2,
+            "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\wrong-origin",
+            "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\wrong-origin",
+            "projectGitPrefix": "",
+            "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+            "completedThrough": 1,
+            "currentPhase": 2,
+            "artifactCommit": "8ec5e5aac2a1ac8d3c273d02ec01b4941e758ba2",
+            "metadataCommit": "b6b741ab347396d986f7c9534b4fe9a5e0cc5cfb",
+            "historicalPhase": 0,
+            "preservedHistoricalFiles": 44,
+            "localIgnoredInputsVerified": 151,
+            "contractCoverage": {
+              "numerator": 20,
+              "denominator": 20
+            },
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "dirty-root-worktree",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "WORKTREE_DIRTY",
+          "result": {
+            "status": "FAIL",
+            "error": "WORKTREE_DIRTY: Entire repository worktree must be clean after metadata commit",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "dirty-root-worktree",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "WORKTREE_DIRTY",
+          "result": {
+            "status": "FAIL",
+            "error": "WORKTREE_DIRTY: Entire repository worktree must be clean after metadata commit",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "dirty-root-worktree-restored",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 0,
+          "expectedDiagnostic": null,
+          "result": {
+            "status": "PASS",
+            "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+            "layoutVersion": 2,
+            "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\dirty-root-worktree",
+            "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\dirty-root-worktree",
+            "projectGitPrefix": "",
+            "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+            "completedThrough": 1,
+            "currentPhase": 2,
+            "artifactCommit": "4e1e0ee8d5e085b6efd1bc7658a28d2b12e00e95",
+            "metadataCommit": "886de0e7061d0be713c0ae677c6daaeb98ffff8f",
+            "historicalPhase": 0,
+            "preservedHistoricalFiles": 44,
+            "localIgnoredInputsVerified": 151,
+            "contractCoverage": {
+              "numerator": 20,
+              "denominator": 20
+            },
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "dirty-root-worktree-restored",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 0,
+          "expectedDiagnostic": null,
+          "result": {
+            "status": "PASS",
+            "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+            "layoutVersion": 2,
+            "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\dirty-root-worktree",
+            "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\dirty-root-worktree",
+            "projectGitPrefix": "",
+            "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+            "completedThrough": 1,
+            "currentPhase": 2,
+            "artifactCommit": "4e1e0ee8d5e085b6efd1bc7658a28d2b12e00e95",
+            "metadataCommit": "886de0e7061d0be713c0ae677c6daaeb98ffff8f",
+            "historicalPhase": 0,
+            "preservedHistoricalFiles": 44,
+            "localIgnoredInputsVerified": 151,
+            "contractCoverage": {
+              "numerator": 20,
+              "denominator": 20
+            },
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "historical-archive-bytes",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "HISTORY_BYTES",
+          "result": {
+            "status": "FAIL",
+            "error": "HISTORY_BYTES: Historical archive bytes changed: docs/history/Phase000/docs/project-constitution.md",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "historical-archive-bytes",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "HISTORY_BYTES",
+          "result": {
+            "status": "FAIL",
+            "error": "HISTORY_BYTES: Historical archive bytes changed: docs/history/Phase000/docs/project-constitution.md",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "historical-archive-bytes-restored",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 0,
+          "expectedDiagnostic": null,
+          "result": {
+            "status": "PASS",
+            "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+            "layoutVersion": 2,
+            "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\historical-archive-bytes",
+            "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\historical-archive-bytes",
+            "projectGitPrefix": "",
+            "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+            "completedThrough": 1,
+            "currentPhase": 2,
+            "artifactCommit": "c497cb9aa08dea0b53eea418a88f7f6c6e968bdb",
+            "metadataCommit": "87890681b7889751ca612fa21a181db45e84973a",
+            "historicalPhase": 0,
+            "preservedHistoricalFiles": 44,
+            "localIgnoredInputsVerified": 151,
+            "contractCoverage": {
+              "numerator": 20,
+              "denominator": 20
+            },
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "historical-archive-bytes-restored",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 0,
+          "expectedDiagnostic": null,
+          "result": {
+            "status": "PASS",
+            "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+            "layoutVersion": 2,
+            "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\historical-archive-bytes",
+            "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\historical-archive-bytes",
+            "projectGitPrefix": "",
+            "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+            "completedThrough": 1,
+            "currentPhase": 2,
+            "artifactCommit": "c497cb9aa08dea0b53eea418a88f7f6c6e968bdb",
+            "metadataCommit": "87890681b7889751ca612fa21a181db45e84973a",
+            "historicalPhase": 0,
+            "preservedHistoricalFiles": 44,
+            "localIgnoredInputsVerified": 151,
+            "contractCoverage": {
+              "numerator": 20,
+              "denominator": 20
+            },
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "project-root-not-equal",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "ROOT_LAYOUT",
+          "result": {
+            "status": "FAIL",
+            "error": "ROOT_LAYOUT: projectRoot must equal repositoryRoot",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "project-root-not-equal",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "ROOT_LAYOUT",
+          "result": {
+            "status": "FAIL",
+            "error": "ROOT_LAYOUT: projectRoot must equal repositoryRoot",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "project-root-not-equal-restored",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 0,
+          "expectedDiagnostic": null,
+          "result": {
+            "status": "PASS",
+            "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+            "layoutVersion": 2,
+            "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\project-root-not-equal",
+            "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\project-root-not-equal",
+            "projectGitPrefix": "",
+            "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+            "completedThrough": 1,
+            "currentPhase": 2,
+            "artifactCommit": "73b2bc22c97838185e324df77596c1136dc3a4a8",
+            "metadataCommit": "3ec1df2faa7130626776163ccf72e348d8f1a00b",
+            "historicalPhase": 0,
+            "preservedHistoricalFiles": 44,
+            "localIgnoredInputsVerified": 151,
+            "contractCoverage": {
+              "numerator": 20,
+              "denominator": 20
+            },
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "project-root-not-equal-restored",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 0,
+          "expectedDiagnostic": null,
+          "result": {
+            "status": "PASS",
+            "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+            "layoutVersion": 2,
+            "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\project-root-not-equal",
+            "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\project-root-not-equal",
+            "projectGitPrefix": "",
+            "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+            "completedThrough": 1,
+            "currentPhase": 2,
+            "artifactCommit": "73b2bc22c97838185e324df77596c1136dc3a4a8",
+            "metadataCommit": "3ec1df2faa7130626776163ccf72e348d8f1a00b",
+            "historicalPhase": 0,
+            "preservedHistoricalFiles": 44,
+            "localIgnoredInputsVerified": 151,
+            "contractCoverage": {
+              "numerator": 20,
+              "denominator": 20
+            },
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "required-contract-removal",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "CONTRACT_COVERAGE",
+          "result": {
+            "status": "FAIL",
+            "error": "CONTRACT_COVERAGE: Required project contract missing: docs/database.md",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "required-contract-removal",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "CONTRACT_COVERAGE",
+          "result": {
+            "status": "FAIL",
+            "error": "CONTRACT_COVERAGE: Required project contract missing: docs/database.md",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "local-roadmap-tracked",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "ROADMAP_TRACKED",
+          "result": {
+            "status": "FAIL",
+            "error": "ROADMAP_TRACKED: Local roadmap inputs must not be tracked",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "local-roadmap-tracked",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "ROADMAP_TRACKED",
+          "result": {
+            "status": "FAIL",
+            "error": "ROADMAP_TRACKED: Local roadmap inputs must not be tracked",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "artifact-contains-metadata",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "ARTIFACT_METADATA",
+          "result": {
+            "status": "FAIL",
+            "error": "ARTIFACT_METADATA: Artifact/recovery changes current metadata path: docs/phase-completion-log.md",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "artifact-contains-metadata",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "ARTIFACT_METADATA",
+          "result": {
+            "status": "FAIL",
+            "error": "ARTIFACT_METADATA: Artifact/recovery changes current metadata path: docs/phase-completion-log.md",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "real-parent-interposition",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "CHECKPOINT_PARENT",
+          "result": {
+            "status": "FAIL",
+            "error": "CHECKPOINT_PARENT: Final metadata subject must be metadata",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "real-parent-interposition",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "CHECKPOINT_PARENT",
+          "result": {
+            "status": "FAIL",
+            "error": "CHECKPOINT_PARENT: Final metadata subject must be metadata",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "recovery-history-pass",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 0,
+          "expectedDiagnostic": null,
+          "result": {
+            "status": "PASS",
+            "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+            "layoutVersion": 2,
+            "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\recovery-history-pass",
+            "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\recovery-history-pass",
+            "projectGitPrefix": "",
+            "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+            "completedThrough": 1,
+            "currentPhase": 2,
+            "artifactCommit": "e018cdc0b23cacc4fe09ca99c5633b36605afe23",
+            "metadataCommit": "2400e7d36b824f28ff41c8db4826ea6f7e47e815",
+            "historicalPhase": 0,
+            "preservedHistoricalFiles": 44,
+            "localIgnoredInputsVerified": 151,
+            "contractCoverage": {
+              "numerator": 20,
+              "denominator": 20
+            },
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "recovery-history-pass",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 0,
+          "expectedDiagnostic": null,
+          "result": {
+            "status": "PASS",
+            "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+            "layoutVersion": 2,
+            "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\recovery-history-pass",
+            "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03\\recovery-history-pass",
+            "projectGitPrefix": "",
+            "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+            "completedThrough": 1,
+            "currentPhase": 2,
+            "artifactCommit": "e018cdc0b23cacc4fe09ca99c5633b36605afe23",
+            "metadataCommit": "2400e7d36b824f28ff41c8db4826ea6f7e47e815",
+            "historicalPhase": 0,
+            "preservedHistoricalFiles": 44,
+            "localIgnoredInputsVerified": 151,
+            "contractCoverage": {
+              "numerator": 20,
+              "denominator": 20
+            },
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "omitted-recovery-history",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "RECOVERY_COMMITS",
+          "result": {
+            "status": "FAIL",
+            "error": "RECOVERY_COMMITS: recoveryCommits must enumerate every intermediate commit in order",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "omitted-recovery-history",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "RECOVERY_COMMITS",
+          "result": {
+            "status": "FAIL",
+            "error": "RECOVERY_COMMITS: recoveryCommits must enumerate every intermediate commit in order",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "missing-previous-plan",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "RECOVERY_PLAN",
+          "result": {
+            "status": "FAIL",
+            "error": "RECOVERY_PLAN: Recovery history must preserve each previous artifact plan and its hash",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "missing-previous-plan",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "RECOVERY_PLAN",
+          "result": {
+            "status": "FAIL",
+            "error": "RECOVERY_PLAN: Recovery history must preserve each previous artifact plan and its hash",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "previous-required-case-removal",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "PRIOR_PLAN_CASES",
+          "result": {
+            "status": "FAIL",
+            "error": "PRIOR_PLAN_CASES: Required case removed: Phase001:original-required-case",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "previous-required-case-removal",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "PRIOR_PLAN_CASES",
+          "result": {
+            "status": "FAIL",
+            "error": "PRIOR_PLAN_CASES: Required case removed: Phase001:original-required-case",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "future-phase-history",
+          "shell": "powershell",
+          "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "COMMIT_SUBJECT",
+          "result": {
+            "status": "FAIL",
+            "error": "COMMIT_SUBJECT: Unexpected phase commit subject: phase(002): recovery",
+            "networkPushEvaluated": false
+          }
+        },
+        {
+          "case": "future-phase-history",
+          "shell": "pwsh",
+          "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json",
+          "exitCode": 1,
+          "expectedDiagnostic": "COMMIT_SUBJECT",
+          "result": {
+            "status": "FAIL",
+            "error": "COMMIT_SUBJECT: Unexpected phase commit subject: phase(002): recovery",
+            "networkPushEvaluated": false
+          }
+        }
+      ],
+      "durationMs": 506247,
+      "fixtureRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-ZqXu03"
+    }
+  }
+}

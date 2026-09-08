@@ -1,0 +1,26 @@
+{
+  "status": "FAIL",
+  "scope": "ISOLATED_ROOT_LAYOUT_GIT_PROTOCOL_REGRESSION",
+  "error": "root-equality-empty-prefix-local-inputs-history-pass/node: {\n  \"status\": \"FAIL\",\n  \"error\": \"GIT: git diff-tree failed: usage: git diff-tree [--stdin] [-m] [-s] [-v] [--no-commit-id] [--pretty]\\n              [-t] [-r] [-c | --cc] [--combined-all-paths] [--root] [--merge-base]\\n              [<common-diff-options>] <tree-ish> [<tree-ish>] [<path>...]\\n\\n  -r            diff recursively\\n  -c            show combined diff for merge commits\\n  --cc          show combined diff for merge commits removing uninteresting hunks\\n  --combined-all-paths\\n                show name of file in all parents for combined diffs\\n  --root        include the initial commit as diff against /dev/null\\n\\ncommon diff options:\\n  -z            output diff-raw with lines terminated with NUL.\\n  -p            output patch format.\\n  -u            synonym for -p.\\n  --patch-with-raw\\n                output both a patch and the diff-raw format.\\n  --stat        show diffstat instead of patch.\\n  --numstat     show numeric diffstat instead of patch.\\n  --patch-with-stat\\n                output a patch and prepend its diffstat.\\n  --name-only   show only names of changed files.\\n  --name-status show names and status of changed files.\\n  --full-index  show full object name on index lines.\\n  --abbrev=<n>  abbreviate object names in diff-tree header and diff-raw.\\n  -R            swap input file pairs.\\n  -B            detect complete rewrites.\\n  -M            detect renames.\\n  -C            detect copies.\\n  --find-copies-harder\\n                try unchanged files as candidate for copy detection.\\n  -l<n>         limit rename attempts up to <n> paths.\\n  -O<file>      reorder diffs according to the <file>.\\n  -S<string>    find filepair whose only one side contains the string.\\n  --pickaxe-all\\n                show all files diff when -S is used and hit is found.\\n  -a  --text    treat all files as text.\",\n  \"networkPushEvaluated\": false\n}\n\n1 !== 0\n",
+  "sourceBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+  "shells": [
+    "node"
+  ],
+  "cases": [],
+  "observations": [
+    {
+      "case": "root-equality-empty-prefix-local-inputs-history-pass",
+      "shell": "node",
+      "command": "C:\\Program Files\\nodejs\\node.exe scripts/validate-phase.mjs --completed-through 1 --strict --json",
+      "exitCode": 1,
+      "expectedDiagnostic": null,
+      "result": {
+        "status": "FAIL",
+        "error": "GIT: git diff-tree failed: usage: git diff-tree [--stdin] [-m] [-s] [-v] [--no-commit-id] [--pretty]\n              [-t] [-r] [-c | --cc] [--combined-all-paths] [--root] [--merge-base]\n              [<common-diff-options>] <tree-ish> [<tree-ish>] [<path>...]\n\n  -r            diff recursively\n  -c            show combined diff for merge commits\n  --cc          show combined diff for merge commits removing uninteresting hunks\n  --combined-all-paths\n                show name of file in all parents for combined diffs\n  --root        include the initial commit as diff against /dev/null\n\ncommon diff options:\n  -z            output diff-raw with lines terminated with NUL.\n  -p            output patch format.\n  -u            synonym for -p.\n  --patch-with-raw\n                output both a patch and the diff-raw format.\n  --stat        show diffstat instead of patch.\n  --numstat     show numeric diffstat instead of patch.\n  --patch-with-stat\n                output a patch and prepend its diffstat.\n  --name-only   show only names of changed files.\n  --name-status show names and status of changed files.\n  --full-index  show full object name on index lines.\n  --abbrev=<n>  abbreviate object names in diff-tree header and diff-raw.\n  -R            swap input file pairs.\n  -B            detect complete rewrites.\n  -M            detect renames.\n  -C            detect copies.\n  --find-copies-harder\n                try unchanged files as candidate for copy detection.\n  -l<n>         limit rename attempts up to <n> paths.\n  -O<file>      reorder diffs according to the <file>.\n  -S<string>    find filepair whose only one side contains the string.\n  --pickaxe-all\n                show all files diff when -S is used and hit is found.\n  -a  --text    treat all files as text.",
+        "networkPushEvaluated": false
+      }
+    }
+  ],
+  "durationMs": 6113,
+  "fixtureRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-2JdslY"
+}

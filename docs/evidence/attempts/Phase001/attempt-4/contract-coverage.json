@@ -1,0 +1,140 @@
+{
+  "testCaseId": "Phase001:contract-coverage",
+  "command": "node docs/phase-plans/verify-phase001.mjs --case contract-coverage",
+  "status": "PASS",
+  "exitCode": 0,
+  "numerator": 20,
+  "denominator": 20,
+  "inputPath": "docs/phase-plans/Phase001-inputs.json",
+  "inputHash": "2f4a1c99660655d719e79a0411706f107df0f8d8f8888487fc4fffa58f0990e5",
+  "planHash": "cf5791eb743acad817722758e9883cd46e45fc686bc79975316ac099f5ed3ae6",
+  "sourceHashes": {
+    "docs/git-workflow.md": "cbd5a7eb54da037541322a29589140f44506f4e4c9146180330b2c3a3f8f4794",
+    "docs/code-style.md": "7b2ef781010f47a11b77788241cf6ee660e57b420c0f7a87ad2eae0a42571734",
+    "docs/ui-design-system.md": "8b232c6742bf846f131ea3040d5892ed7b270940bfd4109ccfb768ed63fdb158",
+    "docs/database.md": "4a84afbc0d252611f6d5fa6505a291d837d8ab4c4d5f0464f03c45c2b35e8869",
+    "docs/phase-plans/Phase001.json": "cf5791eb743acad817722758e9883cd46e45fc686bc79975316ac099f5ed3ae6",
+    "docs/phase-plans/Phase001-inputs.json": "2f4a1c99660655d719e79a0411706f107df0f8d8f8888487fc4fffa58f0990e5",
+    "docs/phase-plans/verify-phase001.mjs": "7693b66c23efbaecaf02658f4c8c30b9ff561fd17bd6fd3680977ea21802424f",
+    "docs/phase-plans/prepare-phase001.mjs": "1ad40ee5ac36b56d218235b8c569fd528c6083f8f3e500b43049eb3531266bfd",
+    "docs/phase-plans/retry-phase001.mjs": "f32cafff9c401dfa88304319db9687bf49e8c42d8e322e37bc8331baafef8b90",
+    "docs/phase-plans/replay-historical-phase.ps1": "0c3e1b8f4cdca2713e8617b8155eeb62723bd1a384b8ab5293562f72b5d8a1d1",
+    "docs/phase-plans/complete-phase001.mjs": "3984e1f3a2a02f213b720bf02cba0293288bdf4591966ea4403ecfffc9196a1a",
+    "docs/agent-execution-contract.md": "72eb5e5e8da13c02b3aeeb3803b668a440f1cbdee75fddf08f267c0ec9b6b2ed",
+    "docs/tech-stack.md": "258620f3e18d042eac1e26165f411e8879ecd4b0d91d8e7986aaed4f3f10d2c7",
+    "docs/directory-structure.md": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df",
+    "scripts/check-project-layout.mjs": "101c7c50f12e4d6cc80e1c9fb9667ad06fcc55c687d86cb5295ff81bc0eb68f6",
+    "scripts/validate-phase.mjs": "52c4caec193fe47dacd00868c10d8bbdd1053acbcb39e45370f64cec3d387a93",
+    "scripts/validate-phase.ps1": "462e6ef7652ab84e3481705e9620ac07946840bb2776db5143be85109fe7e2a0",
+    "scripts/test-validate-phase.mjs": "46c9078216659deee0fbbf7d65c36c403bfa85b6b09533611a0b31ec36161693"
+  },
+  "startedAt": "2026-09-08T15:05:53.886Z",
+  "completedAt": "2026-09-08T15:05:53.897Z",
+  "durationMs": 11,
+  "details": {
+    "numerator": 20,
+    "denominator": 20,
+    "contracts": [
+      {
+        "id": "product-requirements",
+        "path": "Serendipity · 际遇/docs/product-requirements.md",
+        "sha256": "320583e7baa5c0b3ee15b13ce0bc4f264e8ff1ae531feb94eb71e1102040854b"
+      },
+      {
+        "id": "terminology",
+        "path": "Serendipity · 际遇/docs/术语冻结表.md",
+        "sha256": "403f21a6063aac79a3a93554156b06d9aff9277e6267c8f9ec17109cff4aff9f"
+      },
+      {
+        "id": "state-machines",
+        "path": "Serendipity · 际遇/docs/state-machines.md",
+        "sha256": "3dab632bd549b26908312b09b166947b2a26128a0298749ba1c7efc6d3d6717a"
+      },
+      {
+        "id": "personal-project-waivers",
+        "path": "Serendipity · 际遇/docs/personal-project-gate-waivers.md",
+        "sha256": "d96657b9165dc737a89da1be92e6e15c04b63480ceb6199e3110061d91463644"
+      },
+      {
+        "id": "phase-mapping",
+        "path": "Serendipity · 际遇/docs/phase-mapping.md",
+        "sha256": "beea3c3dae6a84c118a4f4c8bc6fde143d92c2ae5099f10415a3d2a21264a6d9"
+      },
+      {
+        "id": "canonical-contract",
+        "path": "Serendipity · 际遇/docs/roadmap-canonical-contract.md",
+        "sha256": "06d0ccdb218482a5688d78a9f69a88a0183cedc9d5eac5d0553e224b8d6e27e5"
+      },
+      {
+        "id": "testing-strategy",
+        "path": "Serendipity · 际遇/docs/testing-strategy.md",
+        "sha256": "36d90b927e90916a3dcfd0105022884c8f3c64cb04e22996da4cb4299acc93a5"
+      },
+      {
+        "id": "known-issues-template",
+        "path": "Serendipity · 际遇/docs/known-issues.md",
+        "sha256": "5f36c09ae90c48f21cebd2d6f9b19b3a4d5271f5a41267807a089ff37d9ca02c"
+      },
+      {
+        "id": "agent-only-execution",
+        "path": "Serendipity · 际遇/docs/agent-only-execution-contract.md",
+        "sha256": "032bfac53bce2dff89cb7470ae809f0a802ecf1fdf9f2fc266b465a37f838eff"
+      },
+      {
+        "id": "phase-gate-schema",
+        "path": "Serendipity · 际遇/docs/phase-gate.schema.json",
+        "sha256": "e5c42fa3d46e1d6209f471d0bd6b249c2435c3ccf809dc4c73f4ef4b5f962633"
+      },
+      {
+        "id": "project-constitution",
+        "path": "docs/project-constitution.md",
+        "sha256": "8f1dd176e30e815a09502a91c5b0ef2722b7bb71d5e919fbfc70cfecf3e9dedd"
+      },
+      {
+        "id": "agent-execution-contract",
+        "path": "docs/agent-execution-contract.md",
+        "sha256": "72eb5e5e8da13c02b3aeeb3803b668a440f1cbdee75fddf08f267c0ec9b6b2ed"
+      },
+      {
+        "id": "phase-completion-log",
+        "path": "docs/phase-completion-log.md",
+        "sha256": "a3a95b64b94c0312927b0938385ebcc7a611c313a28440f1552ac801c3ac3387"
+      },
+      {
+        "id": "roadmap-run-state",
+        "path": "docs/roadmap-run.json",
+        "sha256": "a514d36aaf1600ff9bbe7ea2f65a8ed94a8304a169234efb50c33ab9eaf631ee"
+      },
+      {
+        "id": "tech-stack",
+        "path": "docs/tech-stack.md",
+        "sha256": "258620f3e18d042eac1e26165f411e8879ecd4b0d91d8e7986aaed4f3f10d2c7"
+      },
+      {
+        "id": "directory-structure",
+        "path": "docs/directory-structure.md",
+        "sha256": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df"
+      },
+      {
+        "id": "git-workflow",
+        "path": "docs/git-workflow.md",
+        "sha256": "cbd5a7eb54da037541322a29589140f44506f4e4c9146180330b2c3a3f8f4794"
+      },
+      {
+        "id": "code-style",
+        "path": "docs/code-style.md",
+        "sha256": "7b2ef781010f47a11b77788241cf6ee660e57b420c0f7a87ad2eae0a42571734"
+      },
+      {
+        "id": "ui-design-system",
+        "path": "docs/ui-design-system.md",
+        "sha256": "8b232c6742bf846f131ea3040d5892ed7b270940bfd4109ccfb768ed63fdb158"
+      },
+      {
+        "id": "database",
+        "path": "docs/database.md",
+        "sha256": "4a84afbc0d252611f6d5fa6505a291d837d8ab4c4d5f0464f03c45c2b35e8869"
+      }
+    ]
+  }
+}

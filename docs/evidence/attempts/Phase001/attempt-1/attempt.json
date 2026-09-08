@@ -1,0 +1,17 @@
+{
+  "phase": 1,
+  "attemptId": "attempt-1",
+  "status": "FAIL",
+  "artifactCommit": null,
+  "command": "node --check docs/phase-plans/verify-phase001.mjs",
+  "exitCode": 1,
+  "message": "SyntaxError: Invalid regular expression flags at verify-phase001.mjs:208. The literal /prisma\\/ was missing the closing slash. Replaced with structured startsWith path check.",
+  "alsoAffected": [
+    "--check git-workflow",
+    "--check code-style",
+    "--check ui-design-system"
+  ],
+  "planHash": "8b84ff5210d6515b0d4bc03971deaf10fedf0b4bc90f098347f8493efa5241da",
+  "frozenPlanPath": "docs/evidence/attempts/Phase001/attempt-1/frozen-plan.json",
+  "generatedAt": "2026-09-08T14:43:56.397Z"
+}
