@@ -1,0 +1,133 @@
+{
+  "testCaseId": "Phase000:pinned-inputs",
+  "command": "node docs/phase-plans/verify-phase000.mjs --case pinned-inputs",
+  "attemptId": "attempt-3",
+  "planHash": "2d57c50c28b563995c2eb4d5a2df007a7420d9e7eeb1ab5f900750c81f6c9741",
+  "inputHash": "0e85be1e94c55846051878a0cfc7d001c9e0a405804ab1416e40095750c9ed8c",
+  "sourceHashes": {
+    "docs/phase-plans/Phase000.json": "2d57c50c28b563995c2eb4d5a2df007a7420d9e7eeb1ab5f900750c81f6c9741",
+    "docs/phase-plans/Phase000-inputs.json": "0e85be1e94c55846051878a0cfc7d001c9e0a405804ab1416e40095750c9ed8c",
+    "docs/phase-plans/bootstrap.json": "658627f91dfccb9e5d37544ce1b0fd445f8d9d5f9e5983d0c1e02676ddcf2e4e",
+    "docs/phase-plans/verify-phase000.mjs": "c54036ed93a745bb71e88b2e6665db1a57b937fce8db3d8c798d9620bdbb6e38",
+    "docs/phase-plans/protocol-lab.mjs": "327c09a74315d0806cb6e319b95d708b0fd966bc2aa96b737188c3b085bba6ca",
+    "docs/project-constitution.md": "aabbdf0d0e4894a6023ad43fa2b8667f10ecfb31542158361c9d89d944d8c2a4",
+    "docs/agent-execution-contract.md": "9760a1a84df0e6fbb4953ea2e36a9227cb922fd6949d55f8eef5cab1841a60ab",
+    "docs/phase-plans/completion-log-template.md": "4c3a013589f71d7c5f004044e25e1f14bc8283f4180a544aa60b688ec2d8577e",
+    "docs/tech-stack.md": "73e21c7e71e1a70527656a46f220b3aba7c29ab6bbcd97bd1187bbcf1d8b9d4b",
+    "docs/directory-structure.md": "91baba3f598247405be724747007ca74b8edf13ecc101374096bfc5b74d20e9a"
+  },
+  "startedAt": "2026-09-08T12:56:51.661Z",
+  "runtime": {
+    "node": "v24.19.0",
+    "use": "documentation verification only",
+    "productDependenciesInstalled": false
+  },
+  "simulation": true,
+  "details": {
+    "inputs": [
+      {
+        "id": "manifest",
+        "path": "docs/roadmap-execution-manifest.json",
+        "sha256": "5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a",
+        "gitBlob": "a1e15a0b84e58d7613257a93d3eac807129a8ec6",
+        "workingSha256": "5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a",
+        "baselineSha256": "5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a",
+        "blobCommand": "git cat-file blob af3169f81cce66981d4e67a3c42a8fc6c405f77e:Serendipity · 际遇/docs/roadmap-execution-manifest.json",
+        "exitCode": 0
+      },
+      {
+        "id": "product-requirements",
+        "path": "docs/product-requirements.md",
+        "sha256": "320583e7baa5c0b3ee15b13ce0bc4f264e8ff1ae531feb94eb71e1102040854b",
+        "gitBlob": "8a7baae41a46165bff9dc2339e9e00bfd5a20dba",
+        "workingSha256": "320583e7baa5c0b3ee15b13ce0bc4f264e8ff1ae531feb94eb71e1102040854b",
+        "baselineSha256": "320583e7baa5c0b3ee15b13ce0bc4f264e8ff1ae531feb94eb71e1102040854b",
+        "blobCommand": "git cat-file blob af3169f81cce66981d4e67a3c42a8fc6c405f77e:Serendipity · 际遇/docs/product-requirements.md",
+        "exitCode": 0
+      },
+      {
+        "id": "canonical-contract",
+        "path": "docs/roadmap-canonical-contract.md",
+        "sha256": "06d0ccdb218482a5688d78a9f69a88a0183cedc9d5eac5d0553e224b8d6e27e5",
+        "gitBlob": "8160cd99e1f79366eb9780df0926729c0db40cf4",
+        "workingSha256": "06d0ccdb218482a5688d78a9f69a88a0183cedc9d5eac5d0553e224b8d6e27e5",
+        "baselineSha256": "06d0ccdb218482a5688d78a9f69a88a0183cedc9d5eac5d0553e224b8d6e27e5",
+        "blobCommand": "git cat-file blob af3169f81cce66981d4e67a3c42a8fc6c405f77e:Serendipity · 际遇/docs/roadmap-canonical-contract.md",
+        "exitCode": 0
+      },
+      {
+        "id": "terminology",
+        "path": "docs/术语冻结表.md",
+        "sha256": "403f21a6063aac79a3a93554156b06d9aff9277e6267c8f9ec17109cff4aff9f",
+        "gitBlob": "df3b90e3c5def19601cf4f0f86117c48fa1ea918",
+        "workingSha256": "403f21a6063aac79a3a93554156b06d9aff9277e6267c8f9ec17109cff4aff9f",
+        "baselineSha256": "403f21a6063aac79a3a93554156b06d9aff9277e6267c8f9ec17109cff4aff9f",
+        "blobCommand": "git cat-file blob af3169f81cce66981d4e67a3c42a8fc6c405f77e:Serendipity · 际遇/docs/术语冻结表.md",
+        "exitCode": 0
+      },
+      {
+        "id": "state-machines",
+        "path": "docs/state-machines.md",
+        "sha256": "3dab632bd549b26908312b09b166947b2a26128a0298749ba1c7efc6d3d6717a",
+        "gitBlob": "2829f95449faab003e71d295a421741cbb314362",
+        "workingSha256": "3dab632bd549b26908312b09b166947b2a26128a0298749ba1c7efc6d3d6717a",
+        "baselineSha256": "3dab632bd549b26908312b09b166947b2a26128a0298749ba1c7efc6d3d6717a",
+        "blobCommand": "git cat-file blob af3169f81cce66981d4e67a3c42a8fc6c405f77e:Serendipity · 际遇/docs/state-machines.md",
+        "exitCode": 0
+      },
+      {
+        "id": "testing-strategy",
+        "path": "docs/testing-strategy.md",
+        "sha256": "36d90b927e90916a3dcfd0105022884c8f3c64cb04e22996da4cb4299acc93a5",
+        "gitBlob": "1c4711019bbe3b9b6b9953265e61a2cdf89ea626",
+        "workingSha256": "36d90b927e90916a3dcfd0105022884c8f3c64cb04e22996da4cb4299acc93a5",
+        "baselineSha256": "36d90b927e90916a3dcfd0105022884c8f3c64cb04e22996da4cb4299acc93a5",
+        "blobCommand": "git cat-file blob af3169f81cce66981d4e67a3c42a8fc6c405f77e:Serendipity · 际遇/docs/testing-strategy.md",
+        "exitCode": 0
+      },
+      {
+        "id": "personal-project-waivers",
+        "path": "docs/personal-project-gate-waivers.md",
+        "sha256": "d96657b9165dc737a89da1be92e6e15c04b63480ceb6199e3110061d91463644",
+        "gitBlob": "81d1b98f987261b52758964a3301b8a503ea7f81",
+        "workingSha256": "d96657b9165dc737a89da1be92e6e15c04b63480ceb6199e3110061d91463644",
+        "baselineSha256": "d96657b9165dc737a89da1be92e6e15c04b63480ceb6199e3110061d91463644",
+        "blobCommand": "git cat-file blob af3169f81cce66981d4e67a3c42a8fc6c405f77e:Serendipity · 际遇/docs/personal-project-gate-waivers.md",
+        "exitCode": 0
+      },
+      {
+        "id": "agent-only-execution",
+        "path": "docs/agent-only-execution-contract.md",
+        "sha256": "032bfac53bce2dff89cb7470ae809f0a802ecf1fdf9f2fc266b465a37f838eff",
+        "gitBlob": "7d7a608be1f7acdd0c5c373247550133faae77ab",
+        "workingSha256": "032bfac53bce2dff89cb7470ae809f0a802ecf1fdf9f2fc266b465a37f838eff",
+        "baselineSha256": "032bfac53bce2dff89cb7470ae809f0a802ecf1fdf9f2fc266b465a37f838eff",
+        "blobCommand": "git cat-file blob af3169f81cce66981d4e67a3c42a8fc6c405f77e:Serendipity · 际遇/docs/agent-only-execution-contract.md",
+        "exitCode": 0
+      },
+      {
+        "id": "phase-gate-schema",
+        "path": "docs/phase-gate.schema.json",
+        "sha256": "e5c42fa3d46e1d6209f471d0bd6b249c2435c3ccf809dc4c73f4ef4b5f962633",
+        "gitBlob": "40da5bb93cd5f8f823accf9409ba50f70d3436fe",
+        "workingSha256": "e5c42fa3d46e1d6209f471d0bd6b249c2435c3ccf809dc4c73f4ef4b5f962633",
+        "baselineSha256": "e5c42fa3d46e1d6209f471d0bd6b249c2435c3ccf809dc4c73f4ef4b5f962633",
+        "blobCommand": "git cat-file blob af3169f81cce66981d4e67a3c42a8fc6c405f77e:Serendipity · 际遇/docs/phase-gate.schema.json",
+        "exitCode": 0
+      }
+    ],
+    "canonicalCloneRow": "| clone 新记录 | source 版本授权且事务成功 | `NEEDS_REVALIDATION` | 创建 `trigger=CLONE,version=1,qualityStatus=revalidation_required` 与重映射快照/trace | 失败不留下目标记录；重试返回同一目标 |",
+    "diff": {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  "exitCode": 0,
+  "status": "PASS",
+  "numerator": 1,
+  "denominator": 1,
+  "durationMs": 1377,
+  "completedAt": "2026-09-08T12:56:53.035Z"
+}

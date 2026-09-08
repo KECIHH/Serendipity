@@ -1,0 +1,85 @@
+{
+  "testCaseId": "Phase000:project-boundary",
+  "command": "node docs/phase-plans/verify-phase000.mjs --case project-boundary",
+  "attemptId": "attempt-2",
+  "planHash": "b58794d6eea3a30549d7964649735393ab9d35cf45e59d3141e8d042d29a340c",
+  "inputHash": "658627f91dfccb9e5d37544ce1b0fd445f8d9d5f9e5983d0c1e02676ddcf2e4e",
+  "sourceHashes": {
+    "docs/phase-plans/Phase000.json": "b58794d6eea3a30549d7964649735393ab9d35cf45e59d3141e8d042d29a340c",
+    "docs/phase-plans/Phase000-inputs.json": "0e85be1e94c55846051878a0cfc7d001c9e0a405804ab1416e40095750c9ed8c",
+    "docs/phase-plans/bootstrap.json": "658627f91dfccb9e5d37544ce1b0fd445f8d9d5f9e5983d0c1e02676ddcf2e4e",
+    "docs/phase-plans/verify-phase000.mjs": "c54036ed93a745bb71e88b2e6665db1a57b937fce8db3d8c798d9620bdbb6e38",
+    "docs/phase-plans/protocol-lab.mjs": "23193820e262cd9c10b8c7113556d8dcc50a884ce4e8f8fc905bfdc7841f21f7",
+    "docs/project-constitution.md": "aabbdf0d0e4894a6023ad43fa2b8667f10ecfb31542158361c9d89d944d8c2a4",
+    "docs/agent-execution-contract.md": "9760a1a84df0e6fbb4953ea2e36a9227cb922fd6949d55f8eef5cab1841a60ab",
+    "docs/phase-plans/completion-log-template.md": "4c3a013589f71d7c5f004044e25e1f14bc8283f4180a544aa60b688ec2d8577e",
+    "docs/tech-stack.md": "73e21c7e71e1a70527656a46f220b3aba7c29ab6bbcd97bd1187bbcf1d8b9d4b",
+    "docs/directory-structure.md": "91baba3f598247405be724747007ca74b8edf13ecc101374096bfc5b74d20e9a"
+  },
+  "startedAt": "2026-09-08T12:45:51.846Z",
+  "runtime": {
+    "node": "v24.19.0",
+    "use": "documentation verification only",
+    "productDependenciesInstalled": false
+  },
+  "simulation": true,
+  "details": {
+    "roots": {
+      "repositoryRoot": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "roadmapRoot": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\Serendipity · 际遇",
+      "projectRoot": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\Serendipity · 际遇\\project"
+    },
+    "baselineCommit": "af3169f81cce66981d4e67a3c42a8fc6c405f77e",
+    "files": [
+      "docs/agent-execution-contract.md",
+      "docs/directory-structure.md",
+      "docs/project-constitution.md",
+      "docs/tech-stack.md",
+      "docs/phase-plans/bootstrap.json",
+      "docs/phase-plans/completion-log-template.md",
+      "docs/phase-plans/Phase000-inputs.json",
+      "docs/phase-plans/Phase000.json",
+      "docs/phase-plans/protocol-lab.mjs",
+      "docs/phase-plans/verify-phase000.mjs",
+      "docs/evidence/attempts/Phase000/attempt-1/attempt.json",
+      "docs/evidence/attempts/Phase000/attempt-1/checkpoint.json",
+      "docs/evidence/attempts/Phase000/attempt-1/completion-log.json",
+      "docs/evidence/attempts/Phase000/attempt-1/constitution.json",
+      "docs/evidence/attempts/Phase000/attempt-1/directory-structure.json",
+      "docs/evidence/attempts/Phase000/attempt-1/execution-contract.json",
+      "docs/evidence/attempts/Phase000/attempt-1/plan.json",
+      "docs/evidence/attempts/Phase000/attempt-1/project-boundary.json",
+      "docs/evidence/attempts/Phase000/attempt-1/source-snapshot.json",
+      "docs/evidence/attempts/Phase000/attempt-1/tech-stack.json",
+      "docs/evidence/attempts/Phase000/attempt-2/completion-log.json",
+      "docs/evidence/attempts/Phase000/attempt-2/constitution.json",
+      "docs/evidence/attempts/Phase000/attempt-2/directory-structure.json",
+      "docs/evidence/attempts/Phase000/attempt-2/execution-contract.json",
+      "docs/evidence/attempts/Phase000/attempt-2/tech-stack.json"
+    ],
+    "unknownFiles": [],
+    "initialAdmission": {
+      "branch": "main",
+      "remote": "https://github.com/KECIHH/Serendipity.git",
+      "head": "af3169f81cce66981d4e67a3c42a8fc6c405f77e",
+      "originMain": "af3169f81cce66981d4e67a3c42a8fc6c405f77e",
+      "porcelain": "",
+      "baselineProjectFiles": [],
+      "targetState": "ABSENT_OR_EMPTY",
+      "commands": [
+        "git fetch origin main",
+        "git status --porcelain=v1",
+        "git rev-parse --show-toplevel HEAD origin/main",
+        "git remote -v",
+        "git ls-tree -r --name-only HEAD -- <projectRoot>"
+      ]
+    },
+    "publicProviderRequests": 0
+  },
+  "exitCode": 0,
+  "status": "PASS",
+  "numerator": 1,
+  "denominator": 1,
+  "durationMs": 372,
+  "completedAt": "2026-09-08T12:45:52.216Z"
+}

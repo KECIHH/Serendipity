@@ -1,0 +1,61 @@
+{
+  "testCaseId": "Phase000:directory-structure",
+  "command": "node docs/phase-plans/verify-phase000.mjs --case directory-structure",
+  "attemptId": "attempt-2",
+  "planHash": "b58794d6eea3a30549d7964649735393ab9d35cf45e59d3141e8d042d29a340c",
+  "inputHash": "91baba3f598247405be724747007ca74b8edf13ecc101374096bfc5b74d20e9a",
+  "sourceHashes": {
+    "docs/phase-plans/Phase000.json": "b58794d6eea3a30549d7964649735393ab9d35cf45e59d3141e8d042d29a340c",
+    "docs/phase-plans/Phase000-inputs.json": "0e85be1e94c55846051878a0cfc7d001c9e0a405804ab1416e40095750c9ed8c",
+    "docs/phase-plans/bootstrap.json": "658627f91dfccb9e5d37544ce1b0fd445f8d9d5f9e5983d0c1e02676ddcf2e4e",
+    "docs/phase-plans/verify-phase000.mjs": "c54036ed93a745bb71e88b2e6665db1a57b937fce8db3d8c798d9620bdbb6e38",
+    "docs/phase-plans/protocol-lab.mjs": "23193820e262cd9c10b8c7113556d8dcc50a884ce4e8f8fc905bfdc7841f21f7",
+    "docs/project-constitution.md": "aabbdf0d0e4894a6023ad43fa2b8667f10ecfb31542158361c9d89d944d8c2a4",
+    "docs/agent-execution-contract.md": "9760a1a84df0e6fbb4953ea2e36a9227cb922fd6949d55f8eef5cab1841a60ab",
+    "docs/phase-plans/completion-log-template.md": "4c3a013589f71d7c5f004044e25e1f14bc8283f4180a544aa60b688ec2d8577e",
+    "docs/tech-stack.md": "73e21c7e71e1a70527656a46f220b3aba7c29ab6bbcd97bd1187bbcf1d8b9d4b",
+    "docs/directory-structure.md": "91baba3f598247405be724747007ca74b8edf13ecc101374096bfc5b74d20e9a"
+  },
+  "startedAt": "2026-09-08T12:45:51.717Z",
+  "runtime": {
+    "node": "v24.19.0",
+    "use": "documentation verification only",
+    "productDependenciesInstalled": false
+  },
+  "simulation": true,
+  "details": {
+    "assertions": [
+      "contains src/app",
+      "contains src/components",
+      "contains src/lib",
+      "contains src/server",
+      "contains src/types",
+      "contains prisma",
+      "contains docs",
+      "contains src/lib/ai/provider.ts",
+      "contains src/lib/ai/schemas.ts",
+      "contains src/server/services/planner-service.ts",
+      "contains src/app/admin/",
+      "contains src/app/api/",
+      "contains src/server/services/",
+      "contains src/components/ui",
+      "contains repositoryRoot",
+      "contains roadmapRoot",
+      "contains projectRoot",
+      "directory responsibility src/app",
+      "directory responsibility src/components",
+      "directory responsibility src/lib",
+      "directory responsibility src/server",
+      "directory responsibility src/types",
+      "directory responsibility prisma",
+      "directory responsibility docs"
+    ],
+    "assertionCount": 24
+  },
+  "exitCode": 0,
+  "status": "PASS",
+  "numerator": 1,
+  "denominator": 1,
+  "durationMs": 5,
+  "completedAt": "2026-09-08T12:45:51.720Z"
+}

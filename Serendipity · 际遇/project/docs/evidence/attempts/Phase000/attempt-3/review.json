@@ -1,0 +1,132 @@
+{
+  "phase": 0,
+  "attemptId": "attempt-3",
+  "reviewerRunId": "phase000-attempt-3-independent-review-20260908T130045Z",
+  "contextId": "/root/phase000_independent_review",
+  "runnerIdentity": {
+    "kind": "INDEPENDENT_CODEX_AGENT",
+    "taskName": "/root/phase000_independent_review",
+    "parentTaskName": "/root",
+    "assignment": "Independent read-only review of Phase000 documents, assertions, protocol laboratory and evidence",
+    "implementationAuthored": false,
+    "gitIndexOrHistoryMutated": false,
+    "onlyAuthoredArtifact": "docs/evidence/attempts/Phase000/attempt-3/review.json"
+  },
+  "generatedBy": "Codex independent reviewer agent /root/phase000_independent_review",
+  "generatedAt": "2026-09-08T13:00:45Z",
+  "durationMs": null,
+  "durationMeasurement": "UNMEASURED: review work spanned implementation and verification waits; no continuous review timer was recorded.",
+  "simulation": true,
+  "planPath": "docs/phase-plans/Phase000.json",
+  "planHash": "2d57c50c28b563995c2eb4d5a2df007a7420d9e7eeb1ab5f900750c81f6c9741",
+  "decision": "PASS",
+  "decisionScope": "Phase000 candidate artifact contents and completed automated evidence are ready for the actual artifact/metadata transaction. This review does not attest to the subsequent actual repository seal or remote push.",
+  "issues": [],
+  "dispositions": [
+    {
+      "source": "attempt-1",
+      "observation": "The isolated artifact git diff --cached --check returned exit 2 because completion-log-template.md contained a new blank line at EOF. The checkpoint case correctly returned FAIL with exit 1.",
+      "resolution": "The source template EOF was corrected, the failed plan/report/source snapshot was preserved, and all ten original cases were rerun in subsequent attempts.",
+      "status": "RESOLVED",
+      "evidencePath": "docs/evidence/attempts/Phase000/attempt-1/checkpoint.json",
+      "archivedPlanHash": "501f70a66ccd230c992fff6a200d60021099b97b97da0c92d15f9b88ddc2d19b",
+      "snapshotHashesRecomputed": 10
+    },
+    {
+      "source": "attempt-2",
+      "observation": "PowerShell 7 passed the isolated positive checkpoint, but Windows PowerShell could not resolve Get-FileHash through its inherited module environment, returned exit 1 and produced no JSON. The checkpoint remained FAIL.",
+      "resolution": "The child shell environment removes inherited PSModulePath and the wrapper selects UTF-8 console output before invoking the unchanged frozen validator with Strict and Json. The wrapper source/hash and invocation policy are archived. Both real shell editions now pass the positive and restored checkpoints and reject the intended mutations.",
+      "status": "RESOLVED",
+      "evidencePath": "docs/evidence/attempts/Phase000/attempt-2/checkpoint.json",
+      "archivedPlanHash": "b58794d6eea3a30549d7964649735393ab9d35cf45e59d3141e8d042d29a340c",
+      "snapshotHashesRecomputed": 10
+    }
+  ],
+  "sourceHashes": {
+    "docs/phase-plans/Phase000.json": "2d57c50c28b563995c2eb4d5a2df007a7420d9e7eeb1ab5f900750c81f6c9741",
+    "docs/phase-plans/Phase000-inputs.json": "0e85be1e94c55846051878a0cfc7d001c9e0a405804ab1416e40095750c9ed8c",
+    "docs/phase-plans/bootstrap.json": "658627f91dfccb9e5d37544ce1b0fd445f8d9d5f9e5983d0c1e02676ddcf2e4e",
+    "docs/phase-plans/verify-phase000.mjs": "c54036ed93a745bb71e88b2e6665db1a57b937fce8db3d8c798d9620bdbb6e38",
+    "docs/phase-plans/protocol-lab.mjs": "327c09a74315d0806cb6e319b95d708b0fd966bc2aa96b737188c3b085bba6ca",
+    "docs/project-constitution.md": "aabbdf0d0e4894a6023ad43fa2b8667f10ecfb31542158361c9d89d944d8c2a4",
+    "docs/agent-execution-contract.md": "9760a1a84df0e6fbb4953ea2e36a9227cb922fd6949d55f8eef5cab1841a60ab",
+    "docs/phase-plans/completion-log-template.md": "4c3a013589f71d7c5f004044e25e1f14bc8283f4180a544aa60b688ec2d8577e",
+    "docs/tech-stack.md": "73e21c7e71e1a70527656a46f220b3aba7c29ab6bbcd97bd1187bbcf1d8b9d4b",
+    "docs/directory-structure.md": "91baba3f598247405be724747007ca74b8edf13ecc101374096bfc5b74d20e9a"
+  },
+  "reportHashes": {
+    "docs/evidence/attempts/Phase000/attempt-3/constitution.json": "8478a0555c5a211d4d01088fbcaf407db31692e93f90f98a5afca9058b449e3c",
+    "docs/evidence/attempts/Phase000/attempt-3/execution-contract.json": "b21c40904072be4f8b9f7d6f7e34e9096cbbf79ce4c81a61a7ae1656e5fad867",
+    "docs/evidence/attempts/Phase000/attempt-3/completion-log.json": "eadf9e5f889f7e11d5cfcbdf7709300e696d0a489f2ac2cdddee4712cc831b8d",
+    "docs/evidence/attempts/Phase000/attempt-3/tech-stack.json": "e9c241aca32d552469dd07aa0e3981582ae763a110598b10e29038b6459baabe",
+    "docs/evidence/attempts/Phase000/attempt-3/directory-structure.json": "2641460395398df915afe67db773ae4d31bc1276a49b782e6b65d2dfff34c8b3",
+    "docs/evidence/attempts/Phase000/attempt-3/project-boundary.json": "3ea13a34f5fe984541b88225f77fcddaee957cf7a25885fd2d11183851040058",
+    "docs/evidence/attempts/Phase000/attempt-3/checkpoint.json": "7f805ac2352390a93e918322dbb52a2f5174fb21e3abe3685b5e254263ca31bd",
+    "docs/evidence/attempts/Phase000/attempt-3/run-state.json": "6c94f5aa2828dd60066ac8a4921adcfe437078963000ff872acfc009ff53e8af",
+    "docs/evidence/attempts/Phase000/attempt-3/pinned-inputs.json": "91812968beefa62afa000cddee0bbd42448b44024e050f3d6e145186aab9d6a1",
+    "docs/evidence/attempts/Phase000/attempt-3/negative-validation.json": "92343a39cba4a6b1e0e5d63de13c72eba4b101d3a147398962c8ab13d15aa233"
+  },
+  "independentChecks": [
+    {
+      "id": "semantic-requirements-review",
+      "status": "PASS",
+      "observed": "Read the current Phase000 card, execution contract, closed Gate schema, plan, assertions and generated documents. The five document requirements, V1 exclusions, fourteen concrete decisions, seven TravelRecord states and clone=NEEDS_REVALIDATION are covered. Map, version-specific favorites and PDF/font choices agree with their frozen consumer contracts. The user-authorized scope ends after Phase000."
+    },
+    {
+      "id": "independent-content-hashes-and-fixed-denominator",
+      "status": "PASS",
+      "observed": "Independently recomputed SHA-256 from raw bytes for all ten source files and all ten result reports. Compared report plan/input/source hashes, command, case identity, attempt identity, exit code and numerator/denominator to the frozen plan. All ten cases have PASS, exit 0 and denominator 1. The existing --audit also returned PASS."
+    },
+    {
+      "id": "raw-protocol-observation-review",
+      "status": "PASS",
+      "observed": "Examined 57 archived command observations and 13 protocol negative checks: six mutation classes in both PowerShell editions plus unknown nonempty target rejection. Each negative observation has an actual nonzero exit and its expected diagnostic; its restoration exits zero and restores the original bytes. All remaining observations exit zero. The shell environment wrapper leaves the frozen validator bytes and assertion semantics unchanged."
+    },
+    {
+      "id": "document-mutation-review",
+      "status": "PASS",
+      "observed": "All six document scenarios were inspected. Removing exclusions, decisions or npm; adding an ambiguous decision; and changing clone to MODIFIED each produce the expected diagnostic and exit 1. Ordinary explanatory prose containing selection words exits 0. Every scenario restores the source hash and exits 0 afterward."
+    },
+    {
+      "id": "actual-isolated-git-objects",
+      "status": "PASS",
+      "observed": "Read the actual isolated repository with Git. Its metadata HEAD equals the archived fixture metadata, has the fixture artifact as its sole parent, and the artifact tree equals the recorded testedTree. Its final worktree is clean. Its source document and frozen input hashes still equal the actual source files. The fixture-only schema review is explicitly distinguished from this independent Agent review."
+    },
+    {
+      "id": "acyclic-metadata-and-isolation",
+      "status": "PASS",
+      "observed": "Reviewed the actual metadata generator: it verifies committed artifact blobs before writing Gate, run state and completion log; only the Gate records the artifact tree/id. Source/result reports do not hash this review or later metadata, so the evidence graph is acyclic. Mutations execute in temporary copies and the production source tree receives no injected changes."
+    },
+    {
+      "id": "baseline-pinned-inputs-and-scope",
+      "status": "PASS",
+      "observed": "Independently read all nine manifest/frozen input raw baseline blobs with git cat-file and compared their SHA-256 to working files. The actual repository remained on the recorded main baseline before artifact commit. Forty staged paths were restricted to Phase000 artifact docs; the three metadata paths were absent and excluded. No unstaged tracked changes existed, and git diff --cached --check passed. The project contains only docs and ignored .scaffold directories."
+    },
+    {
+      "id": "historical-attempt-integrity",
+      "status": "PASS",
+      "observed": "Recomputed both archived plan hashes and twenty historical source snapshot hashes. Compared previous and current case identities, commands, denominators, inputs and expectations after excluding only attempt-specific output paths. Both failures remain archived and no original required case or threshold was removed."
+    },
+    {
+      "id": "runner-syntax",
+      "status": "PASS",
+      "commands": [
+        {"command": "node --check docs/phase-plans/verify-phase000.mjs", "exitCode": 0},
+        {"command": "node --check docs/phase-plans/protocol-lab.mjs", "exitCode": 0}
+      ]
+    }
+  ],
+  "reviewExecutionNotes": [
+    "One exploratory reviewer assertion initially assumed an empty index. The main agent had already staged the forty authorized artifact files while this read-only review ran. The corrected scope assertion passed; no tested source or result changed, and the reviewer did not mutate the Git index."
+  ],
+  "pendingTransactionChecks": [
+    "The main agent must include this review in the actual phase(000): artifact commit, generate Gate/run state/completion log from that real artifact, and create its direct phase(000): metadata child.",
+    "Both real shell validators must pass CompletedThrough 0 on the actual metadata commit; the entire actual repository must then be clean.",
+    "The main agent must push origin/main and independently confirm that the remote main contains the actual metadata commit. No actual seal or push result is claimed by this pre-commit review.",
+    "Execution must stop after Phase000 because that is the user's requested scope."
+  ],
+  "notEvaluated": [
+    "Product npm, browser, database and application behavior tests are not applicable to documentation-only Phase000 and were not claimed as executed.",
+    "No human, production traffic, real Provider approval or public deployment is represented by this simulation review."
+  ]
+}

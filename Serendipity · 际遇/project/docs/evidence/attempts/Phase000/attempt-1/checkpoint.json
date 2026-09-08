@@ -1,0 +1,461 @@
+{
+  "testCaseId": "Phase000:checkpoint",
+  "command": "node docs/phase-plans/verify-phase000.mjs --case checkpoint",
+  "attemptId": "attempt-1",
+  "planHash": "501f70a66ccd230c992fff6a200d60021099b97b97da0c92d15f9b88ddc2d19b",
+  "inputHash": "0e85be1e94c55846051878a0cfc7d001c9e0a405804ab1416e40095750c9ed8c",
+  "sourceHashes": {
+    "docs/phase-plans/Phase000.json": "501f70a66ccd230c992fff6a200d60021099b97b97da0c92d15f9b88ddc2d19b",
+    "docs/phase-plans/Phase000-inputs.json": "0e85be1e94c55846051878a0cfc7d001c9e0a405804ab1416e40095750c9ed8c",
+    "docs/phase-plans/bootstrap.json": "658627f91dfccb9e5d37544ce1b0fd445f8d9d5f9e5983d0c1e02676ddcf2e4e",
+    "docs/phase-plans/verify-phase000.mjs": "267af0bcd9264aee219d83e8001d260368d0f1af044b7ded39b696b50c7d337e",
+    "docs/phase-plans/protocol-lab.mjs": "c1847dbcbc3600d024ede7d27a1fbdfb0e1e476e8cba829a789cbaefa5b4d0a9",
+    "docs/project-constitution.md": "aabbdf0d0e4894a6023ad43fa2b8667f10ecfb31542158361c9d89d944d8c2a4",
+    "docs/agent-execution-contract.md": "9760a1a84df0e6fbb4953ea2e36a9227cb922fd6949d55f8eef5cab1841a60ab",
+    "docs/phase-plans/completion-log-template.md": "75e30c36c2ec8a37e8c60cfa8bad8f887be5935920f57375ace4dad192a55b3c",
+    "docs/tech-stack.md": "73e21c7e71e1a70527656a46f220b3aba7c29ab6bbcd97bd1187bbcf1d8b9d4b",
+    "docs/directory-structure.md": "91baba3f598247405be724747007ca74b8edf13ecc101374096bfc5b74d20e9a"
+  },
+  "startedAt": "2026-09-08T12:44:14.855Z",
+  "runtime": {
+    "node": "v24.19.0",
+    "use": "documentation verification only",
+    "productDependenciesInstalled": false
+  },
+  "simulation": true,
+  "exitCode": 1,
+  "status": "FAIL",
+  "numerator": 0,
+  "failure": "fixture-artifact-whitespace-check: \n\n2 !== 0\n",
+  "protocolFailure": {
+    "simulation": true,
+    "fixtureOnly": true,
+    "status": "FAIL",
+    "labDirectory": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-LsRMus",
+    "repositoryRoot": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-LsRMus/repository",
+    "roadmapRoot": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-LsRMus/repository/Serendipity · 际遇",
+    "projectRoot": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-LsRMus/repository/Serendipity · 际遇/project",
+    "sourceHashes": {
+      "docs/project-constitution.md": "aabbdf0d0e4894a6023ad43fa2b8667f10ecfb31542158361c9d89d944d8c2a4",
+      "docs/agent-execution-contract.md": "9760a1a84df0e6fbb4953ea2e36a9227cb922fd6949d55f8eef5cab1841a60ab",
+      "docs/tech-stack.md": "73e21c7e71e1a70527656a46f220b3aba7c29ab6bbcd97bd1187bbcf1d8b9d4b",
+      "docs/directory-structure.md": "91baba3f598247405be724747007ca74b8edf13ecc101374096bfc5b74d20e9a",
+      "docs/phase-plans/completion-log-template.md": "75e30c36c2ec8a37e8c60cfa8bad8f887be5935920f57375ace4dad192a55b3c",
+      "roadmap/docs/roadmap-execution-manifest.json": "5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a",
+      "roadmap/docs/validate-roadmap-v2.ps1": "0f0bbd99f457c0ffdd64e8b49a6ac1ec06d507e9dde9d6bb91fd1c24b9db056d",
+      "roadmap/docs/product-requirements.md": "320583e7baa5c0b3ee15b13ce0bc4f264e8ff1ae531feb94eb71e1102040854b",
+      "roadmap/docs/roadmap-canonical-contract.md": "06d0ccdb218482a5688d78a9f69a88a0183cedc9d5eac5d0553e224b8d6e27e5",
+      "roadmap/docs/术语冻结表.md": "403f21a6063aac79a3a93554156b06d9aff9277e6267c8f9ec17109cff4aff9f",
+      "roadmap/docs/state-machines.md": "3dab632bd549b26908312b09b166947b2a26128a0298749ba1c7efc6d3d6717a",
+      "roadmap/docs/testing-strategy.md": "36d90b927e90916a3dcfd0105022884c8f3c64cb04e22996da4cb4299acc93a5",
+      "roadmap/docs/personal-project-gate-waivers.md": "d96657b9165dc737a89da1be92e6e15c04b63480ceb6199e3110061d91463644",
+      "roadmap/docs/agent-only-execution-contract.md": "032bfac53bce2dff89cb7470ae809f0a802ecf1fdf9f2fc266b465a37f838eff",
+      "roadmap/docs/phase-gate.schema.json": "e5c42fa3d46e1d6209f471d0bd6b249c2435c3ccf809dc4c73f4ef4b5f962633"
+    },
+    "checkpoint": null,
+    "runState": null,
+    "observations": [
+      {
+        "id": "command-001",
+        "label": "verify-actual-repository-root",
+        "executable": "git",
+        "args": [
+          "-c",
+          "core.quotepath=false",
+          "rev-parse",
+          "--show-toplevel"
+        ],
+        "command": "git -c core.quotepath=false rev-parse --show-toplevel",
+        "cwd": "C:/Users/11295/Desktop/Serendipity · 际遇",
+        "exitCode": 0,
+        "stdout": "C:/Users/11295/Desktop/Serendipity · 际遇\n",
+        "stderr": "",
+        "error": null,
+        "startedAt": "2026-09-08T12:44:14.868Z",
+        "durationMs": 72
+      },
+      {
+        "id": "command-002",
+        "label": "clone-actual-baseline",
+        "executable": "git",
+        "args": [
+          "-c",
+          "core.quotepath=false",
+          "clone",
+          "--no-hardlinks",
+          "--no-checkout",
+          "--",
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+          "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-LsRMus\\repository"
+        ],
+        "command": "git -c core.quotepath=false clone --no-hardlinks --no-checkout -- 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇' 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-LsRMus\\repository'",
+        "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-LsRMus",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "Cloning into 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-LsRMus\\repository'...\ndone.\n",
+        "error": null,
+        "startedAt": "2026-09-08T12:44:14.940Z",
+        "durationMs": 701
+      },
+      {
+        "id": "command-003",
+        "label": "checkout-actual-baseline",
+        "executable": "git",
+        "args": [
+          "-c",
+          "core.quotepath=false",
+          "switch",
+          "-C",
+          "main",
+          "af3169f81cce66981d4e67a3c42a8fc6c405f77e"
+        ],
+        "command": "git -c core.quotepath=false switch -C main af3169f81cce66981d4e67a3c42a8fc6c405f77e",
+        "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-LsRMus/repository",
+        "exitCode": 0,
+        "stdout": "Your branch is up to date with 'origin/main'.\n",
+        "stderr": "Reset branch 'main'\n",
+        "error": null,
+        "startedAt": "2026-09-08T12:44:15.641Z",
+        "durationMs": 307
+      },
+      {
+        "id": "command-004",
+        "label": "configure-fixture:user.name",
+        "executable": "git",
+        "args": [
+          "-c",
+          "core.quotepath=false",
+          "config",
+          "--local",
+          "user.name",
+          "Serendipity Protocol Fixture"
+        ],
+        "command": "git -c core.quotepath=false config --local user.name 'Serendipity Protocol Fixture'",
+        "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-LsRMus/repository",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "",
+        "error": null,
+        "startedAt": "2026-09-08T12:44:15.948Z",
+        "durationMs": 66
+      },
+      {
+        "id": "command-005",
+        "label": "configure-fixture:user.email",
+        "executable": "git",
+        "args": [
+          "-c",
+          "core.quotepath=false",
+          "config",
+          "--local",
+          "user.email",
+          "protocol-fixture@serendipity.invalid"
+        ],
+        "command": "git -c core.quotepath=false config --local user.email 'protocol-fixture@serendipity.invalid'",
+        "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-LsRMus/repository",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "",
+        "error": null,
+        "startedAt": "2026-09-08T12:44:16.014Z",
+        "durationMs": 78
+      },
+      {
+        "id": "command-006",
+        "label": "configure-fixture:commit.gpgsign",
+        "executable": "git",
+        "args": [
+          "-c",
+          "core.quotepath=false",
+          "config",
+          "--local",
+          "commit.gpgsign",
+          "false"
+        ],
+        "command": "git -c core.quotepath=false config --local commit.gpgsign false",
+        "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-LsRMus/repository",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "",
+        "error": null,
+        "startedAt": "2026-09-08T12:44:16.092Z",
+        "durationMs": 68
+      },
+      {
+        "id": "command-007",
+        "label": "configure-fixture:core.autocrlf",
+        "executable": "git",
+        "args": [
+          "-c",
+          "core.quotepath=false",
+          "config",
+          "--local",
+          "core.autocrlf",
+          "false"
+        ],
+        "command": "git -c core.quotepath=false config --local core.autocrlf false",
+        "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-LsRMus/repository",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "",
+        "error": null,
+        "startedAt": "2026-09-08T12:44:16.160Z",
+        "durationMs": 78
+      },
+      {
+        "id": "command-008",
+        "label": "configure-fixture:core.safecrlf",
+        "executable": "git",
+        "args": [
+          "-c",
+          "core.quotepath=false",
+          "config",
+          "--local",
+          "core.safecrlf",
+          "false"
+        ],
+        "command": "git -c core.quotepath=false config --local core.safecrlf false",
+        "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-LsRMus/repository",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "",
+        "error": null,
+        "startedAt": "2026-09-08T12:44:16.238Z",
+        "durationMs": 101
+      },
+      {
+        "id": "command-009",
+        "label": "configure-fixture:core.hooksPath",
+        "executable": "git",
+        "args": [
+          "-c",
+          "core.quotepath=false",
+          "config",
+          "--local",
+          "core.hooksPath",
+          "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-LsRMus\\repository\\.git\\hooks"
+        ],
+        "command": "git -c core.quotepath=false config --local core.hooksPath 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-LsRMus\\repository\\.git\\hooks'",
+        "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-LsRMus/repository",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "",
+        "error": null,
+        "startedAt": "2026-09-08T12:44:16.339Z",
+        "durationMs": 67
+      },
+      {
+        "id": "command-010",
+        "label": "set-validated-fixture-origin-without-network",
+        "executable": "git",
+        "args": [
+          "-c",
+          "core.quotepath=false",
+          "remote",
+          "set-url",
+          "origin",
+          "https://github.com/KECIHH/Serendipity.git"
+        ],
+        "command": "git -c core.quotepath=false remote set-url origin https://github.com/KECIHH/Serendipity.git",
+        "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-LsRMus/repository",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "",
+        "error": null,
+        "startedAt": "2026-09-08T12:44:16.406Z",
+        "durationMs": 79
+      },
+      {
+        "id": "command-011",
+        "label": "verify-baseline-head",
+        "executable": "git",
+        "args": [
+          "-c",
+          "core.quotepath=false",
+          "rev-parse",
+          "HEAD"
+        ],
+        "command": "git -c core.quotepath=false rev-parse HEAD",
+        "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-LsRMus/repository",
+        "exitCode": 0,
+        "stdout": "af3169f81cce66981d4e67a3c42a8fc6c405f77e\n",
+        "stderr": "",
+        "error": null,
+        "startedAt": "2026-09-08T12:44:16.485Z",
+        "durationMs": 80
+      },
+      {
+        "id": "command-012",
+        "label": "baseline-project-must-be-empty",
+        "executable": "git",
+        "args": [
+          "-c",
+          "core.quotepath=false",
+          "ls-tree",
+          "-r",
+          "--name-only",
+          "af3169f81cce66981d4e67a3c42a8fc6c405f77e",
+          "--",
+          "Serendipity · 际遇/project/"
+        ],
+        "command": "git -c core.quotepath=false ls-tree -r --name-only af3169f81cce66981d4e67a3c42a8fc6c405f77e -- 'Serendipity · 际遇/project/'",
+        "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-LsRMus/repository",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "",
+        "error": null,
+        "startedAt": "2026-09-08T12:44:16.565Z",
+        "durationMs": 70
+      },
+      {
+        "id": "command-013",
+        "label": "bootstrap-empty-target",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "args": [
+          "-e",
+          "const fs=require('node:fs');const p=process.argv[1];if(fs.existsSync(p)&&fs.readdirSync(p).length){console.error('BLOCKED_NONEMPTY_TARGET: unknown files require a valid bootstrap receipt');process.exit(1)}console.log('PASS: target absent or empty');",
+          "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-LsRMus\\repository\\Serendipity · 际遇\\project"
+        ],
+        "command": "'C:\\Program Files\\nodejs\\node.exe' -e 'const fs=require(''node:fs'');const p=process.argv[1];if(fs.existsSync(p)&&fs.readdirSync(p).length){console.error(''BLOCKED_NONEMPTY_TARGET: unknown files require a valid bootstrap receipt'');process.exit(1)}console.log(''PASS: target absent or empty'');' 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-LsRMus\\repository\\Serendipity · 际遇\\project'",
+        "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-LsRMus/repository",
+        "exitCode": 0,
+        "stdout": "PASS: target absent or empty\n",
+        "stderr": "",
+        "error": null,
+        "startedAt": "2026-09-08T12:44:16.638Z",
+        "durationMs": 118
+      },
+      {
+        "id": "command-014",
+        "label": "bootstrap-nonempty-target-rejected",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "args": [
+          "-e",
+          "const fs=require('node:fs');const p=process.argv[1];if(fs.existsSync(p)&&fs.readdirSync(p).length){console.error('BLOCKED_NONEMPTY_TARGET: unknown files require a valid bootstrap receipt');process.exit(1)}console.log('PASS: target absent or empty');",
+          "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-LsRMus\\repository\\Serendipity · 际遇\\project"
+        ],
+        "command": "'C:\\Program Files\\nodejs\\node.exe' -e 'const fs=require(''node:fs'');const p=process.argv[1];if(fs.existsSync(p)&&fs.readdirSync(p).length){console.error(''BLOCKED_NONEMPTY_TARGET: unknown files require a valid bootstrap receipt'');process.exit(1)}console.log(''PASS: target absent or empty'');' 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-LsRMus\\repository\\Serendipity · 际遇\\project'",
+        "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-LsRMus/repository",
+        "exitCode": 1,
+        "stdout": "",
+        "stderr": "BLOCKED_NONEMPTY_TARGET: unknown files require a valid bootstrap receipt\n",
+        "error": null,
+        "startedAt": "2026-09-08T12:44:16.758Z",
+        "durationMs": 109
+      },
+      {
+        "id": "command-015",
+        "label": "bootstrap-empty-target-restored",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "args": [
+          "-e",
+          "const fs=require('node:fs');const p=process.argv[1];if(fs.existsSync(p)&&fs.readdirSync(p).length){console.error('BLOCKED_NONEMPTY_TARGET: unknown files require a valid bootstrap receipt');process.exit(1)}console.log('PASS: target absent or empty');",
+          "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-LsRMus\\repository\\Serendipity · 际遇\\project"
+        ],
+        "command": "'C:\\Program Files\\nodejs\\node.exe' -e 'const fs=require(''node:fs'');const p=process.argv[1];if(fs.existsSync(p)&&fs.readdirSync(p).length){console.error(''BLOCKED_NONEMPTY_TARGET: unknown files require a valid bootstrap receipt'');process.exit(1)}console.log(''PASS: target absent or empty'');' 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-LsRMus\\repository\\Serendipity · 际遇\\project'",
+        "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-LsRMus/repository",
+        "exitCode": 0,
+        "stdout": "PASS: target absent or empty\n",
+        "stderr": "",
+        "error": null,
+        "startedAt": "2026-09-08T12:44:16.868Z",
+        "durationMs": 109
+      },
+      {
+        "id": "command-016",
+        "label": "fixture-actual-git-version",
+        "executable": "git",
+        "args": [
+          "--version"
+        ],
+        "command": "git --version",
+        "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-LsRMus/repository/Serendipity · 际遇/project",
+        "exitCode": 0,
+        "stdout": "git version 2.53.0.windows.3\n",
+        "stderr": "",
+        "error": null,
+        "startedAt": "2026-09-08T12:44:16.985Z",
+        "durationMs": 61
+      },
+      {
+        "id": "command-017",
+        "label": "stage-fixture-artifact-explicit-paths",
+        "executable": "git",
+        "args": [
+          "-c",
+          "core.quotepath=false",
+          "add",
+          "--",
+          "Serendipity · 际遇/project/docs/phase-plans/bootstrap.json",
+          "Serendipity · 际遇/project/docs/project-constitution.md",
+          "Serendipity · 际遇/project/docs/agent-execution-contract.md",
+          "Serendipity · 际遇/project/docs/tech-stack.md",
+          "Serendipity · 际遇/project/docs/directory-structure.md",
+          "Serendipity · 际遇/project/docs/phase-plans/completion-log-template.md",
+          "Serendipity · 际遇/project/docs/phase-plans/Phase000.json",
+          "Serendipity · 际遇/project/docs/evidence/attempts/Phase000/protocol-fixture/input.json",
+          "Serendipity · 际遇/project/docs/evidence/attempts/Phase000/protocol-fixture/git-version.txt",
+          "Serendipity · 际遇/project/docs/evidence/attempts/Phase000/protocol-fixture/fixture-review.json"
+        ],
+        "command": "git -c core.quotepath=false add -- 'Serendipity · 际遇/project/docs/phase-plans/bootstrap.json' 'Serendipity · 际遇/project/docs/project-constitution.md' 'Serendipity · 际遇/project/docs/agent-execution-contract.md' 'Serendipity · 际遇/project/docs/tech-stack.md' 'Serendipity · 际遇/project/docs/directory-structure.md' 'Serendipity · 际遇/project/docs/phase-plans/completion-log-template.md' 'Serendipity · 际遇/project/docs/phase-plans/Phase000.json' 'Serendipity · 际遇/project/docs/evidence/attempts/Phase000/protocol-fixture/input.json' 'Serendipity · 际遇/project/docs/evidence/attempts/Phase000/protocol-fixture/git-version.txt' 'Serendipity · 际遇/project/docs/evidence/attempts/Phase000/protocol-fixture/fixture-review.json'",
+        "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-LsRMus/repository",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "",
+        "error": null,
+        "startedAt": "2026-09-08T12:44:17.052Z",
+        "durationMs": 180
+      },
+      {
+        "id": "command-018",
+        "label": "fixture-artifact-whitespace-check",
+        "executable": "git",
+        "args": [
+          "-c",
+          "core.quotepath=false",
+          "diff",
+          "--cached",
+          "--check"
+        ],
+        "command": "git -c core.quotepath=false diff --cached --check",
+        "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-LsRMus/repository",
+        "exitCode": 2,
+        "stdout": "Serendipity · 际遇/project/docs/phase-plans/completion-log-template.md:20: new blank line at EOF.\n",
+        "stderr": "",
+        "error": null,
+        "startedAt": "2026-09-08T12:44:17.232Z",
+        "durationMs": 75
+      }
+    ],
+    "negativeChecks": [
+      {
+        "name": "unknown-nonempty-target",
+        "shell": "node",
+        "fixtureOnly": true,
+        "scope": "bootstrap-preflight",
+        "mutationPath": "Serendipity · 际遇/project/unknown-fixture-file.txt",
+        "beforeHash": null,
+        "afterHash": "0203e655d0e3d1c388530da08b7de1d813199bb30c245f19c37e6bf798d31698",
+        "restoredHash": null,
+        "expectedDiagnostic": "BLOCKED_NONEMPTY_TARGET",
+        "observationId": "command-014",
+        "restorationObservationId": "command-015",
+        "observedExitCode": 1,
+        "restoredExitCode": 0,
+        "status": "PASS"
+      }
+    ],
+    "restored": false,
+    "fixtureReviewNotice": "The laboratory review is schema fixture data, not an independent Agent review of the actual Phase000 deliverable.",
+    "startedAt": "2026-09-08T12:44:14.867Z",
+    "failures": [
+      {
+        "message": "fixture-artifact-whitespace-check: \n\n2 !== 0\n"
+      }
+    ],
+    "generatedAt": "2026-09-08T12:44:17.307Z"
+  },
+  "denominator": 1,
+  "durationMs": 2455,
+  "completedAt": "2026-09-08T12:44:17.307Z"
+}

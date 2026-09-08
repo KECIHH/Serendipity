@@ -31,4 +31,7 @@
 
 - 远端仓库：`https://github.com/KECIHH/Serendipity.git`
 - 初始主分支：`main`
-- 技术栈与测试命令尚未确定，后续按实际项目更新本文件和 README。
+- 本目录是唯一 `repositoryRoot`，沿用当前 Git 历史与 `origin/main`；`Serendipity · 际遇/` 是 `roadmapRoot`，其 `project/` 是待创建的源码目录，不在其中初始化第二个 Git 仓库。
+- 技术栈已由开发文档确定：Next.js App Router、TypeScript、Tailwind CSS 4、PostgreSQL 17、Prisma、Auth.js、Vitest 与 Playwright。精确启动版本以执行包 manifest.runtimePolicy 为准。
+- 文档修订仍使用常规提交。正式 Phase 执行按执行契约使用 artifact/metadata 双提交，在本仓库记录开工前 `baselineCommit`；只对该基线之后的提交检查阶段格式。每卡双 shell seal 通过后推送并核对远端，再进入下一卡。
+- 文本遵循 `.gitattributes` 的 LF 约定，在计算证据 hash 前规范化换行；不得让自动换行转换改变受测文件的提交字节。路线校验命令见根 README，产品测试命令由对应 Phase 创建。

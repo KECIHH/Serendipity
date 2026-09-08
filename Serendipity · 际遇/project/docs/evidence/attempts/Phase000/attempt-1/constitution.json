@@ -1,0 +1,52 @@
+{
+  "testCaseId": "Phase000:constitution",
+  "command": "node docs/phase-plans/verify-phase000.mjs --case constitution",
+  "attemptId": "attempt-1",
+  "planHash": "501f70a66ccd230c992fff6a200d60021099b97b97da0c92d15f9b88ddc2d19b",
+  "inputHash": "aabbdf0d0e4894a6023ad43fa2b8667f10ecfb31542158361c9d89d944d8c2a4",
+  "sourceHashes": {
+    "docs/phase-plans/Phase000.json": "501f70a66ccd230c992fff6a200d60021099b97b97da0c92d15f9b88ddc2d19b",
+    "docs/phase-plans/Phase000-inputs.json": "0e85be1e94c55846051878a0cfc7d001c9e0a405804ab1416e40095750c9ed8c",
+    "docs/phase-plans/bootstrap.json": "658627f91dfccb9e5d37544ce1b0fd445f8d9d5f9e5983d0c1e02676ddcf2e4e",
+    "docs/phase-plans/verify-phase000.mjs": "267af0bcd9264aee219d83e8001d260368d0f1af044b7ded39b696b50c7d337e",
+    "docs/phase-plans/protocol-lab.mjs": "c1847dbcbc3600d024ede7d27a1fbdfb0e1e476e8cba829a789cbaefa5b4d0a9",
+    "docs/project-constitution.md": "aabbdf0d0e4894a6023ad43fa2b8667f10ecfb31542158361c9d89d944d8c2a4",
+    "docs/agent-execution-contract.md": "9760a1a84df0e6fbb4953ea2e36a9227cb922fd6949d55f8eef5cab1841a60ab",
+    "docs/phase-plans/completion-log-template.md": "75e30c36c2ec8a37e8c60cfa8bad8f887be5935920f57375ace4dad192a55b3c",
+    "docs/tech-stack.md": "73e21c7e71e1a70527656a46f220b3aba7c29ab6bbcd97bd1187bbcf1d8b9d4b",
+    "docs/directory-structure.md": "91baba3f598247405be724747007ca74b8edf13ecc101374096bfc5b74d20e9a"
+  },
+  "startedAt": "2026-09-08T12:44:13.719Z",
+  "runtime": {
+    "node": "v24.19.0",
+    "use": "documentation verification only",
+    "productDependenciesInstalled": false
+  },
+  "simulation": true,
+  "details": {
+    "assertions": [
+      "heading 项目定位",
+      "heading 核心原则",
+      "heading AI 输出规则",
+      "heading V1 范围",
+      "heading V1 不做事项",
+      "at least three excluded features",
+      "exclusion 订单",
+      "exclusion 支付",
+      "exclusion 社交",
+      "exclusion 第三方登录",
+      "contains Serendipity",
+      "contains JSON",
+      "contains API Key",
+      "contains Prompt",
+      "contains 校验"
+    ],
+    "assertionCount": 15
+  },
+  "exitCode": 0,
+  "status": "PASS",
+  "numerator": 1,
+  "denominator": 1,
+  "durationMs": 6,
+  "completedAt": "2026-09-08T12:44:13.722Z"
+}

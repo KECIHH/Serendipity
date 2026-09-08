@@ -1,0 +1,130 @@
+{
+  "phase": 0,
+  "attemptId": "attempt-2",
+  "producer": "Phase000",
+  "consumers": [
+    "Phase001",
+    "roadmap checkpoint validator"
+  ],
+  "scope": "Phase000 project meta documents and automated document/checkpoint evidence only",
+  "modificationScope": [
+    "projectRoot/docs/"
+  ],
+  "requiredCaseIds": [
+    "Phase000:constitution",
+    "Phase000:execution-contract",
+    "Phase000:completion-log",
+    "Phase000:tech-stack",
+    "Phase000:directory-structure",
+    "Phase000:project-boundary",
+    "Phase000:checkpoint",
+    "Phase000:run-state",
+    "Phase000:pinned-inputs",
+    "Phase000:negative-validation"
+  ],
+  "cases": [
+    {
+      "testCaseId": "Phase000:constitution",
+      "command": "node docs/phase-plans/verify-phase000.mjs --case constitution",
+      "denominator": 1,
+      "inputPath": "docs/project-constitution.md",
+      "outputPath": "docs/evidence/attempts/Phase000/attempt-2/constitution.json",
+      "expected": "All five headings, nonempty V1 scope, at least three exclusions including orders/payment/social/third-party login, JSON and configuration rules"
+    },
+    {
+      "testCaseId": "Phase000:execution-contract",
+      "command": "node docs/phase-plans/verify-phase000.mjs --case execution-contract",
+      "denominator": 1,
+      "inputPath": "docs/agent-execution-contract.md",
+      "outputPath": "docs/evidence/attempts/Phase000/attempt-2/execution-contract.json",
+      "expected": "All execution/governance sections, exactly 14 concrete canonical decisions, seven TravelRecord states and clone target NEEDS_REVALIDATION, no ambiguous selection fields"
+    },
+    {
+      "testCaseId": "Phase000:completion-log",
+      "command": "node docs/phase-plans/verify-phase000.mjs --case completion-log",
+      "denominator": 1,
+      "inputPath": "docs/phase-plans/completion-log-template.md",
+      "outputPath": "docs/evidence/attempts/Phase000/attempt-2/completion-log.json",
+      "expected": "Persisted Markdown template with all six columns and mandatory metadata update rules; actual log created only in metadata"
+    },
+    {
+      "testCaseId": "Phase000:tech-stack",
+      "command": "node docs/phase-plans/verify-phase000.mjs --case tech-stack",
+      "denominator": 1,
+      "inputPath": "docs/tech-stack.md",
+      "outputPath": "docs/evidence/attempts/Phase000/attempt-2/tech-stack.json",
+      "expected": "Frozen framework/runtime/AI/auth/test/deployment choices and all 11 future npm commands, npm only; no assertion of uncreated npm scripts"
+    },
+    {
+      "testCaseId": "Phase000:directory-structure",
+      "command": "node docs/phase-plans/verify-phase000.mjs --case directory-structure",
+      "denominator": 1,
+      "inputPath": "docs/directory-structure.md",
+      "outputPath": "docs/evidence/attempts/Phase000/attempt-2/directory-structure.json",
+      "expected": "Seven core responsibilities, three exact AI file paths, admin/frontend/API/service boundaries and src prefix"
+    },
+    {
+      "testCaseId": "Phase000:project-boundary",
+      "command": "node docs/phase-plans/verify-phase000.mjs --case project-boundary",
+      "denominator": 1,
+      "inputPath": "docs/phase-plans/bootstrap.json",
+      "outputPath": "docs/evidence/attempts/Phase000/attempt-2/project-boundary.json",
+      "expected": "Manifest roots resolve to the unique existing repository and new project; receipt and baseline are consistent; no nested git, future products or unknown files; baseline project tree empty"
+    },
+    {
+      "testCaseId": "Phase000:checkpoint",
+      "command": "node docs/phase-plans/verify-phase000.mjs --case checkpoint",
+      "denominator": 1,
+      "inputPath": "docs/phase-plans/Phase000-inputs.json",
+      "outputPath": "docs/evidence/attempts/Phase000/attempt-2/checkpoint.json",
+      "expected": "Isolated clone of actual baseline with real candidate documents forms adjacent artifact/metadata commits and passes both official shells; actual repository sealed separately after metadata"
+    },
+    {
+      "testCaseId": "Phase000:run-state",
+      "command": "node docs/phase-plans/verify-phase000.mjs --case run-state",
+      "denominator": 1,
+      "inputPath": "docs/phase-plans/Phase000-inputs.json",
+      "outputPath": "docs/evidence/attempts/Phase000/attempt-2/run-state.json",
+      "expected": "Shared metadata generator binds manifest, all eight pinned contracts, baseline, artifact, evidence hash and state 0/1; isolated full validator proves parent and schema/hash invariants"
+    },
+    {
+      "testCaseId": "Phase000:pinned-inputs",
+      "command": "node docs/phase-plans/verify-phase000.mjs --case pinned-inputs",
+      "denominator": 1,
+      "inputPath": "docs/phase-plans/Phase000-inputs.json",
+      "outputPath": "docs/evidence/attempts/Phase000/attempt-2/pinned-inputs.json",
+      "expected": "Manifest and all eight frozen input SHA-256 hashes agree with actual files and raw baseline blobs; canonical clone contract agrees; git diff --check is clean"
+    },
+    {
+      "testCaseId": "Phase000:negative-validation",
+      "command": "node docs/phase-plans/verify-phase000.mjs --case negative-validation",
+      "denominator": 1,
+      "inputPath": "docs/phase-plans/Phase000-inputs.json",
+      "outputPath": "docs/evidence/attempts/Phase000/attempt-2/negative-validation.json",
+      "expected": "Isolated removal of exclusions/14 decisions/npm and ambiguous decision/clone regression is rejected; ordinary explanatory words accepted; wrong artifact parent/evidence byte/schema/target boundaries/hash drift rejected for specific reasons, restored full checks pass"
+    }
+  ],
+  "threshold": {
+    "originalThreshold": 10,
+    "automatedThreshold": 10,
+    "waived": false
+  },
+  "postMetadataChecks": [
+    "pwsh -NoProfile -File ./docs/validate-roadmap-v2.ps1 -Manifest ./docs/roadmap-execution-manifest.json -CompletedThrough 0 -Strict -Json",
+    "powershell -NoProfile -ExecutionPolicy Bypass -File ./docs/validate-roadmap-v2.ps1 -Manifest ./docs/roadmap-execution-manifest.json -CompletedThrough 0 -Strict -Json",
+    "git status --porcelain=v1",
+    "git push origin main",
+    "git ls-remote --heads origin main"
+  ],
+  "notApplicable": [
+    "npm lint/typecheck/test/build: not created until Phase003/004",
+    "product unit/integration/browser tests: Phase000 is documentation only"
+  ],
+  "previousAttempts": [
+    {
+      "attemptId": "attempt-1",
+      "planPath": "docs/evidence/attempts/Phase000/attempt-1/plan.json",
+      "planHash": "501f70a66ccd230c992fff6a200d60021099b97b97da0c92d15f9b88ddc2d19b"
+    }
+  ]
+}

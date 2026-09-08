@@ -1,0 +1,1906 @@
+{
+  "testCaseId": "Phase000:checkpoint",
+  "command": "node docs/phase-plans/verify-phase000.mjs --case checkpoint",
+  "attemptId": "attempt-3",
+  "planHash": "2d57c50c28b563995c2eb4d5a2df007a7420d9e7eeb1ab5f900750c81f6c9741",
+  "inputHash": "0e85be1e94c55846051878a0cfc7d001c9e0a405804ab1416e40095750c9ed8c",
+  "sourceHashes": {
+    "docs/phase-plans/Phase000.json": "2d57c50c28b563995c2eb4d5a2df007a7420d9e7eeb1ab5f900750c81f6c9741",
+    "docs/phase-plans/Phase000-inputs.json": "0e85be1e94c55846051878a0cfc7d001c9e0a405804ab1416e40095750c9ed8c",
+    "docs/phase-plans/bootstrap.json": "658627f91dfccb9e5d37544ce1b0fd445f8d9d5f9e5983d0c1e02676ddcf2e4e",
+    "docs/phase-plans/verify-phase000.mjs": "c54036ed93a745bb71e88b2e6665db1a57b937fce8db3d8c798d9620bdbb6e38",
+    "docs/phase-plans/protocol-lab.mjs": "327c09a74315d0806cb6e319b95d708b0fd966bc2aa96b737188c3b085bba6ca",
+    "docs/project-constitution.md": "aabbdf0d0e4894a6023ad43fa2b8667f10ecfb31542158361c9d89d944d8c2a4",
+    "docs/agent-execution-contract.md": "9760a1a84df0e6fbb4953ea2e36a9227cb922fd6949d55f8eef5cab1841a60ab",
+    "docs/phase-plans/completion-log-template.md": "4c3a013589f71d7c5f004044e25e1f14bc8283f4180a544aa60b688ec2d8577e",
+    "docs/tech-stack.md": "73e21c7e71e1a70527656a46f220b3aba7c29ab6bbcd97bd1187bbcf1d8b9d4b",
+    "docs/directory-structure.md": "91baba3f598247405be724747007ca74b8edf13ecc101374096bfc5b74d20e9a"
+  },
+  "startedAt": "2026-09-08T12:53:33.644Z",
+  "runtime": {
+    "node": "v24.19.0",
+    "use": "documentation verification only",
+    "productDependenciesInstalled": false
+  },
+  "simulation": true,
+  "details": {
+    "verificationScope": "ISOLATED_BASELINE_CLONE",
+    "actualPostMetadataSeal": "REQUIRED_AFTER_METADATA",
+    "protocol": {
+      "simulation": true,
+      "fixtureOnly": true,
+      "status": "PASS",
+      "labDirectory": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6",
+      "repositoryRoot": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+      "roadmapRoot": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+      "projectRoot": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇/project",
+      "validatorInvocation": {
+        "wrapperPath": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/invoke-roadmap-validator.ps1",
+        "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+        "wrapperSource": "[CmdletBinding()]\nparam(\n  [Parameter(Mandatory = $true)][string]$Validator,\n  [Parameter(Mandatory = $true)][string]$Manifest,\n  [int]$CompletedThrough = 0\n)\n$ErrorActionPreference = 'Stop'\n$ProgressPreference = 'SilentlyContinue'\n[Console]::OutputEncoding = [Text.UTF8Encoding]::new($false)\n$OutputEncoding = [Console]::OutputEncoding\n& $Validator -Manifest $Manifest -CompletedThrough $CompletedThrough -Strict -Json\nexit $LASTEXITCODE\n",
+        "environmentPolicy": {
+          "removedVariables": [
+            "PSModulePath"
+          ],
+          "consoleEncoding": "UTF-8"
+        },
+        "frozenValidatorUnmodified": true
+      },
+      "sourceHashes": {
+        "docs/project-constitution.md": "aabbdf0d0e4894a6023ad43fa2b8667f10ecfb31542158361c9d89d944d8c2a4",
+        "docs/agent-execution-contract.md": "9760a1a84df0e6fbb4953ea2e36a9227cb922fd6949d55f8eef5cab1841a60ab",
+        "docs/tech-stack.md": "73e21c7e71e1a70527656a46f220b3aba7c29ab6bbcd97bd1187bbcf1d8b9d4b",
+        "docs/directory-structure.md": "91baba3f598247405be724747007ca74b8edf13ecc101374096bfc5b74d20e9a",
+        "docs/phase-plans/completion-log-template.md": "4c3a013589f71d7c5f004044e25e1f14bc8283f4180a544aa60b688ec2d8577e",
+        "roadmap/docs/roadmap-execution-manifest.json": "5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a",
+        "roadmap/docs/validate-roadmap-v2.ps1": "0f0bbd99f457c0ffdd64e8b49a6ac1ec06d507e9dde9d6bb91fd1c24b9db056d",
+        "roadmap/docs/product-requirements.md": "320583e7baa5c0b3ee15b13ce0bc4f264e8ff1ae531feb94eb71e1102040854b",
+        "roadmap/docs/roadmap-canonical-contract.md": "06d0ccdb218482a5688d78a9f69a88a0183cedc9d5eac5d0553e224b8d6e27e5",
+        "roadmap/docs/术语冻结表.md": "403f21a6063aac79a3a93554156b06d9aff9277e6267c8f9ec17109cff4aff9f",
+        "roadmap/docs/state-machines.md": "3dab632bd549b26908312b09b166947b2a26128a0298749ba1c7efc6d3d6717a",
+        "roadmap/docs/testing-strategy.md": "36d90b927e90916a3dcfd0105022884c8f3c64cb04e22996da4cb4299acc93a5",
+        "roadmap/docs/personal-project-gate-waivers.md": "d96657b9165dc737a89da1be92e6e15c04b63480ceb6199e3110061d91463644",
+        "roadmap/docs/agent-only-execution-contract.md": "032bfac53bce2dff89cb7470ae809f0a802ecf1fdf9f2fc266b465a37f838eff",
+        "roadmap/docs/phase-gate.schema.json": "e5c42fa3d46e1d6209f471d0bd6b249c2435c3ccf809dc4c73f4ef4b5f962633"
+      },
+      "checkpoint": {
+        "baselineCommit": "af3169f81cce66981d4e67a3c42a8fc6c405f77e",
+        "artifactCommit": "8fd719d8777c2405475a9f559043e19b47e3157a",
+        "metadataCommit": "059fc921cd25cac98a2f9ddbfac1abdb4b7f778e",
+        "testedTree": "8d3af666d13220b20054a53de3754d46c2d467a0",
+        "parent": "8fd719d8777c2405475a9f559043e19b47e3157a",
+        "metadataPaths": [
+          "Serendipity · 际遇/project/docs/evidence/Phase000-gate.json",
+          "Serendipity · 际遇/project/docs/phase-completion-log.md",
+          "Serendipity · 际遇/project/docs/roadmap-run.json"
+        ]
+      },
+      "runState": {
+        "roadmapId": "traceme-roadmap-v2-new-build",
+        "executionMode": "NEW_BUILD",
+        "operatorMode": "AGENT_ONLY_AUTOMATED_NEW_BUILD",
+        "manifestHash": "5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a",
+        "repositoryRoot": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+        "roadmapRoot": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+        "projectRoot": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇/project",
+        "baselineCommit": "af3169f81cce66981d4e67a3c42a8fc6c405f77e",
+        "completedThrough": 0,
+        "currentPhase": 1,
+        "lastArtifactCommit": "8fd719d8777c2405475a9f559043e19b47e3157a",
+        "contractHashes": {
+          "product-requirements": "320583e7baa5c0b3ee15b13ce0bc4f264e8ff1ae531feb94eb71e1102040854b",
+          "canonical-contract": "06d0ccdb218482a5688d78a9f69a88a0183cedc9d5eac5d0553e224b8d6e27e5",
+          "terminology": "403f21a6063aac79a3a93554156b06d9aff9277e6267c8f9ec17109cff4aff9f",
+          "state-machines": "3dab632bd549b26908312b09b166947b2a26128a0298749ba1c7efc6d3d6717a",
+          "testing-strategy": "36d90b927e90916a3dcfd0105022884c8f3c64cb04e22996da4cb4299acc93a5",
+          "personal-project-waivers": "d96657b9165dc737a89da1be92e6e15c04b63480ceb6199e3110061d91463644",
+          "agent-only-execution": "032bfac53bce2dff89cb7470ae809f0a802ecf1fdf9f2fc266b465a37f838eff",
+          "phase-gate-schema": "e5c42fa3d46e1d6209f471d0bd6b249c2435c3ccf809dc4c73f4ef4b5f962633"
+        },
+        "checkpoints": [
+          {
+            "phase": 0,
+            "artifactCommit": "8fd719d8777c2405475a9f559043e19b47e3157a",
+            "evidencePath": "docs/evidence/Phase000-gate.json",
+            "evidenceHash": "36910ca61a028a78b4d0e84b139c726de337f6491f7fb292cd914464e27afa27"
+          }
+        ]
+      },
+      "observations": [
+        {
+          "id": "command-001",
+          "label": "verify-actual-repository-root",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "rev-parse",
+            "--show-toplevel"
+          ],
+          "command": "git -c core.quotepath=false rev-parse --show-toplevel",
+          "cwd": "C:/Users/11295/Desktop/Serendipity · 际遇",
+          "exitCode": 0,
+          "stdout": "C:/Users/11295/Desktop/Serendipity · 际遇\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:33.657Z",
+          "durationMs": 79
+        },
+        {
+          "id": "command-002",
+          "label": "clone-actual-baseline",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "clone",
+            "--no-hardlinks",
+            "--no-checkout",
+            "--",
+            "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository"
+          ],
+          "command": "git -c core.quotepath=false clone --no-hardlinks --no-checkout -- 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇' 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository'",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6",
+          "exitCode": 0,
+          "stdout": "",
+          "stderr": "Cloning into 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository'...\ndone.\n",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:33.736Z",
+          "durationMs": 653
+        },
+        {
+          "id": "command-003",
+          "label": "checkout-actual-baseline",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "switch",
+            "-C",
+            "main",
+            "af3169f81cce66981d4e67a3c42a8fc6c405f77e"
+          ],
+          "command": "git -c core.quotepath=false switch -C main af3169f81cce66981d4e67a3c42a8fc6c405f77e",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "Your branch is up to date with 'origin/main'.\n",
+          "stderr": "Reset branch 'main'\n",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:34.389Z",
+          "durationMs": 295
+        },
+        {
+          "id": "command-004",
+          "label": "configure-fixture:user.name",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "config",
+            "--local",
+            "user.name",
+            "Serendipity Protocol Fixture"
+          ],
+          "command": "git -c core.quotepath=false config --local user.name 'Serendipity Protocol Fixture'",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:34.684Z",
+          "durationMs": 77
+        },
+        {
+          "id": "command-005",
+          "label": "configure-fixture:user.email",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "config",
+            "--local",
+            "user.email",
+            "protocol-fixture@serendipity.invalid"
+          ],
+          "command": "git -c core.quotepath=false config --local user.email 'protocol-fixture@serendipity.invalid'",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:34.761Z",
+          "durationMs": 69
+        },
+        {
+          "id": "command-006",
+          "label": "configure-fixture:commit.gpgsign",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "config",
+            "--local",
+            "commit.gpgsign",
+            "false"
+          ],
+          "command": "git -c core.quotepath=false config --local commit.gpgsign false",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:34.830Z",
+          "durationMs": 67
+        },
+        {
+          "id": "command-007",
+          "label": "configure-fixture:core.autocrlf",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "config",
+            "--local",
+            "core.autocrlf",
+            "false"
+          ],
+          "command": "git -c core.quotepath=false config --local core.autocrlf false",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:34.897Z",
+          "durationMs": 68
+        },
+        {
+          "id": "command-008",
+          "label": "configure-fixture:core.safecrlf",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "config",
+            "--local",
+            "core.safecrlf",
+            "false"
+          ],
+          "command": "git -c core.quotepath=false config --local core.safecrlf false",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:34.965Z",
+          "durationMs": 74
+        },
+        {
+          "id": "command-009",
+          "label": "configure-fixture:core.hooksPath",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "config",
+            "--local",
+            "core.hooksPath",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\.git\\hooks"
+          ],
+          "command": "git -c core.quotepath=false config --local core.hooksPath 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\.git\\hooks'",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:35.039Z",
+          "durationMs": 69
+        },
+        {
+          "id": "command-010",
+          "label": "set-validated-fixture-origin-without-network",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "remote",
+            "set-url",
+            "origin",
+            "https://github.com/KECIHH/Serendipity.git"
+          ],
+          "command": "git -c core.quotepath=false remote set-url origin https://github.com/KECIHH/Serendipity.git",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:35.108Z",
+          "durationMs": 85
+        },
+        {
+          "id": "command-011",
+          "label": "verify-baseline-head",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "rev-parse",
+            "HEAD"
+          ],
+          "command": "git -c core.quotepath=false rev-parse HEAD",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "af3169f81cce66981d4e67a3c42a8fc6c405f77e\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:35.193Z",
+          "durationMs": 70
+        },
+        {
+          "id": "command-012",
+          "label": "baseline-project-must-be-empty",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "ls-tree",
+            "-r",
+            "--name-only",
+            "af3169f81cce66981d4e67a3c42a8fc6c405f77e",
+            "--",
+            "Serendipity · 际遇/project/"
+          ],
+          "command": "git -c core.quotepath=false ls-tree -r --name-only af3169f81cce66981d4e67a3c42a8fc6c405f77e -- 'Serendipity · 际遇/project/'",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:35.263Z",
+          "durationMs": 68
+        },
+        {
+          "id": "command-013",
+          "label": "bootstrap-empty-target",
+          "executable": "C:\\Program Files\\nodejs\\node.exe",
+          "args": [
+            "-e",
+            "const fs=require('node:fs');const p=process.argv[1];if(fs.existsSync(p)&&fs.readdirSync(p).length){console.error('BLOCKED_NONEMPTY_TARGET: unknown files require a valid bootstrap receipt');process.exit(1)}console.log('PASS: target absent or empty');",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\project"
+          ],
+          "command": "'C:\\Program Files\\nodejs\\node.exe' -e 'const fs=require(''node:fs'');const p=process.argv[1];if(fs.existsSync(p)&&fs.readdirSync(p).length){console.error(''BLOCKED_NONEMPTY_TARGET: unknown files require a valid bootstrap receipt'');process.exit(1)}console.log(''PASS: target absent or empty'');' 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\project'",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "PASS: target absent or empty\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:35.333Z",
+          "durationMs": 113
+        },
+        {
+          "id": "command-014",
+          "label": "bootstrap-nonempty-target-rejected",
+          "executable": "C:\\Program Files\\nodejs\\node.exe",
+          "args": [
+            "-e",
+            "const fs=require('node:fs');const p=process.argv[1];if(fs.existsSync(p)&&fs.readdirSync(p).length){console.error('BLOCKED_NONEMPTY_TARGET: unknown files require a valid bootstrap receipt');process.exit(1)}console.log('PASS: target absent or empty');",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\project"
+          ],
+          "command": "'C:\\Program Files\\nodejs\\node.exe' -e 'const fs=require(''node:fs'');const p=process.argv[1];if(fs.existsSync(p)&&fs.readdirSync(p).length){console.error(''BLOCKED_NONEMPTY_TARGET: unknown files require a valid bootstrap receipt'');process.exit(1)}console.log(''PASS: target absent or empty'');' 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\project'",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "BLOCKED_NONEMPTY_TARGET: unknown files require a valid bootstrap receipt\n",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:35.448Z",
+          "durationMs": 111
+        },
+        {
+          "id": "command-015",
+          "label": "bootstrap-empty-target-restored",
+          "executable": "C:\\Program Files\\nodejs\\node.exe",
+          "args": [
+            "-e",
+            "const fs=require('node:fs');const p=process.argv[1];if(fs.existsSync(p)&&fs.readdirSync(p).length){console.error('BLOCKED_NONEMPTY_TARGET: unknown files require a valid bootstrap receipt');process.exit(1)}console.log('PASS: target absent or empty');",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\project"
+          ],
+          "command": "'C:\\Program Files\\nodejs\\node.exe' -e 'const fs=require(''node:fs'');const p=process.argv[1];if(fs.existsSync(p)&&fs.readdirSync(p).length){console.error(''BLOCKED_NONEMPTY_TARGET: unknown files require a valid bootstrap receipt'');process.exit(1)}console.log(''PASS: target absent or empty'');' 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\project'",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "PASS: target absent or empty\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:35.560Z",
+          "durationMs": 109
+        },
+        {
+          "id": "command-016",
+          "label": "fixture-actual-git-version",
+          "executable": "git",
+          "args": [
+            "--version"
+          ],
+          "command": "git --version",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇/project",
+          "exitCode": 0,
+          "stdout": "git version 2.53.0.windows.3\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:35.677Z",
+          "durationMs": 61
+        },
+        {
+          "id": "command-017",
+          "label": "stage-fixture-artifact-explicit-paths",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "add",
+            "--",
+            "Serendipity · 际遇/project/docs/phase-plans/bootstrap.json",
+            "Serendipity · 际遇/project/docs/project-constitution.md",
+            "Serendipity · 际遇/project/docs/agent-execution-contract.md",
+            "Serendipity · 际遇/project/docs/tech-stack.md",
+            "Serendipity · 际遇/project/docs/directory-structure.md",
+            "Serendipity · 际遇/project/docs/phase-plans/completion-log-template.md",
+            "Serendipity · 际遇/project/docs/phase-plans/Phase000.json",
+            "Serendipity · 际遇/project/docs/evidence/attempts/Phase000/protocol-fixture/input.json",
+            "Serendipity · 际遇/project/docs/evidence/attempts/Phase000/protocol-fixture/git-version.txt",
+            "Serendipity · 际遇/project/docs/evidence/attempts/Phase000/protocol-fixture/fixture-review.json"
+          ],
+          "command": "git -c core.quotepath=false add -- 'Serendipity · 际遇/project/docs/phase-plans/bootstrap.json' 'Serendipity · 际遇/project/docs/project-constitution.md' 'Serendipity · 际遇/project/docs/agent-execution-contract.md' 'Serendipity · 际遇/project/docs/tech-stack.md' 'Serendipity · 际遇/project/docs/directory-structure.md' 'Serendipity · 际遇/project/docs/phase-plans/completion-log-template.md' 'Serendipity · 际遇/project/docs/phase-plans/Phase000.json' 'Serendipity · 际遇/project/docs/evidence/attempts/Phase000/protocol-fixture/input.json' 'Serendipity · 际遇/project/docs/evidence/attempts/Phase000/protocol-fixture/git-version.txt' 'Serendipity · 际遇/project/docs/evidence/attempts/Phase000/protocol-fixture/fixture-review.json'",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:35.745Z",
+          "durationMs": 178
+        },
+        {
+          "id": "command-018",
+          "label": "fixture-artifact-whitespace-check",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "diff",
+            "--cached",
+            "--check"
+          ],
+          "command": "git -c core.quotepath=false diff --cached --check",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:35.923Z",
+          "durationMs": 78
+        },
+        {
+          "id": "command-019",
+          "label": "fixture-artifact-commit",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "commit",
+            "-m",
+            "phase(000): artifact"
+          ],
+          "command": "git -c core.quotepath=false commit -m 'phase(000): artifact'",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "[main 8fd719d] phase(000): artifact\n 10 files changed, 439 insertions(+)\n create mode 100644 Serendipity · 际遇/project/docs/agent-execution-contract.md\n create mode 100644 Serendipity · 际遇/project/docs/directory-structure.md\n create mode 100644 Serendipity · 际遇/project/docs/evidence/attempts/Phase000/protocol-fixture/fixture-review.json\n create mode 100644 Serendipity · 际遇/project/docs/evidence/attempts/Phase000/protocol-fixture/git-version.txt\n create mode 100644 Serendipity · 际遇/project/docs/evidence/attempts/Phase000/protocol-fixture/input.json\n create mode 100644 Serendipity · 际遇/project/docs/phase-plans/Phase000.json\n create mode 100644 Serendipity · 际遇/project/docs/phase-plans/bootstrap.json\n create mode 100644 Serendipity · 际遇/project/docs/phase-plans/completion-log-template.md\n create mode 100644 Serendipity · 际遇/project/docs/project-constitution.md\n create mode 100644 Serendipity · 际遇/project/docs/tech-stack.md\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:36.001Z",
+          "durationMs": 177
+        },
+        {
+          "id": "command-020",
+          "label": "read-fixture-artifact-id",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "rev-parse",
+            "HEAD"
+          ],
+          "command": "git -c core.quotepath=false rev-parse HEAD",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "8fd719d8777c2405475a9f559043e19b47e3157a\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:36.178Z",
+          "durationMs": 65
+        },
+        {
+          "id": "command-021",
+          "label": "read-fixture-artifact-tree",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "rev-parse",
+            "HEAD^{tree}"
+          ],
+          "command": "git -c core.quotepath=false rev-parse 'HEAD^{tree}'",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "8d3af666d13220b20054a53de3754d46c2d467a0\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:36.243Z",
+          "durationMs": 69
+        },
+        {
+          "id": "command-022",
+          "label": "stage-fixture-metadata-explicit-paths",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "add",
+            "--",
+            "Serendipity · 际遇/project/docs/evidence/Phase000-gate.json",
+            "Serendipity · 际遇/project/docs/roadmap-run.json",
+            "Serendipity · 际遇/project/docs/phase-completion-log.md"
+          ],
+          "command": "git -c core.quotepath=false add -- 'Serendipity · 际遇/project/docs/evidence/Phase000-gate.json' 'Serendipity · 际遇/project/docs/roadmap-run.json' 'Serendipity · 际遇/project/docs/phase-completion-log.md'",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:36.318Z",
+          "durationMs": 87
+        },
+        {
+          "id": "command-023",
+          "label": "fixture-metadata-whitespace-check",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "diff",
+            "--cached",
+            "--check"
+          ],
+          "command": "git -c core.quotepath=false diff --cached --check",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:36.405Z",
+          "durationMs": 72
+        },
+        {
+          "id": "command-024",
+          "label": "fixture-metadata-commit",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "commit",
+            "-m",
+            "phase(000): metadata"
+          ],
+          "command": "git -c core.quotepath=false commit -m 'phase(000): metadata'",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "[main 059fc92] phase(000): metadata\n 3 files changed, 113 insertions(+)\n create mode 100644 Serendipity · 际遇/project/docs/evidence/Phase000-gate.json\n create mode 100644 Serendipity · 际遇/project/docs/phase-completion-log.md\n create mode 100644 Serendipity · 际遇/project/docs/roadmap-run.json\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:36.477Z",
+          "durationMs": 150
+        },
+        {
+          "id": "command-025",
+          "label": "read-fixture-metadata-id",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "rev-parse",
+            "HEAD"
+          ],
+          "command": "git -c core.quotepath=false rev-parse HEAD",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:36.627Z",
+          "durationMs": 81
+        },
+        {
+          "id": "command-026",
+          "label": "verify-fixture-parent",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "rev-list",
+            "--parents",
+            "-n",
+            "1",
+            "HEAD"
+          ],
+          "command": "git -c core.quotepath=false rev-list --parents -n 1 HEAD",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "059fc921cd25cac98a2f9ddbfac1abdb4b7f778e 8fd719d8777c2405475a9f559043e19b47e3157a\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:36.708Z",
+          "durationMs": 67
+        },
+        {
+          "id": "command-027",
+          "label": "verify-fixture-metadata-paths",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "diff",
+            "--name-only",
+            "HEAD^",
+            "HEAD"
+          ],
+          "command": "git -c core.quotepath=false diff --name-only 'HEAD^' HEAD",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "Serendipity · 际遇/project/docs/evidence/Phase000-gate.json\nSerendipity · 际遇/project/docs/phase-completion-log.md\nSerendipity · 际遇/project/docs/roadmap-run.json\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:36.776Z",
+          "durationMs": 71
+        },
+        {
+          "id": "command-028",
+          "label": "verify-fixture-clean-worktree",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "status",
+            "--porcelain=v1",
+            "--untracked-files=all"
+          ],
+          "command": "git -c core.quotepath=false status --porcelain=v1 --untracked-files=all",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:36.847Z",
+          "durationMs": 75
+        },
+        {
+          "id": "command-029",
+          "label": "positive-checkpoint:pwsh",
+          "executable": "pwsh",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 0,
+          "stdout": "{\r\n  \"status\": \"PASS\",\r\n  \"mode\": \"EXECUTION_CHECKPOINT\",\r\n  \"completedThrough\": 0,\r\n  \"manifest\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n  \"manifestHash\": \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n  \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n  \"roadmapRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n  \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n  \"phaseCount\": 138,\r\n  \"gitHead\": \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n  \"lastArtifactCommit\": \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n  \"baselineCommit\": \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n  \"errors\": [],\r\n  \"warnings\": [],\r\n  \"note\": \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:36.923Z",
+          "durationMs": 5748,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "PASS"
+        },
+        {
+          "id": "command-030",
+          "label": "positive-checkpoint:powershell",
+          "executable": "powershell",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 0,
+          "stdout": "{\r\n    \"status\":  \"PASS\",\r\n    \"mode\":  \"EXECUTION_CHECKPOINT\",\r\n    \"completedThrough\":  0,\r\n    \"manifest\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n    \"manifestHash\":  \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n    \"repositoryRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n    \"roadmapRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n    \"projectRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n    \"phaseCount\":  138,\r\n    \"gitHead\":  \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n    \"lastArtifactCommit\":  \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n    \"baselineCommit\":  \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n    \"errors\":  [\r\n\r\n               ],\r\n    \"warnings\":  [\r\n\r\n                 ],\r\n    \"note\":  \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:42.672Z",
+          "durationMs": 8812,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "PASS"
+        },
+        {
+          "id": "command-031",
+          "label": "metadata-self-reference:pwsh:reject",
+          "executable": "pwsh",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 1,
+          "stdout": "{\r\n  \"status\": \"FAIL\",\r\n  \"mode\": \"EXECUTION_CHECKPOINT\",\r\n  \"completedThrough\": 0,\r\n  \"manifest\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n  \"manifestHash\": \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n  \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n  \"roadmapRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n  \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n  \"phaseCount\": 138,\r\n  \"gitHead\": \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n  \"lastArtifactCommit\": \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n  \"baselineCommit\": \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n  \"errors\": [\r\n    \"repositoryRoot worktree must be clean after metadata commit.\",\r\n    \"No checkpoint references run state lastArtifactCommit.\",\r\n    \"Run state lastArtifactCommit must belong to completedThrough, not an earlier checkpoint.\",\r\n    \"Metadata HEAD parent must equal run state lastArtifactCommit.\"\r\n  ],\r\n  \"warnings\": [],\r\n  \"note\": \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:51.486Z",
+          "durationMs": 5930,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "FAIL"
+        },
+        {
+          "id": "command-032",
+          "label": "metadata-self-reference:pwsh:restored",
+          "executable": "pwsh",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 0,
+          "stdout": "{\r\n  \"status\": \"PASS\",\r\n  \"mode\": \"EXECUTION_CHECKPOINT\",\r\n  \"completedThrough\": 0,\r\n  \"manifest\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n  \"manifestHash\": \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n  \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n  \"roadmapRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n  \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n  \"phaseCount\": 138,\r\n  \"gitHead\": \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n  \"lastArtifactCommit\": \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n  \"baselineCommit\": \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n  \"errors\": [],\r\n  \"warnings\": [],\r\n  \"note\": \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:53:57.418Z",
+          "durationMs": 5377,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "PASS"
+        },
+        {
+          "id": "command-033",
+          "label": "metadata-self-reference:powershell:reject",
+          "executable": "powershell",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 1,
+          "stdout": "{\r\n    \"status\":  \"FAIL\",\r\n    \"mode\":  \"EXECUTION_CHECKPOINT\",\r\n    \"completedThrough\":  0,\r\n    \"manifest\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n    \"manifestHash\":  \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n    \"repositoryRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n    \"roadmapRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n    \"projectRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n    \"phaseCount\":  138,\r\n    \"gitHead\":  \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n    \"lastArtifactCommit\":  \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n    \"baselineCommit\":  \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n    \"errors\":  [\r\n                   \"repositoryRoot worktree must be clean after metadata commit.\",\r\n                   \"No checkpoint references run state lastArtifactCommit.\",\r\n                   \"Run state lastArtifactCommit must belong to completedThrough, not an earlier checkpoint.\",\r\n                   \"Metadata HEAD parent must equal run state lastArtifactCommit.\"\r\n               ],\r\n    \"warnings\":  [\r\n\r\n                 ],\r\n    \"note\":  \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:54:02.797Z",
+          "durationMs": 8600,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "FAIL"
+        },
+        {
+          "id": "command-034",
+          "label": "metadata-self-reference:powershell:restored",
+          "executable": "powershell",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 0,
+          "stdout": "{\r\n    \"status\":  \"PASS\",\r\n    \"mode\":  \"EXECUTION_CHECKPOINT\",\r\n    \"completedThrough\":  0,\r\n    \"manifest\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n    \"manifestHash\":  \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n    \"repositoryRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n    \"roadmapRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n    \"projectRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n    \"phaseCount\":  138,\r\n    \"gitHead\":  \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n    \"lastArtifactCommit\":  \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n    \"baselineCommit\":  \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n    \"errors\":  [\r\n\r\n               ],\r\n    \"warnings\":  [\r\n\r\n                 ],\r\n    \"note\":  \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:54:11.398Z",
+          "durationMs": 8836,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "PASS"
+        },
+        {
+          "id": "command-035",
+          "label": "evidence-byte-tamper:pwsh:reject",
+          "executable": "pwsh",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 1,
+          "stdout": "{\r\n  \"status\": \"FAIL\",\r\n  \"mode\": \"EXECUTION_CHECKPOINT\",\r\n  \"completedThrough\": 0,\r\n  \"manifest\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n  \"manifestHash\": \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n  \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n  \"roadmapRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n  \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n  \"phaseCount\": 138,\r\n  \"gitHead\": \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n  \"lastArtifactCommit\": \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n  \"baselineCommit\": \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n  \"errors\": [\r\n    \"repositoryRoot worktree must be clean after metadata commit.\",\r\n    \"Checkpoint evidenceHash mismatch: docs/evidence/Phase000-gate.json\"\r\n  ],\r\n  \"warnings\": [],\r\n  \"note\": \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:54:20.235Z",
+          "durationMs": 5602,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "FAIL"
+        },
+        {
+          "id": "command-036",
+          "label": "evidence-byte-tamper:pwsh:restored",
+          "executable": "pwsh",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 0,
+          "stdout": "{\r\n  \"status\": \"PASS\",\r\n  \"mode\": \"EXECUTION_CHECKPOINT\",\r\n  \"completedThrough\": 0,\r\n  \"manifest\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n  \"manifestHash\": \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n  \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n  \"roadmapRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n  \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n  \"phaseCount\": 138,\r\n  \"gitHead\": \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n  \"lastArtifactCommit\": \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n  \"baselineCommit\": \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n  \"errors\": [],\r\n  \"warnings\": [],\r\n  \"note\": \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:54:25.839Z",
+          "durationMs": 5682,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "PASS"
+        },
+        {
+          "id": "command-037",
+          "label": "evidence-byte-tamper:powershell:reject",
+          "executable": "powershell",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 1,
+          "stdout": "{\r\n    \"status\":  \"FAIL\",\r\n    \"mode\":  \"EXECUTION_CHECKPOINT\",\r\n    \"completedThrough\":  0,\r\n    \"manifest\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n    \"manifestHash\":  \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n    \"repositoryRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n    \"roadmapRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n    \"projectRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n    \"phaseCount\":  138,\r\n    \"gitHead\":  \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n    \"lastArtifactCommit\":  \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n    \"baselineCommit\":  \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n    \"errors\":  [\r\n                   \"repositoryRoot worktree must be clean after metadata commit.\",\r\n                   \"Checkpoint evidenceHash mismatch: docs/evidence/Phase000-gate.json\"\r\n               ],\r\n    \"warnings\":  [\r\n\r\n                 ],\r\n    \"note\":  \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:54:31.522Z",
+          "durationMs": 8725,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "FAIL"
+        },
+        {
+          "id": "command-038",
+          "label": "evidence-byte-tamper:powershell:restored",
+          "executable": "powershell",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 0,
+          "stdout": "{\r\n    \"status\":  \"PASS\",\r\n    \"mode\":  \"EXECUTION_CHECKPOINT\",\r\n    \"completedThrough\":  0,\r\n    \"manifest\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n    \"manifestHash\":  \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n    \"repositoryRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n    \"roadmapRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n    \"projectRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n    \"phaseCount\":  138,\r\n    \"gitHead\":  \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n    \"lastArtifactCommit\":  \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n    \"baselineCommit\":  \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n    \"errors\":  [\r\n\r\n               ],\r\n    \"warnings\":  [\r\n\r\n                 ],\r\n    \"note\":  \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:54:40.249Z",
+          "durationMs": 8733,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "PASS"
+        },
+        {
+          "id": "command-039",
+          "label": "closed-schema-extra-field:pwsh:reject",
+          "executable": "pwsh",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 1,
+          "stdout": "{\r\n  \"status\": \"FAIL\",\r\n  \"mode\": \"EXECUTION_CHECKPOINT\",\r\n  \"completedThrough\": 0,\r\n  \"manifest\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n  \"manifestHash\": \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n  \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n  \"roadmapRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n  \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n  \"phaseCount\": 138,\r\n  \"gitHead\": \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n  \"lastArtifactCommit\": \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n  \"baselineCommit\": \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n  \"errors\": [\r\n    \"repositoryRoot worktree must be clean after metadata commit.\",\r\n    \"Checkpoint evidenceHash mismatch: docs/evidence/Phase000-gate.json\",\r\n    \"docs/evidence/Phase000-gate.json contains unknown property unexpectedFixtureField.\"\r\n  ],\r\n  \"warnings\": [],\r\n  \"note\": \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:54:48.984Z",
+          "durationMs": 5184,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "FAIL"
+        },
+        {
+          "id": "command-040",
+          "label": "closed-schema-extra-field:pwsh:restored",
+          "executable": "pwsh",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 0,
+          "stdout": "{\r\n  \"status\": \"PASS\",\r\n  \"mode\": \"EXECUTION_CHECKPOINT\",\r\n  \"completedThrough\": 0,\r\n  \"manifest\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n  \"manifestHash\": \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n  \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n  \"roadmapRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n  \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n  \"phaseCount\": 138,\r\n  \"gitHead\": \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n  \"lastArtifactCommit\": \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n  \"baselineCommit\": \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n  \"errors\": [],\r\n  \"warnings\": [],\r\n  \"note\": \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:54:54.169Z",
+          "durationMs": 5680,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "PASS"
+        },
+        {
+          "id": "command-041",
+          "label": "closed-schema-extra-field:powershell:reject",
+          "executable": "powershell",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 1,
+          "stdout": "{\r\n    \"status\":  \"FAIL\",\r\n    \"mode\":  \"EXECUTION_CHECKPOINT\",\r\n    \"completedThrough\":  0,\r\n    \"manifest\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n    \"manifestHash\":  \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n    \"repositoryRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n    \"roadmapRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n    \"projectRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n    \"phaseCount\":  138,\r\n    \"gitHead\":  \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n    \"lastArtifactCommit\":  \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n    \"baselineCommit\":  \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n    \"errors\":  [\r\n                   \"repositoryRoot worktree must be clean after metadata commit.\",\r\n                   \"Checkpoint evidenceHash mismatch: docs/evidence/Phase000-gate.json\",\r\n                   \"docs/evidence/Phase000-gate.json contains unknown property unexpectedFixtureField.\"\r\n               ],\r\n    \"warnings\":  [\r\n\r\n                 ],\r\n    \"note\":  \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:54:59.851Z",
+          "durationMs": 8259,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "FAIL"
+        },
+        {
+          "id": "command-042",
+          "label": "closed-schema-extra-field:powershell:restored",
+          "executable": "powershell",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 0,
+          "stdout": "{\r\n    \"status\":  \"PASS\",\r\n    \"mode\":  \"EXECUTION_CHECKPOINT\",\r\n    \"completedThrough\":  0,\r\n    \"manifest\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n    \"manifestHash\":  \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n    \"repositoryRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n    \"roadmapRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n    \"projectRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n    \"phaseCount\":  138,\r\n    \"gitHead\":  \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n    \"lastArtifactCommit\":  \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n    \"baselineCommit\":  \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n    \"errors\":  [\r\n\r\n               ],\r\n    \"warnings\":  [\r\n\r\n                 ],\r\n    \"note\":  \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:55:08.112Z",
+          "durationMs": 8912,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "PASS"
+        },
+        {
+          "id": "command-043",
+          "label": "project-root-outside-roadmap:pwsh:reject",
+          "executable": "pwsh",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "-1"
+          ],
+          "command": "pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough -1",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 1,
+          "stdout": "{\r\n  \"status\": \"FAIL\",\r\n  \"mode\": \"ROADMAP_ONLY\",\r\n  \"completedThrough\": -1,\r\n  \"manifest\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n  \"manifestHash\": \"205d620a4efe7c6a558b6c122769dae9c7e229ab8234b649b1fbb5b6b5ad5505\",\r\n  \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n  \"roadmapRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n  \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\project\",\r\n  \"phaseCount\": 138,\r\n  \"gitHead\": null,\r\n  \"lastArtifactCommit\": null,\r\n  \"baselineCommit\": null,\r\n  \"errors\": [\r\n    \"projectRoot must be a strict child of roadmapRoot.\"\r\n  ],\r\n  \"warnings\": [],\r\n  \"note\": \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:55:17.027Z",
+          "durationMs": 2984,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "FAIL"
+        },
+        {
+          "id": "command-044",
+          "label": "project-root-outside-roadmap:pwsh:restored",
+          "executable": "pwsh",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 0,
+          "stdout": "{\r\n  \"status\": \"PASS\",\r\n  \"mode\": \"EXECUTION_CHECKPOINT\",\r\n  \"completedThrough\": 0,\r\n  \"manifest\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n  \"manifestHash\": \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n  \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n  \"roadmapRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n  \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n  \"phaseCount\": 138,\r\n  \"gitHead\": \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n  \"lastArtifactCommit\": \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n  \"baselineCommit\": \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n  \"errors\": [],\r\n  \"warnings\": [],\r\n  \"note\": \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:55:20.012Z",
+          "durationMs": 5404,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "PASS"
+        },
+        {
+          "id": "command-045",
+          "label": "project-root-outside-roadmap:powershell:reject",
+          "executable": "powershell",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "-1"
+          ],
+          "command": "powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough -1",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 1,
+          "stdout": "{\r\n    \"status\":  \"FAIL\",\r\n    \"mode\":  \"ROADMAP_ONLY\",\r\n    \"completedThrough\":  -1,\r\n    \"manifest\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n    \"manifestHash\":  \"205d620a4efe7c6a558b6c122769dae9c7e229ab8234b649b1fbb5b6b5ad5505\",\r\n    \"repositoryRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n    \"roadmapRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n    \"projectRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\project\",\r\n    \"phaseCount\":  138,\r\n    \"gitHead\":  null,\r\n    \"lastArtifactCommit\":  null,\r\n    \"baselineCommit\":  null,\r\n    \"errors\":  [\r\n                   \"projectRoot must be a strict child of roadmapRoot.\"\r\n               ],\r\n    \"warnings\":  [\r\n\r\n                 ],\r\n    \"note\":  \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:55:25.418Z",
+          "durationMs": 5824,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "FAIL"
+        },
+        {
+          "id": "command-046",
+          "label": "project-root-outside-roadmap:powershell:restored",
+          "executable": "powershell",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 0,
+          "stdout": "{\r\n    \"status\":  \"PASS\",\r\n    \"mode\":  \"EXECUTION_CHECKPOINT\",\r\n    \"completedThrough\":  0,\r\n    \"manifest\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n    \"manifestHash\":  \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n    \"repositoryRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n    \"roadmapRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n    \"projectRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n    \"phaseCount\":  138,\r\n    \"gitHead\":  \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n    \"lastArtifactCommit\":  \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n    \"baselineCommit\":  \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n    \"errors\":  [\r\n\r\n               ],\r\n    \"warnings\":  [\r\n\r\n                 ],\r\n    \"note\":  \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:55:31.243Z",
+          "durationMs": 8820,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "PASS"
+        },
+        {
+          "id": "command-047",
+          "label": "baseline-already-contains-project:pwsh:reject",
+          "executable": "pwsh",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 1,
+          "stdout": "{\r\n  \"status\": \"FAIL\",\r\n  \"mode\": \"EXECUTION_CHECKPOINT\",\r\n  \"completedThrough\": 0,\r\n  \"manifest\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n  \"manifestHash\": \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n  \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n  \"roadmapRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n  \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n  \"phaseCount\": 138,\r\n  \"gitHead\": \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n  \"lastArtifactCommit\": \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n  \"baselineCommit\": \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n  \"errors\": [\r\n    \"repositoryRoot worktree must be clean after metadata commit.\",\r\n    \"baselineCommit must precede all projectRoot artifacts.\",\r\n    \"Bootstrap receipt baselineCommit differs from run state.\",\r\n    \"Phase0 checkpoint artifact is not an ancestor of HEAD.\",\r\n    \"HEAD must be the final completed phase metadata commit.\"\r\n  ],\r\n  \"warnings\": [],\r\n  \"note\": \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:55:40.065Z",
+          "durationMs": 5265,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "FAIL"
+        },
+        {
+          "id": "command-048",
+          "label": "baseline-already-contains-project:pwsh:restored",
+          "executable": "pwsh",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 0,
+          "stdout": "{\r\n  \"status\": \"PASS\",\r\n  \"mode\": \"EXECUTION_CHECKPOINT\",\r\n  \"completedThrough\": 0,\r\n  \"manifest\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n  \"manifestHash\": \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n  \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n  \"roadmapRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n  \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n  \"phaseCount\": 138,\r\n  \"gitHead\": \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n  \"lastArtifactCommit\": \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n  \"baselineCommit\": \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n  \"errors\": [],\r\n  \"warnings\": [],\r\n  \"note\": \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:55:45.331Z",
+          "durationMs": 5687,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "PASS"
+        },
+        {
+          "id": "command-049",
+          "label": "baseline-already-contains-project:powershell:reject",
+          "executable": "powershell",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 1,
+          "stdout": "{\r\n    \"status\":  \"FAIL\",\r\n    \"mode\":  \"EXECUTION_CHECKPOINT\",\r\n    \"completedThrough\":  0,\r\n    \"manifest\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n    \"manifestHash\":  \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n    \"repositoryRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n    \"roadmapRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n    \"projectRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n    \"phaseCount\":  138,\r\n    \"gitHead\":  \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n    \"lastArtifactCommit\":  \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n    \"baselineCommit\":  \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n    \"errors\":  [\r\n                   \"repositoryRoot worktree must be clean after metadata commit.\",\r\n                   \"baselineCommit must precede all projectRoot artifacts.\",\r\n                   \"Bootstrap receipt baselineCommit differs from run state.\",\r\n                   \"Phase0 checkpoint artifact is not an ancestor of HEAD.\",\r\n                   \"HEAD must be the final completed phase metadata commit.\"\r\n               ],\r\n    \"warnings\":  [\r\n\r\n                 ],\r\n    \"note\":  \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:55:51.019Z",
+          "durationMs": 8453,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "FAIL"
+        },
+        {
+          "id": "command-050",
+          "label": "baseline-already-contains-project:powershell:restored",
+          "executable": "powershell",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 0,
+          "stdout": "{\r\n    \"status\":  \"PASS\",\r\n    \"mode\":  \"EXECUTION_CHECKPOINT\",\r\n    \"completedThrough\":  0,\r\n    \"manifest\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n    \"manifestHash\":  \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n    \"repositoryRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n    \"roadmapRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n    \"projectRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n    \"phaseCount\":  138,\r\n    \"gitHead\":  \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n    \"lastArtifactCommit\":  \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n    \"baselineCommit\":  \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n    \"errors\":  [\r\n\r\n               ],\r\n    \"warnings\":  [\r\n\r\n                 ],\r\n    \"note\":  \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:55:59.473Z",
+          "durationMs": 8777,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "PASS"
+        },
+        {
+          "id": "command-051",
+          "label": "frozen-input-hash-drift:pwsh:reject",
+          "executable": "pwsh",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 1,
+          "stdout": "{\r\n  \"status\": \"FAIL\",\r\n  \"mode\": \"EXECUTION_CHECKPOINT\",\r\n  \"completedThrough\": 0,\r\n  \"manifest\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n  \"manifestHash\": \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n  \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n  \"roadmapRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n  \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n  \"phaseCount\": 138,\r\n  \"gitHead\": \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n  \"lastArtifactCommit\": \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n  \"baselineCommit\": \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n  \"errors\": [\r\n    \"repositoryRoot worktree must be clean after metadata commit.\",\r\n    \"baselineCommit input differs from the frozen working file: Serendipity · 际遇/docs/product-requirements.md\",\r\n    \"Run state contract hash mismatch for product-requirements.\"\r\n  ],\r\n  \"warnings\": [],\r\n  \"note\": \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:56:08.252Z",
+          "durationMs": 5600,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "FAIL"
+        },
+        {
+          "id": "command-052",
+          "label": "frozen-input-hash-drift:pwsh:restored",
+          "executable": "pwsh",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 0,
+          "stdout": "{\r\n  \"status\": \"PASS\",\r\n  \"mode\": \"EXECUTION_CHECKPOINT\",\r\n  \"completedThrough\": 0,\r\n  \"manifest\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n  \"manifestHash\": \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n  \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n  \"roadmapRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n  \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n  \"phaseCount\": 138,\r\n  \"gitHead\": \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n  \"lastArtifactCommit\": \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n  \"baselineCommit\": \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n  \"errors\": [],\r\n  \"warnings\": [],\r\n  \"note\": \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:56:13.854Z",
+          "durationMs": 5629,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "PASS"
+        },
+        {
+          "id": "command-053",
+          "label": "frozen-input-hash-drift:powershell:reject",
+          "executable": "powershell",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 1,
+          "stdout": "{\r\n    \"status\":  \"FAIL\",\r\n    \"mode\":  \"EXECUTION_CHECKPOINT\",\r\n    \"completedThrough\":  0,\r\n    \"manifest\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n    \"manifestHash\":  \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n    \"repositoryRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n    \"roadmapRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n    \"projectRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n    \"phaseCount\":  138,\r\n    \"gitHead\":  \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n    \"lastArtifactCommit\":  \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n    \"baselineCommit\":  \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n    \"errors\":  [\r\n                   \"repositoryRoot worktree must be clean after metadata commit.\",\r\n                   \"baselineCommit input differs from the frozen working file: Serendipity · 际遇/docs/product-requirements.md\",\r\n                   \"Run state contract hash mismatch for product-requirements.\"\r\n               ],\r\n    \"warnings\":  [\r\n\r\n                 ],\r\n    \"note\":  \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:56:19.485Z",
+          "durationMs": 8686,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "FAIL"
+        },
+        {
+          "id": "command-054",
+          "label": "frozen-input-hash-drift:powershell:restored",
+          "executable": "powershell",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 0,
+          "stdout": "{\r\n    \"status\":  \"PASS\",\r\n    \"mode\":  \"EXECUTION_CHECKPOINT\",\r\n    \"completedThrough\":  0,\r\n    \"manifest\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n    \"manifestHash\":  \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n    \"repositoryRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n    \"roadmapRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n    \"projectRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n    \"phaseCount\":  138,\r\n    \"gitHead\":  \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n    \"lastArtifactCommit\":  \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n    \"baselineCommit\":  \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n    \"errors\":  [\r\n\r\n               ],\r\n    \"warnings\":  [\r\n\r\n                 ],\r\n    \"note\":  \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:56:28.173Z",
+          "durationMs": 8897,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "PASS"
+        },
+        {
+          "id": "command-055",
+          "label": "verify-final-restored-worktree",
+          "executable": "git",
+          "args": [
+            "-c",
+            "core.quotepath=false",
+            "status",
+            "--porcelain=v1",
+            "--untracked-files=all"
+          ],
+          "command": "git -c core.quotepath=false status --porcelain=v1 --untracked-files=all",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository",
+          "exitCode": 0,
+          "stdout": "",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:56:37.072Z",
+          "durationMs": 75
+        },
+        {
+          "id": "command-056",
+          "label": "final-restored-checkpoint:pwsh",
+          "executable": "pwsh",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 0,
+          "stdout": "{\r\n  \"status\": \"PASS\",\r\n  \"mode\": \"EXECUTION_CHECKPOINT\",\r\n  \"completedThrough\": 0,\r\n  \"manifest\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n  \"manifestHash\": \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n  \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n  \"roadmapRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n  \"projectRoot\": \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n  \"phaseCount\": 138,\r\n  \"gitHead\": \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n  \"lastArtifactCommit\": \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n  \"baselineCommit\": \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n  \"errors\": [],\r\n  \"warnings\": [],\r\n  \"note\": \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:56:37.147Z",
+          "durationMs": 5566,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "PASS"
+        },
+        {
+          "id": "command-057",
+          "label": "final-restored-checkpoint:powershell",
+          "executable": "powershell",
+          "args": [
+            "-NoProfile",
+            "-NonInteractive",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1",
+            "-Validator",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1",
+            "-Manifest",
+            "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+            "-CompletedThrough",
+            "0"
+          ],
+          "command": "powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\invoke-roadmap-validator.ps1' -Validator 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1' -Manifest 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase000-protocol-yCAmu6\\repository\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json' -CompletedThrough 0",
+          "cwd": "C:/Users/11295/AppData/Local/Temp/serendipity-phase000-protocol-yCAmu6/repository/Serendipity · 际遇",
+          "exitCode": 0,
+          "stdout": "{\r\n    \"status\":  \"PASS\",\r\n    \"mode\":  \"EXECUTION_CHECKPOINT\",\r\n    \"completedThrough\":  0,\r\n    \"manifest\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\roadmap-execution-manifest.json\",\r\n    \"manifestHash\":  \"5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a\",\r\n    \"repositoryRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\",\r\n    \"roadmapRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\",\r\n    \"projectRoot\":  \"C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-phase000-protocol-yCAmu6\\\\repository\\\\Serendipity · 际遇\\\\project\",\r\n    \"phaseCount\":  138,\r\n    \"gitHead\":  \"059fc921cd25cac98a2f9ddbfac1abdb4b7f778e\",\r\n    \"lastArtifactCommit\":  \"8fd719d8777c2405475a9f559043e19b47e3157a\",\r\n    \"baselineCommit\":  \"af3169f81cce66981d4e67a3c42a8fc6c405f77e\",\r\n    \"errors\":  [\r\n\r\n               ],\r\n    \"warnings\":  [\r\n\r\n                 ],\r\n    \"note\":  \"PASS validates encoded roadmap/checkpoint invariants only; it does not prove that the software, external providers, production data, human review, backup restore, or release has been executed.\"\r\n}\r\n",
+          "stderr": "",
+          "error": null,
+          "startedAt": "2026-09-08T12:56:42.714Z",
+          "durationMs": 8659,
+          "environmentPolicy": {
+            "removedVariables": [
+              "PSModulePath"
+            ],
+            "consoleEncoding": "UTF-8"
+          },
+          "wrapperSha256": "d9d6595e4dc4e41eb65cf652dfd6349da4ec3848a08263a22619a039b9e73e9e",
+          "parsedStatus": "PASS"
+        }
+      ],
+      "negativeChecks": [
+        {
+          "name": "unknown-nonempty-target",
+          "shell": "node",
+          "fixtureOnly": true,
+          "scope": "bootstrap-preflight",
+          "mutationPath": "Serendipity · 际遇/project/unknown-fixture-file.txt",
+          "beforeHash": null,
+          "afterHash": "0203e655d0e3d1c388530da08b7de1d813199bb30c245f19c37e6bf798d31698",
+          "restoredHash": null,
+          "expectedDiagnostic": "BLOCKED_NONEMPTY_TARGET",
+          "observationId": "command-014",
+          "restorationObservationId": "command-015",
+          "observedExitCode": 1,
+          "restoredExitCode": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "metadata-self-reference",
+          "shell": "pwsh",
+          "fixtureOnly": true,
+          "scope": "official-validator-isolated-clone",
+          "mutationPath": "Serendipity · 际遇/project/docs/roadmap-run.json",
+          "beforeHash": "2cb0fad5af063af9010577c001eda489b54d10d9bba75896e1522eb107c40149",
+          "afterHash": "2c67178f43d612db7f9847ea89e592ea75170309fbdc06e726112ddbf244224b",
+          "restoredHash": "2cb0fad5af063af9010577c001eda489b54d10d9bba75896e1522eb107c40149",
+          "expectedDiagnostic": "Metadata HEAD parent must equal run state lastArtifactCommit",
+          "observationId": "command-031",
+          "restorationObservationId": "command-032",
+          "observedExitCode": 1,
+          "restoredExitCode": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "metadata-self-reference",
+          "shell": "powershell",
+          "fixtureOnly": true,
+          "scope": "official-validator-isolated-clone",
+          "mutationPath": "Serendipity · 际遇/project/docs/roadmap-run.json",
+          "beforeHash": "2cb0fad5af063af9010577c001eda489b54d10d9bba75896e1522eb107c40149",
+          "afterHash": "2c67178f43d612db7f9847ea89e592ea75170309fbdc06e726112ddbf244224b",
+          "restoredHash": "2cb0fad5af063af9010577c001eda489b54d10d9bba75896e1522eb107c40149",
+          "expectedDiagnostic": "Metadata HEAD parent must equal run state lastArtifactCommit",
+          "observationId": "command-033",
+          "restorationObservationId": "command-034",
+          "observedExitCode": 1,
+          "restoredExitCode": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "evidence-byte-tamper",
+          "shell": "pwsh",
+          "fixtureOnly": true,
+          "scope": "official-validator-isolated-clone",
+          "mutationPath": "Serendipity · 际遇/project/docs/evidence/Phase000-gate.json",
+          "beforeHash": "36910ca61a028a78b4d0e84b139c726de337f6491f7fb292cd914464e27afa27",
+          "afterHash": "815d6add6c3588c1811dce4ebe12563ea677830bfee9dc1b3c1a2b0f791ea662",
+          "restoredHash": "36910ca61a028a78b4d0e84b139c726de337f6491f7fb292cd914464e27afa27",
+          "expectedDiagnostic": "Checkpoint evidenceHash mismatch",
+          "observationId": "command-035",
+          "restorationObservationId": "command-036",
+          "observedExitCode": 1,
+          "restoredExitCode": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "evidence-byte-tamper",
+          "shell": "powershell",
+          "fixtureOnly": true,
+          "scope": "official-validator-isolated-clone",
+          "mutationPath": "Serendipity · 际遇/project/docs/evidence/Phase000-gate.json",
+          "beforeHash": "36910ca61a028a78b4d0e84b139c726de337f6491f7fb292cd914464e27afa27",
+          "afterHash": "815d6add6c3588c1811dce4ebe12563ea677830bfee9dc1b3c1a2b0f791ea662",
+          "restoredHash": "36910ca61a028a78b4d0e84b139c726de337f6491f7fb292cd914464e27afa27",
+          "expectedDiagnostic": "Checkpoint evidenceHash mismatch",
+          "observationId": "command-037",
+          "restorationObservationId": "command-038",
+          "observedExitCode": 1,
+          "restoredExitCode": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "closed-schema-extra-field",
+          "shell": "pwsh",
+          "fixtureOnly": true,
+          "scope": "official-validator-isolated-clone",
+          "mutationPath": "Serendipity · 际遇/project/docs/evidence/Phase000-gate.json",
+          "beforeHash": "36910ca61a028a78b4d0e84b139c726de337f6491f7fb292cd914464e27afa27",
+          "afterHash": "976995b0ad5cf0f0ccb0dee6a6254a3918b14009fcba336510ec51fc7b38ee0e",
+          "restoredHash": "36910ca61a028a78b4d0e84b139c726de337f6491f7fb292cd914464e27afa27",
+          "expectedDiagnostic": "contains unknown property unexpectedFixtureField",
+          "observationId": "command-039",
+          "restorationObservationId": "command-040",
+          "observedExitCode": 1,
+          "restoredExitCode": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "closed-schema-extra-field",
+          "shell": "powershell",
+          "fixtureOnly": true,
+          "scope": "official-validator-isolated-clone",
+          "mutationPath": "Serendipity · 际遇/project/docs/evidence/Phase000-gate.json",
+          "beforeHash": "36910ca61a028a78b4d0e84b139c726de337f6491f7fb292cd914464e27afa27",
+          "afterHash": "976995b0ad5cf0f0ccb0dee6a6254a3918b14009fcba336510ec51fc7b38ee0e",
+          "restoredHash": "36910ca61a028a78b4d0e84b139c726de337f6491f7fb292cd914464e27afa27",
+          "expectedDiagnostic": "contains unknown property unexpectedFixtureField",
+          "observationId": "command-041",
+          "restorationObservationId": "command-042",
+          "observedExitCode": 1,
+          "restoredExitCode": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "project-root-outside-roadmap",
+          "shell": "pwsh",
+          "fixtureOnly": true,
+          "scope": "official-validator-isolated-clone",
+          "mutationPath": "Serendipity · 际遇/docs/roadmap-execution-manifest.json",
+          "beforeHash": "5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a",
+          "afterHash": "205d620a4efe7c6a558b6c122769dae9c7e229ab8234b649b1fbb5b6b5ad5505",
+          "restoredHash": "5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a",
+          "expectedDiagnostic": "projectRoot must be a strict child of roadmapRoot",
+          "observationId": "command-043",
+          "restorationObservationId": "command-044",
+          "observedExitCode": 1,
+          "restoredExitCode": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "project-root-outside-roadmap",
+          "shell": "powershell",
+          "fixtureOnly": true,
+          "scope": "official-validator-isolated-clone",
+          "mutationPath": "Serendipity · 际遇/docs/roadmap-execution-manifest.json",
+          "beforeHash": "5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a",
+          "afterHash": "205d620a4efe7c6a558b6c122769dae9c7e229ab8234b649b1fbb5b6b5ad5505",
+          "restoredHash": "5c45330200356311d3bad0042e067996fbf5309f3aca534be4f95975a3fece9a",
+          "expectedDiagnostic": "projectRoot must be a strict child of roadmapRoot",
+          "observationId": "command-045",
+          "restorationObservationId": "command-046",
+          "observedExitCode": 1,
+          "restoredExitCode": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "baseline-already-contains-project",
+          "shell": "pwsh",
+          "fixtureOnly": true,
+          "scope": "official-validator-isolated-clone",
+          "mutationPath": "Serendipity · 际遇/project/docs/roadmap-run.json",
+          "beforeHash": "2cb0fad5af063af9010577c001eda489b54d10d9bba75896e1522eb107c40149",
+          "afterHash": "5a232d22f2bf0e02eb2552f3f0ea4bc11aacc84b16f34ce87fec8f841d6f67fe",
+          "restoredHash": "2cb0fad5af063af9010577c001eda489b54d10d9bba75896e1522eb107c40149",
+          "expectedDiagnostic": "baselineCommit must precede all projectRoot artifacts",
+          "observationId": "command-047",
+          "restorationObservationId": "command-048",
+          "observedExitCode": 1,
+          "restoredExitCode": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "baseline-already-contains-project",
+          "shell": "powershell",
+          "fixtureOnly": true,
+          "scope": "official-validator-isolated-clone",
+          "mutationPath": "Serendipity · 际遇/project/docs/roadmap-run.json",
+          "beforeHash": "2cb0fad5af063af9010577c001eda489b54d10d9bba75896e1522eb107c40149",
+          "afterHash": "5a232d22f2bf0e02eb2552f3f0ea4bc11aacc84b16f34ce87fec8f841d6f67fe",
+          "restoredHash": "2cb0fad5af063af9010577c001eda489b54d10d9bba75896e1522eb107c40149",
+          "expectedDiagnostic": "baselineCommit must precede all projectRoot artifacts",
+          "observationId": "command-049",
+          "restorationObservationId": "command-050",
+          "observedExitCode": 1,
+          "restoredExitCode": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "frozen-input-hash-drift",
+          "shell": "pwsh",
+          "fixtureOnly": true,
+          "scope": "official-validator-isolated-clone",
+          "mutationPath": "Serendipity · 际遇/docs/product-requirements.md",
+          "beforeHash": "320583e7baa5c0b3ee15b13ce0bc4f264e8ff1ae531feb94eb71e1102040854b",
+          "afterHash": "4f0dacb14fa9d8b09f8f0ede63a5daaf9c7a38cc593471896f77d33b9acb5346",
+          "restoredHash": "320583e7baa5c0b3ee15b13ce0bc4f264e8ff1ae531feb94eb71e1102040854b",
+          "expectedDiagnostic": "Run state contract hash mismatch for product-requirements",
+          "observationId": "command-051",
+          "restorationObservationId": "command-052",
+          "observedExitCode": 1,
+          "restoredExitCode": 0,
+          "status": "PASS"
+        },
+        {
+          "name": "frozen-input-hash-drift",
+          "shell": "powershell",
+          "fixtureOnly": true,
+          "scope": "official-validator-isolated-clone",
+          "mutationPath": "Serendipity · 际遇/docs/product-requirements.md",
+          "beforeHash": "320583e7baa5c0b3ee15b13ce0bc4f264e8ff1ae531feb94eb71e1102040854b",
+          "afterHash": "4f0dacb14fa9d8b09f8f0ede63a5daaf9c7a38cc593471896f77d33b9acb5346",
+          "restoredHash": "320583e7baa5c0b3ee15b13ce0bc4f264e8ff1ae531feb94eb71e1102040854b",
+          "expectedDiagnostic": "Run state contract hash mismatch for product-requirements",
+          "observationId": "command-053",
+          "restorationObservationId": "command-054",
+          "observedExitCode": 1,
+          "restoredExitCode": 0,
+          "status": "PASS"
+        }
+      ],
+      "restored": true,
+      "fixtureReviewNotice": "The laboratory review is schema fixture data, not an independent Agent review of the actual Phase000 deliverable.",
+      "startedAt": "2026-09-08T12:53:33.655Z",
+      "generatedAt": "2026-09-08T12:56:51.373Z"
+    }
+  },
+  "exitCode": 0,
+  "status": "PASS",
+  "numerator": 1,
+  "denominator": 1,
+  "durationMs": 197736,
+  "completedAt": "2026-09-08T12:56:51.377Z"
+}
