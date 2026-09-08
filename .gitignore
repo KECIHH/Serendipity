@@ -1,0 +1,43 @@
+# Local environment variables and secrets
+.env
+.env.*
+!.env.example
+!.env.*.example
+!.env.sample
+secrets/
+.secrets/
+*.pem
+*.key
+id_rsa
+id_ed25519
+
+# JavaScript dependencies and generated output
+node_modules/
+dist/
+build/
+.next/
+.nuxt/
+.output/
+.turbo/
+.cache/
+coverage/
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Temporary files and logs
+*.log
+*.tmp
+*.swp
+*.swo
+
+# OS metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
