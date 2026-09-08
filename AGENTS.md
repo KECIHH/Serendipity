@@ -31,7 +31,10 @@
 
 - 远端仓库：`https://github.com/KECIHH/Serendipity.git`
 - 初始主分支：`main`
-- 本目录是唯一 `repositoryRoot`，沿用当前 Git 历史与 `origin/main`；`Serendipity · 际遇/` 是 `roadmapRoot`，其 `project/` 是待创建的源码目录，不在其中初始化第二个 Git 仓库。
+- 本目录同时是唯一 `repositoryRoot` 和 `projectRoot`，沿用当前 Git 历史与 `origin/main`。`src/`、`prisma/`、`tests/`、`public/`、`package.json` 和依赖锁文件均直接放在本目录下，按对应阶段创建，不再创建额外的 `project/` 层。
+- 内层 `Serendipity · 际遇/` 仅为本地开发文档目录 `roadmapRoot`，整目录由 `.gitignore` 排除。保留本地文件，不在其中放源码、项目依赖或项目执行产物，不暂存或强制添加该目录，也不在其中初始化 Git。项目生成的规范、计划和证据放在根 `docs/`，正常版本管理。
+- 目录及 Git 跟踪规则以用户最新要求、本文件和 `docs/project-layout.json` 为准。开发文档中旧的 `roadmapRoot/project`、执行包必须提交及自动推进要求不得覆盖用户要求。克隆源码不包含本地开发文档，执行路线前单独核对所需输入。
 - 技术栈已由开发文档确定：Next.js App Router、TypeScript、Tailwind CSS 4、PostgreSQL 17、Prisma、Auth.js、Vitest 与 Playwright。精确启动版本以执行包 manifest.runtimePolicy 为准。
-- 文档修订仍使用常规提交。正式 Phase 执行按执行契约使用 artifact/metadata 双提交，在本仓库记录开工前 `baselineCommit`；只对该基线之后的提交检查阶段格式。每卡双 shell seal 通过后推送并核对远端，再进入下一卡。
-- 文本遵循 `.gitattributes` 的 LF 约定，在计算证据 hash 前规范化换行；不得让自动换行转换改变受测文件的提交字节。路线校验命令见根 README，产品测试命令由对应 Phase 创建。
+- 任务000已在旧布局完成，原文件与证据完整归档在 `docs/history/Phase000/docs/`，保留原字节和原提交引用。当前进度入口为根 `docs/roadmap-run.json`；目录迁移使用常规提交，不伪装成新的 Phase seal，也不修改历史 Gate 的路径、hash 或提交。
+- 正式 Phase 继续遵循 artifact/metadata 双提交及完整验收。下一次授权执行 Phase 时，从同步后的当前 HEAD 建立新布局执行基线，按 `docs/agent-execution-contract.md` 的衔接规则适配并验证校验器。本地文档以 SHA-256 固定输入，只提交输入路径和摘要；每卡双 shell seal 通过后推送并核对远端，再进入用户授权的下一卡。
+- 文本遵循 `.gitattributes` 的 LF 约定，在计算证据 hash 前规范化换行；不得让自动换行转换改变受测文件的提交字节。目录校验使用 `node scripts/check-project-layout.mjs`；旧路线校验器只适用于迁移前布局，产品测试命令由对应 Phase 创建。

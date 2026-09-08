@@ -1,0 +1,37 @@
+{
+  "stateVersion": 2,
+  "layoutVersion": 2,
+  "roadmapId": "traceme-roadmap-v2-new-build",
+  "executionMode": "NEW_BUILD",
+  "operatorMode": "AGENT_ONLY_AUTOMATED_NEW_BUILD",
+  "pathsRelativeTo": "repositoryRoot",
+  "repositoryRoot": ".",
+  "projectRoot": ".",
+  "roadmapRoot": "Serendipity · 际遇",
+  "completedThrough": 0,
+  "currentPhase": 1,
+  "progressSource": "HISTORICAL_CHECKPOINT",
+  "nextPhaseExecutionAuthorized": false,
+  "currentLayoutPhaseSeal": null,
+  "historicalCheckpoint": {
+    "phase": 0,
+    "appliesToLayoutVersion": 1,
+    "baselineCommit": "af3169f81cce66981d4e67a3c42a8fc6c405f77e",
+    "artifactCommit": "ab7f2b957b0cd4ba142c46d64643945ceabc8684",
+    "metadataCommit": "919b82cfbd9f70622a11b60d119f070f50248c93",
+    "projectGitPrefix": "Serendipity · 际遇/project/",
+    "archiveRoot": "docs/history/Phase000",
+    "runStatePath": "docs/history/Phase000/docs/roadmap-run.json",
+    "evidencePath": "docs/history/Phase000/docs/evidence/Phase000-gate.json",
+    "evidenceHash": "a5de7e87d888da777e61eb0421c6430e339c95a39cdcff20e1ecae005866c3d3"
+  },
+  "nextRun": {
+    "startPhase": 1,
+    "requiresRootAwareRunner": true,
+    "baselineCommit": null,
+    "baselinePolicy": "CAPTURE_SYNCED_HEAD_AT_AUTHORIZED_PHASE_START",
+    "pinnedInputPolicy": "LOCAL_FILES_WITH_RECORDED_SHA256",
+    "legacyValidator": "HISTORICAL_LAYOUT_ONLY",
+    "admissionContract": "docs/agent-execution-contract.md"
+  }
+}
