@@ -8,11 +8,16 @@
   "repositoryRoot": ".",
   "projectRoot": ".",
   "roadmapRoot": "Serendipity · 际遇",
-  "completedThrough": 0,
-  "currentPhase": 1,
-  "progressSource": "HISTORICAL_CHECKPOINT",
+  "completedThrough": 1,
+  "currentPhase": 2,
+  "progressSource": "CURRENT_LAYOUT_CHECKPOINT",
   "nextPhaseExecutionAuthorized": false,
-  "currentLayoutPhaseSeal": null,
+  "currentLayoutPhaseSeal": {
+    "phase": 1,
+    "artifactCommit": "f0d416e296c9ca258d2907750f4fb933e15567a6",
+    "evidencePath": "docs/evidence/Phase001-gate.json",
+    "evidenceHash": "2b91df15a8cc734fc202d3f0dae606445d7e1da119a3623cce1b2d557d949fec"
+  },
   "historicalCheckpoint": {
     "phase": 0,
     "appliesToLayoutVersion": 1,
@@ -28,10 +33,32 @@
   "nextRun": {
     "startPhase": 1,
     "requiresRootAwareRunner": true,
-    "baselineCommit": null,
+    "baselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
     "baselinePolicy": "CAPTURE_SYNCED_HEAD_AT_AUTHORIZED_PHASE_START",
     "pinnedInputPolicy": "LOCAL_FILES_WITH_RECORDED_SHA256",
     "legacyValidator": "HISTORICAL_LAYOUT_ONLY",
     "admissionContract": "docs/agent-execution-contract.md"
-  }
+  },
+  "baselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+  "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+  "manifestHash": "497689843e4576c5f8e8a6636d29b04023ac997309a3ffab83cc67d90ea7bf3e",
+  "contractHashes": {
+    "product-requirements": "320583e7baa5c0b3ee15b13ce0bc4f264e8ff1ae531feb94eb71e1102040854b",
+    "canonical-contract": "06d0ccdb218482a5688d78a9f69a88a0183cedc9d5eac5d0553e224b8d6e27e5",
+    "terminology": "403f21a6063aac79a3a93554156b06d9aff9277e6267c8f9ec17109cff4aff9f",
+    "state-machines": "3dab632bd549b26908312b09b166947b2a26128a0298749ba1c7efc6d3d6717a",
+    "testing-strategy": "36d90b927e90916a3dcfd0105022884c8f3c64cb04e22996da4cb4299acc93a5",
+    "personal-project-waivers": "d96657b9165dc737a89da1be92e6e15c04b63480ceb6199e3110061d91463644",
+    "agent-only-execution": "032bfac53bce2dff89cb7470ae809f0a802ecf1fdf9f2fc266b465a37f838eff",
+    "phase-gate-schema": "e5c42fa3d46e1d6209f471d0bd6b249c2435c3ccf809dc4c73f4ef4b5f962633"
+  },
+  "lastArtifactCommit": "f0d416e296c9ca258d2907750f4fb933e15567a6",
+  "checkpoints": [
+    {
+      "phase": 1,
+      "artifactCommit": "f0d416e296c9ca258d2907750f4fb933e15567a6",
+      "evidencePath": "docs/evidence/Phase001-gate.json",
+      "evidenceHash": "2b91df15a8cc734fc202d3f0dae606445d7e1da119a3623cce1b2d557d949fec"
+    }
+  ]
 }
