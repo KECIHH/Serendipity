@@ -1,0 +1,311 @@
+{
+  "schemaVersion": "agent-gate-v1",
+  "phase": 0,
+  "attemptId": "attempt-3",
+  "status": "PASS",
+  "simulation": true,
+  "operatorMode": "AGENT_ONLY_AUTOMATED_NEW_BUILD",
+  "environment": {
+    "isolated": true,
+    "syntheticUsers": true,
+    "providerMode": "contract-replay",
+    "productionTraffic": false
+  },
+  "artifactCommit": "ab7f2b957b0cd4ba142c46d64643945ceabc8684",
+  "requiredCaseIds": [
+    "Phase000:constitution",
+    "Phase000:execution-contract",
+    "Phase000:completion-log",
+    "Phase000:tech-stack",
+    "Phase000:directory-structure",
+    "Phase000:project-boundary",
+    "Phase000:checkpoint",
+    "Phase000:run-state",
+    "Phase000:pinned-inputs",
+    "Phase000:negative-validation"
+  ],
+  "results": [
+    {
+      "testCaseId": "Phase000:constitution",
+      "command": "node docs/phase-plans/verify-phase000.mjs --case constitution",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:aabbdf0d0e4894a6023ad43fa2b8667f10ecfb31542158361c9d89d944d8c2a4",
+      "outputHash": "sha256:8478a0555c5a211d4d01088fbcaf407db31692e93f90f98a5afca9058b449e3c",
+      "status": "PASS",
+      "details": {
+        "inputPath": "docs/project-constitution.md",
+        "outputPath": "docs/evidence/attempts/Phase000/attempt-3/constitution.json",
+        "expected": "All five headings, nonempty V1 scope, at least three exclusions including orders/payment/social/third-party login, JSON and configuration rules"
+      }
+    },
+    {
+      "testCaseId": "Phase000:execution-contract",
+      "command": "node docs/phase-plans/verify-phase000.mjs --case execution-contract",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:9760a1a84df0e6fbb4953ea2e36a9227cb922fd6949d55f8eef5cab1841a60ab",
+      "outputHash": "sha256:b21c40904072be4f8b9f7d6f7e34e9096cbbf79ce4c81a61a7ae1656e5fad867",
+      "status": "PASS",
+      "details": {
+        "inputPath": "docs/agent-execution-contract.md",
+        "outputPath": "docs/evidence/attempts/Phase000/attempt-3/execution-contract.json",
+        "expected": "All execution/governance sections, exactly 14 concrete canonical decisions, seven TravelRecord states and clone target NEEDS_REVALIDATION, no ambiguous selection fields"
+      }
+    },
+    {
+      "testCaseId": "Phase000:completion-log",
+      "command": "node docs/phase-plans/verify-phase000.mjs --case completion-log",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:4c3a013589f71d7c5f004044e25e1f14bc8283f4180a544aa60b688ec2d8577e",
+      "outputHash": "sha256:eadf9e5f889f7e11d5cfcbdf7709300e696d0a489f2ac2cdddee4712cc831b8d",
+      "status": "PASS",
+      "details": {
+        "inputPath": "docs/phase-plans/completion-log-template.md",
+        "outputPath": "docs/evidence/attempts/Phase000/attempt-3/completion-log.json",
+        "expected": "Persisted Markdown template with all six columns and mandatory metadata update rules; actual log created only in metadata"
+      }
+    },
+    {
+      "testCaseId": "Phase000:tech-stack",
+      "command": "node docs/phase-plans/verify-phase000.mjs --case tech-stack",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:73e21c7e71e1a70527656a46f220b3aba7c29ab6bbcd97bd1187bbcf1d8b9d4b",
+      "outputHash": "sha256:e9c241aca32d552469dd07aa0e3981582ae763a110598b10e29038b6459baabe",
+      "status": "PASS",
+      "details": {
+        "inputPath": "docs/tech-stack.md",
+        "outputPath": "docs/evidence/attempts/Phase000/attempt-3/tech-stack.json",
+        "expected": "Frozen framework/runtime/AI/auth/test/deployment choices and all 11 future npm commands, npm only; no assertion of uncreated npm scripts"
+      }
+    },
+    {
+      "testCaseId": "Phase000:directory-structure",
+      "command": "node docs/phase-plans/verify-phase000.mjs --case directory-structure",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:91baba3f598247405be724747007ca74b8edf13ecc101374096bfc5b74d20e9a",
+      "outputHash": "sha256:2641460395398df915afe67db773ae4d31bc1276a49b782e6b65d2dfff34c8b3",
+      "status": "PASS",
+      "details": {
+        "inputPath": "docs/directory-structure.md",
+        "outputPath": "docs/evidence/attempts/Phase000/attempt-3/directory-structure.json",
+        "expected": "Seven core responsibilities, three exact AI file paths, admin/frontend/API/service boundaries and src prefix"
+      }
+    },
+    {
+      "testCaseId": "Phase000:project-boundary",
+      "command": "node docs/phase-plans/verify-phase000.mjs --case project-boundary",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:658627f91dfccb9e5d37544ce1b0fd445f8d9d5f9e5983d0c1e02676ddcf2e4e",
+      "outputHash": "sha256:3ea13a34f5fe984541b88225f77fcddaee957cf7a25885fd2d11183851040058",
+      "status": "PASS",
+      "details": {
+        "inputPath": "docs/phase-plans/bootstrap.json",
+        "outputPath": "docs/evidence/attempts/Phase000/attempt-3/project-boundary.json",
+        "expected": "Manifest roots resolve to the unique existing repository and new project; receipt and baseline are consistent; no nested git, future products or unknown files; baseline project tree empty"
+      }
+    },
+    {
+      "testCaseId": "Phase000:checkpoint",
+      "command": "node docs/phase-plans/verify-phase000.mjs --case checkpoint",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:0e85be1e94c55846051878a0cfc7d001c9e0a405804ab1416e40095750c9ed8c",
+      "outputHash": "sha256:7f805ac2352390a93e918322dbb52a2f5174fb21e3abe3685b5e254263ca31bd",
+      "status": "PASS",
+      "details": {
+        "inputPath": "docs/phase-plans/Phase000-inputs.json",
+        "outputPath": "docs/evidence/attempts/Phase000/attempt-3/checkpoint.json",
+        "expected": "Isolated clone of actual baseline with real candidate documents forms adjacent artifact/metadata commits and passes both official shells; actual repository sealed separately after metadata"
+      }
+    },
+    {
+      "testCaseId": "Phase000:run-state",
+      "command": "node docs/phase-plans/verify-phase000.mjs --case run-state",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:0e85be1e94c55846051878a0cfc7d001c9e0a405804ab1416e40095750c9ed8c",
+      "outputHash": "sha256:6c94f5aa2828dd60066ac8a4921adcfe437078963000ff872acfc009ff53e8af",
+      "status": "PASS",
+      "details": {
+        "inputPath": "docs/phase-plans/Phase000-inputs.json",
+        "outputPath": "docs/evidence/attempts/Phase000/attempt-3/run-state.json",
+        "expected": "Shared metadata generator binds manifest, all eight pinned contracts, baseline, artifact, evidence hash and state 0/1; isolated full validator proves parent and schema/hash invariants"
+      }
+    },
+    {
+      "testCaseId": "Phase000:pinned-inputs",
+      "command": "node docs/phase-plans/verify-phase000.mjs --case pinned-inputs",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:0e85be1e94c55846051878a0cfc7d001c9e0a405804ab1416e40095750c9ed8c",
+      "outputHash": "sha256:91812968beefa62afa000cddee0bbd42448b44024e050f3d6e145186aab9d6a1",
+      "status": "PASS",
+      "details": {
+        "inputPath": "docs/phase-plans/Phase000-inputs.json",
+        "outputPath": "docs/evidence/attempts/Phase000/attempt-3/pinned-inputs.json",
+        "expected": "Manifest and all eight frozen input SHA-256 hashes agree with actual files and raw baseline blobs; canonical clone contract agrees; git diff --check is clean"
+      }
+    },
+    {
+      "testCaseId": "Phase000:negative-validation",
+      "command": "node docs/phase-plans/verify-phase000.mjs --case negative-validation",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:0e85be1e94c55846051878a0cfc7d001c9e0a405804ab1416e40095750c9ed8c",
+      "outputHash": "sha256:92343a39cba4a6b1e0e5d63de13c72eba4b101d3a147398962c8ab13d15aa233",
+      "status": "PASS",
+      "details": {
+        "inputPath": "docs/phase-plans/Phase000-inputs.json",
+        "outputPath": "docs/evidence/attempts/Phase000/attempt-3/negative-validation.json",
+        "expected": "Isolated removal of exclusions/14 decisions/npm and ambiguous decision/clone regression is rejected; ordinary explanatory words accepted; wrong artifact parent/evidence byte/schema/target boundaries/hash drift rejected for specific reasons, restored full checks pass"
+      }
+    }
+  ],
+  "commands": [
+    {
+      "command": "node docs/phase-plans/verify-phase000.mjs --case constitution",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase000.mjs --case execution-contract",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase000.mjs --case completion-log",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase000.mjs --case tech-stack",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase000.mjs --case directory-structure",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase000.mjs --case project-boundary",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase000.mjs --case checkpoint",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase000.mjs --case run-state",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase000.mjs --case pinned-inputs",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase000.mjs --case negative-validation",
+      "exitCode": 0
+    }
+  ],
+  "inputs": [
+    {
+      "path": "docs/phase-plans/Phase000.json",
+      "sha256": "2d57c50c28b563995c2eb4d5a2df007a7420d9e7eeb1ab5f900750c81f6c9741"
+    },
+    {
+      "path": "docs/phase-plans/Phase000-inputs.json",
+      "sha256": "0e85be1e94c55846051878a0cfc7d001c9e0a405804ab1416e40095750c9ed8c"
+    },
+    {
+      "path": "docs/phase-plans/bootstrap.json",
+      "sha256": "658627f91dfccb9e5d37544ce1b0fd445f8d9d5f9e5983d0c1e02676ddcf2e4e"
+    },
+    {
+      "path": "docs/phase-plans/verify-phase000.mjs",
+      "sha256": "c54036ed93a745bb71e88b2e6665db1a57b937fce8db3d8c798d9620bdbb6e38"
+    },
+    {
+      "path": "docs/phase-plans/protocol-lab.mjs",
+      "sha256": "327c09a74315d0806cb6e319b95d708b0fd966bc2aa96b737188c3b085bba6ca"
+    },
+    {
+      "path": "docs/project-constitution.md",
+      "sha256": "aabbdf0d0e4894a6023ad43fa2b8667f10ecfb31542158361c9d89d944d8c2a4"
+    },
+    {
+      "path": "docs/agent-execution-contract.md",
+      "sha256": "9760a1a84df0e6fbb4953ea2e36a9227cb922fd6949d55f8eef5cab1841a60ab"
+    },
+    {
+      "path": "docs/phase-plans/completion-log-template.md",
+      "sha256": "4c3a013589f71d7c5f004044e25e1f14bc8283f4180a544aa60b688ec2d8577e"
+    },
+    {
+      "path": "docs/tech-stack.md",
+      "sha256": "73e21c7e71e1a70527656a46f220b3aba7c29ab6bbcd97bd1187bbcf1d8b9d4b"
+    },
+    {
+      "path": "docs/directory-structure.md",
+      "sha256": "91baba3f598247405be724747007ca74b8edf13ecc101374096bfc5b74d20e9a"
+    }
+  ],
+  "failures": [],
+  "generatedAt": "2026-09-08T13:04:36.644Z",
+  "details": {
+    "planPath": "docs/phase-plans/Phase000.json",
+    "planHash": "2d57c50c28b563995c2eb4d5a2df007a7420d9e7eeb1ab5f900750c81f6c9741",
+    "testedTree": "f686ec9dff31d80aca802f8f2c2bf7f616306cc1",
+    "reviewerRunId": "phase000-attempt-3-independent-review-20260908T130045Z",
+    "reviewReportPath": "docs/evidence/attempts/Phase000/attempt-3/review.json",
+    "reviewReportHash": "0da0bf33879572bb3d1fac3df9e49aa5b95e01d40de2991096bba7582a97c205",
+    "recoveryCommits": [],
+    "waived": false,
+    "originalThreshold": 10,
+    "automatedThreshold": 10,
+    "verificationScope": "PHASE000_DOCUMENTS_AND_ISOLATED_CHECKPOINT",
+    "notEvaluated": [
+      "npm lint/typecheck/test/build: not created until Phase003/004",
+      "product unit/integration/browser tests: Phase000 is documentation only"
+    ],
+    "pendingAfterMetadata": [
+      "pwsh -NoProfile -File ./docs/validate-roadmap-v2.ps1 -Manifest ./docs/roadmap-execution-manifest.json -CompletedThrough 0 -Strict -Json",
+      "powershell -NoProfile -ExecutionPolicy Bypass -File ./docs/validate-roadmap-v2.ps1 -Manifest ./docs/roadmap-execution-manifest.json -CompletedThrough 0 -Strict -Json",
+      "git status --porcelain=v1",
+      "git push origin main",
+      "git ls-remote --heads origin main"
+    ],
+    "requestedThrough": 0,
+    "costAccounting": {
+      "unit": "milliseconds",
+      "basis": "actual process monotonic timers for verification; other categories not measured",
+      "productImplementation": null,
+      "testInfrastructure": null,
+      "execution": 201082,
+      "independentReview": null,
+      "evidencePreparation": null,
+      "cpuPeak": null,
+      "memoryPeak": null,
+      "artifactBytes": 597224,
+      "retryCount": 2,
+      "externalProviderCalls": 0,
+      "unmeasured": [
+        "productImplementation",
+        "testInfrastructure",
+        "evidencePreparation",
+        "cpuPeak",
+        "memoryPeak"
+      ]
+    }
+  }
+}
