@@ -1,0 +1,300 @@
+{
+  "testCaseId": "Phase002:privacy",
+  "command": "node docs/phase-plans/verify-phase002.mjs --case privacy",
+  "status": "PASS",
+  "exitCode": 0,
+  "numerator": 1,
+  "denominator": 1,
+  "inputPath": "docs/privacy-and-user-data.md",
+  "inputHash": "0be8b0821e7fc892123c88f36ee4b5a173ad6332aafffb7c0963fc95efefdb62",
+  "planHash": "f2213826a7c8aacd724dd05c60cd62dcc496195d06a1b0a25f45f33c37a6ba4c",
+  "sourceHashes": {
+    "AGENTS.md": "224f30ead96b0771dc9949e5c33ebe4bf13bb0f76071fb3210d7d153e73b0592",
+    "docs/admin.md": "cebb8281579256bf6dc385907088278e17221d000b8b20ea11d2ae1f56aeecc3",
+    "docs/agent-execution-contract.md": "72eb5e5e8da13c02b3aeeb3803b668a440f1cbdee75fddf08f267c0ec9b6b2ed",
+    "docs/api.md": "9eb354608223261a8702d4f6b317b19c061c9f4ea61663188c4d520393390818",
+    "docs/auth.md": "d672c3d25e09ae16e61f9cea23c5d6fc500ff4e76156b4b6f5ca3ccc48a4e736",
+    "docs/crypto.md": "799e32133f3a1cac91d4e25955829538a14aedc1104bed9f06d1337841a130f4",
+    "docs/database.md": "38bb2a4b05b15def09ec0434ca4e4cf6d874109d3d88126333bf1f30209029a0",
+    "docs/directory-structure.md": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df",
+    "docs/hosting.md": "8026f7dfa2b0468a29bf028d18cc8fc95979d32f28e30bc18c5ac809c5b1ca57",
+    "docs/index.md": "e8ccb2c0352b408bdb7724b6c539fd09107b71fbdbdaeaee78f51f52f7e82214",
+    "docs/phase-plans/Phase002-inputs.json": "f7a18001bbfc3b00f03c6abf8e508709802927029281fb0319c1e1bfc73fc56b",
+    "docs/phase-plans/Phase002.json": "f2213826a7c8aacd724dd05c60cd62dcc496195d06a1b0a25f45f33c37a6ba4c",
+    "docs/phase-plans/check-phase002-api.mjs": "95b1a1247ae43749e716a329205eb09dd64d5643409f07a9545051328b0a2c32",
+    "docs/phase-plans/check-phase002-provider-privacy.mjs": "c904e03c2e3d5fef6842d270a33970fb4ae9b0fcc99f6160946acb8dde1eac8b",
+    "docs/phase-plans/check-phase002-schema-prompt.mjs": "3b1fc1b57639247285300fab78b71cdf1b0dfb86b7a6248a32bfe623708e7f42",
+    "docs/phase-plans/complete-phase002.mjs": "903990dcb87e6ac8d8b877df6354bcbd1756ffc598d3a201251c6ed9e5fc9c58",
+    "docs/phase-plans/retry-phase002.mjs": "8f1377c6afd932c14d1529118aa99fba882fad7ce98017930391a60e2ecb20b7",
+    "docs/phase-plans/verify-phase002.mjs": "5e6888814ecc3347dee4d63f1bd0d822be5224b3fc30edd6c4ea5cba050aea16",
+    "docs/privacy-and-user-data.md": "0be8b0821e7fc892123c88f36ee4b5a173ad6332aafffb7c0963fc95efefdb62",
+    "docs/project-constitution.md": "8f1dd176e30e815a09502a91c5b0ef2722b7bb71d5e919fbfc70cfecf3e9dedd",
+    "docs/project-layout.json": "7efe30a30fe009a8e1226563cae53d39ed2a2193be78bc0f0a776f57f67710ba",
+    "docs/prompt-design.md": "5510148716939e6419a7ae5bfcbd79ac714ae39b8429c05a25bca9506ef4fc1e",
+    "docs/tech-stack.md": "258620f3e18d042eac1e26165f411e8879ecd4b0d91d8e7986aaed4f3f10d2c7",
+    "docs/travel-data-provider-strategy.md": "71ed8608ff8e4055694c0cbe5077f67873b5c8956eb79a83cfb05817003ccbb5",
+    "docs/travel-plan-schema.md": "2644c8741be54847066ffcd412fed51f72b530f1c08eb16f2011f35f4bc3ab34",
+    "docs/ui-design-system.md": "8b232c6742bf846f131ea3040d5892ed7b270940bfd4109ccfb768ed63fdb158",
+    "scripts/check-project-layout.mjs": "101c7c50f12e4d6cc80e1c9fb9667ad06fcc55c687d86cb5295ff81bc0eb68f6",
+    "scripts/generate-api-contract.mjs": "ac2feec4e2f8daa1483f314d1fbe731c494d37ed8d9f1c565a2186dde9d68b59",
+    "scripts/phase-evidence.mjs": "3727f8f8e5f00cf7e03d4bc50f71ebdbff483380cbc59df124bf21b473261d95",
+    "scripts/validate-phase.mjs": "4be9ee356a3f5a7d5b9265ee61143d6574617dda83d9ac8d3960f3f8e28fa293",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319"
+  },
+  "startedAt": "2026-09-09T02:08:03.434Z",
+  "completedAt": "2026-09-09T02:08:08.420Z",
+  "durationMs": 4986,
+  "environment": "ISOLATED_SYNTHETIC",
+  "productionTraffic": false,
+  "details": {
+    "status": "PASS",
+    "group": "privacy",
+    "scope": "DOCUMENT_CONTRACT_ONLY",
+    "manifestHash": "497689843e4576c5f8e8a6636d29b04023ac997309a3ffab83cc67d90ea7bf3e",
+    "sourceCount": 17,
+    "dataCategoryCount": 20,
+    "decisionFieldCount": 11,
+    "fixtureCount": 45,
+    "fixtures": [
+      {
+        "id": "allowed-synthetic",
+        "status": "PASS"
+      },
+      {
+        "id": "production-is-not-approved",
+        "status": "PASS"
+      },
+      {
+        "id": "prohibited-category-block",
+        "status": "PASS"
+      },
+      {
+        "id": "old-rule-version-block",
+        "status": "PASS"
+      },
+      {
+        "id": "missing-category-block",
+        "status": "PASS"
+      },
+      {
+        "id": "explicit-block-zero-writes",
+        "status": "PASS"
+      },
+      {
+        "id": "before-expiry-preserved",
+        "status": "PASS"
+      },
+      {
+        "id": "expiry-boundary-deleted",
+        "status": "PASS"
+      },
+      {
+        "id": "trace-detail-expires",
+        "status": "PASS"
+      },
+      {
+        "id": "version-context-erased-together",
+        "status": "PASS"
+      },
+      {
+        "id": "unproven-watermark-blocks-purge",
+        "status": "PASS"
+      },
+      {
+        "id": "retired-restore-sets-permit-purge",
+        "status": "PASS"
+      },
+      {
+        "id": "before-backup-deadline",
+        "status": "PASS"
+      },
+      {
+        "id": "backup-deadline-deletes",
+        "status": "PASS"
+      },
+      {
+        "id": "ledger-first-normal",
+        "status": "PASS"
+      },
+      {
+        "id": "ledger-success-app-failure",
+        "status": "PASS"
+      },
+      {
+        "id": "continued-after-credential-erasure",
+        "status": "PASS"
+      },
+      {
+        "id": "objects-unconfirmed-not-completed",
+        "status": "PASS"
+      },
+      {
+        "id": "consent-retained",
+        "status": "PASS"
+      },
+      {
+        "id": "independent-contact-withdrawal",
+        "status": "PASS"
+      },
+      {
+        "id": "evaluation-withdrawal-after-share-revoked",
+        "status": "PASS"
+      },
+      {
+        "id": "both-withdrawals",
+        "status": "PASS"
+      },
+      {
+        "id": "default-false-no-sampling",
+        "status": "PASS"
+      },
+      {
+        "id": "private-node-redacted",
+        "status": "PASS"
+      },
+      {
+        "id": "verified-public-point",
+        "status": "PASS"
+      },
+      {
+        "id": "safe-public-url",
+        "status": "PASS"
+      },
+      {
+        "id": "source-without-public-url",
+        "status": "PASS"
+      },
+      {
+        "id": "signed-url-not-public",
+        "status": "PASS"
+      },
+      {
+        "id": "credential-url-not-public",
+        "status": "PASS"
+      },
+      {
+        "id": "private-host-not-public",
+        "status": "PASS"
+      },
+      {
+        "id": "javascript-not-public",
+        "status": "PASS"
+      },
+      {
+        "id": "old-backup-replay-before-readiness",
+        "status": "PASS"
+      },
+      {
+        "id": "missing-ledger-fails-closed",
+        "status": "PASS"
+      },
+      {
+        "id": "regressed-watermark-fails-closed",
+        "status": "PASS"
+      },
+      {
+        "id": "anonymous-cookie-only",
+        "status": "PASS"
+      },
+      {
+        "id": "hash-only-persistence",
+        "status": "PASS"
+      },
+      {
+        "id": "same-key-same-receipt-replay",
+        "status": "PASS"
+      },
+      {
+        "id": "same-key-different-receipt-rejected",
+        "status": "PASS"
+      },
+      {
+        "id": "receipt-is-not-download",
+        "status": "PASS"
+      },
+      {
+        "id": "feedback-receipt-after-share-revocation",
+        "status": "PASS"
+      },
+      {
+        "id": "share-first-delivery",
+        "status": "PASS"
+      },
+      {
+        "id": "share-replay-has-no-token",
+        "status": "PASS"
+      },
+      {
+        "id": "share-reissue-keeps-version-and-expiry",
+        "status": "PASS"
+      },
+      {
+        "id": "nested-log-secret-removal",
+        "status": "PASS"
+      },
+      {
+        "id": "allowlisted-log-value-is-not-free-text",
+        "status": "PASS"
+      }
+    ],
+    "mutations": [
+      {
+        "id": "fake-human-approval-field",
+        "mutatedDocumentHash": "342d559b8c6b1d4eba112b2e97f3f95d108f7f7275b84d38f2f3772c29407254",
+        "expectedExit": "NONZERO",
+        "observedExit": 1,
+        "restoredExit": 0
+      },
+      {
+        "id": "unbounded-retention",
+        "mutatedDocumentHash": "49c5a94a30f0a77562c6be59d4135a5a64143abb2164b4488eb85dce81129bbc",
+        "expectedExit": "NONZERO",
+        "observedExit": 1,
+        "restoredExit": 0
+      },
+      {
+        "id": "production-privacy-approval",
+        "mutatedDocumentHash": "6f98f677ef01dcd7e2579ab84aa14da7c379e58f334f8d4187ae0f9ac175712e",
+        "expectedExit": "NONZERO",
+        "observedExit": 1,
+        "restoredExit": 0
+      },
+      {
+        "id": "application-before-ledger",
+        "mutatedDocumentHash": "a1e71f955d5e26777ad437405f9b9d34099096e5873fc5a1cee4c1954a616246",
+        "expectedExit": "NONZERO",
+        "observedExit": 1,
+        "restoredExit": 0
+      },
+      {
+        "id": "receipt-download-permission",
+        "mutatedDocumentHash": "677dcc54037ca237f28277a9dc7c3d4c2944d1813e26431d015ea80605ffb01b",
+        "expectedExit": "NONZERO",
+        "observedExit": 1,
+        "restoredExit": 0
+      },
+      {
+        "id": "consent-recheck-disabled",
+        "mutatedDocumentHash": "b8df658ae9ac66343fd391935d5d8f925af1bb8e77b7526d8f0e90fdffdd4267",
+        "expectedExit": "NONZERO",
+        "observedExit": 1,
+        "restoredExit": 0
+      },
+      {
+        "id": "backup-deadline-unbounded",
+        "mutatedDocumentHash": "baf4599e5b825e83699eb5d793f7820f2dfe80ffaef89b587956717933d69a3d",
+        "expectedExit": "NONZERO",
+        "observedExit": 1,
+        "restoredExit": 0
+      }
+    ],
+    "contractHash": "d456c5657589d8ba8da9e04ccad3d3d8223c8688c0021245cd3ac2ab32898012",
+    "registerHash": "99b49709e56f5b8a4d33359e23929ff9d27ba891116b97fc654dbff97064ebc4",
+    "environment": "ISOLATED_SYNTHETIC",
+    "ruleVersion": "phase002.synthetic-retention.v1",
+    "storageVerification": "ACTUAL_TEMPORARY_SYNTHETIC_FILES",
+    "productDatabaseEvaluated": false,
+    "realUserConsent": "NOT_EVALUATED",
+    "productionPolicy": "NOT_EVALUATED"
+  }
+}

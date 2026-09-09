@@ -1,0 +1,1010 @@
+{
+  "testCaseId": "Phase002:links",
+  "command": "node docs/phase-plans/verify-phase002.mjs --case links",
+  "status": "PASS",
+  "exitCode": 0,
+  "numerator": 1,
+  "denominator": 1,
+  "inputPath": "docs/index.md",
+  "inputHash": "e8ccb2c0352b408bdb7724b6c539fd09107b71fbdbdaeaee78f51f52f7e82214",
+  "planHash": "149e3752bb43b75cba4bd626084e289e26f37e4bae72637ca2856ed3dd784a25",
+  "sourceHashes": {
+    "AGENTS.md": "224f30ead96b0771dc9949e5c33ebe4bf13bb0f76071fb3210d7d153e73b0592",
+    "docs/admin.md": "cebb8281579256bf6dc385907088278e17221d000b8b20ea11d2ae1f56aeecc3",
+    "docs/agent-execution-contract.md": "72eb5e5e8da13c02b3aeeb3803b668a440f1cbdee75fddf08f267c0ec9b6b2ed",
+    "docs/api.md": "75ae366841227718bfaf18d8c1187543b390ef0aaf16d2ce1fa5754f116b83c0",
+    "docs/auth.md": "d672c3d25e09ae16e61f9cea23c5d6fc500ff4e76156b4b6f5ca3ccc48a4e736",
+    "docs/crypto.md": "799e32133f3a1cac91d4e25955829538a14aedc1104bed9f06d1337841a130f4",
+    "docs/database.md": "38bb2a4b05b15def09ec0434ca4e4cf6d874109d3d88126333bf1f30209029a0",
+    "docs/directory-structure.md": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df",
+    "docs/hosting.md": "8026f7dfa2b0468a29bf028d18cc8fc95979d32f28e30bc18c5ac809c5b1ca57",
+    "docs/index.md": "e8ccb2c0352b408bdb7724b6c539fd09107b71fbdbdaeaee78f51f52f7e82214",
+    "docs/phase-plans/Phase002-inputs.json": "f7a18001bbfc3b00f03c6abf8e508709802927029281fb0319c1e1bfc73fc56b",
+    "docs/phase-plans/Phase002.json": "149e3752bb43b75cba4bd626084e289e26f37e4bae72637ca2856ed3dd784a25",
+    "docs/phase-plans/check-phase002-api.mjs": "fbdadf09d8f623cb3b64d61a0cf570acaf31ed496e6e3c294a678bcac5201f30",
+    "docs/phase-plans/check-phase002-provider-privacy.mjs": "b7bf8b4ea3495bba232ae1e3099ae54716e592485841e789aba4d2a65e4e56d4",
+    "docs/phase-plans/check-phase002-schema-prompt.mjs": "c3c897a5ff8a96dfaea4b102737b63f9e9f686aee13e653385d15cd2d8810190",
+    "docs/phase-plans/complete-phase002.mjs": "903990dcb87e6ac8d8b877df6354bcbd1756ffc598d3a201251c6ed9e5fc9c58",
+    "docs/phase-plans/retry-phase002.mjs": "8f1377c6afd932c14d1529118aa99fba882fad7ce98017930391a60e2ecb20b7",
+    "docs/phase-plans/verify-phase002.mjs": "6f13e8f36866d0b0396ee0e8a06c14c14c0b36f3e1d4949b05f50519e3392db6",
+    "docs/privacy-and-user-data.md": "c4b0d858901c44cac5d5e3c53120b74d4108d14a8c04a9c45305c8e617478129",
+    "docs/project-constitution.md": "8f1dd176e30e815a09502a91c5b0ef2722b7bb71d5e919fbfc70cfecf3e9dedd",
+    "docs/project-layout.json": "7efe30a30fe009a8e1226563cae53d39ed2a2193be78bc0f0a776f57f67710ba",
+    "docs/prompt-design.md": "f514323f2396930a4a434c3024481a77aa9a211bc48d7728c5f2dcb98a94801b",
+    "docs/tech-stack.md": "258620f3e18d042eac1e26165f411e8879ecd4b0d91d8e7986aaed4f3f10d2c7",
+    "docs/travel-data-provider-strategy.md": "71ed8608ff8e4055694c0cbe5077f67873b5c8956eb79a83cfb05817003ccbb5",
+    "docs/travel-plan-schema.md": "f48446b2f99a9960e633fdf276e378459c6e87477e3405cd8550f8dc475937f2",
+    "docs/ui-design-system.md": "8b232c6742bf846f131ea3040d5892ed7b270940bfd4109ccfb768ed63fdb158",
+    "scripts/check-project-layout.mjs": "101c7c50f12e4d6cc80e1c9fb9667ad06fcc55c687d86cb5295ff81bc0eb68f6",
+    "scripts/generate-api-contract.mjs": "ac2feec4e2f8daa1483f314d1fbe731c494d37ed8d9f1c565a2186dde9d68b59",
+    "scripts/phase-evidence.mjs": "3727f8f8e5f00cf7e03d4bc50f71ebdbff483380cbc59df124bf21b473261d95",
+    "scripts/validate-phase.mjs": "4be9ee356a3f5a7d5b9265ee61143d6574617dda83d9ac8d3960f3f8e28fa293",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319"
+  },
+  "startedAt": "2026-09-09T03:01:03.456Z",
+  "completedAt": "2026-09-09T03:01:13.478Z",
+  "durationMs": 10023,
+  "environment": "ISOLATED_SYNTHETIC",
+  "productionTraffic": false,
+  "details": {
+    "links": {
+      "contractCount": 10,
+      "linkCount": 104,
+      "unresolvedLinks": 0,
+      "duplicateCanonicalEndpoints": 0,
+      "observations": [
+        {
+          "owner": "docs/api.md",
+          "href": "project-constitution.md",
+          "target": "docs/project-constitution.md"
+        },
+        {
+          "owner": "docs/api.md",
+          "href": "database.md",
+          "target": "docs/database.md"
+        },
+        {
+          "owner": "docs/api.md",
+          "href": "phase-plans/Phase002-inputs.json",
+          "target": "docs/phase-plans/Phase002-inputs.json"
+        },
+        {
+          "owner": "docs/api.md",
+          "href": "auth.md",
+          "target": "docs/auth.md"
+        },
+        {
+          "owner": "docs/api.md",
+          "href": "admin.md",
+          "target": "docs/admin.md"
+        },
+        {
+          "owner": "docs/api.md",
+          "href": "crypto.md",
+          "target": "docs/crypto.md"
+        },
+        {
+          "owner": "docs/api.md",
+          "href": "privacy-and-user-data.md",
+          "target": "docs/privacy-and-user-data.md"
+        },
+        {
+          "owner": "docs/api.md",
+          "href": "travel-plan-schema.md",
+          "target": "docs/travel-plan-schema.md"
+        },
+        {
+          "owner": "docs/api.md",
+          "href": "database.md",
+          "target": "docs/database.md"
+        },
+        {
+          "owner": "docs/api.md",
+          "href": "travel-data-provider-strategy.md",
+          "target": "docs/travel-data-provider-strategy.md"
+        },
+        {
+          "owner": "docs/api.md",
+          "href": "privacy-and-user-data.md",
+          "target": "docs/privacy-and-user-data.md"
+        },
+        {
+          "owner": "docs/prompt-design.md",
+          "href": "phase-plans/Phase002-inputs.json",
+          "target": "docs/phase-plans/Phase002-inputs.json"
+        },
+        {
+          "owner": "docs/prompt-design.md",
+          "href": "database.md",
+          "target": "docs/database.md"
+        },
+        {
+          "owner": "docs/prompt-design.md",
+          "href": "travel-plan-schema.md",
+          "target": "docs/travel-plan-schema.md"
+        },
+        {
+          "owner": "docs/prompt-design.md",
+          "href": "api.md",
+          "target": "docs/api.md"
+        },
+        {
+          "owner": "docs/prompt-design.md",
+          "href": "privacy-and-user-data.md",
+          "target": "docs/privacy-and-user-data.md"
+        },
+        {
+          "owner": "docs/travel-plan-schema.md",
+          "href": "database.md",
+          "target": "docs/database.md"
+        },
+        {
+          "owner": "docs/travel-plan-schema.md",
+          "href": "phase-plans/Phase002-inputs.json",
+          "target": "docs/phase-plans/Phase002-inputs.json"
+        },
+        {
+          "owner": "docs/travel-plan-schema.md",
+          "href": "project-constitution.md",
+          "target": "docs/project-constitution.md"
+        },
+        {
+          "owner": "docs/travel-plan-schema.md",
+          "href": "api.md",
+          "target": "docs/api.md"
+        },
+        {
+          "owner": "docs/travel-plan-schema.md",
+          "href": "privacy-and-user-data.md",
+          "target": "docs/privacy-and-user-data.md"
+        },
+        {
+          "owner": "docs/travel-plan-schema.md",
+          "href": "prompt-design.md",
+          "target": "docs/prompt-design.md"
+        },
+        {
+          "owner": "docs/travel-data-provider-strategy.md",
+          "href": "database.md",
+          "target": "docs/database.md"
+        },
+        {
+          "owner": "docs/travel-data-provider-strategy.md",
+          "href": "travel-plan-schema.md",
+          "target": "docs/travel-plan-schema.md"
+        },
+        {
+          "owner": "docs/travel-data-provider-strategy.md",
+          "href": "api.md",
+          "target": "docs/api.md"
+        },
+        {
+          "owner": "docs/travel-data-provider-strategy.md",
+          "href": "hosting.md",
+          "target": "docs/hosting.md"
+        },
+        {
+          "owner": "docs/travel-data-provider-strategy.md",
+          "href": "privacy-and-user-data.md",
+          "target": "docs/privacy-and-user-data.md"
+        },
+        {
+          "owner": "docs/travel-data-provider-strategy.md",
+          "href": "phase-plans/Phase002-inputs.json",
+          "target": "docs/phase-plans/Phase002-inputs.json"
+        },
+        {
+          "owner": "docs/travel-data-provider-strategy.md",
+          "href": "agent-execution-contract.md",
+          "target": "docs/agent-execution-contract.md"
+        },
+        {
+          "owner": "docs/privacy-and-user-data.md",
+          "href": "api.md",
+          "target": "docs/api.md"
+        },
+        {
+          "owner": "docs/privacy-and-user-data.md",
+          "href": "auth.md",
+          "target": "docs/auth.md"
+        },
+        {
+          "owner": "docs/privacy-and-user-data.md",
+          "href": "crypto.md",
+          "target": "docs/crypto.md"
+        },
+        {
+          "owner": "docs/privacy-and-user-data.md",
+          "href": "hosting.md",
+          "target": "docs/hosting.md"
+        },
+        {
+          "owner": "docs/privacy-and-user-data.md",
+          "href": "database.md",
+          "target": "docs/database.md"
+        },
+        {
+          "owner": "docs/privacy-and-user-data.md",
+          "href": "travel-plan-schema.md",
+          "target": "docs/travel-plan-schema.md"
+        },
+        {
+          "owner": "docs/privacy-and-user-data.md",
+          "href": "prompt-design.md",
+          "target": "docs/prompt-design.md"
+        },
+        {
+          "owner": "docs/privacy-and-user-data.md",
+          "href": "travel-data-provider-strategy.md",
+          "target": "docs/travel-data-provider-strategy.md"
+        },
+        {
+          "owner": "docs/privacy-and-user-data.md",
+          "href": "phase-plans/Phase002-inputs.json",
+          "target": "docs/phase-plans/Phase002-inputs.json"
+        },
+        {
+          "owner": "docs/privacy-and-user-data.md",
+          "href": "agent-execution-contract.md",
+          "target": "docs/agent-execution-contract.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "../AGENTS.md",
+          "target": "AGENTS.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "project-layout.json",
+          "target": "docs/project-layout.json"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "phase-plans/Phase002-inputs.json",
+          "target": "docs/phase-plans/Phase002-inputs.json"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/roadmap-execution-manifest.json",
+          "target": "Serendipity · 际遇/docs/roadmap-execution-manifest.json"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/product-requirements.md",
+          "target": "Serendipity · 际遇/docs/product-requirements.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/roadmap-canonical-contract.md",
+          "target": "Serendipity · 际遇/docs/roadmap-canonical-contract.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/术语冻结表.md",
+          "target": "Serendipity · 际遇/docs/术语冻结表.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/state-machines.md",
+          "target": "Serendipity · 际遇/docs/state-machines.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/testing-strategy.md",
+          "target": "Serendipity · 际遇/docs/testing-strategy.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/personal-project-gate-waivers.md",
+          "target": "Serendipity · 际遇/docs/personal-project-gate-waivers.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/agent-only-execution-contract.md",
+          "target": "Serendipity · 际遇/docs/agent-only-execution-contract.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/phase-gate.schema.json",
+          "target": "Serendipity · 际遇/docs/phase-gate.schema.json"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/Phase002.md",
+          "target": "Serendipity · 际遇/Phase002.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "project-constitution.md",
+          "target": "docs/project-constitution.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "agent-execution-contract.md",
+          "target": "docs/agent-execution-contract.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "phase-completion-log.md",
+          "target": "docs/phase-completion-log.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "roadmap-run.json",
+          "target": "docs/roadmap-run.json"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "tech-stack.md",
+          "target": "docs/tech-stack.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "directory-structure.md",
+          "target": "docs/directory-structure.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "git-workflow.md",
+          "target": "docs/git-workflow.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "code-style.md",
+          "target": "docs/code-style.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "ui-design-system.md",
+          "target": "docs/ui-design-system.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "database.md",
+          "target": "docs/database.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "api.md",
+          "target": "docs/api.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "prompt-design.md",
+          "target": "docs/prompt-design.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "travel-plan-schema.md",
+          "target": "docs/travel-plan-schema.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "travel-data-provider-strategy.md",
+          "target": "docs/travel-data-provider-strategy.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "privacy-and-user-data.md",
+          "target": "docs/privacy-and-user-data.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "index.md",
+          "target": "docs/index.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "auth.md",
+          "target": "docs/auth.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "hosting.md",
+          "target": "docs/hosting.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "admin.md",
+          "target": "docs/admin.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "crypto.md",
+          "target": "docs/crypto.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "../scripts/generate-api-contract.mjs",
+          "target": "scripts/generate-api-contract.mjs"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "roadmap-run.json",
+          "target": "docs/roadmap-run.json"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "phase-plans/Phase002.json",
+          "target": "docs/phase-plans/Phase002.json"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "phase-plans/verify-phase002.mjs",
+          "target": "docs/phase-plans/verify-phase002.mjs"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "phase-plans/complete-phase002.mjs",
+          "target": "docs/phase-plans/complete-phase002.mjs"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "../scripts/validate-phase.ps1",
+          "target": "scripts/validate-phase.ps1"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "evidence/Phase001-gate.json",
+          "target": "docs/evidence/Phase001-gate.json"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "phase-completion-log.md",
+          "target": "docs/phase-completion-log.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "history/Phase000/README.md",
+          "target": "docs/history/Phase000/README.md"
+        },
+        {
+          "owner": "docs/index.md",
+          "href": "history/Phase000/docs/evidence/Phase000-gate.json",
+          "target": "docs/history/Phase000/docs/evidence/Phase000-gate.json"
+        },
+        {
+          "owner": "docs/auth.md",
+          "href": "database.md",
+          "target": "docs/database.md"
+        },
+        {
+          "owner": "docs/auth.md",
+          "href": "api.md",
+          "target": "docs/api.md"
+        },
+        {
+          "owner": "docs/auth.md",
+          "href": "privacy-and-user-data.md",
+          "target": "docs/privacy-and-user-data.md"
+        },
+        {
+          "owner": "docs/auth.md",
+          "href": "phase-plans/Phase002-inputs.json",
+          "target": "docs/phase-plans/Phase002-inputs.json"
+        },
+        {
+          "owner": "docs/auth.md",
+          "href": "index.md",
+          "target": "docs/index.md"
+        },
+        {
+          "owner": "docs/hosting.md",
+          "href": "tech-stack.md",
+          "target": "docs/tech-stack.md"
+        },
+        {
+          "owner": "docs/hosting.md",
+          "href": "database.md",
+          "target": "docs/database.md"
+        },
+        {
+          "owner": "docs/hosting.md",
+          "href": "api.md",
+          "target": "docs/api.md"
+        },
+        {
+          "owner": "docs/hosting.md",
+          "href": "travel-data-provider-strategy.md",
+          "target": "docs/travel-data-provider-strategy.md"
+        },
+        {
+          "owner": "docs/hosting.md",
+          "href": "privacy-and-user-data.md",
+          "target": "docs/privacy-and-user-data.md"
+        },
+        {
+          "owner": "docs/hosting.md",
+          "href": "phase-plans/Phase002-inputs.json",
+          "target": "docs/phase-plans/Phase002-inputs.json"
+        },
+        {
+          "owner": "docs/admin.md",
+          "href": "api.md",
+          "target": "docs/api.md"
+        },
+        {
+          "owner": "docs/admin.md",
+          "href": "database.md",
+          "target": "docs/database.md"
+        },
+        {
+          "owner": "docs/admin.md",
+          "href": "auth.md",
+          "target": "docs/auth.md"
+        },
+        {
+          "owner": "docs/admin.md",
+          "href": "crypto.md",
+          "target": "docs/crypto.md"
+        },
+        {
+          "owner": "docs/admin.md",
+          "href": "privacy-and-user-data.md",
+          "target": "docs/privacy-and-user-data.md"
+        },
+        {
+          "owner": "docs/admin.md",
+          "href": "phase-plans/Phase002-inputs.json",
+          "target": "docs/phase-plans/Phase002-inputs.json"
+        },
+        {
+          "owner": "docs/crypto.md",
+          "href": "database.md",
+          "target": "docs/database.md"
+        },
+        {
+          "owner": "docs/crypto.md",
+          "href": "api.md",
+          "target": "docs/api.md"
+        },
+        {
+          "owner": "docs/crypto.md",
+          "href": "admin.md",
+          "target": "docs/admin.md"
+        },
+        {
+          "owner": "docs/crypto.md",
+          "href": "privacy-and-user-data.md",
+          "target": "docs/privacy-and-user-data.md"
+        },
+        {
+          "owner": "docs/crypto.md",
+          "href": "phase-plans/Phase002-inputs.json",
+          "target": "docs/phase-plans/Phase002-inputs.json"
+        }
+      ]
+    },
+    "negativeDocuments": {
+      "scope": "ISOLATED_DOCUMENT_MUTATIONS",
+      "temporary": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD",
+      "caseCount": 12,
+      "observations": [
+        {
+          "id": "dangling-file",
+          "expectedDiagnostic": "LINK_MISSING_FILE",
+          "mutatedHashes": {
+            "docs/index.md": "51a0bcb196443f637beba39b1010c72e3b3ac0867ebecd33c2bae4f276e4b2d4"
+          },
+          "rejected": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check links",
+            "exitCode": 1,
+            "stdout": "",
+            "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"LINK_MISSING_FILE: docs/index.md -> phase002-does-not-exist.md\",\"message\":\"LINK_MISSING_FILE: docs/index.md -> phase002-does-not-exist.md\"}\n"
+          },
+          "restored": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check links",
+            "exitCode": 0,
+            "stdout": "{\"status\":\"PASS\",\"details\":{\"contractCount\":10,\"linkCount\":104,\"unresolvedLinks\":0,\"duplicateCanonicalEndpoints\":0,\"observations\":[{\"owner\":\"docs/api.md\",\"href\":\"project-constitution.md\",\"target\":\"docs/project-constitution.md\"},{\"owner\":\"docs/api.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/api.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/api.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/api.md\",\"href\":\"admin.md\",\"target\":\"docs/admin.md\"},{\"owner\":\"docs/api.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/api.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/api.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/api.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/api.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/api.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"project-constitution.md\",\"target\":\"docs/project-constitution.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"prompt-design.md\",\"target\":\"docs/prompt-design.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"hosting.md\",\"target\":\"docs/hosting.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"agent-execution-contract.md\",\"target\":\"docs/agent-execution-contract.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"hosting.md\",\"target\":\"docs/hosting.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"prompt-design.md\",\"target\":\"docs/prompt-design.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"agent-execution-contract.md\",\"target\":\"docs/agent-execution-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"../AGENTS.md\",\"target\":\"AGENTS.md\"},{\"owner\":\"docs/index.md\",\"href\":\"project-layout.json\",\"target\":\"docs/project-layout.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/roadmap-execution-manifest.json\",\"target\":\"Serendipity · 际遇/docs/roadmap-execution-manifest.json\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/product-requirements.md\",\"target\":\"Serendipity · 际遇/docs/product-requirements.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/roadmap-canonical-contract.md\",\"target\":\"Serendipity · 际遇/docs/roadmap-canonical-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/术语冻结表.md\",\"target\":\"Serendipity · 际遇/docs/术语冻结表.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/state-machines.md\",\"target\":\"Serendipity · 际遇/docs/state-machines.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/testing-strategy.md\",\"target\":\"Serendipity · 际遇/docs/testing-strategy.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/personal-project-gate-waivers.md\",\"target\":\"Serendipity · 际遇/docs/personal-project-gate-waivers.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/agent-only-execution-contract.md\",\"target\":\"Serendipity · 际遇/docs/agent-only-execution-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/phase-gate.schema.json\",\"target\":\"Serendipity · 际遇/docs/phase-gate.schema.json\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/Phase002.md\",\"target\":\"Serendipity · 际遇/Phase002.md\"},{\"owner\":\"docs/index.md\",\"href\":\"project-constitution.md\",\"target\":\"docs/project-constitution.md\"},{\"owner\":\"docs/index.md\",\"href\":\"agent-execution-contract.md\",\"target\":\"docs/agent-execution-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-completion-log.md\",\"target\":\"docs/phase-completion-log.md\"},{\"owner\":\"docs/index.md\",\"href\":\"roadmap-run.json\",\"target\":\"docs/roadmap-run.json\"},{\"owner\":\"docs/index.md\",\"href\":\"tech-stack.md\",\"target\":\"docs/tech-stack.md\"},{\"owner\":\"docs/index.md\",\"href\":\"directory-structure.md\",\"target\":\"docs/directory-structure.md\"},{\"owner\":\"docs/index.md\",\"href\":\"git-workflow.md\",\"target\":\"docs/git-workflow.md\"},{\"owner\":\"docs/index.md\",\"href\":\"code-style.md\",\"target\":\"docs/code-style.md\"},{\"owner\":\"docs/index.md\",\"href\":\"ui-design-system.md\",\"target\":\"docs/ui-design-system.md\"},{\"owner\":\"docs/index.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/index.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/index.md\",\"href\":\"prompt-design.md\",\"target\":\"docs/prompt-design.md\"},{\"owner\":\"docs/index.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/index.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/index.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/index.md\",\"href\":\"index.md\",\"target\":\"docs/index.md\"},{\"owner\":\"docs/index.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/index.md\",\"href\":\"hosting.md\",\"target\":\"docs/hosting.md\"},{\"owner\":\"docs/index.md\",\"href\":\"admin.md\",\"target\":\"docs/admin.md\"},{\"owner\":\"docs/index.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/index.md\",\"href\":\"../scripts/generate-api-contract.mjs\",\"target\":\"scripts/generate-api-contract.mjs\"},{\"owner\":\"docs/index.md\",\"href\":\"roadmap-run.json\",\"target\":\"docs/roadmap-run.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/Phase002.json\",\"target\":\"docs/phase-plans/Phase002.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/verify-phase002.mjs\",\"target\":\"docs/phase-plans/verify-phase002.mjs\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/complete-phase002.mjs\",\"target\":\"docs/phase-plans/complete-phase002.mjs\"},{\"owner\":\"docs/index.md\",\"href\":\"../scripts/validate-phase.ps1\",\"target\":\"scripts/validate-phase.ps1\"},{\"owner\":\"docs/index.md\",\"href\":\"evidence/Phase001-gate.json\",\"target\":\"docs/evidence/Phase001-gate.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-completion-log.md\",\"target\":\"docs/phase-completion-log.md\"},{\"owner\":\"docs/index.md\",\"href\":\"history/Phase000/README.md\",\"target\":\"docs/history/Phase000/README.md\"},{\"owner\":\"docs/index.md\",\"href\":\"history/Phase000/docs/evidence/Phase000-gate.json\",\"target\":\"docs/history/Phase000/docs/evidence/Phase000-gate.json\"},{\"owner\":\"docs/auth.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/auth.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/auth.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/auth.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/auth.md\",\"href\":\"index.md\",\"target\":\"docs/index.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"tech-stack.md\",\"target\":\"docs/tech-stack.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/admin.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/crypto.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"admin.md\",\"target\":\"docs/admin.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"}]}}\n",
+            "stderr": ""
+          }
+        },
+        {
+          "id": "dangling-fragment",
+          "expectedDiagnostic": "LINK_MISSING_FRAGMENT",
+          "mutatedHashes": {
+            "docs/index.md": "97a0ce1484b8e39de1210684b71408cd6ef9b42c8362e2363b352ce3821c67ee"
+          },
+          "rejected": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check links",
+            "exitCode": 1,
+            "stdout": "",
+            "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"LINK_MISSING_FRAGMENT: docs/index.md -> api.md#phase002-missing-fragment\",\"message\":\"LINK_MISSING_FRAGMENT: docs/index.md -> api.md#phase002-missing-fragment\"}\n"
+          },
+          "restored": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check links",
+            "exitCode": 0,
+            "stdout": "{\"status\":\"PASS\",\"details\":{\"contractCount\":10,\"linkCount\":104,\"unresolvedLinks\":0,\"duplicateCanonicalEndpoints\":0,\"observations\":[{\"owner\":\"docs/api.md\",\"href\":\"project-constitution.md\",\"target\":\"docs/project-constitution.md\"},{\"owner\":\"docs/api.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/api.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/api.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/api.md\",\"href\":\"admin.md\",\"target\":\"docs/admin.md\"},{\"owner\":\"docs/api.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/api.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/api.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/api.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/api.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/api.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"project-constitution.md\",\"target\":\"docs/project-constitution.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"prompt-design.md\",\"target\":\"docs/prompt-design.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"hosting.md\",\"target\":\"docs/hosting.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"agent-execution-contract.md\",\"target\":\"docs/agent-execution-contract.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"hosting.md\",\"target\":\"docs/hosting.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"prompt-design.md\",\"target\":\"docs/prompt-design.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"agent-execution-contract.md\",\"target\":\"docs/agent-execution-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"../AGENTS.md\",\"target\":\"AGENTS.md\"},{\"owner\":\"docs/index.md\",\"href\":\"project-layout.json\",\"target\":\"docs/project-layout.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/roadmap-execution-manifest.json\",\"target\":\"Serendipity · 际遇/docs/roadmap-execution-manifest.json\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/product-requirements.md\",\"target\":\"Serendipity · 际遇/docs/product-requirements.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/roadmap-canonical-contract.md\",\"target\":\"Serendipity · 际遇/docs/roadmap-canonical-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/术语冻结表.md\",\"target\":\"Serendipity · 际遇/docs/术语冻结表.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/state-machines.md\",\"target\":\"Serendipity · 际遇/docs/state-machines.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/testing-strategy.md\",\"target\":\"Serendipity · 际遇/docs/testing-strategy.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/personal-project-gate-waivers.md\",\"target\":\"Serendipity · 际遇/docs/personal-project-gate-waivers.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/agent-only-execution-contract.md\",\"target\":\"Serendipity · 际遇/docs/agent-only-execution-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/phase-gate.schema.json\",\"target\":\"Serendipity · 际遇/docs/phase-gate.schema.json\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/Phase002.md\",\"target\":\"Serendipity · 际遇/Phase002.md\"},{\"owner\":\"docs/index.md\",\"href\":\"project-constitution.md\",\"target\":\"docs/project-constitution.md\"},{\"owner\":\"docs/index.md\",\"href\":\"agent-execution-contract.md\",\"target\":\"docs/agent-execution-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-completion-log.md\",\"target\":\"docs/phase-completion-log.md\"},{\"owner\":\"docs/index.md\",\"href\":\"roadmap-run.json\",\"target\":\"docs/roadmap-run.json\"},{\"owner\":\"docs/index.md\",\"href\":\"tech-stack.md\",\"target\":\"docs/tech-stack.md\"},{\"owner\":\"docs/index.md\",\"href\":\"directory-structure.md\",\"target\":\"docs/directory-structure.md\"},{\"owner\":\"docs/index.md\",\"href\":\"git-workflow.md\",\"target\":\"docs/git-workflow.md\"},{\"owner\":\"docs/index.md\",\"href\":\"code-style.md\",\"target\":\"docs/code-style.md\"},{\"owner\":\"docs/index.md\",\"href\":\"ui-design-system.md\",\"target\":\"docs/ui-design-system.md\"},{\"owner\":\"docs/index.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/index.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/index.md\",\"href\":\"prompt-design.md\",\"target\":\"docs/prompt-design.md\"},{\"owner\":\"docs/index.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/index.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/index.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/index.md\",\"href\":\"index.md\",\"target\":\"docs/index.md\"},{\"owner\":\"docs/index.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/index.md\",\"href\":\"hosting.md\",\"target\":\"docs/hosting.md\"},{\"owner\":\"docs/index.md\",\"href\":\"admin.md\",\"target\":\"docs/admin.md\"},{\"owner\":\"docs/index.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/index.md\",\"href\":\"../scripts/generate-api-contract.mjs\",\"target\":\"scripts/generate-api-contract.mjs\"},{\"owner\":\"docs/index.md\",\"href\":\"roadmap-run.json\",\"target\":\"docs/roadmap-run.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/Phase002.json\",\"target\":\"docs/phase-plans/Phase002.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/verify-phase002.mjs\",\"target\":\"docs/phase-plans/verify-phase002.mjs\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/complete-phase002.mjs\",\"target\":\"docs/phase-plans/complete-phase002.mjs\"},{\"owner\":\"docs/index.md\",\"href\":\"../scripts/validate-phase.ps1\",\"target\":\"scripts/validate-phase.ps1\"},{\"owner\":\"docs/index.md\",\"href\":\"evidence/Phase001-gate.json\",\"target\":\"docs/evidence/Phase001-gate.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-completion-log.md\",\"target\":\"docs/phase-completion-log.md\"},{\"owner\":\"docs/index.md\",\"href\":\"history/Phase000/README.md\",\"target\":\"docs/history/Phase000/README.md\"},{\"owner\":\"docs/index.md\",\"href\":\"history/Phase000/docs/evidence/Phase000-gate.json\",\"target\":\"docs/history/Phase000/docs/evidence/Phase000-gate.json\"},{\"owner\":\"docs/auth.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/auth.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/auth.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/auth.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/auth.md\",\"href\":\"index.md\",\"target\":\"docs/index.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"tech-stack.md\",\"target\":\"docs/tech-stack.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/admin.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/crypto.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"admin.md\",\"target\":\"docs/admin.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"}]}}\n",
+            "stderr": ""
+          }
+        },
+        {
+          "id": "deleted-index-target",
+          "expectedDiagnostic": "LINK_MISSING_FILE",
+          "mutatedHashes": {
+            "docs/auth.md": null
+          },
+          "rejected": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check links",
+            "exitCode": 1,
+            "stdout": "",
+            "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"LINK_MISSING_FILE: docs/api.md -> auth.md\",\"message\":\"LINK_MISSING_FILE: docs/api.md -> auth.md\"}\n"
+          },
+          "restored": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check links",
+            "exitCode": 0,
+            "stdout": "{\"status\":\"PASS\",\"details\":{\"contractCount\":10,\"linkCount\":104,\"unresolvedLinks\":0,\"duplicateCanonicalEndpoints\":0,\"observations\":[{\"owner\":\"docs/api.md\",\"href\":\"project-constitution.md\",\"target\":\"docs/project-constitution.md\"},{\"owner\":\"docs/api.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/api.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/api.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/api.md\",\"href\":\"admin.md\",\"target\":\"docs/admin.md\"},{\"owner\":\"docs/api.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/api.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/api.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/api.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/api.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/api.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"project-constitution.md\",\"target\":\"docs/project-constitution.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"prompt-design.md\",\"target\":\"docs/prompt-design.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"hosting.md\",\"target\":\"docs/hosting.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"agent-execution-contract.md\",\"target\":\"docs/agent-execution-contract.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"hosting.md\",\"target\":\"docs/hosting.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"prompt-design.md\",\"target\":\"docs/prompt-design.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"agent-execution-contract.md\",\"target\":\"docs/agent-execution-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"../AGENTS.md\",\"target\":\"AGENTS.md\"},{\"owner\":\"docs/index.md\",\"href\":\"project-layout.json\",\"target\":\"docs/project-layout.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/roadmap-execution-manifest.json\",\"target\":\"Serendipity · 际遇/docs/roadmap-execution-manifest.json\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/product-requirements.md\",\"target\":\"Serendipity · 际遇/docs/product-requirements.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/roadmap-canonical-contract.md\",\"target\":\"Serendipity · 际遇/docs/roadmap-canonical-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/术语冻结表.md\",\"target\":\"Serendipity · 际遇/docs/术语冻结表.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/state-machines.md\",\"target\":\"Serendipity · 际遇/docs/state-machines.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/testing-strategy.md\",\"target\":\"Serendipity · 际遇/docs/testing-strategy.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/personal-project-gate-waivers.md\",\"target\":\"Serendipity · 际遇/docs/personal-project-gate-waivers.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/agent-only-execution-contract.md\",\"target\":\"Serendipity · 际遇/docs/agent-only-execution-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/phase-gate.schema.json\",\"target\":\"Serendipity · 际遇/docs/phase-gate.schema.json\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/Phase002.md\",\"target\":\"Serendipity · 际遇/Phase002.md\"},{\"owner\":\"docs/index.md\",\"href\":\"project-constitution.md\",\"target\":\"docs/project-constitution.md\"},{\"owner\":\"docs/index.md\",\"href\":\"agent-execution-contract.md\",\"target\":\"docs/agent-execution-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-completion-log.md\",\"target\":\"docs/phase-completion-log.md\"},{\"owner\":\"docs/index.md\",\"href\":\"roadmap-run.json\",\"target\":\"docs/roadmap-run.json\"},{\"owner\":\"docs/index.md\",\"href\":\"tech-stack.md\",\"target\":\"docs/tech-stack.md\"},{\"owner\":\"docs/index.md\",\"href\":\"directory-structure.md\",\"target\":\"docs/directory-structure.md\"},{\"owner\":\"docs/index.md\",\"href\":\"git-workflow.md\",\"target\":\"docs/git-workflow.md\"},{\"owner\":\"docs/index.md\",\"href\":\"code-style.md\",\"target\":\"docs/code-style.md\"},{\"owner\":\"docs/index.md\",\"href\":\"ui-design-system.md\",\"target\":\"docs/ui-design-system.md\"},{\"owner\":\"docs/index.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/index.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/index.md\",\"href\":\"prompt-design.md\",\"target\":\"docs/prompt-design.md\"},{\"owner\":\"docs/index.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/index.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/index.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/index.md\",\"href\":\"index.md\",\"target\":\"docs/index.md\"},{\"owner\":\"docs/index.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/index.md\",\"href\":\"hosting.md\",\"target\":\"docs/hosting.md\"},{\"owner\":\"docs/index.md\",\"href\":\"admin.md\",\"target\":\"docs/admin.md\"},{\"owner\":\"docs/index.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/index.md\",\"href\":\"../scripts/generate-api-contract.mjs\",\"target\":\"scripts/generate-api-contract.mjs\"},{\"owner\":\"docs/index.md\",\"href\":\"roadmap-run.json\",\"target\":\"docs/roadmap-run.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/Phase002.json\",\"target\":\"docs/phase-plans/Phase002.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/verify-phase002.mjs\",\"target\":\"docs/phase-plans/verify-phase002.mjs\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/complete-phase002.mjs\",\"target\":\"docs/phase-plans/complete-phase002.mjs\"},{\"owner\":\"docs/index.md\",\"href\":\"../scripts/validate-phase.ps1\",\"target\":\"scripts/validate-phase.ps1\"},{\"owner\":\"docs/index.md\",\"href\":\"evidence/Phase001-gate.json\",\"target\":\"docs/evidence/Phase001-gate.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-completion-log.md\",\"target\":\"docs/phase-completion-log.md\"},{\"owner\":\"docs/index.md\",\"href\":\"history/Phase000/README.md\",\"target\":\"docs/history/Phase000/README.md\"},{\"owner\":\"docs/index.md\",\"href\":\"history/Phase000/docs/evidence/Phase000-gate.json\",\"target\":\"docs/history/Phase000/docs/evidence/Phase000-gate.json\"},{\"owner\":\"docs/auth.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/auth.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/auth.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/auth.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/auth.md\",\"href\":\"index.md\",\"target\":\"docs/index.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"tech-stack.md\",\"target\":\"docs/tech-stack.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/admin.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/crypto.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"admin.md\",\"target\":\"docs/admin.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"}]}}\n",
+            "stderr": ""
+          }
+        },
+        {
+          "id": "duplicate-canonical-endpoint",
+          "expectedDiagnostic": "API_DUPLICATE_ENDPOINT",
+          "mutatedHashes": {
+            "Serendipity · 际遇/docs/roadmap-execution-manifest.json": "2504b52c4381e6183abdd68e378ca8f5be3fb1217c61e0cce976032c4114d993",
+            "docs/phase-plans/Phase002-inputs.json": "131caaca0bc99bddaa29c410fceab837b35258b943f7c33ff48d48c0b7c6b29e"
+          },
+          "rejected": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check links",
+            "exitCode": 1,
+            "stdout": "",
+            "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"API_DUPLICATE_ENDPOINT: GET /api/admin/users\",\"message\":\"API_DUPLICATE_ENDPOINT: GET /api/admin/users\"}\n"
+          },
+          "restored": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check links",
+            "exitCode": 0,
+            "stdout": "{\"status\":\"PASS\",\"details\":{\"contractCount\":10,\"linkCount\":104,\"unresolvedLinks\":0,\"duplicateCanonicalEndpoints\":0,\"observations\":[{\"owner\":\"docs/api.md\",\"href\":\"project-constitution.md\",\"target\":\"docs/project-constitution.md\"},{\"owner\":\"docs/api.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/api.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/api.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/api.md\",\"href\":\"admin.md\",\"target\":\"docs/admin.md\"},{\"owner\":\"docs/api.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/api.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/api.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/api.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/api.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/api.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"project-constitution.md\",\"target\":\"docs/project-constitution.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"prompt-design.md\",\"target\":\"docs/prompt-design.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"hosting.md\",\"target\":\"docs/hosting.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"agent-execution-contract.md\",\"target\":\"docs/agent-execution-contract.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"hosting.md\",\"target\":\"docs/hosting.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"prompt-design.md\",\"target\":\"docs/prompt-design.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"agent-execution-contract.md\",\"target\":\"docs/agent-execution-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"../AGENTS.md\",\"target\":\"AGENTS.md\"},{\"owner\":\"docs/index.md\",\"href\":\"project-layout.json\",\"target\":\"docs/project-layout.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/roadmap-execution-manifest.json\",\"target\":\"Serendipity · 际遇/docs/roadmap-execution-manifest.json\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/product-requirements.md\",\"target\":\"Serendipity · 际遇/docs/product-requirements.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/roadmap-canonical-contract.md\",\"target\":\"Serendipity · 际遇/docs/roadmap-canonical-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/术语冻结表.md\",\"target\":\"Serendipity · 际遇/docs/术语冻结表.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/state-machines.md\",\"target\":\"Serendipity · 际遇/docs/state-machines.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/testing-strategy.md\",\"target\":\"Serendipity · 际遇/docs/testing-strategy.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/personal-project-gate-waivers.md\",\"target\":\"Serendipity · 际遇/docs/personal-project-gate-waivers.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/agent-only-execution-contract.md\",\"target\":\"Serendipity · 际遇/docs/agent-only-execution-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/phase-gate.schema.json\",\"target\":\"Serendipity · 际遇/docs/phase-gate.schema.json\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/Phase002.md\",\"target\":\"Serendipity · 际遇/Phase002.md\"},{\"owner\":\"docs/index.md\",\"href\":\"project-constitution.md\",\"target\":\"docs/project-constitution.md\"},{\"owner\":\"docs/index.md\",\"href\":\"agent-execution-contract.md\",\"target\":\"docs/agent-execution-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-completion-log.md\",\"target\":\"docs/phase-completion-log.md\"},{\"owner\":\"docs/index.md\",\"href\":\"roadmap-run.json\",\"target\":\"docs/roadmap-run.json\"},{\"owner\":\"docs/index.md\",\"href\":\"tech-stack.md\",\"target\":\"docs/tech-stack.md\"},{\"owner\":\"docs/index.md\",\"href\":\"directory-structure.md\",\"target\":\"docs/directory-structure.md\"},{\"owner\":\"docs/index.md\",\"href\":\"git-workflow.md\",\"target\":\"docs/git-workflow.md\"},{\"owner\":\"docs/index.md\",\"href\":\"code-style.md\",\"target\":\"docs/code-style.md\"},{\"owner\":\"docs/index.md\",\"href\":\"ui-design-system.md\",\"target\":\"docs/ui-design-system.md\"},{\"owner\":\"docs/index.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/index.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/index.md\",\"href\":\"prompt-design.md\",\"target\":\"docs/prompt-design.md\"},{\"owner\":\"docs/index.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/index.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/index.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/index.md\",\"href\":\"index.md\",\"target\":\"docs/index.md\"},{\"owner\":\"docs/index.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/index.md\",\"href\":\"hosting.md\",\"target\":\"docs/hosting.md\"},{\"owner\":\"docs/index.md\",\"href\":\"admin.md\",\"target\":\"docs/admin.md\"},{\"owner\":\"docs/index.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/index.md\",\"href\":\"../scripts/generate-api-contract.mjs\",\"target\":\"scripts/generate-api-contract.mjs\"},{\"owner\":\"docs/index.md\",\"href\":\"roadmap-run.json\",\"target\":\"docs/roadmap-run.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/Phase002.json\",\"target\":\"docs/phase-plans/Phase002.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/verify-phase002.mjs\",\"target\":\"docs/phase-plans/verify-phase002.mjs\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/complete-phase002.mjs\",\"target\":\"docs/phase-plans/complete-phase002.mjs\"},{\"owner\":\"docs/index.md\",\"href\":\"../scripts/validate-phase.ps1\",\"target\":\"scripts/validate-phase.ps1\"},{\"owner\":\"docs/index.md\",\"href\":\"evidence/Phase001-gate.json\",\"target\":\"docs/evidence/Phase001-gate.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-completion-log.md\",\"target\":\"docs/phase-completion-log.md\"},{\"owner\":\"docs/index.md\",\"href\":\"history/Phase000/README.md\",\"target\":\"docs/history/Phase000/README.md\"},{\"owner\":\"docs/index.md\",\"href\":\"history/Phase000/docs/evidence/Phase000-gate.json\",\"target\":\"docs/history/Phase000/docs/evidence/Phase000-gate.json\"},{\"owner\":\"docs/auth.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/auth.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/auth.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/auth.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/auth.md\",\"href\":\"index.md\",\"target\":\"docs/index.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"tech-stack.md\",\"target\":\"docs/tech-stack.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/admin.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/crypto.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"admin.md\",\"target\":\"docs/admin.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"}]}}\n",
+            "stderr": ""
+          }
+        },
+        {
+          "id": "undefined-producer",
+          "expectedDiagnostic": "Invalid producerPhase",
+          "mutatedHashes": {
+            "Serendipity · 际遇/docs/roadmap-execution-manifest.json": "510fbc531442ee06dea164956af12afdc185908e7439e637b333bec78ac76ea5",
+            "docs/phase-plans/Phase002-inputs.json": "aba93dc7367334138a01dcd433b0cc32477992a63ea2790d536a1c4a7902299c"
+          },
+          "rejected": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check links",
+            "exitCode": 1,
+            "stdout": "",
+            "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"Invalid producerPhase\",\"message\":\"Invalid producerPhase\"}\n"
+          },
+          "restored": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check links",
+            "exitCode": 0,
+            "stdout": "{\"status\":\"PASS\",\"details\":{\"contractCount\":10,\"linkCount\":104,\"unresolvedLinks\":0,\"duplicateCanonicalEndpoints\":0,\"observations\":[{\"owner\":\"docs/api.md\",\"href\":\"project-constitution.md\",\"target\":\"docs/project-constitution.md\"},{\"owner\":\"docs/api.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/api.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/api.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/api.md\",\"href\":\"admin.md\",\"target\":\"docs/admin.md\"},{\"owner\":\"docs/api.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/api.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/api.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/api.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/api.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/api.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"project-constitution.md\",\"target\":\"docs/project-constitution.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"prompt-design.md\",\"target\":\"docs/prompt-design.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"hosting.md\",\"target\":\"docs/hosting.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"agent-execution-contract.md\",\"target\":\"docs/agent-execution-contract.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"hosting.md\",\"target\":\"docs/hosting.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"prompt-design.md\",\"target\":\"docs/prompt-design.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"agent-execution-contract.md\",\"target\":\"docs/agent-execution-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"../AGENTS.md\",\"target\":\"AGENTS.md\"},{\"owner\":\"docs/index.md\",\"href\":\"project-layout.json\",\"target\":\"docs/project-layout.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/roadmap-execution-manifest.json\",\"target\":\"Serendipity · 际遇/docs/roadmap-execution-manifest.json\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/product-requirements.md\",\"target\":\"Serendipity · 际遇/docs/product-requirements.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/roadmap-canonical-contract.md\",\"target\":\"Serendipity · 际遇/docs/roadmap-canonical-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/术语冻结表.md\",\"target\":\"Serendipity · 际遇/docs/术语冻结表.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/state-machines.md\",\"target\":\"Serendipity · 际遇/docs/state-machines.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/testing-strategy.md\",\"target\":\"Serendipity · 际遇/docs/testing-strategy.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/personal-project-gate-waivers.md\",\"target\":\"Serendipity · 际遇/docs/personal-project-gate-waivers.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/agent-only-execution-contract.md\",\"target\":\"Serendipity · 际遇/docs/agent-only-execution-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/phase-gate.schema.json\",\"target\":\"Serendipity · 际遇/docs/phase-gate.schema.json\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/Phase002.md\",\"target\":\"Serendipity · 际遇/Phase002.md\"},{\"owner\":\"docs/index.md\",\"href\":\"project-constitution.md\",\"target\":\"docs/project-constitution.md\"},{\"owner\":\"docs/index.md\",\"href\":\"agent-execution-contract.md\",\"target\":\"docs/agent-execution-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-completion-log.md\",\"target\":\"docs/phase-completion-log.md\"},{\"owner\":\"docs/index.md\",\"href\":\"roadmap-run.json\",\"target\":\"docs/roadmap-run.json\"},{\"owner\":\"docs/index.md\",\"href\":\"tech-stack.md\",\"target\":\"docs/tech-stack.md\"},{\"owner\":\"docs/index.md\",\"href\":\"directory-structure.md\",\"target\":\"docs/directory-structure.md\"},{\"owner\":\"docs/index.md\",\"href\":\"git-workflow.md\",\"target\":\"docs/git-workflow.md\"},{\"owner\":\"docs/index.md\",\"href\":\"code-style.md\",\"target\":\"docs/code-style.md\"},{\"owner\":\"docs/index.md\",\"href\":\"ui-design-system.md\",\"target\":\"docs/ui-design-system.md\"},{\"owner\":\"docs/index.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/index.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/index.md\",\"href\":\"prompt-design.md\",\"target\":\"docs/prompt-design.md\"},{\"owner\":\"docs/index.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/index.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/index.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/index.md\",\"href\":\"index.md\",\"target\":\"docs/index.md\"},{\"owner\":\"docs/index.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/index.md\",\"href\":\"hosting.md\",\"target\":\"docs/hosting.md\"},{\"owner\":\"docs/index.md\",\"href\":\"admin.md\",\"target\":\"docs/admin.md\"},{\"owner\":\"docs/index.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/index.md\",\"href\":\"../scripts/generate-api-contract.mjs\",\"target\":\"scripts/generate-api-contract.mjs\"},{\"owner\":\"docs/index.md\",\"href\":\"roadmap-run.json\",\"target\":\"docs/roadmap-run.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/Phase002.json\",\"target\":\"docs/phase-plans/Phase002.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/verify-phase002.mjs\",\"target\":\"docs/phase-plans/verify-phase002.mjs\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/complete-phase002.mjs\",\"target\":\"docs/phase-plans/complete-phase002.mjs\"},{\"owner\":\"docs/index.md\",\"href\":\"../scripts/validate-phase.ps1\",\"target\":\"scripts/validate-phase.ps1\"},{\"owner\":\"docs/index.md\",\"href\":\"evidence/Phase001-gate.json\",\"target\":\"docs/evidence/Phase001-gate.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-completion-log.md\",\"target\":\"docs/phase-completion-log.md\"},{\"owner\":\"docs/index.md\",\"href\":\"history/Phase000/README.md\",\"target\":\"docs/history/Phase000/README.md\"},{\"owner\":\"docs/index.md\",\"href\":\"history/Phase000/docs/evidence/Phase000-gate.json\",\"target\":\"docs/history/Phase000/docs/evidence/Phase000-gate.json\"},{\"owner\":\"docs/auth.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/auth.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/auth.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/auth.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/auth.md\",\"href\":\"index.md\",\"target\":\"docs/index.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"tech-stack.md\",\"target\":\"docs/tech-stack.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/admin.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/crypto.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"admin.md\",\"target\":\"docs/admin.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"}]}}\n",
+            "stderr": ""
+          }
+        },
+        {
+          "id": "second-api-contract",
+          "expectedDiagnostic": "SECOND_API_CONTRACT",
+          "mutatedHashes": {
+            "docs/api-contract.md": "5b5c680d9b6d85047db776b81844a1d47b3fa83be7d5a2461a9621bdbfc3c223"
+          },
+          "rejected": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check links",
+            "exitCode": 1,
+            "stdout": "",
+            "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"SECOND_API_CONTRACT: docs/api-contract.md\",\"message\":\"SECOND_API_CONTRACT: docs/api-contract.md\"}\n"
+          },
+          "restored": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check links",
+            "exitCode": 0,
+            "stdout": "{\"status\":\"PASS\",\"details\":{\"contractCount\":10,\"linkCount\":104,\"unresolvedLinks\":0,\"duplicateCanonicalEndpoints\":0,\"observations\":[{\"owner\":\"docs/api.md\",\"href\":\"project-constitution.md\",\"target\":\"docs/project-constitution.md\"},{\"owner\":\"docs/api.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/api.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/api.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/api.md\",\"href\":\"admin.md\",\"target\":\"docs/admin.md\"},{\"owner\":\"docs/api.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/api.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/api.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/api.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/api.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/api.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/prompt-design.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"project-constitution.md\",\"target\":\"docs/project-constitution.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/travel-plan-schema.md\",\"href\":\"prompt-design.md\",\"target\":\"docs/prompt-design.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"hosting.md\",\"target\":\"docs/hosting.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/travel-data-provider-strategy.md\",\"href\":\"agent-execution-contract.md\",\"target\":\"docs/agent-execution-contract.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"hosting.md\",\"target\":\"docs/hosting.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"prompt-design.md\",\"target\":\"docs/prompt-design.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/privacy-and-user-data.md\",\"href\":\"agent-execution-contract.md\",\"target\":\"docs/agent-execution-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"../AGENTS.md\",\"target\":\"AGENTS.md\"},{\"owner\":\"docs/index.md\",\"href\":\"project-layout.json\",\"target\":\"docs/project-layout.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/roadmap-execution-manifest.json\",\"target\":\"Serendipity · 际遇/docs/roadmap-execution-manifest.json\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/product-requirements.md\",\"target\":\"Serendipity · 际遇/docs/product-requirements.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/roadmap-canonical-contract.md\",\"target\":\"Serendipity · 际遇/docs/roadmap-canonical-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/术语冻结表.md\",\"target\":\"Serendipity · 际遇/docs/术语冻结表.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/state-machines.md\",\"target\":\"Serendipity · 际遇/docs/state-machines.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/testing-strategy.md\",\"target\":\"Serendipity · 际遇/docs/testing-strategy.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/personal-project-gate-waivers.md\",\"target\":\"Serendipity · 际遇/docs/personal-project-gate-waivers.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/agent-only-execution-contract.md\",\"target\":\"Serendipity · 际遇/docs/agent-only-execution-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/docs/phase-gate.schema.json\",\"target\":\"Serendipity · 际遇/docs/phase-gate.schema.json\"},{\"owner\":\"docs/index.md\",\"href\":\"C:/Users/11295/Desktop/Serendipity · 际遇/Serendipity · 际遇/Phase002.md\",\"target\":\"Serendipity · 际遇/Phase002.md\"},{\"owner\":\"docs/index.md\",\"href\":\"project-constitution.md\",\"target\":\"docs/project-constitution.md\"},{\"owner\":\"docs/index.md\",\"href\":\"agent-execution-contract.md\",\"target\":\"docs/agent-execution-contract.md\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-completion-log.md\",\"target\":\"docs/phase-completion-log.md\"},{\"owner\":\"docs/index.md\",\"href\":\"roadmap-run.json\",\"target\":\"docs/roadmap-run.json\"},{\"owner\":\"docs/index.md\",\"href\":\"tech-stack.md\",\"target\":\"docs/tech-stack.md\"},{\"owner\":\"docs/index.md\",\"href\":\"directory-structure.md\",\"target\":\"docs/directory-structure.md\"},{\"owner\":\"docs/index.md\",\"href\":\"git-workflow.md\",\"target\":\"docs/git-workflow.md\"},{\"owner\":\"docs/index.md\",\"href\":\"code-style.md\",\"target\":\"docs/code-style.md\"},{\"owner\":\"docs/index.md\",\"href\":\"ui-design-system.md\",\"target\":\"docs/ui-design-system.md\"},{\"owner\":\"docs/index.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/index.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/index.md\",\"href\":\"prompt-design.md\",\"target\":\"docs/prompt-design.md\"},{\"owner\":\"docs/index.md\",\"href\":\"travel-plan-schema.md\",\"target\":\"docs/travel-plan-schema.md\"},{\"owner\":\"docs/index.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/index.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/index.md\",\"href\":\"index.md\",\"target\":\"docs/index.md\"},{\"owner\":\"docs/index.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/index.md\",\"href\":\"hosting.md\",\"target\":\"docs/hosting.md\"},{\"owner\":\"docs/index.md\",\"href\":\"admin.md\",\"target\":\"docs/admin.md\"},{\"owner\":\"docs/index.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/index.md\",\"href\":\"../scripts/generate-api-contract.mjs\",\"target\":\"scripts/generate-api-contract.mjs\"},{\"owner\":\"docs/index.md\",\"href\":\"roadmap-run.json\",\"target\":\"docs/roadmap-run.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/Phase002.json\",\"target\":\"docs/phase-plans/Phase002.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/verify-phase002.mjs\",\"target\":\"docs/phase-plans/verify-phase002.mjs\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-plans/complete-phase002.mjs\",\"target\":\"docs/phase-plans/complete-phase002.mjs\"},{\"owner\":\"docs/index.md\",\"href\":\"../scripts/validate-phase.ps1\",\"target\":\"scripts/validate-phase.ps1\"},{\"owner\":\"docs/index.md\",\"href\":\"evidence/Phase001-gate.json\",\"target\":\"docs/evidence/Phase001-gate.json\"},{\"owner\":\"docs/index.md\",\"href\":\"phase-completion-log.md\",\"target\":\"docs/phase-completion-log.md\"},{\"owner\":\"docs/index.md\",\"href\":\"history/Phase000/README.md\",\"target\":\"docs/history/Phase000/README.md\"},{\"owner\":\"docs/index.md\",\"href\":\"history/Phase000/docs/evidence/Phase000-gate.json\",\"target\":\"docs/history/Phase000/docs/evidence/Phase000-gate.json\"},{\"owner\":\"docs/auth.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/auth.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/auth.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/auth.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/auth.md\",\"href\":\"index.md\",\"target\":\"docs/index.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"tech-stack.md\",\"target\":\"docs/tech-stack.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"travel-data-provider-strategy.md\",\"target\":\"docs/travel-data-provider-strategy.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/hosting.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/admin.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"auth.md\",\"target\":\"docs/auth.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"crypto.md\",\"target\":\"docs/crypto.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/admin.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"},{\"owner\":\"docs/crypto.md\",\"href\":\"database.md\",\"target\":\"docs/database.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"api.md\",\"target\":\"docs/api.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"admin.md\",\"target\":\"docs/admin.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"privacy-and-user-data.md\",\"target\":\"docs/privacy-and-user-data.md\"},{\"owner\":\"docs/crypto.md\",\"href\":\"phase-plans/Phase002-inputs.json\",\"target\":\"docs/phase-plans/Phase002-inputs.json\"}]}}\n",
+            "stderr": ""
+          }
+        },
+        {
+          "id": "index-hash-drift",
+          "expectedDiagnostic": "INDEX_INPUT_HASH",
+          "mutatedHashes": {
+            "docs/index.md": "ef4a37b251b7904e508cccac86417ee79e8a68326991991e9d0fd8d02f6f5b1d"
+          },
+          "rejected": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check index-documents",
+            "exitCode": 1,
+            "stdout": "",
+            "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"INDEX_INPUT_HASH\",\"message\":\"INDEX_INPUT_HASH\\n+ actual - expected\\n\\n+ '0000000000000000000000000000000000000000000000000000000000000000'\\n- '497689843e4576c5f8e8a6636d29b04023ac997309a3ffab83cc67d90ea7bf3e'\\n\"}\n"
+          },
+          "restored": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check index-documents",
+            "exitCode": 0,
+            "stdout": "{\"status\":\"PASS\",\"details\":{\"currentProjectContracts\":20,\"phase002Contracts\":10,\"featureCoverage\":{\"numerator\":12,\"denominator\":12},\"absolutePrimaryInputs\":10}}\n",
+            "stderr": ""
+          }
+        },
+        {
+          "id": "local-input-hash-drift",
+          "expectedDiagnostic": "PIN_HASH",
+          "mutatedHashes": {
+            "Serendipity · 际遇/docs/product-requirements.md": "423445609efdb7762684859abb3e5beda5fee7dbaa81c1b8ffb5ddb9128af830"
+          },
+          "rejected": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check pins",
+            "exitCode": 1,
+            "stdout": "",
+            "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"PIN_HASH: product-requirements\",\"message\":\"PIN_HASH: product-requirements\\n+ actual - expected\\n\\n+ '423445609efdb7762684859abb3e5beda5fee7dbaa81c1b8ffb5ddb9128af830'\\n- '320583e7baa5c0b3ee15b13ce0bc4f264e8ff1ae531feb94eb71e1102040854b'\\n\"}\n"
+          },
+          "restored": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check pins",
+            "exitCode": 0,
+            "stdout": "{\"status\":\"PASS\",\"details\":{\"pinnedInputs\":149,\"frozenRunInputs\":9,\"sourceHashesUnchangedAcrossRecovery\":true}}\n",
+            "stderr": ""
+          }
+        },
+        {
+          "id": "missing-admin-guard",
+          "expectedDiagnostic": "ADMIN_GUARD",
+          "mutatedHashes": {
+            "docs/admin.md": "96e297a11b2365dadc8602b7252f2a11336fca76278b599c89b5d39397e3e412"
+          },
+          "rejected": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check admin",
+            "exitCode": 1,
+            "stdout": "",
+            "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"ADMIN_GUARD\",\"message\":\"ADMIN_GUARD\\n+ actual - expected\\n\\n+ 'CLIENT_ROLE'\\n- 'DATABASE_ACTIVE_ADMIN_BEFORE_RESOURCE_QUERY'\\n\"}\n"
+          },
+          "restored": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check admin",
+            "exitCode": 0,
+            "stdout": "{\"status\":\"PASS\",\"details\":{\"scope\":\"DOCUMENT_RULE_FIXTURES_NOT_DATABASE_TRANSACTIONS\",\"fixtureCount\":12,\"fixtures\":[{\"id\":\"admin:valid-proposal\",\"status\":\"PASS\"},{\"id\":\"admin:noop\",\"status\":\"PASS\"},{\"id\":\"admin:self\",\"status\":\"PASS\"},{\"id\":\"admin:last\",\"status\":\"PASS\"},{\"id\":\"admin:cas\",\"status\":\"PASS\"},{\"id\":\"admin:stale-noop\",\"status\":\"PASS\"},{\"id\":\"admin:audit\",\"status\":\"PASS\"},{\"id\":\"admin:rotation-all-references\",\"status\":\"PASS\"},{\"id\":\"admin:rotation-set-changed\",\"status\":\"PASS\"},{\"id\":\"admin:rotation-revision-changed\",\"status\":\"PASS\"},{\"id\":\"admin:rotation-audit-failed\",\"status\":\"PASS\"},{\"id\":\"admin:rotation-emergency-revoked\",\"status\":\"PASS\"}],\"businessDatabaseWrites\":0}}\n",
+            "stderr": ""
+          }
+        },
+        {
+          "id": "weakened-password-limit",
+          "expectedDiagnostic": "AUTH_PASSWORD_POLICY",
+          "mutatedHashes": {
+            "docs/auth.md": "0c86eca5280dd167e7182315efb48f6382f2ab9a687705b9e3800318d56de3a0"
+          },
+          "rejected": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check auth",
+            "exitCode": 1,
+            "stdout": "",
+            "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"AUTH_PASSWORD_POLICY\",\"message\":\"AUTH_PASSWORD_POLICY\\n+ actual - expected\\n\\n  {\\n    algorithm: 'bcryptjs',\\n    cost: 12,\\n    encoding: 'UTF-8',\\n+   maxBytes: 73,\\n-   maxBytes: 72,\\n    minBytes: 12,\\n    missingAccountCompare: 'DUMMY_HASH',\\n    normalize: false\\n  }\\n\"}\n"
+          },
+          "restored": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check auth",
+            "exitCode": 0,
+            "stdout": "{\"status\":\"PASS\",\"details\":{\"scope\":\"DOCUMENT_RULE_FIXTURES_NOT_AUTH_IMPLEMENTATION\",\"fixtureCount\":30,\"fixtures\":[{\"id\":\"auth:email-case-and-idna\",\"status\":\"PASS\"},{\"id\":\"auth:email-double-dot\",\"status\":\"PASS\"},{\"id\":\"auth:email-leading-dot\",\"status\":\"PASS\"},{\"id\":\"auth:email-unicode-local\",\"status\":\"PASS\"},{\"id\":\"auth:email-local-65\",\"status\":\"PASS\"},{\"id\":\"auth:email-bad-domain\",\"status\":\"PASS\"},{\"id\":\"auth:email-extra-at\",\"status\":\"PASS\"},{\"id\":\"auth:password-min\",\"status\":\"PASS\"},{\"id\":\"auth:password-max-ascii\",\"status\":\"PASS\"},{\"id\":\"auth:password-max-cjk\",\"status\":\"PASS\"},{\"id\":\"auth:password-max-emoji\",\"status\":\"PASS\"},{\"id\":\"auth:password-preserve-spaces\",\"status\":\"PASS\"},{\"id\":\"auth:password-short\",\"status\":\"PASS\"},{\"id\":\"auth:password-overlong\",\"status\":\"PASS\"},{\"id\":\"auth:password-cjk-overlong\",\"status\":\"PASS\"},{\"id\":\"auth:active-principal\",\"status\":\"PASS\"},{\"id\":\"auth:session-revoked\",\"status\":\"PASS\"},{\"id\":\"auth:session-expired\",\"status\":\"PASS\"},{\"id\":\"auth:session-disabled\",\"status\":\"PASS\"},{\"id\":\"auth:session-version\",\"status\":\"PASS\"},{\"id\":\"auth:session-role\",\"status\":\"PASS\"},{\"id\":\"auth:session-database\",\"status\":\"PASS\"},{\"id\":\"auth:session-audience\",\"status\":\"PASS\"},{\"id\":\"auth:throttle-below-both\",\"status\":\"PASS\"},{\"id\":\"auth:throttle-account\",\"status\":\"PASS\"},{\"id\":\"auth:throttle-ip\",\"status\":\"PASS\"},{\"id\":\"auth:throttle-storage\",\"status\":\"PASS\"},{\"id\":\"auth:reserved-unexpired-counts\",\"status\":\"PASS\"},{\"id\":\"auth:reserved-expiry-boundary\",\"status\":\"PASS\"},{\"id\":\"auth:success-keeps-failed-history\",\"status\":\"PASS\"}],\"bcryptOrDatabaseInvocations\":0}}\n",
+            "stderr": ""
+          }
+        },
+        {
+          "id": "weakened-crypto-aad",
+          "expectedDiagnostic": "CRYPTO_AAD_FIELDS",
+          "mutatedHashes": {
+            "docs/crypto.md": "d507ad375c5311a26530f64299cc4e68b933d845b2bb686ebc005cf1dc9e316e"
+          },
+          "rejected": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check crypto",
+            "exitCode": 1,
+            "stdout": "",
+            "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"CRYPTO_AAD_FIELDS\",\"message\":\"CRYPTO_AAD_FIELDS\\n+ actual - expected\\n\\n  [\\n-   'recordId',\\n    'provider',\\n-   'envelopeVersion'\\n  ]\\n\"}\n"
+          },
+          "restored": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check crypto",
+            "exitCode": 0,
+            "stdout": "{\"status\":\"PASS\",\"details\":{\"scope\":\"ISOLATED_SYNTHETIC_CRYPTO_PRIMITIVE_AND_DOCUMENT_SCHEMA\",\"fixtureCount\":16,\"fixtures\":[{\"id\":\"crypto:gcm-round-trip\",\"status\":\"PASS\"},{\"id\":\"crypto:canonical-json-round-trip\",\"status\":\"PASS\"},{\"id\":\"crypto:random-iv-distinct-ciphertext\",\"status\":\"PASS\"},{\"id\":\"crypto:version-string\",\"status\":\"PASS\"},{\"id\":\"crypto:algorithm\",\"status\":\"PASS\"},{\"id\":\"crypto:key-id\",\"status\":\"PASS\"},{\"id\":\"crypto:extra-field\",\"status\":\"PASS\"},{\"id\":\"crypto:unpadded\",\"status\":\"PASS\"},{\"id\":\"crypto:short-iv\",\"status\":\"PASS\"},{\"id\":\"crypto:empty-ciphertext\",\"status\":\"PASS\"},{\"id\":\"crypto:overlong\",\"status\":\"PASS\"},{\"id\":\"crypto:aad-recordId\",\"status\":\"PASS\"},{\"id\":\"crypto:aad-provider\",\"status\":\"PASS\"},{\"id\":\"crypto:tampered-ciphertext\",\"status\":\"PASS\"},{\"id\":\"crypto:tampered-tag\",\"status\":\"PASS\"},{\"id\":\"crypto:revoked-cannot-reactivate\",\"status\":\"PASS\"}],\"secretValuesOrEnvelopeRecorded\":false,\"applicationServiceImplemented\":false}}\n",
+            "stderr": ""
+          }
+        },
+        {
+          "id": "shared-privacy-database",
+          "expectedDiagnostic": "HOSTING_LEDGER_STORAGE",
+          "mutatedHashes": {
+            "docs/hosting.md": "5678093a6844ff4fb35392a1921a8af3d9efa09bbe874a0fd4019d12e1e43e1f"
+          },
+          "rejected": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check hosting",
+            "exitCode": 1,
+            "stdout": "",
+            "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"HOSTING_LEDGER_STORAGE\",\"message\":\"HOSTING_LEDGER_STORAGE\\n+ actual - expected\\n\\n  {\\n    environmentKey: 'PRIVACY_LEDGER_DATABASE_URL',\\n    firstProducerPhase: 84,\\n    separateBackupSet: true,\\n+   separateDatabase: false,\\n-   separateDatabase: true,\\n    separateVolume: true\\n  }\\n\"}\n"
+          },
+          "restored": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-links-4rzVHD --check hosting",
+            "exitCode": 0,
+            "stdout": "{\"status\":\"PASS\",\"details\":{\"scope\":\"DOCUMENT_TOPOLOGY_RULES_NOT_DEPLOYMENT\",\"fixtureCount\":14,\"fixtures\":[{\"id\":\"hosting:separate-persistence\",\"status\":\"PASS\"},{\"id\":\"hosting:same-database\",\"status\":\"PASS\"},{\"id\":\"hosting:same-volume\",\"status\":\"PASS\"},{\"id\":\"hosting:same-backup\",\"status\":\"PASS\"},{\"id\":\"hosting:different-digest\",\"status\":\"PASS\"},{\"id\":\"hosting:external-queue\",\"status\":\"PASS\"},{\"id\":\"hosting:watermark-replayed\",\"status\":\"PASS\"},{\"id\":\"hosting:missing-watermark\",\"status\":\"PASS\"},{\"id\":\"hosting:behind-watermark\",\"status\":\"PASS\"},{\"id\":\"hosting:watermark-rollback\",\"status\":\"PASS\"},{\"id\":\"hosting:object-pending\",\"status\":\"PASS\"},{\"id\":\"hosting:token-only\",\"status\":\"PASS\"},{\"id\":\"hosting:traffic-open\",\"status\":\"PASS\"},{\"id\":\"hosting:kill-auto-resumed\",\"status\":\"PASS\"}],\"databaseOrContainerInvocations\":0}}\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "originalSourcesUnmodified": true
+    },
+    "evidenceBindings": {
+      "scope": "SYNTHETIC_BINDING_NEGATIVE_FIXTURE_NOT_AGENT_REVIEW",
+      "temporary": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk",
+      "baseline": {
+        "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk --check evidence-probe",
+        "exitCode": 0,
+        "stdout": "{\"status\":\"PASS\",\"details\":{\"scope\":\"SYNTHETIC_BINDING_NEGATIVE_FIXTURE_NOT_AGENT_REVIEW\",\"accepted\":true,\"independentReviewPerformed\":false}}\n",
+        "stderr": ""
+      },
+      "caseCount": 10,
+      "observations": [
+        {
+          "id": "missing-source-inventory",
+          "expectedDiagnostic": "PHASE002_SOURCE_COVERAGE",
+          "rejected": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk --check evidence-probe",
+            "exitCode": 1,
+            "stdout": "",
+            "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"PHASE002_SOURCE_COVERAGE\",\"message\":\"PHASE002_SOURCE_COVERAGE\\n+ actual - expected\\n... Skipped lines\\n\\n  [\\n    'AGENTS.md',\\n    'docs/admin.md',\\n    'docs/agent-execution-contract.md',\\n    'docs/api.md',\\n...\\n    'scripts/validate-phase.mjs',\\n-   'scripts/validate-phase.ps1'\\n  ]\\n\"}\n"
+          },
+          "restored": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk --check evidence-probe",
+            "exitCode": 0,
+            "stdout": "{\"status\":\"PASS\",\"details\":{\"scope\":\"SYNTHETIC_BINDING_NEGATIVE_FIXTURE_NOT_AGENT_REVIEW\",\"accepted\":true,\"independentReviewPerformed\":false}}\n",
+            "stderr": ""
+          }
+        },
+        {
+          "id": "empty-report-source-map",
+          "expectedDiagnostic": "REPORT_SOURCE_HASH",
+          "rejected": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk --check evidence-probe",
+            "exitCode": 1,
+            "stdout": "",
+            "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"REPORT_SOURCE_HASH: hash map must cover every required file exactly\",\"message\":\"REPORT_SOURCE_HASH: hash map must cover every required file exactly\\n+ actual - expected\\n\\n+ []\\n- [\\n-   'AGENTS.md',\\n-   'docs/admin.md',\\n-   'docs/agent-execution-contract.md',\\n-   'docs/api.md',\\n-   'docs/auth.md',\\n-   'docs/crypto.md',\\n-   'docs/database.md',\\n-   'docs/directory-structure.md',\\n-   'docs/hosting.md',\\n-   'docs/index.md',\\n-   'docs/phase-plans/Phase002-inputs.json',\\n-   'docs/phase-plans/Phase002.json',\\n-   'docs/phase-plans/check-phase002-api.mjs',\\n-   'docs/phase-plans/check-phase002-provider-privacy.mjs',\\n-   'docs/phase-plans/check-phase002-schema-prompt.mjs',\\n-   'docs/phase-plans/complete-phase002.mjs',\\n-   'docs/phase-plans/retry-phase002.mjs',\\n-   'docs/phase-plans/verify-phase002.mjs',\\n-   'docs/privacy-and-user-data.md',\\n-   'docs/project-constitution.md',\\n-   'docs/project-layout.json',\\n-   'docs/prompt-design.md',\\n-   'docs/tech-stack.md',\\n-   'docs/travel-data-provider-strategy.md',\\n-   'docs/travel-plan-schema.md',\\n-   'docs/ui-design-system.md',\\n-   'scripts/check-project-layout.mjs',\\n-   'scripts/generate-api-contract.mjs',\\n-   'scripts/phase-evidence.mjs',\\n-   'scripts/validate-phase.mjs',\\n-   'scripts/validate-phase.ps1'\\n- ]\\n\"}\n"
+          },
+          "restored": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk --check evidence-probe",
+            "exitCode": 0,
+            "stdout": "{\"status\":\"PASS\",\"details\":{\"scope\":\"SYNTHETIC_BINDING_NEGATIVE_FIXTURE_NOT_AGENT_REVIEW\",\"accepted\":true,\"independentReviewPerformed\":false}}\n",
+            "stderr": ""
+          }
+        },
+        {
+          "id": "changed-report-source-hash",
+          "expectedDiagnostic": "REPORT_SOURCE_HASH",
+          "rejected": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk --check evidence-probe",
+            "exitCode": 1,
+            "stdout": "",
+            "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"REPORT_SOURCE_HASH: bytes changed for docs/api.md\",\"message\":\"REPORT_SOURCE_HASH: bytes changed for docs/api.md\\n+ actual - expected\\n\\n+ '75ae366841227718bfaf18d8c1187543b390ef0aaf16d2ce1fa5754f116b83c0'\\n- '0000000000000000000000000000000000000000000000000000000000000000'\\n\"}\n"
+          },
+          "restored": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk --check evidence-probe",
+            "exitCode": 0,
+            "stdout": "{\"status\":\"PASS\",\"details\":{\"scope\":\"SYNTHETIC_BINDING_NEGATIVE_FIXTURE_NOT_AGENT_REVIEW\",\"accepted\":true,\"independentReviewPerformed\":false}}\n",
+            "stderr": ""
+          }
+        },
+        {
+          "id": "wrong-plan-hash",
+          "expectedDiagnostic": "REPORT_BINDING",
+          "rejected": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk --check evidence-probe",
+            "exitCode": 1,
+            "stdout": "",
+            "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"REPORT_BINDING: Phase002:api.planHash\",\"message\":\"REPORT_BINDING: Phase002:api.planHash\\n+ actual - expected\\n\\n+ '0000000000000000000000000000000000000000000000000000000000000000'\\n- '149e3752bb43b75cba4bd626084e289e26f37e4bae72637ca2856ed3dd784a25'\\n\"}\n"
+          },
+          "restored": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk --check evidence-probe",
+            "exitCode": 0,
+            "stdout": "{\"status\":\"PASS\",\"details\":{\"scope\":\"SYNTHETIC_BINDING_NEGATIVE_FIXTURE_NOT_AGENT_REVIEW\",\"accepted\":true,\"independentReviewPerformed\":false}}\n",
+            "stderr": ""
+          }
+        },
+        {
+          "id": "failed-case-as-pass",
+          "expectedDiagnostic": "REPORT_BINDING",
+          "rejected": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk --check evidence-probe",
+            "exitCode": 1,
+            "stdout": "",
+            "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"REPORT_BINDING: Phase002:api.exitCode\",\"message\":\"REPORT_BINDING: Phase002:api.exitCode\\n\\n1 !== 0\\n\"}\n"
+          },
+          "restored": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk --check evidence-probe",
+            "exitCode": 0,
+            "stdout": "{\"status\":\"PASS\",\"details\":{\"scope\":\"SYNTHETIC_BINDING_NEGATIVE_FIXTURE_NOT_AGENT_REVIEW\",\"accepted\":true,\"independentReviewPerformed\":false}}\n",
+            "stderr": ""
+          }
+        },
+        {
+          "id": "empty-review-source-map",
+          "expectedDiagnostic": "REVIEW_FILE_HASH",
+          "rejected": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk --check evidence-probe",
+            "exitCode": 1,
+            "stdout": "",
+            "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"REVIEW_FILE_HASH: hash map must cover every required file exactly\",\"message\":\"REVIEW_FILE_HASH: hash map must cover every required file exactly\\n+ actual - expected\\n\\n+ []\\n- [\\n-   'AGENTS.md',\\n-   'docs/admin.md',\\n-   'docs/agent-execution-contract.md',\\n-   'docs/api.md',\\n-   'docs/auth.md',\\n-   'docs/crypto.md',\\n-   'docs/database.md',\\n-   'docs/directory-structure.md',\\n-   'docs/hosting.md',\\n-   'docs/index.md',\\n-   'docs/phase-plans/Phase002-inputs.json',\\n-   'docs/phase-plans/Phase002.json',\\n-   'docs/phase-plans/check-phase002-api.mjs',\\n-   'docs/phase-plans/check-phase002-provider-privacy.mjs',\\n-   'docs/phase-plans/check-phase002-schema-prompt.mjs',\\n-   'docs/phase-plans/complete-phase002.mjs',\\n-   'docs/phase-plans/retry-phase002.mjs',\\n-   'docs/phase-plans/verify-phase002.mjs',\\n-   'docs/privacy-and-user-data.md',\\n-   'docs/project-constitution.md',\\n-   'docs/project-layout.json',\\n-   'docs/prompt-design.md',\\n-   'docs/tech-stack.md',\\n-   'docs/travel-data-provider-strategy.md',\\n-   'docs/travel-plan-schema.md',\\n-   'docs/ui-design-system.md',\\n-   'scripts/check-project-layout.mjs',\\n-   'scripts/generate-api-contract.mjs',\\n-   'scripts/phase-evidence.mjs',\\n-   'scripts/validate-phase.mjs',\\n-   'scripts/validate-phase.ps1'\\n- ]\\n\"}\n"
+          },
+          "restored": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk --check evidence-probe",
+            "exitCode": 0,
+            "stdout": "{\"status\":\"PASS\",\"details\":{\"scope\":\"SYNTHETIC_BINDING_NEGATIVE_FIXTURE_NOT_AGENT_REVIEW\",\"accepted\":true,\"independentReviewPerformed\":false}}\n",
+            "stderr": ""
+          }
+        },
+        {
+          "id": "empty-review-report-map",
+          "expectedDiagnostic": "REVIEW_FILE_HASH",
+          "rejected": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk --check evidence-probe",
+            "exitCode": 1,
+            "stdout": "",
+            "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"REVIEW_FILE_HASH: hash map must cover every required file exactly\",\"message\":\"REVIEW_FILE_HASH: hash map must cover every required file exactly\\n+ actual - expected\\n\\n+ []\\n- [\\n-   '.scaffold/binding-report.json'\\n- ]\\n\"}\n"
+          },
+          "restored": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk --check evidence-probe",
+            "exitCode": 0,
+            "stdout": "{\"status\":\"PASS\",\"details\":{\"scope\":\"SYNTHETIC_BINDING_NEGATIVE_FIXTURE_NOT_AGENT_REVIEW\",\"accepted\":true,\"independentReviewPerformed\":false}}\n",
+            "stderr": ""
+          }
+        },
+        {
+          "id": "same-review-context",
+          "expectedDiagnostic": "REVIEW_IDENTITY",
+          "rejected": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk --check evidence-probe",
+            "exitCode": 1,
+            "stdout": "",
+            "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"REVIEW_IDENTITY: reviewer must use a different context\",\"message\":\"REVIEW_IDENTITY: reviewer must use a different context\"}\n"
+          },
+          "restored": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk --check evidence-probe",
+            "exitCode": 0,
+            "stdout": "{\"status\":\"PASS\",\"details\":{\"scope\":\"SYNTHETIC_BINDING_NEGATIVE_FIXTURE_NOT_AGENT_REVIEW\",\"accepted\":true,\"independentReviewPerformed\":false}}\n",
+            "stderr": ""
+          }
+        },
+        {
+          "id": "implementation-authored-review",
+          "expectedDiagnostic": "REVIEW_IDENTITY",
+          "rejected": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk --check evidence-probe",
+            "exitCode": 1,
+            "stdout": "",
+            "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"REVIEW_IDENTITY: reviewer authored implementation\",\"message\":\"REVIEW_IDENTITY: reviewer authored implementation\\n\\ntrue !== false\\n\"}\n"
+          },
+          "restored": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk --check evidence-probe",
+            "exitCode": 0,
+            "stdout": "{\"status\":\"PASS\",\"details\":{\"scope\":\"SYNTHETIC_BINDING_NEGATIVE_FIXTURE_NOT_AGENT_REVIEW\",\"accepted\":true,\"independentReviewPerformed\":false}}\n",
+            "stderr": ""
+          }
+        },
+        {
+          "id": "synthetic-review-kind",
+          "expectedDiagnostic": "REVIEW_IDENTITY",
+          "rejected": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk --check evidence-probe",
+            "exitCode": 1,
+            "stdout": "",
+            "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"REVIEW_IDENTITY: unexpected reviewer kind\",\"message\":\"REVIEW_IDENTITY: unexpected reviewer kind\\n+ actual - expected\\n\\n+ 'SYNTHETIC_PROTOCOL_FIXTURE_NOT_AGENT_REVIEW'\\n- 'INDEPENDENT_CODEX_AGENT'\\n\"}\n"
+          },
+          "restored": {
+            "command": "'C:\\Program Files\\nodejs\\node.exe' 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\docs\\phase-plans\\verify-phase002.mjs' --root C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk --check evidence-probe",
+            "exitCode": 0,
+            "stdout": "{\"status\":\"PASS\",\"details\":{\"scope\":\"SYNTHETIC_BINDING_NEGATIVE_FIXTURE_NOT_AGENT_REVIEW\",\"accepted\":true,\"independentReviewPerformed\":false}}\n",
+            "stderr": ""
+          }
+        }
+      ],
+      "runtimeErrorGuard": {
+        "id": "same-diagnostic-typeerror-must-not-pass",
+        "mutatedScriptHash": "593af3abe277522f713fb0246ec03b84b4fd993762bf4b96ae40e29b317aebce",
+        "restoredScriptHash": "11d18d0f6736faf4a0fe02916d50f4406aaea30344dc77e9d7f9bccc8a627a45",
+        "expectedDiagnostic": "NEGATIVE_UNEXPECTED_ERROR",
+        "rejected": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk\\.scaffold\\typeerror-wrapper.mjs",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "{\"status\":\"FAIL\",\"failureClass\":\"CONTRACT_ASSERTION\",\"errorName\":\"AssertionError\",\"errorCode\":\"ERR_ASSERTION\",\"diagnostic\":\"NEGATIVE_UNEXPECTED_ERROR: runtime-probe\",\"message\":\"NEGATIVE_UNEXPECTED_ERROR: runtime-probe\"}\n"
+        },
+        "restored": {
+          "command": "'C:\\Program Files\\nodejs\\node.exe' C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase002-evidence-c9JXBk\\.scaffold\\typeerror-wrapper.mjs",
+          "exitCode": 0,
+          "stdout": "{\"status\":\"PASS\",\"expectedContractRejectionVerified\":true}\n",
+          "stderr": ""
+        },
+        "targetScope": "ISOLATED_CHECKER_ERROR_CLASS_FIXTURE"
+      },
+      "independentReviewPerformed": false
+    }
+  }
+}

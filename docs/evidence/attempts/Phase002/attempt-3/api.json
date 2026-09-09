@@ -1,0 +1,867 @@
+{
+  "testCaseId": "Phase002:api",
+  "command": "node docs/phase-plans/verify-phase002.mjs --case api",
+  "status": "PASS",
+  "exitCode": 0,
+  "numerator": 1,
+  "denominator": 1,
+  "inputPath": "docs/api.md",
+  "inputHash": "9eb354608223261a8702d4f6b317b19c061c9f4ea61663188c4d520393390818",
+  "planHash": "f2213826a7c8aacd724dd05c60cd62dcc496195d06a1b0a25f45f33c37a6ba4c",
+  "sourceHashes": {
+    "AGENTS.md": "224f30ead96b0771dc9949e5c33ebe4bf13bb0f76071fb3210d7d153e73b0592",
+    "docs/admin.md": "cebb8281579256bf6dc385907088278e17221d000b8b20ea11d2ae1f56aeecc3",
+    "docs/agent-execution-contract.md": "72eb5e5e8da13c02b3aeeb3803b668a440f1cbdee75fddf08f267c0ec9b6b2ed",
+    "docs/api.md": "9eb354608223261a8702d4f6b317b19c061c9f4ea61663188c4d520393390818",
+    "docs/auth.md": "d672c3d25e09ae16e61f9cea23c5d6fc500ff4e76156b4b6f5ca3ccc48a4e736",
+    "docs/crypto.md": "799e32133f3a1cac91d4e25955829538a14aedc1104bed9f06d1337841a130f4",
+    "docs/database.md": "38bb2a4b05b15def09ec0434ca4e4cf6d874109d3d88126333bf1f30209029a0",
+    "docs/directory-structure.md": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df",
+    "docs/hosting.md": "8026f7dfa2b0468a29bf028d18cc8fc95979d32f28e30bc18c5ac809c5b1ca57",
+    "docs/index.md": "e8ccb2c0352b408bdb7724b6c539fd09107b71fbdbdaeaee78f51f52f7e82214",
+    "docs/phase-plans/Phase002-inputs.json": "f7a18001bbfc3b00f03c6abf8e508709802927029281fb0319c1e1bfc73fc56b",
+    "docs/phase-plans/Phase002.json": "f2213826a7c8aacd724dd05c60cd62dcc496195d06a1b0a25f45f33c37a6ba4c",
+    "docs/phase-plans/check-phase002-api.mjs": "95b1a1247ae43749e716a329205eb09dd64d5643409f07a9545051328b0a2c32",
+    "docs/phase-plans/check-phase002-provider-privacy.mjs": "c904e03c2e3d5fef6842d270a33970fb4ae9b0fcc99f6160946acb8dde1eac8b",
+    "docs/phase-plans/check-phase002-schema-prompt.mjs": "3b1fc1b57639247285300fab78b71cdf1b0dfb86b7a6248a32bfe623708e7f42",
+    "docs/phase-plans/complete-phase002.mjs": "903990dcb87e6ac8d8b877df6354bcbd1756ffc598d3a201251c6ed9e5fc9c58",
+    "docs/phase-plans/retry-phase002.mjs": "8f1377c6afd932c14d1529118aa99fba882fad7ce98017930391a60e2ecb20b7",
+    "docs/phase-plans/verify-phase002.mjs": "5e6888814ecc3347dee4d63f1bd0d822be5224b3fc30edd6c4ea5cba050aea16",
+    "docs/privacy-and-user-data.md": "0be8b0821e7fc892123c88f36ee4b5a173ad6332aafffb7c0963fc95efefdb62",
+    "docs/project-constitution.md": "8f1dd176e30e815a09502a91c5b0ef2722b7bb71d5e919fbfc70cfecf3e9dedd",
+    "docs/project-layout.json": "7efe30a30fe009a8e1226563cae53d39ed2a2193be78bc0f0a776f57f67710ba",
+    "docs/prompt-design.md": "5510148716939e6419a7ae5bfcbd79ac714ae39b8429c05a25bca9506ef4fc1e",
+    "docs/tech-stack.md": "258620f3e18d042eac1e26165f411e8879ecd4b0d91d8e7986aaed4f3f10d2c7",
+    "docs/travel-data-provider-strategy.md": "71ed8608ff8e4055694c0cbe5077f67873b5c8956eb79a83cfb05817003ccbb5",
+    "docs/travel-plan-schema.md": "2644c8741be54847066ffcd412fed51f72b530f1c08eb16f2011f35f4bc3ab34",
+    "docs/ui-design-system.md": "8b232c6742bf846f131ea3040d5892ed7b270940bfd4109ccfb768ed63fdb158",
+    "scripts/check-project-layout.mjs": "101c7c50f12e4d6cc80e1c9fb9667ad06fcc55c687d86cb5295ff81bc0eb68f6",
+    "scripts/generate-api-contract.mjs": "ac2feec4e2f8daa1483f314d1fbe731c494d37ed8d9f1c565a2186dde9d68b59",
+    "scripts/phase-evidence.mjs": "3727f8f8e5f00cf7e03d4bc50f71ebdbff483380cbc59df124bf21b473261d95",
+    "scripts/validate-phase.mjs": "4be9ee356a3f5a7d5b9265ee61143d6574617dda83d9ac8d3960f3f8e28fa293",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319"
+  },
+  "startedAt": "2026-09-09T02:07:55.523Z",
+  "completedAt": "2026-09-09T02:07:55.615Z",
+  "durationMs": 88,
+  "environment": "ISOLATED_SYNTHETIC",
+  "productionTraffic": false,
+  "details": {
+    "api": {
+      "registryCount": 100,
+      "duplicateEndpoints": 0,
+      "manifestPath": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\Serendipity · 际遇\\docs\\roadmap-execution-manifest.json",
+      "manifestHash": "497689843e4576c5f8e8a6636d29b04023ac997309a3ffab83cc67d90ea7bf3e",
+      "producerInputCount": 36,
+      "columns": [
+        "operationId",
+        "method",
+        "path",
+        "auth",
+        "request",
+        "response",
+        "errors",
+        "idempotency",
+        "cas",
+        "producerPhase"
+      ],
+      "producerPhases": [
+        12,
+        13,
+        14,
+        18,
+        23,
+        26,
+        51,
+        52,
+        58,
+        59,
+        60,
+        62,
+        65,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        99,
+        101,
+        104,
+        106,
+        120
+      ],
+      "operationDtoCount": 100,
+      "closedDtoCount": 152,
+      "namedReferenceCount": 28,
+      "fixtureCount": 97,
+      "fixtureResults": [
+        {
+          "name": "export-create-exact",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "export-prohibits-reauthentication",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "erase-requires-reauthentication",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "erase-explicit-confirmation",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "erase-false-confirmation",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "data-body-rejects-receipt",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "data-receipt-no-download",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "feedback-consents-exact",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "feedback-consents-reject-partial",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "feedback-body-rejects-version",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "share-first-secret",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "share-replay-no-secret",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "share-replay-reject-secret",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "share-first-reject-missing-secret",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "planner-cancel-exact",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "planner-cancel-reject-id",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "confirmation-select-exact",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "confirmation-cancel-no-choice",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "favorite-null-is-clear",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "favorite-absent-is-preserve",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "public-registration-no-enumeration",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "provider-no-fourth-availability",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "provider-no-result-explicit",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "restore-requires-target-hash",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "erase-cannot-fail",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "export-can-fail",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "erase-continuation-status",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "erase-owner-status-no-download",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "erase-owner-status-rejects-download",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "export-not-ready-rejects-download",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "page-limit-upper-bound",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "page-limit-rejects-unbounded",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "cursor-rejects-oversize",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "trace-detail-uses-page-size",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "trace-detail-rejects-limit-alias",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "trace-quality-range-reversed",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "widget-array-data",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "widget-error-is-not-zero",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "widget-rejects-failure-as-zero",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "public-safe-error-known-code",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "public-safe-error-no-decryption-classification",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "disabled-feature-not-retryable",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "api-key-no-empty-patch",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "api-key-no-plaintext-patch",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "api-key-display-bounded",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "api-key-display-no-full-hash",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "audit-reason-trimmed",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "audit-reason-rejects-whitespace",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "password-utf8-boundary",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "password-no-bcrypt-truncation",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "password-too-short",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "registration-password-confirmation",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "instant-rejects-normalized-invalid-date",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "instant-rejects-next-day-midnight-alias",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "draft-exact-request",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "draft-server-owner-only",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "draft-no-header-in-body",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "draft-no-whitespace-content",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "draft-length-after-trim",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "draft-valid-locale-required",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "confirmation-command-exact",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "confirmation-prohibits-mutation",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "confirmation-prohibits-client-causation",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "confirmation-requires-requirement-cas",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "question-answer-exact",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "question-answer-one-value",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "requirement-apply-needs-answer",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "requirement-empty-continue",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "replan-full-exact",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "replan-full-no-from-day",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "replan-from-day-explicit",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "replan-alternative-needs-goal",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "replan-seed-bounded",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "replan-no-arbitrary-requirement-path",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "replan-preserved-paths-unique",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "replan-empty-change-hash-null",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "restore-explicit-target-hashes",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "restore-warning-codes-unique",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "planner-success-binds-version",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "planner-failure-has-no-version",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "planner-success-cannot-omit-version",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "planner-event-success-exact-version",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "planner-event-success-needs-version",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "planner-event-failure-cannot-publish-version",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "planner-event-no-second-envelope-field",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "assistant-delta-only-payload",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "assistant-delta-owner-aggregate-matches",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "assistant-delta-not-terminal",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "eof-not-domain-event",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "durable-planner-event-replay",
+          "expected": true,
+          "actual": true,
+          "fixtureMode": "DOCUMENT_EVENT_SEQUENCE"
+        },
+        {
+          "name": "delta-never-in-durable-replay",
+          "expected": false,
+          "actual": false,
+          "fixtureMode": "DOCUMENT_EVENT_SEQUENCE"
+        },
+        {
+          "name": "durable-event-id-unique",
+          "expected": false,
+          "actual": false,
+          "fixtureMode": "DOCUMENT_EVENT_SEQUENCE"
+        },
+        {
+          "name": "durable-sequence-unique",
+          "expected": false,
+          "actual": false,
+          "fixtureMode": "DOCUMENT_EVENT_SEQUENCE"
+        },
+        {
+          "name": "replay-after-checkpoint-only",
+          "expected": false,
+          "actual": false,
+          "fixtureMode": "DOCUMENT_EVENT_SEQUENCE"
+        },
+        {
+          "name": "registry-duplicate-endpoint",
+          "expected": false,
+          "actual": false,
+          "rejectedBy": "API_DUPLICATE_ENDPOINT",
+          "fixtureMode": "IN_MEMORY_COPY"
+        },
+        {
+          "name": "registry-producer-mismatch",
+          "expected": false,
+          "actual": false,
+          "rejectedBy": "API_PRODUCER_MISMATCH",
+          "fixtureMode": "IN_MEMORY_COPY"
+        },
+        {
+          "name": "registry-forbidden-route",
+          "expected": false,
+          "actual": false,
+          "rejectedBy": "API_FORBIDDEN_ROUTE",
+          "fixtureMode": "IN_MEMORY_COPY"
+        }
+      ],
+      "implementedRoutes": {
+        "routeFileCount": 0,
+        "registeredMethodCount": 0,
+        "frameworkRouteFileCount": 0,
+        "scanMode": "STATIC_APP_ROUTER_EXPORTS"
+      },
+      "verificationMode": "DOCUMENT_SCHEMA_AND_CONTRACT_CHECKS",
+      "runtimeHttpRequests": 0
+    },
+    "authentication": {
+      "scope": "DOCUMENT_RULE_FIXTURES_NOT_AUTH_IMPLEMENTATION",
+      "fixtureCount": 30,
+      "fixtures": [
+        {
+          "id": "auth:email-case-and-idna",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:email-double-dot",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:email-leading-dot",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:email-unicode-local",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:email-local-65",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:email-bad-domain",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:email-extra-at",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:password-min",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:password-max-ascii",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:password-max-cjk",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:password-max-emoji",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:password-preserve-spaces",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:password-short",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:password-overlong",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:password-cjk-overlong",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:active-principal",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:session-revoked",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:session-expired",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:session-disabled",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:session-version",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:session-role",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:session-database",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:session-audience",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:throttle-below-both",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:throttle-account",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:throttle-ip",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:throttle-storage",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:reserved-unexpired-counts",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:reserved-expiry-boundary",
+          "status": "PASS"
+        },
+        {
+          "id": "auth:success-keeps-failed-history",
+          "status": "PASS"
+        }
+      ],
+      "bcryptOrDatabaseInvocations": 0
+    },
+    "administration": {
+      "scope": "DOCUMENT_RULE_FIXTURES_NOT_DATABASE_TRANSACTIONS",
+      "fixtureCount": 12,
+      "fixtures": [
+        {
+          "id": "admin:valid-proposal",
+          "status": "PASS"
+        },
+        {
+          "id": "admin:noop",
+          "status": "PASS"
+        },
+        {
+          "id": "admin:self",
+          "status": "PASS"
+        },
+        {
+          "id": "admin:last",
+          "status": "PASS"
+        },
+        {
+          "id": "admin:cas",
+          "status": "PASS"
+        },
+        {
+          "id": "admin:stale-noop",
+          "status": "PASS"
+        },
+        {
+          "id": "admin:audit",
+          "status": "PASS"
+        },
+        {
+          "id": "admin:rotation-all-references",
+          "status": "PASS"
+        },
+        {
+          "id": "admin:rotation-set-changed",
+          "status": "PASS"
+        },
+        {
+          "id": "admin:rotation-revision-changed",
+          "status": "PASS"
+        },
+        {
+          "id": "admin:rotation-audit-failed",
+          "status": "PASS"
+        },
+        {
+          "id": "admin:rotation-emergency-revoked",
+          "status": "PASS"
+        }
+      ],
+      "businessDatabaseWrites": 0
+    },
+    "crypto": {
+      "scope": "ISOLATED_SYNTHETIC_CRYPTO_PRIMITIVE_AND_DOCUMENT_SCHEMA",
+      "fixtureCount": 16,
+      "fixtures": [
+        {
+          "id": "crypto:gcm-round-trip",
+          "status": "PASS"
+        },
+        {
+          "id": "crypto:canonical-json-round-trip",
+          "status": "PASS"
+        },
+        {
+          "id": "crypto:random-iv-distinct-ciphertext",
+          "status": "PASS"
+        },
+        {
+          "id": "crypto:version-string",
+          "status": "PASS"
+        },
+        {
+          "id": "crypto:algorithm",
+          "status": "PASS"
+        },
+        {
+          "id": "crypto:key-id",
+          "status": "PASS"
+        },
+        {
+          "id": "crypto:extra-field",
+          "status": "PASS"
+        },
+        {
+          "id": "crypto:unpadded",
+          "status": "PASS"
+        },
+        {
+          "id": "crypto:short-iv",
+          "status": "PASS"
+        },
+        {
+          "id": "crypto:empty-ciphertext",
+          "status": "PASS"
+        },
+        {
+          "id": "crypto:overlong",
+          "status": "PASS"
+        },
+        {
+          "id": "crypto:aad-recordId",
+          "status": "PASS"
+        },
+        {
+          "id": "crypto:aad-provider",
+          "status": "PASS"
+        },
+        {
+          "id": "crypto:tampered-ciphertext",
+          "status": "PASS"
+        },
+        {
+          "id": "crypto:tampered-tag",
+          "status": "PASS"
+        },
+        {
+          "id": "crypto:revoked-cannot-reactivate",
+          "status": "PASS"
+        }
+      ],
+      "secretValuesOrEnvelopeRecorded": false,
+      "applicationServiceImplemented": false
+    }
+  }
+}

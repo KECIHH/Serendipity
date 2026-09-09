@@ -1,0 +1,799 @@
+{
+  "phase": 2,
+  "attemptId": "attempt-4",
+  "reviewerRunId": "/root/independent_review:Phase002:attempt-4",
+  "contextId": "/root/independent_review",
+  "implementationContextId": "/root:Phase002:2026-09-09",
+  "runnerIdentity": {
+    "kind": "INDEPENDENT_CODEX_AGENT",
+    "implementationAuthored": false
+  },
+  "generatedBy": "/root/independent_review",
+  "generatedAt": "2026-09-09T02:51:49.461Z",
+  "planPath": "docs/phase-plans/Phase002.json",
+  "planHash": "525d4a823bece6d128d9116dd8ebca89219b0c51f1a6dbc47992b72c80b9d513",
+  "decision": "FAIL",
+  "issues": [
+    {
+      "id": "PH002-API-001",
+      "alias": "R1",
+      "status": "RESOLVED",
+      "priority": 2,
+      "path": "docs/api.md",
+      "title": "领域 hash 编码已按所有者分离",
+      "originalProblem": "版本/恢复 DTO 的 generic hash 要求前缀，与初始 Summary 的裸 64 位 requirementHash 冲突。",
+      "resolution": "RequirementHash/Sha256Hex 采用裸 64 位小写十六进制；治理/FileAsset 等共 17 个字段核对其所有者。计划与执行 hash 保留要求的 sha256: 前缀。",
+      "evidence": [
+        "docs/phase-plans/check-phase002-api.mjs:11",
+        "docs/evidence/attempts/Phase002/attempt-4/api.json",
+        "本报告 apiProbe 中 10 个 hash/Restore 独立调用"
+      ]
+    },
+    {
+      "id": "PH002-PRIVACY-002",
+      "alias": "R2",
+      "status": "RESOLVED",
+      "priority": 1,
+      "path": "docs/privacy-and-user-data.md",
+      "line": 38,
+      "title": "回执期限改从 tombstone 起算并保留生命周期保护",
+      "originalProblem": "创建起 8 天的回执 TTL 可能删除活动操作或存活聚合的回执，破坏幂等或 ERASE 续接。",
+      "resolution": "三类数据均在操作终结、聚合删除且专用清理完成后才写 tombstonedAt；活动操作/聚合保留，未知生命周期与到期后未退休恢复集阻断。",
+      "evidence": [
+        "docs/phase-plans/check-phase002-provider-privacy.mjs:578",
+        "docs/evidence/attempts/Phase002/attempt-4/privacy.json",
+        "本报告 privacyProbe 的三类数据各 11 项独立边界测试，共 33 项"
+      ]
+    },
+    {
+      "id": "PH002-EVIDENCE-003",
+      "alias": "R3-provider-privacy-root",
+      "status": "RESOLVED",
+      "priority": 1,
+      "path": "docs/phase-plans/check-phase002-provider-privacy.mjs",
+      "line": 908,
+      "title": "Provider/Privacy 与根 runner 已绑定失败类别和诊断",
+      "originalProblem": "非零退出与 FAIL/诊断文案检查无法排除校验器自身的 TypeError 等运行时错误。",
+      "resolution": "普通变异要求指定合同 AssertionError；真实同诊断 TypeError 自检要求外层拒绝，恢复后通过。独立内存复测亦拒绝同文案运行时异常。",
+      "evidence": [
+        "docs/evidence/attempts/Phase002/attempt-4/provider.json",
+        "docs/evidence/attempts/Phase002/attempt-4/privacy.json",
+        "docs/evidence/attempts/Phase002/attempt-4/links.json",
+        "本报告 privacyProbe.mutationChecks 与 apiProbe.rootMutation"
+      ]
+    },
+    {
+      "id": "PH002-EVIDENCE-003-SCHEMA",
+      "alias": "R3-schema",
+      "status": "UNRESOLVED",
+      "priority": 1,
+      "path": "docs/phase-plans/check-phase002-schema-prompt.mjs",
+      "line": 692,
+      "title": "Schema/Prompt 外层 mutation 会把同诊断 TypeError 计为成功反例",
+      "originalProblem": "外层只检查非零退出、JSON status=FAIL 和 message.includes(expectedDiagnostic)，CLI 又把错误统一降为 status/message。实际提取该判定在内存执行时，TypeError/ReferenceError 的合成 CLI 失败体均被接受。",
+      "requiredResolution": "普通 mutation 绑定结构化合同错误类别、AssertionError/ERR_ASSERTION 和明确诊断；negative-fixture-runtime-error 单独声明预期运行时拒绝，不能放宽其他场景。保留原 9+8 场景，并验证同诊断 TypeError 不能让外层通过。",
+      "evidence": [
+        "docs/phase-plans/check-phase002-schema-prompt.mjs:692",
+        "docs/evidence/attempts/Phase002/attempt-4/schema.json",
+        "docs/evidence/attempts/Phase002/attempt-4/prompt.json",
+        "本报告 apiProbe.unresolvedSchemaMutation 保存实际判定源码与真实观察结果"
+      ]
+    },
+    {
+      "id": "PH002-API-004",
+      "alias": "R4",
+      "status": "RESOLVED",
+      "priority": 2,
+      "path": "docs/phase-plans/check-phase002-api.mjs",
+      "line": 144,
+      "title": "重放拒绝多个终态与终态后事件",
+      "originalProblem": "同 command 完成后失败、不同 eventId 的重复完成原先均被接受。",
+      "resolution": "chat 按三种终态 type、planner 按终态 status 截止后续持久事件；单终态切片与 accepted 当前终态状态的前序帧仍合法。",
+      "originalObservation": {
+        "calls": [
+          {
+            "expression": "validateReplayEvents(contract, [completed, failed], { stream: 'chat' })",
+            "actual": true
+          },
+          {
+            "expression": "validateReplayEvents(contract, [completed, { ...completed, eventId: 'evt_2', sequence: 2 }], { stream: 'chat' })",
+            "actual": true
+          }
+        ],
+        "originalSourceHash": null,
+        "note": "修复前由本独立审查实际只读观察并反馈；未单独存档当时 checker 全文/hash，不冒用其他报告 hash。复测相同输入现均 false。"
+      },
+      "evidence": [
+        "docs/evidence/attempts/Phase002/attempt-4/api.json",
+        "本报告 apiProbe 的 18 个事件边界复测"
+      ]
+    }
+  ],
+  "dispositions": [
+    {
+      "issueId": "PH002-API-001",
+      "status": "RESOLVED",
+      "by": "/root/independent_review",
+      "verifiedAttemptId": "attempt-4",
+      "detail": "RequirementHash/Sha256Hex 采用裸 64 位小写十六进制；治理/FileAsset 等共 17 个字段核对其所有者。计划与执行 hash 保留要求的 sha256: 前缀。"
+    },
+    {
+      "issueId": "PH002-PRIVACY-002",
+      "status": "RESOLVED",
+      "by": "/root/independent_review",
+      "verifiedAttemptId": "attempt-4",
+      "detail": "三类数据均在操作终结、聚合删除且专用清理完成后才写 tombstonedAt；活动操作/聚合保留，未知生命周期与到期后未退休恢复集阻断。"
+    },
+    {
+      "issueId": "PH002-EVIDENCE-003",
+      "status": "RESOLVED",
+      "by": "/root/independent_review",
+      "verifiedAttemptId": "attempt-4",
+      "detail": "普通变异要求指定合同 AssertionError；真实同诊断 TypeError 自检要求外层拒绝，恢复后通过。独立内存复测亦拒绝同文案运行时异常。"
+    },
+    {
+      "issueId": "PH002-EVIDENCE-003-SCHEMA",
+      "status": "UNRESOLVED",
+      "by": "/root/independent_review",
+      "verifiedAttemptId": "attempt-4",
+      "detail": "仍为阻断。保留本次失败报告，在新 attempt 修复普通 mutation 的错误分类/诊断绑定并完整重验。"
+    },
+    {
+      "issueId": "PH002-API-004",
+      "status": "RESOLVED",
+      "by": "/root/independent_review",
+      "verifiedAttemptId": "attempt-4",
+      "detail": "chat 按三种终态 type、planner 按终态 status 截止后续持久事件；单终态切片与 accepted 当前终态状态的前序帧仍合法。"
+    }
+  ],
+  "sourceHashes": {
+    "AGENTS.md": "224f30ead96b0771dc9949e5c33ebe4bf13bb0f76071fb3210d7d153e73b0592",
+    "docs/admin.md": "cebb8281579256bf6dc385907088278e17221d000b8b20ea11d2ae1f56aeecc3",
+    "docs/agent-execution-contract.md": "72eb5e5e8da13c02b3aeeb3803b668a440f1cbdee75fddf08f267c0ec9b6b2ed",
+    "docs/api.md": "75ae366841227718bfaf18d8c1187543b390ef0aaf16d2ce1fa5754f116b83c0",
+    "docs/auth.md": "d672c3d25e09ae16e61f9cea23c5d6fc500ff4e76156b4b6f5ca3ccc48a4e736",
+    "docs/crypto.md": "799e32133f3a1cac91d4e25955829538a14aedc1104bed9f06d1337841a130f4",
+    "docs/database.md": "38bb2a4b05b15def09ec0434ca4e4cf6d874109d3d88126333bf1f30209029a0",
+    "docs/directory-structure.md": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df",
+    "docs/hosting.md": "8026f7dfa2b0468a29bf028d18cc8fc95979d32f28e30bc18c5ac809c5b1ca57",
+    "docs/index.md": "e8ccb2c0352b408bdb7724b6c539fd09107b71fbdbdaeaee78f51f52f7e82214",
+    "docs/phase-plans/Phase002-inputs.json": "f7a18001bbfc3b00f03c6abf8e508709802927029281fb0319c1e1bfc73fc56b",
+    "docs/phase-plans/Phase002.json": "525d4a823bece6d128d9116dd8ebca89219b0c51f1a6dbc47992b72c80b9d513",
+    "docs/phase-plans/check-phase002-api.mjs": "fbdadf09d8f623cb3b64d61a0cf570acaf31ed496e6e3c294a678bcac5201f30",
+    "docs/phase-plans/check-phase002-provider-privacy.mjs": "b7bf8b4ea3495bba232ae1e3099ae54716e592485841e789aba4d2a65e4e56d4",
+    "docs/phase-plans/check-phase002-schema-prompt.mjs": "3b1fc1b57639247285300fab78b71cdf1b0dfb86b7a6248a32bfe623708e7f42",
+    "docs/phase-plans/complete-phase002.mjs": "903990dcb87e6ac8d8b877df6354bcbd1756ffc598d3a201251c6ed9e5fc9c58",
+    "docs/phase-plans/retry-phase002.mjs": "8f1377c6afd932c14d1529118aa99fba882fad7ce98017930391a60e2ecb20b7",
+    "docs/phase-plans/verify-phase002.mjs": "6f13e8f36866d0b0396ee0e8a06c14c14c0b36f3e1d4949b05f50519e3392db6",
+    "docs/privacy-and-user-data.md": "c4b0d858901c44cac5d5e3c53120b74d4108d14a8c04a9c45305c8e617478129",
+    "docs/project-constitution.md": "8f1dd176e30e815a09502a91c5b0ef2722b7bb71d5e919fbfc70cfecf3e9dedd",
+    "docs/project-layout.json": "7efe30a30fe009a8e1226563cae53d39ed2a2193be78bc0f0a776f57f67710ba",
+    "docs/prompt-design.md": "5510148716939e6419a7ae5bfcbd79ac714ae39b8429c05a25bca9506ef4fc1e",
+    "docs/tech-stack.md": "258620f3e18d042eac1e26165f411e8879ecd4b0d91d8e7986aaed4f3f10d2c7",
+    "docs/travel-data-provider-strategy.md": "71ed8608ff8e4055694c0cbe5077f67873b5c8956eb79a83cfb05817003ccbb5",
+    "docs/travel-plan-schema.md": "2644c8741be54847066ffcd412fed51f72b530f1c08eb16f2011f35f4bc3ab34",
+    "docs/ui-design-system.md": "8b232c6742bf846f131ea3040d5892ed7b270940bfd4109ccfb768ed63fdb158",
+    "scripts/check-project-layout.mjs": "101c7c50f12e4d6cc80e1c9fb9667ad06fcc55c687d86cb5295ff81bc0eb68f6",
+    "scripts/generate-api-contract.mjs": "ac2feec4e2f8daa1483f314d1fbe731c494d37ed8d9f1c565a2186dde9d68b59",
+    "scripts/phase-evidence.mjs": "3727f8f8e5f00cf7e03d4bc50f71ebdbff483380cbc59df124bf21b473261d95",
+    "scripts/validate-phase.mjs": "4be9ee356a3f5a7d5b9265ee61143d6574617dda83d9ac8d3960f3f8e28fa293",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319"
+  },
+  "reportHashes": {
+    "docs/evidence/attempts/Phase002/attempt-4/api.json": "f01d72c8acdfae6361323d7ece2ec3b7f7e31b7b7f397ea9dc6722c5bdfe6a92",
+    "docs/evidence/attempts/Phase002/attempt-4/prompt.json": "c66479324d4f9f8812fd4482ef4fcc35743ad682cbb146983d5b6d00a5d63029",
+    "docs/evidence/attempts/Phase002/attempt-4/schema.json": "ff5b76f2c97dbf25a5d8ad53276ac007032e40b4175dd027abfcdb2697f2d10f",
+    "docs/evidence/attempts/Phase002/attempt-4/provider.json": "c454455f80e983cabd548459c395befd2c1bb4dec6d62d8819ff294db0081a76",
+    "docs/evidence/attempts/Phase002/attempt-4/privacy.json": "f7be25e569fa2c7690617fd4225c4a7920d8d1ce3fd2e85c46c71ccd0be463df",
+    "docs/evidence/attempts/Phase002/attempt-4/index.json": "079cc2dc36b36deb34b4ef509787c4a37b410395072988076b286101370aeccd",
+    "docs/evidence/attempts/Phase002/attempt-4/forbidden-routes.json": "307b60b50be67320d6260313ccf1781a32deb1334a98dafa806520ef2b996dd1",
+    "docs/evidence/attempts/Phase002/attempt-4/links.json": "d247ff1f494beaf2154ad1cf6d9274d35bff9d0b67455be4ef911ac566d4c068"
+  },
+  "observations": {
+    "independentIdentityBasis": "真实 reviewer canonical task 为 /root/independent_review；实现由 /root 及其他实现 agent 完成。本 reviewer 未编辑实现、未操作 Git 索引/提交/推送。",
+    "binding": {
+      "sourceCount": 31,
+      "reportCount": 8,
+      "pinnedInputCount": 149,
+      "pinnedInputShape": "exact id/path/sha256",
+      "status": "PASS"
+    },
+    "evidenceValues": {
+      "status": "PASS",
+      "meaning": "Recorded result values and bindings are consistent; this does not resolve the Schema/Prompt mutation predicate vulnerability.",
+      "fixtureCounts": {
+        "api": 175,
+        "authentication": 30,
+        "administration": 12,
+        "crypto": 16,
+        "prompt": 186,
+        "schema": 82,
+        "provider": 68,
+        "hosting": 14,
+        "privacy": 57
+      },
+      "mutationCounts": {
+        "prompt": 8,
+        "schema": 9,
+        "provider": 7,
+        "privacy": 12,
+        "forbidden": 8,
+        "links": 12,
+        "evidence": 10,
+        "rootRuntimeSelfTest": 1
+      },
+      "contractCount": 10,
+      "registryCount": 100,
+      "linkCount": 104,
+      "predecessorShells": [
+        "powershell",
+        "pwsh"
+      ],
+      "unresolvedIssue": "PH002-EVIDENCE-003-SCHEMA"
+    },
+    "verifiedAreas": [
+      "十份契约的所有者与 Phase002 文档范围；固定本地输入路径/hash，未复制本地路线正文。",
+      "100 operation 的生成/API 闭合 DTO、权限、错误、CAS、幂等、事件；八 Prompt key 的变量/Schema/激活/注入/敏感投影；初始 requirement/summary 的清空语义、金额、日期、稳定 ID 与单向演进。",
+      "Provider 状态域/许可证/请求/SSRF/重试/配额/缓存边界；隐私十一字段合成规则、ledger-first ERASE、consent 与恢复水位。",
+      "全部报告结果及 31 项来源/八报告 hash 一致；两 shell 在精确 Phase001 metadata 的前置正式 seal 通过。",
+      "审阅根与 complete validator 接入；历史 Phase001 来源文件不在本次修改范围，Phase003 未授权执行。"
+    ],
+    "notEvaluated": [
+      "本次决策 FAIL，attempt-4 不得作为 Phase002 封口依据；保留报告并创建新 attempt 修复/完整重验。",
+      "未执行 Phase002 artifact/metadata 提交、最终根双 shell seal 或 GitHub 同步，由主 agent 在后续通过的 attempt 统一完成。",
+      "没有产品路由、实时 HTTP 404、Prisma/PostgreSQL、浏览器或真实 Provider 外呼验证；禁止路由结果只代表静态契约和源文件扫描。",
+      "合成隐私规则不是生产保留政策、真实用户 consent 或法律/人工批准；hash/身份绑定也不是密码学身份认证。"
+    ],
+    "conclusion": "R1/R2/R4 与 R3 的 Provider/Privacy/根 runner 部分已解决；R3-schema 仍未解决，独立审查 FAIL。"
+  },
+  "probes": {
+    "privacyProbe": {
+      "status": "PASS",
+      "scope": "IN_MEMORY_INDEPENDENT_PRIVACY_AND_MUTATION_RECHECK",
+      "runtime": "v24.19.0",
+      "sourceHash": "b7bf8b4ea3495bba232ae1e3099ae54716e592485841e789aba4d2a65e4e56d4",
+      "filesystemWrites": 0,
+      "subprocesses": 0,
+      "retentionCount": 33,
+      "observations": [
+        {
+          "category": "audit_and_command_receipt",
+          "name": "active-operation-after-forty-days",
+          "actual": {
+            "deleted": false,
+            "blocked": false
+          }
+        },
+        {
+          "category": "audit_and_command_receipt",
+          "name": "existing-domain-aggregate-after-forty-days",
+          "actual": {
+            "deleted": false,
+            "blocked": false
+          }
+        },
+        {
+          "category": "audit_and_command_receipt",
+          "name": "unknown-lifecycle-blocks",
+          "actual": {
+            "deleted": false,
+            "blocked": true
+          }
+        },
+        {
+          "category": "audit_and_command_receipt",
+          "name": "domain-cleanup-incomplete-blocks",
+          "actual": {
+            "deleted": false,
+            "blocked": true
+          }
+        },
+        {
+          "category": "audit_and_command_receipt",
+          "name": "unknown-tombstone-clock-blocks",
+          "actual": {
+            "deleted": false,
+            "blocked": true
+          }
+        },
+        {
+          "category": "audit_and_command_receipt",
+          "name": "tombstone-before-created-at-blocks",
+          "actual": {
+            "deleted": false,
+            "blocked": true
+          }
+        },
+        {
+          "category": "audit_and_command_receipt",
+          "name": "tombstone-in-future-blocks",
+          "actual": {
+            "deleted": false,
+            "blocked": true
+          }
+        },
+        {
+          "category": "audit_and_command_receipt",
+          "name": "one-second-before-tombstone-deadline-keeps",
+          "actual": {
+            "deleted": false,
+            "blocked": false
+          }
+        },
+        {
+          "category": "audit_and_command_receipt",
+          "name": "at-deadline-unretired-restore-blocks",
+          "actual": {
+            "deleted": false,
+            "blocked": true
+          }
+        },
+        {
+          "category": "audit_and_command_receipt",
+          "name": "at-deadline-retired-restore-deletes",
+          "actual": {
+            "deleted": true,
+            "blocked": false
+          }
+        },
+        {
+          "category": "audit_and_command_receipt",
+          "name": "old-created-at-new-tombstone-keeps",
+          "actual": {
+            "deleted": false,
+            "blocked": false
+          }
+        },
+        {
+          "category": "data_and_feedback_receipt",
+          "name": "active-operation-after-forty-days",
+          "actual": {
+            "deleted": false,
+            "blocked": false
+          }
+        },
+        {
+          "category": "data_and_feedback_receipt",
+          "name": "existing-domain-aggregate-after-forty-days",
+          "actual": {
+            "deleted": false,
+            "blocked": false
+          }
+        },
+        {
+          "category": "data_and_feedback_receipt",
+          "name": "unknown-lifecycle-blocks",
+          "actual": {
+            "deleted": false,
+            "blocked": true
+          }
+        },
+        {
+          "category": "data_and_feedback_receipt",
+          "name": "domain-cleanup-incomplete-blocks",
+          "actual": {
+            "deleted": false,
+            "blocked": true
+          }
+        },
+        {
+          "category": "data_and_feedback_receipt",
+          "name": "unknown-tombstone-clock-blocks",
+          "actual": {
+            "deleted": false,
+            "blocked": true
+          }
+        },
+        {
+          "category": "data_and_feedback_receipt",
+          "name": "tombstone-before-created-at-blocks",
+          "actual": {
+            "deleted": false,
+            "blocked": true
+          }
+        },
+        {
+          "category": "data_and_feedback_receipt",
+          "name": "tombstone-in-future-blocks",
+          "actual": {
+            "deleted": false,
+            "blocked": true
+          }
+        },
+        {
+          "category": "data_and_feedback_receipt",
+          "name": "one-second-before-tombstone-deadline-keeps",
+          "actual": {
+            "deleted": false,
+            "blocked": false
+          }
+        },
+        {
+          "category": "data_and_feedback_receipt",
+          "name": "at-deadline-unretired-restore-blocks",
+          "actual": {
+            "deleted": false,
+            "blocked": true
+          }
+        },
+        {
+          "category": "data_and_feedback_receipt",
+          "name": "at-deadline-retired-restore-deletes",
+          "actual": {
+            "deleted": true,
+            "blocked": false
+          }
+        },
+        {
+          "category": "data_and_feedback_receipt",
+          "name": "old-created-at-new-tombstone-keeps",
+          "actual": {
+            "deleted": false,
+            "blocked": false
+          }
+        },
+        {
+          "category": "privacy_revocation_ledger",
+          "name": "active-operation-after-forty-days",
+          "actual": {
+            "deleted": false,
+            "blocked": false
+          }
+        },
+        {
+          "category": "privacy_revocation_ledger",
+          "name": "existing-domain-aggregate-after-forty-days",
+          "actual": {
+            "deleted": false,
+            "blocked": false
+          }
+        },
+        {
+          "category": "privacy_revocation_ledger",
+          "name": "unknown-lifecycle-blocks",
+          "actual": {
+            "deleted": false,
+            "blocked": true
+          }
+        },
+        {
+          "category": "privacy_revocation_ledger",
+          "name": "domain-cleanup-incomplete-blocks",
+          "actual": {
+            "deleted": false,
+            "blocked": true
+          }
+        },
+        {
+          "category": "privacy_revocation_ledger",
+          "name": "unknown-tombstone-clock-blocks",
+          "actual": {
+            "deleted": false,
+            "blocked": true
+          }
+        },
+        {
+          "category": "privacy_revocation_ledger",
+          "name": "tombstone-before-created-at-blocks",
+          "actual": {
+            "deleted": false,
+            "blocked": true
+          }
+        },
+        {
+          "category": "privacy_revocation_ledger",
+          "name": "tombstone-in-future-blocks",
+          "actual": {
+            "deleted": false,
+            "blocked": true
+          }
+        },
+        {
+          "category": "privacy_revocation_ledger",
+          "name": "one-second-before-tombstone-deadline-keeps",
+          "actual": {
+            "deleted": false,
+            "blocked": false
+          }
+        },
+        {
+          "category": "privacy_revocation_ledger",
+          "name": "at-deadline-unretired-restore-blocks",
+          "actual": {
+            "deleted": false,
+            "blocked": true
+          }
+        },
+        {
+          "category": "privacy_revocation_ledger",
+          "name": "at-deadline-retired-restore-deletes",
+          "actual": {
+            "deleted": true,
+            "blocked": false
+          }
+        },
+        {
+          "category": "privacy_revocation_ledger",
+          "name": "old-created-at-new-tombstone-keeps",
+          "actual": {
+            "deleted": false,
+            "blocked": false
+          }
+        }
+      ],
+      "mutationChecks": [
+        {
+          "name": "real-contract-assertion-control",
+          "accepted": true,
+          "diagnostic": "EXACT_DOMAIN:FactStatus"
+        },
+        {
+          "name": "same-message-TypeError",
+          "accepted": false,
+          "diagnostic": "MUTATION_UNEXPECTED_ERROR:independent-diagnostic-probe:TypeError"
+        },
+        {
+          "name": "same-message-ReferenceError",
+          "accepted": false,
+          "diagnostic": "MUTATION_UNEXPECTED_ERROR:independent-diagnostic-probe:ReferenceError"
+        },
+        {
+          "name": "same-message-SyntaxError",
+          "accepted": false,
+          "diagnostic": "MUTATION_UNEXPECTED_ERROR:independent-diagnostic-probe:SyntaxError"
+        },
+        {
+          "name": "same-message-Error",
+          "accepted": false,
+          "diagnostic": "MUTATION_UNEXPECTED_ERROR:independent-diagnostic-probe:Error"
+        },
+        {
+          "name": "different-assertion-diagnostic",
+          "accepted": false,
+          "diagnostic": "MUTATION_WRONG_DIAGNOSTIC:independent-diagnostic-probe"
+        }
+      ]
+    },
+    "apiProbe": {
+      "status": "PASS",
+      "scope": "IN_MEMORY_INDEPENDENT_API_AND_MUTATION_PREDICATE_RECHECK",
+      "filesystemWrites": 0,
+      "subprocesses": 0,
+      "sourceHashes": {
+        "docs/api.md": "75ae366841227718bfaf18d8c1187543b390ef0aaf16d2ce1fa5754f116b83c0",
+        "docs/phase-plans/check-phase002-api.mjs": "fbdadf09d8f623cb3b64d61a0cf570acaf31ed496e6e3c294a678bcac5201f30",
+        "docs/phase-plans/verify-phase002.mjs": "6f13e8f36866d0b0396ee0e8a06c14c14c0b36f3e1d4949b05f50519e3392db6",
+        "docs/phase-plans/check-phase002-schema-prompt.mjs": "3b1fc1b57639247285300fab78b71cdf1b0dfb86b7a6248a32bfe623708e7f42"
+      },
+      "apiProbeCount": 28,
+      "observations": [
+        {
+          "name": "RequirementHash-accepts-bare-hex",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "RequirementHash-rejects-prefixed",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "RequirementHash-rejects-uppercase",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "Sha256Hex-accepts-bare-hex",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "Sha256Hex-rejects-prefixed",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "Sha256Hex-rejects-uppercase",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "plan-hash-retains-prefix",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "plan-hash-rejects-bare",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "restore-accepts-summary-requirement-hash",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "restore-rejects-prefixed-requirement-hash",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "original-completed-then-failed-now-rejected",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "original-repeated-completed-now-rejected",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "accepted-after-terminal-rejected",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "single-COMPLETED-window",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "accepted-current-COMPLETED-before-terminal",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "single-FAILED-window",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "accepted-current-FAILED-before-terminal",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "single-CANCELLED-window",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "accepted-current-CANCELLED-before-terminal",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "planner-success-then-progress-rejected",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "planner-SUCCEEDED-single",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "planner-SUCCEEDED-then-progress-rejected",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "planner-BLOCKED-single",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "planner-BLOCKED-then-progress-rejected",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "planner-FAILED-single",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "planner-FAILED-then-progress-rejected",
+          "expected": false,
+          "actual": false
+        },
+        {
+          "name": "planner-CANCELLED-single",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "name": "planner-CANCELLED-then-progress-rejected",
+          "expected": false,
+          "actual": false
+        }
+      ],
+      "rootMutation": [
+        {
+          "name": "root-real-contract-assertion",
+          "accepted": true
+        },
+        {
+          "name": "root-same-message-TypeError",
+          "accepted": false,
+          "diagnostic": "NEGATIVE_UNEXPECTED_ERROR: independent-runtime"
+        },
+        {
+          "name": "root-same-message-ReferenceError",
+          "accepted": false,
+          "diagnostic": "NEGATIVE_UNEXPECTED_ERROR: independent-runtime"
+        },
+        {
+          "name": "root-same-message-Error",
+          "accepted": false,
+          "diagnostic": "NEGATIVE_UNEXPECTED_ERROR: independent-runtime"
+        }
+      ],
+      "unresolvedSchemaMutation": {
+        "status": "VULNERABILITY_REPRODUCED",
+        "method": "Executed the actual extracted outer mutation acceptance predicate on synthetic CLI failure objects. No mutation subprocess was executed.",
+        "predicateSource": "      assert.notEqual(run.status, 0, `mutation did not fail: ${id}`);\n      const failure = JSON.parse(run.stderr.trim());\n      assert.equal(failure.status, 'FAIL', `missing failure report ${id}`);\n      assert.ok(failure.message.includes(expectedDiagnostic), `wrong failure diagnostic ${id}: ${failure.message}`);\n",
+        "observations": [
+          {
+            "syntheticFailureKind": "AssertionError",
+            "message": "canonical-field-set",
+            "acceptedAsExpectedMutationFailure": true
+          },
+          {
+            "syntheticFailureKind": "TypeError",
+            "message": "canonical-field-set",
+            "acceptedAsExpectedMutationFailure": true
+          },
+          {
+            "syntheticFailureKind": "ReferenceError",
+            "message": "canonical-field-set",
+            "acceptedAsExpectedMutationFailure": true
+          }
+        ]
+      }
+    },
+    "method": "独立探针执行实际导出的函数或实际源码提取的纯判定；隐私 expiry 使用只读真实源码与仅内存文件映射。filesystemWrites=0，subprocesses=0。Schema 漏洞 probe 使用合成 CLI 返回体，未冒称启动了变异子进程。",
+    "originalR4SyntheticPayload": {
+      "base": {
+        "eventId": "evt_1",
+        "sequence": 1,
+        "aggregateId": "command_1",
+        "traceId": "trace_1",
+        "occurredAt": "2026-09-09T00:00:00Z",
+        "payloadVersion": 1
+      },
+      "message": {
+        "messageId": "msg_1",
+        "travelRecordId": "record_1",
+        "sequence": 1,
+        "role": "ASSISTANT",
+        "kind": "TEXT",
+        "content": "Synthetic completion",
+        "createdAt": "2026-09-09T00:00:00Z",
+        "replyToMessageId": null
+      },
+      "completed": {
+        "type": "assistant.completed",
+        "status": "COMPLETED",
+        "payloadFields": [
+          "commandId",
+          "message",
+          "conversationCursor"
+        ]
+      },
+      "failed": {
+        "eventId": "evt_2",
+        "sequence": 2,
+        "type": "command.failed",
+        "status": "FAILED",
+        "error": {
+          "code": "PROVIDER_UNAVAILABLE",
+          "message": "Synthetic failure",
+          "retryable": false
+        }
+      }
+    },
+    "reproductionSourceAvailableInAgentToolCalls": true
+  }
+}
+

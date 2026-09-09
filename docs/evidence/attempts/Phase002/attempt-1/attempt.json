@@ -1,0 +1,16 @@
+{
+  "phase": 2,
+  "attemptId": "attempt-1",
+  "status": "FAIL",
+  "artifactCommit": null,
+  "failureKind": "RECOVERED_CHECKER_EXECUTION",
+  "command": "node docs/phase-plans/check-phase002-schema-prompt.mjs --json",
+  "exitCode": 1,
+  "output": "{\"status\":\"FAIL\",\"message\":\"fixed prompt fixture denominator\\n\\n112 !== 110\\n\"}\n",
+  "originalTaskId": "01a081bf-c71b-72d1-bd75-9caca73c6327",
+  "message": "Recovered Phase002 checker rejects its own fixed prompt fixture count: 112 actual, 110 expected. No Gate or metadata was produced.",
+  "planHash": "6db97c1df98a6c33f54767916a29d77e5a911e4d92b6895f6928e8c38b253fc1",
+  "generatedAt": "2026-09-09T01:20:26.277Z",
+  "testedCheckerHash": null,
+  "measurementNote": "The resumed standalone checker returned the captured failure before the aggregate runner existed. No successful report or tested-tree claim is inferred from this diagnostic; the new attempt will bind every source hash."
+}

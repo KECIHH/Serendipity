@@ -1,0 +1,108 @@
+{
+  "phase": 2,
+  "attemptId": "attempt-4",
+  "status": "FAIL",
+  "artifactCommit": null,
+  "failureKind": "INDEPENDENT_REVIEW",
+  "reviewPath": "docs/evidence/attempts/Phase002/attempt-4/review.json",
+  "reviewHash": "872ea77c344211b84a2bced9aa65377e44049394ca5d5a5ae31828066e4f5858",
+  "reviewerRunId": "/root/independent_review:Phase002:attempt-4",
+  "issues": [
+    {
+      "id": "PH002-API-001",
+      "alias": "R1",
+      "status": "RESOLVED",
+      "priority": 2,
+      "path": "docs/api.md",
+      "title": "领域 hash 编码已按所有者分离",
+      "originalProblem": "版本/恢复 DTO 的 generic hash 要求前缀，与初始 Summary 的裸 64 位 requirementHash 冲突。",
+      "resolution": "RequirementHash/Sha256Hex 采用裸 64 位小写十六进制；治理/FileAsset 等共 17 个字段核对其所有者。计划与执行 hash 保留要求的 sha256: 前缀。",
+      "evidence": [
+        "docs/phase-plans/check-phase002-api.mjs:11",
+        "docs/evidence/attempts/Phase002/attempt-4/api.json",
+        "本报告 apiProbe 中 10 个 hash/Restore 独立调用"
+      ]
+    },
+    {
+      "id": "PH002-PRIVACY-002",
+      "alias": "R2",
+      "status": "RESOLVED",
+      "priority": 1,
+      "path": "docs/privacy-and-user-data.md",
+      "line": 38,
+      "title": "回执期限改从 tombstone 起算并保留生命周期保护",
+      "originalProblem": "创建起 8 天的回执 TTL 可能删除活动操作或存活聚合的回执，破坏幂等或 ERASE 续接。",
+      "resolution": "三类数据均在操作终结、聚合删除且专用清理完成后才写 tombstonedAt；活动操作/聚合保留，未知生命周期与到期后未退休恢复集阻断。",
+      "evidence": [
+        "docs/phase-plans/check-phase002-provider-privacy.mjs:578",
+        "docs/evidence/attempts/Phase002/attempt-4/privacy.json",
+        "本报告 privacyProbe 的三类数据各 11 项独立边界测试，共 33 项"
+      ]
+    },
+    {
+      "id": "PH002-EVIDENCE-003",
+      "alias": "R3-provider-privacy-root",
+      "status": "RESOLVED",
+      "priority": 1,
+      "path": "docs/phase-plans/check-phase002-provider-privacy.mjs",
+      "line": 908,
+      "title": "Provider/Privacy 与根 runner 已绑定失败类别和诊断",
+      "originalProblem": "非零退出与 FAIL/诊断文案检查无法排除校验器自身的 TypeError 等运行时错误。",
+      "resolution": "普通变异要求指定合同 AssertionError；真实同诊断 TypeError 自检要求外层拒绝，恢复后通过。独立内存复测亦拒绝同文案运行时异常。",
+      "evidence": [
+        "docs/evidence/attempts/Phase002/attempt-4/provider.json",
+        "docs/evidence/attempts/Phase002/attempt-4/privacy.json",
+        "docs/evidence/attempts/Phase002/attempt-4/links.json",
+        "本报告 privacyProbe.mutationChecks 与 apiProbe.rootMutation"
+      ]
+    },
+    {
+      "id": "PH002-EVIDENCE-003-SCHEMA",
+      "alias": "R3-schema",
+      "status": "UNRESOLVED",
+      "priority": 1,
+      "path": "docs/phase-plans/check-phase002-schema-prompt.mjs",
+      "line": 692,
+      "title": "Schema/Prompt 外层 mutation 会把同诊断 TypeError 计为成功反例",
+      "originalProblem": "外层只检查非零退出、JSON status=FAIL 和 message.includes(expectedDiagnostic)，CLI 又把错误统一降为 status/message。实际提取该判定在内存执行时，TypeError/ReferenceError 的合成 CLI 失败体均被接受。",
+      "requiredResolution": "普通 mutation 绑定结构化合同错误类别、AssertionError/ERR_ASSERTION 和明确诊断；negative-fixture-runtime-error 单独声明预期运行时拒绝，不能放宽其他场景。保留原 9+8 场景，并验证同诊断 TypeError 不能让外层通过。",
+      "evidence": [
+        "docs/phase-plans/check-phase002-schema-prompt.mjs:692",
+        "docs/evidence/attempts/Phase002/attempt-4/schema.json",
+        "docs/evidence/attempts/Phase002/attempt-4/prompt.json",
+        "本报告 apiProbe.unresolvedSchemaMutation 保存实际判定源码与真实观察结果"
+      ]
+    },
+    {
+      "id": "PH002-API-004",
+      "alias": "R4",
+      "status": "RESOLVED",
+      "priority": 2,
+      "path": "docs/phase-plans/check-phase002-api.mjs",
+      "line": 144,
+      "title": "重放拒绝多个终态与终态后事件",
+      "originalProblem": "同 command 完成后失败、不同 eventId 的重复完成原先均被接受。",
+      "resolution": "chat 按三种终态 type、planner 按终态 status 截止后续持久事件；单终态切片与 accepted 当前终态状态的前序帧仍合法。",
+      "originalObservation": {
+        "calls": [
+          {
+            "expression": "validateReplayEvents(contract, [completed, failed], { stream: 'chat' })",
+            "actual": true
+          },
+          {
+            "expression": "validateReplayEvents(contract, [completed, { ...completed, eventId: 'evt_2', sequence: 2 }], { stream: 'chat' })",
+            "actual": true
+          }
+        ],
+        "originalSourceHash": null,
+        "note": "修复前由本独立审查实际只读观察并反馈；未单独存档当时 checker 全文/hash，不冒用其他报告 hash。复测相同输入现均 false。"
+      },
+      "evidence": [
+        "docs/evidence/attempts/Phase002/attempt-4/api.json",
+        "本报告 apiProbe 的 18 个事件边界复测"
+      ]
+    }
+  ],
+  "planHash": "525d4a823bece6d128d9116dd8ebca89219b0c51f1a6dbc47992b72c80b9d513",
+  "generatedAt": "2026-09-09T02:52:48.857Z"
+}

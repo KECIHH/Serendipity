@@ -1,0 +1,503 @@
+{
+  "testCaseId": "Phase002:provider",
+  "command": "node docs/phase-plans/verify-phase002.mjs --case provider",
+  "status": "PASS",
+  "exitCode": 0,
+  "numerator": 1,
+  "denominator": 1,
+  "inputPath": "docs/travel-data-provider-strategy.md",
+  "inputHash": "71ed8608ff8e4055694c0cbe5077f67873b5c8956eb79a83cfb05817003ccbb5",
+  "planHash": "149e3752bb43b75cba4bd626084e289e26f37e4bae72637ca2856ed3dd784a25",
+  "sourceHashes": {
+    "AGENTS.md": "224f30ead96b0771dc9949e5c33ebe4bf13bb0f76071fb3210d7d153e73b0592",
+    "docs/admin.md": "cebb8281579256bf6dc385907088278e17221d000b8b20ea11d2ae1f56aeecc3",
+    "docs/agent-execution-contract.md": "72eb5e5e8da13c02b3aeeb3803b668a440f1cbdee75fddf08f267c0ec9b6b2ed",
+    "docs/api.md": "75ae366841227718bfaf18d8c1187543b390ef0aaf16d2ce1fa5754f116b83c0",
+    "docs/auth.md": "d672c3d25e09ae16e61f9cea23c5d6fc500ff4e76156b4b6f5ca3ccc48a4e736",
+    "docs/crypto.md": "799e32133f3a1cac91d4e25955829538a14aedc1104bed9f06d1337841a130f4",
+    "docs/database.md": "38bb2a4b05b15def09ec0434ca4e4cf6d874109d3d88126333bf1f30209029a0",
+    "docs/directory-structure.md": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df",
+    "docs/hosting.md": "8026f7dfa2b0468a29bf028d18cc8fc95979d32f28e30bc18c5ac809c5b1ca57",
+    "docs/index.md": "e8ccb2c0352b408bdb7724b6c539fd09107b71fbdbdaeaee78f51f52f7e82214",
+    "docs/phase-plans/Phase002-inputs.json": "f7a18001bbfc3b00f03c6abf8e508709802927029281fb0319c1e1bfc73fc56b",
+    "docs/phase-plans/Phase002.json": "149e3752bb43b75cba4bd626084e289e26f37e4bae72637ca2856ed3dd784a25",
+    "docs/phase-plans/check-phase002-api.mjs": "fbdadf09d8f623cb3b64d61a0cf570acaf31ed496e6e3c294a678bcac5201f30",
+    "docs/phase-plans/check-phase002-provider-privacy.mjs": "b7bf8b4ea3495bba232ae1e3099ae54716e592485841e789aba4d2a65e4e56d4",
+    "docs/phase-plans/check-phase002-schema-prompt.mjs": "c3c897a5ff8a96dfaea4b102737b63f9e9f686aee13e653385d15cd2d8810190",
+    "docs/phase-plans/complete-phase002.mjs": "903990dcb87e6ac8d8b877df6354bcbd1756ffc598d3a201251c6ed9e5fc9c58",
+    "docs/phase-plans/retry-phase002.mjs": "8f1377c6afd932c14d1529118aa99fba882fad7ce98017930391a60e2ecb20b7",
+    "docs/phase-plans/verify-phase002.mjs": "6f13e8f36866d0b0396ee0e8a06c14c14c0b36f3e1d4949b05f50519e3392db6",
+    "docs/privacy-and-user-data.md": "c4b0d858901c44cac5d5e3c53120b74d4108d14a8c04a9c45305c8e617478129",
+    "docs/project-constitution.md": "8f1dd176e30e815a09502a91c5b0ef2722b7bb71d5e919fbfc70cfecf3e9dedd",
+    "docs/project-layout.json": "7efe30a30fe009a8e1226563cae53d39ed2a2193be78bc0f0a776f57f67710ba",
+    "docs/prompt-design.md": "f514323f2396930a4a434c3024481a77aa9a211bc48d7728c5f2dcb98a94801b",
+    "docs/tech-stack.md": "258620f3e18d042eac1e26165f411e8879ecd4b0d91d8e7986aaed4f3f10d2c7",
+    "docs/travel-data-provider-strategy.md": "71ed8608ff8e4055694c0cbe5077f67873b5c8956eb79a83cfb05817003ccbb5",
+    "docs/travel-plan-schema.md": "f48446b2f99a9960e633fdf276e378459c6e87477e3405cd8550f8dc475937f2",
+    "docs/ui-design-system.md": "8b232c6742bf846f131ea3040d5892ed7b270940bfd4109ccfb768ed63fdb158",
+    "scripts/check-project-layout.mjs": "101c7c50f12e4d6cc80e1c9fb9667ad06fcc55c687d86cb5295ff81bc0eb68f6",
+    "scripts/generate-api-contract.mjs": "ac2feec4e2f8daa1483f314d1fbe731c494d37ed8d9f1c565a2186dde9d68b59",
+    "scripts/phase-evidence.mjs": "3727f8f8e5f00cf7e03d4bc50f71ebdbff483380cbc59df124bf21b473261d95",
+    "scripts/validate-phase.mjs": "4be9ee356a3f5a7d5b9265ee61143d6574617dda83d9ac8d3960f3f8e28fa293",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319"
+  },
+  "startedAt": "2026-09-09T03:00:16.277Z",
+  "completedAt": "2026-09-09T03:00:20.385Z",
+  "durationMs": 4108,
+  "environment": "ISOLATED_SYNTHETIC",
+  "productionTraffic": false,
+  "details": {
+    "provider": {
+      "status": "PASS",
+      "group": "provider",
+      "scope": "DOCUMENT_CONTRACT_ONLY",
+      "manifestHash": "497689843e4576c5f8e8a6636d29b04023ac997309a3ffab83cc67d90ea7bf3e",
+      "sourceCount": 17,
+      "fixtureCount": 68,
+      "fixtures": [
+        {
+          "id": "separate-normal",
+          "status": "PASS"
+        },
+        {
+          "id": "no-capability-is-not-fact-status",
+          "status": "PASS"
+        },
+        {
+          "id": "unknown-is-not-provider-availability",
+          "status": "PASS"
+        },
+        {
+          "id": "unavailable-is-not-capability",
+          "status": "PASS"
+        },
+        {
+          "id": "cache-is-not-freshness",
+          "status": "PASS"
+        },
+        {
+          "id": "aging-is-not-cache-state",
+          "status": "PASS"
+        },
+        {
+          "id": "normalized-query",
+          "status": "PASS"
+        },
+        {
+          "id": "query-url-injection",
+          "status": "PASS"
+        },
+        {
+          "id": "query-prototype-field",
+          "status": "PASS"
+        },
+        {
+          "id": "unknown-locale",
+          "status": "PASS"
+        },
+        {
+          "id": "batch-over-limit",
+          "status": "PASS"
+        },
+        {
+          "id": "trusted-road-input",
+          "status": "PASS"
+        },
+        {
+          "id": "ai-coordinate-rejected",
+          "status": "PASS"
+        },
+        {
+          "id": "private-coordinate-rejected",
+          "status": "PASS"
+        },
+        {
+          "id": "out-of-range-coordinate",
+          "status": "PASS"
+        },
+        {
+          "id": "road-as-transit-rejected",
+          "status": "PASS"
+        },
+        {
+          "id": "valid-forecast",
+          "status": "PASS"
+        },
+        {
+          "id": "impossible-calendar-date",
+          "status": "PASS"
+        },
+        {
+          "id": "public-address-document-only",
+          "status": "PASS"
+        },
+        {
+          "id": "private-dns",
+          "status": "PASS"
+        },
+        {
+          "id": "mixed-dns-answer",
+          "status": "PASS"
+        },
+        {
+          "id": "dns-rebinding",
+          "status": "PASS"
+        },
+        {
+          "id": "metadata-redirect",
+          "status": "PASS"
+        },
+        {
+          "id": "redirect-dns-recheck",
+          "status": "PASS"
+        },
+        {
+          "id": "userinfo-rejected",
+          "status": "PASS"
+        },
+        {
+          "id": "encoded-loopback-host",
+          "status": "PASS"
+        },
+        {
+          "id": "ipv6-mapped-loopback",
+          "status": "PASS"
+        },
+        {
+          "id": "ipv6-public",
+          "status": "PASS"
+        },
+        {
+          "id": "ipv6-link-local",
+          "status": "PASS"
+        },
+        {
+          "id": "ipv6-transition-address",
+          "status": "PASS"
+        },
+        {
+          "id": "scheme-rejected",
+          "status": "PASS"
+        },
+        {
+          "id": "arbitrary-path",
+          "status": "PASS"
+        },
+        {
+          "id": "query-secret",
+          "status": "PASS"
+        },
+        {
+          "id": "controlled-loopback",
+          "status": "PASS"
+        },
+        {
+          "id": "production-loopback-rejected",
+          "status": "PASS"
+        },
+        {
+          "id": "unbound-loopback-rejected",
+          "status": "PASS"
+        },
+        {
+          "id": "redirect-limit",
+          "status": "PASS"
+        },
+        {
+          "id": "timeout-retry-bounded",
+          "status": "PASS"
+        },
+        {
+          "id": "retry-then-success",
+          "status": "PASS"
+        },
+        {
+          "id": "security-is-not-retryable",
+          "status": "PASS"
+        },
+        {
+          "id": "retry-after-cannot-exceed-deadline",
+          "status": "PASS"
+        },
+        {
+          "id": "decoded-size-is-bounded",
+          "status": "PASS"
+        },
+        {
+          "id": "wire-size-is-bounded",
+          "status": "PASS"
+        },
+        {
+          "id": "quota-precedes-outbound",
+          "status": "PASS"
+        },
+        {
+          "id": "circuit-open-precedes-outbound",
+          "status": "PASS"
+        },
+        {
+          "id": "cancel-precedes-outbound",
+          "status": "PASS"
+        },
+        {
+          "id": "deadline-prevents-late-success",
+          "status": "PASS"
+        },
+        {
+          "id": "freshness:fresh",
+          "status": "PASS"
+        },
+        {
+          "id": "freshness:aging-boundary",
+          "status": "PASS"
+        },
+        {
+          "id": "freshness:stale-boundary",
+          "status": "PASS"
+        },
+        {
+          "id": "freshness:expired-boundary",
+          "status": "PASS"
+        },
+        {
+          "id": "freshness:provider-valid-until-wins",
+          "status": "PASS"
+        },
+        {
+          "id": "freshness:unknown-source",
+          "status": "PASS"
+        },
+        {
+          "id": "cache:fresh-hit",
+          "status": "PASS"
+        },
+        {
+          "id": "cache:swr",
+          "status": "PASS"
+        },
+        {
+          "id": "cache:stale-fallback",
+          "status": "PASS"
+        },
+        {
+          "id": "cache:stale-ceiling",
+          "status": "PASS"
+        },
+        {
+          "id": "cache:provider-expiry",
+          "status": "PASS"
+        },
+        {
+          "id": "cache:no-value",
+          "status": "PASS"
+        },
+        {
+          "id": "fact:source-backed-fact",
+          "status": "PASS"
+        },
+        {
+          "id": "fact:unknown-is-null",
+          "status": "PASS"
+        },
+        {
+          "id": "fact:unknown-cannot-be-zero",
+          "status": "PASS"
+        },
+        {
+          "id": "fact:dangling-source",
+          "status": "PASS"
+        },
+        {
+          "id": "fact:unbacked-estimate",
+          "status": "PASS"
+        },
+        {
+          "id": "fact:conflict-group-required",
+          "status": "PASS"
+        },
+        {
+          "id": "fact:conflict-kept",
+          "status": "PASS"
+        },
+        {
+          "id": "license-and-credential-admission",
+          "status": "PASS"
+        },
+        {
+          "id": "snapshot-version-and-freshness-isolation",
+          "status": "PASS"
+        }
+      ],
+      "mutations": [
+        {
+          "id": "mixed-status-domain",
+          "kind": "CONTRACT_MUTATION",
+          "mutatedDocumentHash": "7933d28095acbeae25752ce8afb517b0144bee46a05b7f1c1ba626d0cc53867a",
+          "expectedExit": "NONZERO",
+          "observedExit": 1,
+          "restoredExit": 0,
+          "expectedDiagnostic": "EXACT_DOMAIN:FactStatus",
+          "diagnostic": "EXACT_DOMAIN:FactStatus",
+          "failureMessage": "EXACT_DOMAIN:FactStatus\n+ actual - expected\n\n  [\n    'conflicting',\n    'estimated',\n    'stale',\n    'unknown',\n+   'unsupported',\n    'verified'\n  ]\n",
+          "failureClass": "CONTRACT_ASSERTION",
+          "errorName": "AssertionError"
+        },
+        {
+          "id": "dns-check-disabled",
+          "kind": "CONTRACT_MUTATION",
+          "mutatedDocumentHash": "d682987a567124988c719da99cd9205ceb3afde9beba0912558fa0d737686c75",
+          "expectedExit": "NONZERO",
+          "observedExit": 1,
+          "restoredExit": 0,
+          "expectedDiagnostic": "TRANSPORT_GUARD:revalidateEveryDnsAnswer",
+          "diagnostic": "TRANSPORT_GUARD:revalidateEveryDnsAnswer",
+          "failureMessage": "TRANSPORT_GUARD:revalidateEveryDnsAnswer\n\nfalse !== true\n",
+          "failureClass": "CONTRACT_ASSERTION",
+          "errorName": "AssertionError"
+        },
+        {
+          "id": "connection-peer-check-disabled",
+          "kind": "CONTRACT_MUTATION",
+          "mutatedDocumentHash": "c3055cf5f43324fb97f21c2678275a42277008cebcc0524eea9dc5d671e5dc36",
+          "expectedExit": "NONZERO",
+          "observedExit": 1,
+          "restoredExit": 0,
+          "expectedDiagnostic": "TRANSPORT_GUARD:verifyConnectedPeer",
+          "diagnostic": "TRANSPORT_GUARD:verifyConnectedPeer",
+          "failureMessage": "TRANSPORT_GUARD:verifyConnectedPeer\n\nfalse !== true\n",
+          "failureClass": "CONTRACT_ASSERTION",
+          "errorName": "AssertionError"
+        },
+        {
+          "id": "unbounded-retry",
+          "kind": "CONTRACT_MUTATION",
+          "mutatedDocumentHash": "58cb76b6f80a1d02d946e66a323a7780a6776da981a28736d630d6c1218cf762",
+          "expectedExit": "NONZERO",
+          "observedExit": 1,
+          "restoredExit": 0,
+          "expectedDiagnostic": "FINITE_RETRY_BOUND",
+          "diagnostic": "FINITE_RETRY_BOUND",
+          "failureMessage": "FINITE_RETRY_BOUND",
+          "failureClass": "CONTRACT_ASSERTION",
+          "errorName": "AssertionError"
+        },
+        {
+          "id": "cache-reuses-private-snapshot",
+          "kind": "CONTRACT_MUTATION",
+          "mutatedDocumentHash": "5709373ac8e06cc796e1eca1dd210a5429d18305947c37fc5a9f7317d94b9061",
+          "expectedExit": "NONZERO",
+          "observedExit": 1,
+          "restoredExit": 0,
+          "expectedDiagnostic": "CACHE_DENY:payloadMayReferenceFactSnapshot",
+          "diagnostic": "CACHE_DENY:payloadMayReferenceFactSnapshot",
+          "failureMessage": "CACHE_DENY:payloadMayReferenceFactSnapshot\n\ntrue !== false\n",
+          "failureClass": "CONTRACT_ASSERTION",
+          "errorName": "AssertionError"
+        },
+        {
+          "id": "ai-fact-fabrication-enabled",
+          "kind": "CONTRACT_MUTATION",
+          "mutatedDocumentHash": "be49169352feef4ae8c25ccc687b9442e66f19348b6bf0f3cf81554e92820f4d",
+          "expectedExit": "NONZERO",
+          "observedExit": 1,
+          "restoredExit": 0,
+          "expectedDiagnostic": "FALLBACK_DENY:aiMaySetFacts",
+          "diagnostic": "FALLBACK_DENY:aiMaySetFacts",
+          "failureMessage": "FALLBACK_DENY:aiMaySetFacts\n\ntrue !== false\n",
+          "failureClass": "CONTRACT_ASSERTION",
+          "errorName": "AssertionError"
+        },
+        {
+          "id": "mutation-runner-rejects-typeerror",
+          "kind": "CHECKER_RUNTIME_REJECTION",
+          "mutatedCheckerHash": "b5a2dc81dcd79274f24510aaa0ff3b467f554f78fc97889eeae4ede75665e2bc",
+          "expectedExit": "NONZERO",
+          "observedExit": 1,
+          "expectedDiagnostic": "MUTATION_UNEXPECTED_ERROR:mixed-status-domain:TypeError",
+          "diagnostic": "MUTATION_UNEXPECTED_ERROR:mixed-status-domain:TypeError",
+          "failureClass": "CHECKER_RUNTIME_ERROR",
+          "errorName": "MutationRunnerError",
+          "rejectedFailure": {
+            "status": "FAIL",
+            "failureClass": "CHECKER_RUNTIME_ERROR",
+            "errorName": "TypeError",
+            "errorCode": null,
+            "explicitDiagnostic": false,
+            "diagnostic": "EXACT_DOMAIN:FactStatus",
+            "message": "EXACT_DOMAIN:FactStatus"
+          },
+          "restoredExit": 0,
+          "restoredStatus": "PASS",
+          "restoredMutationCount": 6
+        }
+      ],
+      "contractHash": "a5a520025e73a20de2bbd29fde3450eb4cb6d25cf877593265f9c08754ee7c82",
+      "publicNetworkRequests": 0,
+      "productImplementationEvaluated": false,
+      "hostingCheckedBy": "PHASE002_MAIN_VERIFIER"
+    },
+    "hosting": {
+      "scope": "DOCUMENT_TOPOLOGY_RULES_NOT_DEPLOYMENT",
+      "fixtureCount": 14,
+      "fixtures": [
+        {
+          "id": "hosting:separate-persistence",
+          "status": "PASS"
+        },
+        {
+          "id": "hosting:same-database",
+          "status": "PASS"
+        },
+        {
+          "id": "hosting:same-volume",
+          "status": "PASS"
+        },
+        {
+          "id": "hosting:same-backup",
+          "status": "PASS"
+        },
+        {
+          "id": "hosting:different-digest",
+          "status": "PASS"
+        },
+        {
+          "id": "hosting:external-queue",
+          "status": "PASS"
+        },
+        {
+          "id": "hosting:watermark-replayed",
+          "status": "PASS"
+        },
+        {
+          "id": "hosting:missing-watermark",
+          "status": "PASS"
+        },
+        {
+          "id": "hosting:behind-watermark",
+          "status": "PASS"
+        },
+        {
+          "id": "hosting:watermark-rollback",
+          "status": "PASS"
+        },
+        {
+          "id": "hosting:object-pending",
+          "status": "PASS"
+        },
+        {
+          "id": "hosting:token-only",
+          "status": "PASS"
+        },
+        {
+          "id": "hosting:traffic-open",
+          "status": "PASS"
+        },
+        {
+          "id": "hosting:kill-auto-resumed",
+          "status": "PASS"
+        }
+      ],
+      "databaseOrContainerInvocations": 0
+    }
+  }
+}

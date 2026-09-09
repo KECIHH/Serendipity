@@ -1,0 +1,459 @@
+{
+  "phase": 2,
+  "attemptId": "attempt-6",
+  "reviewerRunId": "/root/independent_review:Phase002:attempt-6",
+  "contextId": "/root/independent_review",
+  "implementationContextId": "/root:Phase002:2026-09-09",
+  "runnerIdentity": {
+    "kind": "INDEPENDENT_CODEX_AGENT",
+    "implementationAuthored": false
+  },
+  "generatedBy": "/root/independent_review",
+  "generatedAt": "2026-09-09T03:40:56.438Z",
+  "planPath": "docs/phase-plans/Phase002.json",
+  "planHash": "406af5dcd2837d34bddfeb6908e226320c08aaa607ffd0adc9d5b75f0b5d5445",
+  "decision": "PASS",
+  "issues": [
+    {
+      "id": "PH002-API-001",
+      "alias": "R1",
+      "status": "RESOLVED",
+      "priority": 2,
+      "path": "docs/api.md",
+      "title": "领域 hash 编码已按所有者分离",
+      "originalProblem": "版本/恢复 DTO 的 generic hash 要求前缀，与初始 Summary 的裸 64 位 requirementHash 冲突。",
+      "resolution": "RequirementHash/Sha256Hex 采用裸 64 位小写十六进制；17 个 API hash 字段按所有者核对，计划与执行相关 hash 保留 sha256: 前缀。对未由上游指定编码的字段，本卡明确格式。",
+      "evidence": [
+        {
+          "path": "docs/evidence/attempts/Phase002/attempt-5/review.json",
+          "sha256": "74d9790a40d65f7fa689712437de646bea298ec22d6a3a7ba84508fec4497356",
+          "decision": "PASS",
+          "detail": "既有契约与专用 checker 字节未变化；本次仅审查格式保留与来源绑定增量。原问题、复现及解决复测完整保留。"
+        }
+      ]
+    },
+    {
+      "id": "PH002-PRIVACY-002",
+      "alias": "R2",
+      "status": "RESOLVED",
+      "priority": 1,
+      "path": "docs/privacy-and-user-data.md",
+      "line": 38,
+      "title": "回执期限从 tombstone 起算并保留生命周期保护",
+      "originalProblem": "创建起 8 天的回执 TTL 可能删除活动操作或存活聚合的回执，破坏幂等或 ERASE 续接。",
+      "resolution": "三类恢复相关数据仅在操作终结、聚合删除且专用清理完成后开始 tombstonedAt 时钟；活动命令/存活聚合继续保留，未知生命周期和到期后未退休恢复集阻断。ERASE 跨 40 天仍使用同 intent/receipt/checkpoint。",
+      "evidence": [
+        {
+          "path": "docs/evidence/attempts/Phase002/attempt-5/review.json",
+          "sha256": "74d9790a40d65f7fa689712437de646bea298ec22d6a3a7ba84508fec4497356",
+          "decision": "PASS",
+          "detail": "既有契约与专用 checker 字节未变化；本次仅审查格式保留与来源绑定增量。原问题、复现及解决复测完整保留。"
+        }
+      ]
+    },
+    {
+      "id": "PH002-EVIDENCE-003",
+      "alias": "R3-provider-privacy-root",
+      "status": "RESOLVED",
+      "priority": 1,
+      "path": "docs/phase-plans/check-phase002-provider-privacy.mjs",
+      "line": 908,
+      "title": "Provider/Privacy 与根 runner 已绑定错误类别和指定诊断",
+      "originalProblem": "非零退出与 FAIL/诊断文案检查无法排除校验器自身的 TypeError 等运行时错误。",
+      "resolution": "普通变异必须为指定合同 AssertionError；结构化诊断准确匹配。实际同诊断 TypeError 自检必须被外层拒绝，恢复真实断言后通过；同字节独立内存探针也拒绝同文案运行时异常。",
+      "evidence": [
+        {
+          "path": "docs/evidence/attempts/Phase002/attempt-5/review.json",
+          "sha256": "74d9790a40d65f7fa689712437de646bea298ec22d6a3a7ba84508fec4497356",
+          "decision": "PASS",
+          "detail": "既有契约与专用 checker 字节未变化；本次仅审查格式保留与来源绑定增量。原问题、复现及解决复测完整保留。"
+        }
+      ]
+    },
+    {
+      "id": "PH002-EVIDENCE-003-SCHEMA",
+      "alias": "R3-schema",
+      "status": "RESOLVED",
+      "priority": 1,
+      "path": "docs/phase-plans/check-phase002-schema-prompt.mjs",
+      "line": 691,
+      "title": "Schema/Prompt 外层 mutation 已拒绝同诊断运行时错误",
+      "originalProblem": "外层只检查非零退出、JSON status=FAIL 和 message.includes(expectedDiagnostic)，CLI 又把错误统一降为 status/message。实际提取该判定在内存执行时，TypeError/ReferenceError 的合成 CLI 失败体均被接受。",
+      "resolution": "普通 mutation 精确核对 CONTRACT_ASSERTION、AssertionError、ERR_ASSERTION、显式 diagnostic。原 TypeError fixture 明确作为专项运行时拒绝；两组新增自检让普通 mutation 抛同诊断 TypeError，外层必须失败。所有既有 9+8 个场景保留，现为 10+9。",
+      "evidence": [
+        {
+          "path": "docs/evidence/attempts/Phase002/attempt-5/review.json",
+          "sha256": "74d9790a40d65f7fa689712437de646bea298ec22d6a3a7ba84508fec4497356",
+          "decision": "PASS",
+          "detail": "既有契约与专用 checker 字节未变化；本次仅审查格式保留与来源绑定增量。原问题、复现及解决复测完整保留。"
+        }
+      ]
+    },
+    {
+      "id": "PH002-API-004",
+      "alias": "R4",
+      "status": "RESOLVED",
+      "priority": 2,
+      "path": "docs/phase-plans/check-phase002-api.mjs",
+      "line": 144,
+      "title": "重放拒绝多个终态及终态后事件",
+      "originalProblem": "同 command 完成后失败、不同 eventId 的重复完成原先均被接受。",
+      "originalObservation": {
+        "calls": [
+          {
+            "expression": "validateReplayEvents(contract, [completed, failed], { stream: 'chat' })",
+            "actual": true
+          },
+          {
+            "expression": "validateReplayEvents(contract, [completed, { ...completed, eventId: 'evt_2', sequence: 2 }], { stream: 'chat' })",
+            "actual": true
+          }
+        ],
+        "originalSourceHash": null,
+        "note": "修复前由本独立审查实际只读观察并反馈；未单独存档当时 checker 全文/hash，不冒用其他报告 hash。复测相同输入现均 false。"
+      },
+      "resolution": "chat 按三种终态 type、planner 按终态 status 截止后续持久事件；完成后失败、重复完成与终态后进度/消息拒绝，单终态切片和 accepted 当前终态状态的合法前序帧仍通过。",
+      "evidence": [
+        {
+          "path": "docs/evidence/attempts/Phase002/attempt-5/review.json",
+          "sha256": "74d9790a40d65f7fa689712437de646bea298ec22d6a3a7ba84508fec4497356",
+          "decision": "PASS",
+          "detail": "既有契约与专用 checker 字节未变化；本次仅审查格式保留与来源绑定增量。原问题、复现及解决复测完整保留。"
+        }
+      ]
+    },
+    {
+      "id": "PH002-EVIDENCE-005",
+      "alias": "FORMAT-PRESERVATION",
+      "status": "RESOLVED",
+      "priority": 2,
+      "path": ".gitattributes",
+      "line": 5,
+      "title": "不可变失败报告的 EOF 格式例外已限定并验证",
+      "originalProblem": "attempt-4 独立 FAIL review 末尾含两个 LF，已被失败收据固定 hash。attempt-5 的默认 git diff --cached --check 以原生退出码 2 拒绝该 EOF 空行；不能改写已冻结记录或把契约审查 PASS 冒充完整 Git 验收通过。",
+      "resolution": "保留原件 SHA-256 872ea77c344211b84a2bced9aa65377e44049394ca5d5a5ae31828066e4f5858。版本化 .gitattributes 仅针对该确切旧路径设置 whitespace=-blank-at-eof，root runner 同时强制唯一规则、原 hash、FAIL/attempt-4 和原两个 LF。扩充 sourcePaths 纳入属性文件及旧报告，保留八组/阈值；默认 Git 与双 shell seal 命令不变。",
+      "evidence": [
+        {
+          "path": "docs/evidence/attempts/Phase002/attempt-5/attempt.json",
+          "detail": "真实 STAGED_GIT_FORMAT_CHECK 失败，原生退出 2；先前 PASS review 保留原 hash。"
+        },
+        {
+          "path": "docs/phase-plans/Phase002.json",
+          "detail": "expansion 固定前计划 hash、两项新增 sourcePaths 和 .gitattributes 修改范围，未降低既有要求。"
+        },
+        {
+          "path": "docs/phase-plans/verify-phase002.mjs",
+          "line": 257,
+          "detail": "精确规则及原件 hash/EOF 判定；无 core.whitespace 配置修改。"
+        },
+        {
+          "path": "docs/evidence/attempts/Phase002/attempt-6/index.json",
+          "detail": "真实临时 Git：原件通过；普通 JSON 多余 EOF 空行及旧报告行尾空格均退出 2，恢复后退出 0。"
+        },
+        {
+          "path": "docs/evidence/attempts/Phase002/attempt-6/links.json",
+          "detail": "扩大例外、篡改旧报告与规范化其 EOF 三项均在指定合同断言处拒绝，恢复通过。"
+        },
+        {
+          "path": "docs/evidence/attempts/Phase002/attempt-6/review.json",
+          "detail": "8 项独立内存格式策略探针通过，包含限制更多空白规则、重定向例外和移除 LF 策略的拒绝。"
+        }
+      ]
+    }
+  ],
+  "dispositions": [
+    {
+      "issueId": "PH002-API-001",
+      "status": "RESOLVED",
+      "by": "/root/independent_review",
+      "verifiedAttemptId": "attempt-6",
+      "detail": "RequirementHash/Sha256Hex 采用裸 64 位小写十六进制；17 个 API hash 字段按所有者核对，计划与执行相关 hash 保留 sha256: 前缀。对未由上游指定编码的字段，本卡明确格式。"
+    },
+    {
+      "issueId": "PH002-PRIVACY-002",
+      "status": "RESOLVED",
+      "by": "/root/independent_review",
+      "verifiedAttemptId": "attempt-6",
+      "detail": "三类恢复相关数据仅在操作终结、聚合删除且专用清理完成后开始 tombstonedAt 时钟；活动命令/存活聚合继续保留，未知生命周期和到期后未退休恢复集阻断。ERASE 跨 40 天仍使用同 intent/receipt/checkpoint。"
+    },
+    {
+      "issueId": "PH002-EVIDENCE-003",
+      "status": "RESOLVED",
+      "by": "/root/independent_review",
+      "verifiedAttemptId": "attempt-6",
+      "detail": "普通变异必须为指定合同 AssertionError；结构化诊断准确匹配。实际同诊断 TypeError 自检必须被外层拒绝，恢复真实断言后通过；同字节独立内存探针也拒绝同文案运行时异常。"
+    },
+    {
+      "issueId": "PH002-EVIDENCE-003-SCHEMA",
+      "status": "RESOLVED",
+      "by": "/root/independent_review",
+      "verifiedAttemptId": "attempt-6",
+      "detail": "普通 mutation 精确核对 CONTRACT_ASSERTION、AssertionError、ERR_ASSERTION、显式 diagnostic。原 TypeError fixture 明确作为专项运行时拒绝；两组新增自检让普通 mutation 抛同诊断 TypeError，外层必须失败。所有既有 9+8 个场景保留，现为 10+9。"
+    },
+    {
+      "issueId": "PH002-API-004",
+      "status": "RESOLVED",
+      "by": "/root/independent_review",
+      "verifiedAttemptId": "attempt-6",
+      "detail": "chat 按三种终态 type、planner 按终态 status 截止后续持久事件；完成后失败、重复完成与终态后进度/消息拒绝，单终态切片和 accepted 当前终态状态的合法前序帧仍通过。"
+    },
+    {
+      "issueId": "PH002-EVIDENCE-005",
+      "status": "RESOLVED",
+      "by": "/root/independent_review",
+      "verifiedAttemptId": "attempt-6",
+      "detail": "保留原件 SHA-256 872ea77c344211b84a2bced9aa65377e44049394ca5d5a5ae31828066e4f5858。版本化 .gitattributes 仅针对该确切旧路径设置 whitespace=-blank-at-eof，root runner 同时强制唯一规则、原 hash、FAIL/attempt-4 和原两个 LF。扩充 sourcePaths 纳入属性文件及旧报告，保留八组/阈值；默认 Git 与双 shell seal 命令不变。"
+    }
+  ],
+  "sourceHashes": {
+    ".gitattributes": "851253b716e5448b37969c98629a93622041b2bc7ab105020a69b41ac157fffa",
+    "AGENTS.md": "224f30ead96b0771dc9949e5c33ebe4bf13bb0f76071fb3210d7d153e73b0592",
+    "docs/admin.md": "cebb8281579256bf6dc385907088278e17221d000b8b20ea11d2ae1f56aeecc3",
+    "docs/agent-execution-contract.md": "72eb5e5e8da13c02b3aeeb3803b668a440f1cbdee75fddf08f267c0ec9b6b2ed",
+    "docs/api.md": "75ae366841227718bfaf18d8c1187543b390ef0aaf16d2ce1fa5754f116b83c0",
+    "docs/auth.md": "d672c3d25e09ae16e61f9cea23c5d6fc500ff4e76156b4b6f5ca3ccc48a4e736",
+    "docs/crypto.md": "799e32133f3a1cac91d4e25955829538a14aedc1104bed9f06d1337841a130f4",
+    "docs/database.md": "38bb2a4b05b15def09ec0434ca4e4cf6d874109d3d88126333bf1f30209029a0",
+    "docs/directory-structure.md": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df",
+    "docs/evidence/attempts/Phase002/attempt-4/review.json": "872ea77c344211b84a2bced9aa65377e44049394ca5d5a5ae31828066e4f5858",
+    "docs/hosting.md": "8026f7dfa2b0468a29bf028d18cc8fc95979d32f28e30bc18c5ac809c5b1ca57",
+    "docs/index.md": "e8ccb2c0352b408bdb7724b6c539fd09107b71fbdbdaeaee78f51f52f7e82214",
+    "docs/phase-plans/Phase002-inputs.json": "f7a18001bbfc3b00f03c6abf8e508709802927029281fb0319c1e1bfc73fc56b",
+    "docs/phase-plans/Phase002.json": "406af5dcd2837d34bddfeb6908e226320c08aaa607ffd0adc9d5b75f0b5d5445",
+    "docs/phase-plans/check-phase002-api.mjs": "fbdadf09d8f623cb3b64d61a0cf570acaf31ed496e6e3c294a678bcac5201f30",
+    "docs/phase-plans/check-phase002-provider-privacy.mjs": "b7bf8b4ea3495bba232ae1e3099ae54716e592485841e789aba4d2a65e4e56d4",
+    "docs/phase-plans/check-phase002-schema-prompt.mjs": "c3c897a5ff8a96dfaea4b102737b63f9e9f686aee13e653385d15cd2d8810190",
+    "docs/phase-plans/complete-phase002.mjs": "903990dcb87e6ac8d8b877df6354bcbd1756ffc598d3a201251c6ed9e5fc9c58",
+    "docs/phase-plans/retry-phase002.mjs": "8f1377c6afd932c14d1529118aa99fba882fad7ce98017930391a60e2ecb20b7",
+    "docs/phase-plans/verify-phase002.mjs": "516abe2436e6b37aed3e4fe0d8a7c4b06c7ab8c974f0e4d10cbf11c9f943586e",
+    "docs/privacy-and-user-data.md": "c4b0d858901c44cac5d5e3c53120b74d4108d14a8c04a9c45305c8e617478129",
+    "docs/project-constitution.md": "8f1dd176e30e815a09502a91c5b0ef2722b7bb71d5e919fbfc70cfecf3e9dedd",
+    "docs/project-layout.json": "7efe30a30fe009a8e1226563cae53d39ed2a2193be78bc0f0a776f57f67710ba",
+    "docs/prompt-design.md": "f514323f2396930a4a434c3024481a77aa9a211bc48d7728c5f2dcb98a94801b",
+    "docs/tech-stack.md": "258620f3e18d042eac1e26165f411e8879ecd4b0d91d8e7986aaed4f3f10d2c7",
+    "docs/travel-data-provider-strategy.md": "71ed8608ff8e4055694c0cbe5077f67873b5c8956eb79a83cfb05817003ccbb5",
+    "docs/travel-plan-schema.md": "f48446b2f99a9960e633fdf276e378459c6e87477e3405cd8550f8dc475937f2",
+    "docs/ui-design-system.md": "8b232c6742bf846f131ea3040d5892ed7b270940bfd4109ccfb768ed63fdb158",
+    "scripts/check-project-layout.mjs": "101c7c50f12e4d6cc80e1c9fb9667ad06fcc55c687d86cb5295ff81bc0eb68f6",
+    "scripts/generate-api-contract.mjs": "ac2feec4e2f8daa1483f314d1fbe731c494d37ed8d9f1c565a2186dde9d68b59",
+    "scripts/phase-evidence.mjs": "3727f8f8e5f00cf7e03d4bc50f71ebdbff483380cbc59df124bf21b473261d95",
+    "scripts/validate-phase.mjs": "4be9ee356a3f5a7d5b9265ee61143d6574617dda83d9ac8d3960f3f8e28fa293",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319"
+  },
+  "reportHashes": {
+    "docs/evidence/attempts/Phase002/attempt-6/api.json": "9c11715fd1c460814c92ecd7627c7d50057b9318efbd053266c453f1d6c96ba1",
+    "docs/evidence/attempts/Phase002/attempt-6/prompt.json": "c04010ac30a76823a6b3af076799fcefc728527574c9b6a252fd5485dc13de79",
+    "docs/evidence/attempts/Phase002/attempt-6/schema.json": "ee49ef36e8e375b74206d31867edd2476e3e0771ef6ee8726e7bb4040d93f428",
+    "docs/evidence/attempts/Phase002/attempt-6/provider.json": "0bb427425cbd9ed36d8a0b1bfead5f7d258fe07655093dfb470e7a3fcde02742",
+    "docs/evidence/attempts/Phase002/attempt-6/privacy.json": "0366a934878995df6fed0c9d238351b76e644b8c60c633a9f5afe23e32120a43",
+    "docs/evidence/attempts/Phase002/attempt-6/index.json": "819232eaa60b20df3e7676cc4c1d377bdd0bf27395840c53b56c03a2783373ec",
+    "docs/evidence/attempts/Phase002/attempt-6/forbidden-routes.json": "99954286a5c32b7f542d9af6be3616757058e5b0503f80d668e4e1965544df0b",
+    "docs/evidence/attempts/Phase002/attempt-6/links.json": "8b9b32928bc29f64053f2962fff7217eb2a3d8ba77ac231c492d979f0b9af80a"
+  },
+  "observations": {
+    "scope": "PHASE002_FINAL_INDEPENDENT_REVIEW_WITH_FORMAT_PRESERVATION_DELTA",
+    "independence": "真实 reviewer canonical task 为 /root/independent_review；本 reviewer 仅写独立审查报告，未编辑实现，未操作 Git 索引/提交/推送。",
+    "priorSemanticReview": {
+      "path": "docs/evidence/attempts/Phase002/attempt-5/review.json",
+      "sha256": "74d9790a40d65f7fa689712437de646bea298ec22d6a3a7ba84508fec4497356",
+      "decision": "PASS"
+    },
+    "priorFrozenReview": {
+      "path": "docs/evidence/attempts/Phase002/attempt-4/review.json",
+      "sha256": "872ea77c344211b84a2bced9aa65377e44049394ca5d5a5ae31828066e4f5858"
+    },
+    "binding": {
+      "status": "PASS",
+      "sourceCount": 33,
+      "reportCount": 8,
+      "pinnedInputCount": 149,
+      "preservedFailedAttempts": 5,
+      "pinnedInputShape": "exact id/path/sha256"
+    },
+    "addedSources": [
+      ".gitattributes",
+      "docs/evidence/attempts/Phase002/attempt-4/review.json"
+    ],
+    "changedSources": [
+      "docs/phase-plans/Phase002.json",
+      "docs/phase-plans/verify-phase002.mjs"
+    ],
+    "semanticCarryForward": "与已通过的 attempt-5 相比，全部十份契约、API/Schema/Prompt/Provider/Privacy 专用 checker、complete/retry、phase-evidence 和默认双 shell validator 字节相同。root runner 新增格式策略/临时 Git 测试/三项反例，原有语义逻辑保留；计划扩充有固定来源记录。",
+    "formatPreservation": {
+      "policy": {
+        "scope": "EXACT_IMMUTABLE_FAILED_REVIEW",
+        "path": "docs/evidence/attempts/Phase002/attempt-4/review.json",
+        "sha256": "872ea77c344211b84a2bced9aa65377e44049394ca5d5a5ae31828066e4f5858",
+        "allowedDiagnostic": "new blank line at EOF",
+        "preservedTrailingLFCount": 2,
+        "originalBytesPreserved": true
+      },
+      "baselineExit": 0,
+      "observations": [
+        {
+          "id": "ordinary-json-extra-eof",
+          "nativeExit": 2,
+          "diagnostic": "ordinary.json:2: new blank line at EOF.",
+          "restoredExit": 0
+        },
+        {
+          "id": "frozen-review-trailing-space",
+          "nativeExit": 2,
+          "diagnostic": "docs/evidence/attempts/Phase002/attempt-4/review.json:1: trailing whitespace.\n+{",
+          "restoredExit": 0
+        }
+      ]
+    },
+    "additionalPolicyRejections": [
+      {
+        "id": "broadened-evidence-whitespace-exception",
+        "expectedDiagnostic": "FROZEN_EVIDENCE_WHITESPACE_SCOPE",
+        "actualDiagnostic": "FROZEN_EVIDENCE_WHITESPACE_SCOPE",
+        "failureClass": "CONTRACT_ASSERTION",
+        "errorName": "AssertionError",
+        "restoredExit": 0
+      },
+      {
+        "id": "frozen-failed-review-byte-change",
+        "expectedDiagnostic": "FROZEN_REVIEW_BYTE_HASH",
+        "actualDiagnostic": "FROZEN_REVIEW_BYTE_HASH",
+        "failureClass": "CONTRACT_ASSERTION",
+        "errorName": "AssertionError",
+        "restoredExit": 0
+      },
+      {
+        "id": "frozen-failed-review-normalization",
+        "expectedDiagnostic": "FROZEN_REVIEW_BYTE_HASH",
+        "actualDiagnostic": "FROZEN_REVIEW_BYTE_HASH",
+        "failureClass": "CONTRACT_ASSERTION",
+        "errorName": "AssertionError",
+        "restoredExit": 0
+      }
+    ],
+    "defaultGitAttributeObservations": {
+      "command": "git check-attr whitespace -- docs/evidence/attempts/Phase002/attempt-4/review.json docs/evidence/attempts/Phase002/attempt-5/review.json docs/api.md",
+      "frozenReview": "-blank-at-eof",
+      "otherReview": "unspecified",
+      "apiDocument": "unspecified",
+      "gitIndexWritten": false
+    },
+    "allOriginalEightCasesAndThresholdsPreserved": true,
+    "linksMutationCount": 15,
+    "defaultValidator": {
+      "path": "scripts/validate-phase.mjs",
+      "sha256": "4be9ee356a3f5a7d5b9265ee61143d6574617dda83d9ac8d3960f3f8e28fa293",
+      "changed": false,
+      "powerShellWrapperSha256": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319",
+      "commandOverrides": []
+    },
+    "notEvaluated": [
+      "本 PASS 是最终文档/证据独立审查。artifact/metadata 双提交、真实仓库最终默认双 shell seal、完整工作区清洁和 GitHub 推送仍由主 agent 随后完成。",
+      "无产品路由或实时 HTTP 404、Prisma/PostgreSQL、浏览器 UI、真实 Provider 外呼验收；产品 lint/typecheck/build/Vitest/Playwright 尚未创建。静态文档规则和临时合成验证不替代后续产品 Gate。",
+      "合成隐私规则不是生产保留政策、真实用户 consent 或法律/人工批准；hash/身份绑定不是密码学身份认证。",
+      "用户授权止于 Phase002；本报告不授权推进 Phase003。"
+    ],
+    "conclusion": "原五项语义/证据问题继续保持解决；新增格式保留问题已以精确版本化规则和不可变字节约束解决。当前 33 项 source 与八份报告完整绑定，未发现剩余独立审查阻断。"
+  },
+  "probes": {
+    "formatPolicy": {
+      "status": "PASS",
+      "scope": "IN_MEMORY_INDEPENDENT_FROZEN_EVIDENCE_FORMAT_RECHECK",
+      "sourcePath": "docs/phase-plans/verify-phase002.mjs",
+      "sourceHash": "516abe2436e6b37aed3e4fe0d8a7c4b06c7ab8c974f0e4d10cbf11c9f943586e",
+      "attributeHash": "851253b716e5448b37969c98629a93622041b2bc7ab105020a69b41ac157fffa",
+      "frozenReviewPath": "docs/evidence/attempts/Phase002/attempt-4/review.json",
+      "frozenReviewHash": "872ea77c344211b84a2bced9aa65377e44049394ca5d5a5ae31828066e4f5858",
+      "filesystemWrites": 0,
+      "subprocesses": 0,
+      "caseCount": 8,
+      "observations": [
+        {
+          "name": "exact-frozen-file-and-rule-control",
+          "outcome": "PASS",
+          "actual": {
+            "scope": "EXACT_IMMUTABLE_FAILED_REVIEW",
+            "path": "docs/evidence/attempts/Phase002/attempt-4/review.json",
+            "sha256": "872ea77c344211b84a2bced9aa65377e44049394ca5d5a5ae31828066e4f5858",
+            "allowedDiagnostic": "new blank line at EOF",
+            "preservedTrailingLFCount": 2,
+            "originalBytesPreserved": true
+          }
+        },
+        {
+          "name": "broaden-to-all-json",
+          "outcome": "REJECTED",
+          "expectedDiagnostic": "FROZEN_EVIDENCE_WHITESPACE_SCOPE",
+          "actualDiagnostic": "FROZEN_EVIDENCE_WHITESPACE_SCOPE"
+        },
+        {
+          "name": "remove-specific-exception",
+          "outcome": "REJECTED",
+          "expectedDiagnostic": "FROZEN_EVIDENCE_WHITESPACE_SCOPE",
+          "actualDiagnostic": "FROZEN_EVIDENCE_WHITESPACE_SCOPE"
+        },
+        {
+          "name": "disable-additional-whitespace-check",
+          "outcome": "REJECTED",
+          "expectedDiagnostic": "FROZEN_EVIDENCE_WHITESPACE_SCOPE",
+          "actualDiagnostic": "FROZEN_EVIDENCE_WHITESPACE_SCOPE"
+        },
+        {
+          "name": "redirect-exception-to-new-review",
+          "outcome": "REJECTED",
+          "expectedDiagnostic": "FROZEN_EVIDENCE_WHITESPACE_SCOPE",
+          "actualDiagnostic": "FROZEN_EVIDENCE_WHITESPACE_SCOPE"
+        },
+        {
+          "name": "remove-global-lf-rule",
+          "outcome": "REJECTED",
+          "expectedDiagnostic": "FROZEN_EVIDENCE_WHITESPACE_SCOPE",
+          "actualDiagnostic": "FROZEN_EVIDENCE_WHITESPACE_SCOPE"
+        },
+        {
+          "name": "append-to-frozen-review",
+          "outcome": "REJECTED",
+          "expectedDiagnostic": "FROZEN_REVIEW_BYTE_HASH",
+          "actualDiagnostic": "FROZEN_REVIEW_BYTE_HASH"
+        },
+        {
+          "name": "normalize-frozen-review-eof",
+          "outcome": "REJECTED",
+          "expectedDiagnostic": "FROZEN_REVIEW_BYTE_HASH",
+          "actualDiagnostic": "FROZEN_REVIEW_BYTE_HASH"
+        }
+      ],
+      "restoredBaseline": "PASS",
+      "predicateSource": "function checkWhitespacePolicy(root) {\n  const rules = text(root, '.gitattributes').split('\\n').map(line => line.trim()).filter(line => line && !line.startsWith('#'));\n  assert.deepEqual(rules, ['* text=auto eol=lf', `${frozenReviewPath} whitespace=-blank-at-eof`], 'FROZEN_EVIDENCE_WHITESPACE_SCOPE');\n  assert.equal(hash(root, frozenReviewPath), frozenReviewHash, 'FROZEN_REVIEW_BYTE_HASH');\n  const review = json(root, frozenReviewPath);\n  assert.equal(review.decision, 'FAIL'); assert.equal(review.phase, 2); assert.equal(review.attemptId, 'attempt-4');\n  const reviewBytes = bytes(root, frozenReviewPath);\n  requireThat(!reviewBytes.includes(13) && !text(root, frozenReviewPath).startsWith('\\uFEFF'), 'FROZEN_REVIEW_LF');\n  assert.equal(text(root, frozenReviewPath).match(/\\n*$/)[0].length, 2, 'FROZEN_REVIEW_CAPTURED_EOF');\n  return { scope: 'EXACT_IMMUTABLE_FAILED_REVIEW', path: frozenReviewPath, sha256: frozenReviewHash,\n    allowedDiagnostic: 'new blank line at EOF', preservedTrailingLFCount: 2, originalBytesPreserved: true };\n}\n",
+      "sourceLanguage": "javascript",
+      "source": "import assert from 'node:assert/strict';\nimport fs from 'node:fs';\nimport path from 'node:path';\nimport {createHash} from 'node:crypto';\nconst runnerPath='docs/phase-plans/verify-phase002.mjs';\nconst original=fs.readFileSync(runnerPath,'utf8');\nconst hashBytes=value=>createHash('sha256').update(value).digest('hex');\nconst frozenReviewPath='docs/evidence/attempts/Phase002/attempt-4/review.json';\nconst frozenReviewHash='872ea77c344211b84a2bced9aa65377e44049394ca5d5a5ae31828066e4f5858';\nassert(original.includes(\"const frozenReviewPath = '\"+frozenReviewPath+\"';\"));\nassert(original.includes(\"const frozenReviewHash = '\"+frozenReviewHash+\"';\"));\nconst start=original.indexOf('function checkWhitespacePolicy(root) {');\nconst end=original.indexOf('\\nfunction checkGitWhitespace(root)',start);\nassert(start>=0&&end>start);\nconst predicateSource=original.slice(start,end);\nconst overlay=new Map();\nconst bytes=(root,file)=>overlay.get(file)??fs.readFileSync(path.join(root,file));\nconst text=(root,file)=>bytes(root,file).toString('utf8').replace(/^\\uFEFF/,'');\nconst hash=(root,file)=>hashBytes(bytes(root,file));\nconst json=(root,file)=>JSON.parse(text(root,file));\nconst requireThat=(condition,code,message=code)=>assert(condition,code+': '+message);\nconst evaluate=new Function('assert','text','hash','json','bytes','frozenReviewPath','frozenReviewHash','requireThat',predicateSource+'\\nreturn checkWhitespacePolicy;');\nconst check=evaluate(assert,text,hash,json,bytes,frozenReviewPath,frozenReviewHash,requireThat);\nconst root=process.cwd();\nconst attrs=fs.readFileSync('.gitattributes');\nconst review=fs.readFileSync(frozenReviewPath);\nassert.equal(hashBytes(review),frozenReviewHash);\nconst baseline=check(root);\nconst observations=[{name:'exact-frozen-file-and-rule-control',outcome:'PASS',actual:baseline}];\nconst rule=frozenReviewPath+' whitespace=-blank-at-eof';\nconst cases=[\n ['broaden-to-all-json','.gitattributes',Buffer.from(attrs.toString('utf8').replace(rule,'*.json whitespace=-blank-at-eof')),'FROZEN_EVIDENCE_WHITESPACE_SCOPE'],\n ['remove-specific-exception','.gitattributes',Buffer.from(attrs.toString('utf8').replace(rule,'')),'FROZEN_EVIDENCE_WHITESPACE_SCOPE'],\n ['disable-additional-whitespace-check','.gitattributes',Buffer.from(attrs.toString('utf8').replace(rule,rule+',-blank-at-eol')),'FROZEN_EVIDENCE_WHITESPACE_SCOPE'],\n ['redirect-exception-to-new-review','.gitattributes',Buffer.from(attrs.toString('utf8').replace('attempt-4/review.json whitespace','attempt-6/review.json whitespace')),'FROZEN_EVIDENCE_WHITESPACE_SCOPE'],\n ['remove-global-lf-rule','.gitattributes',Buffer.from(attrs.toString('utf8').replace('* text=auto eol=lf','* text=auto')),'FROZEN_EVIDENCE_WHITESPACE_SCOPE'],\n ['append-to-frozen-review',frozenReviewPath,Buffer.concat([review,Buffer.from(' ')]),'FROZEN_REVIEW_BYTE_HASH'],\n ['normalize-frozen-review-eof',frozenReviewPath,Buffer.from(review.toString('utf8').replace(/\\n\\n$/,'\\n')),'FROZEN_REVIEW_BYTE_HASH'],\n];\nfor(const [name,file,value,expectedDiagnostic]of cases){\n overlay.clear();overlay.set(file,value);let error;try{check(root);}catch(caught){error=caught;}\n assert(error instanceof assert.AssertionError,name);assert.equal(error.code,'ERR_ASSERTION');assert.equal(error.message.split('\\n')[0],expectedDiagnostic,name);\n observations.push({name,outcome:'REJECTED',expectedDiagnostic,actualDiagnostic:error.message.split('\\n')[0]});\n}\noverlay.clear();assert.deepEqual(check(root),baseline);\nconsole.log(JSON.stringify({status:'PASS',scope:'IN_MEMORY_INDEPENDENT_FROZEN_EVIDENCE_FORMAT_RECHECK',sourcePath:runnerPath,sourceHash:hashBytes(original),attributeHash:hashBytes(attrs),frozenReviewPath,frozenReviewHash,filesystemWrites:0,subprocesses:0,caseCount:observations.length,observations,restoredBaseline:'PASS',predicateSource}));\n"
+    },
+    "currentBinding": {
+      "status": "PASS",
+      "sourceCount": 33,
+      "reportCount": 8,
+      "addedSources": [
+        ".gitattributes",
+        "docs/evidence/attempts/Phase002/attempt-4/review.json"
+      ],
+      "changedSources": [
+        "docs/phase-plans/Phase002.json",
+        "docs/phase-plans/verify-phase002.mjs"
+      ],
+      "allOriginalEightCasesAndThresholdsPreserved": true,
+      "priorReviewsByteHashesVerified": true
+    },
+    "carryForward": {
+      "path": "docs/evidence/attempts/Phase002/attempt-5/review.json",
+      "sha256": "74d9790a40d65f7fa689712437de646bea298ec22d6a3a7ba84508fec4497356",
+      "decision": "PASS",
+      "areas": [
+        "R1 domain hash encoding",
+        "R2 receipt/ERASE retention",
+        "R3 Provider/Privacy/root failure classification",
+        "R3 Schema/Prompt failure classification",
+        "R4 terminal replay exclusivity"
+      ],
+      "method": "对未改变的来源和既有独立 probe 按字节/hash 续用审查，当前八报告重新核对完整绑定；未将旧 probe 冒称为新执行。"
+    }
+  }
+}

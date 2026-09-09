@@ -1,0 +1,232 @@
+{
+  "phase": 2,
+  "attemptId": "attempt-6",
+  "requestedThrough": 2,
+  "implementationContextId": "/root:Phase002:2026-09-09",
+  "producer": "Phase002",
+  "consumers": [
+    3,
+    5,
+    11,
+    12,
+    13,
+    14,
+    15,
+    17,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    28,
+    43,
+    49,
+    51,
+    52,
+    61,
+    83,
+    84,
+    88,
+    90,
+    95,
+    104,
+    119,
+    123,
+    137
+  ],
+  "scope": "PHASE002_DOCUMENTATION_CONTRACTS_AND_DETERMINISTIC_DOCUMENT_VERIFICATION",
+  "modificationScope": [
+    ".gitattributes",
+    "docs/admin.md",
+    "docs/api.md",
+    "docs/auth.md",
+    "docs/crypto.md",
+    "docs/evidence/attempts/Phase002/",
+    "docs/hosting.md",
+    "docs/index.md",
+    "docs/phase-plans/Phase002-inputs.json",
+    "docs/phase-plans/Phase002.json",
+    "docs/phase-plans/check-phase002-api.mjs",
+    "docs/phase-plans/check-phase002-provider-privacy.mjs",
+    "docs/phase-plans/check-phase002-schema-prompt.mjs",
+    "docs/phase-plans/complete-phase002.mjs",
+    "docs/phase-plans/retry-phase002.mjs",
+    "docs/phase-plans/verify-phase002.mjs",
+    "docs/privacy-and-user-data.md",
+    "docs/prompt-design.md",
+    "docs/travel-data-provider-strategy.md",
+    "docs/travel-plan-schema.md",
+    "scripts/generate-api-contract.mjs"
+  ],
+  "sourcePaths": [
+    ".gitattributes",
+    "AGENTS.md",
+    "docs/admin.md",
+    "docs/agent-execution-contract.md",
+    "docs/api.md",
+    "docs/auth.md",
+    "docs/crypto.md",
+    "docs/database.md",
+    "docs/directory-structure.md",
+    "docs/evidence/attempts/Phase002/attempt-4/review.json",
+    "docs/hosting.md",
+    "docs/index.md",
+    "docs/phase-plans/Phase002-inputs.json",
+    "docs/phase-plans/Phase002.json",
+    "docs/phase-plans/check-phase002-api.mjs",
+    "docs/phase-plans/check-phase002-provider-privacy.mjs",
+    "docs/phase-plans/check-phase002-schema-prompt.mjs",
+    "docs/phase-plans/complete-phase002.mjs",
+    "docs/phase-plans/retry-phase002.mjs",
+    "docs/phase-plans/verify-phase002.mjs",
+    "docs/privacy-and-user-data.md",
+    "docs/project-constitution.md",
+    "docs/project-layout.json",
+    "docs/prompt-design.md",
+    "docs/tech-stack.md",
+    "docs/travel-data-provider-strategy.md",
+    "docs/travel-plan-schema.md",
+    "docs/ui-design-system.md",
+    "scripts/check-project-layout.mjs",
+    "scripts/generate-api-contract.mjs",
+    "scripts/phase-evidence.mjs",
+    "scripts/validate-phase.mjs",
+    "scripts/validate-phase.ps1"
+  ],
+  "phaseStartCommit": "9909bcbf4350471df754868e1032ba9dce7c5964",
+  "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+  "requiredCaseIds": [
+    "Phase002:api",
+    "Phase002:prompt",
+    "Phase002:schema",
+    "Phase002:provider",
+    "Phase002:privacy",
+    "Phase002:index",
+    "Phase002:forbidden-routes",
+    "Phase002:links"
+  ],
+  "cases": [
+    {
+      "testCaseId": "Phase002:api",
+      "command": "node docs/phase-plans/verify-phase002.mjs --case api",
+      "denominator": 1,
+      "inputPath": "docs/api.md",
+      "outputPath": "docs/evidence/attempts/Phase002/attempt-6/api.json",
+      "expected": "All 100 registry operations generated from the pinned manifest with complete identity/auth/request/response/errors/idempotency/CAS/producer columns, exact DTOs and path-only identity, public/private error mapping, CAS, persistent/transient events and replay; auth/admin/crypto supporting contracts; zero duplicate or unregistered canonical endpoints"
+    },
+    {
+      "testCaseId": "Phase002:prompt",
+      "command": "node docs/phase-plans/verify-phase002.mjs --case prompt",
+      "denominator": 1,
+      "inputPath": "docs/prompt-design.md",
+      "outputPath": "docs/evidence/attempts/Phase002/attempt-6/prompt.json",
+      "expected": "Exactly eight keys with purpose, permitted required/nullable bounded variables, input/output schema versions, immutable activation authority, injection boundary, failures and first consumers; strict document schemas and positive/negative fixtures; no temporary Prompt models or production Prompt text"
+    },
+    {
+      "testCaseId": "Phase002:schema",
+      "command": "node docs/phase-plans/verify-phase002.mjs --case schema",
+      "denominator": 1,
+      "inputPath": "docs/travel-plan-schema.md",
+      "outputPath": "docs/evidence/attempts/Phase002/attempt-6/schema.json",
+      "expected": "TravelRequirement and exact TravelPlanSummaryDraft v1 with absent/unknown/empty/clear, decimal string 0/null, real ISO local dates and zone, stable IDs and ordered destinations; strict schema positive/negative fixtures and one-way Phase024 evolution without premature v2 production"
+    },
+    {
+      "testCaseId": "Phase002:provider",
+      "command": "node docs/phase-plans/verify-phase002.mjs --case provider",
+      "denominator": 1,
+      "inputPath": "docs/travel-data-provider-strategy.md",
+      "outputPath": "docs/evidence/attempts/Phase002/attempt-6/provider.json",
+      "expected": "Five disjoint status domains, capability/source license registry, normalized requests, DNS/redirect SSRF checks, timeout/retry/quota/circuit bounds, version/cache freshness/degradation and no AI fact fabrication; hosting boundaries and security negative fixtures"
+    },
+    {
+      "testCaseId": "Phase002:privacy",
+      "command": "node docs/phase-plans/verify-phase002.mjs --case privacy",
+      "denominator": 1,
+      "inputPath": "docs/privacy-and-user-data.md",
+      "outputPath": "docs/evidence/attempts/Phase002/attempt-6/privacy.json",
+      "expected": "All required data categories, public recursive allowlists, log denylist, token/hash protocols, deletion ownership, exact eleven-field ISOLATED_SYNTHETIC PrivacyDecisionRegister with bounded rules; execute synthetic expiry, backup deadline, BLOCK and consent withdrawal fixtures; independent ledger-first erasure and receipt/share distinctions"
+    },
+    {
+      "testCaseId": "Phase002:index",
+      "command": "node docs/phase-plans/verify-phase002.mjs --case index",
+      "denominator": 1,
+      "inputPath": "docs/index.md",
+      "outputPath": "docs/evidence/attempts/Phase002/attempt-6/index.json",
+      "expected": "All ten unique contract owners/producers and consumers, authority/read order, fixed absolute local input paths and SHA-256, F-01 through F-12 page/Schema/DB/API/phase/test matrix, existing evidence and historical-only separation; input pins, prior Phase001 seal and clean synced admission, phase scope and LF bytes"
+    },
+    {
+      "testCaseId": "Phase002:forbidden-routes",
+      "command": "node docs/phase-plans/verify-phase002.mjs --case forbidden-routes",
+      "denominator": 1,
+      "inputPath": "docs/api.md",
+      "outputPath": "docs/evidence/attempts/Phase002/attempt-6/forbidden-routes.json",
+      "expected": "Exactly three forbidden legacy routes, zero registry producers and zero route files; expected HTTP 404 contract with no runtime HTTP claim; isolated insertion into registry/production files must exit nonzero and restored baseline must pass"
+    },
+    {
+      "testCaseId": "Phase002:links",
+      "command": "node docs/phase-plans/verify-phase002.mjs --case links",
+      "denominator": 1,
+      "inputPath": "docs/index.md",
+      "outputPath": "docs/evidence/attempts/Phase002/attempt-6/links.json",
+      "expected": "All ten contracts and internal links resolve with valid fragments; no duplicate canonical method/path, undefined producer, second authoritative API table or dangling input link; temporary duplicate endpoint, dangling file/fragment and source-hash mutations each exit nonzero, restoration passes; evidence-source/report/reviewer binding rejection tests"
+    }
+  ],
+  "threshold": {
+    "originalThreshold": 8,
+    "automatedThreshold": 8,
+    "requiredPassRate": 1,
+    "contractCount": 10,
+    "promptKeyCount": 8,
+    "forbiddenRouteCount": 3,
+    "duplicateEndpointCount": 0,
+    "unresolvedLinkCount": 0,
+    "waived": false
+  },
+  "previousAttempts": [
+    {
+      "attemptId": "attempt-1",
+      "planPath": "docs/evidence/attempts/Phase002/attempt-1/frozen-plan.json",
+      "planHash": "6db97c1df98a6c33f54767916a29d77e5a911e4d92b6895f6928e8c38b253fc1"
+    },
+    {
+      "attemptId": "attempt-2",
+      "planPath": "docs/evidence/attempts/Phase002/attempt-2/frozen-plan.json",
+      "planHash": "2cadc97290e56f8f30ed2dfb5c3065cc8107dd0faf931b72dba38bd61055c11e"
+    },
+    {
+      "attemptId": "attempt-3",
+      "planPath": "docs/evidence/attempts/Phase002/attempt-3/frozen-plan.json",
+      "planHash": "f2213826a7c8aacd724dd05c60cd62dcc496195d06a1b0a25f45f33c37a6ba4c"
+    },
+    {
+      "attemptId": "attempt-4",
+      "planPath": "docs/evidence/attempts/Phase002/attempt-4/frozen-plan.json",
+      "planHash": "525d4a823bece6d128d9116dd8ebca89219b0c51f1a6dbc47992b72c80b9d513"
+    },
+    {
+      "attemptId": "attempt-5",
+      "planPath": "docs/evidence/attempts/Phase002/attempt-5/frozen-plan.json",
+      "planHash": "149e3752bb43b75cba4bd626084e289e26f37e4bae72637ca2856ed3dd784a25"
+    }
+  ],
+  "notApplicable": [
+    "Application lint/typecheck/build first produced in Phase003; Vitest first produced in Phase004",
+    "No application routes, live HTTP endpoint checks, Prisma, database, pages, external Provider calls or dependencies are created in Phase002",
+    "Synthetic document-rule fixtures do not evaluate production privacy retention, real user consent, legal approval or human screen-reader experience"
+  ],
+  "expansion": {
+    "reason": "Preserve the immutable failed review original bytes while keeping the default Git whitespace seal reproducible and strict for all other paths/errors.",
+    "previousAttempt": "attempt-5",
+    "previousPlanHash": "149e3752bb43b75cba4bd626084e289e26f37e4bae72637ca2856ed3dd784a25",
+    "addedSourcePaths": [
+      ".gitattributes",
+      "docs/evidence/attempts/Phase002/attempt-4/review.json"
+    ],
+    "addedModificationScope": [
+      ".gitattributes"
+    ],
+    "requiredCasesAndThresholdsUnchanged": true,
+    "immutableReviewSha256": "872ea77c344211b84a2bced9aa65377e44049394ca5d5a5ae31828066e4f5858"
+  }
+}
