@@ -1,0 +1,550 @@
+{
+  "schemaVersion": "agent-gate-v1",
+  "phase": 2,
+  "attemptId": "attempt-6",
+  "status": "PASS",
+  "simulation": true,
+  "operatorMode": "AGENT_ONLY_AUTOMATED_NEW_BUILD",
+  "environment": {
+    "isolated": true,
+    "syntheticUsers": true,
+    "providerMode": "contract-replay",
+    "productionTraffic": false
+  },
+  "artifactCommit": "5b5378f092455226b9bf20cc00f07aa95a69fd01",
+  "requiredCaseIds": [
+    "Phase002:api",
+    "Phase002:prompt",
+    "Phase002:schema",
+    "Phase002:provider",
+    "Phase002:privacy",
+    "Phase002:index",
+    "Phase002:forbidden-routes",
+    "Phase002:links"
+  ],
+  "results": [
+    {
+      "testCaseId": "Phase002:api",
+      "command": "node docs/phase-plans/verify-phase002.mjs --case api",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:75ae366841227718bfaf18d8c1187543b390ef0aaf16d2ce1fa5754f116b83c0",
+      "outputHash": "sha256:9c11715fd1c460814c92ecd7627c7d50057b9318efbd053266c453f1d6c96ba1",
+      "status": "PASS",
+      "details": {
+        "inputPath": "docs/api.md",
+        "outputPath": "docs/evidence/attempts/Phase002/attempt-6/api.json",
+        "expected": "All 100 registry operations generated from the pinned manifest with complete identity/auth/request/response/errors/idempotency/CAS/producer columns, exact DTOs and path-only identity, public/private error mapping, CAS, persistent/transient events and replay; auth/admin/crypto supporting contracts; zero duplicate or unregistered canonical endpoints"
+      }
+    },
+    {
+      "testCaseId": "Phase002:prompt",
+      "command": "node docs/phase-plans/verify-phase002.mjs --case prompt",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:f514323f2396930a4a434c3024481a77aa9a211bc48d7728c5f2dcb98a94801b",
+      "outputHash": "sha256:c04010ac30a76823a6b3af076799fcefc728527574c9b6a252fd5485dc13de79",
+      "status": "PASS",
+      "details": {
+        "inputPath": "docs/prompt-design.md",
+        "outputPath": "docs/evidence/attempts/Phase002/attempt-6/prompt.json",
+        "expected": "Exactly eight keys with purpose, permitted required/nullable bounded variables, input/output schema versions, immutable activation authority, injection boundary, failures and first consumers; strict document schemas and positive/negative fixtures; no temporary Prompt models or production Prompt text"
+      }
+    },
+    {
+      "testCaseId": "Phase002:schema",
+      "command": "node docs/phase-plans/verify-phase002.mjs --case schema",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:f48446b2f99a9960e633fdf276e378459c6e87477e3405cd8550f8dc475937f2",
+      "outputHash": "sha256:ee49ef36e8e375b74206d31867edd2476e3e0771ef6ee8726e7bb4040d93f428",
+      "status": "PASS",
+      "details": {
+        "inputPath": "docs/travel-plan-schema.md",
+        "outputPath": "docs/evidence/attempts/Phase002/attempt-6/schema.json",
+        "expected": "TravelRequirement and exact TravelPlanSummaryDraft v1 with absent/unknown/empty/clear, decimal string 0/null, real ISO local dates and zone, stable IDs and ordered destinations; strict schema positive/negative fixtures and one-way Phase024 evolution without premature v2 production"
+      }
+    },
+    {
+      "testCaseId": "Phase002:provider",
+      "command": "node docs/phase-plans/verify-phase002.mjs --case provider",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:71ed8608ff8e4055694c0cbe5077f67873b5c8956eb79a83cfb05817003ccbb5",
+      "outputHash": "sha256:0bb427425cbd9ed36d8a0b1bfead5f7d258fe07655093dfb470e7a3fcde02742",
+      "status": "PASS",
+      "details": {
+        "inputPath": "docs/travel-data-provider-strategy.md",
+        "outputPath": "docs/evidence/attempts/Phase002/attempt-6/provider.json",
+        "expected": "Five disjoint status domains, capability/source license registry, normalized requests, DNS/redirect SSRF checks, timeout/retry/quota/circuit bounds, version/cache freshness/degradation and no AI fact fabrication; hosting boundaries and security negative fixtures"
+      }
+    },
+    {
+      "testCaseId": "Phase002:privacy",
+      "command": "node docs/phase-plans/verify-phase002.mjs --case privacy",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:c4b0d858901c44cac5d5e3c53120b74d4108d14a8c04a9c45305c8e617478129",
+      "outputHash": "sha256:0366a934878995df6fed0c9d238351b76e644b8c60c633a9f5afe23e32120a43",
+      "status": "PASS",
+      "details": {
+        "inputPath": "docs/privacy-and-user-data.md",
+        "outputPath": "docs/evidence/attempts/Phase002/attempt-6/privacy.json",
+        "expected": "All required data categories, public recursive allowlists, log denylist, token/hash protocols, deletion ownership, exact eleven-field ISOLATED_SYNTHETIC PrivacyDecisionRegister with bounded rules; execute synthetic expiry, backup deadline, BLOCK and consent withdrawal fixtures; independent ledger-first erasure and receipt/share distinctions"
+      }
+    },
+    {
+      "testCaseId": "Phase002:index",
+      "command": "node docs/phase-plans/verify-phase002.mjs --case index",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:e8ccb2c0352b408bdb7724b6c539fd09107b71fbdbdaeaee78f51f52f7e82214",
+      "outputHash": "sha256:819232eaa60b20df3e7676cc4c1d377bdd0bf27395840c53b56c03a2783373ec",
+      "status": "PASS",
+      "details": {
+        "inputPath": "docs/index.md",
+        "outputPath": "docs/evidence/attempts/Phase002/attempt-6/index.json",
+        "expected": "All ten unique contract owners/producers and consumers, authority/read order, fixed absolute local input paths and SHA-256, F-01 through F-12 page/Schema/DB/API/phase/test matrix, existing evidence and historical-only separation; input pins, prior Phase001 seal and clean synced admission, phase scope and LF bytes"
+      }
+    },
+    {
+      "testCaseId": "Phase002:forbidden-routes",
+      "command": "node docs/phase-plans/verify-phase002.mjs --case forbidden-routes",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:75ae366841227718bfaf18d8c1187543b390ef0aaf16d2ce1fa5754f116b83c0",
+      "outputHash": "sha256:99954286a5c32b7f542d9af6be3616757058e5b0503f80d668e4e1965544df0b",
+      "status": "PASS",
+      "details": {
+        "inputPath": "docs/api.md",
+        "outputPath": "docs/evidence/attempts/Phase002/attempt-6/forbidden-routes.json",
+        "expected": "Exactly three forbidden legacy routes, zero registry producers and zero route files; expected HTTP 404 contract with no runtime HTTP claim; isolated insertion into registry/production files must exit nonzero and restored baseline must pass"
+      }
+    },
+    {
+      "testCaseId": "Phase002:links",
+      "command": "node docs/phase-plans/verify-phase002.mjs --case links",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:e8ccb2c0352b408bdb7724b6c539fd09107b71fbdbdaeaee78f51f52f7e82214",
+      "outputHash": "sha256:8b9b32928bc29f64053f2962fff7217eb2a3d8ba77ac231c492d979f0b9af80a",
+      "status": "PASS",
+      "details": {
+        "inputPath": "docs/index.md",
+        "outputPath": "docs/evidence/attempts/Phase002/attempt-6/links.json",
+        "expected": "All ten contracts and internal links resolve with valid fragments; no duplicate canonical method/path, undefined producer, second authoritative API table or dangling input link; temporary duplicate endpoint, dangling file/fragment and source-hash mutations each exit nonzero, restoration passes; evidence-source/report/reviewer binding rejection tests"
+      }
+    }
+  ],
+  "commands": [
+    {
+      "command": "node docs/phase-plans/verify-phase002.mjs --case api",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase002.mjs --case prompt",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase002.mjs --case schema",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase002.mjs --case provider",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase002.mjs --case privacy",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase002.mjs --case index",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase002.mjs --case forbidden-routes",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase002.mjs --case links",
+      "exitCode": 0
+    }
+  ],
+  "inputs": [
+    {
+      "path": ".gitattributes",
+      "sha256": "851253b716e5448b37969c98629a93622041b2bc7ab105020a69b41ac157fffa"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "224f30ead96b0771dc9949e5c33ebe4bf13bb0f76071fb3210d7d153e73b0592"
+    },
+    {
+      "path": "docs/admin.md",
+      "sha256": "cebb8281579256bf6dc385907088278e17221d000b8b20ea11d2ae1f56aeecc3"
+    },
+    {
+      "path": "docs/agent-execution-contract.md",
+      "sha256": "72eb5e5e8da13c02b3aeeb3803b668a440f1cbdee75fddf08f267c0ec9b6b2ed"
+    },
+    {
+      "path": "docs/api.md",
+      "sha256": "75ae366841227718bfaf18d8c1187543b390ef0aaf16d2ce1fa5754f116b83c0"
+    },
+    {
+      "path": "docs/auth.md",
+      "sha256": "d672c3d25e09ae16e61f9cea23c5d6fc500ff4e76156b4b6f5ca3ccc48a4e736"
+    },
+    {
+      "path": "docs/crypto.md",
+      "sha256": "799e32133f3a1cac91d4e25955829538a14aedc1104bed9f06d1337841a130f4"
+    },
+    {
+      "path": "docs/database.md",
+      "sha256": "38bb2a4b05b15def09ec0434ca4e4cf6d874109d3d88126333bf1f30209029a0"
+    },
+    {
+      "path": "docs/directory-structure.md",
+      "sha256": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-1/attempt.json",
+      "sha256": "468deec78e9754440e4390cf948330607595b5444621c7603ec46e97a8d507f6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-1/frozen-plan.json",
+      "sha256": "6db97c1df98a6c33f54767916a29d77e5a911e4d92b6895f6928e8c38b253fc1"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-1/input-receipt-before-normalization.json",
+      "sha256": "08720954465febce66b43636aa66f6b52d877d200d973aae18774fd85d8b0228"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-2/attempt.json",
+      "sha256": "c202265110833c08a1223dfb9c02e88303acdd933f035bd46b99636af6b52867"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-2/frozen-plan.json",
+      "sha256": "2cadc97290e56f8f30ed2dfb5c3065cc8107dd0faf931b72dba38bd61055c11e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-3/api.json",
+      "sha256": "ce594f1e538c185a60e95d114c7055a6649c83e3fa2d7de5b00ceb18129a2b04"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-3/attempt.json",
+      "sha256": "9791368b564c9d67056a240431340979685fb0a807dd10a8aa90d7ae2ee1e32b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-3/frozen-plan.json",
+      "sha256": "f2213826a7c8aacd724dd05c60cd62dcc496195d06a1b0a25f45f33c37a6ba4c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-3/privacy.json",
+      "sha256": "d585feacb646fcfa278ca0488bb2a075eb3ebe1c4666cbd0187e0214a10bee0b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-3/prompt.json",
+      "sha256": "6c2fd6c38d30ad3222a408b0fbacedbb8eac05520a4899badb21be639c54a886"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-3/provider.json",
+      "sha256": "64545d94938e5dfa0a87097b19df7d28400235eeb84aedde8ab4f366c726b341"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-3/schema.json",
+      "sha256": "0630035415eb5b79ea760fbe45e59fb782c616e4897846b9410bbc631c96cd3a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-4/api.json",
+      "sha256": "f01d72c8acdfae6361323d7ece2ec3b7f7e31b7b7f397ea9dc6722c5bdfe6a92"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-4/attempt.json",
+      "sha256": "ab31135bedc279ad124d0e2902f334252dc193e2fa0ec1aadad1d40ff2b07f13"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-4/forbidden-routes.json",
+      "sha256": "307b60b50be67320d6260313ccf1781a32deb1334a98dafa806520ef2b996dd1"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-4/frozen-plan.json",
+      "sha256": "525d4a823bece6d128d9116dd8ebca89219b0c51f1a6dbc47992b72c80b9d513"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-4/index.json",
+      "sha256": "079cc2dc36b36deb34b4ef509787c4a37b410395072988076b286101370aeccd"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-4/links.json",
+      "sha256": "d247ff1f494beaf2154ad1cf6d9274d35bff9d0b67455be4ef911ac566d4c068"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-4/privacy.json",
+      "sha256": "f7be25e569fa2c7690617fd4225c4a7920d8d1ce3fd2e85c46c71ccd0be463df"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-4/prompt.json",
+      "sha256": "c66479324d4f9f8812fd4482ef4fcc35743ad682cbb146983d5b6d00a5d63029"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-4/provider.json",
+      "sha256": "c454455f80e983cabd548459c395befd2c1bb4dec6d62d8819ff294db0081a76"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-4/review.json",
+      "sha256": "872ea77c344211b84a2bced9aa65377e44049394ca5d5a5ae31828066e4f5858"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-4/schema.json",
+      "sha256": "ff5b76f2c97dbf25a5d8ad53276ac007032e40b4175dd027abfcdb2697f2d10f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-5/api.json",
+      "sha256": "e42192a58f123ed0b717b78a01a14f5ef818297c863bf31be0d5065e9049a7de"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-5/attempt.json",
+      "sha256": "43519416d04687ce2683e8bda6ecdb848f43707af69ee5caf3449f898b2cf23e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-5/forbidden-routes.json",
+      "sha256": "266204c2afc3f571917f559242fef148b55e17bf50458d37f0f04262840911a5"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-5/frozen-plan.json",
+      "sha256": "149e3752bb43b75cba4bd626084e289e26f37e4bae72637ca2856ed3dd784a25"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-5/index.json",
+      "sha256": "d23766e3b4bcf50f02eceb9594c9a0740a0c381cd2855522180c7b77037da191"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-5/links.json",
+      "sha256": "e9af931cfed8475808852ec03eca7eebd9f9336def2d7c5a800667f1670a172d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-5/privacy.json",
+      "sha256": "bb2a489b480ef8305322d74f51953a916ba49fe89a1b5866d94a2bb152e9923f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-5/prompt.json",
+      "sha256": "215a7219a4c858959fc7f25527627ba86f2b36c316f6c08497478056297eab5c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-5/provider.json",
+      "sha256": "cc0409042328edaf9d861476dc847d526004b94ccbcdcf4732507ccf3597df70"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-5/review.json",
+      "sha256": "74d9790a40d65f7fa689712437de646bea298ec22d6a3a7ba84508fec4497356"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-5/schema.json",
+      "sha256": "fed72bef38b709df34cf3ead363406bd7c521f7b458f7566d39d1ed25bb05433"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-6/api.json",
+      "sha256": "9c11715fd1c460814c92ecd7627c7d50057b9318efbd053266c453f1d6c96ba1"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-6/forbidden-routes.json",
+      "sha256": "99954286a5c32b7f542d9af6be3616757058e5b0503f80d668e4e1965544df0b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-6/index.json",
+      "sha256": "819232eaa60b20df3e7676cc4c1d377bdd0bf27395840c53b56c03a2783373ec"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-6/links.json",
+      "sha256": "8b9b32928bc29f64053f2962fff7217eb2a3d8ba77ac231c492d979f0b9af80a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-6/privacy.json",
+      "sha256": "0366a934878995df6fed0c9d238351b76e644b8c60c633a9f5afe23e32120a43"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-6/prompt.json",
+      "sha256": "c04010ac30a76823a6b3af076799fcefc728527574c9b6a252fd5485dc13de79"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-6/provider.json",
+      "sha256": "0bb427425cbd9ed36d8a0b1bfead5f7d258fe07655093dfb470e7a3fcde02742"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-6/review.json",
+      "sha256": "a67f1e9fdd4d75de1f08d2b42652250b77f901f4b5e6ec7bd276ded54b9acf5f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase002/attempt-6/schema.json",
+      "sha256": "ee49ef36e8e375b74206d31867edd2476e3e0771ef6ee8726e7bb4040d93f428"
+    },
+    {
+      "path": "docs/hosting.md",
+      "sha256": "8026f7dfa2b0468a29bf028d18cc8fc95979d32f28e30bc18c5ac809c5b1ca57"
+    },
+    {
+      "path": "docs/index.md",
+      "sha256": "e8ccb2c0352b408bdb7724b6c539fd09107b71fbdbdaeaee78f51f52f7e82214"
+    },
+    {
+      "path": "docs/phase-plans/Phase002-inputs.json",
+      "sha256": "f7a18001bbfc3b00f03c6abf8e508709802927029281fb0319c1e1bfc73fc56b"
+    },
+    {
+      "path": "docs/phase-plans/Phase002.json",
+      "sha256": "406af5dcd2837d34bddfeb6908e226320c08aaa607ffd0adc9d5b75f0b5d5445"
+    },
+    {
+      "path": "docs/phase-plans/check-phase002-api.mjs",
+      "sha256": "fbdadf09d8f623cb3b64d61a0cf570acaf31ed496e6e3c294a678bcac5201f30"
+    },
+    {
+      "path": "docs/phase-plans/check-phase002-provider-privacy.mjs",
+      "sha256": "b7bf8b4ea3495bba232ae1e3099ae54716e592485841e789aba4d2a65e4e56d4"
+    },
+    {
+      "path": "docs/phase-plans/check-phase002-schema-prompt.mjs",
+      "sha256": "c3c897a5ff8a96dfaea4b102737b63f9e9f686aee13e653385d15cd2d8810190"
+    },
+    {
+      "path": "docs/phase-plans/complete-phase002.mjs",
+      "sha256": "903990dcb87e6ac8d8b877df6354bcbd1756ffc598d3a201251c6ed9e5fc9c58"
+    },
+    {
+      "path": "docs/phase-plans/retry-phase002.mjs",
+      "sha256": "8f1377c6afd932c14d1529118aa99fba882fad7ce98017930391a60e2ecb20b7"
+    },
+    {
+      "path": "docs/phase-plans/verify-phase002.mjs",
+      "sha256": "516abe2436e6b37aed3e4fe0d8a7c4b06c7ab8c974f0e4d10cbf11c9f943586e"
+    },
+    {
+      "path": "docs/privacy-and-user-data.md",
+      "sha256": "c4b0d858901c44cac5d5e3c53120b74d4108d14a8c04a9c45305c8e617478129"
+    },
+    {
+      "path": "docs/project-constitution.md",
+      "sha256": "8f1dd176e30e815a09502a91c5b0ef2722b7bb71d5e919fbfc70cfecf3e9dedd"
+    },
+    {
+      "path": "docs/project-layout.json",
+      "sha256": "7efe30a30fe009a8e1226563cae53d39ed2a2193be78bc0f0a776f57f67710ba"
+    },
+    {
+      "path": "docs/prompt-design.md",
+      "sha256": "f514323f2396930a4a434c3024481a77aa9a211bc48d7728c5f2dcb98a94801b"
+    },
+    {
+      "path": "docs/tech-stack.md",
+      "sha256": "258620f3e18d042eac1e26165f411e8879ecd4b0d91d8e7986aaed4f3f10d2c7"
+    },
+    {
+      "path": "docs/travel-data-provider-strategy.md",
+      "sha256": "71ed8608ff8e4055694c0cbe5077f67873b5c8956eb79a83cfb05817003ccbb5"
+    },
+    {
+      "path": "docs/travel-plan-schema.md",
+      "sha256": "f48446b2f99a9960e633fdf276e378459c6e87477e3405cd8550f8dc475937f2"
+    },
+    {
+      "path": "docs/ui-design-system.md",
+      "sha256": "8b232c6742bf846f131ea3040d5892ed7b270940bfd4109ccfb768ed63fdb158"
+    },
+    {
+      "path": "scripts/check-project-layout.mjs",
+      "sha256": "101c7c50f12e4d6cc80e1c9fb9667ad06fcc55c687d86cb5295ff81bc0eb68f6"
+    },
+    {
+      "path": "scripts/generate-api-contract.mjs",
+      "sha256": "ac2feec4e2f8daa1483f314d1fbe731c494d37ed8d9f1c565a2186dde9d68b59"
+    },
+    {
+      "path": "scripts/phase-evidence.mjs",
+      "sha256": "3727f8f8e5f00cf7e03d4bc50f71ebdbff483380cbc59df124bf21b473261d95"
+    },
+    {
+      "path": "scripts/validate-phase.mjs",
+      "sha256": "4be9ee356a3f5a7d5b9265ee61143d6574617dda83d9ac8d3960f3f8e28fa293"
+    },
+    {
+      "path": "scripts/validate-phase.ps1",
+      "sha256": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319"
+    }
+  ],
+  "failures": [],
+  "generatedAt": "2026-09-09T03:43:38.778Z",
+  "details": {
+    "planPath": "docs/phase-plans/Phase002.json",
+    "planHash": "406af5dcd2837d34bddfeb6908e226320c08aaa607ffd0adc9d5b75f0b5d5445",
+    "testedTree": "0b43e46efa0a6d595773a28c25159ee07ac066a2",
+    "reviewerRunId": "/root/independent_review:Phase002:attempt-6",
+    "reviewReportPath": "docs/evidence/attempts/Phase002/attempt-6/review.json",
+    "reviewReportHash": "a67f1e9fdd4d75de1f08d2b42652250b77f901f4b5e6ec7bd276ded54b9acf5f",
+    "recoveryCommits": [],
+    "manifestHash": "497689843e4576c5f8e8a6636d29b04023ac997309a3ffab83cc67d90ea7bf3e",
+    "phaseCardHash": "4a7a80ea2cf1ccc4ca02406bc892e4e72c15ec20ca2758718332dd08858f9304",
+    "phaseStartCommit": "9909bcbf4350471df754868e1032ba9dce7c5964",
+    "originalThreshold": 8,
+    "automatedThreshold": 8,
+    "waived": false,
+    "requestedThrough": 2,
+    "verificationScope": "PHASE002_DOCUMENT_CONTRACTS_AND_ISOLATED_RULE_FIXTURES",
+    "contractHashes": {
+      "docs/api.md": "75ae366841227718bfaf18d8c1187543b390ef0aaf16d2ce1fa5754f116b83c0",
+      "docs/prompt-design.md": "f514323f2396930a4a434c3024481a77aa9a211bc48d7728c5f2dcb98a94801b",
+      "docs/travel-plan-schema.md": "f48446b2f99a9960e633fdf276e378459c6e87477e3405cd8550f8dc475937f2",
+      "docs/travel-data-provider-strategy.md": "71ed8608ff8e4055694c0cbe5077f67873b5c8956eb79a83cfb05817003ccbb5",
+      "docs/privacy-and-user-data.md": "c4b0d858901c44cac5d5e3c53120b74d4108d14a8c04a9c45305c8e617478129",
+      "docs/index.md": "e8ccb2c0352b408bdb7724b6c539fd09107b71fbdbdaeaee78f51f52f7e82214",
+      "docs/auth.md": "d672c3d25e09ae16e61f9cea23c5d6fc500ff4e76156b4b6f5ca3ccc48a4e736",
+      "docs/hosting.md": "8026f7dfa2b0468a29bf028d18cc8fc95979d32f28e30bc18c5ac809c5b1ca57",
+      "docs/admin.md": "cebb8281579256bf6dc385907088278e17221d000b8b20ea11d2ae1f56aeecc3",
+      "docs/crypto.md": "799e32133f3a1cac91d4e25955829538a14aedc1104bed9f06d1337841a130f4"
+    },
+    "metrics": {
+      "mainContracts": 6,
+      "supportingContracts": 4,
+      "requiredGroups": 8,
+      "passedGroups": 8,
+      "registryOperations": 100,
+      "forbiddenRoutes": 3,
+      "duplicateCanonicalEndpoints": 0,
+      "unresolvedLinks": 0
+    },
+    "notEvaluated": [
+      "Application lint/typecheck/build first produced in Phase003; Vitest first produced in Phase004",
+      "No application routes, live HTTP endpoint checks, Prisma, database, pages, external Provider calls or dependencies are created in Phase002",
+      "Synthetic document-rule fixtures do not evaluate production privacy retention, real user consent, legal approval or human screen-reader experience"
+    ],
+    "pendingAfterMetadata": [
+      "PowerShell 5.1 and PowerShell 7 root validator seal",
+      "Entire repository clean",
+      "git push origin main",
+      "git ls-remote --heads origin main"
+    ],
+    "costAccounting": {
+      "unit": "milliseconds",
+      "basis": "Actual verification process timing; unmeasured categories are null",
+      "productImplementation": null,
+      "testInfrastructure": null,
+      "execution": 69942,
+      "independentReview": null,
+      "evidencePreparation": null,
+      "cpuPeak": null,
+      "memoryPeak": null,
+      "artifactBytes": 2229514,
+      "retryCount": 5,
+      "externalProviderCalls": 0,
+      "productionTraffic": false
+    }
+  }
+}
