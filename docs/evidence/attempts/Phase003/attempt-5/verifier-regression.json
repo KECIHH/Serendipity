@@ -1,0 +1,582 @@
+{
+  "testCaseId": "Phase003:verifier-regression",
+  "command": "node scripts/verify-phase003.mjs --case verifier-regression",
+  "status": "PASS",
+  "exitCode": 0,
+  "numerator": 1,
+  "denominator": 1,
+  "inputPath": "package.json",
+  "inputHash": "5289b5c05c005f04b443ed514c7a051c380ea50e1a5902e072694a37f286e015",
+  "planHash": "23df6c524d2be92754668430c05241b66d9177a6ed2d17e9d1731184adc17bff",
+  "sourceHashes": {
+    ".gitattributes": "851253b716e5448b37969c98629a93622041b2bc7ab105020a69b41ac157fffa",
+    ".gitignore": "6ac1aeb5492ea1f50d93b16c2164e494a318b2db5f745c93e71c7f0b99721757",
+    "AGENTS.md": "224f30ead96b0771dc9949e5c33ebe4bf13bb0f76071fb3210d7d153e73b0592",
+    "README.md": "646a6bd0e5ea881b137a33eae2c3afd7ea9e8e6b4312c756da36e67699ec2b7b",
+    "components.json": "2cc1a8206b39ade49917b804fd9d67f95f2b9558ecc2a98bd35a211e0423b320",
+    "docs/agent-execution-contract.md": "2919a173e60f0ed50fbf4839a5d8c96bc836afd032410cb012186026736688a2",
+    "docs/checkpoint-migrations/history-20260909.json": "45bc0742f7b12506a007c84a0f3f9808f2f9b9e8d292a60fab345f4966e1d5b4",
+    "docs/directory-structure.md": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df",
+    "docs/evidence/attempts/Phase003/setup/bootstrap.json": "b66ab8c07242eafd3912d06cf36b8bf76c76dcda99dc43edceb750e1b922285a",
+    "docs/phase-plans/Phase003-checkpoint-recovery.json": "c0b6dba82cb4feaf2bf74d3d3769635e375fb561831d6adcbf97f13fc81d83e9",
+    "docs/phase-plans/Phase003-inputs.json": "9a2809ce7ce57a17e95de46275fe0a169f683f396bb0ae3576c5e0796d2241f4",
+    "docs/phase-plans/Phase003.json": "23df6c524d2be92754668430c05241b66d9177a6ed2d17e9d1731184adc17bff",
+    "docs/project-constitution.md": "8f1dd176e30e815a09502a91c5b0ef2722b7bb71d5e919fbfc70cfecf3e9dedd",
+    "docs/project-layout.json": "7efe30a30fe009a8e1226563cae53d39ed2a2193be78bc0f0a776f57f67710ba",
+    "docs/runtime-baseline.json": "9ee9b83878969003bfcfdf079cfab8b243020d248207ebeb983b65e143532955",
+    "docs/tech-stack.md": "258620f3e18d042eac1e26165f411e8879ecd4b0d91d8e7986aaed4f3f10d2c7",
+    "docs/ui-design-system.md": "8b232c6742bf846f131ea3040d5892ed7b270940bfd4109ccfb768ed63fdb158",
+    "eslint.config.mjs": "8ba79d569e98a084d72c7992cb0eef8d1a9d26eca2d6426b087bdef43ac5d8fc",
+    "next.config.ts": "614bce25b089c3f19b1e17a6346c74b858034040154c6621e7d35303004767cc",
+    "package-lock.json": "2624a8bed7fccdc4e0bd63a528156c1f71ccf5f458a6c3b138bf3fa4187a431b",
+    "package.json": "5289b5c05c005f04b443ed514c7a051c380ea50e1a5902e072694a37f286e015",
+    "postcss.config.mjs": "141ef24ca27a99d08962210fdf20212d3435fdcfa21b46cd88b44d22f751dfae",
+    "public/file.svg": "2b67812c325c199a02536cdbeea0c593a72f707d323b72ee3e08dbab06753bd4",
+    "public/globe.svg": "b614b9bf183925957661ac851498fe1d8029fd43a62fbfed86f9e2624a57e7cf",
+    "public/next.svg": "55995dfad6ecb4945a1e856ddca03c5e16aa5bf13fd21b4df6a74ae79357bcfc",
+    "public/vercel.svg": "f081337b2fee635b455b63275406a3e7f39d6a014e25ad90dab5a67e62a12ac4",
+    "public/window.svg": "644768c4aaeb4767bce293344eeb0c125fb804a94d801440424072202d85e3a1",
+    "scripts/check-project-layout.mjs": "33301b2b84a3034a7697f3dc8f6497b8fec21dbcf67ebfe04be256f3ef321943",
+    "scripts/checkpoint-history.mjs": "c730d8119c04cd9151cd28b85b1ce335e2bdc7fcfda12a5399801ebab7a866d2",
+    "scripts/complete-phase003.mjs": "598ce23ed7110e8a8d228a46152ce3cf7ffc56479867725d0c3f4c8d3883ad06",
+    "scripts/phase-evidence.mjs": "3727f8f8e5f00cf7e03d4bc50f71ebdbff483380cbc59df124bf21b473261d95",
+    "scripts/prepare-checkpoint-import.mjs": "89d87bd6b3fac74ac02a5a7a335aad778c1e9f5136fd8034e6e127516ff5fb2e",
+    "scripts/prepare-phase003.mjs": "2545092493bd2df16e487e3bf43b4e5f98b04c69ba34bf003929f91d6dd7774f",
+    "scripts/test-checkpoint-import.mjs": "1c02fec39e9d6ced7aaf7a3099bb622d93b58b10e533002da36247b0ed3f1c2d",
+    "scripts/test-validate-phase.mjs": "5969dcf96abd0f8aa380c4965fd0c9e4126a80bc8e33d12037d4c6632193971f",
+    "scripts/validate-phase.mjs": "a088c83052de62a7a5641ae989b624d5124eb5ea7942ab69df3f063d86e654ff",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319",
+    "scripts/verify-phase003.mjs": "dc6f34b6703c699d0d2b56d673f7e047be00fe427cbedd09a041fae5a644727c",
+    "src/app/favicon.ico": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932",
+    "src/app/globals.css": "dcb7ea3ab94514bcabb4bc11ef565a9ad31e486389c10169454e03ba04774fab",
+    "src/app/layout.tsx": "bbdf38cffd649d2816e8c2f506b133b64e5f3febc05fd149bbd68e4131e42384",
+    "src/app/page.tsx": "50d188a65cfe28543e79e4d8fe09633c1cc15ae09b66598665623432c953f51d",
+    "src/components/ui/button.tsx": "79dd6f75f8136394442202d6b8b922fb269eaad0a5dba579397c9d5b41f893bb",
+    "src/lib/utils.ts": "14300d758170c270c75b057f38fedb3793a5920ea872f0477e29fb131185e8a7",
+    "tsconfig.json": "83d292a6930a317ea31ef48e220097d2ca10c6c505f41d5954795acef48ca3b9"
+  },
+  "environment": "ISOLATED_SYNTHETIC",
+  "productionTraffic": false,
+  "durationMs": 136818,
+  "observations": [
+    {
+      "label": "fixture-init",
+      "executable": "git",
+      "arguments": [
+        "init",
+        "--initial-branch=main"
+      ],
+      "exitCode": 0,
+      "stdout": "Initialized empty Git repository in C:/Users/11295/AppData/Local/Temp/serendipity-phase003-fixture-WmzHlE/.git/\n",
+      "stderr": "",
+      "durationMs": 133,
+      "error": null
+    },
+    {
+      "label": "fixture-local-config",
+      "executable": "git",
+      "arguments": [
+        "config",
+        "--local",
+        "user.name",
+        "Serendipity Fixture"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "durationMs": 96,
+      "error": null
+    },
+    {
+      "label": "fixture-local-config",
+      "executable": "git",
+      "arguments": [
+        "config",
+        "--local",
+        "user.email",
+        "fixture@serendipity.invalid"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "durationMs": 93,
+      "error": null
+    },
+    {
+      "label": "fixture-local-config",
+      "executable": "git",
+      "arguments": [
+        "config",
+        "--local",
+        "core.autocrlf",
+        "false"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "durationMs": 102,
+      "error": null
+    },
+    {
+      "label": "fixture-local-config",
+      "executable": "git",
+      "arguments": [
+        "config",
+        "--local",
+        "core.hooksPath",
+        ".git/hooks"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "durationMs": 103,
+      "error": null
+    },
+    {
+      "label": "fixture-local-config",
+      "executable": "git",
+      "arguments": [
+        "config",
+        "--local",
+        "commit.gpgsign",
+        "false"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "durationMs": 100,
+      "error": null
+    },
+    {
+      "label": "fixture-stage-only-sources",
+      "executable": "git",
+      "arguments": [
+        "add",
+        "--",
+        ".gitignore",
+        "components.json",
+        "docs/evidence/attempts/Phase003/setup/39-production-audit.json",
+        "docs/evidence/attempts/Phase003/setup/bootstrap.json",
+        "docs/phase-plans/Phase003-inputs.json",
+        "docs/phase-plans/Phase003.json",
+        "docs/runtime-baseline.json",
+        "eslint.config.mjs",
+        "next.config.ts",
+        "package-lock.json",
+        "package.json",
+        "postcss.config.mjs",
+        "public/file.svg",
+        "public/globe.svg",
+        "public/next.svg",
+        "public/vercel.svg",
+        "public/window.svg",
+        "scripts/verify-phase003.mjs",
+        "src/app/favicon.ico",
+        "src/app/globals.css",
+        "src/app/layout.tsx",
+        "src/app/page.tsx",
+        "src/components/ui/button.tsx",
+        "src/lib/utils.ts",
+        "tsconfig.json"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "durationMs": 183,
+      "error": null
+    },
+    {
+      "label": "fixture-check-whitespace",
+      "executable": "git",
+      "arguments": [
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "durationMs": 117,
+      "error": null
+    },
+    {
+      "label": "fixture-source-checkpoint",
+      "executable": "git",
+      "arguments": [
+        "commit",
+        "-m",
+        "fixture: phase003 sources"
+      ],
+      "exitCode": 0,
+      "stdout": "[main (root-commit) fa7dc2b] fixture: phase003 sources\n 25 files changed, 14719 insertions(+)\n create mode 100644 .gitignore\n create mode 100644 components.json\n create mode 100644 docs/evidence/attempts/Phase003/setup/39-production-audit.json\n create mode 100644 docs/evidence/attempts/Phase003/setup/bootstrap.json\n create mode 100644 docs/phase-plans/Phase003-inputs.json\n create mode 100644 docs/phase-plans/Phase003.json\n create mode 100644 docs/runtime-baseline.json\n create mode 100644 eslint.config.mjs\n create mode 100644 next.config.ts\n create mode 100644 package-lock.json\n create mode 100644 package.json\n create mode 100644 postcss.config.mjs\n create mode 100644 public/file.svg\n create mode 100644 public/globe.svg\n create mode 100644 public/next.svg\n create mode 100644 public/vercel.svg\n create mode 100644 public/window.svg\n create mode 100644 scripts/verify-phase003.mjs\n create mode 100644 src/app/favicon.ico\n create mode 100644 src/app/globals.css\n create mode 100644 src/app/layout.tsx\n create mode 100644 src/app/page.tsx\n create mode 100644 src/components/ui/button.tsx\n create mode 100644 src/lib/utils.ts\n create mode 100644 tsconfig.json\n",
+      "stderr": "",
+      "durationMs": 234,
+      "error": null
+    },
+    {
+      "label": "clean-install-npm-ci",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "ci",
+        "--no-fund"
+      ],
+      "exitCode": 0,
+      "stdout": "\nadded 694 packages, and audited 695 packages in 45s\n\nfound 0 vulnerabilities\n",
+      "stderr": "npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead\nnpm warn deprecated eslint@9.39.5: This version is no longer supported. Please see https://eslint.org/version-support for other options.\n",
+      "durationMs": 45099,
+      "error": null
+    },
+    {
+      "label": "clean-install-lint",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "lint"
+      ],
+      "exitCode": 0,
+      "stdout": "\n> serendipity@0.1.0 lint\n> eslint . --max-warnings 0\n\n",
+      "stderr": "",
+      "durationMs": 6859,
+      "error": null
+    },
+    {
+      "label": "clean-install-production-build",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "stdout": "\n> serendipity@0.1.0 build\n> next build\n\n⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache\n   ▲ Next.js 15.5.24\n\n   Creating an optimized production build ...\n ✓ Compiled successfully in 6.0s\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/5) ...\n   Generating static pages (1/5) \r\n   Generating static pages (2/5) \r\n   Generating static pages (3/5) \r\n ✓ Generating static pages (5/5)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                                 Size  First Load JS\n┌ ○ /                                    77.2 kB         180 kB\n└ ○ /_not-found                            992 B         104 kB\n+ First Load JS shared by all             103 kB\n  ├ chunks/255-c5a697ddbf82d774.js       46.4 kB\n  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB\n  └ other shared chunks (total)          1.97 kB\n\n\n○  (Static)  prerendered as static content\n\n",
+      "stderr": "",
+      "durationMs": 24178,
+      "error": null
+    },
+    {
+      "label": "clean-install-typecheck",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "stdout": "\n> serendipity@0.1.0 typecheck\n> tsc --noEmit\n\n",
+      "stderr": "",
+      "durationMs": 1957,
+      "error": null
+    },
+    {
+      "label": "clean-install-nine-assertions",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "verify:phase003"
+      ],
+      "exitCode": 0,
+      "stdout": "\n> serendipity@0.1.0 verify:phase003\n> node scripts/verify-phase003.mjs\n\n[1] PASS\n[2] PASS\n[3] PASS\n[4] PASS\n[5] PASS\n[6] PASS\n[7] PASS\n[8] PASS\n[9] PASS\nPHASE003_ASSERTIONS [{\"assertion\":1,\"status\":\"PASS\",\"details\":{\"scriptNames\":[\"dev\",\"build\",\"start\",\"lint\",\"typecheck\",\"verify:phase003\"],\"namesMatch\":true,\"ignore\":{\"probes\":[\"node_modules/package/index.js\",\".next/static/css/output.css\",\"out/index.html\",\"coverage/lcov.info\",\"server.log\",\".env\",\".env.local\",\".env.production.local\",\"next-env.d.ts\",\"tsconfig.tsbuildinfo\"],\"globalIgnoreUsed\":false}}},{\"assertion\":2,\"status\":\"PASS\",\"details\":{\"exactDependencies\":18,\"runtimePolicy\":{\"node\":\"24.19.0\",\"npm\":\"11.7.0\",\"createNextApp\":\"15.5.24\",\"next\":\"15.5.24\",\"eslintConfigNext\":\"15.5.24\",\"shadcn\":\"3.2.1\"},\"lockfileVersion\":3,\"audit\":{\"info\":0,\"low\":0,\"moderate\":0,\"high\":0,\"critical\":0,\"total\":0}}},{\"assertion\":3,\"status\":\"PASS\",\"details\":{\"tailwindMajor\":4,\"strictTypeScript\":true,\"buildErrorBypasses\":false}},{\"assertion\":4,\"status\":\"PASS\",\"details\":{\"tokenCount\":10,\"tokens\":{\"--color-brand-500\":\"#047857\",\"--color-brand-600\":\"#065f46\",\"--color-surface\":\"#ffffff\",\"--color-surface-muted\":\"#fafafa\",\"--color-border-subtle\":\"#e4e4e7\",\"--font-sans\":\"ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \\\"Segoe UI\\\", \\\"Microsoft YaHei\\\", \\\"PingFang SC\\\", sans-serif\",\"--radius-card\":\"0.5rem\",\"--shadow-card\":\"0 1px 2px 0 rgb(0 0 0 / 0.05)\",\"--spacing-gutter\":\"1rem\",\"--breakpoint-wide\":\"64rem\"}}},{\"assertion\":5,\"status\":\"PASS\",\"details\":{\"aliases\":{\"components\":\"@/components\",\"utils\":\"@/lib/utils\",\"ui\":\"@/components/ui\",\"lib\":\"@/lib\",\"hooks\":\"@/hooks\"},\"css\":\"src/app/globals.css\"}},{\"assertion\":6,\"status\":\"PASS\",\"details\":{\"cnExported\":true,\"buttonExported\":true,\"generatedButtonHash\":\"79dd6f75f8136394442202d6b8b922fb269eaad0a5dba579397c9d5b41f893bb\"}},{\"assertion\":7,\"status\":\"PASS\",\"details\":{\"heading\":\"Serendipity · 际遇\",\"button\":\"开始规划\",\"title\":\"Serendipity · 际遇\",\"bootstrapOnly\":true}},{\"assertion\":8,\"status\":\"PASS\",\"details\":{\"css\":[{\"path\":\".next/static/css/9500c7293db5308b.css\",\"sha256\":\"0f553e3c21e68011920a1c5465b6b0abf43e2f06f97dc87497b1dc7a0090062b\",\"bytes\":17128}],\"selectors\":[\".bg-brand-500\",\".rounded-card\",\".p-gutter\"]}},{\"assertion\":9,\"status\":\"PASS\",\"details\":{\"wideMediaRules\":[{\"query\":\"(min-width:64rem)\",\"selector\":\".wide\\\\:max-w-5xl\"}]}}]\n",
+      "stderr": "",
+      "durationMs": 6026,
+      "error": null
+    },
+    {
+      "label": "clean-after-ci-and-build",
+      "executable": "git",
+      "arguments": [
+        "status",
+        "--porcelain=v1",
+        "-uall"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "durationMs": 143,
+      "error": null
+    },
+    {
+      "label": "future-scripts-accepted",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "verify:phase003"
+      ],
+      "exitCode": 0,
+      "stdout": "\n> serendipity@0.1.0 verify:phase003\n> node scripts/verify-phase003.mjs\n\n[1] PASS\n[2] PASS\n[3] PASS\n[4] PASS\n[5] PASS\n[6] PASS\n[7] PASS\n[8] PASS\n[9] PASS\nPHASE003_ASSERTIONS [{\"assertion\":1,\"status\":\"PASS\",\"details\":{\"scriptNames\":[\"dev\",\"build\",\"start\",\"lint\",\"typecheck\",\"verify:phase003\",\"test\",\"format\",\"format:check\"],\"namesMatch\":true,\"ignore\":{\"probes\":[\"node_modules/package/index.js\",\".next/static/css/output.css\",\"out/index.html\",\"coverage/lcov.info\",\"server.log\",\".env\",\".env.local\",\".env.production.local\",\"next-env.d.ts\",\"tsconfig.tsbuildinfo\"],\"globalIgnoreUsed\":false}}},{\"assertion\":2,\"status\":\"PASS\",\"details\":{\"exactDependencies\":18,\"runtimePolicy\":{\"node\":\"24.19.0\",\"npm\":\"11.7.0\",\"createNextApp\":\"15.5.24\",\"next\":\"15.5.24\",\"eslintConfigNext\":\"15.5.24\",\"shadcn\":\"3.2.1\"},\"lockfileVersion\":3,\"audit\":{\"info\":0,\"low\":0,\"moderate\":0,\"high\":0,\"critical\":0,\"total\":0}}},{\"assertion\":3,\"status\":\"PASS\",\"details\":{\"tailwindMajor\":4,\"strictTypeScript\":true,\"buildErrorBypasses\":false}},{\"assertion\":4,\"status\":\"PASS\",\"details\":{\"tokenCount\":10,\"tokens\":{\"--color-brand-500\":\"#047857\",\"--color-brand-600\":\"#065f46\",\"--color-surface\":\"#ffffff\",\"--color-surface-muted\":\"#fafafa\",\"--color-border-subtle\":\"#e4e4e7\",\"--font-sans\":\"ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \\\"Segoe UI\\\", \\\"Microsoft YaHei\\\", \\\"PingFang SC\\\", sans-serif\",\"--radius-card\":\"0.5rem\",\"--shadow-card\":\"0 1px 2px 0 rgb(0 0 0 / 0.05)\",\"--spacing-gutter\":\"1rem\",\"--breakpoint-wide\":\"64rem\"}}},{\"assertion\":5,\"status\":\"PASS\",\"details\":{\"aliases\":{\"components\":\"@/components\",\"utils\":\"@/lib/utils\",\"ui\":\"@/components/ui\",\"lib\":\"@/lib\",\"hooks\":\"@/hooks\"},\"css\":\"src/app/globals.css\"}},{\"assertion\":6,\"status\":\"PASS\",\"details\":{\"cnExported\":true,\"buttonExported\":true,\"generatedButtonHash\":\"79dd6f75f8136394442202d6b8b922fb269eaad0a5dba579397c9d5b41f893bb\"}},{\"assertion\":7,\"status\":\"PASS\",\"details\":{\"heading\":\"Serendipity · 际遇\",\"button\":\"开始规划\",\"title\":\"Serendipity · 际遇\",\"bootstrapOnly\":true}},{\"assertion\":8,\"status\":\"PASS\",\"details\":{\"css\":[{\"path\":\".next/static/css/9500c7293db5308b.css\",\"sha256\":\"0f553e3c21e68011920a1c5465b6b0abf43e2f06f97dc87497b1dc7a0090062b\",\"bytes\":17128}],\"selectors\":[\".bg-brand-500\",\".rounded-card\",\".p-gutter\"]}},{\"assertion\":9,\"status\":\"PASS\",\"details\":{\"wideMediaRules\":[{\"query\":\"(min-width:64rem)\",\"selector\":\".wide\\\\:max-w-5xl\"}]}}]\n",
+      "stderr": "",
+      "durationMs": 5741,
+      "error": null
+    },
+    {
+      "label": "removed-build-rejected",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "verify:phase003"
+      ],
+      "exitCode": 1,
+      "stdout": "\n> serendipity@0.1.0 verify:phase003\n> node scripts/verify-phase003.mjs\n\n[1] FAIL: Frozen script changed: build\n+ actual - expected\n\n+ undefined\n- 'next build'\n\n[2] PASS\n[3] PASS\n[4] PASS\n[5] PASS\n[6] PASS\n[7] PASS\n[8] PASS\n[9] PASS\nPHASE003_ASSERTIONS [{\"assertion\":1,\"status\":\"FAIL\",\"error\":\"Frozen script changed: build\\n+ actual - expected\\n\\n+ undefined\\n- 'next build'\\n\"},{\"assertion\":2,\"status\":\"PASS\",\"details\":{\"exactDependencies\":18,\"runtimePolicy\":{\"node\":\"24.19.0\",\"npm\":\"11.7.0\",\"createNextApp\":\"15.5.24\",\"next\":\"15.5.24\",\"eslintConfigNext\":\"15.5.24\",\"shadcn\":\"3.2.1\"},\"lockfileVersion\":3,\"audit\":{\"info\":0,\"low\":0,\"moderate\":0,\"high\":0,\"critical\":0,\"total\":0}}},{\"assertion\":3,\"status\":\"PASS\",\"details\":{\"tailwindMajor\":4,\"strictTypeScript\":true,\"buildErrorBypasses\":false}},{\"assertion\":4,\"status\":\"PASS\",\"details\":{\"tokenCount\":10,\"tokens\":{\"--color-brand-500\":\"#047857\",\"--color-brand-600\":\"#065f46\",\"--color-surface\":\"#ffffff\",\"--color-surface-muted\":\"#fafafa\",\"--color-border-subtle\":\"#e4e4e7\",\"--font-sans\":\"ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \\\"Segoe UI\\\", \\\"Microsoft YaHei\\\", \\\"PingFang SC\\\", sans-serif\",\"--radius-card\":\"0.5rem\",\"--shadow-card\":\"0 1px 2px 0 rgb(0 0 0 / 0.05)\",\"--spacing-gutter\":\"1rem\",\"--breakpoint-wide\":\"64rem\"}}},{\"assertion\":5,\"status\":\"PASS\",\"details\":{\"aliases\":{\"components\":\"@/components\",\"utils\":\"@/lib/utils\",\"ui\":\"@/components/ui\",\"lib\":\"@/lib\",\"hooks\":\"@/hooks\"},\"css\":\"src/app/globals.css\"}},{\"assertion\":6,\"status\":\"PASS\",\"details\":{\"cnExported\":true,\"buttonExported\":true,\"generatedButtonHash\":\"79dd6f75f8136394442202d6b8b922fb269eaad0a5dba579397c9d5b41f893bb\"}},{\"assertion\":7,\"status\":\"PASS\",\"details\":{\"heading\":\"Serendipity · 际遇\",\"button\":\"开始规划\",\"title\":\"Serendipity · 际遇\",\"bootstrapOnly\":true}},{\"assertion\":8,\"status\":\"PASS\",\"details\":{\"css\":[{\"path\":\".next/static/css/9500c7293db5308b.css\",\"sha256\":\"0f553e3c21e68011920a1c5465b6b0abf43e2f06f97dc87497b1dc7a0090062b\",\"bytes\":17128}],\"selectors\":[\".bg-brand-500\",\".rounded-card\",\".p-gutter\"]}},{\"assertion\":9,\"status\":\"PASS\",\"details\":{\"wideMediaRules\":[{\"query\":\"(min-width:64rem)\",\"selector\":\".wide\\\\:max-w-5xl\"}]}}]\n",
+      "stderr": "",
+      "durationMs": 5762,
+      "error": null
+    },
+    {
+      "label": "changed-typecheck-rejected",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "verify:phase003"
+      ],
+      "exitCode": 1,
+      "stdout": "\n> serendipity@0.1.0 verify:phase003\n> node scripts/verify-phase003.mjs\n\n[1] FAIL: Frozen script changed: typecheck\n+ actual - expected\n\n+ 'tsc'\n- 'tsc --noEmit'\n      ^\n\n[2] PASS\n[3] PASS\n[4] PASS\n[5] PASS\n[6] PASS\n[7] PASS\n[8] PASS\n[9] PASS\nPHASE003_ASSERTIONS [{\"assertion\":1,\"status\":\"FAIL\",\"error\":\"Frozen script changed: typecheck\\n+ actual - expected\\n\\n+ 'tsc'\\n- 'tsc --noEmit'\\n      ^\\n\"},{\"assertion\":2,\"status\":\"PASS\",\"details\":{\"exactDependencies\":18,\"runtimePolicy\":{\"node\":\"24.19.0\",\"npm\":\"11.7.0\",\"createNextApp\":\"15.5.24\",\"next\":\"15.5.24\",\"eslintConfigNext\":\"15.5.24\",\"shadcn\":\"3.2.1\"},\"lockfileVersion\":3,\"audit\":{\"info\":0,\"low\":0,\"moderate\":0,\"high\":0,\"critical\":0,\"total\":0}}},{\"assertion\":3,\"status\":\"PASS\",\"details\":{\"tailwindMajor\":4,\"strictTypeScript\":true,\"buildErrorBypasses\":false}},{\"assertion\":4,\"status\":\"PASS\",\"details\":{\"tokenCount\":10,\"tokens\":{\"--color-brand-500\":\"#047857\",\"--color-brand-600\":\"#065f46\",\"--color-surface\":\"#ffffff\",\"--color-surface-muted\":\"#fafafa\",\"--color-border-subtle\":\"#e4e4e7\",\"--font-sans\":\"ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \\\"Segoe UI\\\", \\\"Microsoft YaHei\\\", \\\"PingFang SC\\\", sans-serif\",\"--radius-card\":\"0.5rem\",\"--shadow-card\":\"0 1px 2px 0 rgb(0 0 0 / 0.05)\",\"--spacing-gutter\":\"1rem\",\"--breakpoint-wide\":\"64rem\"}}},{\"assertion\":5,\"status\":\"PASS\",\"details\":{\"aliases\":{\"components\":\"@/components\",\"utils\":\"@/lib/utils\",\"ui\":\"@/components/ui\",\"lib\":\"@/lib\",\"hooks\":\"@/hooks\"},\"css\":\"src/app/globals.css\"}},{\"assertion\":6,\"status\":\"PASS\",\"details\":{\"cnExported\":true,\"buttonExported\":true,\"generatedButtonHash\":\"79dd6f75f8136394442202d6b8b922fb269eaad0a5dba579397c9d5b41f893bb\"}},{\"assertion\":7,\"status\":\"PASS\",\"details\":{\"heading\":\"Serendipity · 际遇\",\"button\":\"开始规划\",\"title\":\"Serendipity · 际遇\",\"bootstrapOnly\":true}},{\"assertion\":8,\"status\":\"PASS\",\"details\":{\"css\":[{\"path\":\".next/static/css/9500c7293db5308b.css\",\"sha256\":\"0f553e3c21e68011920a1c5465b6b0abf43e2f06f97dc87497b1dc7a0090062b\",\"bytes\":17128}],\"selectors\":[\".bg-brand-500\",\".rounded-card\",\".p-gutter\"]}},{\"assertion\":9,\"status\":\"PASS\",\"details\":{\"wideMediaRules\":[{\"query\":\"(min-width:64rem)\",\"selector\":\".wide\\\\:max-w-5xl\"}]}}]\n",
+      "stderr": "",
+      "durationMs": 5664,
+      "error": null
+    },
+    {
+      "label": "script-fixture-restored",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "verify:phase003"
+      ],
+      "exitCode": 0,
+      "stdout": "\n> serendipity@0.1.0 verify:phase003\n> node scripts/verify-phase003.mjs\n\n[1] PASS\n[2] PASS\n[3] PASS\n[4] PASS\n[5] PASS\n[6] PASS\n[7] PASS\n[8] PASS\n[9] PASS\nPHASE003_ASSERTIONS [{\"assertion\":1,\"status\":\"PASS\",\"details\":{\"scriptNames\":[\"dev\",\"build\",\"start\",\"lint\",\"typecheck\",\"verify:phase003\"],\"namesMatch\":true,\"ignore\":{\"probes\":[\"node_modules/package/index.js\",\".next/static/css/output.css\",\"out/index.html\",\"coverage/lcov.info\",\"server.log\",\".env\",\".env.local\",\".env.production.local\",\"next-env.d.ts\",\"tsconfig.tsbuildinfo\"],\"globalIgnoreUsed\":false}}},{\"assertion\":2,\"status\":\"PASS\",\"details\":{\"exactDependencies\":18,\"runtimePolicy\":{\"node\":\"24.19.0\",\"npm\":\"11.7.0\",\"createNextApp\":\"15.5.24\",\"next\":\"15.5.24\",\"eslintConfigNext\":\"15.5.24\",\"shadcn\":\"3.2.1\"},\"lockfileVersion\":3,\"audit\":{\"info\":0,\"low\":0,\"moderate\":0,\"high\":0,\"critical\":0,\"total\":0}}},{\"assertion\":3,\"status\":\"PASS\",\"details\":{\"tailwindMajor\":4,\"strictTypeScript\":true,\"buildErrorBypasses\":false}},{\"assertion\":4,\"status\":\"PASS\",\"details\":{\"tokenCount\":10,\"tokens\":{\"--color-brand-500\":\"#047857\",\"--color-brand-600\":\"#065f46\",\"--color-surface\":\"#ffffff\",\"--color-surface-muted\":\"#fafafa\",\"--color-border-subtle\":\"#e4e4e7\",\"--font-sans\":\"ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \\\"Segoe UI\\\", \\\"Microsoft YaHei\\\", \\\"PingFang SC\\\", sans-serif\",\"--radius-card\":\"0.5rem\",\"--shadow-card\":\"0 1px 2px 0 rgb(0 0 0 / 0.05)\",\"--spacing-gutter\":\"1rem\",\"--breakpoint-wide\":\"64rem\"}}},{\"assertion\":5,\"status\":\"PASS\",\"details\":{\"aliases\":{\"components\":\"@/components\",\"utils\":\"@/lib/utils\",\"ui\":\"@/components/ui\",\"lib\":\"@/lib\",\"hooks\":\"@/hooks\"},\"css\":\"src/app/globals.css\"}},{\"assertion\":6,\"status\":\"PASS\",\"details\":{\"cnExported\":true,\"buttonExported\":true,\"generatedButtonHash\":\"79dd6f75f8136394442202d6b8b922fb269eaad0a5dba579397c9d5b41f893bb\"}},{\"assertion\":7,\"status\":\"PASS\",\"details\":{\"heading\":\"Serendipity · 际遇\",\"button\":\"开始规划\",\"title\":\"Serendipity · 际遇\",\"bootstrapOnly\":true}},{\"assertion\":8,\"status\":\"PASS\",\"details\":{\"css\":[{\"path\":\".next/static/css/9500c7293db5308b.css\",\"sha256\":\"0f553e3c21e68011920a1c5465b6b0abf43e2f06f97dc87497b1dc7a0090062b\",\"bytes\":17128}],\"selectors\":[\".bg-brand-500\",\".rounded-card\",\".p-gutter\"]}},{\"assertion\":9,\"status\":\"PASS\",\"details\":{\"wideMediaRules\":[{\"query\":\"(min-width:64rem)\",\"selector\":\".wide\\\\:max-w-5xl\"}]}}]\n",
+      "stderr": "",
+      "durationMs": 6158,
+      "error": null
+    },
+    {
+      "label": "restored-clean-checkpoint",
+      "executable": "git",
+      "arguments": [
+        "status",
+        "--porcelain=v1",
+        "-uall"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "durationMs": 163,
+      "error": null
+    }
+  ],
+  "details": {
+    "initial": {
+      "exitCode": 0,
+      "assertions": [
+        {
+          "assertion": 1,
+          "status": "PASS"
+        },
+        {
+          "assertion": 2,
+          "status": "PASS"
+        },
+        {
+          "assertion": 3,
+          "status": "PASS"
+        },
+        {
+          "assertion": 4,
+          "status": "PASS"
+        },
+        {
+          "assertion": 5,
+          "status": "PASS"
+        },
+        {
+          "assertion": 6,
+          "status": "PASS"
+        },
+        {
+          "assertion": 7,
+          "status": "PASS"
+        },
+        {
+          "assertion": 8,
+          "status": "PASS"
+        },
+        {
+          "assertion": 9,
+          "status": "PASS"
+        }
+      ]
+    },
+    "futureScripts": {
+      "exitCode": 0,
+      "assertions": [
+        {
+          "assertion": 1,
+          "status": "PASS"
+        },
+        {
+          "assertion": 2,
+          "status": "PASS"
+        },
+        {
+          "assertion": 3,
+          "status": "PASS"
+        },
+        {
+          "assertion": 4,
+          "status": "PASS"
+        },
+        {
+          "assertion": 5,
+          "status": "PASS"
+        },
+        {
+          "assertion": 6,
+          "status": "PASS"
+        },
+        {
+          "assertion": 7,
+          "status": "PASS"
+        },
+        {
+          "assertion": 8,
+          "status": "PASS"
+        },
+        {
+          "assertion": 9,
+          "status": "PASS"
+        }
+      ]
+    },
+    "noBuild": {
+      "exitCode": 1,
+      "assertions": [
+        {
+          "assertion": 1,
+          "status": "FAIL"
+        },
+        {
+          "assertion": 2,
+          "status": "PASS"
+        },
+        {
+          "assertion": 3,
+          "status": "PASS"
+        },
+        {
+          "assertion": 4,
+          "status": "PASS"
+        },
+        {
+          "assertion": 5,
+          "status": "PASS"
+        },
+        {
+          "assertion": 6,
+          "status": "PASS"
+        },
+        {
+          "assertion": 7,
+          "status": "PASS"
+        },
+        {
+          "assertion": 8,
+          "status": "PASS"
+        },
+        {
+          "assertion": 9,
+          "status": "PASS"
+        }
+      ]
+    },
+    "wrongTypecheck": {
+      "exitCode": 1,
+      "assertions": [
+        {
+          "assertion": 1,
+          "status": "FAIL"
+        },
+        {
+          "assertion": 2,
+          "status": "PASS"
+        },
+        {
+          "assertion": 3,
+          "status": "PASS"
+        },
+        {
+          "assertion": 4,
+          "status": "PASS"
+        },
+        {
+          "assertion": 5,
+          "status": "PASS"
+        },
+        {
+          "assertion": 6,
+          "status": "PASS"
+        },
+        {
+          "assertion": 7,
+          "status": "PASS"
+        },
+        {
+          "assertion": 8,
+          "status": "PASS"
+        },
+        {
+          "assertion": 9,
+          "status": "PASS"
+        }
+      ]
+    },
+    "restored": {
+      "exitCode": 0,
+      "assertions": [
+        {
+          "assertion": 1,
+          "status": "PASS"
+        },
+        {
+          "assertion": 2,
+          "status": "PASS"
+        },
+        {
+          "assertion": 3,
+          "status": "PASS"
+        },
+        {
+          "assertion": 4,
+          "status": "PASS"
+        },
+        {
+          "assertion": 5,
+          "status": "PASS"
+        },
+        {
+          "assertion": 6,
+          "status": "PASS"
+        },
+        {
+          "assertion": 7,
+          "status": "PASS"
+        },
+        {
+          "assertion": 8,
+          "status": "PASS"
+        },
+        {
+          "assertion": 9,
+          "status": "PASS"
+        }
+      ]
+    },
+    "cleanWorktree": true,
+    "globalGitIgnoreUsed": false,
+    "upstreamCheckpointCases": 52,
+    "upstreamCheckpointObservations": 115
+  }
+}

@@ -1,0 +1,417 @@
+{
+  "phase": 3,
+  "attemptId": "attempt-5",
+  "planPath": "docs/phase-plans/Phase003.json",
+  "decision": "FAIL",
+  "contextId": "01a085a5-7c18-72b3-819e-7c911fb80138",
+  "reviewerRunId": "01a085a5-7c18-72b3-819e-7c911fb80138:Phase003-attempt-5",
+  "generatedBy": "Codex independent agent 01a085a5-7c18-72b3-819e-7c911fb80138",
+  "runnerIdentity": {
+    "kind": "INDEPENDENT_CODEX_AGENT",
+    "implementationAuthored": false
+  },
+  "summary": "17项当前用例的执行证据和受测字节匹配，但后续消费兼容性及焦点验收存在已确认阻断项，独立复核FAIL。其他可行动校验缺口一并保留，不能封口或宣称Phase003完成。",
+  "issues": [
+    {
+      "id": "P003-R01",
+      "priority": 1,
+      "status": "OPEN",
+      "title": "本卡范围限制错误地进入可重复九断言",
+      "locations": [
+        {
+          "path": "scripts/verify-phase003.mjs",
+          "line": 187
+        },
+        {
+          "path": "scripts/verify-phase003.mjs",
+          "line": 191
+        },
+        {
+          "path": "scripts/verify-phase003.mjs",
+          "line": 192
+        }
+      ],
+      "finding": "默认断言7拒绝.env.example、src/lib/env.ts、vitest.config.ts、Prettier/Vitest等依赖，并扫描全部src禁止环境变量读取。Phase004明确生产这些内容、禁止修改此脚本并要求原九断言继续通过；Phase005也会合法增加当前被禁止的目录。",
+      "evidence": [
+        "Phase004.md:19-20,49,62-71,101；Phase005.md:108-111。",
+        "attempt-5/forward-contract-probe.json记录同一受测脚本在隔离副本仅增加.env.example后由退出0变为退出1，原因明确为Future-phase file。"
+      ],
+      "requiredChange": "把仅约束Phase003当次产物的路径、依赖和全src范围检查移入本卡case/Gate分支，默认断言保留稳定的页面消费检查；保留当前Gate范围约束。扩展隔离回归以覆盖合法后续文件。",
+      "validationStatus": "STATIC_CONTRACT_REVIEW_AND_RECORDED_REAL_PROBE"
+    },
+    {
+      "id": "P003-R02",
+      "priority": 1,
+      "status": "OPEN",
+      "title": "默认校验拒绝合法无语义格式化",
+      "locations": [
+        {
+          "path": "scripts/verify-phase003.mjs",
+          "line": 169
+        },
+        {
+          "path": "scripts/verify-phase003.mjs",
+          "line": 154
+        }
+      ],
+      "finding": "默认断言6将Button当前字节与生成收据SHA-256作永久比较，断言4直接比较PostCSS保留空白的font-sans字符串。Phase004允许并要求源码/CSS格式化，合法格式化会改变这些字节或空白而不改变语义。",
+      "evidence": [
+        "当前Button与官方registry内容及bootstrap收据原字节完全一致；问题是将本卡生成字节约束永久化。",
+        "独立内存探针仅将font-sans在逗号后折行，PostCSS解析值的严格相等为false，规范空白后相等为true；没有写入源码。"
+      ],
+      "requiredChange": "默认断言6保留cn/Button导出检查，原始生成hash及本卡唯一UI范围检查留在assertion-6 Gate；CSS值比较只规范无语义空白，保持所有token实际取值约束，并增加隔离格式化回归。",
+      "validationStatus": "STATIC_REVIEW_AND_READ_ONLY_IN_MEMORY_CSS_PROBE",
+      "limits": "本复核没有安装或执行Prettier；没有声称已运行完整格式化后的九断言。"
+    },
+    {
+      "id": "P003-R03",
+      "priority": 2,
+      "status": "OPEN",
+      "title": "缺少供Phase005调整的唯一首页路径常量",
+      "locations": [
+        {
+          "path": "scripts/verify-phase003.mjs",
+          "line": 173
+        }
+      ],
+      "finding": "断言内直接使用src/app/page.tsx。Phase005仅允许调整首页路径常量以迁移首页，当前没有这个明确的消费接口。",
+      "requiredChange": "提供单个homePagePath常量供默认首页消费断言使用；本卡历史fixture保留原bootstrap路径语义，不要求Phase005修改断言逻辑或数量。",
+      "validationStatus": "STATIC_CONTRACT_REVIEW"
+    },
+    {
+      "id": "P003-R04",
+      "priority": 2,
+      "status": "OPEN",
+      "title": "焦点采样过早且断言不足",
+      "locations": [
+        {
+          "path": "scripts/verify-phase003.mjs",
+          "line": 342
+        },
+        {
+          "path": "scripts/verify-phase003.mjs",
+          "line": 344
+        }
+      ],
+      "finding": "browser-title与responsive-layout均在Tab后立即取样，记录outlineStyle=solid而outlineWidth=0px，只检查style非none即通过。三张已存截图均在Tab之前生成，不能证明焦点态。父任务生产探针表明0.15s过渡稳定后宽度为2px，因此不将即时0px误判为最终无焦点环。",
+      "evidence": [
+        "docs/evidence/attempts/Phase003/attempt-5/browser-title.json",
+        "docs/evidence/attempts/Phase003/attempt-5/responsive-layout.json",
+        ".scaffold/phase003-focus-probe.json"
+      ],
+      "requiredChange": "有界等待目标按钮匹配:focus-visible且outlineWidth至少2px，再断言实际宽度、实线样式和焦点目标并保存稳定焦点态证据；保持Button生成文件不变。",
+      "validationStatus": "RECORDED_BROWSER_EVIDENCE_AND_PARENT_SUPPLEMENTAL_PROBE_REVIEW",
+      "limits": "父任务生产探针不属于17项冻结输出；独立复核没有重新启动浏览器。"
+    },
+    {
+      "id": "P003-R05",
+      "priority": 2,
+      "status": "OPEN",
+      "title": "焦点环缺少规范要求的白色间隔",
+      "locations": [
+        {
+          "path": "src/app/globals.css",
+          "line": 126
+        },
+        {
+          "path": "docs/ui-design-system.md",
+          "line": 80
+        }
+      ],
+      "finding": "现有全局规则只有2px outline和2px outline-offset，offset本身不会绘制白色间隔。源样式及读到的编译CSS没有为此按钮提供2px白色隔离层。规范要求2px focus实线环加2px白色间隔；focus色#0369a1直接相对品牌底#047857的WCAG颜色对比度约1.082:1。",
+      "requiredChange": "在允许的全局样式或页面消费层补足白色间隔，保持生成Button原文件，并以稳定焦点态的计算样式/截图核验；不能只增加outlineWidth断言便声称满足全部焦点样式要求。",
+      "validationStatus": "SOURCE_AND_COMPILED_CSS_REVIEW_WITH_COLOR_CONTRAST_CALCULATION",
+      "limits": "未执行独立焦点态像素测量；当前三张截图是未聚焦状态，不能用它们声称已实测焦点态对比度。"
+    },
+    {
+      "id": "P003-R06",
+      "priority": 2,
+      "status": "OPEN",
+      "title": "封口前未校验证据所引用附属文件的hash",
+      "locations": [
+        {
+          "path": "scripts/complete-phase003.mjs",
+          "line": 45
+        },
+        {
+          "path": "scripts/complete-phase003.mjs",
+          "line": 54
+        }
+      ],
+      "finding": "audit校验sourceHashes及17个报告文件，但没有逐项核对报告details.artifacts引用的PNG/DOM实际SHA-256，也没有核对可选supplementalReportHashes。metadata为当前文件另算Gate input hash，不能证明它与受测报告内保存的截图hash一致。当前文件全部匹配，但该路径未拒绝后续附属证据漂移。",
+      "evidence": [
+        "独立内存探针给现有真实requireReportBinding/requireHashCoverage提供不同截图hash；检查仍接受且没有读取截图hash。该探针不写文件，也未实际生成metadata。"
+      ],
+      "requiredChange": "在生成metadata前核对全部声明的截图/DOM等附属文件hash及review声明的supplementalReportHashes；同样核对所消费bootstrap/命令收据中的文件hash引用。对缺失或漂移使用隔离/内存反向验证。",
+      "validationStatus": "STATIC_DATA_FLOW_REVIEW_AND_REAL_BINDING_HELPER_IN_MEMORY_PROBE",
+      "limits": "未生成或尝试篡改真实Gate，未执行完整双shell篡改回归。"
+    },
+    {
+      "id": "P003-R07",
+      "priority": 2,
+      "status": "OPEN",
+      "title": "支持命令集合缺少完整性断言",
+      "locations": [
+        {
+          "path": "scripts/complete-phase003.mjs",
+          "line": 46
+        },
+        {
+          "path": "scripts/complete-phase003.mjs",
+          "line": 48
+        }
+      ],
+      "finding": "支持命令只检查status、sourceHashes和commands.every(exitCode===0)，不验证非空、命令集合、actualCaseCount及原始command文件一致性。空commands数组满足every，plan.requiredSupportingCommands未被消费。本次22条命令和隔离npm ci证据确实存在并已核对；缺陷在封口校验而非宣称本次未执行。",
+      "requiredChange": "核对实际必需命令/17个case的覆盖及原始记录一致性，拒绝缺失、空集合和错误退出码；npm ci可绑定已经实际运行的隔离回归或准备收据，不能伪造额外运行。",
+      "validationStatus": "STATIC_REVIEW_AND_READ_ONLY_EMPTY_ARRAY_PREDICATE_PROBE",
+      "limits": "未执行完整metadata生成的负例；该额外验证仍需在下一attempt完成。"
+    }
+  ],
+  "dispositions": [
+    {
+      "issueId": "P003-R01",
+      "status": "OPEN",
+      "action": "保留attempt-5；由父任务在新的Phase003 attempt修复并验证后重新申请独立验收。"
+    },
+    {
+      "issueId": "P003-R02",
+      "status": "OPEN",
+      "action": "保留attempt-5；由父任务在新的Phase003 attempt修复并验证后重新申请独立验收。"
+    },
+    {
+      "issueId": "P003-R03",
+      "status": "OPEN",
+      "action": "保留attempt-5；由父任务在新的Phase003 attempt修复并验证后重新申请独立验收。"
+    },
+    {
+      "issueId": "P003-R04",
+      "status": "OPEN",
+      "action": "保留attempt-5；由父任务在新的Phase003 attempt修复并验证后重新申请独立验收。"
+    },
+    {
+      "issueId": "P003-R05",
+      "status": "OPEN",
+      "action": "保留attempt-5；由父任务在新的Phase003 attempt修复并验证后重新申请独立验收。"
+    },
+    {
+      "issueId": "P003-R06",
+      "status": "OPEN",
+      "action": "保留attempt-5；由父任务在新的Phase003 attempt修复并验证后重新申请独立验收。"
+    },
+    {
+      "issueId": "P003-R07",
+      "status": "OPEN",
+      "action": "保留attempt-5；由父任务在新的Phase003 attempt修复并验证后重新申请独立验收。"
+    }
+  ],
+  "checks": [
+    {
+      "name": "authorization_and_repository",
+      "status": "VERIFIED",
+      "details": "读取根AGENTS.md与执行契约；main、origin为指定仓库，HEAD=6a54477f9a42e124d2a310ed9dad8663d8ee926d。仅授权Phase003；本复核只写本报告，不暂存、提交或推送。"
+    },
+    {
+      "name": "frozen_input_and_source_bindings",
+      "status": "VERIFIED",
+      "pinnedInputs": 148,
+      "sourceFiles": 45,
+      "caseReports": 17,
+      "details": "实际计算SHA-256；全部固定输入、sourcePaths、每个报告的plan/input/source绑定精确匹配。文本sourcePaths无CR。四个旧失败attempt的计划hash、17项集合和阈值保持一致。"
+    },
+    {
+      "name": "runtime_and_dependencies",
+      "status": "VERIFIED_FROM_FILES_AND_RECORDED_EXECUTION",
+      "runtime": {
+        "node": "24.19.0",
+        "npm": "11.7.0",
+        "createNextApp": "15.5.24",
+        "next": "15.5.24",
+        "eslintConfigNext": "15.5.24",
+        "shadcn": "3.2.1"
+      },
+      "details": "独立读取实际Node版本及二进制SHA-256、安装包版本、package/lock及baseline；18个顶层依赖为精确版本，lockfileVersion=3，next>postcss精确override为8.5.28且旧8.4.31条目已消失。"
+    },
+    {
+      "name": "production_audit_and_recovery",
+      "status": "VERIFIED_FROM_RECORDED_EXECUTION",
+      "details": "attempt-5/command-01.json及setup/39-production-audit.json实际exit=0，info/low/moderate/high/critical/total均0。核对隔离无node_modules重新解析锁文件、final npm ci及保留旧失败attempt的记录；没有重新调用audit。"
+    },
+    {
+      "name": "peer_tree",
+      "status": "VERIFIED_WITH_NOTES",
+      "details": "setup/40-peer-dependencies.json退出0；没有发现invalid/missing peer错误。报告含两个extraneous可选Sharp/Wasm包，两者均有当前lock条目；不把此记录表述为完全没有任何npm ls problems。"
+    },
+    {
+      "name": "official_generated_components",
+      "status": "VERIFIED_BY_READ_ONLY_OFFICIAL_REGISTRY_GET",
+      "details": "官方当前registry Button与cn工具内容均和本地逐字节相同。未修改生成文件。",
+      "officialRegistry": [
+        {
+          "url": "https://ui.shadcn.com/r/styles/new-york-v4/button.json",
+          "responseSha256": "4b8d7d848742727973c1b088af8d15f0b628272a1316f2d2fa344e73ddff9e9c",
+          "contentSha256": "79dd6f75f8136394442202d6b8b922fb269eaad0a5dba579397c9d5b41f893bb"
+        },
+        {
+          "url": "https://ui.shadcn.com/r/styles/new-york-v4/utils.json",
+          "responseSha256": "c22651d566e943525910eb81a31a84eed9ad8ae24c6cdfa3ec609cc0fb04b0d5",
+          "contentSha256": "14300d758170c270c75b057f38fedb3793a5920ea872f0477e29fb131185e8a7"
+        }
+      ]
+    },
+    {
+      "name": "bootstrap_and_scope",
+      "status": "VERIFIED",
+      "details": "40份setup命令收据hash、172份受保护文档hash、15份原始脚手架复制来源hash匹配；.gitignore保留原字节前缀。源码只有基础首页/根布局/10个指定token与Button/cn，无业务表单、API、AI、数据库或未来阶段产品实现。"
+    },
+    {
+      "name": "recorded_acceptance",
+      "status": "VERIFIED_CURRENT_CASE_RESULTS_WITH_REVIEW_DEFECTS",
+      "groups": {
+        "basic": 9,
+        "negative": 4,
+        "startupAndBrowser": 3,
+        "regression": 1
+      },
+      "details": "22份command记录与supporting-commands内记录一致、退出0。四个反向用例的底层校验确实退出1且恢复后退出0；CSS反向均重建，缺失.next、版本降级及CLI不一致均有真实拒绝。隔离npm ci/lint/build/typecheck、原三个后续脚本正负例及恢复干净工作树有记录。52项上游回归记录仅复核已有证据，不重跑。"
+    },
+    {
+      "name": "visual_and_dom",
+      "status": "VERIFIED_BASE_LAYOUT_FOCUS_NOT_ACCEPTED",
+      "imagesActuallyViewed": [
+        "docs/evidence/attempts/Phase003/attempt-5/responsive-layout-375.png",
+        "docs/evidence/attempts/Phase003/attempt-5/responsive-layout-1280.png",
+        "docs/evidence/attempts/Phase003/attempt-5/browser-title-1280.png"
+      ],
+      "details": "三图实际查看；375px容器x=16,width=343，无横向溢出；1280px容器x=128,width=1024。标题与开始规划按钮清楚，符合基础首页边界。DOM确认lang=zh-CN、title/h1及Button来源。浏览器记录Playwright1.55.1/Chromium140.0.7339.186，pageErrors/consoleErrors为空，记录请求均loopback；焦点问题见R04/R05。"
+    },
+    {
+      "name": "artifact_metadata_path",
+      "status": "REVIEWED_WITH_OPEN_GAPS",
+      "details": "代码要求独立PASS review、精确source/report绑定、真实Git artifact/tree及工作树干净后生成metadata；父子关系、恢复提交、metadata路径与不可变Gate由validator检查。R06/R07仍须修复；本复核未运行metadata生成或Phase003 seal/push。"
+    }
+  ],
+  "limits": [
+    "没有重跑完整17项、安装依赖、重新构建或启动浏览器；验收执行结论来自逐项原始收据复核，独立执行仅限只读字节/结构检查及明确标注的内存探针。",
+    "未完成的额外验证：完整格式化/后续文件兼容九断言、稳定焦点截图及像素测量、附属hash和空支持命令对metadata/双shell的反向回归；不能视为通过。",
+    "父任务.scaffold/phase003-focus-probe.json只作诊断辅助，非冻结17项正式输出；其0px到2px记录支持采样时机判断。",
+    "当前run state为completedThrough=2/currentPhase=3。Phase003 artifact/metadata提交、双shell CompletedThrough=3 seal、干净工作树及推送/远端核对均尚待父任务在修复和验收后执行。",
+    "只读官方registry的两次请求属于审查公共制品来源，不是产品测试流量；保存的浏览器产品请求记录均为loopback。",
+    "没有执行Phase004/005产品工作，也没有评估真人读屏、完整WCAG认证或生产部署。",
+    "FAIL报告不等同于Phase seal；不改写任何旧review或本attempt原始测试报告。"
+  ],
+  "planHash": "23df6c524d2be92754668430c05241b66d9177a6ed2d17e9d1731184adc17bff",
+  "implementationContextId": "01a08550-3c47-7423-82c2-5f2f0d449ed2:Phase003",
+  "sourceHashes": {
+    ".gitattributes": "851253b716e5448b37969c98629a93622041b2bc7ab105020a69b41ac157fffa",
+    ".gitignore": "6ac1aeb5492ea1f50d93b16c2164e494a318b2db5f745c93e71c7f0b99721757",
+    "AGENTS.md": "224f30ead96b0771dc9949e5c33ebe4bf13bb0f76071fb3210d7d153e73b0592",
+    "README.md": "646a6bd0e5ea881b137a33eae2c3afd7ea9e8e6b4312c756da36e67699ec2b7b",
+    "components.json": "2cc1a8206b39ade49917b804fd9d67f95f2b9558ecc2a98bd35a211e0423b320",
+    "docs/agent-execution-contract.md": "2919a173e60f0ed50fbf4839a5d8c96bc836afd032410cb012186026736688a2",
+    "docs/checkpoint-migrations/history-20260909.json": "45bc0742f7b12506a007c84a0f3f9808f2f9b9e8d292a60fab345f4966e1d5b4",
+    "docs/directory-structure.md": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df",
+    "docs/evidence/attempts/Phase003/setup/bootstrap.json": "b66ab8c07242eafd3912d06cf36b8bf76c76dcda99dc43edceb750e1b922285a",
+    "docs/phase-plans/Phase003-checkpoint-recovery.json": "c0b6dba82cb4feaf2bf74d3d3769635e375fb561831d6adcbf97f13fc81d83e9",
+    "docs/phase-plans/Phase003-inputs.json": "9a2809ce7ce57a17e95de46275fe0a169f683f396bb0ae3576c5e0796d2241f4",
+    "docs/phase-plans/Phase003.json": "23df6c524d2be92754668430c05241b66d9177a6ed2d17e9d1731184adc17bff",
+    "docs/project-constitution.md": "8f1dd176e30e815a09502a91c5b0ef2722b7bb71d5e919fbfc70cfecf3e9dedd",
+    "docs/project-layout.json": "7efe30a30fe009a8e1226563cae53d39ed2a2193be78bc0f0a776f57f67710ba",
+    "docs/runtime-baseline.json": "9ee9b83878969003bfcfdf079cfab8b243020d248207ebeb983b65e143532955",
+    "docs/tech-stack.md": "258620f3e18d042eac1e26165f411e8879ecd4b0d91d8e7986aaed4f3f10d2c7",
+    "docs/ui-design-system.md": "8b232c6742bf846f131ea3040d5892ed7b270940bfd4109ccfb768ed63fdb158",
+    "eslint.config.mjs": "8ba79d569e98a084d72c7992cb0eef8d1a9d26eca2d6426b087bdef43ac5d8fc",
+    "next.config.ts": "614bce25b089c3f19b1e17a6346c74b858034040154c6621e7d35303004767cc",
+    "package-lock.json": "2624a8bed7fccdc4e0bd63a528156c1f71ccf5f458a6c3b138bf3fa4187a431b",
+    "package.json": "5289b5c05c005f04b443ed514c7a051c380ea50e1a5902e072694a37f286e015",
+    "postcss.config.mjs": "141ef24ca27a99d08962210fdf20212d3435fdcfa21b46cd88b44d22f751dfae",
+    "public/file.svg": "2b67812c325c199a02536cdbeea0c593a72f707d323b72ee3e08dbab06753bd4",
+    "public/globe.svg": "b614b9bf183925957661ac851498fe1d8029fd43a62fbfed86f9e2624a57e7cf",
+    "public/next.svg": "55995dfad6ecb4945a1e856ddca03c5e16aa5bf13fd21b4df6a74ae79357bcfc",
+    "public/vercel.svg": "f081337b2fee635b455b63275406a3e7f39d6a014e25ad90dab5a67e62a12ac4",
+    "public/window.svg": "644768c4aaeb4767bce293344eeb0c125fb804a94d801440424072202d85e3a1",
+    "scripts/check-project-layout.mjs": "33301b2b84a3034a7697f3dc8f6497b8fec21dbcf67ebfe04be256f3ef321943",
+    "scripts/checkpoint-history.mjs": "c730d8119c04cd9151cd28b85b1ce335e2bdc7fcfda12a5399801ebab7a866d2",
+    "scripts/complete-phase003.mjs": "598ce23ed7110e8a8d228a46152ce3cf7ffc56479867725d0c3f4c8d3883ad06",
+    "scripts/phase-evidence.mjs": "3727f8f8e5f00cf7e03d4bc50f71ebdbff483380cbc59df124bf21b473261d95",
+    "scripts/prepare-checkpoint-import.mjs": "89d87bd6b3fac74ac02a5a7a335aad778c1e9f5136fd8034e6e127516ff5fb2e",
+    "scripts/prepare-phase003.mjs": "2545092493bd2df16e487e3bf43b4e5f98b04c69ba34bf003929f91d6dd7774f",
+    "scripts/test-checkpoint-import.mjs": "1c02fec39e9d6ced7aaf7a3099bb622d93b58b10e533002da36247b0ed3f1c2d",
+    "scripts/test-validate-phase.mjs": "5969dcf96abd0f8aa380c4965fd0c9e4126a80bc8e33d12037d4c6632193971f",
+    "scripts/validate-phase.mjs": "a088c83052de62a7a5641ae989b624d5124eb5ea7942ab69df3f063d86e654ff",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319",
+    "scripts/verify-phase003.mjs": "dc6f34b6703c699d0d2b56d673f7e047be00fe427cbedd09a041fae5a644727c",
+    "src/app/favicon.ico": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932",
+    "src/app/globals.css": "dcb7ea3ab94514bcabb4bc11ef565a9ad31e486389c10169454e03ba04774fab",
+    "src/app/layout.tsx": "bbdf38cffd649d2816e8c2f506b133b64e5f3febc05fd149bbd68e4131e42384",
+    "src/app/page.tsx": "50d188a65cfe28543e79e4d8fe09633c1cc15ae09b66598665623432c953f51d",
+    "src/components/ui/button.tsx": "79dd6f75f8136394442202d6b8b922fb269eaad0a5dba579397c9d5b41f893bb",
+    "src/lib/utils.ts": "14300d758170c270c75b057f38fedb3793a5920ea872f0477e29fb131185e8a7",
+    "tsconfig.json": "83d292a6930a317ea31ef48e220097d2ca10c6c505f41d5954795acef48ca3b9"
+  },
+  "reportHashes": {
+    "docs/evidence/attempts/Phase003/attempt-5/assertion-1.json": "b3c4c0fee261197afd2ad6dfa9880a117cb980db1655bfa88a8cc4ecfd45aa63",
+    "docs/evidence/attempts/Phase003/attempt-5/assertion-2.json": "eef95f9a53781d33a661a5a3921796c030c33d46bc2736080f655d08ccb1c45e",
+    "docs/evidence/attempts/Phase003/attempt-5/assertion-3.json": "3cf50044da1bdd9ae347f715efbf175cc7f7336fd830f4b2ff6152823669d5a3",
+    "docs/evidence/attempts/Phase003/attempt-5/assertion-4.json": "d0d15a62ddcfd63d7c1165c83a5b52ddbec166e44ec5398b159831a904b11e75",
+    "docs/evidence/attempts/Phase003/attempt-5/assertion-5.json": "ee97ad3d057f6f2f0ca80351d9ff750fe865f9ce95dbf5b1d55122472280e778",
+    "docs/evidence/attempts/Phase003/attempt-5/assertion-6.json": "1fce4cb6476478d5707df6dabbbfe3e623ebb13b94e5f40ba60f506eb563f4b1",
+    "docs/evidence/attempts/Phase003/attempt-5/assertion-7.json": "41c69c49ff99d58a56400cc7f6a511211cb9a7d8a3e8a3094505531c0dde8a1d",
+    "docs/evidence/attempts/Phase003/attempt-5/assertion-8.json": "835cf70a36dcd4aab828f5878e021d0dd82551e42ade58e64ff5f5966cf2678f",
+    "docs/evidence/attempts/Phase003/attempt-5/assertion-9.json": "2b6c69d5857d5321f6db4a2c5fac9209198e3c199c1436e2b4352d142b2fa76c",
+    "docs/evidence/attempts/Phase003/attempt-5/negative-tailwind-import.json": "e528fdd426885698d7677bb0a2f492b8468d3c6778299b3deefebb2aed2df0ac",
+    "docs/evidence/attempts/Phase003/attempt-5/negative-brand-token.json": "528fb2fbaa805d60d27206b6a49f3b4f17ce4ad4c7495a554a4aa79fe7f40450",
+    "docs/evidence/attempts/Phase003/attempt-5/negative-native-button.json": "018ce1aad7d4da81e8b8c94dcf7701c208e37df1f85fc4a433fe619c58d11350",
+    "docs/evidence/attempts/Phase003/attempt-5/negative-version-range.json": "dadc7db8961e3a068d15defcd4b78562671f8e4968c43c02fcc2d75bbf93cd1b",
+    "docs/evidence/attempts/Phase003/attempt-5/dev-http.json": "272a0def631c8b286fa5408c32cb9cfddf522f4d5c9ac263d707501fe2ae9ec0",
+    "docs/evidence/attempts/Phase003/attempt-5/browser-title.json": "217a3d50dd8aa6eb0f7b6e9b9cf3a106196615448d9956ec3f61bcb096d90e6c",
+    "docs/evidence/attempts/Phase003/attempt-5/responsive-layout.json": "a217d800b6815e172f154384276dab4d5e6d611003a6640b1dcc0b46fda79de4",
+    "docs/evidence/attempts/Phase003/attempt-5/verifier-regression.json": "c02a0509ffac36ec89bad8953211866b0fd63d82a1637e475c500026aadfbf00"
+  },
+  "supplementalReportHashes": {
+    "docs/evidence/attempts/Phase003/attempt-5/attempt.json": "c2b255bde0300296cc178bd32313ce794fa084353d74a3d6c952df195e369f8b",
+    "docs/evidence/attempts/Phase003/attempt-5/browser-title-1280.html": "c63fe8473299da68721a9be6413b1cb1b7cb66838fe9a9c93c2452df63646d7e",
+    "docs/evidence/attempts/Phase003/attempt-5/browser-title-1280.png": "9de6a4b45a5264cddabcd1965f78961aaa621ac5181c1187feb86f5ea94caa69",
+    "docs/evidence/attempts/Phase003/attempt-5/command-01.json": "561fae3297a229e249f09c1692b205f8621322e54d5f7247248a2104285cf973",
+    "docs/evidence/attempts/Phase003/attempt-5/command-02.json": "05967c0d8512d8396b8f79a231054c3c4b6d9a889671f2ce3ddc540e697c7d1d",
+    "docs/evidence/attempts/Phase003/attempt-5/command-03.json": "64822208e29b558ba1160672d44faf52317a2db2fe6185c8d9c538104002231b",
+    "docs/evidence/attempts/Phase003/attempt-5/command-04.json": "78d277121eb0a045ef6da01aecec4161a1fec0693f3f1d58eac2859b67224a7a",
+    "docs/evidence/attempts/Phase003/attempt-5/command-05.json": "93acd007d417c644fafd74d7e1323558d82ff85794a668d500a431f35d25f5dd",
+    "docs/evidence/attempts/Phase003/attempt-5/command-06.json": "998e54601d7c5b64ae9f350965d506036da810fcb8080ada4cbe26c4eda9f7a1",
+    "docs/evidence/attempts/Phase003/attempt-5/command-07.json": "d90b91a9f5f51763fc010602ce34603c05f2d5e4dbefb3e7d086f950b5e605e7",
+    "docs/evidence/attempts/Phase003/attempt-5/command-08.json": "90da01d3b4115f6ad292e428ee00f424ce6519bcbed4ce8227f4509a96969953",
+    "docs/evidence/attempts/Phase003/attempt-5/command-09.json": "e0f3eae375c980962675f4cb3f27ca107eb2bb9e1f3c40737d3c2c48f879c7a3",
+    "docs/evidence/attempts/Phase003/attempt-5/command-10.json": "45be919a0239f4b828eacadf1b9c594d1e3c5e6371ee786d80913c09ecf0d7c3",
+    "docs/evidence/attempts/Phase003/attempt-5/command-11.json": "53ec7788ab8d8343d318d1ce7b251d7f1b3ccbd1a4c536a4196139d8da843b7f",
+    "docs/evidence/attempts/Phase003/attempt-5/command-12.json": "78a3b9ad40ffa9781f7115f9004563ed299374e84295d27d44ddb7250bb6d6ce",
+    "docs/evidence/attempts/Phase003/attempt-5/command-13.json": "ac5fd8630e798f7598f9e749b70551107f53609d4223eb4cf5ba07f00e5d21b8",
+    "docs/evidence/attempts/Phase003/attempt-5/command-14.json": "df75b8d7338216977475f244ba6761486ea5ed219305c156db82d220186eca12",
+    "docs/evidence/attempts/Phase003/attempt-5/command-15.json": "f1ea08fff0e28ec13d58325db7889c5b444e61ce0c32b0b198566188493e4a33",
+    "docs/evidence/attempts/Phase003/attempt-5/command-16.json": "c6e0eef31baac8cc57ce0e63093255a7301b9e7721e0fa9fdc3d4141c4efe1cf",
+    "docs/evidence/attempts/Phase003/attempt-5/command-17.json": "9066821a666c1c4194463b07d76becf41767ddfdd572f1afd3ebedef20497923",
+    "docs/evidence/attempts/Phase003/attempt-5/command-18.json": "0c442dbb56308a5cc952b4fb4b0087a075d7013b29fdaaee4c0848bfa502fff6",
+    "docs/evidence/attempts/Phase003/attempt-5/command-19.json": "54f101ada0cdbb0a6259169ce2d12acc6a9e11b42f51a032486561c056fc7a6a",
+    "docs/evidence/attempts/Phase003/attempt-5/command-20.json": "80ee83cdb390c0a80ad49ad828e7c4bb85e75ab223a702818de7ddd9875722ec",
+    "docs/evidence/attempts/Phase003/attempt-5/command-21.json": "a7c7d4fc3bc2f433caf3d2a42b1ce126bc2270fa975fa0c6e5bb8118293c07ec",
+    "docs/evidence/attempts/Phase003/attempt-5/command-22.json": "86e6e2490251e887f266f84f403669653e8ea75b6992d2f819cd48a1cbc5da96",
+    "docs/evidence/attempts/Phase003/attempt-5/forward-contract-probe.json": "bc47a48d30c29ef96ebd6f8dbf963f102e63f9af0ec94f180e54fdf12768bd05",
+    "docs/evidence/attempts/Phase003/attempt-5/responsive-layout-1280.html": "7f9603481611abc2973db16548f1799001a41b6e8f7b54caec890764b30f9486",
+    "docs/evidence/attempts/Phase003/attempt-5/responsive-layout-1280.png": "d9fc8539927ea92d81a38bc2604191d1ab75982c919ae2cac015c863e9281fe2",
+    "docs/evidence/attempts/Phase003/attempt-5/responsive-layout-375.html": "7f9603481611abc2973db16548f1799001a41b6e8f7b54caec890764b30f9486",
+    "docs/evidence/attempts/Phase003/attempt-5/responsive-layout-375.png": "c758e99bbac413ea5d4eaf62b7104eb30e663fe93e2f6e9c13f8f599801da483",
+    "docs/evidence/attempts/Phase003/attempt-5/supporting-commands.json": "26c14dbe0695fac4dfe51f704753aa1b85f9543a82c29dc66aa2196d0ea2c457",
+    "docs/evidence/attempts/Phase003/setup/09-shadcn-init.json": "2f7cb342043109d2bd99326453b30ec019a9d0fdd80755a7d091667883f97eed",
+    "docs/evidence/attempts/Phase003/setup/10-shadcn-button.json": "50379b4275f6e5338f87359f5fbb17f1d4ecb36be6738e426cb04bb1767a9a95",
+    "docs/evidence/attempts/Phase003/setup/36-isolated-security-lock.json": "0029ea437134872ffe6a17f8854791b740b3438921762ea513dfafe8ac9d20fe",
+    "docs/evidence/attempts/Phase003/setup/38-final-ci.json": "6f001f30773f1166eba475fa017bd4942bbc65ea722de2ca380916e0ff660266",
+    "docs/evidence/attempts/Phase003/setup/39-production-audit.json": "744ef461dd0cec5df1439936575ebf1f143d5409d1aabb3139255925d8a785d8",
+    "docs/evidence/attempts/Phase003/setup/40-peer-dependencies.json": "4d34153bbc2b472729664a5062139d834b54c5c8a7a201269c5954d981c4367b"
+  },
+  "supplementalLocalDiagnostics": [
+    {
+      "path": ".scaffold/phase003-focus-probe.json",
+      "sha256": "d47a5c2f48ee72710cd8c9d8004a17a3aa32b4019b689521a23d6e13b9860f9d",
+      "formalCase": false
+    }
+  ],
+  "generatedAt": "2026-09-09T10:42:10.780Z"
+}

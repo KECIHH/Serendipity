@@ -1,0 +1,400 @@
+{
+  "phase": 3,
+  "attemptId": "attempt-7",
+  "requestedThrough": 3,
+  "implementationContextId": "01a08550-3c47-7423-82c2-5f2f0d449ed2:Phase003",
+  "producer": "Phase003",
+  "consumers": [
+    4,
+    5,
+    61
+  ],
+  "scope": "PINNED_NEXT_SCAFFOLD_STYLES_AND_AUTOMATED_ACCEPTANCE",
+  "phaseStartCommit": "6a54477f9a42e124d2a310ed9dad8663d8ee926d",
+  "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+  "modificationScope": [
+    ".gitignore",
+    "README.md",
+    "components.json",
+    "package.json",
+    "package-lock.json",
+    "next.config.ts",
+    "tsconfig.json",
+    "postcss.config.mjs",
+    "eslint.config.mjs",
+    "src/app/",
+    "src/components/ui/",
+    "src/lib/utils.ts",
+    "public/",
+    "scripts/",
+    "docs/runtime-baseline.json",
+    "docs/phase-plans/Phase003.json",
+    "docs/phase-plans/Phase003-inputs.json",
+    "docs/phase-plans/Phase003-checkpoint-recovery.json",
+    "docs/checkpoint-migrations/",
+    "docs/agent-execution-contract.md",
+    "docs/evidence/attempts/Phase003/"
+  ],
+  "sourcePaths": [
+    ".gitattributes",
+    ".gitignore",
+    "AGENTS.md",
+    "README.md",
+    "components.json",
+    "docs/agent-execution-contract.md",
+    "docs/checkpoint-migrations/history-20260909.json",
+    "docs/directory-structure.md",
+    "docs/evidence/attempts/Phase003/setup/bootstrap.json",
+    "docs/phase-plans/Phase003-checkpoint-recovery.json",
+    "docs/phase-plans/Phase003-inputs.json",
+    "docs/phase-plans/Phase003.json",
+    "docs/project-constitution.md",
+    "docs/project-layout.json",
+    "docs/runtime-baseline.json",
+    "docs/tech-stack.md",
+    "docs/ui-design-system.md",
+    "eslint.config.mjs",
+    "next.config.ts",
+    "package-lock.json",
+    "package.json",
+    "postcss.config.mjs",
+    "public/file.svg",
+    "public/globe.svg",
+    "public/next.svg",
+    "public/vercel.svg",
+    "public/window.svg",
+    "scripts/check-project-layout.mjs",
+    "scripts/checkpoint-history.mjs",
+    "scripts/complete-phase003.mjs",
+    "scripts/phase-evidence.mjs",
+    "scripts/phase003-evidence.mjs",
+    "scripts/prepare-checkpoint-import.mjs",
+    "scripts/prepare-phase003.mjs",
+    "scripts/test-checkpoint-import.mjs",
+    "scripts/test-validate-phase.mjs",
+    "scripts/validate-phase.mjs",
+    "scripts/validate-phase.ps1",
+    "scripts/verify-phase003.mjs",
+    "src/app/favicon.ico",
+    "src/app/globals.css",
+    "src/app/layout.tsx",
+    "src/app/page.tsx",
+    "src/components/ui/button.tsx",
+    "src/lib/utils.ts",
+    "tsconfig.json"
+  ],
+  "requiredCaseIds": [
+    "Phase003:assertion-1",
+    "Phase003:assertion-2",
+    "Phase003:assertion-3",
+    "Phase003:assertion-4",
+    "Phase003:assertion-5",
+    "Phase003:assertion-6",
+    "Phase003:assertion-7",
+    "Phase003:assertion-8",
+    "Phase003:assertion-9",
+    "Phase003:negative-tailwind-import",
+    "Phase003:negative-brand-token",
+    "Phase003:negative-native-button",
+    "Phase003:negative-version-range",
+    "Phase003:dev-http",
+    "Phase003:browser-title",
+    "Phase003:responsive-layout",
+    "Phase003:verifier-regression"
+  ],
+  "cases": [
+    {
+      "testCaseId": "Phase003:assertion-1",
+      "command": "node scripts/verify-phase003.mjs --case assertion-1",
+      "denominator": 1,
+      "inputPath": "package.json",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-7/assertion-1.json",
+      "expected": "Exactly six current-phase scripts with frozen commands; package/root lock names serendipity; dependencies/build/coverage/log/local-env ignored without global Git ignore; added future scripts remain accepted by the reusable verifier."
+    },
+    {
+      "testCaseId": "Phase003:assertion-2",
+      "command": "node scripts/verify-phase003.mjs --case assertion-2",
+      "denominator": 1,
+      "inputPath": "docs/runtime-baseline.json",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-7/assertion-2.json",
+      "expected": "Every direct dependency version is exact; actual Node/npm/CLI and locked framework versions and registry integrity match manifest and runtime baseline; lockfileVersion matches npm-produced lock; production audit exit 0 with no high/critical; downgrade to next 15.5.2 and CLI/framework inconsistency each fail and restoration passes."
+    },
+    {
+      "testCaseId": "Phase003:assertion-3",
+      "command": "node scripts/verify-phase003.mjs --case assertion-3",
+      "denominator": 1,
+      "inputPath": "package.json",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-7/assertion-3.json",
+      "expected": "Tailwind CSS is a devDependency with major 4; no root tailwind.config.js or tailwind.config.ts; strict TypeScript and no ignored build errors."
+    },
+    {
+      "testCaseId": "Phase003:assertion-4",
+      "command": "node scripts/verify-phase003.mjs --case assertion-4",
+      "denominator": 1,
+      "inputPath": "src/app/globals.css",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-7/assertion-4.json",
+      "expected": "Active Tailwind import and exactly one authority for all ten named tokens in @theme, correct design-system values including wide 64rem; box-sizing/body/link/overflow base rules."
+    },
+    {
+      "testCaseId": "Phase003:assertion-5",
+      "command": "node scripts/verify-phase003.mjs --case assertion-5",
+      "denominator": 1,
+      "inputPath": "components.json",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-7/assertion-5.json",
+      "expected": "Valid shadcn JSON with ui=@/components/ui,utils=@/lib/utils,components=@/components and css=src/app/globals.css."
+    },
+    {
+      "testCaseId": "Phase003:assertion-6",
+      "command": "node scripts/verify-phase003.mjs --case assertion-6",
+      "denominator": 1,
+      "inputPath": "src/components/ui/button.tsx",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-7/assertion-6.json",
+      "expected": "cn and Button exported; generated Button implementation unchanged from pinned shadcn CLI receipt; no extra UI component."
+    },
+    {
+      "testCaseId": "Phase003:assertion-7",
+      "command": "node scripts/verify-phase003.mjs --case assertion-7",
+      "denominator": 1,
+      "inputPath": "src/app/page.tsx",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-7/assertion-7.json",
+      "expected": "Real JSX uses Button from the unique UI module, fixed h1 and button labels, layout metadata title; required outer classes; no business behavior, forms, API, AI, Prisma, admin or future-phase scaffolding."
+    },
+    {
+      "testCaseId": "Phase003:assertion-8",
+      "command": "node scripts/verify-phase003.mjs --case assertion-8",
+      "denominator": 1,
+      "inputPath": "src/app/globals.css",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-7/assertion-8.json",
+      "expected": "Fresh production .next/static/css exists and contains parsed class selectors bg-brand-500,rounded-card,p-gutter; absence of .next must fail."
+    },
+    {
+      "testCaseId": "Phase003:assertion-9",
+      "command": "node scripts/verify-phase003.mjs --case assertion-9",
+      "denominator": 1,
+      "inputPath": "src/app/globals.css",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-7/assertion-9.json",
+      "expected": "Same production CSS contains a min-width media rule at 64rem with wide:max-w-5xl; no false positive from an unused variable."
+    },
+    {
+      "testCaseId": "Phase003:negative-tailwind-import",
+      "command": "node scripts/verify-phase003.mjs --case negative-tailwind-import",
+      "denominator": 1,
+      "inputPath": "src/app/globals.css",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-7/negative-tailwind-import.json",
+      "expected": "Isolated baseline green; comment out Tailwind import, rebuild fresh output, verify exit 1 with assertions 4 and 8 failed; restore original bytes, rebuild and verify exit 0."
+    },
+    {
+      "testCaseId": "Phase003:negative-brand-token",
+      "command": "node scripts/verify-phase003.mjs --case negative-brand-token",
+      "denominator": 1,
+      "inputPath": "src/app/globals.css",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-7/negative-brand-token.json",
+      "expected": "Isolated baseline green; delete brand-500 definition, rebuild fresh output, verify exit 1 with assertion 8 failed; restore original bytes, rebuild and verify exit 0."
+    },
+    {
+      "testCaseId": "Phase003:negative-native-button",
+      "command": "node scripts/verify-phase003.mjs --case negative-native-button",
+      "denominator": 1,
+      "inputPath": "src/app/page.tsx",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-7/negative-native-button.json",
+      "expected": "Replace rendered Button with native button and remove import only in an isolated copy; assertion 7 fails with real exit 1; restore and verify exit 0."
+    },
+    {
+      "testCaseId": "Phase003:negative-version-range",
+      "command": "node scripts/verify-phase003.mjs --case negative-version-range",
+      "denominator": 1,
+      "inputPath": "package.json",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-7/negative-version-range.json",
+      "expected": "Mutate one exact dependency to a caret range only in an isolated copy; assertion 2 fails with real exit 1; restore and verify exit 0."
+    },
+    {
+      "testCaseId": "Phase003:dev-http",
+      "command": "node scripts/verify-phase003.mjs --case dev-http",
+      "denominator": 1,
+      "inputPath": "src/app/page.tsx",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-7/dev-http.json",
+      "expected": "Controlled npm run dev on localhost:3000; curl.exe returns HTTP 200; startup/HTTP exits recorded, owned process tree released and port reusable."
+    },
+    {
+      "testCaseId": "Phase003:browser-title",
+      "command": "node scripts/verify-phase003.mjs --case browser-title",
+      "denominator": 1,
+      "inputPath": "src/app/layout.tsx",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-7/browser-title.json",
+      "expected": "Pinned Playwright/Chromium checks document.title, visible h1, accessible Button name and container computed brand background; save real screenshot/DOM, console errors and request inventory; no non-loopback browser requests; release process."
+    },
+    {
+      "testCaseId": "Phase003:responsive-layout",
+      "command": "node scripts/verify-phase003.mjs --case responsive-layout",
+      "denominator": 1,
+      "inputPath": "src/app/page.tsx",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-7/responsive-layout.json",
+      "expected": "At 375px document and element geometry show no horizontal overflow; at 1280px content computes max-width 1024px from wide:max-w-5xl; save both screenshots/DOM/layout and keyboard focus observation; release process."
+    },
+    {
+      "testCaseId": "Phase003:verifier-regression",
+      "command": "node scripts/verify-phase003.mjs --case verifier-regression",
+      "denominator": 1,
+      "inputPath": "package.json",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-7/verifier-regression.json",
+      "expected": "Isolated Git repository with global/system Git configs disabled: npm ci, lint,typecheck,build and all nine assertions pass; generated files remain ignored and checkpoint worktree clean; adding test/format/format:check passes, deleting build/changing typecheck fail then restore; exact six scripts enforced only by Phase003 Gate; source/report/plan hashes and prior checkpoint regression remain valid."
+    }
+  ],
+  "threshold": {
+    "originalThreshold": 17,
+    "automatedThreshold": 17,
+    "requiredPassRate": 1,
+    "scriptAssertions": 9,
+    "negativeCases": 4,
+    "browserCases": 3,
+    "regressionCases": 1,
+    "waived": false
+  },
+  "runtimePolicy": {
+    "node": "24.19.0",
+    "npm": "11.7.0",
+    "createNextApp": "15.5.24",
+    "next": "15.5.24",
+    "eslintConfigNext": "15.5.24",
+    "shadcn": "3.2.1"
+  },
+  "toolPolicy": {
+    "lucideReact": "0.544.0",
+    "playwright": "1.55.1",
+    "browser": "Chromium 140.0.7339.186 (Playwright build 1193)",
+    "publicAcquisitionAllowed": true,
+    "productionTraffic": false
+  },
+  "layoutAdaptations": {
+    "authority": [
+      "AGENTS.md",
+      "docs/project-layout.json",
+      "docs/agent-execution-contract.md"
+    ],
+    "scaffoldRoot": ".scaffold",
+    "existingGitignore": "Preserve the root .gitignore bytes and append missing generated-output patterns; do not copy over it.",
+    "rootEquality": true,
+    "localRoadmapUnchanged": true
+  },
+  "previousAttempts": [
+    {
+      "attemptId": "attempt-1",
+      "planPath": "docs/evidence/attempts/Phase003/attempt-1/frozen-plan.json",
+      "planHash": "c48b2181c15bbe01d7c2765712d70f14183a898ae90c5acd7e389bbb62ede21d"
+    },
+    {
+      "attemptId": "attempt-2",
+      "planPath": "docs/evidence/attempts/Phase003/attempt-2/frozen-plan.json",
+      "planHash": "c8d8ecda88b66f5ec8d8e84180a921c251327095ef4dde83004e2dd98b999321"
+    },
+    {
+      "attemptId": "attempt-3",
+      "planPath": "docs/evidence/attempts/Phase003/attempt-3/frozen-plan.json",
+      "planHash": "89d43023203522b946687b7aafa134048f1847640de08bfcb19119cb4e26a170"
+    },
+    {
+      "attemptId": "attempt-4",
+      "planPath": "docs/evidence/attempts/Phase003/attempt-4/frozen-plan.json",
+      "planHash": "ea45222141bc16541ca7fb67b7bd396e6a9f82a4682caddccecd9eb092f727cf"
+    },
+    {
+      "attemptId": "attempt-5",
+      "planPath": "docs/evidence/attempts/Phase003/attempt-5/frozen-plan.json",
+      "planHash": "23df6c524d2be92754668430c05241b66d9177a6ed2d17e9d1731184adc17bff"
+    },
+    {
+      "attemptId": "attempt-6",
+      "planPath": "docs/evidence/attempts/Phase003/attempt-6/frozen-plan.json",
+      "planHash": "9275f663e38e80f0e6025fa622dedd84ff3f974240efa2d9c988782fb21a2dd8"
+    }
+  ],
+  "requiredSupportingCommands": [
+    "npm ci",
+    "npm run lint",
+    "npm run typecheck",
+    "npm run build",
+    "npm run verify:phase003",
+    "npm audit --omit=dev --audit-level=high --json"
+  ],
+  "notApplicable": [
+    "Vitest/Prettier/Testing Library/jsdom and environment parser belong to Phase004.",
+    "No database, authentication, AI Provider, business form or real user/production traffic.",
+    "Automated browser checks do not claim human screen-reader experience or full WCAG certification."
+  ],
+  "dependencyRepair": {
+    "reason": "The pinned Next.js 15.5.24 depends on vulnerable postcss@8.4.31, while the current public shadcn registry introduced shadcn@4.21.0 into devDependencies despite executing CLI 3.2.1.",
+    "scope": "Keep every frozen runtimePolicy version; override only next > postcss to exact patched 8.5.28 and pin the project shadcn CLI dependency to the frozen 3.2.1. Preserve generated Button source unchanged; remove the v4-only shadcn/tailwind.css import when implementing the permitted globals.css.",
+    "nextPostcss": "8.5.28",
+    "shadcn": "3.2.1",
+    "requiredVerification": "npm ci, peer tree, real production audit, lint, typecheck, production build and all 17 frozen cases."
+  },
+  "reviewRemediation": {
+    "previousReview": "docs/evidence/attempts/Phase003/attempt-5/review.json",
+    "issues": [
+      "P003-R01",
+      "P003-R02",
+      "P003-R03",
+      "P003-R04",
+      "P003-R05",
+      "P003-R06",
+      "P003-R07"
+    ],
+    "case6": "Keep immutable shadcn bytes and single-UI checks only in this Phase003 Gate; reusable assertion checks exports.",
+    "case7": "Use one homePagePath consumer constant; keep future file/dependency/environment exclusions only in this Phase003 Gate.",
+    "browserCases": "Wait at most five seconds for keyboard focus, a solid 2px outline with 2px offset and a white 2px separation. Save stable focused screenshot and DOM as well as original viewport artifacts.",
+    "case17": "Run all nine consumers with added scripts and isolated future environment/UI fixture files; format TS/TSX with TypeScript printer and wrap CSS font token whitespace; restore bytes and clean Git state. Validate attached/supplemental/bootstrap hashes and required command/raw-record coverage with immutable metadata samples and in-memory mutations.",
+    "afterCases": "Restore the root production build after development-server checks and run all nine consumers on that output.",
+    "thresholdsUnchanged": true,
+    "futurePhaseImplementation": false
+  },
+  "evidenceRegressionFixture": {
+    "attemptId": "attempt-5",
+    "directory": "docs/evidence/attempts/Phase003/attempt-5",
+    "planPath": "docs/evidence/attempts/Phase003/attempt-5/frozen-plan.json",
+    "acceptanceEvidence": false,
+    "purpose": "Immutable command metadata for validation guard regression only; the attempt remains FAIL.",
+    "fileHashes": {
+      "docs/evidence/attempts/Phase003/attempt-5/assertion-1.json": "b3c4c0fee261197afd2ad6dfa9880a117cb980db1655bfa88a8cc4ecfd45aa63",
+      "docs/evidence/attempts/Phase003/attempt-5/assertion-2.json": "eef95f9a53781d33a661a5a3921796c030c33d46bc2736080f655d08ccb1c45e",
+      "docs/evidence/attempts/Phase003/attempt-5/assertion-3.json": "3cf50044da1bdd9ae347f715efbf175cc7f7336fd830f4b2ff6152823669d5a3",
+      "docs/evidence/attempts/Phase003/attempt-5/assertion-4.json": "d0d15a62ddcfd63d7c1165c83a5b52ddbec166e44ec5398b159831a904b11e75",
+      "docs/evidence/attempts/Phase003/attempt-5/assertion-5.json": "ee97ad3d057f6f2f0ca80351d9ff750fe865f9ce95dbf5b1d55122472280e778",
+      "docs/evidence/attempts/Phase003/attempt-5/assertion-6.json": "1fce4cb6476478d5707df6dabbbfe3e623ebb13b94e5f40ba60f506eb563f4b1",
+      "docs/evidence/attempts/Phase003/attempt-5/assertion-7.json": "41c69c49ff99d58a56400cc7f6a511211cb9a7d8a3e8a3094505531c0dde8a1d",
+      "docs/evidence/attempts/Phase003/attempt-5/assertion-8.json": "835cf70a36dcd4aab828f5878e021d0dd82551e42ade58e64ff5f5966cf2678f",
+      "docs/evidence/attempts/Phase003/attempt-5/assertion-9.json": "2b6c69d5857d5321f6db4a2c5fac9209198e3c199c1436e2b4352d142b2fa76c",
+      "docs/evidence/attempts/Phase003/attempt-5/browser-title.json": "217a3d50dd8aa6eb0f7b6e9b9cf3a106196615448d9956ec3f61bcb096d90e6c",
+      "docs/evidence/attempts/Phase003/attempt-5/command-01.json": "561fae3297a229e249f09c1692b205f8621322e54d5f7247248a2104285cf973",
+      "docs/evidence/attempts/Phase003/attempt-5/command-02.json": "05967c0d8512d8396b8f79a231054c3c4b6d9a889671f2ce3ddc540e697c7d1d",
+      "docs/evidence/attempts/Phase003/attempt-5/command-03.json": "64822208e29b558ba1160672d44faf52317a2db2fe6185c8d9c538104002231b",
+      "docs/evidence/attempts/Phase003/attempt-5/command-04.json": "78d277121eb0a045ef6da01aecec4161a1fec0693f3f1d58eac2859b67224a7a",
+      "docs/evidence/attempts/Phase003/attempt-5/command-05.json": "93acd007d417c644fafd74d7e1323558d82ff85794a668d500a431f35d25f5dd",
+      "docs/evidence/attempts/Phase003/attempt-5/command-06.json": "998e54601d7c5b64ae9f350965d506036da810fcb8080ada4cbe26c4eda9f7a1",
+      "docs/evidence/attempts/Phase003/attempt-5/command-07.json": "d90b91a9f5f51763fc010602ce34603c05f2d5e4dbefb3e7d086f950b5e605e7",
+      "docs/evidence/attempts/Phase003/attempt-5/command-08.json": "90da01d3b4115f6ad292e428ee00f424ce6519bcbed4ce8227f4509a96969953",
+      "docs/evidence/attempts/Phase003/attempt-5/command-09.json": "e0f3eae375c980962675f4cb3f27ca107eb2bb9e1f3c40737d3c2c48f879c7a3",
+      "docs/evidence/attempts/Phase003/attempt-5/command-10.json": "45be919a0239f4b828eacadf1b9c594d1e3c5e6371ee786d80913c09ecf0d7c3",
+      "docs/evidence/attempts/Phase003/attempt-5/command-11.json": "53ec7788ab8d8343d318d1ce7b251d7f1b3ccbd1a4c536a4196139d8da843b7f",
+      "docs/evidence/attempts/Phase003/attempt-5/command-12.json": "78a3b9ad40ffa9781f7115f9004563ed299374e84295d27d44ddb7250bb6d6ce",
+      "docs/evidence/attempts/Phase003/attempt-5/command-13.json": "ac5fd8630e798f7598f9e749b70551107f53609d4223eb4cf5ba07f00e5d21b8",
+      "docs/evidence/attempts/Phase003/attempt-5/command-14.json": "df75b8d7338216977475f244ba6761486ea5ed219305c156db82d220186eca12",
+      "docs/evidence/attempts/Phase003/attempt-5/command-15.json": "f1ea08fff0e28ec13d58325db7889c5b444e61ce0c32b0b198566188493e4a33",
+      "docs/evidence/attempts/Phase003/attempt-5/command-16.json": "c6e0eef31baac8cc57ce0e63093255a7301b9e7721e0fa9fdc3d4141c4efe1cf",
+      "docs/evidence/attempts/Phase003/attempt-5/command-17.json": "9066821a666c1c4194463b07d76becf41767ddfdd572f1afd3ebedef20497923",
+      "docs/evidence/attempts/Phase003/attempt-5/command-18.json": "0c442dbb56308a5cc952b4fb4b0087a075d7013b29fdaaee4c0848bfa502fff6",
+      "docs/evidence/attempts/Phase003/attempt-5/command-19.json": "54f101ada0cdbb0a6259169ce2d12acc6a9e11b42f51a032486561c056fc7a6a",
+      "docs/evidence/attempts/Phase003/attempt-5/command-20.json": "80ee83cdb390c0a80ad49ad828e7c4bb85e75ab223a702818de7ddd9875722ec",
+      "docs/evidence/attempts/Phase003/attempt-5/command-21.json": "a7c7d4fc3bc2f433caf3d2a42b1ce126bc2270fa975fa0c6e5bb8118293c07ec",
+      "docs/evidence/attempts/Phase003/attempt-5/command-22.json": "86e6e2490251e887f266f84f403669653e8ea75b6992d2f819cd48a1cbc5da96",
+      "docs/evidence/attempts/Phase003/attempt-5/dev-http.json": "272a0def631c8b286fa5408c32cb9cfddf522f4d5c9ac263d707501fe2ae9ec0",
+      "docs/evidence/attempts/Phase003/attempt-5/frozen-plan.json": "23df6c524d2be92754668430c05241b66d9177a6ed2d17e9d1731184adc17bff",
+      "docs/evidence/attempts/Phase003/attempt-5/negative-brand-token.json": "528fb2fbaa805d60d27206b6a49f3b4f17ce4ad4c7495a554a4aa79fe7f40450",
+      "docs/evidence/attempts/Phase003/attempt-5/negative-native-button.json": "018ce1aad7d4da81e8b8c94dcf7701c208e37df1f85fc4a433fe619c58d11350",
+      "docs/evidence/attempts/Phase003/attempt-5/negative-tailwind-import.json": "e528fdd426885698d7677bb0a2f492b8468d3c6778299b3deefebb2aed2df0ac",
+      "docs/evidence/attempts/Phase003/attempt-5/negative-version-range.json": "dadc7db8961e3a068d15defcd4b78562671f8e4968c43c02fcc2d75bbf93cd1b",
+      "docs/evidence/attempts/Phase003/attempt-5/responsive-layout.json": "a217d800b6815e172f154384276dab4d5e6d611003a6640b1dcc0b46fda79de4",
+      "docs/evidence/attempts/Phase003/attempt-5/supporting-commands.json": "26c14dbe0695fac4dfe51f704753aa1b85f9543a82c29dc66aa2196d0ea2c457",
+      "docs/evidence/attempts/Phase003/attempt-5/verifier-regression.json": "c02a0509ffac36ec89bad8953211866b0fd63d82a1637e475c500026aadfbf00"
+    }
+  }
+}

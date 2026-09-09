@@ -1,0 +1,315 @@
+{
+  "phase": 3,
+  "attemptId": "attempt-4",
+  "requestedThrough": 3,
+  "implementationContextId": "01a08550-3c47-7423-82c2-5f2f0d449ed2:Phase003",
+  "producer": "Phase003",
+  "consumers": [
+    4,
+    5,
+    61
+  ],
+  "scope": "PINNED_NEXT_SCAFFOLD_STYLES_AND_AUTOMATED_ACCEPTANCE",
+  "phaseStartCommit": "6a54477f9a42e124d2a310ed9dad8663d8ee926d",
+  "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+  "modificationScope": [
+    ".gitignore",
+    "README.md",
+    "components.json",
+    "package.json",
+    "package-lock.json",
+    "next.config.ts",
+    "tsconfig.json",
+    "postcss.config.mjs",
+    "eslint.config.mjs",
+    "src/app/",
+    "src/components/ui/",
+    "src/lib/utils.ts",
+    "public/",
+    "scripts/",
+    "docs/runtime-baseline.json",
+    "docs/phase-plans/Phase003.json",
+    "docs/phase-plans/Phase003-inputs.json",
+    "docs/phase-plans/Phase003-checkpoint-recovery.json",
+    "docs/checkpoint-migrations/",
+    "docs/agent-execution-contract.md",
+    "docs/evidence/attempts/Phase003/"
+  ],
+  "sourcePaths": [
+    ".gitattributes",
+    ".gitignore",
+    "AGENTS.md",
+    "README.md",
+    "components.json",
+    "docs/agent-execution-contract.md",
+    "docs/checkpoint-migrations/history-20260909.json",
+    "docs/directory-structure.md",
+    "docs/evidence/attempts/Phase003/setup/bootstrap.json",
+    "docs/phase-plans/Phase003-checkpoint-recovery.json",
+    "docs/phase-plans/Phase003-inputs.json",
+    "docs/phase-plans/Phase003.json",
+    "docs/project-constitution.md",
+    "docs/project-layout.json",
+    "docs/runtime-baseline.json",
+    "docs/tech-stack.md",
+    "docs/ui-design-system.md",
+    "eslint.config.mjs",
+    "next.config.ts",
+    "package-lock.json",
+    "package.json",
+    "postcss.config.mjs",
+    "public/file.svg",
+    "public/globe.svg",
+    "public/next.svg",
+    "public/vercel.svg",
+    "public/window.svg",
+    "scripts/check-project-layout.mjs",
+    "scripts/checkpoint-history.mjs",
+    "scripts/complete-phase003.mjs",
+    "scripts/phase-evidence.mjs",
+    "scripts/prepare-checkpoint-import.mjs",
+    "scripts/prepare-phase003.mjs",
+    "scripts/test-checkpoint-import.mjs",
+    "scripts/test-validate-phase.mjs",
+    "scripts/validate-phase.mjs",
+    "scripts/validate-phase.ps1",
+    "scripts/verify-phase003.mjs",
+    "src/app/favicon.ico",
+    "src/app/globals.css",
+    "src/app/layout.tsx",
+    "src/app/page.tsx",
+    "src/components/ui/button.tsx",
+    "src/lib/utils.ts",
+    "tsconfig.json"
+  ],
+  "requiredCaseIds": [
+    "Phase003:assertion-1",
+    "Phase003:assertion-2",
+    "Phase003:assertion-3",
+    "Phase003:assertion-4",
+    "Phase003:assertion-5",
+    "Phase003:assertion-6",
+    "Phase003:assertion-7",
+    "Phase003:assertion-8",
+    "Phase003:assertion-9",
+    "Phase003:negative-tailwind-import",
+    "Phase003:negative-brand-token",
+    "Phase003:negative-native-button",
+    "Phase003:negative-version-range",
+    "Phase003:dev-http",
+    "Phase003:browser-title",
+    "Phase003:responsive-layout",
+    "Phase003:verifier-regression"
+  ],
+  "cases": [
+    {
+      "testCaseId": "Phase003:assertion-1",
+      "command": "node scripts/verify-phase003.mjs --case assertion-1",
+      "denominator": 1,
+      "inputPath": "package.json",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-4/assertion-1.json",
+      "expected": "Exactly six current-phase scripts with frozen commands; package/root lock names serendipity; dependencies/build/coverage/log/local-env ignored without global Git ignore; added future scripts remain accepted by the reusable verifier."
+    },
+    {
+      "testCaseId": "Phase003:assertion-2",
+      "command": "node scripts/verify-phase003.mjs --case assertion-2",
+      "denominator": 1,
+      "inputPath": "docs/runtime-baseline.json",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-4/assertion-2.json",
+      "expected": "Every direct dependency version is exact; actual Node/npm/CLI and locked framework versions and registry integrity match manifest and runtime baseline; lockfileVersion matches npm-produced lock; production audit exit 0 with no high/critical; downgrade to next 15.5.2 and CLI/framework inconsistency each fail and restoration passes."
+    },
+    {
+      "testCaseId": "Phase003:assertion-3",
+      "command": "node scripts/verify-phase003.mjs --case assertion-3",
+      "denominator": 1,
+      "inputPath": "package.json",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-4/assertion-3.json",
+      "expected": "Tailwind CSS is a devDependency with major 4; no root tailwind.config.js or tailwind.config.ts; strict TypeScript and no ignored build errors."
+    },
+    {
+      "testCaseId": "Phase003:assertion-4",
+      "command": "node scripts/verify-phase003.mjs --case assertion-4",
+      "denominator": 1,
+      "inputPath": "src/app/globals.css",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-4/assertion-4.json",
+      "expected": "Active Tailwind import and exactly one authority for all ten named tokens in @theme, correct design-system values including wide 64rem; box-sizing/body/link/overflow base rules."
+    },
+    {
+      "testCaseId": "Phase003:assertion-5",
+      "command": "node scripts/verify-phase003.mjs --case assertion-5",
+      "denominator": 1,
+      "inputPath": "components.json",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-4/assertion-5.json",
+      "expected": "Valid shadcn JSON with ui=@/components/ui,utils=@/lib/utils,components=@/components and css=src/app/globals.css."
+    },
+    {
+      "testCaseId": "Phase003:assertion-6",
+      "command": "node scripts/verify-phase003.mjs --case assertion-6",
+      "denominator": 1,
+      "inputPath": "src/components/ui/button.tsx",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-4/assertion-6.json",
+      "expected": "cn and Button exported; generated Button implementation unchanged from pinned shadcn CLI receipt; no extra UI component."
+    },
+    {
+      "testCaseId": "Phase003:assertion-7",
+      "command": "node scripts/verify-phase003.mjs --case assertion-7",
+      "denominator": 1,
+      "inputPath": "src/app/page.tsx",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-4/assertion-7.json",
+      "expected": "Real JSX uses Button from the unique UI module, fixed h1 and button labels, layout metadata title; required outer classes; no business behavior, forms, API, AI, Prisma, admin or future-phase scaffolding."
+    },
+    {
+      "testCaseId": "Phase003:assertion-8",
+      "command": "node scripts/verify-phase003.mjs --case assertion-8",
+      "denominator": 1,
+      "inputPath": "src/app/globals.css",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-4/assertion-8.json",
+      "expected": "Fresh production .next/static/css exists and contains parsed class selectors bg-brand-500,rounded-card,p-gutter; absence of .next must fail."
+    },
+    {
+      "testCaseId": "Phase003:assertion-9",
+      "command": "node scripts/verify-phase003.mjs --case assertion-9",
+      "denominator": 1,
+      "inputPath": "src/app/globals.css",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-4/assertion-9.json",
+      "expected": "Same production CSS contains a min-width media rule at 64rem with wide:max-w-5xl; no false positive from an unused variable."
+    },
+    {
+      "testCaseId": "Phase003:negative-tailwind-import",
+      "command": "node scripts/verify-phase003.mjs --case negative-tailwind-import",
+      "denominator": 1,
+      "inputPath": "src/app/globals.css",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-4/negative-tailwind-import.json",
+      "expected": "Isolated baseline green; comment out Tailwind import, rebuild fresh output, verify exit 1 with assertions 4 and 8 failed; restore original bytes, rebuild and verify exit 0."
+    },
+    {
+      "testCaseId": "Phase003:negative-brand-token",
+      "command": "node scripts/verify-phase003.mjs --case negative-brand-token",
+      "denominator": 1,
+      "inputPath": "src/app/globals.css",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-4/negative-brand-token.json",
+      "expected": "Isolated baseline green; delete brand-500 definition, rebuild fresh output, verify exit 1 with assertion 8 failed; restore original bytes, rebuild and verify exit 0."
+    },
+    {
+      "testCaseId": "Phase003:negative-native-button",
+      "command": "node scripts/verify-phase003.mjs --case negative-native-button",
+      "denominator": 1,
+      "inputPath": "src/app/page.tsx",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-4/negative-native-button.json",
+      "expected": "Replace rendered Button with native button and remove import only in an isolated copy; assertion 7 fails with real exit 1; restore and verify exit 0."
+    },
+    {
+      "testCaseId": "Phase003:negative-version-range",
+      "command": "node scripts/verify-phase003.mjs --case negative-version-range",
+      "denominator": 1,
+      "inputPath": "package.json",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-4/negative-version-range.json",
+      "expected": "Mutate one exact dependency to a caret range only in an isolated copy; assertion 2 fails with real exit 1; restore and verify exit 0."
+    },
+    {
+      "testCaseId": "Phase003:dev-http",
+      "command": "node scripts/verify-phase003.mjs --case dev-http",
+      "denominator": 1,
+      "inputPath": "src/app/page.tsx",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-4/dev-http.json",
+      "expected": "Controlled npm run dev on localhost:3000; curl.exe returns HTTP 200; startup/HTTP exits recorded, owned process tree released and port reusable."
+    },
+    {
+      "testCaseId": "Phase003:browser-title",
+      "command": "node scripts/verify-phase003.mjs --case browser-title",
+      "denominator": 1,
+      "inputPath": "src/app/layout.tsx",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-4/browser-title.json",
+      "expected": "Pinned Playwright/Chromium checks document.title, visible h1, accessible Button name and container computed brand background; save real screenshot/DOM, console errors and request inventory; no non-loopback browser requests; release process."
+    },
+    {
+      "testCaseId": "Phase003:responsive-layout",
+      "command": "node scripts/verify-phase003.mjs --case responsive-layout",
+      "denominator": 1,
+      "inputPath": "src/app/page.tsx",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-4/responsive-layout.json",
+      "expected": "At 375px document and element geometry show no horizontal overflow; at 1280px content computes max-width 1024px from wide:max-w-5xl; save both screenshots/DOM/layout and keyboard focus observation; release process."
+    },
+    {
+      "testCaseId": "Phase003:verifier-regression",
+      "command": "node scripts/verify-phase003.mjs --case verifier-regression",
+      "denominator": 1,
+      "inputPath": "package.json",
+      "outputPath": "docs/evidence/attempts/Phase003/attempt-4/verifier-regression.json",
+      "expected": "Isolated Git repository with global/system Git configs disabled: npm ci, lint,typecheck,build and all nine assertions pass; generated files remain ignored and checkpoint worktree clean; adding test/format/format:check passes, deleting build/changing typecheck fail then restore; exact six scripts enforced only by Phase003 Gate; source/report/plan hashes and prior checkpoint regression remain valid."
+    }
+  ],
+  "threshold": {
+    "originalThreshold": 17,
+    "automatedThreshold": 17,
+    "requiredPassRate": 1,
+    "scriptAssertions": 9,
+    "negativeCases": 4,
+    "browserCases": 3,
+    "regressionCases": 1,
+    "waived": false
+  },
+  "runtimePolicy": {
+    "node": "24.19.0",
+    "npm": "11.7.0",
+    "createNextApp": "15.5.24",
+    "next": "15.5.24",
+    "eslintConfigNext": "15.5.24",
+    "shadcn": "3.2.1"
+  },
+  "toolPolicy": {
+    "lucideReact": "0.544.0",
+    "playwright": "1.55.1",
+    "browser": "Chromium 140.0.7339.186 (Playwright build 1193)",
+    "publicAcquisitionAllowed": true,
+    "productionTraffic": false
+  },
+  "layoutAdaptations": {
+    "authority": [
+      "AGENTS.md",
+      "docs/project-layout.json",
+      "docs/agent-execution-contract.md"
+    ],
+    "scaffoldRoot": ".scaffold",
+    "existingGitignore": "Preserve the root .gitignore bytes and append missing generated-output patterns; do not copy over it.",
+    "rootEquality": true,
+    "localRoadmapUnchanged": true
+  },
+  "previousAttempts": [
+    {
+      "attemptId": "attempt-1",
+      "planPath": "docs/evidence/attempts/Phase003/attempt-1/frozen-plan.json",
+      "planHash": "c48b2181c15bbe01d7c2765712d70f14183a898ae90c5acd7e389bbb62ede21d"
+    },
+    {
+      "attemptId": "attempt-2",
+      "planPath": "docs/evidence/attempts/Phase003/attempt-2/frozen-plan.json",
+      "planHash": "c8d8ecda88b66f5ec8d8e84180a921c251327095ef4dde83004e2dd98b999321"
+    },
+    {
+      "attemptId": "attempt-3",
+      "planPath": "docs/evidence/attempts/Phase003/attempt-3/frozen-plan.json",
+      "planHash": "89d43023203522b946687b7aafa134048f1847640de08bfcb19119cb4e26a170"
+    }
+  ],
+  "requiredSupportingCommands": [
+    "npm ci",
+    "npm run lint",
+    "npm run typecheck",
+    "npm run build",
+    "npm run verify:phase003",
+    "npm audit --omit=dev --audit-level=high --json"
+  ],
+  "notApplicable": [
+    "Vitest/Prettier/Testing Library/jsdom and environment parser belong to Phase004.",
+    "No database, authentication, AI Provider, business form or real user/production traffic.",
+    "Automated browser checks do not claim human screen-reader experience or full WCAG certification."
+  ],
+  "dependencyRepair": {
+    "reason": "The pinned Next.js 15.5.24 depends on vulnerable postcss@8.4.31, while the current public shadcn registry introduced shadcn@4.21.0 into devDependencies despite executing CLI 3.2.1.",
+    "scope": "Keep every frozen runtimePolicy version; override only next > postcss to exact patched 8.5.28 and pin the project shadcn CLI dependency to the frozen 3.2.1. Preserve generated Button source unchanged; remove the v4-only shadcn/tailwind.css import when implementing the permitted globals.css.",
+    "nextPostcss": "8.5.28",
+    "shadcn": "3.2.1",
+    "requiredVerification": "npm ci, peer tree, real production audit, lint, typecheck, production build and all 17 frozen cases."
+  }
+}

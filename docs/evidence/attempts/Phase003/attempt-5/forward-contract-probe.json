@@ -1,0 +1,25 @@
+{
+  "scope": "FORWARD_CONTRACT_REGRESSION_DIAGNOSTIC",
+  "status": "CONFIRMED_DEFECT",
+  "fixture": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase003-contract-probe-zg6Fay",
+  "observations": [
+    {
+      "mutation": false,
+      "exitCode": 0,
+      "stdout": "[7] PASS\nPHASE003_ASSERTIONS [{\"assertion\":7,\"status\":\"PASS\",\"details\":{\"heading\":\"Serendipity · 际遇\",\"button\":\"开始规划\",\"title\":\"Serendipity · 际遇\",\"bootstrapOnly\":true}}]\n",
+      "stderr": ""
+    },
+    {
+      "mutation": true,
+      "exitCode": 1,
+      "stdout": "[7] FAIL: Future-phase file: .env.example\nPHASE003_ASSERTIONS [{\"assertion\":7,\"status\":\"FAIL\",\"error\":\"Future-phase file: .env.example\"}]\n",
+      "stderr": ""
+    }
+  ],
+  "sourceHash": "dc6f34b6703c699d0d2b56d673f7e047be00fe427cbedd09a041fae5a644727c",
+  "references": [
+    "Phase004 forbids editing this verifier and requires regression after env/format changes.",
+    "The Phase003-specific exclusion belongs only in the Phase003 Gate."
+  ],
+  "productionFilesChanged": false
+}
