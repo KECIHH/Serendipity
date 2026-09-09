@@ -1,0 +1,550 @@
+{
+  "phase": 3,
+  "attemptId": "preflight-20260909-01",
+  "status": "BLOCKED",
+  "blockedCategory": "CHECKPOINT_HISTORY",
+  "artifactCommit": null,
+  "phaseExecutionStarted": false,
+  "checkpointCreated": false,
+  "generatedAt": "2026-09-09T07:38:08.242Z",
+  "requestScope": "Phase003 only",
+  "preflight": {
+    "head": "13a1381a52645edbe2db5b186c14d1aabc4b6c15",
+    "branch": "main",
+    "remote": "https://github.com/KECIHH/Serendipity.git",
+    "remoteHead": "13a1381a52645edbe2db5b186c14d1aabc4b6c15",
+    "porcelain": "",
+    "currentPhase": 3,
+    "completedThrough": 2
+  },
+  "findings": [
+    {
+      "id": "ROADMAP_CONTENT",
+      "status": "RESOLVED",
+      "initialObservedResult": "Both PowerShell validators and the layout check rejected roadmapRoot/.scaffold.",
+      "action": "Preserved the complete existing directory by moving it into the ignored repository-root .scaffold directory.",
+      "from": "Serendipity · 际遇/.scaffold",
+      "to": ".scaffold/recovered-phase003-3aa923de93fa4768ac74cb195db180cf",
+      "filesDeleted": 0,
+      "currentLayoutExitCode": 0
+    },
+    {
+      "id": "EXECUTION_BASELINE_NOT_ANCESTOR",
+      "status": "BLOCKED",
+      "evidenceCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+      "head": "13a1381a52645edbe2db5b186c14d1aabc4b6c15",
+      "observedExitCode": 1
+    },
+    {
+      "id": "PHASE002_ARTIFACT_NOT_ANCESTOR",
+      "status": "BLOCKED",
+      "evidenceCommit": "5b5378f092455226b9bf20cc00f07aa95a69fd01",
+      "actualParentOfCurrentMetadata": "3bf36b6712ea374066b84079c06642ba2de15435",
+      "observedExitCode": 1,
+      "originalMetadata": "7c70866f0b7c391ba1971e11cd3aa360b60f1423",
+      "originalMetadataParentMatchesEvidence": true,
+      "originalAndCurrentArtifactTreesMatch": true
+    },
+    {
+      "id": "FROZEN_INPUTS",
+      "status": "PASS",
+      "checked": 8,
+      "mismatches": 0,
+      "manifestHashMatches": true,
+      "phase002EvidenceHashMatches": true
+    },
+    {
+      "id": "BOOTSTRAP_NPM_VERSION",
+      "status": "PENDING",
+      "expected": "11.7.0",
+      "actual": "11.17.0",
+      "remedy": "After valid admission, install npm@11.7.0 in a controlled tools directory and verify both Node and npm before scaffolding."
+    }
+  ],
+  "observedCommitPairs": [
+    {
+      "role": "new-layout-baseline",
+      "evidenceCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+      "currentHistoryCommit": "05a99eec43f8f1f19227b80f34ab6e6c520b7510",
+      "evidenceTree": "76f4be4b1aed98a22b43cf9c936f87da02470c35",
+      "currentTree": "76f4be4b1aed98a22b43cf9c936f87da02470c35",
+      "treeBytesMatch": true,
+      "ancestryEquivalence": false
+    },
+    {
+      "role": "Phase001-artifact",
+      "evidenceCommit": "f0d416e296c9ca258d2907750f4fb933e15567a6",
+      "currentHistoryCommit": "4ba7669e98522b98a1fead3b1f0c30c04dc52c20",
+      "evidenceTree": "2b5be940d3847acbc49bf1a53a4edbce7f3ab04d",
+      "currentTree": "2b5be940d3847acbc49bf1a53a4edbce7f3ab04d",
+      "treeBytesMatch": true,
+      "ancestryEquivalence": false
+    },
+    {
+      "role": "Phase001-metadata",
+      "evidenceCommit": "9909bcbf4350471df754868e1032ba9dce7c5964",
+      "currentHistoryCommit": "e0df6c60b6cf0f9091540b792b1e37b082492fa6",
+      "evidenceTree": "1d4711c4766965fc27ef9c967e95c408196471c8",
+      "currentTree": "1d4711c4766965fc27ef9c967e95c408196471c8",
+      "treeBytesMatch": true,
+      "ancestryEquivalence": false
+    },
+    {
+      "role": "Phase002-artifact",
+      "evidenceCommit": "5b5378f092455226b9bf20cc00f07aa95a69fd01",
+      "currentHistoryCommit": "3bf36b6712ea374066b84079c06642ba2de15435",
+      "evidenceTree": "0b43e46efa0a6d595773a28c25159ee07ac066a2",
+      "currentTree": "0b43e46efa0a6d595773a28c25159ee07ac066a2",
+      "treeBytesMatch": true,
+      "ancestryEquivalence": false
+    },
+    {
+      "role": "Phase002-metadata",
+      "evidenceCommit": "7c70866f0b7c391ba1971e11cd3aa360b60f1423",
+      "currentHistoryCommit": "13a1381a52645edbe2db5b186c14d1aabc4b6c15",
+      "evidenceTree": "e2872344a49c799cf91a39da8f3d18eaac306a66",
+      "currentTree": "e2872344a49c799cf91a39da8f3d18eaac306a66",
+      "treeBytesMatch": true,
+      "ancestryEquivalence": false
+    }
+  ],
+  "observedCommitPairsPolicy": "Diagnostic evidence only. Matching tree bytes do not establish the required commit ancestry and do not grant Phase003 admission.",
+  "pinnedInputs": [
+    {
+      "id": "product-requirements",
+      "path": "Serendipity · 际遇/docs/product-requirements.md",
+      "sha256": "320583e7baa5c0b3ee15b13ce0bc4f264e8ff1ae531feb94eb71e1102040854b",
+      "expectedHash": "320583e7baa5c0b3ee15b13ce0bc4f264e8ff1ae531feb94eb71e1102040854b",
+      "matches": true
+    },
+    {
+      "id": "canonical-contract",
+      "path": "Serendipity · 际遇/docs/roadmap-canonical-contract.md",
+      "sha256": "06d0ccdb218482a5688d78a9f69a88a0183cedc9d5eac5d0553e224b8d6e27e5",
+      "expectedHash": "06d0ccdb218482a5688d78a9f69a88a0183cedc9d5eac5d0553e224b8d6e27e5",
+      "matches": true
+    },
+    {
+      "id": "terminology",
+      "path": "Serendipity · 际遇/docs/术语冻结表.md",
+      "sha256": "403f21a6063aac79a3a93554156b06d9aff9277e6267c8f9ec17109cff4aff9f",
+      "expectedHash": "403f21a6063aac79a3a93554156b06d9aff9277e6267c8f9ec17109cff4aff9f",
+      "matches": true
+    },
+    {
+      "id": "state-machines",
+      "path": "Serendipity · 际遇/docs/state-machines.md",
+      "sha256": "3dab632bd549b26908312b09b166947b2a26128a0298749ba1c7efc6d3d6717a",
+      "expectedHash": "3dab632bd549b26908312b09b166947b2a26128a0298749ba1c7efc6d3d6717a",
+      "matches": true
+    },
+    {
+      "id": "testing-strategy",
+      "path": "Serendipity · 际遇/docs/testing-strategy.md",
+      "sha256": "36d90b927e90916a3dcfd0105022884c8f3c64cb04e22996da4cb4299acc93a5",
+      "expectedHash": "36d90b927e90916a3dcfd0105022884c8f3c64cb04e22996da4cb4299acc93a5",
+      "matches": true
+    },
+    {
+      "id": "personal-project-waivers",
+      "path": "Serendipity · 际遇/docs/personal-project-gate-waivers.md",
+      "sha256": "d96657b9165dc737a89da1be92e6e15c04b63480ceb6199e3110061d91463644",
+      "expectedHash": "d96657b9165dc737a89da1be92e6e15c04b63480ceb6199e3110061d91463644",
+      "matches": true
+    },
+    {
+      "id": "agent-only-execution",
+      "path": "Serendipity · 际遇/docs/agent-only-execution-contract.md",
+      "sha256": "032bfac53bce2dff89cb7470ae809f0a802ecf1fdf9f2fc266b465a37f838eff",
+      "expectedHash": "032bfac53bce2dff89cb7470ae809f0a802ecf1fdf9f2fc266b465a37f838eff",
+      "matches": true
+    },
+    {
+      "id": "phase-gate-schema",
+      "path": "Serendipity · 际遇/docs/phase-gate.schema.json",
+      "sha256": "e5c42fa3d46e1d6209f471d0bd6b249c2435c3ccf809dc4c73f4ef4b5f962633",
+      "expectedHash": "e5c42fa3d46e1d6209f471d0bd6b249c2435c3ccf809dc4c73f4ef4b5f962633",
+      "matches": true
+    }
+  ],
+  "runtime": {
+    "required": {
+      "node": "24.19.0",
+      "npm": "11.7.0",
+      "createNextApp": "15.5.24",
+      "next": "15.5.24",
+      "eslintConfigNext": "15.5.24",
+      "shadcn": "3.2.1"
+    },
+    "actualNode": "24.19.0",
+    "actualNpm": "11.17.0"
+  },
+  "inputs": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "224f30ead96b0771dc9949e5c33ebe4bf13bb0f76071fb3210d7d153e73b0592"
+    },
+    {
+      "path": "docs/project-layout.json",
+      "sha256": "7efe30a30fe009a8e1226563cae53d39ed2a2193be78bc0f0a776f57f67710ba"
+    },
+    {
+      "path": "docs/agent-execution-contract.md",
+      "sha256": "72eb5e5e8da13c02b3aeeb3803b668a440f1cbdee75fddf08f267c0ec9b6b2ed"
+    },
+    {
+      "path": "docs/roadmap-run.json",
+      "sha256": "8dc91db43d25ae6de2a60da3773184d299c05a49fc371ccbc18ec8463cf9c5ea"
+    },
+    {
+      "path": "docs/evidence/Phase002-gate.json",
+      "sha256": "44583e5ea20bf0e8a0f01fe07aaa09b500eb324355e0903726674862bf236430"
+    },
+    {
+      "path": "scripts/validate-phase.ps1",
+      "sha256": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319"
+    },
+    {
+      "path": "scripts/validate-phase.mjs",
+      "sha256": "4be9ee356a3f5a7d5b9265ee61143d6574617dda83d9ac8d3960f3f8e28fa293"
+    },
+    {
+      "path": "scripts/check-project-layout.mjs",
+      "sha256": "101c7c50f12e4d6cc80e1c9fb9667ad06fcc55c687d86cb5295ff81bc0eb68f6"
+    },
+    {
+      "path": "Serendipity · 际遇/docs/roadmap-execution-manifest.json",
+      "sha256": "497689843e4576c5f8e8a6636d29b04023ac997309a3ffab83cc67d90ea7bf3e"
+    },
+    {
+      "path": "Serendipity · 际遇/Phase003.md",
+      "sha256": "9023e1cb69ab1615b2b33b5814573365c5971c19c12c2286fc620267638845ac"
+    }
+  ],
+  "commands": [
+    {
+      "executable": "git",
+      "arguments": [
+        "rev-parse",
+        "HEAD"
+      ],
+      "exitCode": 0,
+      "stdout": "13a1381a52645edbe2db5b186c14d1aabc4b6c15",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "arguments": [
+        "branch",
+        "--show-current"
+      ],
+      "exitCode": 0,
+      "stdout": "main",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "arguments": [
+        "status",
+        "--porcelain=v1",
+        "-uall"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "arguments": [
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "exitCode": 0,
+      "stdout": "https://github.com/KECIHH/Serendipity.git",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "arguments": [
+        "ls-remote",
+        "origin",
+        "refs/heads/main"
+      ],
+      "exitCode": 0,
+      "stdout": "13a1381a52645edbe2db5b186c14d1aabc4b6c15\trefs/heads/main",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "arguments": [
+        "check-ignore",
+        "--no-index",
+        "--",
+        ".scaffold/recovered-phase003-3aa923de93fa4768ac74cb195db180cf/probe"
+      ],
+      "exitCode": 0,
+      "stdout": ".scaffold/recovered-phase003-3aa923de93fa4768ac74cb195db180cf/probe",
+      "stderr": ""
+    },
+    {
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "scripts/check-project-layout.mjs"
+      ],
+      "exitCode": 0,
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"scope\": \"PROJECT_LAYOUT_AND_HISTORICAL_ARCHIVE\",\n  \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\Desktop\\\\Serendipity · 际遇\",\n  \"projectRoot\": \"C:\\\\Users\\\\11295\\\\Desktop\\\\Serendipity · 际遇\",\n  \"roadmapTrackedFiles\": 0,\n  \"roadmapIgnored\": true,\n  \"localRoadmapPresent\": true,\n  \"preservedHistoricalFiles\": 44,\n  \"phaseSealEvaluated\": false\n}",
+      "stderr": ""
+    },
+    {
+      "executable": "powershell.exe",
+      "arguments": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/validate-phase.ps1",
+        "-CompletedThrough",
+        "2",
+        "-Strict",
+        "-Json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "{\n  \"status\": \"FAIL\",\n  \"error\": \"GIT: git merge-base failed: \",\n  \"networkPushEvaluated\": false\n}"
+    },
+    {
+      "executable": "pwsh.exe",
+      "arguments": [
+        "-NoProfile",
+        "-File",
+        "scripts/validate-phase.ps1",
+        "-CompletedThrough",
+        "2",
+        "-Strict",
+        "-Json"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "{\n  \"status\": \"FAIL\",\n  \"error\": \"GIT: git merge-base failed: \",\n  \"networkPushEvaluated\": false\n}"
+    },
+    {
+      "executable": "git",
+      "arguments": [
+        "rev-parse",
+        "13a1381a52645edbe2db5b186c14d1aabc4b6c15^"
+      ],
+      "exitCode": 0,
+      "stdout": "3bf36b6712ea374066b84079c06642ba2de15435",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "arguments": [
+        "rev-parse",
+        "7c70866f0b7c391ba1971e11cd3aa360b60f1423^"
+      ],
+      "exitCode": 0,
+      "stdout": "5b5378f092455226b9bf20cc00f07aa95a69fd01",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "arguments": [
+        "merge-base",
+        "--is-ancestor",
+        "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+        "13a1381a52645edbe2db5b186c14d1aabc4b6c15"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "arguments": [
+        "merge-base",
+        "--is-ancestor",
+        "5b5378f092455226b9bf20cc00f07aa95a69fd01",
+        "13a1381a52645edbe2db5b186c14d1aabc4b6c15"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "arguments": [
+        "diff",
+        "--quiet",
+        "5b5378f092455226b9bf20cc00f07aa95a69fd01",
+        "3bf36b6712ea374066b84079c06642ba2de15435"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "arguments": [
+        "diff",
+        "--quiet",
+        "7c70866f0b7c391ba1971e11cd3aa360b60f1423",
+        "13a1381a52645edbe2db5b186c14d1aabc4b6c15"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "arguments": [
+        "rev-parse",
+        "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da^{tree}"
+      ],
+      "exitCode": 0,
+      "stdout": "76f4be4b1aed98a22b43cf9c936f87da02470c35",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "arguments": [
+        "rev-parse",
+        "05a99eec43f8f1f19227b80f34ab6e6c520b7510^{tree}"
+      ],
+      "exitCode": 0,
+      "stdout": "76f4be4b1aed98a22b43cf9c936f87da02470c35",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "arguments": [
+        "rev-parse",
+        "f0d416e296c9ca258d2907750f4fb933e15567a6^{tree}"
+      ],
+      "exitCode": 0,
+      "stdout": "2b5be940d3847acbc49bf1a53a4edbce7f3ab04d",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "arguments": [
+        "rev-parse",
+        "4ba7669e98522b98a1fead3b1f0c30c04dc52c20^{tree}"
+      ],
+      "exitCode": 0,
+      "stdout": "2b5be940d3847acbc49bf1a53a4edbce7f3ab04d",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "arguments": [
+        "rev-parse",
+        "9909bcbf4350471df754868e1032ba9dce7c5964^{tree}"
+      ],
+      "exitCode": 0,
+      "stdout": "1d4711c4766965fc27ef9c967e95c408196471c8",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "arguments": [
+        "rev-parse",
+        "e0df6c60b6cf0f9091540b792b1e37b082492fa6^{tree}"
+      ],
+      "exitCode": 0,
+      "stdout": "1d4711c4766965fc27ef9c967e95c408196471c8",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "arguments": [
+        "rev-parse",
+        "5b5378f092455226b9bf20cc00f07aa95a69fd01^{tree}"
+      ],
+      "exitCode": 0,
+      "stdout": "0b43e46efa0a6d595773a28c25159ee07ac066a2",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "arguments": [
+        "rev-parse",
+        "3bf36b6712ea374066b84079c06642ba2de15435^{tree}"
+      ],
+      "exitCode": 0,
+      "stdout": "0b43e46efa0a6d595773a28c25159ee07ac066a2",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "arguments": [
+        "rev-parse",
+        "7c70866f0b7c391ba1971e11cd3aa360b60f1423^{tree}"
+      ],
+      "exitCode": 0,
+      "stdout": "e2872344a49c799cf91a39da8f3d18eaac306a66",
+      "stderr": ""
+    },
+    {
+      "executable": "git",
+      "arguments": [
+        "rev-parse",
+        "13a1381a52645edbe2db5b186c14d1aabc4b6c15^{tree}"
+      ],
+      "exitCode": 0,
+      "stdout": "e2872344a49c799cf91a39da8f3d18eaac306a66",
+      "stderr": ""
+    },
+    {
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "--version"
+      ],
+      "exitCode": 0,
+      "stdout": "v24.19.0",
+      "stderr": ""
+    },
+    {
+      "executable": "pwsh.exe",
+      "arguments": [
+        "-NoProfile",
+        "-Command",
+        "npm --version"
+      ],
+      "exitCode": 0,
+      "stdout": "11.17.0",
+      "stderr": ""
+    }
+  ],
+  "recoveryProposal": {
+    "status": "REQUIRES_EXECUTION_CONTRACT_CHANGE",
+    "objective": "Import the existing sealed checkpoints into the current rewritten Git history without changing old evidence or reintroducing removed development-document history.",
+    "preserve": [
+      "Current main history and remote",
+      "Original Phase000/001/002 evidence bytes, hashes and commit references",
+      "Ignored local development documents"
+    ],
+    "proposedChanges": [
+      "Add a separately versioned checkpoint migration receipt that records and verifies original and current commit identities, parent chains, artifact tree equality, input hashes and evidence hashes.",
+      "Extend the root-aware checkpoint validator and its rejection fixtures to explicitly validate this historical import and a new execution baseline captured from synchronized HEAD.",
+      "Run both shell validators against the migration, including rejection of incorrect mappings, changed trees, incorrect parents, altered evidence and input drift, before freezing or implementing Phase003."
+    ],
+    "constraints": [
+      "Do not treat commit hashes as interchangeable aliases.",
+      "Do not overwrite or backfill historical PASS records.",
+      "Do not reset, rebase, replace or force-push main.",
+      "Do not restore removed roadmap documents to tracked history.",
+      "A migration must be explicit and separately validated; it is not a Phase003 PASS."
+    ],
+    "notImplemented": true
+  },
+  "notRun": [
+    "Phase003 scaffold generation and copy",
+    "Project dependency installation and audit",
+    "Build, lint and typecheck",
+    "The 17 Phase003 acceptance items, including negative and browser checks",
+    "Phase003 artifact/metadata commits and Phase003 seal"
+  ],
+  "conclusion": "Phase003 admission is blocked. Run state and all historical evidence remain unchanged; no product artifacts or Phase003 PASS gate were created."
+}
