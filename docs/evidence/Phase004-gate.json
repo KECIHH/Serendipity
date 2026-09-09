@@ -1,7 +1,7 @@
 {
   "schemaVersion": "agent-gate-v1",
   "phase": 4,
-  "attemptId": "attempt-1",
+  "attemptId": "attempt-2",
   "status": "PASS",
   "simulation": true,
   "operatorMode": "AGENT_ONLY_AUTOMATED_NEW_BUILD",
@@ -11,7 +11,7 @@
     "providerMode": "local-adapter",
     "productionTraffic": false
   },
-  "artifactCommit": "f987ff1f997f302155a73031ce6272e7466fa038",
+  "artifactCommit": "5292fb7f43d9fd911bc0fae3dfa37063946bf3f1",
   "requiredCaseIds": [
     "Phase004:unit-01-valid",
     "Phase004:unit-02-missing-database",
@@ -544,10 +544,6 @@
       "sha256": "af53e4ea2036f0a69f2a504996de76d0e568297cb326ae04e0710c8a9ed7483e"
     },
     {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/review.json",
-      "sha256": "3a9a6885976322ff6822755deac607bf14814eb6ff3e3825598ccd62f4849199"
-    },
-    {
       "path": "docs/evidence/attempts/Phase004/attempt-1/startup-missing-env.json",
       "sha256": "4733a8481d3afd8c133aec128307e868bbe17af163a6e84cb50e3b843a963924"
     },
@@ -612,12 +608,16 @@
       "sha256": "9cbfaf437b6ddfcc64f967bc227d4b75ed06d57fc73cb6d824a4799180c1cde3"
     },
     {
+      "path": "docs/evidence/attempts/Phase004/attempt-2/review.json",
+      "sha256": "37a7f69e156ee253bb44525316f6275380db016d6e5e0d5b05cf29663dc24ce8"
+    },
+    {
       "path": "docs/phase-plans/Phase004-inputs.json",
       "sha256": "2f1c496e97c8050ba076c4e4e1ca5663e29be6d76582a00c60c73e8c6fd3e8bf"
     },
     {
       "path": "docs/phase-plans/Phase004.json",
-      "sha256": "f7fa23de7623852752a506fdea469451015cf79840d979f6fe53d31dd34c5562"
+      "sha256": "540ac9bafffa2fc0b644ff8b7338722268b755bb2238c8f58ed73db4d3fbf0b4"
     },
     {
       "path": "docs/project-constitution.md",
@@ -697,19 +697,21 @@
     }
   ],
   "failures": [],
-  "generatedAt": "2026-09-09T17:17:46.995Z",
+  "generatedAt": "2026-09-09T17:27:18.032Z",
   "details": {
     "planPath": "docs/phase-plans/Phase004.json",
-    "planHash": "f7fa23de7623852752a506fdea469451015cf79840d979f6fe53d31dd34c5562",
-    "testedTree": "4916e15c4ef29459d38874915cb56b1e414e0e71",
-    "reviewerRunId": "phase004-review-attempt-1",
-    "reviewReportPath": "docs/evidence/attempts/Phase004/attempt-1/review.json",
-    "reviewReportHash": "3a9a6885976322ff6822755deac607bf14814eb6ff3e3825598ccd62f4849199",
+    "planHash": "540ac9bafffa2fc0b644ff8b7338722268b755bb2238c8f58ed73db4d3fbf0b4",
+    "testedTree": "86adbcdb88789f6d1ee666df0b28ea31bbf9335b",
+    "reviewerRunId": "phase004-review-attempt-2",
+    "reviewReportPath": "docs/evidence/attempts/Phase004/attempt-2/review.json",
+    "reviewReportHash": "37a7f69e156ee253bb44525316f6275380db016d6e5e0d5b05cf29663dc24ce8",
     "recoveryCommits": [
       "12db44d822353a6a7335d2620b9a5f97e0f29079",
       "7d16d1c24e7fbeba0b2194b35c68a6a3c6b91f8b",
       "7cc0fc6aa802559a9485a6ea3b31d173379fcd8a",
-      "9cab42811209b0ff591414e4f22270a6af7fe919"
+      "9cab42811209b0ff591414e4f22270a6af7fe919",
+      "f987ff1f997f302155a73031ce6272e7466fa038",
+      "87a42c7f523c8b84329c9ea6b613de657b864a77"
     ],
     "originalThreshold": 23,
     "automatedThreshold": 23,

@@ -36,6 +36,7 @@ Phase002计划：`docs/phase-plans/Phase002.json`；唯一Gate：`docs/evidence/
 Phase003计划：`docs/phase-plans/Phase003.json`；唯一Gate：`docs/evidence/Phase003-gate.json`。失败attempt与检查点迁移证据保留原字节；未推进Phase004实现。
 
 
-| Phase004 | ESLint/Prettier/Vitest 工具链、统一环境变量 registry/parser、启动期 fail-closed 校验与环境文档 | .env.example、src/lib/env*.ts、src/instrumentation.ts、Vitest/Prettier/ESLint 配置、README、runtime baseline、23项证据；完整路径见 Gate | 23/23：Vitest 15/15、lint、format:check、typecheck、build、固定 npm CLI 的 verify:phase003、5项反向注入、启动缺失/恢复与 Git 忽略均通过；artifactCommit=f987ff1f997f302155a73031ce6272e7466fa038；attemptId=attempt-1 | 无真实数据库、AI Provider、生产流量或真人读屏；均不属于本卡 | 可封口候选；metadata 后执行双 shell seal、clean 与 GitHub 同步 |
 
-Phase004计划：docs/phase-plans/Phase004.json；唯一 Gate：docs/evidence/Phase004-gate.json。失败注入报告保留于 docs/evidence/attempts/Phase004/attempt-1/。
+| Phase004 | ESLint/Prettier/Vitest 工具链、统一环境变量 registry/parser、启动期 fail-closed 校验与环境文档 | .env.example、src/lib/env*.ts、src/instrumentation.ts、Vitest/Prettier/ESLint 配置、README、runtime baseline、23项证据；完整路径见 Gate | 23/23：Vitest 15/15、lint、format:check、typecheck、build、固定 npm CLI 的 verify:phase003、5项反向注入、启动缺失/恢复与 Git 忽略均通过；artifactCommit=5292fb7f43d9fd911bc0fae3dfa37063946bf3f1；attemptId=attempt-2 | 无真实数据库、AI Provider、生产流量或真人读屏；均不属于本卡 | 可封口候选；metadata 后执行双 shell seal、clean 与 GitHub 同步 |
+
+Phase004计划：docs/phase-plans/Phase004.json；唯一 Gate：docs/evidence/Phase004-gate.json。失败注入报告保留于 docs/evidence/attempts/Phase004/attempt-2/。
