@@ -31,3 +31,6 @@
 Phase001计划：`docs/phase-plans/Phase001.json`；唯一Gate：`docs/evidence/Phase001-gate.json`，hash由run state checkpoint绑定。失败attempt与基础设施诊断均保留；历史Phase000原始文件、hash和提交不改。历史绝对路径只在隔离反序列化入口精确映射，旧validator源文件与Git对象保持原字节，错误映射仍被两个shell拒绝。
 
 Phase002计划：`docs/phase-plans/Phase002.json`；唯一Gate：`docs/evidence/Phase002-gate.json`，hash由run state绑定。保留失败attempt与上次中断的收据原字节；149个路线输入仅记录路径/SHA-256，八份run内公共输入未变化，历史Phase000/001 checkpoint不改。
+| Phase003 | Next.js脚手架、固定运行版本、shadcn Button、10个样式令牌、中文基础首页与安全依赖修复 | 根配置、src、public、scripts及runtime baseline；完整路径/hash见Gate inputs | lint/build/typecheck/verify退出0；17/17自动断言、反向/浏览器/隔离安装回归及独立Agent复核；artifactCommit=8e50df6bbb188301186ca87f3e6c74cc0f41c135；attemptId=attempt-7 | 未执行Phase004、数据库、鉴权、AI、真人读屏或生产流量 | 可封口候选；metadata后另执行双shell seal、clean和GitHub同步；用户授权止于003 |
+
+Phase003计划：`docs/phase-plans/Phase003.json`；唯一Gate：`docs/evidence/Phase003-gate.json`。失败attempt与检查点迁移证据保留原字节；未推进Phase004实现。
