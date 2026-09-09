@@ -4,15 +4,18 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
+import { checkpointHistoryEnvironment } from './checkpoint-history.mjs';
 
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const json = (file) => JSON.parse(fs.readFileSync(file, 'utf8').replace(/^\uFEFF/, ''));
 const local = (relative) => path.resolve(repositoryRoot, relative);
+let historyEnvironment;
 
 function git(args, input) {
   const result = spawnSync('git', ['-c', 'core.quotepath=false', ...args], {
     cwd: repositoryRoot,
+    env: historyEnvironment,
     input,
     windowsHide: true,
     maxBuffer: 16 * 1024 * 1024,
@@ -31,6 +34,7 @@ function filesUnder(directory) {
 }
 
 function check() {
+  historyEnvironment = checkpointHistoryEnvironment(repositoryRoot).env;
   const layout = json(local('docs/project-layout.json'));
   const state = json(local('docs/roadmap-run.json'));
   const actualGitRoot = git(['rev-parse', '--show-toplevel']).toString('utf8').trim();

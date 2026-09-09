@@ -1,0 +1,39 @@
+{
+  "status": "FAIL",
+  "scope": "CHECKPOINT_HISTORY_IMPORT_REGRESSION",
+  "planPath": "docs/phase-plans/Phase003-checkpoint-recovery.json",
+  "planHash": "c0b6dba82cb4feaf2bf74d3d3769635e375fb561831d6adcbf97f13fc81d83e9",
+  "migrationPath": "docs/checkpoint-migrations/history-20260909.json",
+  "migrationHash": "45bc0742f7b12506a007c84a0f3f9808f2f9b9e8d292a60fab345f4966e1d5b4",
+  "startedAt": "2026-09-09T08:04:36.708Z",
+  "durationMs": 10914,
+  "temporaryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-checkpoint-import-XAzdsH",
+  "cases": [],
+  "observations": [
+    {
+      "case": "both-shell-positive-admission-from-clean-clone",
+      "executable": "powershell.exe",
+      "arguments": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/validate-phase.ps1",
+        "-CompletedThrough",
+        "2",
+        "-Strict",
+        "-Json"
+      ],
+      "exitCode": 1,
+      "expectedDiagnostic": null,
+      "output": {
+        "status": "FAIL",
+        "error": "ENOENT: no such file or directory, lstat 'C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-checkpoint-import-XAzdsH\\repository\\Serendipity · 际遇\\docs\\validate-roadmap-v2.ps1'",
+        "networkPushEvaluated": false
+      }
+    }
+  ],
+  "failure": "AssertionError [ERR_ASSERTION]: both-shell-positive-admission-from-clean-clone: {\n  \"status\": \"FAIL\",\n  \"error\": \"ENOENT: no such file or directory, lstat 'C:\\\\Users\\\\11295\\\\AppData\\\\Local\\\\Temp\\\\serendipity-checkpoint-import-XAzdsH\\\\repository\\\\Serendipity · 际遇\\\\docs\\\\validate-roadmap-v2.ps1'\",\n  \"networkPushEvaluated\": false\n}\n\n1 !== 0\n\n    at validate (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/scripts/test-checkpoint-import.mjs:57:14)\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/scripts/test-checkpoint-import.mjs:84:3\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)",
+  "pendingSeparateCase": "existing-both-shell-checkpoint-regressions",
+  "productionTraffic": false
+}

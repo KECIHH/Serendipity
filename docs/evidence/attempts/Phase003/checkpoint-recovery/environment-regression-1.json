@@ -1,0 +1,99 @@
+{
+  "status": "PASS",
+  "scope": "ISOLATED_ROOT_LAYOUT_GIT_PROTOCOL_REGRESSION",
+  "simulation": true,
+  "sourceRepositoryIndexMutated": false,
+  "network": "LOCAL_FILESYSTEM_ONLY",
+  "independentReviewPerformed": false,
+  "reviewFixturePolicy": "Synthetic protocol JSON only; actual phase acceptance requires a separate independent Agent report",
+  "sourceBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+  "testedSourceHashes": {
+    "scripts/validate-phase.mjs": "a088c83052de62a7a5641ae989b624d5124eb5ea7942ab69df3f063d86e654ff",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319",
+    "scripts/phase-evidence.mjs": "3727f8f8e5f00cf7e03d4bc50f71ebdbff483380cbc59df124bf21b473261d95",
+    "scripts/test-validate-phase.mjs": "5969dcf96abd0f8aa380c4965fd0c9e4126a80bc8e33d12037d4c6632193971f",
+    "docs/phase-plans/Phase001-inputs.json": "2f4a1c99660655d719e79a0411706f107df0f8d8f8888487fc4fffa58f0990e5"
+  },
+  "shells": [
+    "powershell",
+    "pwsh"
+  ],
+  "caseCount": 1,
+  "observationCount": 3,
+  "cases": [
+    {
+      "name": "root-equality-empty-prefix-local-inputs-history-pass",
+      "status": "PASS",
+      "durationMs": 16715
+    }
+  ],
+  "observations": [
+    {
+      "case": "root-equality-empty-prefix-local-inputs-history-pass",
+      "shell": "powershell",
+      "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json -ProtocolFixture",
+      "exitCode": 0,
+      "expectedDiagnostic": null,
+      "result": {
+        "status": "PASS",
+        "scope": "ISOLATED_PROTOCOL_FIXTURE_VALIDATION",
+        "protocolFixture": true,
+        "layoutVersion": 2,
+        "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-vGlomP\\positive",
+        "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-vGlomP\\positive",
+        "projectGitPrefix": "",
+        "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+        "completedThrough": 1,
+        "currentPhase": 2,
+        "artifactCommit": "8a759aaf9ad39e5e3d64c9774ceb104480dfe5c4",
+        "metadataCommit": "857f35a2a1285221e7f9e3ff2380e62af1184be8",
+        "historicalPhase": 0,
+        "preservedHistoricalFiles": 44,
+        "localIgnoredInputsVerified": 151,
+        "contractCoverage": {
+          "numerator": 20,
+          "denominator": 20
+        },
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "root-equality-empty-prefix-local-inputs-history-pass",
+      "shell": "pwsh",
+      "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json -ProtocolFixture",
+      "exitCode": 0,
+      "expectedDiagnostic": null,
+      "result": {
+        "status": "PASS",
+        "scope": "ISOLATED_PROTOCOL_FIXTURE_VALIDATION",
+        "protocolFixture": true,
+        "layoutVersion": 2,
+        "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-vGlomP\\positive",
+        "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-vGlomP\\positive",
+        "projectGitPrefix": "",
+        "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+        "completedThrough": 1,
+        "currentPhase": 2,
+        "artifactCommit": "8a759aaf9ad39e5e3d64c9774ceb104480dfe5c4",
+        "metadataCommit": "857f35a2a1285221e7f9e3ff2380e62af1184be8",
+        "historicalPhase": 0,
+        "preservedHistoricalFiles": 44,
+        "localIgnoredInputsVerified": 151,
+        "contractCoverage": {
+          "numerator": 20,
+          "denominator": 20
+        },
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "local-fast-forward-sync",
+      "command": "git push <isolated local bare repository> main:refs/heads/main",
+      "exitCode": 0,
+      "metadataCommit": "857f35a2a1285221e7f9e3ff2380e62af1184be8",
+      "network": "LOCAL_FILESYSTEM_ONLY"
+    }
+  ],
+  "durationMs": 16719,
+  "fixtureRoot": null
+}

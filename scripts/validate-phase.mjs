@@ -6,6 +6,7 @@ import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { requireEvidenceSources, requireHashCoverage, requireReviewIdentity, requireReportBinding } from './phase-evidence.mjs';
+import { checkpointHistoryEnvironment, validateCheckpointImport } from './checkpoint-history.mjs';
 
 const defaultRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
@@ -95,6 +96,7 @@ function validateSchema(value, schema, location = 'gate') {
 export function validatePhase({ repositoryRoot = defaultRoot, manifestPath, completedThrough = 1, protocolFixture = false } = {}) {
   ensure(Number.isInteger(completedThrough) && completedThrough >= 1 && completedThrough <= 137, 'COMPLETED_THROUGH', 'CompletedThrough must be an integer from 1 through 137');
   const root = fs.realpathSync(path.resolve(repositoryRoot));
+  const importedHistory = checkpointHistoryEnvironment(root);
   if (protocolFixture) {
     const fixtureParent = path.dirname(root);
     ensure(path.dirname(fixtureParent) === fs.realpathSync(os.tmpdir()) && path.basename(fixtureParent).startsWith('serendipity-phase-validator-'), 'PROTOCOL_FIXTURE_ROOT', 'Protocol fixture mode is restricted to isolated temporary test repositories');
@@ -103,7 +105,7 @@ export function validatePhase({ repositoryRoot = defaultRoot, manifestPath, comp
   const read = (relative) => fs.readFileSync(local(relative));
   const json = (relative) => parseJson(read(relative));
   function git(args, input) {
-    const result = spawnSync('git', ['-c', 'core.quotepath=false', ...args], { cwd: root, input, windowsHide: true, maxBuffer: 32 * 1024 * 1024 });
+    const result = spawnSync('git', ['-c', 'core.quotepath=false', ...args], { cwd: root, input, env: importedHistory.env, windowsHide: true, maxBuffer: 32 * 1024 * 1024 });
     if (result.error) throw result.error;
     ensure(result.status === 0, 'GIT', `git ${args[0]} failed: ${result.stderr?.toString('utf8').trim()}`);
     return result.stdout;
@@ -199,7 +201,10 @@ export function validatePhase({ repositoryRoot = defaultRoot, manifestPath, comp
   same([...schema.required].sort(), [...gateFields].sort(), 'SCHEMA_DEFINITION', 'Gate schema required fields changed');
   const baseline = commitId(state.executionBaselineCommit, 'executionBaselineCommit');
   same(state.baselineCommit, baseline, 'BASELINE', 'baselineCommit must equal executionBaselineCommit');
-  git(['merge-base', '--is-ancestor', baseline, head]);
+  const checkpointImport = validateCheckpointImport({ root, state, head, git, blob, prefetch, receipt: importedHistory.receipt, receiptHash: importedHistory.receiptHash });
+  const currentHistoryBaseline = checkpointImport?.currentHistoryBaselineCommit ?? baseline;
+  const currentCommit = checkpointImport?.currentCommit ?? ((value) => value);
+  git(['merge-base', '--is-ancestor', currentHistoryBaseline, head]);
   const initialState = blobJson(baseline, 'docs/roadmap-run.json');
   const initialLayout = blobJson(baseline, 'docs/project-layout.json');
   same(initialState.completedThrough, 0, 'BASELINE', 'Execution baseline must precede new-layout Phase001');
@@ -349,7 +354,7 @@ export function validatePhase({ repositoryRoot = defaultRoot, manifestPath, comp
   const oldSchema = blobJson(historical.baselineCommit, `${oldRoadmapPrefix}docs/phase-gate.schema.json`);
   validateSchemaDefinition(oldSchema);
   validateGate(json(historical.evidencePath), oldState.checkpoints[0], oldSchema, historical.projectGitPrefix, true);
-  ensure(gitText(['log', '--format=%H', `${baseline}..HEAD`, '--', `${historical.archiveRoot}/`]) === '', 'HISTORY_IMMUTABLE', 'Historical archive was modified after execution baseline');
+  ensure(gitText(['log', '--format=%H', `${currentHistoryBaseline}..HEAD`, '--', `${historical.archiveRoot}/`]) === '', 'HISTORY_IMMUTABLE', 'Historical archive was modified after execution baseline');
 
   same(state.completedThrough, completedThrough, 'RUN_PROGRESS', 'Run completedThrough differs from requested seal');
   same(state.currentPhase, completedThrough + 1, 'RUN_PROGRESS', 'Run currentPhase must follow completedThrough');
@@ -358,11 +363,11 @@ export function validatePhase({ repositoryRoot = defaultRoot, manifestPath, comp
   same(state.checkpoints.map((entry) => entry.phase), Array.from({ length: completedThrough }, (_, index) => index + 1), 'CHECKPOINTS', 'New-layout checkpoints must cover phases 1..completedThrough exactly');
   same(state.lastArtifactCommit, state.checkpoints.at(-1).artifactCommit, 'CHECKPOINT_ARTIFACT', 'lastArtifactCommit must reference the final checkpoint');
   same(state.currentLayoutPhaseSeal, state.checkpoints.at(-1), 'CHECKPOINTS', 'currentLayoutPhaseSeal must match final checkpoint');
-  const history = gitText(['log', '--reverse', '--topo-order', '--format=%H%x09%P%x09%s', `${baseline}..HEAD`]).split('\n').filter(Boolean).map((line) => {
+  const history = gitText(['log', '--reverse', '--topo-order', '--format=%H%x09%P%x09%s', `${currentHistoryBaseline}..HEAD`]).split('\n').filter(Boolean).map((line) => {
     const [id, parentText, subject] = line.split('\t');
     return { id, parents: parentText.split(' '), subject };
   });
-  let priorCommit = baseline;
+  let priorCommit = currentHistoryBaseline;
   for (const entry of history) {
     same(entry.parents, [priorCommit], 'HISTORY_LINEAR', 'Phase history must be linear without merge commits');
     priorCommit = entry.id;
@@ -386,6 +391,10 @@ export function validatePhase({ repositoryRoot = defaultRoot, manifestPath, comp
     same(receipt.executionBaselineCommit, baseline, 'RECEIPT_BASELINE', 'Input receipt execution baseline mismatch');
     same(receipt.baselineCommit, baseline, 'RECEIPT_BASELINE', 'Input receipt baseline mismatch');
     same(receipt.manifestHash, manifestHash, 'RECEIPT_HASH', 'Input receipt manifest hash mismatch');
+    if (checkpointImport && n >= checkpointImport.startPhase) {
+      same(receipt.checkpointMigration, { path: 'docs/checkpoint-migrations/history-20260909.json', sha256: checkpointImport.receiptHash, continuationBaselineCommit: checkpointImport.continuationBaselineCommit, importedThrough: 2 }, 'IMPORT_RECEIPT_BINDING', 'Current phase receipt must bind the history import');
+      git(['merge-base', '--is-ancestor', checkpointImport.continuationBaselineCommit, receipt.phaseStartCommit]);
+    }
     if (n === 1) {
       for (const key of ['head', 'originMain']) same(receipt.preflight?.[key], baseline, 'PREFLIGHT', `Preflight ${key} must prove synchronized baseline`);
       same(receipt.preflight?.porcelain, '', 'PREFLIGHT', 'Preflight worktree must have been clean');
@@ -416,11 +425,12 @@ export function validatePhase({ repositoryRoot = defaultRoot, manifestPath, comp
     }
     if (!firstReceipt) firstReceipt = receipt;
     else for (const input of expectedInputs) same(receipt.pinnedInputs.find((item) => item.id === input.id), firstReceipt.pinnedInputs.find((item) => item.id === input.id), 'FROZEN_INPUTS', `Pinned input changed within execution run: ${input.id}`);
-    const artifactIndex = history.findIndex((entry) => entry.id === checkpoint.artifactCommit);
+    const currentArtifactCommit = currentCommit(checkpoint.artifactCommit);
+    const artifactIndex = history.findIndex((entry) => entry.id === currentArtifactCommit);
     const metadataIndex = artifactIndex + 1;
     ensure(artifactIndex > previousMetadataIndex && metadataIndex < history.length, 'CHECKPOINT_PARENT', 'Checkpoint artifact must have a direct metadata child in phase history');
     const metadata = history[metadataIndex];
-    same(metadata.parents, [checkpoint.artifactCommit], 'CHECKPOINT_PARENT', 'Metadata parent must equal checkpoint artifact');
+    same(metadata.parents, [currentArtifactCommit], 'CHECKPOINT_PARENT', 'Metadata parent must equal current checkpoint artifact');
     const recovery = history.slice(previousMetadataIndex + 1, artifactIndex).map((entry) => entry.id);
     same(evidence.details.recoveryCommits, recovery, 'RECOVERY_COMMITS', 'recoveryCommits must enumerate every intermediate commit in order');
     for (const entry of history.slice(previousMetadataIndex + 1, artifactIndex)) {
@@ -459,7 +469,7 @@ export function validatePhase({ repositoryRoot = defaultRoot, manifestPath, comp
       }
     }
     same(sha256(blob(metadata.id, gatePath)), checkpoint.evidenceHash, 'GATE_IMMUTABLE', 'Gate differs from its final metadata commit');
-    same(gitText(['log', '--format=%H', `${checkpoint.artifactCommit}..HEAD`, '--', gatePath]).split('\n'), [metadata.id], 'GATE_IMMUTABLE', 'Gate was changed after its final metadata commit');
+    same(gitText(['log', '--format=%H', `${currentArtifactCommit}..HEAD`, '--', gatePath]).split('\n'), [metadata.id], 'GATE_IMMUTABLE', 'Gate was changed after its final metadata commit');
     const metadataState = blobJson(metadata.id, 'docs/roadmap-run.json');
     same(metadataState.completedThrough, n, 'HISTORICAL_STATE', 'Metadata completedThrough mismatch');
     same(metadataState.currentPhase, n + 1, 'HISTORICAL_STATE', 'Metadata currentPhase mismatch');
@@ -468,8 +478,12 @@ export function validatePhase({ repositoryRoot = defaultRoot, manifestPath, comp
     for (const key of ['stateVersion', 'layoutVersion', 'pathsRelativeTo', 'repositoryRoot', 'projectRoot', 'roadmapRoot', 'roadmapId', 'executionMode', 'operatorMode', 'manifestHash', 'contractHashes', 'baselineCommit', 'executionBaselineCommit', 'historicalCheckpoint']) same(metadataState[key], state[key], 'HISTORICAL_STATE', `Historical run-state ${key} changed`);
     previousMetadataIndex = metadataIndex;
   }
-  ensure(previousMetadataIndex === history.length - 1, 'HEAD_METADATA', 'HEAD must be the final completed phase metadata commit');
-  same(parents(head), [state.lastArtifactCommit], 'CHECKPOINT_PARENT', 'Metadata HEAD parent must equal lastArtifactCommit');
+  const importedAdmission = checkpointImport && completedThrough === checkpointImport.importedThrough;
+  if (importedAdmission) checkpointImport.validateAdmissionTail(history, previousMetadataIndex);
+  else {
+    ensure(previousMetadataIndex === history.length - 1, 'HEAD_METADATA', 'HEAD must be the final completed phase metadata commit');
+    same(parents(head), [currentCommit(state.lastArtifactCommit)], 'CHECKPOINT_PARENT', 'Metadata HEAD parent must equal lastArtifactCommit');
+  }
   const localContracts = manifest.localContracts.filter((contract) => contract.required);
   for (const contract of localContracts) ensure(fs.statSync(path.join(roadmap, relativeFile(contract.path))).isFile(), 'CONTRACT_COVERAGE', `Required local contract missing: ${contract.id}`);
   const currentContracts = manifest.projectContracts.filter((contract) => contract.required && contract.producerPhase <= completedThrough);
@@ -481,11 +495,12 @@ export function validatePhase({ repositoryRoot = defaultRoot, manifestPath, comp
     same(sha256(read(contract.path)), sha256(expected), 'CONTRACT_BYTES', `Required project contract bytes differ from HEAD: ${contract.path}`);
   }
   ensure(gitText(['status', '--porcelain=v1', '--untracked-files=all']) === '', 'WORKTREE_DIRTY', 'Entire repository worktree must be clean after metadata commit');
-  git(['diff', '--check', baseline, head]);
+  git(['diff', '--check', currentHistoryBaseline, head]);
   return {
     status: 'PASS', scope: protocolFixture ? 'ISOLATED_PROTOCOL_FIXTURE_VALIDATION' : 'ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL', protocolFixture, layoutVersion: 2, repositoryRoot: root, projectRoot: root,
     projectGitPrefix: '', executionBaselineCommit: baseline, completedThrough, currentPhase: completedThrough + 1,
-    artifactCommit: state.lastArtifactCommit, metadataCommit: head, historicalPhase: 0, preservedHistoricalFiles: oldFiles.length,
+    artifactCommit: state.lastArtifactCommit, metadataCommit: importedAdmission ? checkpointImport.currentMetadataCommit : head, historicalPhase: 0, preservedHistoricalFiles: oldFiles.length,
+    ...(checkpointImport ? { checkpointImport: { path: 'docs/checkpoint-migrations/history-20260909.json', sha256: checkpointImport.receiptHash, importedThrough: checkpointImport.importedThrough, continuationBaselineCommit: checkpointImport.continuationBaselineCommit, currentHead: head, admissionOnly: Boolean(importedAdmission) } } : {}),
     localIgnoredInputsVerified: firstReceipt.pinnedInputs.length, contractCoverage: { numerator: localContracts.length + currentContracts.length, denominator: localContracts.length + currentContracts.length },
     networkPushEvaluated: false,
   };

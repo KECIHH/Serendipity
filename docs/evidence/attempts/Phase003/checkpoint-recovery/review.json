@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "independent-checkpoint-recovery-review-v1",
+  "decision": "PASS",
+  "phase": 3,
+  "attemptId": "checkpoint-recovery",
+  "scope": "INDEPENDENT_REVIEW_OF_AUTHORIZED_CHECKPOINT_HISTORY_IMPORT_IMPLEMENTATION",
+  "planPath": "docs/phase-plans/Phase003-checkpoint-recovery.json",
+  "planHash": "c0b6dba82cb4feaf2bf74d3d3769635e375fb561831d6adcbf97f13fc81d83e9",
+  "reviewerRunId": "01a0853b-d08b-7a70-b0bf-f83e316f5bf7:checkpoint-recovery-review",
+  "contextId": "01a0853b-d08b-7a70-b0bf-f83e316f5bf7",
+  "generatedBy": "Codex independent checkpoint recovery reviewer, context 01a0853b-d08b-7a70-b0bf-f83e316f5bf7",
+  "generatedAt": "2026-09-09T08:43:09.212Z",
+  "runnerIdentity": {
+    "kind": "INDEPENDENT_CODEX_AGENT",
+    "implementationAuthored": false
+  },
+  "implementationContextId": "Phase003-main-20260909",
+  "sourceHashes": {
+    "docs/agent-execution-contract.md": "2919a173e60f0ed50fbf4839a5d8c96bc836afd032410cb012186026736688a2",
+    "docs/checkpoint-migrations/history-20260909.json": "45bc0742f7b12506a007c84a0f3f9808f2f9b9e8d292a60fab345f4966e1d5b4",
+    "docs/phase-plans/Phase003-checkpoint-recovery.json": "c0b6dba82cb4feaf2bf74d3d3769635e375fb561831d6adcbf97f13fc81d83e9",
+    "scripts/check-project-layout.mjs": "33301b2b84a3034a7697f3dc8f6497b8fec21dbcf67ebfe04be256f3ef321943",
+    "scripts/checkpoint-history.mjs": "c730d8119c04cd9151cd28b85b1ce335e2bdc7fcfda12a5399801ebab7a866d2",
+    "scripts/prepare-checkpoint-import.mjs": "89d87bd6b3fac74ac02a5a7a335aad778c1e9f5136fd8034e6e127516ff5fb2e",
+    "scripts/test-checkpoint-import.mjs": "1c02fec39e9d6ced7aaf7a3099bb622d93b58b10e533002da36247b0ed3f1c2d",
+    "scripts/test-validate-phase.mjs": "5969dcf96abd0f8aa380c4965fd0c9e4126a80bc8e33d12037d4c6632193971f",
+    "scripts/validate-phase.mjs": "a088c83052de62a7a5641ae989b624d5124eb5ea7942ab69df3f063d86e654ff"
+  },
+  "dependencyHashes": {
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319",
+    "scripts/phase-evidence.mjs": "3727f8f8e5f00cf7e03d4bc50f71ebdbff483380cbc59df124bf21b473261d95"
+  },
+  "reportHashes": {
+    ".scaffold/checkpoint-import-tests-2.json": "513716b09326b3257bac600f17f64f666e02846b8f85553355519c78994c8408",
+    ".scaffold/checkpoint-existing-regressions-1.json": "82714efc63e35fa7e45f8c020bf881969e10cd2ab0d458cd7d6ab7584b8d67cd",
+    ".scaffold/checkpoint-environment-regression-1.json": "58583139a0c1618e7a36612406efec9e5dd23319f8cf50abdfedf2478b421fbc",
+    "docs/evidence/attempts/Phase003/checkpoint-recovery/import-attempt-1.json": "22c5fb142b4ba32fb2eac3dc285e9155a00483fb8cf068b1271c5f27c4931575",
+    "docs/evidence/attempts/Phase003/preflight-20260909-01/attempt.json": "b6109aa113fc389e1f267e788081d712ebe63a511442973ffb580f40f4b7d853"
+  },
+  "repositoryObservation": {
+    "branch": "main",
+    "head": "8c5eb222b62c304f00d4b26b1c5f192db13491b9",
+    "remote": "https://github.com/KECIHH/Serendipity.git",
+    "observedOriginMain": "8c5eb222b62c304f00d4b26b1c5f192db13491b9",
+    "remoteObservationCommand": "git ls-remote --heads origin main",
+    "migrationImplementationUncommittedAtReview": true,
+    "implementationFilesChangedByReviewer": false,
+    "gitIndexCommitOrPushOperationsPerformedByReviewer": false
+  },
+  "checks": [
+    {
+      "id": "ORIGINAL_HISTORY_AND_GATE_PRESERVATION",
+      "status": "PASS",
+      "detail": "独立读取原始 Git 对象并执行 validateCheckpointImport：8组映射的原始及当前父链、tree、祖先关系均通过；Phase000仅删除收据列明的153个本地开发文档，其他文件保持相同。布局校验确认44个归档文件字节保留。旧Gate、归档及run state无本次修改，refs/replace为空，读取使用GIT_NO_REPLACE_OBJECTS=1。"
+    },
+    {
+      "id": "CURRENT_CHECKPOINT_RELATIONS",
+      "status": "PASS",
+      "detail": "原始 artifact 用于旧Gate的testedTree、计划、输入输出、review及hash校验；映射后的当前 artifact 单独用于当前历史定位和metadata直接父关系校验。Phase001/002当前metadata及完整tree与原始对象对应验证，没有把两个不同commit ID宣称为同一对象。"
+    },
+    {
+      "id": "LOCAL_HISTORY_BUNDLE",
+      "status": "PASS",
+      "bundlePath": ".scaffold/checkpoint-import/original-history.bundle",
+      "bundleSha256": "f6b6ed832f26751f1148b842c29d1d60a2efbfd26cfa311885e75ccb2e200524",
+      "detail": "实际bundle字节与收据SHA-256一致；git bundle verify退出0，记录完整历史和7c70866f0b7c391ba1971e11cd3aa360b60f1423 refs/heads/checkpoint-original。git check-ignore确认本地bundle和对象库被忽略，git ls-files未列出.scaffold或任何bundle。"
+    },
+    {
+      "id": "IMPORT_REJECTION_BOUNDARIES",
+      "status": "PASS",
+      "detail": "逐项核对专项报告18次观测：错误commit映射、tree、父链、Gate字节、冻结输入、越界恢复尾文件及bundle漂移，均在PowerShell 5.1和PowerShell 7返回预期诊断与退出1；正向和恢复后正向均退出0。"
+    },
+    {
+      "id": "COMPLETED_THROUGH_2_ADMISSION_TAIL",
+      "status": "PASS",
+      "detail": "准入例外仅在completedThrough等于固定importedThrough=2时生效；先完成已有Gate全量校验，再限制所有后续提交为phase(003): recovery及固定允许路径，并验证已提交收据hash与工作树干净。尾部src/app/page.tsx修改已在双shell被IMPORT_ADMISSION_SCOPE拒绝。"
+    },
+    {
+      "id": "PHASE003_FORMAL_SEAL_PRESERVED",
+      "status": "PASS",
+      "detail": "代码路径保留全部正式Gate、计划、结果集合、输入输出、独立review、source/report hash、artifact→metadata直接父子关系、metadata范围、恢复提交精确列表及HEAD metadata检查。Phase003起另要求输入收据与run state绑定导入收据SHA-256及continuationBaselineCommit。独立只读调用CompletedThrough=3检查现有completedThrough=2导入fixture，实际退出1并返回RUN_PROGRESS，未取得Phase003 seal。"
+    },
+    {
+      "id": "REQUIRED_REGRESSION_COVERAGE",
+      "status": "PASS",
+      "requiredCases": 15,
+      "importCaseCount": 14,
+      "existingRegressionCaseCount": 52,
+      "existingRegressionObservationCount": 115,
+      "environmentFollowupCaseCount": 1,
+      "environmentFollowupObservationCount": 3,
+      "detail": "专项14项加existing-both-shell-checkpoint-regressions与计划15项精确对应。已逐项核对原回归52组和115次观测的状态、预期诊断、双shell覆盖及报告哈希；没有由本审查Agent重复运行全套。"
+    }
+  ],
+  "testProvenance": {
+    "importFixtureCommit": "bfcdacc68960a8b84d77feef1061952044adde0e",
+    "importFixtureSourceComparison": "上述9个sourceHashes逐个与专项报告所指fixture提交的真实Git blob比较，全部相同；出具报告前再次计算当前文件SHA-256，未发现漂移。",
+    "existingRegressionDisclosure": "父任务明确披露完整回归启动后只调整测试驱动取得checkpointHistoryEnvironment的3行，核心validator/helper在该回归启动前已稳定。完整报告的testedSourceHashes经核对与当前文件一致，但这里只将其视为结束时来源哈希，不宣称完整52组从启动起执行了最终驱动的全部字节。",
+    "environmentFollowup": "已实际读取checkpoint-environment-regression-1.json：稳定后的测试驱动正向case在双shell通过，另有隔离本地同步观测，合计1组3次；记录的当前源hash全部匹配。",
+    "sourceDifferenceReceipt": "父任务已承诺另行保留驱动前后执行来源差异；本报告没有把尚未读取的差异收据计入reportHashes，也没有声称核验了完整回归启动时的驱动字节。",
+    "historicalFailures": "原preflight BLOCKED及首次导入fixture因未复制本地旧校验器而FAIL的记录均保留原字节。后续专项正向、反向及恢复后正向报告用于评估修复结果，未把旧失败记录改写为PASS。"
+  },
+  "issues": [],
+  "dispositions": [],
+  "decisionReason": "在授权的历史导入修复范围内，未发现尚未解决的可行动实现问题。独立对象核验、代码路径复核和已读测试证据支持本次迁移实现复核PASS。",
+  "limits": [
+    "本报告是提交前的迁移实现独立复核。父任务仍需完成恢复提交，在真实工作树干净时执行双shell CompletedThrough=2准入校验，并推送及核对远端后再开始Phase003产品实现。",
+    "本次未执行Phase003产品17项验收、产品artifact/metadata提交或Phase003正式seal；这些仍须按冻结计划完整完成。",
+    "本报告没有把运行中调整前的全套测试驱动与最终驱动混称为同一执行来源；Phase003最终回归按父任务说明使用稳定后的全部源码。"
+  ]
+}

@@ -5,8 +5,10 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { checkpointHistoryEnvironment } from './checkpoint-history.mjs';
 
 const sourceRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const sourceEnvironment = checkpointHistoryEnvironment(sourceRoot).env;
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const parseJson = (bytes) => JSON.parse(bytes.toString('utf8').replace(/^\uFEFF/, ''));
 const options = { shell: 'both', keep: false };
@@ -42,7 +44,7 @@ const fixtureOutput = 'docs/evidence/attempts/Phase001/protocol-fixture/git-vers
 const fixtureReview = 'docs/evidence/attempts/Phase001/protocol-fixture/review.json';
 
 function command(cwd, file, args, expectedZero = true) {
-  const env = { ...process.env };
+  const env = { ...sourceEnvironment };
   delete env.PSModulePath;
   const result = spawnSync(file, args, { cwd, env, windowsHide: true, maxBuffer: 16 * 1024 * 1024, timeout: 90_000 });
   if (result.error) throw result.error;
@@ -85,7 +87,7 @@ function newFixture(name) {
   for (const [key, value] of [['user.name', 'Serendipity Protocol Fixture'], ['user.email', 'fixture@serendipity.invalid'], ['commit.gpgsign', 'false'], ['core.autocrlf', 'false'], ['core.safecrlf', 'false'], ['core.hooksPath', '.git/hooks']]) git(root, ['config', '--local', key, value]);
   git(root, ['remote', 'set-url', 'origin', manifest.gitPolicy.remoteUrl]);
   for (const input of sourceReceipt.pinnedInputs) write(root, input.path, read(sourceRoot, input.path));
-  for (const file of ['scripts/validate-phase.mjs', 'scripts/validate-phase.ps1', 'scripts/phase-evidence.mjs']) write(root, file, read(sourceRoot, file));
+  for (const file of ['scripts/validate-phase.mjs', 'scripts/validate-phase.ps1', 'scripts/phase-evidence.mjs', 'scripts/checkpoint-history.mjs']) write(root, file, read(sourceRoot, file));
   for (const contract of manifest.projectContracts.filter((entry) => entry.required && entry.producerPhase === 1)) {
     write(root, contract.path, `# Protocol fixture: ${contract.id}\n\nThis file tests contract presence only. Product semantics are evaluated separately.\n`);
   }

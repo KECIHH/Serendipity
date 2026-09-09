@@ -1,0 +1,111 @@
+{
+  "scope": "AUTHORIZED_CHECKPOINT_HISTORY_IMPORT_IMPLEMENTATION",
+  "status": "PASS",
+  "phase003ProductGateProduced": false,
+  "planPath": "docs/phase-plans/Phase003-checkpoint-recovery.json",
+  "planHash": "c0b6dba82cb4feaf2bf74d3d3769635e375fb561831d6adcbf97f13fc81d83e9",
+  "requiredCases": 15,
+  "passedCases": 15,
+  "cases": [
+    {
+      "id": "original-and-current-commit-identities-and-parent-chains",
+      "status": "PASS"
+    },
+    {
+      "id": "only-local-roadmap-documents-removed-from-early-trees",
+      "status": "PASS"
+    },
+    {
+      "id": "identical-layout-and-phase001-phase002-trees",
+      "status": "PASS"
+    },
+    {
+      "id": "original-phase000-phase001-phase002-schema-hash-review-and-checkpoints",
+      "status": "PASS"
+    },
+    {
+      "id": "local-only-pinned-history-bundle-and-inputs",
+      "status": "PASS"
+    },
+    {
+      "id": "clean-synchronized-continuation-baseline",
+      "status": "PASS"
+    },
+    {
+      "id": "both-shell-positive-admission",
+      "status": "PASS"
+    },
+    {
+      "id": "reject-incorrect-commit-map",
+      "status": "PASS"
+    },
+    {
+      "id": "reject-changed-tree",
+      "status": "PASS"
+    },
+    {
+      "id": "reject-incorrect-parent",
+      "status": "PASS"
+    },
+    {
+      "id": "reject-evidence-hash-drift",
+      "status": "PASS"
+    },
+    {
+      "id": "reject-pinned-input-drift",
+      "status": "PASS"
+    },
+    {
+      "id": "reject-unapproved-admission-tail",
+      "status": "PASS"
+    },
+    {
+      "id": "reject-history-bundle-drift",
+      "status": "PASS"
+    },
+    {
+      "id": "existing-both-shell-checkpoint-regressions",
+      "status": "PASS"
+    }
+  ],
+  "sourceHashes": {
+    "docs/agent-execution-contract.md": "2919a173e60f0ed50fbf4839a5d8c96bc836afd032410cb012186026736688a2",
+    "docs/checkpoint-migrations/history-20260909.json": "45bc0742f7b12506a007c84a0f3f9808f2f9b9e8d292a60fab345f4966e1d5b4",
+    "docs/phase-plans/Phase003-checkpoint-recovery.json": "c0b6dba82cb4feaf2bf74d3d3769635e375fb561831d6adcbf97f13fc81d83e9",
+    "scripts/check-project-layout.mjs": "33301b2b84a3034a7697f3dc8f6497b8fec21dbcf67ebfe04be256f3ef321943",
+    "scripts/checkpoint-history.mjs": "c730d8119c04cd9151cd28b85b1ce335e2bdc7fcfda12a5399801ebab7a866d2",
+    "scripts/prepare-checkpoint-import.mjs": "89d87bd6b3fac74ac02a5a7a335aad778c1e9f5136fd8034e6e127516ff5fb2e",
+    "scripts/test-checkpoint-import.mjs": "1c02fec39e9d6ced7aaf7a3099bb622d93b58b10e533002da36247b0ed3f1c2d",
+    "scripts/test-validate-phase.mjs": "5969dcf96abd0f8aa380c4965fd0c9e4126a80bc8e33d12037d4c6632193971f",
+    "scripts/validate-phase.mjs": "a088c83052de62a7a5641ae989b624d5124eb5ea7942ab69df3f063d86e654ff",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319",
+    "scripts/phase-evidence.mjs": "3727f8f8e5f00cf7e03d4bc50f71ebdbff483380cbc59df124bf21b473261d95"
+  },
+  "sourceStability": {
+    "startReceiptPath": "docs/evidence/attempts/Phase003/checkpoint-recovery/stable-source-start.json",
+    "startReceiptHash": "5c022d85db5a7a5fb25657ffe207dea59bc0bb6353461bf2f105b713e7a264ae",
+    "allSourceHashesUnchangedAtEnd": true,
+    "completedAt": "2026-09-09T09:09:34.022Z"
+  },
+  "reportHashes": {
+    "docs/evidence/attempts/Phase003/checkpoint-recovery/import-tests-2.json": "513716b09326b3257bac600f17f64f666e02846b8f85553355519c78994c8408",
+    "docs/evidence/attempts/Phase003/checkpoint-recovery/existing-regressions-2.json": "01cf39315b64f65bb15eed0f6f198a2ab07836871339f4cc70e0721337ee0ee1",
+    "docs/evidence/attempts/Phase003/checkpoint-recovery/environment-regression-1.json": "58583139a0c1618e7a36612406efec9e5dd23319f8cf50abdfedf2478b421fbc",
+    "docs/evidence/attempts/Phase003/checkpoint-recovery/review.json": "dbaaeceac6686b706eaad5b4253253dfe8a6d8693efdcac65eed853c713c5123",
+    "docs/evidence/attempts/Phase003/checkpoint-recovery/report-archive.json": "53c5e9b3a26b8e53b1adc7c7b714dee363cce87514adc41ce07f6756b5623e74"
+  },
+  "commands": [
+    {
+      "command": "node scripts/test-validate-phase.mjs --shell both --output .scaffold/checkpoint-existing-regressions-2.json",
+      "exitCode": 0
+    }
+  ],
+  "priorRunDisclosure": "existing-regressions-1.json recorded final-source hashes after environment initialization changed during execution. existing-regressions-2.json repeats all 52 cases/115 observations with source bytes fixed before and after the run; the earlier report and independent review remain unchanged.",
+  "pending": [
+    "Recovery commit",
+    "Clean actual-worktree PowerShell 5.1 and PowerShell 7 CompletedThrough=2 admission",
+    "Push and verify origin/main",
+    "Freeze and execute Phase003 product plan with all 17 required cases"
+  ],
+  "productionTraffic": false
+}

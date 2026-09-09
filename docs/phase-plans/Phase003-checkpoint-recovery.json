@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "phase": 3,
+  "scope": "AUTHORIZED_CHECKPOINT_HISTORY_IMPORT_BEFORE_PHASE003_ADMISSION",
+  "authorization": "User confirmed the checkpoint recovery proposal and continuation of Phase003 on 2026-09-09.",
+  "baselineCommit": "8c5eb222b62c304f00d4b26b1c5f192db13491b9",
+  "producer": "Phase003 checkpoint recovery",
+  "consumers": [3],
+  "modificationScope": ["docs/agent-execution-contract.md", "docs/checkpoint-migrations/", "docs/phase-plans/Phase003-checkpoint-recovery.json", "docs/evidence/attempts/Phase003/", "scripts/"],
+  "requiredCases": [
+    "original-and-current-commit-identities-and-parent-chains",
+    "only-local-roadmap-documents-removed-from-early-trees",
+    "identical-layout-and-phase001-phase002-trees",
+    "original-phase000-phase001-phase002-schema-hash-review-and-checkpoints",
+    "local-only-pinned-history-bundle-and-inputs",
+    "clean-synchronized-continuation-baseline",
+    "both-shell-positive-admission",
+    "reject-incorrect-commit-map",
+    "reject-changed-tree",
+    "reject-incorrect-parent",
+    "reject-evidence-hash-drift",
+    "reject-pinned-input-drift",
+    "reject-unapproved-admission-tail",
+    "reject-history-bundle-drift",
+    "existing-both-shell-checkpoint-regressions"
+  ],
+  "threshold": {"originalThreshold": 15, "automatedThreshold": 15, "waived": false},
+  "preserve": ["Current main history", "All sealed Gate bytes and references", "Phase000 archive bytes", "Local-only roadmap inputs"],
+  "prohibited": ["History rewriting", "git replace", "Force pushing", "Republishing removed roadmap documents", "Backfilling old PASS evidence", "Producing Phase003 application artifacts before valid admission"]
+}

@@ -1,0 +1,570 @@
+{
+  "status": "PASS",
+  "scope": "CHECKPOINT_HISTORY_IMPORT_REGRESSION",
+  "planPath": "docs/phase-plans/Phase003-checkpoint-recovery.json",
+  "planHash": "c0b6dba82cb4feaf2bf74d3d3769635e375fb561831d6adcbf97f13fc81d83e9",
+  "migrationPath": "docs/checkpoint-migrations/history-20260909.json",
+  "migrationHash": "45bc0742f7b12506a007c84a0f3f9808f2f9b9e8d292a60fab345f4966e1d5b4",
+  "startedAt": "2026-09-09T08:07:07.299Z",
+  "durationMs": 138994,
+  "temporaryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-checkpoint-import-iUALOV",
+  "cases": [
+    {
+      "name": "original-and-current-commit-identities-and-parent-chains",
+      "status": "PASS"
+    },
+    {
+      "name": "only-local-roadmap-documents-removed-from-early-trees",
+      "status": "PASS"
+    },
+    {
+      "name": "identical-layout-and-phase001-phase002-trees",
+      "status": "PASS"
+    },
+    {
+      "name": "original-phase000-phase001-phase002-schema-hash-review-and-checkpoints",
+      "status": "PASS"
+    },
+    {
+      "name": "local-only-pinned-history-bundle-and-inputs",
+      "status": "PASS"
+    },
+    {
+      "name": "clean-synchronized-continuation-baseline",
+      "status": "PASS"
+    },
+    {
+      "name": "both-shell-positive-admission",
+      "status": "PASS"
+    },
+    {
+      "name": "reject-incorrect-commit-map",
+      "status": "PASS"
+    },
+    {
+      "name": "reject-changed-tree",
+      "status": "PASS"
+    },
+    {
+      "name": "reject-incorrect-parent",
+      "status": "PASS"
+    },
+    {
+      "name": "reject-evidence-hash-drift",
+      "status": "PASS"
+    },
+    {
+      "name": "reject-pinned-input-drift",
+      "status": "PASS"
+    },
+    {
+      "name": "reject-unapproved-admission-tail",
+      "status": "PASS"
+    },
+    {
+      "name": "reject-history-bundle-drift",
+      "status": "PASS"
+    }
+  ],
+  "observations": [
+    {
+      "case": "both-shell-positive-admission-from-clean-clone",
+      "executable": "powershell.exe",
+      "arguments": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/validate-phase.ps1",
+        "-CompletedThrough",
+        "2",
+        "-Strict",
+        "-Json"
+      ],
+      "exitCode": 0,
+      "expectedDiagnostic": null,
+      "output": {
+        "status": "PASS",
+        "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+        "protocolFixture": false,
+        "layoutVersion": 2,
+        "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-checkpoint-import-iUALOV\\repository",
+        "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-checkpoint-import-iUALOV\\repository",
+        "projectGitPrefix": "",
+        "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+        "completedThrough": 2,
+        "currentPhase": 3,
+        "artifactCommit": "5b5378f092455226b9bf20cc00f07aa95a69fd01",
+        "metadataCommit": "13a1381a52645edbe2db5b186c14d1aabc4b6c15",
+        "historicalPhase": 0,
+        "preservedHistoricalFiles": 44,
+        "checkpointImport": {
+          "path": "docs/checkpoint-migrations/history-20260909.json",
+          "sha256": "45bc0742f7b12506a007c84a0f3f9808f2f9b9e8d292a60fab345f4966e1d5b4",
+          "importedThrough": 2,
+          "continuationBaselineCommit": "8c5eb222b62c304f00d4b26b1c5f192db13491b9",
+          "currentHead": "bfcdacc68960a8b84d77feef1061952044adde0e",
+          "admissionOnly": true
+        },
+        "localIgnoredInputsVerified": 151,
+        "contractCoverage": {
+          "numerator": 30,
+          "denominator": 30
+        },
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "both-shell-positive-admission-from-clean-clone",
+      "executable": "pwsh.exe",
+      "arguments": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/validate-phase.ps1",
+        "-CompletedThrough",
+        "2",
+        "-Strict",
+        "-Json"
+      ],
+      "exitCode": 0,
+      "expectedDiagnostic": null,
+      "output": {
+        "status": "PASS",
+        "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+        "protocolFixture": false,
+        "layoutVersion": 2,
+        "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-checkpoint-import-iUALOV\\repository",
+        "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-checkpoint-import-iUALOV\\repository",
+        "projectGitPrefix": "",
+        "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+        "completedThrough": 2,
+        "currentPhase": 3,
+        "artifactCommit": "5b5378f092455226b9bf20cc00f07aa95a69fd01",
+        "metadataCommit": "13a1381a52645edbe2db5b186c14d1aabc4b6c15",
+        "historicalPhase": 0,
+        "preservedHistoricalFiles": 44,
+        "checkpointImport": {
+          "path": "docs/checkpoint-migrations/history-20260909.json",
+          "sha256": "45bc0742f7b12506a007c84a0f3f9808f2f9b9e8d292a60fab345f4966e1d5b4",
+          "importedThrough": 2,
+          "continuationBaselineCommit": "8c5eb222b62c304f00d4b26b1c5f192db13491b9",
+          "currentHead": "bfcdacc68960a8b84d77feef1061952044adde0e",
+          "admissionOnly": true
+        },
+        "localIgnoredInputsVerified": 151,
+        "contractCoverage": {
+          "numerator": 30,
+          "denominator": 30
+        },
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "reject-incorrect-commit-map",
+      "executable": "powershell.exe",
+      "arguments": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/validate-phase.ps1",
+        "-CompletedThrough",
+        "2",
+        "-Strict",
+        "-Json"
+      ],
+      "exitCode": 1,
+      "expectedDiagnostic": "IMPORT_CURRENT_PARENT",
+      "output": {
+        "status": "FAIL",
+        "error": "IMPORT_CURRENT_PARENT: values differ\n+ actual - expected\n\n  [\n+   '8c5eb222b62c304f00d4b26b1c5f192db13491b9'\n-   'e0df6c60b6cf0f9091540b792b1e37b082492fa6'\n  ]\n",
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "reject-incorrect-commit-map",
+      "executable": "pwsh.exe",
+      "arguments": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/validate-phase.ps1",
+        "-CompletedThrough",
+        "2",
+        "-Strict",
+        "-Json"
+      ],
+      "exitCode": 1,
+      "expectedDiagnostic": "IMPORT_CURRENT_PARENT",
+      "output": {
+        "status": "FAIL",
+        "error": "IMPORT_CURRENT_PARENT: values differ\n+ actual - expected\n\n  [\n+   '8c5eb222b62c304f00d4b26b1c5f192db13491b9'\n-   'e0df6c60b6cf0f9091540b792b1e37b082492fa6'\n  ]\n",
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "reject-changed-tree",
+      "executable": "powershell.exe",
+      "arguments": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/validate-phase.ps1",
+        "-CompletedThrough",
+        "2",
+        "-Strict",
+        "-Json"
+      ],
+      "exitCode": 1,
+      "expectedDiagnostic": "IMPORT_CURRENT_TREE",
+      "output": {
+        "status": "FAIL",
+        "error": "IMPORT_CURRENT_TREE: values differ\n+ actual - expected\n\n+ '0b43e46efa0a6d595773a28c25159ee07ac066a2'\n- '0000000000000000000000000000000000000000'\n",
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "reject-changed-tree",
+      "executable": "pwsh.exe",
+      "arguments": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/validate-phase.ps1",
+        "-CompletedThrough",
+        "2",
+        "-Strict",
+        "-Json"
+      ],
+      "exitCode": 1,
+      "expectedDiagnostic": "IMPORT_CURRENT_TREE",
+      "output": {
+        "status": "FAIL",
+        "error": "IMPORT_CURRENT_TREE: values differ\n+ actual - expected\n\n+ '0b43e46efa0a6d595773a28c25159ee07ac066a2'\n- '0000000000000000000000000000000000000000'\n",
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "reject-incorrect-parent",
+      "executable": "powershell.exe",
+      "arguments": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/validate-phase.ps1",
+        "-CompletedThrough",
+        "2",
+        "-Strict",
+        "-Json"
+      ],
+      "exitCode": 1,
+      "expectedDiagnostic": "IMPORT_CURRENT_PARENT",
+      "output": {
+        "status": "FAIL",
+        "error": "IMPORT_CURRENT_PARENT: values differ\n+ actual - expected\n\n  [\n+   'e0df6c60b6cf0f9091540b792b1e37b082492fa6'\n-   '6d50441b468c012625dede2ccf6cd1454fc00a41'\n  ]\n",
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "reject-incorrect-parent",
+      "executable": "pwsh.exe",
+      "arguments": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/validate-phase.ps1",
+        "-CompletedThrough",
+        "2",
+        "-Strict",
+        "-Json"
+      ],
+      "exitCode": 1,
+      "expectedDiagnostic": "IMPORT_CURRENT_PARENT",
+      "output": {
+        "status": "FAIL",
+        "error": "IMPORT_CURRENT_PARENT: values differ\n+ actual - expected\n\n  [\n+   'e0df6c60b6cf0f9091540b792b1e37b082492fa6'\n-   '6d50441b468c012625dede2ccf6cd1454fc00a41'\n  ]\n",
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "reject-evidence-hash-drift",
+      "executable": "powershell.exe",
+      "arguments": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/validate-phase.ps1",
+        "-CompletedThrough",
+        "2",
+        "-Strict",
+        "-Json"
+      ],
+      "exitCode": 1,
+      "expectedDiagnostic": "IMPORT_EVIDENCE_HASH",
+      "output": {
+        "status": "FAIL",
+        "error": "IMPORT_EVIDENCE_HASH: values differ\n+ actual - expected\n\n+ '13aa8ae618c871c80e168f5602c96f4ce1a17b9085ceb13f7cf361bb4a8ea249'\n- '44583e5ea20bf0e8a0f01fe07aaa09b500eb324355e0903726674862bf236430'\n",
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "reject-evidence-hash-drift",
+      "executable": "pwsh.exe",
+      "arguments": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/validate-phase.ps1",
+        "-CompletedThrough",
+        "2",
+        "-Strict",
+        "-Json"
+      ],
+      "exitCode": 1,
+      "expectedDiagnostic": "IMPORT_EVIDENCE_HASH",
+      "output": {
+        "status": "FAIL",
+        "error": "IMPORT_EVIDENCE_HASH: values differ\n+ actual - expected\n\n+ '13aa8ae618c871c80e168f5602c96f4ce1a17b9085ceb13f7cf361bb4a8ea249'\n- '44583e5ea20bf0e8a0f01fe07aaa09b500eb324355e0903726674862bf236430'\n",
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "reject-pinned-input-drift",
+      "executable": "powershell.exe",
+      "arguments": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/validate-phase.ps1",
+        "-CompletedThrough",
+        "2",
+        "-Strict",
+        "-Json"
+      ],
+      "exitCode": 1,
+      "expectedDiagnostic": "PINNED_HASH",
+      "output": {
+        "status": "FAIL",
+        "error": "PINNED_HASH: Run state contract hash mismatch: canonical-contract",
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "reject-pinned-input-drift",
+      "executable": "pwsh.exe",
+      "arguments": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/validate-phase.ps1",
+        "-CompletedThrough",
+        "2",
+        "-Strict",
+        "-Json"
+      ],
+      "exitCode": 1,
+      "expectedDiagnostic": "PINNED_HASH",
+      "output": {
+        "status": "FAIL",
+        "error": "PINNED_HASH: Run state contract hash mismatch: canonical-contract",
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "reject-unapproved-admission-tail",
+      "executable": "powershell.exe",
+      "arguments": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/validate-phase.ps1",
+        "-CompletedThrough",
+        "2",
+        "-Strict",
+        "-Json"
+      ],
+      "exitCode": 1,
+      "expectedDiagnostic": "IMPORT_ADMISSION_SCOPE",
+      "output": {
+        "status": "FAIL",
+        "error": "IMPORT_ADMISSION_SCOPE: src/app/page.tsx",
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "reject-unapproved-admission-tail",
+      "executable": "pwsh.exe",
+      "arguments": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/validate-phase.ps1",
+        "-CompletedThrough",
+        "2",
+        "-Strict",
+        "-Json"
+      ],
+      "exitCode": 1,
+      "expectedDiagnostic": "IMPORT_ADMISSION_SCOPE",
+      "output": {
+        "status": "FAIL",
+        "error": "IMPORT_ADMISSION_SCOPE: src/app/page.tsx",
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "reject-history-bundle-drift",
+      "executable": "powershell.exe",
+      "arguments": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/validate-phase.ps1",
+        "-CompletedThrough",
+        "2",
+        "-Strict",
+        "-Json"
+      ],
+      "exitCode": 1,
+      "expectedDiagnostic": "IMPORT_BUNDLE_HASH",
+      "output": {
+        "status": "FAIL",
+        "error": "IMPORT_BUNDLE_HASH: values differ\n+ actual - expected\n\n+ 'af815f2e49053f137cb62a1a2887b210ad732b2e887a554e84e9b2a4c097b98f'\n- 'f6b6ed832f26751f1148b842c29d1d60a2efbfd26cfa311885e75ccb2e200524'\n",
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "reject-history-bundle-drift",
+      "executable": "pwsh.exe",
+      "arguments": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/validate-phase.ps1",
+        "-CompletedThrough",
+        "2",
+        "-Strict",
+        "-Json"
+      ],
+      "exitCode": 1,
+      "expectedDiagnostic": "IMPORT_BUNDLE_HASH",
+      "output": {
+        "status": "FAIL",
+        "error": "IMPORT_BUNDLE_HASH: values differ\n+ actual - expected\n\n+ 'af815f2e49053f137cb62a1a2887b210ad732b2e887a554e84e9b2a4c097b98f'\n- 'f6b6ed832f26751f1148b842c29d1d60a2efbfd26cfa311885e75ccb2e200524'\n",
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "restored-positive-admission",
+      "executable": "powershell.exe",
+      "arguments": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/validate-phase.ps1",
+        "-CompletedThrough",
+        "2",
+        "-Strict",
+        "-Json"
+      ],
+      "exitCode": 0,
+      "expectedDiagnostic": null,
+      "output": {
+        "status": "PASS",
+        "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+        "protocolFixture": false,
+        "layoutVersion": 2,
+        "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-checkpoint-import-iUALOV\\repository",
+        "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-checkpoint-import-iUALOV\\repository",
+        "projectGitPrefix": "",
+        "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+        "completedThrough": 2,
+        "currentPhase": 3,
+        "artifactCommit": "5b5378f092455226b9bf20cc00f07aa95a69fd01",
+        "metadataCommit": "13a1381a52645edbe2db5b186c14d1aabc4b6c15",
+        "historicalPhase": 0,
+        "preservedHistoricalFiles": 44,
+        "checkpointImport": {
+          "path": "docs/checkpoint-migrations/history-20260909.json",
+          "sha256": "45bc0742f7b12506a007c84a0f3f9808f2f9b9e8d292a60fab345f4966e1d5b4",
+          "importedThrough": 2,
+          "continuationBaselineCommit": "8c5eb222b62c304f00d4b26b1c5f192db13491b9",
+          "currentHead": "bfcdacc68960a8b84d77feef1061952044adde0e",
+          "admissionOnly": true
+        },
+        "localIgnoredInputsVerified": 151,
+        "contractCoverage": {
+          "numerator": 30,
+          "denominator": 30
+        },
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "restored-positive-admission",
+      "executable": "pwsh.exe",
+      "arguments": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "scripts/validate-phase.ps1",
+        "-CompletedThrough",
+        "2",
+        "-Strict",
+        "-Json"
+      ],
+      "exitCode": 0,
+      "expectedDiagnostic": null,
+      "output": {
+        "status": "PASS",
+        "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+        "protocolFixture": false,
+        "layoutVersion": 2,
+        "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-checkpoint-import-iUALOV\\repository",
+        "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-checkpoint-import-iUALOV\\repository",
+        "projectGitPrefix": "",
+        "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+        "completedThrough": 2,
+        "currentPhase": 3,
+        "artifactCommit": "5b5378f092455226b9bf20cc00f07aa95a69fd01",
+        "metadataCommit": "13a1381a52645edbe2db5b186c14d1aabc4b6c15",
+        "historicalPhase": 0,
+        "preservedHistoricalFiles": 44,
+        "checkpointImport": {
+          "path": "docs/checkpoint-migrations/history-20260909.json",
+          "sha256": "45bc0742f7b12506a007c84a0f3f9808f2f9b9e8d292a60fab345f4966e1d5b4",
+          "importedThrough": 2,
+          "continuationBaselineCommit": "8c5eb222b62c304f00d4b26b1c5f192db13491b9",
+          "currentHead": "bfcdacc68960a8b84d77feef1061952044adde0e",
+          "admissionOnly": true
+        },
+        "localIgnoredInputsVerified": 151,
+        "contractCoverage": {
+          "numerator": 30,
+          "denominator": 30
+        },
+        "networkPushEvaluated": false
+      }
+    }
+  ],
+  "failure": null,
+  "pendingSeparateCase": "existing-both-shell-checkpoint-regressions",
+  "productionTraffic": false
+}

@@ -89,6 +89,18 @@
 
 ## 测试规则
 
+### 2026-09-09 历史清理后的检查点导入
+
+用户已确认先修复历史衔接再执行 Phase003。此前清理开发文档历史使 Phase000–002 的原始提交与当前 main 不同；旧 Gate、run state 中的原提交引用及归档字节继续保留。新增 `docs/checkpoint-migrations/history-20260909.json` 为独立导入收据，不能作为新的 Phase PASS，也不能把两个提交 ID 当作同一个对象。
+
+校验器分别验证原始和当前提交的完整父链、Phase000 仅删除的153份本地开发文档路径与摘要、其余文件逐字节相等，以及迁移基线和 Phase001/002 的完整 tree 相等。旧 Gate 的 schema、testedTree、计划、输入输出、独立复核、双提交和不可变记录仍针对原始 Git 对象全量校验；当前分支的对应 metadata 父提交和 Gate 字节另行验证。错误映射、额外修改、父链变化、输入或证据漂移一律拒绝。
+
+原始 Git 对象仅由根目录忽略区 `.scaffold/checkpoint-import/original-history.bundle` 保存；导入收据提交其路径、SHA-256 和源提交，不提交 bundle 或开发文档正文。克隆后运行路线需另外提供该字节匹配的本地 bundle 和原有开发文档。校验进程通过本地对象目录读取原始对象，不使用 `git replace`、不改变 main 的提交或远端历史。普通 npm 启动与构建不依赖历史 bundle。
+
+收据的 `continuationBaselineCommit` 从用户确认后的已同步 HEAD `8c5eb222b62c304f00d4b26b1c5f192db13491b9` 固定；run state 原 `executionBaselineCommit` 保留作历史引用。Phase003 及以后输入收据与 metadata run state 的 `checkpointMigration` 同时绑定导入路径、SHA-256、新执行基线和 importedThrough=2。
+
+本次衔接修复使用 `phase(003): recovery` 常规提交，纳入 Phase003 最终 `recoveryCommits`。在 Phase003 代码尚未开工时，`-CompletedThrough 2` 可验证导入后的准入：已完成卡后只允许收据明确列出的迁移文档、校验脚本及 Phase003 失败/诊断证据；不允许产品代码、任意提交、旧 Gate 或 run state 修改。工作树干净、双 shell 准入和远端同步完成后，再冻结 Phase003 产品计划。Phase003 最终 seal 仍要求 artifact→metadata 直接父子提交、全部17项验收和完整恢复历史。
+
 - 纯逻辑、API、数据库、AI 与页面都由 Agent 运行自动断言。单元/集成使用 Vitest，发现路径同时包含 `src/**/*.test.{ts,tsx}` 与 `tests/**/*.test.{ts,tsx}`；浏览器使用锁定版本的 Playwright，保存脚本断言、截图 hash、DOM/布局和必要的键盘、焦点、axe 证据。
 - 数据库使用真实 PostgreSQL 隔离库并按测试清理；Provider 只经受控 HTTP、mock 和 record-replay 边界。不得用业务服务 mock、人工观察和未执行命令代替 Gate。
 - 反向测试与故障注入只在临时副本执行，明确破坏点、预期变红原因及恢复动作；负例观察成功的 wrapper 退出0，底层被测失败必须有实际非零结果。不得污染正常产品树。
