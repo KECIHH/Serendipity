@@ -1,6 +1,6 @@
 {
   "phase": 4,
-  "attemptId": "attempt-2",
+  "attemptId": "attempt-1",
   "producer": "Phase004",
   "consumers": [5, 10, 15, 16, 21],
   "scope": "QUALITY_TOOLCHAIN_AND_FAIL_CLOSED_ENVIRONMENT",
@@ -117,16 +117,5 @@
   ],
   "threshold": { "originalThreshold": 23, "automatedThreshold": 23, "requiredPassRate": 1, "waived": false },
   "notApplicable": ["Database connectivity, authentication, AI calls, business UI, and production traffic are outside Phase004."],
-  "previousAttempts": [
-    {
-      "attemptId": "attempt-1",
-      "planPath": "docs/evidence/attempts/Phase004/attempt-1/frozen-plan.json",
-      "planHash": "9c6b6def22234de1fe0bf83d39c6bbf32a393fd2578297a3e7088fda3f829698"
-    },
-    {
-      "attemptId": "attempt-1",
-      "planPath": "docs/evidence/attempts/Phase004/attempt-1/frozen-plan-with-inputs.json",
-      "planHash": "f7fa23de7623852752a506fdea469451015cf79840d979f6fe53d31dd34c5562"
-    }
-  ]
+  "previousAttempts": []
 }
