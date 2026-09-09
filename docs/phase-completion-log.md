@@ -34,6 +34,7 @@ Phase002计划：`docs/phase-plans/Phase002.json`；唯一Gate：`docs/evidence/
 | Phase003 | Next.js脚手架、固定运行版本、shadcn Button、10个样式令牌、中文基础首页与安全依赖修复 | 根配置、src、public、scripts及runtime baseline；完整路径/hash见Gate inputs | lint/build/typecheck/verify退出0；17/17自动断言、反向/浏览器/隔离安装回归及独立Agent复核；artifactCommit=8e50df6bbb188301186ca87f3e6c74cc0f41c135；attemptId=attempt-7 | 未执行Phase004、数据库、鉴权、AI、真人读屏或生产流量 | 可封口候选；metadata后另执行双shell seal、clean和GitHub同步；用户授权止于003 |
 
 Phase003计划：`docs/phase-plans/Phase003.json`；唯一Gate：`docs/evidence/Phase003-gate.json`。失败attempt与检查点迁移证据保留原字节；未推进Phase004实现。
-| Phase004 | ESLint/Prettier/Vitest 工具链、统一环境变量 registry/parser、启动期 fail-closed 校验与环境文档 | .env.example、src/lib/env*.ts、src/instrumentation.ts、Vitest/Prettier/ESLint 配置、README、runtime baseline、23项证据；完整路径见 Gate | 23/23：Vitest 14/14、lint、format:check、typecheck、build、固定 npm CLI 的 verify:phase003、5项反向注入、启动缺失/恢复与 Git 忽略均通过；artifactCommit=12db44d822353a6a7335d2620b9a5f97e0f29079；attemptId=attempt-1 | 无真实数据库、AI Provider、生产流量或真人读屏；均不属于本卡 | 可封口候选；metadata 后执行双 shell seal、clean 与 GitHub 同步 |
+
+| Phase004 | ESLint/Prettier/Vitest 工具链、统一环境变量 registry/parser、启动期 fail-closed 校验与环境文档 | .env.example、src/lib/env*.ts、src/instrumentation.ts、Vitest/Prettier/ESLint 配置、README、runtime baseline、23项证据；完整路径见 Gate | 23/23：Vitest 14/14、lint、format:check、typecheck、build、固定 npm CLI 的 verify:phase003、5项反向注入、启动缺失/恢复与 Git 忽略均通过；artifactCommit=7cc0fc6aa802559a9485a6ea3b31d173379fcd8a；attemptId=attempt-1 | 无真实数据库、AI Provider、生产流量或真人读屏；均不属于本卡 | 可封口候选；metadata 后执行双 shell seal、clean 与 GitHub 同步 |
 
 Phase004计划：docs/phase-plans/Phase004.json；唯一 Gate：docs/evidence/Phase004-gate.json。失败注入报告保留于 docs/evidence/attempts/Phase004/attempt-1/。
