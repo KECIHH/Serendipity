@@ -11,7 +11,7 @@
     "providerMode": "local-adapter",
     "productionTraffic": false
   },
-  "artifactCommit": "5292fb7f43d9fd911bc0fae3dfa37063946bf3f1",
+  "artifactCommit": "7022d8c833979c2752b3a066cb425151e0302434",
   "requiredCaseIds": [
     "Phase004:unit-01-valid",
     "Phase004:unit-02-missing-database",
@@ -45,11 +45,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:a54f6b87de09e2b125852fddf97dc7069d9a9026c8af824944aba85e6bd54660",
-      "outputHash": "sha256:4e2a24e7537e4146b8f1187c564a5a9d6581c0bd56d8bb784e8dc4213f99979a",
+      "outputHash": "sha256:b2a9298d01c703e66510c7a5104b60be78b4fb331db161b9cdf014a8627d902b",
       "status": "PASS",
       "details": {
         "inputPath": "vitest.setup.ts",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/unit-01-valid.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/unit-01-valid.json",
         "expected": "All nine bootstrap variables pass and parsed types are correct."
       }
     },
@@ -60,11 +60,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:04ad1cbe2db65abe20d9c9d520c52c8cc9f42f6040a516a53e37ade2d0e2b38f",
-      "outputHash": "sha256:12951723e01f81cc5926e932faaa87398cc097104a1506d4dd5e23ce94d43999",
+      "outputHash": "sha256:110ca3fc63bd3aa56d9320dc7d5d4a0365deebe9b62683489b4d3b105773eb80",
       "status": "PASS",
       "details": {
         "inputPath": "src/lib/env.test.ts",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/unit-02-missing-database.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/unit-02-missing-database.json",
         "expected": "EnvConfigError reports DATABASE_URL in missing."
       }
     },
@@ -75,11 +75,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:04ad1cbe2db65abe20d9c9d520c52c8cc9f42f6040a516a53e37ade2d0e2b38f",
-      "outputHash": "sha256:0992d4214f7d04a08959a189c1d1839277c5b79b3d7055b7865a93dc5cd17edd",
+      "outputHash": "sha256:66b26a2a56e274b0973e8fe2f9b9164b6bfa702f7e1f77f634f5dc49a3419451",
       "status": "PASS",
       "details": {
         "inputPath": "src/lib/env.test.ts",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/unit-03-missing-two.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/unit-03-missing-two.json",
         "expected": "One error reports both missing names."
       }
     },
@@ -90,11 +90,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:04ad1cbe2db65abe20d9c9d520c52c8cc9f42f6040a516a53e37ade2d0e2b38f",
-      "outputHash": "sha256:99ec96f0b8d94fd59ad6917c56e88298ef6ac145aecdcdd5de0178e2adf0ca60",
+      "outputHash": "sha256:c8c07fbbd62c259eb7bd520e86b1891fd3f8f31687b29c6f93f1d3a703590c3b",
       "status": "PASS",
       "details": {
         "inputPath": "src/lib/env.test.ts",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/unit-04-invalid-database.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/unit-04-invalid-database.json",
         "expected": "DATABASE_URL is invalid."
       }
     },
@@ -105,11 +105,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:04ad1cbe2db65abe20d9c9d520c52c8cc9f42f6040a516a53e37ade2d0e2b38f",
-      "outputHash": "sha256:85174273462e4fc3565fd21a3c058754a394b045ef8fd4a730dbac4b085943ec",
+      "outputHash": "sha256:d22271e570692fe811b35ea199ee8922507029dccc47588e937487a843d4d76f",
       "status": "PASS",
       "details": {
         "inputPath": "src/lib/env.test.ts",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/unit-05-short-auth.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/unit-05-short-auth.json",
         "expected": "31-character auth secret is invalid."
       }
     },
@@ -120,11 +120,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:04ad1cbe2db65abe20d9c9d520c52c8cc9f42f6040a516a53e37ade2d0e2b38f",
-      "outputHash": "sha256:240c7737a34cead466e71033ead5df19ea2bf1d3a78a60a95056b1e83227fc92",
+      "outputHash": "sha256:00bd4be49d08e89011f02ed6b4413bed97c91d13c0ece4b0ff5124c2eb204924",
       "status": "PASS",
       "details": {
         "inputPath": "src/lib/env.test.ts",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/unit-06-short-encryption.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/unit-06-short-encryption.json",
         "expected": "31-byte encryption key is invalid."
       }
     },
@@ -135,11 +135,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:04ad1cbe2db65abe20d9c9d520c52c8cc9f42f6040a516a53e37ade2d0e2b38f",
-      "outputHash": "sha256:9254d4bcae77d861ab345793df27adad0c7a2555d71fa386f2067fb6a906b354",
+      "outputHash": "sha256:d21aa7b97b157eba664f9fdfd9de952502fa7a45767f0808f9379728a88c4095",
       "status": "PASS",
       "details": {
         "inputPath": "src/lib/env.test.ts",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/unit-07-valid-encryption.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/unit-07-valid-encryption.json",
         "expected": "32-byte encryption key passes."
       }
     },
@@ -150,11 +150,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:04ad1cbe2db65abe20d9c9d520c52c8cc9f42f6040a516a53e37ade2d0e2b38f",
-      "outputHash": "sha256:1f257b11ad759383f5c7922d3b1eac3709286171eb55c93b037f869fd4a9e151",
+      "outputHash": "sha256:b5281d2424ce436c86caf36172d8c7e03b41cb7128d9e121bf18525d9094fa89",
       "status": "PASS",
       "details": {
         "inputPath": "src/lib/env.test.ts",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/unit-08-invalid-mock-case.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/unit-08-invalid-mock-case.json",
         "expected": "Uppercase AI_MOCK is invalid."
       }
     },
@@ -165,11 +165,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:04ad1cbe2db65abe20d9c9d520c52c8cc9f42f6040a516a53e37ade2d0e2b38f",
-      "outputHash": "sha256:c301ab4c8c20831f1441bef5ce40b99c0cbfe8d2c106835e14a28bb1ab79cbac",
+      "outputHash": "sha256:28e45ae3c9d00be3861344a6964eabebaa3f2fac762a74f7487fb7b17ec167da",
       "status": "PASS",
       "details": {
         "inputPath": "src/lib/env.test.ts",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/unit-09-api-key-required.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/unit-09-api-key-required.json",
         "expected": "False mock mode requires a non-empty API key."
       }
     },
@@ -180,11 +180,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:04ad1cbe2db65abe20d9c9d520c52c8cc9f42f6040a516a53e37ade2d0e2b38f",
-      "outputHash": "sha256:c98a4de87c8c123a7a20b8bcd704c00fd92f4573c973a3595add6a730131891e",
+      "outputHash": "sha256:8daa9660c5246ab3f73ee3ae4e908b002406d9f0792e52be6fa7fa8cff6faeb2",
       "status": "PASS",
       "details": {
         "inputPath": "src/lib/env.test.ts",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/unit-10-mock-api-key-optional.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/unit-10-mock-api-key-optional.json",
         "expected": "True mock mode permits an empty API key."
       }
     },
@@ -195,11 +195,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:04ad1cbe2db65abe20d9c9d520c52c8cc9f42f6040a516a53e37ade2d0e2b38f",
-      "outputHash": "sha256:ff2588603c0e21e7a48336ed2f49cb528e1259bc60b70cd46916f5342c1a10c8",
+      "outputHash": "sha256:b2cfbd0cebaf58755cf075975296798fc6780bf7557c5f30f600dcfe0900ef25",
       "status": "PASS",
       "details": {
         "inputPath": "src/lib/env.test.ts",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/unit-11-http-base-url.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/unit-11-http-base-url.json",
         "expected": "HTTP AI_BASE_URL is invalid."
       }
     },
@@ -210,11 +210,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:04ad1cbe2db65abe20d9c9d520c52c8cc9f42f6040a516a53e37ade2d0e2b38f",
-      "outputHash": "sha256:62ca2ec50a304feadc5577cab7c25b12eb760cacabcdf4b555ddc4e23332f1a1",
+      "outputHash": "sha256:8614ad18e0b82685dcfc56e1397dd0107fae029adb27fb296468e234371fc8ef",
       "status": "PASS",
       "details": {
         "inputPath": "src/lib/env.test.ts",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/unit-12-timeout-invalid.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/unit-12-timeout-invalid.json",
         "expected": "Non-integer and sub-1000 timeout values are invalid."
       }
     },
@@ -225,11 +225,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:04ad1cbe2db65abe20d9c9d520c52c8cc9f42f6040a516a53e37ade2d0e2b38f",
-      "outputHash": "sha256:e05f92463715299fcc1b1c386a0171d58db58d51b2c9dde59243e3a0855edd50",
+      "outputHash": "sha256:6c87022ef80472b81cbe0fc814a4a47474cc3299a43b7b35514026f5cdbd38dc",
       "status": "PASS",
       "details": {
         "inputPath": "src/lib/env.test.ts",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/unit-13-cost-limit-invalid.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/unit-13-cost-limit-invalid.json",
         "expected": "Zero cost limit is invalid."
       }
     },
@@ -240,11 +240,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:651168b05d2c85d6eb5bd67d17bac00d5698a87649752c88d8bc309966046b18",
-      "outputHash": "sha256:9cbfaf437b6ddfcc64f967bc227d4b75ed06d57fc73cb6d824a4799180c1cde3",
+      "outputHash": "sha256:2304ce06980286b92a6dd7c82b8d2ca0d095cfd275d1b463680ca3155ae2c261",
       "status": "PASS",
       "details": {
         "inputPath": "docs/env-registry.json",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/unit-14-registry-example-projection.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/unit-14-registry-example-projection.json",
         "expected": "Example keys exactly match the nine eligible registry keys and domain rules."
       }
     },
@@ -255,11 +255,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:4e90f7956bc1314355f6350491dff6bb6af8a42d71e1ef2e81cb04f0f525573f",
-      "outputHash": "sha256:c66a0799e20cf310010061450ffbb73ca95908e6669fbb53eb7283c4943427c9",
+      "outputHash": "sha256:5c5b3dfcea5b7771d3443850e6109db9724cb1ab80af56033a72f01970aa5cae",
       "status": "PASS",
       "details": {
         "inputPath": "package.json",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/integration-quality-commands.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/integration-quality-commands.json",
         "expected": "All quality commands exit zero."
       }
     },
@@ -270,11 +270,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:51a3612afe39103e04f214185192f0e39e8bc5cb43d27b21922fdd1748096658",
-      "outputHash": "sha256:ba435aa643939a0650de143f639f63f265c7b71cc37d063a3348d9cdf18238f4",
+      "outputHash": "sha256:dff39c27ce55a80e6375556ccb65c17707a8fb884ed14a7c2d632d46bd47c7d3",
       "status": "PASS",
       "details": {
         "inputPath": "src/lib/env.ts",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/negative-database-guard.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/negative-database-guard.json",
         "expected": "Tests fail on missing database cases, then source is restored."
       }
     },
@@ -285,11 +285,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:51a3612afe39103e04f214185192f0e39e8bc5cb43d27b21922fdd1748096658",
-      "outputHash": "sha256:a7f6a72e606a16611e55273ae0b22110fbdee6277225f81b9fa3caa9aeb4d8b6",
+      "outputHash": "sha256:357285053e73898b198cdb4914f03a4aa6843366318f6534675775ac70c906f8",
       "status": "PASS",
       "details": {
         "inputPath": "src/lib/env.ts",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/negative-aggregate-errors.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/negative-aggregate-errors.json",
         "expected": "Two-missing-variable test fails, then source is restored."
       }
     },
@@ -300,11 +300,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:51a3612afe39103e04f214185192f0e39e8bc5cb43d27b21922fdd1748096658",
-      "outputHash": "sha256:e9d704024ac60dd24a2fb5e2f75bc75efea8287b0296b35fd4c9d148a6327af9",
+      "outputHash": "sha256:92b3c8b1216c27ff2069a3c7443ef9188c9ec1392806c187cfd5a7cba6d2e29a",
       "status": "PASS",
       "details": {
         "inputPath": "src/lib/env.ts",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/negative-encryption-length.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/negative-encryption-length.json",
         "expected": "31-byte encryption test fails, then source is restored."
       }
     },
@@ -315,11 +315,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:51a3612afe39103e04f214185192f0e39e8bc5cb43d27b21922fdd1748096658",
-      "outputHash": "sha256:2217c07f9dec481df3f286704a80cfa0de54caca5cbe9c34b9c830083f0666be",
+      "outputHash": "sha256:8bb792209fd4a02f3b5158e975ccfc669ac325937de46f614fcb53baa5e536f5",
       "status": "PASS",
       "details": {
         "inputPath": "src/lib/env.ts",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/negative-api-key-guard.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/negative-api-key-guard.json",
         "expected": "False-mode empty-key test fails, then source is restored."
       }
     },
@@ -330,11 +330,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:0394c4d5dd9452744df7692fc313ecb7e4981dfe9ace51e25fc4d00d9c7edc06",
-      "outputHash": "sha256:af53e4ea2036f0a69f2a504996de76d0e568297cb326ae04e0710c8a9ed7483e",
+      "outputHash": "sha256:f4a0ef14b468c514c8e64b6dfcb9b10342aa3e89ce3a188b6dee3a647e372f8f",
       "status": "PASS",
       "details": {
         "inputPath": ".env.example",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/negative-example-extra-key.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/negative-example-extra-key.json",
         "expected": "Registry projection test fails, then source is restored."
       }
     },
@@ -345,11 +345,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:0394c4d5dd9452744df7692fc313ecb7e4981dfe9ace51e25fc4d00d9c7edc06",
-      "outputHash": "sha256:4733a8481d3afd8c133aec128307e868bbe17af163a6e84cb50e3b843a963924",
+      "outputHash": "sha256:acfe429da48dcf772557db4276390a92c2dd36ecf1d095572c3e1d928627b127",
       "status": "PASS",
       "details": {
         "inputPath": ".env.example",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/startup-missing-env.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/startup-missing-env.json",
         "expected": "Startup exits with EnvConfigError naming DATABASE_URL and does not serve the page."
       }
     },
@@ -360,11 +360,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:0394c4d5dd9452744df7692fc313ecb7e4981dfe9ace51e25fc4d00d9c7edc06",
-      "outputHash": "sha256:cc2c2a09f133d009d7cea2f902a4025049691a265dfd5fb5e222de55ef439765",
+      "outputHash": "sha256:1e7e7e8542c8e656c381d18bf6e0c133f4175211b8abbbf6b021ff05cf9f1c0b",
       "status": "PASS",
       "details": {
         "inputPath": ".env.example",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/startup-restored-env.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/startup-restored-env.json",
         "expected": "Restored environment serves HTTP 200."
       }
     },
@@ -375,11 +375,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:eb3d88b97ff365a767b5b3488f3f5e889fd13f4ee1036b99e974ee7c3a17531b",
-      "outputHash": "sha256:16cf8965b5750574eb8ab88ebfebbeedccb70fe45474b7b03cbcbd5c6161bdb5",
+      "outputHash": "sha256:f0c5f0ac8a4c9fefe6d1250946ab85be6db1218c8dd6e8b47d0d87d5a5e93b31",
       "status": "PASS",
       "details": {
         "inputPath": ".gitignore",
-        "outputPath": "docs/evidence/attempts/Phase004/attempt-1/git-ignore-local-env.json",
+        "outputPath": "docs/evidence/attempts/Phase004/attempt-2/git-ignore-local-env.json",
         "expected": "Local environment is ignored and .env.example remains trackable."
       }
     }
@@ -516,100 +516,100 @@
       "sha256": "651168b05d2c85d6eb5bd67d17bac00d5698a87649752c88d8bc309966046b18"
     },
     {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/git-ignore-local-env.json",
-      "sha256": "16cf8965b5750574eb8ab88ebfebbeedccb70fe45474b7b03cbcbd5c6161bdb5"
+      "path": "docs/evidence/attempts/Phase004/attempt-2/git-ignore-local-env.json",
+      "sha256": "f0c5f0ac8a4c9fefe6d1250946ab85be6db1218c8dd6e8b47d0d87d5a5e93b31"
     },
     {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/integration-quality-commands.json",
-      "sha256": "c66a0799e20cf310010061450ffbb73ca95908e6669fbb53eb7283c4943427c9"
+      "path": "docs/evidence/attempts/Phase004/attempt-2/integration-quality-commands.json",
+      "sha256": "5c5b3dfcea5b7771d3443850e6109db9724cb1ab80af56033a72f01970aa5cae"
     },
     {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/negative-aggregate-errors.json",
-      "sha256": "a7f6a72e606a16611e55273ae0b22110fbdee6277225f81b9fa3caa9aeb4d8b6"
+      "path": "docs/evidence/attempts/Phase004/attempt-2/negative-aggregate-errors.json",
+      "sha256": "357285053e73898b198cdb4914f03a4aa6843366318f6534675775ac70c906f8"
     },
     {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/negative-api-key-guard.json",
-      "sha256": "2217c07f9dec481df3f286704a80cfa0de54caca5cbe9c34b9c830083f0666be"
+      "path": "docs/evidence/attempts/Phase004/attempt-2/negative-api-key-guard.json",
+      "sha256": "8bb792209fd4a02f3b5158e975ccfc669ac325937de46f614fcb53baa5e536f5"
     },
     {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/negative-database-guard.json",
-      "sha256": "ba435aa643939a0650de143f639f63f265c7b71cc37d063a3348d9cdf18238f4"
+      "path": "docs/evidence/attempts/Phase004/attempt-2/negative-database-guard.json",
+      "sha256": "dff39c27ce55a80e6375556ccb65c17707a8fb884ed14a7c2d632d46bd47c7d3"
     },
     {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/negative-encryption-length.json",
-      "sha256": "e9d704024ac60dd24a2fb5e2f75bc75efea8287b0296b35fd4c9d148a6327af9"
+      "path": "docs/evidence/attempts/Phase004/attempt-2/negative-encryption-length.json",
+      "sha256": "92b3c8b1216c27ff2069a3c7443ef9188c9ec1392806c187cfd5a7cba6d2e29a"
     },
     {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/negative-example-extra-key.json",
-      "sha256": "af53e4ea2036f0a69f2a504996de76d0e568297cb326ae04e0710c8a9ed7483e"
-    },
-    {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/startup-missing-env.json",
-      "sha256": "4733a8481d3afd8c133aec128307e868bbe17af163a6e84cb50e3b843a963924"
-    },
-    {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/startup-restored-env.json",
-      "sha256": "cc2c2a09f133d009d7cea2f902a4025049691a265dfd5fb5e222de55ef439765"
-    },
-    {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/unit-01-valid.json",
-      "sha256": "4e2a24e7537e4146b8f1187c564a5a9d6581c0bd56d8bb784e8dc4213f99979a"
-    },
-    {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/unit-02-missing-database.json",
-      "sha256": "12951723e01f81cc5926e932faaa87398cc097104a1506d4dd5e23ce94d43999"
-    },
-    {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/unit-03-missing-two.json",
-      "sha256": "0992d4214f7d04a08959a189c1d1839277c5b79b3d7055b7865a93dc5cd17edd"
-    },
-    {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/unit-04-invalid-database.json",
-      "sha256": "99ec96f0b8d94fd59ad6917c56e88298ef6ac145aecdcdd5de0178e2adf0ca60"
-    },
-    {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/unit-05-short-auth.json",
-      "sha256": "85174273462e4fc3565fd21a3c058754a394b045ef8fd4a730dbac4b085943ec"
-    },
-    {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/unit-06-short-encryption.json",
-      "sha256": "240c7737a34cead466e71033ead5df19ea2bf1d3a78a60a95056b1e83227fc92"
-    },
-    {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/unit-07-valid-encryption.json",
-      "sha256": "9254d4bcae77d861ab345793df27adad0c7a2555d71fa386f2067fb6a906b354"
-    },
-    {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/unit-08-invalid-mock-case.json",
-      "sha256": "1f257b11ad759383f5c7922d3b1eac3709286171eb55c93b037f869fd4a9e151"
-    },
-    {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/unit-09-api-key-required.json",
-      "sha256": "c301ab4c8c20831f1441bef5ce40b99c0cbfe8d2c106835e14a28bb1ab79cbac"
-    },
-    {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/unit-10-mock-api-key-optional.json",
-      "sha256": "c98a4de87c8c123a7a20b8bcd704c00fd92f4573c973a3595add6a730131891e"
-    },
-    {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/unit-11-http-base-url.json",
-      "sha256": "ff2588603c0e21e7a48336ed2f49cb528e1259bc60b70cd46916f5342c1a10c8"
-    },
-    {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/unit-12-timeout-invalid.json",
-      "sha256": "62ca2ec50a304feadc5577cab7c25b12eb760cacabcdf4b555ddc4e23332f1a1"
-    },
-    {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/unit-13-cost-limit-invalid.json",
-      "sha256": "e05f92463715299fcc1b1c386a0171d58db58d51b2c9dde59243e3a0855edd50"
-    },
-    {
-      "path": "docs/evidence/attempts/Phase004/attempt-1/unit-14-registry-example-projection.json",
-      "sha256": "9cbfaf437b6ddfcc64f967bc227d4b75ed06d57fc73cb6d824a4799180c1cde3"
+      "path": "docs/evidence/attempts/Phase004/attempt-2/negative-example-extra-key.json",
+      "sha256": "f4a0ef14b468c514c8e64b6dfcb9b10342aa3e89ce3a188b6dee3a647e372f8f"
     },
     {
       "path": "docs/evidence/attempts/Phase004/attempt-2/review.json",
-      "sha256": "37a7f69e156ee253bb44525316f6275380db016d6e5e0d5b05cf29663dc24ce8"
+      "sha256": "a19464a4510ba3a1659daad685ffc65d33c6cdae798aecd013cbb13a9e1e4764"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase004/attempt-2/startup-missing-env.json",
+      "sha256": "acfe429da48dcf772557db4276390a92c2dd36ecf1d095572c3e1d928627b127"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase004/attempt-2/startup-restored-env.json",
+      "sha256": "1e7e7e8542c8e656c381d18bf6e0c133f4175211b8abbbf6b021ff05cf9f1c0b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase004/attempt-2/unit-01-valid.json",
+      "sha256": "b2a9298d01c703e66510c7a5104b60be78b4fb331db161b9cdf014a8627d902b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase004/attempt-2/unit-02-missing-database.json",
+      "sha256": "110ca3fc63bd3aa56d9320dc7d5d4a0365deebe9b62683489b4d3b105773eb80"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase004/attempt-2/unit-03-missing-two.json",
+      "sha256": "66b26a2a56e274b0973e8fe2f9b9164b6bfa702f7e1f77f634f5dc49a3419451"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase004/attempt-2/unit-04-invalid-database.json",
+      "sha256": "c8c07fbbd62c259eb7bd520e86b1891fd3f8f31687b29c6f93f1d3a703590c3b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase004/attempt-2/unit-05-short-auth.json",
+      "sha256": "d22271e570692fe811b35ea199ee8922507029dccc47588e937487a843d4d76f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase004/attempt-2/unit-06-short-encryption.json",
+      "sha256": "00bd4be49d08e89011f02ed6b4413bed97c91d13c0ece4b0ff5124c2eb204924"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase004/attempt-2/unit-07-valid-encryption.json",
+      "sha256": "d21aa7b97b157eba664f9fdfd9de952502fa7a45767f0808f9379728a88c4095"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase004/attempt-2/unit-08-invalid-mock-case.json",
+      "sha256": "b5281d2424ce436c86caf36172d8c7e03b41cb7128d9e121bf18525d9094fa89"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase004/attempt-2/unit-09-api-key-required.json",
+      "sha256": "28e45ae3c9d00be3861344a6964eabebaa3f2fac762a74f7487fb7b17ec167da"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase004/attempt-2/unit-10-mock-api-key-optional.json",
+      "sha256": "8daa9660c5246ab3f73ee3ae4e908b002406d9f0792e52be6fa7fa8cff6faeb2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase004/attempt-2/unit-11-http-base-url.json",
+      "sha256": "b2cfbd0cebaf58755cf075975296798fc6780bf7557c5f30f600dcfe0900ef25"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase004/attempt-2/unit-12-timeout-invalid.json",
+      "sha256": "8614ad18e0b82685dcfc56e1397dd0107fae029adb27fb296468e234371fc8ef"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase004/attempt-2/unit-13-cost-limit-invalid.json",
+      "sha256": "6c87022ef80472b81cbe0fc814a4a47474cc3299a43b7b35514026f5cdbd38dc"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase004/attempt-2/unit-14-registry-example-projection.json",
+      "sha256": "2304ce06980286b92a6dd7c82b8d2ca0d095cfd275d1b463680ca3155ae2c261"
     },
     {
       "path": "docs/phase-plans/Phase004-inputs.json",
@@ -617,7 +617,7 @@
     },
     {
       "path": "docs/phase-plans/Phase004.json",
-      "sha256": "540ac9bafffa2fc0b644ff8b7338722268b755bb2238c8f58ed73db4d3fbf0b4"
+      "sha256": "92e929d8f9234666fbfe67cf58f608d69dc88ffbf8bc572ab2d1f4dedc9df61d"
     },
     {
       "path": "docs/project-constitution.md",
@@ -697,21 +697,23 @@
     }
   ],
   "failures": [],
-  "generatedAt": "2026-09-09T17:27:18.032Z",
+  "generatedAt": "2026-09-09T17:32:34.645Z",
   "details": {
     "planPath": "docs/phase-plans/Phase004.json",
-    "planHash": "540ac9bafffa2fc0b644ff8b7338722268b755bb2238c8f58ed73db4d3fbf0b4",
-    "testedTree": "86adbcdb88789f6d1ee666df0b28ea31bbf9335b",
+    "planHash": "92e929d8f9234666fbfe67cf58f608d69dc88ffbf8bc572ab2d1f4dedc9df61d",
+    "testedTree": "ac483161dc55374cf78208f23026c8e67715ed9f",
     "reviewerRunId": "phase004-review-attempt-2",
     "reviewReportPath": "docs/evidence/attempts/Phase004/attempt-2/review.json",
-    "reviewReportHash": "37a7f69e156ee253bb44525316f6275380db016d6e5e0d5b05cf29663dc24ce8",
+    "reviewReportHash": "a19464a4510ba3a1659daad685ffc65d33c6cdae798aecd013cbb13a9e1e4764",
     "recoveryCommits": [
       "12db44d822353a6a7335d2620b9a5f97e0f29079",
       "7d16d1c24e7fbeba0b2194b35c68a6a3c6b91f8b",
       "7cc0fc6aa802559a9485a6ea3b31d173379fcd8a",
       "9cab42811209b0ff591414e4f22270a6af7fe919",
       "f987ff1f997f302155a73031ce6272e7466fa038",
-      "87a42c7f523c8b84329c9ea6b613de657b864a77"
+      "87a42c7f523c8b84329c9ea6b613de657b864a77",
+      "5292fb7f43d9fd911bc0fae3dfa37063946bf3f1",
+      "cb60a0d8eb93b08d6890465dd7b6f9c4875dbc94"
     ],
     "originalThreshold": 23,
     "automatedThreshold": 23,
