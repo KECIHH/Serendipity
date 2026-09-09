@@ -143,6 +143,26 @@ export const envRegistry = [
     documentInExample: false,
     readerPaths: ["next.config.ts"],
   },
+  {
+    key: "ADMIN_EMAIL",
+    scope: "cli",
+    producerPhase: 10,
+    requiredWhen: "always",
+    secret: false,
+    schema: "non-empty",
+    documentInExample: false,
+    readerPaths: ["src/lib/env-cli.ts"],
+  },
+  {
+    key: "ADMIN_INITIAL_PASSWORD",
+    scope: "cli",
+    producerPhase: 10,
+    requiredWhen: "always",
+    secret: true,
+    schema: "string",
+    documentInExample: false,
+    readerPaths: ["src/lib/env-cli.ts"],
+  },
 ] as const satisfies readonly EnvRegistryEntry[];
 
 export type EnvParserContext = Readonly<{

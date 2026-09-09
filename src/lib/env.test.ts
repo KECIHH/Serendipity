@@ -4,6 +4,7 @@ import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 
 import { EnvConfigError, REQUIRED_ENV_KEYS, readEnv } from "@/lib/env";
+import { readCliEnv } from "@/lib/env-cli";
 import { envRegistry, type EnvRegistryEntry } from "@/lib/env-schema";
 
 function validSource(): Record<string, string | undefined> {
@@ -147,5 +148,23 @@ describe("readEnv", () => {
       ),
     ).toHaveLength(0);
     expect(expectedKeys).toHaveLength(9);
+  });
+
+  it("registers future CLI inputs without activating them for the Web parser", () => {
+    const cliEntries = envRegistry.filter((entry) => entry.scope === "cli");
+    expect(cliEntries.map((entry) => entry.key)).toEqual(["ADMIN_EMAIL", "ADMIN_INITIAL_PASSWORD"]);
+    expect(cliEntries.every((entry) => entry.producerPhase === 10)).toBe(true);
+    expect(readCliEnv({}, { currentPhase: 4 })).toEqual({});
+    expect(() => readCliEnv({}, { currentPhase: 10 })).toThrowError(EnvConfigError);
+    const cliValues = readCliEnv(
+      { ADMIN_EMAIL: "admin@example.test", ADMIN_INITIAL_PASSWORD: "placeholder" },
+      { currentPhase: 10 },
+    );
+    expect(cliValues).toEqual({
+      ADMIN_EMAIL: "admin@example.test",
+      ADMIN_INITIAL_PASSWORD: "placeholder",
+    });
+    expect(REQUIRED_ENV_KEYS).not.toContain("ADMIN_EMAIL");
+    expect(REQUIRED_ENV_KEYS).not.toContain("ADMIN_INITIAL_PASSWORD");
   });
 });
