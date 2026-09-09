@@ -12,7 +12,40 @@ npx --yes npm@11.7.0 ci
 npx --yes npm@11.7.0 run dev
 ```
 
-打开 http://localhost:3000/。首页标题为“Serendipity · 际遇”，“开始规划”按钮目前用于基础组件验证。此阶段启动不需要环境文件、数据库或 AI 凭据。
+打开 http://localhost:3000/。首页标题为“Serendipity · 际遇”，“开始规划”按钮目前用于基础组件验证。
+
+## 环境变量
+
+复制示例配置后启动本地开发环境：
+
+```powershell
+Copy-Item .env.example .env.local
+```
+
+| 变量 | 用途 |
+| --- | --- |
+| `DATABASE_URL` | PostgreSQL 数据库连接地址 |
+| `AUTH_SECRET` | Auth.js 会话签名密钥 |
+| `ENCRYPTION_KEY` | 服务端 AES-256-GCM 加密主密钥（32 字节 Base64） |
+| `AI_API_KEY` | AI Provider 凭据；模拟模式可留空 |
+| `AI_BASE_URL` | AI Provider HTTPS 地址 |
+| `AI_MODEL` | AI Provider 模型标识 |
+| `AI_MOCK` | 是否启用受控 AI 模拟；设为 `true` 时不消耗真实额度 |
+| `AI_TIMEOUT_MS` | AI 请求超时（毫秒） |
+| `AI_DAILY_COST_LIMIT` | 每日 AI 费用上限 |
+
+服务端启动会一次性校验全部必需变量，缺失或格式错误时直接终止。
+
+## 质量命令
+
+```powershell
+npm run lint
+npm run format
+npm run format:check
+npm run test
+npm run typecheck
+npm run build
+```
 
 ```powershell
 npx --yes npm@11.7.0 run lint
