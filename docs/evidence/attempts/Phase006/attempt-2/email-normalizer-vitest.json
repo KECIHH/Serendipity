@@ -1,0 +1,580 @@
+{
+  "numTotalTestSuites": 2,
+  "numPassedTestSuites": 2,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 45,
+  "numPassedTests": 45,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1789047735889,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes   Alice.Smith+TAG@EXAMPLE.COM\t without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes   Alice.Smith+TAG@EXAMPLE.COM\t without URL host rewriting",
+          "duration": 2.4809000000000196,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@例え.テスト without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@例え.テスト without URL host rewriting",
+          "duration": 1.0086000000000013,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@XN--R8JZ45G.XN--ZCKZAH without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@XN--R8JZ45G.XN--ZCKZAH without URL host rewriting",
+          "duration": 0.3371999999999957,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@faß.de without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@faß.de without URL host rewriting",
+          "duration": 0.22690000000000055,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@ＦＯＯ。example without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@ＦＯＯ。example without URL host rewriting",
+          "duration": 0.22249999999996817,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@σόλος.example without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@σόλος.example without URL host rewriting",
+          "duration": 0.20609999999999218,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@127.1 without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@127.1 without URL host rewriting",
+          "duration": 0.1601999999999748,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@2130706433 without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@2130706433 without URL host rewriting",
+          "duration": 0.17490000000003647,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@localhost without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@localhost without URL host rewriting",
+          "duration": 0.19010000000002947,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes !#$%&'*+/=?^_`{|}~-@example.com without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes !#$%&'*+/=?^_`{|}~-@example.com without URL host rewriting",
+          "duration": 0.20199999999999818,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"\"",
+          "duration": 0.9911999999999921,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"user\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"user\"",
+          "duration": 0.18100000000004002,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"user@@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"user@@example.com\"",
+          "duration": 0.15030000000001564,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"@example.com\"",
+          "duration": 0.14680000000004156,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@\"",
+          "duration": 0.25989999999995916,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \".a@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \".a@example.com\"",
+          "duration": 0.15950000000003683,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a.@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a.@example.com\"",
+          "duration": 0.1372000000000071,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a..b@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a..b@example.com\"",
+          "duration": 0.12279999999998381,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"用户@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"用户@example.com\"",
+          "duration": 0.2218000000000302,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"ü@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"ü@example.com\"",
+          "duration": 0.1782000000000039,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a b@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a b@example.com\"",
+          "duration": 0.14189999999996417,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"\\\"a\\\"@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"\\\"a\\\"@example.com\"",
+          "duration": 0.137800000000027,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a\\u0000@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a\\u0000@example.com\"",
+          "duration": 0.14080000000001291,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@-example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@-example.com\"",
+          "duration": 0.1782000000000039,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example-.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example-.com\"",
+          "duration": 0.16190000000000282,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@a..com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@a..com\"",
+          "duration": 0.15760000000000218,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com.\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com.\"",
+          "duration": 0.19409999999999172,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example_.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example_.com\"",
+          "duration": 0.1483000000000061,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@[127.0.0.1]\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@[127.0.0.1]\"",
+          "duration": 0.1653999999999769,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com/path\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com/path\"",
+          "duration": 0.26319999999998345,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com\\\\path\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com\\\\path\"",
+          "duration": 0.26350000000002183,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com:443\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com:443\"",
+          "duration": 0.28820000000001755,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com?x\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com?x\"",
+          "duration": 0.20109999999999673,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com#x\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com#x\"",
+          "duration": 0.1874000000000251,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@exa\\tmple.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@exa\\tmple.com\"",
+          "duration": 0.16980000000000928,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@exa\\nmple.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@exa\\nmple.com\"",
+          "duration": 0.18419999999997572,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@%65xample.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@%65xample.com\"",
+          "duration": 0.16519999999997026,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@xn--a.example\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@xn--a.example\"",
+          "duration": 0.19920000000001892,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@ab--cd.example\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@ab--cd.example\"",
+          "duration": 0.170599999999979,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@a‌b.example\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@a‌b.example\"",
+          "duration": 0.8242999999999938,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com\"",
+          "duration": 0.14289999999999736,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com\"",
+          "duration": 0.2833999999999719,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\"",
+          "duration": 0.5658000000000243,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 accepts the exact 64-byte local and 254-byte total boundaries",
+          "status": "passed",
+          "title": "accepts the exact 64-byte local and 254-byte total boundaries",
+          "duration": 0.5776000000000181,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects runtime non-string input without exposing it",
+          "status": "passed",
+          "title": "rejects runtime non-string input without exposing it",
+          "duration": 0.27089999999998327,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789047736426,
+      "endTime": 1789047736440.271,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+    }
+  ]
+}

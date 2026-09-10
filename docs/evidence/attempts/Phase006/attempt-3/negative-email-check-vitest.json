@@ -1,0 +1,450 @@
+{
+  "numTotalTestSuites": 2,
+  "numPassedTestSuites": 0,
+  "numFailedTestSuites": 2,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 31,
+  "numPassedTests": 0,
+  "numFailedTests": 23,
+  "numPendingTests": 8,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1789047943791,
+  "success": false,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract schema: only User and the required enum/index/field inventory exist",
+          "status": "skipped",
+          "title": "schema: only User and the required enum/index/field inventory exist",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract revision: defaults to zero independently of sessions and role",
+          "status": "skipped",
+          "title": "revision: defaults to zero independently of sessions and role",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract revision: timestamps do not silently increment the management revision",
+          "status": "skipped",
+          "title": "revision: timestamps do not silently increment the management revision",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract revision: database rejects negative revision and sessionVersion",
+          "status": "skipped",
+          "title": "revision: database rejects negative revision and sessionVersion",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-unique: equivalent casing and IDNA inputs cannot create two rows",
+          "status": "skipped",
+          "title": "email-unique: equivalent casing and IDNA inputs cannot create two rows",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-unique: concurrent canonical registrations have one database winner",
+          "status": "skipped",
+          "title": "email-unique: concurrent canonical registrations have one database winner",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"User@example.invalid\"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \"User@example.invalid\"",
+          "duration": 14.137699999999995,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \" user@example.invalid\"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \" user@example.invalid\"",
+          "duration": 4.032699999999977,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"user@example.invalid \"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \"user@example.invalid \"",
+          "duration": 3.8006000000000313,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"user@EXAMPLE.INVALID\"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \"user@EXAMPLE.INVALID\"",
+          "duration": 3.117400000000032,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"user@例え.テスト\"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \"user@例え.テスト\"",
+          "duration": 3.5962000000000103,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"用户@example.invalid\"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \"用户@example.invalid\"",
+          "duration": 2.758199999999988,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \".a@example.invalid\"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \".a@example.invalid\"",
+          "duration": 3.5891000000000304,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a.@example.invalid\"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \"a.@example.invalid\"",
+          "duration": 2.797300000000007,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a..b@example.invalid\"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \"a..b@example.invalid\"",
+          "duration": 3.8081999999999994,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a b@example.invalid\"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \"a b@example.invalid\"",
+          "duration": 2.9581000000000017,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a@example.invalid\\n\"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \"a@example.invalid\\n\"",
+          "duration": 3.119799999999998,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a@-label.invalid\"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \"a@-label.invalid\"",
+          "duration": 3.018000000000029,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a@label-.invalid\"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \"a@label-.invalid\"",
+          "duration": 3.362000000000023,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a@label..invalid\"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \"a@label..invalid\"",
+          "duration": 2.733699999999999,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a@example.invalid.\"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \"a@example.invalid.\"",
+          "duration": 2.8700999999999794,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a@bad_label.invalid\"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \"a@bad_label.invalid\"",
+          "duration": 2.788099999999986,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a@@example.invalid\"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \"a@@example.invalid\"",
+          "duration": 3.2853000000000065,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a@example.invalid/path\"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \"a@example.invalid/path\"",
+          "duration": 2.543900000000008,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a@\"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \"a@\"",
+          "duration": 3.440999999999974,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"@example.invalid\"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \"@example.invalid\"",
+          "duration": 2.8063999999999965,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.invalid\"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.invalid\"",
+          "duration": 3.392499999999984,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.invalid\"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \"a@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.invalid\"",
+          "duration": 3.2456999999999994,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\"",
+          "status": "failed",
+          "title": "email-check: rejects noncanonical direct database value \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\"",
+          "duration": 3.6610000000000014,
+          "failureMessages": [
+            "Error: promise resolved \"1\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1659:22)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts:200:34\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2027:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: accepts maximum canonical lengths and all allowed local atoms",
+          "status": "skipped",
+          "title": "email-check: accepts maximum canonical lengths and all allowed local atoms",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract failure: a real refused connection crosses only the redacted boundary",
+          "status": "skipped",
+          "title": "failure: a real refused connection crosses only the redacted boundary",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789047944273,
+      "endTime": 1789047944358.661,
+      "status": "failed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase006/fixtures/email-check-TEfJaY/tests/phase006/database.integration.ts"
+    }
+  ]
+}

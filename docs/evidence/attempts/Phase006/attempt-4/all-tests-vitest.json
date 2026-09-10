@@ -1,0 +1,1888 @@
+{
+  "numTotalTestSuites": 28,
+  "numPassedTestSuites": 28,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 148,
+  "numPassedTests": 148,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1789048371320,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "temporary /admin deny-all gate"
+          ],
+          "fullName": "temporary /admin deny-all gate matches /admin and its descendants without matching /adminx",
+          "status": "passed",
+          "title": "matches /admin and its descendants without matching /adminx",
+          "duration": 2.6358999999999924,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "temporary /admin deny-all gate"
+          ],
+          "fullName": "temporary /admin deny-all gate returns 404 for /admin",
+          "status": "passed",
+          "title": "returns 404 for /admin",
+          "duration": 4.5909999999998945,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "temporary /admin deny-all gate"
+          ],
+          "fullName": "temporary /admin deny-all gate returns 404 for /admin/settings",
+          "status": "passed",
+          "title": "returns 404 for /admin/settings",
+          "duration": 0.6067000000000462,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "temporary /admin deny-all gate"
+          ],
+          "fullName": "temporary /admin deny-all gate returns 404 for /admin/login",
+          "status": "passed",
+          "title": "returns 404 for /admin/login",
+          "duration": 0.38820000000009713,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "temporary /admin deny-all gate"
+          ],
+          "fullName": "temporary /admin deny-all gate returns a null body and no identifying or redirect headers for /admin",
+          "status": "passed",
+          "title": "returns a null body and no identifying or redirect headers for /admin",
+          "duration": 1.8369000000000142,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "temporary /admin deny-all gate"
+          ],
+          "fullName": "temporary /admin deny-all gate denies /admin in the development environment, including common bypass flags",
+          "status": "passed",
+          "title": "denies /admin in the development environment, including common bypass flags",
+          "duration": 1.3559000000000196,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "temporary /admin deny-all gate"
+          ],
+          "fullName": "temporary /admin deny-all gate denies /admin in the test environment, including common bypass flags",
+          "status": "passed",
+          "title": "denies /admin in the test environment, including common bypass flags",
+          "duration": 0.6901000000000295,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "temporary /admin deny-all gate"
+          ],
+          "fullName": "temporary /admin deny-all gate denies /admin in the production environment, including common bypass flags",
+          "status": "passed",
+          "title": "denies /admin in the production environment, including common bypass flags",
+          "duration": 0.6156999999998334,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "temporary /admin deny-all gate"
+          ],
+          "fullName": "temporary /admin deny-all gate ignores query parameters and cookies on /admin",
+          "status": "passed",
+          "title": "ignores query parameters and cookies on /admin",
+          "duration": 1.4428000000000338,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "temporary /admin deny-all gate"
+          ],
+          "fullName": "temporary /admin deny-all gate keeps both the exact /admin matcher and the /admin descendant matcher",
+          "status": "passed",
+          "title": "keeps both the exact /admin matcher and the /admin descendant matcher",
+          "duration": 0.39409999999998035,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "temporary /admin deny-all gate"
+          ],
+          "fullName": "temporary /admin deny-all gate has one unconditional empty 404 return with no environment, query or cookie bypass",
+          "status": "passed",
+          "title": "has one unconditional empty 404 return with no environment, query or cookie bypass",
+          "duration": 14.641900000000078,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789048372508,
+      "endTime": 1789048372537.6418,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/src/middleware.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "application layout boundaries"
+          ],
+          "fullName": "application layout boundaries mounts a single Toaster inside the root layout body",
+          "status": "passed",
+          "title": "mounts a single Toaster inside the root layout body",
+          "duration": 47.13099999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "application layout boundaries"
+          ],
+          "fullName": "application layout boundaries keeps only the route-group homepage after migration",
+          "status": "passed",
+          "title": "keeps only the route-group homepage after migration",
+          "duration": 1.0924999999999727,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "application layout boundaries"
+          ],
+          "fullName": "application layout boundaries does not create an admin page before the authentication phase",
+          "status": "passed",
+          "title": "does not create an admin page before the authentication phase",
+          "duration": 6.8297000000000025,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789048372449,
+      "endTime": 1789048372504.8296,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/src/app/layout.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "API response constructors"
+          ],
+          "fullName": "API response constructors creates the exact success envelope and preserves data and caller requestId",
+          "status": "passed",
+          "title": "creates the exact success envelope and preserves data and caller requestId",
+          "duration": 2.955699999999979,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "API response constructors"
+          ],
+          "fullName": "API response constructors creates the exact error envelope without a data field",
+          "status": "passed",
+          "title": "creates the exact error envelope without a data field",
+          "duration": 0.6761000000001332,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "API response constructors"
+          ],
+          "fullName": "API response constructors preserves explicitly supplied safe details by reference",
+          "status": "passed",
+          "title": "preserves explicitly supplied safe details by reference",
+          "duration": 0.6950000000001637,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "API response constructors"
+          ],
+          "fullName": "API response constructors omits undefined details and rejects an undefined success payload",
+          "status": "passed",
+          "title": "omits undefined details and rejects an undefined success payload",
+          "duration": 1.585099999999784,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "API response constructors"
+          ],
+          "fullName": "API response constructors requires caller-provided requestIds without generating a fallback",
+          "status": "passed",
+          "title": "requires caller-provided requestIds without generating a fallback",
+          "duration": 0.489100000000235,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "API response constructors"
+          ],
+          "fullName": "API response constructors allows success and failure values to narrow by the success discriminant",
+          "status": "passed",
+          "title": "allows success and failure values to narrow by the success discriminant",
+          "duration": 0.30600000000004,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "isApiError"
+          ],
+          "fullName": "isApiError recognizes the error produced by fail",
+          "status": "passed",
+          "title": "recognizes the error produced by fail",
+          "duration": 0.28199999999969805,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "isApiError"
+          ],
+          "fullName": "isApiError accepts every public error code declared by the single API contract",
+          "status": "passed",
+          "title": "accepts every public error code declared by the single API contract",
+          "duration": 2.003900000000158,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "isApiError"
+          ],
+          "fullName": "isApiError rejects missing or mistyped fields, arrays, inherited fields and extra keys",
+          "status": "passed",
+          "title": "rejects missing or mistyped fields, arrays, inherited fields and extra keys",
+          "duration": 0.6263999999996486,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "isApiError"
+          ],
+          "fullName": "isApiError rejects unknown codes and internal diagnostics at the public boundary",
+          "status": "passed",
+          "title": "rejects unknown codes and internal diagnostics at the public boundary",
+          "duration": 0.551499999999578,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789048373677,
+      "endTime": 1789048373687.6265,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/api-response.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv valid configuration accepts all nine required values and coerces typed values",
+          "status": "passed",
+          "title": "valid configuration accepts all nine required values and coerces typed values",
+          "duration": 1.884900000000016,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv reports a missing DATABASE_URL",
+          "status": "passed",
+          "title": "reports a missing DATABASE_URL",
+          "duration": 2.087300000000141,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv reports two missing values in one error",
+          "status": "passed",
+          "title": "reports two missing values in one error",
+          "duration": 1.365099999999984,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv rejects a mysql database URL",
+          "status": "passed",
+          "title": "rejects a mysql database URL",
+          "duration": 0.6619000000000597,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv rejects an AUTH_SECRET shorter than 32 characters",
+          "status": "passed",
+          "title": "rejects an AUTH_SECRET shorter than 32 characters",
+          "duration": 0.4983999999999469,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv rejects a 31-byte ENCRYPTION_KEY",
+          "status": "passed",
+          "title": "rejects a 31-byte ENCRYPTION_KEY",
+          "duration": 0.38540000000011787,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv accepts a 32-byte ENCRYPTION_KEY",
+          "status": "passed",
+          "title": "accepts a 32-byte ENCRYPTION_KEY",
+          "duration": 0.27369999999973516,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv rejects TRUE for AI_MOCK",
+          "status": "passed",
+          "title": "rejects TRUE for AI_MOCK",
+          "duration": 0.3433999999997468,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv API key required when AI_MOCK is false",
+          "status": "passed",
+          "title": "API key required when AI_MOCK is false",
+          "duration": 0.3105999999997948,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv mock optional allows an empty AI_API_KEY",
+          "status": "passed",
+          "title": "mock optional allows an empty AI_API_KEY",
+          "duration": 0.22919999999976426,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv rejects http for AI_BASE_URL",
+          "status": "passed",
+          "title": "rejects http for AI_BASE_URL",
+          "duration": 0.24990000000025248,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv rejects invalid and too-small timeout values",
+          "status": "passed",
+          "title": "rejects invalid and too-small timeout values",
+          "duration": 0.5156999999999243,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv requires a positive cost limit",
+          "status": "passed",
+          "title": "requires a positive cost limit",
+          "duration": 0.29009999999971114,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv matches .env.example to the active documented server registry",
+          "status": "passed",
+          "title": "matches .env.example to the active documented server registry",
+          "duration": 2.029700000000048,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv registers future CLI inputs without activating them for the Web parser",
+          "status": "passed",
+          "title": "registers future CLI inputs without activating them for the Web parser",
+          "duration": 0.5761000000002241,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789048373714,
+      "endTime": 1789048373725.5762,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/env.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "formatDateRange"
+          ],
+          "fullName": "formatDateRange formats fixed local dates without applying an offset or locale",
+          "status": "passed",
+          "title": "formats fixed local dates without applying an offset or locale",
+          "duration": 1.826799999999821,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDateRange"
+          ],
+          "fullName": "formatDateRange displays one date for equal endpoints and preserves four-digit early years",
+          "status": "passed",
+          "title": "displays one date for equal endpoints and preserves four-digit early years",
+          "duration": 0.31670000000030996,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDateRange"
+          ],
+          "fullName": "formatDateRange rejects a reversed range",
+          "status": "passed",
+          "title": "rejects a reversed range",
+          "duration": 0.3795999999997548,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDateRange"
+          ],
+          "fullName": "formatDateRange rejects the nonexistent Gregorian date 2025-02-29 at either endpoint",
+          "status": "passed",
+          "title": "rejects the nonexistent Gregorian date 2025-02-29 at either endpoint",
+          "duration": 0.39010000000007494,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDateRange"
+          ],
+          "fullName": "formatDateRange rejects the nonexistent Gregorian date 1900-02-29 at either endpoint",
+          "status": "passed",
+          "title": "rejects the nonexistent Gregorian date 1900-02-29 at either endpoint",
+          "duration": 0.19590000000016516,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDateRange"
+          ],
+          "fullName": "formatDateRange rejects the nonexistent Gregorian date 2024-02-30 at either endpoint",
+          "status": "passed",
+          "title": "rejects the nonexistent Gregorian date 2024-02-30 at either endpoint",
+          "duration": 0.16570000000001528,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDateRange"
+          ],
+          "fullName": "formatDateRange rejects the nonexistent Gregorian date 2026-13-01 at either endpoint",
+          "status": "passed",
+          "title": "rejects the nonexistent Gregorian date 2026-13-01 at either endpoint",
+          "duration": 0.17509999999992942,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDateRange"
+          ],
+          "fullName": "formatDateRange rejects the nonexistent Gregorian date 2026-00-01 at either endpoint",
+          "status": "passed",
+          "title": "rejects the nonexistent Gregorian date 2026-00-01 at either endpoint",
+          "duration": 0.15380000000004657,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDateRange"
+          ],
+          "fullName": "formatDateRange rejects the nonexistent Gregorian date 0000-01-01 at either endpoint",
+          "status": "passed",
+          "title": "rejects the nonexistent Gregorian date 0000-01-01 at either endpoint",
+          "duration": 0.21700000000009823,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDateRange"
+          ],
+          "fullName": "formatDateRange rejects timestamps, missing padding and non-string input",
+          "status": "passed",
+          "title": "rejects timestamps, missing padding and non-string input",
+          "duration": 0.815599999999904,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDuration"
+          ],
+          "fullName": "formatDuration formats 0 minutes as 0分钟",
+          "status": "passed",
+          "title": "formats 0 minutes as 0分钟",
+          "duration": 0.30760000000009313,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDuration"
+          ],
+          "fullName": "formatDuration formats 45 minutes as 45分钟",
+          "status": "passed",
+          "title": "formats 45 minutes as 45分钟",
+          "duration": 0.15219999999999345,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDuration"
+          ],
+          "fullName": "formatDuration formats 90 minutes as 1小时30分钟",
+          "status": "passed",
+          "title": "formats 90 minutes as 1小时30分钟",
+          "duration": 0.12550000000010186,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDuration"
+          ],
+          "fullName": "formatDuration formats 120 minutes as 2小时",
+          "status": "passed",
+          "title": "formats 120 minutes as 2小时",
+          "duration": 0.141399999999976,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDuration"
+          ],
+          "fullName": "formatDuration rejects negative duration values",
+          "status": "passed",
+          "title": "rejects negative duration values",
+          "duration": 0.2696000000000822,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDuration"
+          ],
+          "fullName": "formatDuration rejects fractions, nonfinite values, unsafe integers and coerced input",
+          "status": "passed",
+          "title": "rejects fractions, nonfinite values, unsafe integers and coerced input",
+          "duration": 0.40830000000005384,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatMoney"
+          ],
+          "fullName": "formatMoney formats CNY and USD with fixed symbols, grouping and two decimal places",
+          "status": "passed",
+          "title": "formats CNY and USD with fixed symbols, grouping and two decimal places",
+          "duration": 0.6209999999996398,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatMoney"
+          ],
+          "fullName": "formatMoney keeps all decimal digits beyond Number.MAX_SAFE_INTEGER",
+          "status": "passed",
+          "title": "keeps all decimal digits beyond Number.MAX_SAFE_INTEGER",
+          "duration": 0.2256999999999607,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatMoney"
+          ],
+          "fullName": "formatMoney uses half-even rounding for ties, preserving a later nonzero digit",
+          "status": "passed",
+          "title": "uses half-even rounding for ties, preserving a later nonzero digit",
+          "duration": 0.3580000000001746,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatMoney"
+          ],
+          "fullName": "formatMoney rejects malformed decimals without coercion",
+          "status": "passed",
+          "title": "rejects malformed decimals without coercion",
+          "duration": 0.6110999999996238,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatMoney"
+          ],
+          "fullName": "formatMoney rejects unknown or incorrectly cased currencies",
+          "status": "passed",
+          "title": "rejects unknown or incorrectly cased currencies",
+          "duration": 0.3192999999996573,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatCostEstimate"
+          ],
+          "fullName": "formatCostEstimate displays the amount with an explicit estimate label",
+          "status": "passed",
+          "title": "displays the amount with an explicit estimate label",
+          "duration": 0.8125999999997475,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatCostEstimate"
+          ],
+          "fullName": "formatCostEstimate distinguishes a verified estimate from a final price",
+          "status": "passed",
+          "title": "distinguishes a verified estimate from a final price",
+          "duration": 0.23589999999967404,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatCostEstimate"
+          ],
+          "fullName": "formatCostEstimate displays unknown costs without a zero amount",
+          "status": "passed",
+          "title": "displays unknown costs without a zero amount",
+          "duration": 0.40599999999994907,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatCostEstimate"
+          ],
+          "fullName": "formatCostEstimate displays free only for an evidenced explicit zero",
+          "status": "passed",
+          "title": "displays free only for an evidenced explicit zero",
+          "duration": 0.6715999999996711,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatCostEstimate"
+          ],
+          "fullName": "formatCostEstimate keeps stale evidence visible without consulting the current time",
+          "status": "passed",
+          "title": "keeps stale evidence visible without consulting the current time",
+          "duration": 0.22890000000006694,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatCostEstimate"
+          ],
+          "fullName": "formatCostEstimate rejects incomplete canonical shapes and invalid confidence",
+          "status": "passed",
+          "title": "rejects incomplete canonical shapes and invalid confidence",
+          "duration": 0.41279999999960637,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatCostEstimate"
+          ],
+          "fullName": "formatCostEstimate requires source evidence and real timestamps for known costs",
+          "status": "passed",
+          "title": "requires source evidence and real timestamps for known costs",
+          "duration": 0.42079999999987194,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatCostEstimate"
+          ],
+          "fullName": "formatCostEstimate does not change source amounts or freshness metadata",
+          "status": "passed",
+          "title": "does not change source amounts or freshness metadata",
+          "duration": 0.7492000000002008,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "truncate"
+          ],
+          "fullName": "truncate keeps strings that fit and includes the ellipsis in the limit",
+          "status": "passed",
+          "title": "keeps strings that fit and includes the ellipsis in the limit",
+          "duration": 0.21509999999989304,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "truncate"
+          ],
+          "fullName": "truncate counts Unicode code points without splitting a surrogate pair",
+          "status": "passed",
+          "title": "counts Unicode code points without splitting a surrogate pair",
+          "duration": 0.10910000000012587,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "truncate"
+          ],
+          "fullName": "truncate rejects negative, fractional, nonfinite and unsafe limits",
+          "status": "passed",
+          "title": "rejects negative, fractional, nonfinite and unsafe limits",
+          "duration": 0.3492999999998574,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789048373630,
+      "endTime": 1789048373644.3494,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "safeJsonParse"
+          ],
+          "fullName": "safeJsonParse returns a discriminated success result with the parsed value",
+          "status": "passed",
+          "title": "returns a discriminated success result with the parsed value",
+          "duration": 2.396600000000035,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "safeJsonParse"
+          ],
+          "fullName": "safeJsonParse returns a nonempty error for invalid JSON",
+          "status": "passed",
+          "title": "returns a nonempty error for invalid JSON",
+          "duration": 0.7578999999996086,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "safeJsonParse"
+          ],
+          "fullName": "safeJsonParse distinguishes valid JSON null from a parse failure",
+          "status": "passed",
+          "title": "distinguishes valid JSON null from a parse failure",
+          "duration": 0.28199999999969805,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify serializes object keys in a stable order regardless of insertion order",
+          "status": "passed",
+          "title": "serializes object keys in a stable order regardless of insertion order",
+          "duration": 0.48090000000001965,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify sorts nested objects while preserving array order",
+          "status": "passed",
+          "title": "sorts nested objects while preserving array order",
+          "duration": 0.3263999999999214,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify uses ordinal UTF-16 ordering for numeric, accented and surrogate keys",
+          "status": "passed",
+          "title": "uses ordinal UTF-16 ordering for numeric, accented and surrogate keys",
+          "duration": 0.17669999999998254,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify never invokes a locale comparator",
+          "status": "passed",
+          "title": "never invokes a locale comparator",
+          "duration": 1.0691000000001623,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify supports JSON primitives and escapes strings with JSON syntax",
+          "status": "passed",
+          "title": "supports JSON primitives and escapes strings with JSON syntax",
+          "duration": 0.22159999999985303,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify allows shared references that do not form a cycle",
+          "status": "passed",
+          "title": "allows shared references that do not form a cycle",
+          "duration": 0.22640000000001237,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify rejects direct and indirect cycles",
+          "status": "passed",
+          "title": "rejects direct and indirect cycles",
+          "duration": 0.6970000000001164,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify rejects undefined, BigInt, functions, symbols and nonfinite values at every depth",
+          "status": "passed",
+          "title": "rejects undefined, BigInt, functions, symbols and nonfinite values at every depth",
+          "duration": 0.9175999999997657,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify rejects nonplain objects instead of applying toJSON or silently emitting an empty object",
+          "status": "passed",
+          "title": "rejects nonplain objects instead of applying toJSON or silently emitting an empty object",
+          "duration": 0.4950999999996384,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify rejects sparse arrays and array properties that JSON would silently lose",
+          "status": "passed",
+          "title": "rejects sparse arrays and array properties that JSON would silently lose",
+          "duration": 0.3008999999997286,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify rejects symbol keys and nonenumerable data",
+          "status": "passed",
+          "title": "rejects symbol keys and nonenumerable data",
+          "duration": 0.2011000000002241,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify rejects accessors without evaluating them",
+          "status": "passed",
+          "title": "rejects accessors without evaluating them",
+          "duration": 0.2943999999997686,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify handles null-prototype objects and prototype-looking keys as ordinary data",
+          "status": "passed",
+          "title": "handles null-prototype objects and prototype-looking keys as ordinary data",
+          "duration": 0.24690000000009604,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify does not reorder or change input data",
+          "status": "passed",
+          "title": "does not reorder or change input data",
+          "duration": 0.48109999999996944,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789048373731,
+      "endTime": 1789048373741.4812,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/json.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes   Alice.Smith+TAG@EXAMPLE.COM\t without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes   Alice.Smith+TAG@EXAMPLE.COM\t without URL host rewriting",
+          "duration": 3.9379000000000133,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@例え.テスト without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@例え.テスト without URL host rewriting",
+          "duration": 1.6346999999999525,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@XN--R8JZ45G.XN--ZCKZAH without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@XN--R8JZ45G.XN--ZCKZAH without URL host rewriting",
+          "duration": 0.5982999999999947,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@faß.de without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@faß.de without URL host rewriting",
+          "duration": 0.39019999999993615,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@ＦＯＯ。example without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@ＦＯＯ。example without URL host rewriting",
+          "duration": 0.5516000000000076,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@σόλος.example without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@σόλος.example without URL host rewriting",
+          "duration": 0.43880000000001473,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@127.1 without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@127.1 without URL host rewriting",
+          "duration": 0.33370000000002165,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@2130706433 without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@2130706433 without URL host rewriting",
+          "duration": 0.31599999999991724,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@localhost without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@localhost without URL host rewriting",
+          "duration": 0.3606999999999516,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes !#$%&'*+/=?^_`{|}~-@example.com without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes !#$%&'*+/=?^_`{|}~-@example.com without URL host rewriting",
+          "duration": 0.40830000000005384,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"\"",
+          "duration": 1.5493999999999915,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"user\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"user\"",
+          "duration": 0.2977000000000771,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"user@@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"user@@example.com\"",
+          "duration": 0.3083000000000311,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"@example.com\"",
+          "duration": 0.24090000000001055,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@\"",
+          "duration": 0.20309999999994943,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \".a@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \".a@example.com\"",
+          "duration": 0.21040000000004966,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a.@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a.@example.com\"",
+          "duration": 0.18059999999991305,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a..b@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a..b@example.com\"",
+          "duration": 0.19839999999999236,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"用户@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"用户@example.com\"",
+          "duration": 0.3605999999999767,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"ü@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"ü@example.com\"",
+          "duration": 0.3570000000000846,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a b@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a b@example.com\"",
+          "duration": 0.203899999999976,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"\\\"a\\\"@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"\\\"a\\\"@example.com\"",
+          "duration": 0.25460000000009586,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a\\u0000@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a\\u0000@example.com\"",
+          "duration": 0.2397000000000844,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@-example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@-example.com\"",
+          "duration": 0.37400000000002365,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example-.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example-.com\"",
+          "duration": 0.3614000000000033,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@a..com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@a..com\"",
+          "duration": 0.31790000000000873,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com.\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com.\"",
+          "duration": 0.31979999999998654,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example_.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example_.com\"",
+          "duration": 0.3050999999999249,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@[127.0.0.1]\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@[127.0.0.1]\"",
+          "duration": 0.31349999999997635,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com/path\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com/path\"",
+          "duration": 0.45879999999999654,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com\\\\path\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com\\\\path\"",
+          "duration": 0.4776999999999134,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com:443\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com:443\"",
+          "duration": 0.3951000000000704,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com?x\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com?x\"",
+          "duration": 0.36410000000000764,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com#x\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com#x\"",
+          "duration": 0.32760000000007494,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@exa\\tmple.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@exa\\tmple.com\"",
+          "duration": 0.315900000000056,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@exa\\nmple.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@exa\\nmple.com\"",
+          "duration": 0.32789999999999964,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@%65xample.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@%65xample.com\"",
+          "duration": 0.4399999999999409,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@xn--a.example\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@xn--a.example\"",
+          "duration": 0.42050000000006094,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@ab--cd.example\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@ab--cd.example\"",
+          "duration": 0.34379999999998745,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@a‌b.example\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@a‌b.example\"",
+          "duration": 1.5756000000000085,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com\"",
+          "duration": 0.3734000000000606,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com\"",
+          "duration": 0.6934999999999718,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\"",
+          "duration": 1.173400000000015,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 accepts the exact 64-byte local and 254-byte total boundaries",
+          "status": "passed",
+          "title": "accepts the exact 64-byte local and 254-byte total boundaries",
+          "duration": 1.2273999999999887,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects runtime non-string input without exposing it",
+          "status": "passed",
+          "title": "rejects runtime non-string input without exposing it",
+          "duration": 0.7703999999999951,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789048372200,
+      "endTime": 1789048372225.7705,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "Prisma client lifecycle"
+          ],
+          "fullName": "Prisma client lifecycle cache: repeated resolutions and module imports reuse one client",
+          "status": "passed",
+          "title": "cache: repeated resolutions and module imports reuse one client",
+          "duration": 6.9237000000000535,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Prisma client lifecycle"
+          ],
+          "fullName": "Prisma client lifecycle errors: initialization and connection failures are classified and redacted",
+          "status": "passed",
+          "title": "errors: initialization and connection failures are classified and redacted",
+          "duration": 9.54079999999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Prisma client lifecycle"
+          ],
+          "fullName": "Prisma client lifecycle modes: production leaves globals untouched; development and test reuse cache",
+          "status": "passed",
+          "title": "modes: production leaves globals untouched; development and test reuse cache",
+          "duration": 0.8793000000000575,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789048372342,
+      "endTime": 1789048372359.8794,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/db.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "LoadingState"
+          ],
+          "fullName": "LoadingState announces a polite, busy status with a visible default label",
+          "status": "passed",
+          "title": "announces a polite, busy status with a visible default label",
+          "duration": 109.0599000000002,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "LoadingState"
+          ],
+          "fullName": "LoadingState renders a custom loading label",
+          "status": "passed",
+          "title": "renders a custom loading label",
+          "duration": 5.561999999999898,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "EmptyState"
+          ],
+          "fullName": "EmptyState renders its title without adding an empty description paragraph",
+          "status": "passed",
+          "title": "renders its title without adding an empty description paragraph",
+          "duration": 15.065300000000207,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "EmptyState"
+          ],
+          "fullName": "EmptyState renders an optional description",
+          "status": "passed",
+          "title": "renders an optional description",
+          "duration": 3.501800000000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "EmptyState"
+          ],
+          "fullName": "EmptyState renders the action slot",
+          "status": "passed",
+          "title": "renders the action slot",
+          "duration": 10.70069999999987,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ErrorState"
+          ],
+          "fullName": "ErrorState announces the error message as an alert",
+          "status": "passed",
+          "title": "announces the error message as an alert",
+          "duration": 5.314600000000155,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ErrorState"
+          ],
+          "fullName": "ErrorState invokes the retry handler once when the retry button is clicked",
+          "status": "passed",
+          "title": "invokes the retry handler once when the retry button is clicked",
+          "duration": 11.140999999999622,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ErrorState"
+          ],
+          "fullName": "ErrorState omits the retry button when there is no retry handler",
+          "status": "passed",
+          "title": "omits the retry button when there is no retry handler",
+          "duration": 2.333799999999883,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "PageHeader"
+          ],
+          "fullName": "PageHeader renders the page title as the level-one heading",
+          "status": "passed",
+          "title": "renders the page title as the level-one heading",
+          "duration": 5.102899999999863,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "PageHeader"
+          ],
+          "fullName": "PageHeader renders the actions slot",
+          "status": "passed",
+          "title": "renders the actions slot",
+          "duration": 5.140699999999924,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "layout shells"
+          ],
+          "fullName": "layout shells links the site name to home and keeps the navigation static",
+          "status": "passed",
+          "title": "links the site name to home and keeps the navigation static",
+          "duration": 16.11160000000018,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "layout shells"
+          ],
+          "fullName": "layout shells renders all four static admin items and preserves its children",
+          "status": "passed",
+          "title": "renders all four static admin items and preserves its children",
+          "duration": 15.555100000000039,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789048374326,
+      "endTime": 1789048374531.5552,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/src/components/common/common-components.test.tsx"
+    }
+  ]
+}

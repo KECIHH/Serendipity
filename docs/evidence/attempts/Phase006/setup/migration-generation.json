@@ -1,0 +1,97 @@
+{
+  "target": {
+    "database": "phase006_disposable_e023ed5485f9",
+    "host": "127.0.0.1",
+    "port": 65015,
+    "containerId": "cc1dd234bcb83e6150ffe5307b85ad2aa56791cbc5231a6dab7397d28db7c7b3",
+    "image": "postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0",
+    "networkMasquerading": false,
+    "credentials": "SYNTHETIC_REDACTED",
+    "observations": [
+      {
+        "command": "docker inspect --format {{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}} cc1dd234bcb83e6150ffe5307b85ad2aa56791cbc5231a6dab7397d28db7c7b3",
+        "executable": "docker.exe",
+        "arguments": [
+          "inspect",
+          "--format",
+          "{{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}",
+          "cc1dd234bcb83e6150ffe5307b85ad2aa56791cbc5231a6dab7397d28db7c7b3"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false,
+        "stdout": "{\"serendipity.phase\":\"006\",\"serendipity.run\":\"e023ed5485f9\"}|{\"5432/tcp\":[{\"HostIp\":\"127.0.0.1\",\"HostPort\":\"65015\"}]}|postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0|true\n",
+        "stderr": "",
+        "durationMs": 243
+      },
+      {
+        "command": "docker network inspect --format {{json .Options}}|{{json .Labels}} serendipity-phase006-e023ed5485f9",
+        "executable": "docker.exe",
+        "arguments": [
+          "network",
+          "inspect",
+          "--format",
+          "{{json .Options}}|{{json .Labels}}",
+          "serendipity-phase006-e023ed5485f9"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false,
+        "stdout": "{\"com.docker.network.bridge.enable_ip_masquerade\":\"false\",\"com.docker.network.enable_ipv4\":\"true\",\"com.docker.network.enable_ipv6\":\"false\"}|{\"serendipity.run\":\"e023ed5485f9\"}\n",
+        "stderr": "",
+        "durationMs": 222
+      }
+    ]
+  },
+  "records": [
+    {
+      "command": "npm exec -- prisma format",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "exec",
+        "--",
+        "prisma",
+        "format"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "Prisma schema loaded from prisma\\schema.prisma\nFormatted prisma\\schema.prisma in 19ms 🚀\n",
+      "stderr": "",
+      "durationMs": 3929
+    },
+    {
+      "command": "npm run db:migrate -- --name init_user --create-only --skip-generate",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "db:migrate",
+        "--",
+        "--name",
+        "init_user",
+        "--create-only",
+        "--skip-generate"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "\n> serendipity@0.1.0 db:migrate\n> prisma migrate dev --name init_user --create-only --skip-generate\n\nPrisma schema loaded from prisma\\schema.prisma\nDatasource \"db\": PostgreSQL database \"phase006_disposable_e023ed5485f9\", schema \"public\" at \"127.0.0.1:65015\"\n\n",
+      "stderr": "",
+      "durationMs": 2254
+    }
+  ],
+  "generatedDirectory": "20260910132940_init_user",
+  "renamedBeforeApplicationTo": "prisma/migrations/20260910000000_init_user",
+  "generatedSql": "-- CreateEnum\nCREATE TYPE \"Role\" AS ENUM ('USER', 'ADMIN');\n\n-- CreateEnum\nCREATE TYPE \"UserStatus\" AS ENUM ('ACTIVE', 'DISABLED');\n\n-- CreateTable\nCREATE TABLE \"User\" (\n    \"id\" TEXT NOT NULL,\n    \"email\" TEXT NOT NULL,\n    \"phone\" TEXT,\n    \"name\" TEXT,\n    \"avatarUrl\" TEXT,\n    \"passwordHash\" TEXT NOT NULL,\n    \"role\" \"Role\" NOT NULL DEFAULT 'USER',\n    \"status\" \"UserStatus\" NOT NULL DEFAULT 'ACTIVE',\n    \"sessionVersion\" INTEGER NOT NULL DEFAULT 0,\n    \"revision\" INTEGER NOT NULL DEFAULT 0,\n    \"lastLoginAt\" TIMESTAMP(3),\n    \"createdAt\" TIMESTAMPTZ(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,\n    \"updatedAt\" TIMESTAMPTZ(3) NOT NULL,\n\n    CONSTRAINT \"User_pkey\" PRIMARY KEY (\"id\")\n);\n\n-- CreateIndex\nCREATE UNIQUE INDEX \"User_email_key\" ON \"User\"(\"email\");\n\n-- CreateIndex\nCREATE INDEX \"User_status_idx\" ON \"User\"(\"status\");\n",
+  "generatedSqlHash": "698611a288c8b867b3e8eaaa538df0aecb5594c16ec600cf42fad1aad919d935",
+  "migrationPath": "prisma/migrations/20260910000000_init_user/migration.sql",
+  "migrationHash": "b65593d8d8a7a1821a2f65415616e5c083a0e38785bcac2a46ea362d126de3a3",
+  "productionTraffic": false,
+  "dbPushUsed": false
+}

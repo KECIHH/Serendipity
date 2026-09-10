@@ -1,0 +1,111 @@
+{
+  "phase": 6,
+  "attemptId": "attempt-2",
+  "status": "FAIL",
+  "artifactCommit": null,
+  "command": "node docs/phase-plans/verify-phase006.mjs --case negative-role",
+  "planHash": "05206c119bb3a8f900ef88ddeb4a19388531fc846f4b7b9ca0b82274195d7ed0",
+  "reason": "Error: EPERM, Permission denied: \\\\?\\C:\\Users\\11295\\Desktop\\Serendipity ¡¤ ¼ÊÓö\\.scaffold\\phase006\\fixtures\\role-xMfAjc '\\\\?\\C:\\Users\\11295\\Desktop\\Serendipity �� ����\\.scaffold\\phase006\\fixtures\\role-xMfAjc'\n    at Object.rmSync (node:fs:1283:18)\n    at removeFixture (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/phase006-runtime.mjs:185:6)\n    at negativeRole (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase006.mjs:128:46)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase006.mjs:296:21",
+  "observations": [
+    {
+      "command": "npm exec -- prisma migrate deploy",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "exec",
+        "--",
+        "prisma",
+        "migrate",
+        "deploy"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase006\\fixtures\\role-xMfAjc",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "Prisma schema loaded from prisma\\schema.prisma\nDatasource \"db\": PostgreSQL database \"phase006_disposable_e023ed5485f9_attempt_2_role\", schema \"public\" at \"127.0.0.1:65015\"\n\n1 migration found in prisma/migrations\n\nApplying migration `20260910000000_init_user`\n\nThe following migration(s) have been applied:\n\nmigrations/\n  └─ 20260910000000_init_user/\n    └─ migration.sql\n      \nAll migrations have been successfully applied.\n",
+      "stderr": "",
+      "durationMs": 2410
+    },
+    {
+      "command": "npm run db:migrate -- --name mutation_role --skip-generate",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "db:migrate",
+        "--",
+        "--name",
+        "mutation_role",
+        "--skip-generate"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase006\\fixtures\\role-xMfAjc",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "\n> serendipity@0.1.0 db:migrate\n> prisma migrate dev --name mutation_role --skip-generate\n\nPrisma schema loaded from prisma\\schema.prisma\nDatasource \"db\": PostgreSQL database \"phase006_disposable_e023ed5485f9_attempt_2_role\", schema \"public\" at \"127.0.0.1:65015\"\n\nApplying migration `20260910134300_mutation_role`\n\nThe following migration(s) have been created and applied from new schema changes:\n\nprisma\\migrations/\n  └─ 20260910134300_mutation_role/\n    └─ migration.sql\n\nYour database is now in sync with your schema.\n\n",
+      "stderr": "┌─────────────────────────────────────────────────────────┐\n│  Update available 6.19.0 -> 8.0.0-rc.13                 │\n│                                                         │\n│  This is a major update - please follow the guide at    │\n│  https://pris.ly/d/major-version-upgrade                │\n│                                                         │\n│  Run the following to update                            │\n│    npm i --save-dev prisma@latest                       │\n│    npm i @prisma/client@latest                          │\n└─────────────────────────────────────────────────────────┘\n",
+      "durationMs": 2198
+    },
+    {
+      "command": "docker exec -i cc1dd234bcb83e6150ffe5307b85ad2aa56791cbc5231a6dab7397d28db7c7b3 psql -X -v ON_ERROR_STOP=1 -U phase006_runner -d phase006_disposable_e023ed5485f9_attempt_2_role -At",
+      "executable": "docker.exe",
+      "arguments": [
+        "exec",
+        "-i",
+        "cc1dd234bcb83e6150ffe5307b85ad2aa56791cbc5231a6dab7397d28db7c7b3",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "phase006_runner",
+        "-d",
+        "phase006_disposable_e023ed5485f9_attempt_2_role",
+        "-At"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "USER\nADMIN\nTEST_ONLY_ROLE\n",
+      "stderr": "",
+      "durationMs": 309
+    },
+    {
+      "command": "docker exec -i cc1dd234bcb83e6150ffe5307b85ad2aa56791cbc5231a6dab7397d28db7c7b3 psql -X -v ON_ERROR_STOP=1 -U phase006_runner -d postgres -At",
+      "executable": "docker.exe",
+      "arguments": [
+        "exec",
+        "-i",
+        "cc1dd234bcb83e6150ffe5307b85ad2aa56791cbc5231a6dab7397d28db7c7b3",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "phase006_runner",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "DROP DATABASE\n",
+      "stderr": "",
+      "durationMs": 295
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/mutations/third-role.prisma",
+      "sha256": "f7d1fc597ae5996bab89d52497309362900d8181e90c12e844cc307f3e658b7d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/mutations/third-role-generated.sql",
+      "sha256": "7da49105bab92f74b91841e822b97b3c37278112b3ef63789c0afbd5c95abe14"
+    }
+  ],
+  "recordedAt": "2026-09-10T13:43:01.030Z"
+}

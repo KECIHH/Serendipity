@@ -1,0 +1,112 @@
+{
+  "purpose": "Independent installed Prisma 6.19.0 checkpoint switch probe",
+  "startedAt": "2026-09-10T14:16:38.841Z",
+  "helperHash": "4c942b5b3c78edc2a0dc3b2004455b6b6201de9741e24d410935ab7d5d4e052f",
+  "prismaCliHash": "be113b73852c7c7df202427125beed388fe2cedc04b69560b571b746c7191a5f",
+  "guardHash": "f8368e4efc5322d86473b3d5b1f4ce5a03c5990c48421743143becfd8cb9eab7",
+  "publicNetworkPolicy": "Blocked before HTTP request/socket creation; no request payload or credential recorded",
+  "inheritedCheckpointDisable": false,
+  "cases": [
+    {
+      "label": "current-helper",
+      "command": "Prisma 6.19.0 validate --schema prisma/schema.prisma with review-only network guard",
+      "exitCode": 0,
+      "signal": null,
+      "durationMs": 1499,
+      "stdout": "Prisma schema loaded from ..\\..\\..\\..\\prisma\\schema.prisma\nThe schema at ..\\..\\..\\..\\prisma\\schema.prisma is valid 🚀\n",
+      "stderr": "",
+      "environment": {
+        "CI": "1",
+        "CHECKPOINT_DISABLE_TELEMETRY": "1",
+        "CHECKPOINT_DISABLE": null,
+        "NPM_CONFIG_OFFLINE": "true",
+        "PRISMA_TELEMETRY_ENDPOINT": null
+      },
+      "events": [
+        {
+          "at": "2026-09-10T14:16:39.011Z",
+          "pid": 52692,
+          "event": "process-start",
+          "program": "index.js",
+          "checkpointDisable": false,
+          "checkpointDisableTelemetry": true
+        },
+        {
+          "at": "2026-09-10T14:16:40.354Z",
+          "pid": 11764,
+          "event": "process-start",
+          "program": "child",
+          "checkpointDisable": false,
+          "checkpointDisableTelemetry": true
+        },
+        {
+          "at": "2026-09-10T14:16:40.384Z",
+          "pid": 11764,
+          "event": "network-request",
+          "layer": "http-request",
+          "protocol": "https:",
+          "hostname": "checkpoint.prisma.io",
+          "pathname": "/v1/check/prisma",
+          "method": "GET",
+          "blocked": true
+        }
+      ],
+      "blockedRequests": [
+        {
+          "at": "2026-09-10T14:16:40.384Z",
+          "pid": 11764,
+          "event": "network-request",
+          "layer": "http-request",
+          "protocol": "https:",
+          "hostname": "checkpoint.prisma.io",
+          "pathname": "/v1/check/prisma",
+          "method": "GET",
+          "blocked": true
+        }
+      ],
+      "checkpointRequests": [
+        {
+          "at": "2026-09-10T14:16:40.384Z",
+          "pid": 11764,
+          "event": "network-request",
+          "layer": "http-request",
+          "protocol": "https:",
+          "hostname": "checkpoint.prisma.io",
+          "pathname": "/v1/check/prisma",
+          "method": "GET",
+          "blocked": true
+        }
+      ]
+    },
+    {
+      "label": "correct-switch-control",
+      "command": "Prisma 6.19.0 validate --schema prisma/schema.prisma with review-only network guard",
+      "exitCode": 0,
+      "signal": null,
+      "durationMs": 1421,
+      "stdout": "Prisma schema loaded from ..\\..\\..\\..\\prisma\\schema.prisma\nThe schema at ..\\..\\..\\..\\prisma\\schema.prisma is valid 🚀\n",
+      "stderr": "",
+      "environment": {
+        "CI": "1",
+        "CHECKPOINT_DISABLE_TELEMETRY": "1",
+        "CHECKPOINT_DISABLE": "1",
+        "NPM_CONFIG_OFFLINE": "true",
+        "PRISMA_TELEMETRY_ENDPOINT": null
+      },
+      "events": [
+        {
+          "at": "2026-09-10T14:16:46.020Z",
+          "pid": 45668,
+          "event": "process-start",
+          "program": "index.js",
+          "checkpointDisable": true,
+          "checkpointDisableTelemetry": true
+        }
+      ],
+      "blockedRequests": [],
+      "checkpointRequests": []
+    }
+  ],
+  "finding": "CONFIRMED: CHECKPOINT_DISABLE_TELEMETRY does not disable Prisma checkpoint; CHECKPOINT_DISABLE=1 does",
+  "endedAt": "2026-09-10T14:16:52.790Z"
+}

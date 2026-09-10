@@ -1,0 +1,21 @@
+{
+  "phase": 6,
+  "attemptId": "interrupted-context",
+  "status": "BLOCKED",
+  "blockedCategory": "EXECUTION_INTERRUPTED",
+  "artifactCommit": null,
+  "resumedFromTask": "01a089c2-2603-7e52-b3fc-6f4bf17d7ed3",
+  "originalRequestTask": "01a08950-cd9e-74a1-a83a-78d02d0d1d71",
+  "baselineCommit": "08166e5293c2a38b732febc708880205d0d5b5e2",
+  "recordedAt": "2026-09-10T13:03:56.713Z",
+  "porcelain": "M package-lock.json\n M package.json\n?? prisma/schema.prisma\n?? src/server/auth.ts\n?? src/server/db.ts\n?? tests/lib/",
+  "sourceHashes": {
+    "package.json": "3aeadb0383871e0026d75ca0fefdf5dd0617c9614f84974682e6b4c30773cda8",
+    "package-lock.json": "e5596c8721563ada0c606da65e1c62994a57a83dc385652f98359b1dd249158c",
+    "prisma/schema.prisma": "7c54f705eb4b28f53f709a38f7096f3f70cf0d5894464e2e5aafeb0aef8a818b",
+    "src/server/auth.ts": "8a38b5d1fb2f2ff6364f55f08040505658724aa4b61d6a15e5042d13329c85d0",
+    "src/server/db.ts": "326704a9f395b76ed992ddccdcbe8c978d32bcdcfd9b449a971c14be90219fff",
+    "tests/lib/db.test.ts": "172b061c2401a08e0ebb90bb04ea48571d2fea767dd3a2cc751266e0ad8121b9"
+  },
+  "explanation": "Prior task stopped after dependency install and partial source edits. No Phase006 plan, migration, test result or Gate existed. Preserve the observed source hashes; resume from the same synced Phase005 HEAD and freeze the first complete plan before further implementation."
+}

@@ -1,0 +1,7 @@
+{
+  "command": "powershell.exe scripts/validate-phase.ps1 -CompletedThrough 5 -Strict -Json",
+  "exitCode": 0,
+  "stdout": "",
+  "stderr": "{\n  \"status\": \"PASS\",\n  \"scope\": \"ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL\",\n  \"protocolFixture\": false,\n  \"layoutVersion\": 2,\n  \"repositoryRoot\": \"C:\\\\Users\\\\11295\\\\Desktop\\\\Serendipity · 际遇\\\\.scaffold\\\\phase006-admission\",\n  \"projectRoot\": \"C:\\\\Users\\\\11295\\\\Desktop\\\\Serendipity · 际遇\\\\.scaffold\\\\phase006-admission\",\n  \"projectGitPrefix\": \"\",\n  \"executionBaselineCommit\": \"10d5f9554ade36fc94cdbf6c2c9fdff5582e28da\",\n  \"completedThrough\": 5,\n  \"currentPhase\": 6,\n  \"artifactCommit\": \"c69b7a15f992382002f6541307d2d016315f2edf\",\n  \"metadataCommit\": \"08166e5293c2a38b732febc708880205d0d5b5e2\",\n  \"historicalPhase\": 0,\n  \"preservedHistoricalFiles\": 44,\n  \"checkpointImport\": {\n    \"path\": \"docs/checkpoint-migrations/history-20260909.json\",\n    \"sha256\": \"45bc0742f7b12506a007c84a0f3f9808f2f9b9e8d292a60fab345f4966e1d5b4\",\n    \"importedThrough\": 2,\n    \"continuationBaselineCommit\": \"8c5eb222b62c304f00d4b26b1c5f192db13491b9\",\n    \"currentHead\": \"08166e5293c2a38b732febc708880205d0d5b5e2\",\n    \"admissionOnly\": false\n  },\n  \"localIgnoredInputsVerified\": 151,\n  \"contractCoverage\": {\n    \"numerator\": 32,\n    \"denominator\": 32\n  },\n  \"networkPushEvaluated\": false\n}\n",
+  "durationMs": 20197
+}

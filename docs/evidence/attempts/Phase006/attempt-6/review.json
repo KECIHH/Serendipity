@@ -1,0 +1,758 @@
+{
+  "phase": 6,
+  "attemptId": "attempt-6",
+  "planPath": "docs/phase-plans/Phase006.json",
+  "planHash": "376192ccacc4bec06979652357e6e3f237336043b834876b9e8abc8afba6bc68",
+  "decision": "PASS",
+  "implementationContextId": "01a08b57-8a87-7b03-abb7-c45f124e96fe:Phase006",
+  "contextId": "01a08ba0-73a0-78c3-8307-116f6ca8a776",
+  "reviewerRunId": "phase006-independent-attempt-6-aab4f597-5049-4131-ab8e-d243aede83a2",
+  "generatedBy": "Codex independent reviewer in the original separate review context; resumed the existing attempt-6 review run, inspected current differences and independently verified exact source/report hashes and actual evaluator evidence",
+  "runnerIdentity": {
+    "kind": "INDEPENDENT_CODEX_AGENT",
+    "implementationAuthored": false
+  },
+  "startedAt": "2026-09-10T15:28:30.702Z",
+  "generatedAt": "2026-09-10T15:49:38.952Z",
+  "reviewScope": "仅Phase006 attempt-6：补查Studio HTML规范化、四个旧快照精确属性例外与本轮97来源/13报告/quality绑定；复用上一轮独立代码、测试、网络隔离及证据协议阅读。",
+  "reviewCompletion": "COMPLETE_FOR_CURRENT_PHASE_IMPLEMENTATION_AND_PRE_ARTIFACT_EVIDENCE",
+  "sourceHashes": {
+    ".gitattributes": "66f2323a3d7b84ba2e810bca035bb5193a3d3cec1c999a8854e94673efa58909",
+    ".gitignore": "eb3d88b97ff365a767b5b3488f3f5e889fd13f4ee1036b99e974ee7c3a17531b",
+    ".prettierignore": "4d0360bfc0e85bcf158669d14e074bff6609ab2bd10cbf6fa0b626c2cb323fc7",
+    ".prettierrc.json": "a8443c8c223de29983998d16e4a8f9298898a008a7244db0c2d84eab18eeeab7",
+    "docs/agent-execution-contract.md": "2919a173e60f0ed50fbf4839a5d8c96bc836afd032410cb012186026736688a2",
+    "docs/auth.md": "d672c3d25e09ae16e61f9cea23c5d6fc500ff4e76156b4b6f5ca3ccc48a4e736",
+    "docs/database.md": "38bb2a4b05b15def09ec0434ca4e4cf6d874109d3d88126333bf1f30209029a0",
+    "docs/directory-structure.md": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df",
+    "docs/env-registry.json": "651168b05d2c85d6eb5bd67d17bac00d5698a87649752c88d8bc309966046b18",
+    "docs/phase-plans/Phase006-inputs.json": "e191b940aaf31c1f075d662d798d078d23331efb3634c4d7c761a704bec28798",
+    "docs/phase-plans/Phase006.json": "376192ccacc4bec06979652357e6e3f237336043b834876b9e8abc8afba6bc68",
+    "docs/phase-plans/complete-phase006.mjs": "92319aee547ed8863006264bf8d967c918a4e1b6a503ff81bfa7cc3b4f7904e4",
+    "docs/phase-plans/phase006-runtime.mjs": "67268215a7fffa5e6d087e234f866c15daadc04a7f7547106f95e4ac8a1f02e1",
+    "docs/phase-plans/setup-phase006.mjs": "af30cf6dca7bb7aff6e316f56faa645aa116299bd7af54972926bfc0d02614d8",
+    "docs/phase-plans/verify-phase006.mjs": "71e03dfd7f02a70552e2d8a0acde77c9c6ca2124caf0fbc816367b0f785879b9",
+    "docs/phase006.md": "a5d9c679b32655d5668aecb9ad4cbbc80c2204ba5b11ad67ad5d9f5e27065890",
+    "docs/project-constitution.md": "8f1dd176e30e815a09502a91c5b0ef2722b7bb71d5e919fbfc70cfecf3e9dedd",
+    "docs/project-layout.json": "7efe30a30fe009a8e1226563cae53d39ed2a2193be78bc0f0a776f57f67710ba",
+    "docs/runtime-baseline.json": "454e0dc1759a2ddfd2f3cd89d4f8988ac9cecaea2a8ca71923bb6180afbdfa6c",
+    "docs/tech-stack.md": "258620f3e18d042eac1e26165f411e8879ecd4b0d91d8e7986aaed4f3f10d2c7",
+    "eslint.config.mjs": "f45d4d5b4e4808481617530c717d97108af6488b39e008e49b4161aefd818708",
+    "next.config.ts": "614bce25b089c3f19b1e17a6346c74b858034040154c6621e7d35303004767cc",
+    "package-lock.json": "b5fab836e7858b930c5e74544ffb65c1a873a7907465bcf00f61f34cb89121fe",
+    "package.json": "a8f420c7cee39e4ba7468ab454a7389850d2879361d266a026e630ca7b7c9e94",
+    "postcss.config.mjs": "141ef24ca27a99d08962210fdf20212d3435fdcfa21b46cd88b44d22f751dfae",
+    "prisma/migrations/20260910000000_init_user/migration.sql": "b65593d8d8a7a1821a2f65415616e5c083a0e38785bcac2a46ea362d126de3a3",
+    "prisma/migrations/migration_lock.toml": "99836963713b4f5b269ad49af0ed3d7b0b2e336115c2f92dc9ac683d139d0900",
+    "prisma/schema.prisma": "7c54f705eb4b28f53f709a38f7096f3f70cf0d5894464e2e5aafeb0aef8a818b",
+    "scripts/check-project-layout.mjs": "d19f27109ff142516a7b0454e7f9b9a03629fd11923e7f6b88c7ee9323eb1d35",
+    "scripts/checkpoint-history.mjs": "673a4f5ff409ce0a4fcb7b1754c2d977199fc502a8732cda01082b9a0eababa1",
+    "scripts/complete-phase003.mjs": "7dfd3f076da235b7b0d33a950fe08e6f48b3ac46b3c6aea70ea81b9cb6b3204f",
+    "scripts/eslint-env.mjs": "f2ded148de31d4d35ede46a162116f81b48b459b869ade8411a5e25c9f5f21ce",
+    "scripts/generate-api-contract.mjs": "6dad8aa0bbd68630b9149babed05e1bdc0c315d262ce16665cbe3fc133dd6009",
+    "scripts/phase-evidence.mjs": "4f6c097483548486127518e613acf67b867347a706ad5eb138148f2701bfada9",
+    "scripts/phase003-evidence.mjs": "5a6660faa40d3710df19b9881f203be6dcb3e459c5b9c4fcf6169548890abbb4",
+    "scripts/prepare-checkpoint-import.mjs": "81f21058f17b87d053f1fc0b2762fca645d53fc7a1440d68ee7908d20ce3ac0a",
+    "scripts/prepare-phase003.mjs": "8a1a7482ee04835e3819bf81dcaa7b27ee4172ba806688b26105cae937b4ca5b",
+    "scripts/test-checkpoint-import.mjs": "9b0d18dda79e9cb8602727a72555ca392b9558b2dcc1360349f73c89560a8e11",
+    "scripts/test-validate-phase.mjs": "b4df52b324137973c12ddc352695f2082177d29aaf9d007ba6ebf1c18a76439c",
+    "scripts/validate-phase.mjs": "3e7392fbb5e59a0cd300579a319dd45fc65cd523cc11bb74cec664f28931c9b0",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319",
+    "scripts/verify-phase003.mjs": "ff50f83beabeea538c7141ee0a6beeed4a6c02664fbf8f58b68d795a80375758",
+    "src/app/(site)/layout.tsx": "dbf6397819844277acac383530a3a616f29e1068b9b5ba2d08f2886b3cca5207",
+    "src/app/(site)/page.tsx": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e",
+    "src/app/admin/layout.tsx": "95d75d00b7761b6370864fceb83980b938f8378cc23f1d33de8f15b981156734",
+    "src/app/favicon.ico": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932",
+    "src/app/globals.css": "f88153c2b0c26a4f65e48626ab5a05e68c8d962952be88ead2032c8a90b10a1f",
+    "src/app/layout.test.ts": "8022cde5595f753306b17f2de43534bc42ee0fd0f46ea19452deb2ee55e7e0cb",
+    "src/app/layout.tsx": "a9de0b5ba9380f5a058487639bd6be0d13c5a1293f720d38965d1b3dec793a6f",
+    "src/components/admin/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/chat/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/common/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/common/common-components.test.tsx": "8a9fcd34cc153236e6d58ad1b1ee0039e2b4020f664f918ffc5f7e9e82f8ed5b",
+    "src/components/common/empty-state.tsx": "a5b1a914935eace3193451be25c9cf8178010345ef76963e0ecb12713e284795",
+    "src/components/common/error-state.tsx": "4ef42505cda6c3a5d4c35180022eedab13ce9f33ac9e412e924dd5b9bb9d808d",
+    "src/components/common/loading-state.tsx": "0a010951d56d20dc1860ed8bd78a5c95671bd1323014330c00b4519aafe1c37f",
+    "src/components/common/page-header.tsx": "c403ac7802dbb0ecf5f83aa57ed043bf598fd3e1806c7250751cdfd9f361b4da",
+    "src/components/layout/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/layout/admin-shell.tsx": "6bb6e05f1ad6cf9c1b6c8e77a89832a3008afaaa5297ef056e3fb89fbe37c819",
+    "src/components/layout/site-header.tsx": "f4fdc237b4a3d76ac8280ff80390966ec3a1fe95d67bba7f2e5abb475ed98295",
+    "src/components/travel/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/ui/button.tsx": "abd7a62c5b38d8836c88906285ea0df0a40d3dd55f7d404a07672f749e37f43f",
+    "src/components/ui/sonner.tsx": "f28cba0be08c0873d121f6f35107c9e0b209ef649b0d0625c32e46cf0b2ed9a2",
+    "src/instrumentation.ts": "4ff6be1caa61426f26540f107f1b609bda7ad79e40b72d5c2b563d7fbb3c4821",
+    "src/lib/ai/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/lib/api-response.test.ts": "4660ad9249e90641f09cbfd7dd914504fa4d1cea7fd180c6c407eb70f2a6cd1d",
+    "src/lib/api-response.ts": "235635f476f988af2f7d2bdb867acc85bd3d4d777a99c8c7da555206b9a65a6a",
+    "src/lib/env-cli.ts": "a70f8eff095adde7d6baf7ff7b6bc30156bb0c110a351fe4dad13ce076539fe4",
+    "src/lib/env-schema.ts": "61c657e715fad05a57737ef8ad037a97c32f724c9a3a6e0a5c76ce5cf65d5731",
+    "src/lib/env.test.ts": "04ad1cbe2db65abe20d9c9d520c52c8cc9f42f6040a516a53e37ade2d0e2b38f",
+    "src/lib/env.ts": "51a3612afe39103e04f214185192f0e39e8bc5cb43d27b21922fdd1748096658",
+    "src/lib/format.test.ts": "bfbf9788fbc9506c299acdafe03debe5ee8ce6bc4baff11092d08d935d2cfdbe",
+    "src/lib/format.ts": "0834ccea0511ed8b0374db59527702e3707a251f44d367e70bf748e27dbe37a0",
+    "src/lib/json.test.ts": "2e17c72f917730c5adabd17ed3f434ab9d50d0215651f768938bff3e9fb50a60",
+    "src/lib/json.ts": "b482e4f8309135800ce6526b771b809aff8ea219d4fc89060c3b4ba057b3ed11",
+    "src/lib/utils.ts": "55bbdc94cef3e0c8a8bba386e94f97228dd2c967fe61466fc565378890550c08",
+    "src/middleware.test.ts": "98671c0f2ada396299964461177c1bd84bc5029d9dad58c3a71d5c2851277461",
+    "src/middleware.ts": "2f3f1b9df69c9cf93a2bffc4f6ba8c9336b0b4111614d9ae3e18d116e9c9934f",
+    "src/server/auth.ts": "af08f9c7a2b08672e5c516d38beb71fd4edd0566f0d5e98b669417d28cbec4fe",
+    "src/server/db.ts": "d2f6bec02e8dc7eb25eb782def2f24d018a1c27358cd62dfd5aeb22030457db7",
+    "src/server/services/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/types/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/lib/auth.test.ts": "fb8bb3b519253cd9d931ec208a6c78954fe94d11aa3b8cd65297ce55ee8a418c",
+    "tests/lib/db.test.ts": "e638b23182053c44a3937c2d63f1baa6e3cb7c8735588ac50002ba85ccfcb136",
+    "tests/phase005/browser.mjs": "65cee15ce4171423bde4c82689466d1b1c45a64cb1a847ec6200661465676881",
+    "tests/phase005/components-fixture.tsx": "d224e44f30a1c481be92f70b2f592388da98b5c567f9736774f617ffc00927dd",
+    "tests/phase005/fixtures/phase003-home.tsx": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e",
+    "tests/phase006/cli-network-guard.cjs": "da1e1020f2d0f5f171f1a721dfa2c3412a2901d858eee176ed730f45f0ad2ab7",
+    "tests/phase006/cli-network.mjs": "21664e3f9f0467ab5e92fdc60b84f2df27c106bb1267ec8a734cfe128f7bbd72",
+    "tests/phase006/database.integration.ts": "10f67850b842abdf0757b68507a334eaa6bbdbc80db48f24751890f8ab8809e4",
+    "tests/phase006/studio.mjs": "04816f53f00927939193655814e966819ac4aa477eb9042f5b5b2f1b5fbc9916",
+    "tests/phase006/user-types.ts": "3ab183310d3add2e18415f83f732cf913f883f18bbdd06a71dc9de0ce76d47c5",
+    "tests/phase006/vitest.database.config.mjs": "b0d0de6cebdd51e1418960674b8b977d64072787cc123d19bd05a0595d58b267",
+    "tsconfig.json": "83d292a6930a317ea31ef48e220097d2ca10c6c505f41d5954795acef48ca3b9",
+    "vitest.config.ts": "cc79644beec0c7ff9c0e466b952b2aaa6410598a575606f633f32e7caf29b966",
+    "vitest.setup.ts": "a54f6b87de09e2b125852fddf97dc7069d9a9026c8af824944aba85e6bd54660",
+    "vitest/stubs/server-only.ts": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+  },
+  "reportHashes": {
+    "docs/evidence/attempts/Phase006/attempt-6/unit-cache.json": "9732e816183bf0f507a359ed0209f7b955db2514c04412323a1cbf6813705e0c",
+    "docs/evidence/attempts/Phase006/attempt-6/unit-errors.json": "7866dd9b234ef6ee6c594dce70c03fc54492b13205f999fd149d14bfc5eb5eb4",
+    "docs/evidence/attempts/Phase006/attempt-6/unit-modes.json": "9fc53eab411fcc73783ebe9c00837b969c29ac4964c6400c4440c3df1de54f44",
+    "docs/evidence/attempts/Phase006/attempt-6/integration-revision.json": "70e1d05442962aa4c6f484f709bcc8b08ae9a759b2ded0ec2fffcc1dbc95cbcf",
+    "docs/evidence/attempts/Phase006/attempt-6/integration-client.json": "ccd78351e709745387ff7ba2db7474c64644ed96a186b2ed96dd89cb6c6c930c",
+    "docs/evidence/attempts/Phase006/attempt-6/integration-types.json": "507f699326c6d167bf8d396dc1522f4eb19a6b66fe9cf9864359831e8a7e9874",
+    "docs/evidence/attempts/Phase006/attempt-6/negative-email.json": "d6af6e7cf736a0d26fdc2f2ae17e005e8aa0b5c10291cbf9680bf55bc1b87d26",
+    "docs/evidence/attempts/Phase006/attempt-6/negative-role.json": "3e49b86b496b4c35c696f1ce5359dbc364b00028bd555ee7bca91cbac38d0ff2",
+    "docs/evidence/attempts/Phase006/attempt-6/negative-cache.json": "d6281c4b8f26d91a5bfcd87e46fad7ab6bff08d99d706566fda76494f7c3a14d",
+    "docs/evidence/attempts/Phase006/attempt-6/auto-generate.json": "6937d4b06ce50bc8467e6b5f6001299d09159ea589f7112b142762b56bfddc4c",
+    "docs/evidence/attempts/Phase006/attempt-6/auto-migrate.json": "d1d31049724a11343e77fdf01e6dd6888ec9e3e95a9c59849b5f760f5992ad44",
+    "docs/evidence/attempts/Phase006/attempt-6/auto-status.json": "21bfb57c062037dad6581c5d7f414bbae587b2d0638174b0ee3f0de8e65b2000",
+    "docs/evidence/attempts/Phase006/attempt-6/auto-studio.json": "c08ef969307e25af5a561f2747af776e6dd01750018e06a0f0975365bd0a99fb"
+  },
+  "supplementalReportHashes": {
+    "docs/evidence/attempts/Phase006/attempt-6/quality.json": "cf9579a6e115aee5d1d752e97a27f21194d1ca52e5aa2ca8dd975e7e9effd48a"
+  },
+  "issues": [
+    {
+      "id": "PHASE006-REVIEW-001",
+      "priority": "P1",
+      "severity": "BLOCKER",
+      "status": "RESOLVED",
+      "blocking": false,
+      "title": "Prisma checkpoint禁用变量无效导致隔离测试尝试遥测外呼",
+      "file": "docs/phase-plans/phase006-runtime.mjs",
+      "line": 63,
+      "originalAttemptId": "attempt-4",
+      "previousResolutionAttemptId": "attempt-5",
+      "resolvedAt": "2026-09-10T15:49:38.952Z",
+      "resolution": "CHECKPOINT_DISABLE=1及真实CLI/fork网络回归源码与attempt-5已复核版本逐字节一致。本轮正常环境0请求、0checkpoint child；移除开关控制由真实child发起checkpoint请求并在公网I/O前阻断。quality绑定当前cli-network.json；确认此前问题保持解决。",
+      "resolutionEvidence": [
+        {
+          "path": "docs/phase-plans/phase006-runtime.mjs",
+          "sha256": "67268215a7fffa5e6d087e234f866c15daadc04a7f7547106f95e4ac8a1f02e1",
+          "line": 63
+        },
+        {
+          "path": "docs/evidence/attempts/Phase006/attempt-6/cli-network.json",
+          "sha256": "c8a1013a2b8e1bd8efe76a3a3588f3762f066be9dcfbad72a5cfe4964e3b95f5"
+        },
+        {
+          "path": "docs/evidence/attempts/Phase006/attempt-6/quality.json",
+          "sha256": "cf9579a6e115aee5d1d752e97a27f21194d1ca52e5aa2ca8dd975e7e9effd48a"
+        }
+      ],
+      "verification": {
+        "path": "docs/evidence/attempts/Phase006/attempt-6/cli-network.json",
+        "sha256": "c8a1013a2b8e1bd8efe76a3a3588f3762f066be9dcfbad72a5cfe4964e3b95f5",
+        "normalRequests": 0,
+        "normalChildren": 0,
+        "controlRequests": 1,
+        "controlChildren": 1,
+        "allControlRequestsBlockedBeforeIO": true
+      }
+    },
+    {
+      "id": "PHASE006-REVIEW-002",
+      "priority": "P2",
+      "severity": "EVIDENCE_FORMAT",
+      "status": "RESOLVED",
+      "blocking": false,
+      "title": "旧Studio原始HTML行尾空白触发提交前diff检查",
+      "file": "tests/phase006/studio.mjs",
+      "originalAttemptId": "attempt-5",
+      "firstDetectedBy": "MAIN_AGENT_PRECOMMIT_WHITESPACE_CHECK",
+      "resolvedAt": "2026-09-10T15:49:38.952Z",
+      "resolution": "旧失败记录exitCode=2被保留。四个旧studio.html的例外仅匹配attempt-2/3/4/5精确路径，注释SHA-256与原始字节一致；当前和未来快照及代码无该豁免。本轮在hash前规范化LF并去行尾空格/tab，保存rawDomHash和domNormalization。将hash等于rawDomHash的旧原始HTML独立规范化后，与本轮studio.html逐字节一致，仅移除162字节行尾空白，DOM字段与截图保持有效。",
+      "resolutionEvidence": [
+        {
+          "path": ".gitattributes",
+          "sha256": "66f2323a3d7b84ba2e810bca035bb5193a3d3cec1c999a8854e94673efa58909"
+        },
+        {
+          "path": "tests/phase006/studio.mjs",
+          "sha256": "04816f53f00927939193655814e966819ac4aa477eb9042f5b5b2f1b5fbc9916"
+        },
+        {
+          "path": "docs/evidence/attempts/Phase006/attempt-6/studio.html",
+          "sha256": "a263528ed5252f9ffe2b7960dae5b6b2ace746d31f5d541c95fa4b717e62bd10"
+        },
+        {
+          "path": "docs/evidence/attempts/Phase006/attempt-6/studio.json",
+          "sha256": "572ad3014e662b90a42ad16f93c03eec48ec0195ed4073de0f2ec320ed3d36f7"
+        },
+        {
+          "path": "docs/evidence/attempts/Phase006/attempt-5/staged-diff-check.json",
+          "sha256": "00d51a7c0a9dddc4d4163e7e3d54562fd1611c904b7fdc5e1352c0086a04089f"
+        }
+      ],
+      "verification": {
+        "status": "PASS",
+        "exceptions": [
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-2/studio.html",
+            "attempt": 2,
+            "sha256": "bc6dab152e20dba011d569f6d2a911e14a1c3349188790b3d204b551da63cf67",
+            "declaredHash": "bc6dab152e20dba011d569f6d2a911e14a1c3349188790b3d204b551da63cf67"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-3/studio.html",
+            "attempt": 3,
+            "sha256": "bc6dab152e20dba011d569f6d2a911e14a1c3349188790b3d204b551da63cf67",
+            "declaredHash": "bc6dab152e20dba011d569f6d2a911e14a1c3349188790b3d204b551da63cf67"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-4/studio.html",
+            "attempt": 4,
+            "sha256": "8ccf032c749592b8fd73254254d9f64449fd9e70728da27a29f699318cd40f85",
+            "declaredHash": "8ccf032c749592b8fd73254254d9f64449fd9e70728da27a29f699318cd40f85"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-5/studio.html",
+            "attempt": 5,
+            "sha256": "8ccf032c749592b8fd73254254d9f64449fd9e70728da27a29f699318cd40f85",
+            "declaredHash": "8ccf032c749592b8fd73254254d9f64449fd9e70728da27a29f699318cd40f85"
+          }
+        ],
+        "attributes": [
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-2/studio.html",
+            "attribute": "whitespace",
+            "value": "-blank-at-eol"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-2/studio.html",
+            "attribute": "eol",
+            "value": "lf"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-3/studio.html",
+            "attribute": "whitespace",
+            "value": "-blank-at-eol"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-3/studio.html",
+            "attribute": "eol",
+            "value": "lf"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-4/studio.html",
+            "attribute": "whitespace",
+            "value": "-blank-at-eol"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-4/studio.html",
+            "attribute": "eol",
+            "value": "lf"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-5/studio.html",
+            "attribute": "whitespace",
+            "value": "-blank-at-eol"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-5/studio.html",
+            "attribute": "eol",
+            "value": "lf"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-6/studio.html",
+            "attribute": "whitespace",
+            "value": "unspecified"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-6/studio.html",
+            "attribute": "eol",
+            "value": "lf"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-7/studio.html",
+            "attribute": "whitespace",
+            "value": "unspecified"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-7/studio.html",
+            "attribute": "eol",
+            "value": "lf"
+          },
+          {
+            "path": "tests/phase006/studio.mjs",
+            "attribute": "whitespace",
+            "value": "unspecified"
+          },
+          {
+            "path": "tests/phase006/studio.mjs",
+            "attribute": "eol",
+            "value": "lf"
+          },
+          {
+            "path": "src/server/db.ts",
+            "attribute": "whitespace",
+            "value": "unspecified"
+          },
+          {
+            "path": "src/server/db.ts",
+            "attribute": "eol",
+            "value": "lf"
+          }
+        ],
+        "rawDomHash": "8ccf032c749592b8fd73254254d9f64449fd9e70728da27a29f699318cd40f85",
+        "domHash": "a263528ed5252f9ffe2b7960dae5b6b2ace746d31f5d541c95fa4b717e62bd10",
+        "normalizationVerifiedAgainstByteIdenticalPriorRawDom": "docs/evidence/attempts/Phase006/attempt-5/studio.html",
+        "removedBytes": 162,
+        "currentSnapshotHasCR": false,
+        "currentSnapshotHasTrailingHorizontalWhitespace": false,
+        "whitespaceCheck": {
+          "command": "git diff --no-index --check -- <existing empty review file> docs/evidence/attempts/Phase006/attempt-6/studio.html",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "",
+          "interpretation": "No whitespace diagnostics; exit 1 indicates content differs from the empty file in --no-index mode."
+        },
+        "previousFailure": {
+          "path": "docs/evidence/attempts/Phase006/attempt-5/staged-diff-check.json",
+          "sha256": "00d51a7c0a9dddc4d4163e7e3d54562fd1611c904b7fdc5e1352c0086a04089f",
+          "exitCode": 2
+        }
+      }
+    }
+  ],
+  "dispositions": [
+    {
+      "issueId": "PHASE006-REVIEW-001",
+      "status": "RESOLVED",
+      "disposition": "FIX_PRESERVED_AND_CURRENT_REGRESSION_VERIFIED",
+      "attemptId": "attempt-6",
+      "evidencePath": "docs/evidence/attempts/Phase006/attempt-6/cli-network.json",
+      "evidenceHash": "c8a1013a2b8e1bd8efe76a3a3588f3762f066be9dcfbad72a5cfe4964e3b95f5",
+      "qualityReportPath": "docs/evidence/attempts/Phase006/attempt-6/quality.json",
+      "qualityReportHash": "cf9579a6e115aee5d1d752e97a27f21194d1ca52e5aa2ca8dd975e7e9effd48a",
+      "waived": false
+    },
+    {
+      "issueId": "PHASE006-REVIEW-002",
+      "status": "RESOLVED",
+      "disposition": "NORMALIZE_NEW_EVIDENCE_AND_PRESERVE_EXACT_OLD_BYTES",
+      "attemptId": "attempt-6",
+      "failureEvidencePath": "docs/evidence/attempts/Phase006/attempt-5/staged-diff-check.json",
+      "failureEvidenceHash": "00d51a7c0a9dddc4d4163e7e3d54562fd1611c904b7fdc5e1352c0086a04089f",
+      "evidencePath": "docs/evidence/attempts/Phase006/attempt-6/studio.json",
+      "evidenceHash": "572ad3014e662b90a42ad16f93c03eec48ec0195ed4073de0f2ec320ed3d36f7",
+      "currentSnapshotExempted": false,
+      "oldSnapshotExceptions": [
+        {
+          "path": "docs/evidence/attempts/Phase006/attempt-2/studio.html",
+          "attempt": 2,
+          "sha256": "bc6dab152e20dba011d569f6d2a911e14a1c3349188790b3d204b551da63cf67",
+          "declaredHash": "bc6dab152e20dba011d569f6d2a911e14a1c3349188790b3d204b551da63cf67"
+        },
+        {
+          "path": "docs/evidence/attempts/Phase006/attempt-3/studio.html",
+          "attempt": 3,
+          "sha256": "bc6dab152e20dba011d569f6d2a911e14a1c3349188790b3d204b551da63cf67",
+          "declaredHash": "bc6dab152e20dba011d569f6d2a911e14a1c3349188790b3d204b551da63cf67"
+        },
+        {
+          "path": "docs/evidence/attempts/Phase006/attempt-4/studio.html",
+          "attempt": 4,
+          "sha256": "8ccf032c749592b8fd73254254d9f64449fd9e70728da27a29f699318cd40f85",
+          "declaredHash": "8ccf032c749592b8fd73254254d9f64449fd9e70728da27a29f699318cd40f85"
+        },
+        {
+          "path": "docs/evidence/attempts/Phase006/attempt-5/studio.html",
+          "attempt": 5,
+          "sha256": "8ccf032c749592b8fd73254254d9f64449fd9e70728da27a29f699318cd40f85",
+          "declaredHash": "8ccf032c749592b8fd73254254d9f64449fd9e70728da27a29f699318cd40f85"
+        }
+      ],
+      "waiverScope": "仅四个已冻结原始studio.html的行尾空白，未改变13用例或任何验收阈值。"
+    }
+  ],
+  "unresolvedIssues": [],
+  "conclusion": "PASS：本轮Studio证据格式修复有效且例外范围精确；PHASE006-REVIEW-001保持关闭，未发现本轮未解决实质问题。97个sourcePaths、13个固定报告及仅含当前quality的补充hash均通过；13/13 cases、10项supporting checks和148/148测试证据与当前源码绑定。正式Phase完成仍需主agent执行其余Git、artifact/metadata与双shell seal流程。",
+  "priorReview": {
+    "path": "docs/evidence/attempts/Phase006/attempt-5/review.json",
+    "sha256": "9db0f0f2c3f9167913787f7d535c9461d411e55d4f7dd274f15c9071d0783e2e",
+    "reviewerRunId": "phase006-independent-attempt-5-add8cf56-b3d7-4783-a4e6-13edf763a236",
+    "preservedByteForByte": true,
+    "unchangedSourceCount": 94,
+    "currentDifferences": [
+      {
+        "path": ".gitattributes",
+        "previousSha256": "851253b716e5448b37969c98629a93622041b2bc7ab105020a69b41ac157fffa",
+        "currentSha256": "66f2323a3d7b84ba2e810bca035bb5193a3d3cec1c999a8854e94673efa58909"
+      },
+      {
+        "path": "docs/phase-plans/Phase006.json",
+        "previousSha256": "3b45acb889a67bde198db1461b4cc83777c19be4a73af628c5d1c998f6ac3892",
+        "currentSha256": "376192ccacc4bec06979652357e6e3f237336043b834876b9e8abc8afba6bc68"
+      },
+      {
+        "path": "tests/phase006/studio.mjs",
+        "previousSha256": "0d2557d4278d5f3cd6fe5323b006e046185dbbfb3b23d2ba32a937354be61176",
+        "currentSha256": "04816f53f00927939193655814e966819ac4aa477eb9042f5b5b2f1b5fbc9916"
+      }
+    ],
+    "reusedCoverage": "沿用attempt-5对当前产品实现、原有测试、三类变异、Prisma隔离及metadata协议的独立复核；本轮只有.gitattributes、计划与studio脚本变化。"
+  },
+  "actualVerification": [
+    {
+      "id": "current-differences",
+      "method": "完整读取本轮计划、.gitattributes、Studio脚本、旧staged-diff-check及本轮Studio/CLI原始JSON，比较97个来源与上一复核的hash。",
+      "result": "仅3文件变化，94来源未变；产品实现、runtime helper、网络探针和其他测试未变。13固定case、command/input/expected/denominator、10项supporting及阈值保留；scope仅新增.gitattributes。"
+    },
+    {
+      "id": "studio-format",
+      "method": "对hash等于本轮rawDomHash的已保存原始DOM执行独立LF/行尾横向空白规范化，并逐字节比较当前DOM；核对DOM列头、空表完成状态及截图hash。",
+      "result": "规范化精确匹配、只移除162字节；当前DOM无CR或行尾横向空白，13列齐全。截图与上一轮实际查看的原图SHA-256相同，复用视觉判断；没有加载/错误状态。",
+      "evidencePath": "docs/evidence/attempts/Phase006/attempt-6/studio.json",
+      "evidenceHash": "572ad3014e662b90a42ad16f93c03eec48ec0195ed4073de0f2ec320ed3d36f7",
+      "screenshotHash": "90b134d5583447a70ae7aa26f42c793c0e7625ad0b322813f2304dfb826678b0"
+    },
+    {
+      "id": "exact-attribute-exceptions",
+      "method": "检查四条精确路径规则和注释SHA-256，并实际执行只读git check-attr检查旧快照、当前/未来同Phase快照及代码。",
+      "result": "仅attempt-2/3/4/5的studio.html具有-blank-at-eol；当前attempt-6、后续attempt及代码为unspecified，eol仍为lf，未关闭全局空白检查。旧快照与review字节未变。",
+      "details": {
+        "status": "PASS",
+        "exceptions": [
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-2/studio.html",
+            "attempt": 2,
+            "sha256": "bc6dab152e20dba011d569f6d2a911e14a1c3349188790b3d204b551da63cf67",
+            "declaredHash": "bc6dab152e20dba011d569f6d2a911e14a1c3349188790b3d204b551da63cf67"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-3/studio.html",
+            "attempt": 3,
+            "sha256": "bc6dab152e20dba011d569f6d2a911e14a1c3349188790b3d204b551da63cf67",
+            "declaredHash": "bc6dab152e20dba011d569f6d2a911e14a1c3349188790b3d204b551da63cf67"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-4/studio.html",
+            "attempt": 4,
+            "sha256": "8ccf032c749592b8fd73254254d9f64449fd9e70728da27a29f699318cd40f85",
+            "declaredHash": "8ccf032c749592b8fd73254254d9f64449fd9e70728da27a29f699318cd40f85"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-5/studio.html",
+            "attempt": 5,
+            "sha256": "8ccf032c749592b8fd73254254d9f64449fd9e70728da27a29f699318cd40f85",
+            "declaredHash": "8ccf032c749592b8fd73254254d9f64449fd9e70728da27a29f699318cd40f85"
+          }
+        ],
+        "attributes": [
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-2/studio.html",
+            "attribute": "whitespace",
+            "value": "-blank-at-eol"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-2/studio.html",
+            "attribute": "eol",
+            "value": "lf"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-3/studio.html",
+            "attribute": "whitespace",
+            "value": "-blank-at-eol"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-3/studio.html",
+            "attribute": "eol",
+            "value": "lf"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-4/studio.html",
+            "attribute": "whitespace",
+            "value": "-blank-at-eol"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-4/studio.html",
+            "attribute": "eol",
+            "value": "lf"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-5/studio.html",
+            "attribute": "whitespace",
+            "value": "-blank-at-eol"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-5/studio.html",
+            "attribute": "eol",
+            "value": "lf"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-6/studio.html",
+            "attribute": "whitespace",
+            "value": "unspecified"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-6/studio.html",
+            "attribute": "eol",
+            "value": "lf"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-7/studio.html",
+            "attribute": "whitespace",
+            "value": "unspecified"
+          },
+          {
+            "path": "docs/evidence/attempts/Phase006/attempt-7/studio.html",
+            "attribute": "eol",
+            "value": "lf"
+          },
+          {
+            "path": "tests/phase006/studio.mjs",
+            "attribute": "whitespace",
+            "value": "unspecified"
+          },
+          {
+            "path": "tests/phase006/studio.mjs",
+            "attribute": "eol",
+            "value": "lf"
+          },
+          {
+            "path": "src/server/db.ts",
+            "attribute": "whitespace",
+            "value": "unspecified"
+          },
+          {
+            "path": "src/server/db.ts",
+            "attribute": "eol",
+            "value": "lf"
+          }
+        ],
+        "rawDomHash": "8ccf032c749592b8fd73254254d9f64449fd9e70728da27a29f699318cd40f85",
+        "domHash": "a263528ed5252f9ffe2b7960dae5b6b2ace746d31f5d541c95fa4b717e62bd10",
+        "normalizationVerifiedAgainstByteIdenticalPriorRawDom": "docs/evidence/attempts/Phase006/attempt-5/studio.html",
+        "removedBytes": 162,
+        "currentSnapshotHasCR": false,
+        "currentSnapshotHasTrailingHorizontalWhitespace": false,
+        "whitespaceCheck": {
+          "command": "git diff --no-index --check -- <existing empty review file> docs/evidence/attempts/Phase006/attempt-6/studio.html",
+          "exitCode": 1,
+          "stdout": "",
+          "stderr": "",
+          "interpretation": "No whitespace diagnostics; exit 1 indicates content differs from the empty file in --no-index mode."
+        },
+        "previousFailure": {
+          "path": "docs/evidence/attempts/Phase006/attempt-5/staged-diff-check.json",
+          "sha256": "00d51a7c0a9dddc4d4163e7e3d54562fd1611c904b7fdc5e1352c0086a04089f",
+          "exitCode": 2
+        }
+      }
+    },
+    {
+      "id": "all-current-bindings",
+      "method": "独立逐字节SHA-256核验97来源、13case输出、quality与各自引用制品，检查case/command/input/plan/numerator/denominator。",
+      "result": "全部绑定一致；sourceHashes精确97路径、reportHashes精确13路径、supplementalReportHashes仅quality。文本来源LF且无BOM。",
+      "evidencePath": ".scaffold/phase006-independent-review/phase006-independent-attempt-6-aab4f597-5049-4131-ab8e-d243aede83a2/final-evidence-audit.json",
+      "evidenceHash": "5d06c70125251bbd99d93b837874191a2c043408f94bb1db0ef0f72548d7e248"
+    },
+    {
+      "id": "real-tests-and-mutations",
+      "method": "核对本轮全部原始Vitest计数、变异非零进程退出码和失败原因，未重跑测试。",
+      "result": "quality148/148、真实数据库31/31、normalizer45/45；unique变异2失败/exit1恢复2通过，CHECK变异23失败/exit1恢复24通过，Role变异1失败/exit1恢复1通过，cache变异1失败/exit1恢复1通过；失败原因命中禁止写入、第三Role和Object.is，非启动失败。",
+      "rawReports": {
+        "all-tests": {
+          "path": "docs/evidence/attempts/Phase006/attempt-6/all-tests-vitest.json",
+          "sha256": "217145542a837aee30baaac6573dca97da01fdbf8e48501880b80ee9a38ff9bf",
+          "success": true,
+          "passed": 148,
+          "failed": 0,
+          "pending": 0
+        },
+        "database-integration": {
+          "path": "docs/evidence/attempts/Phase006/attempt-6/database-integration-vitest.json",
+          "sha256": "ef3250cbd7a6f692ee645124fac1e645f361dcd75f691e0807426d97e7a43061",
+          "success": true,
+          "passed": 31,
+          "failed": 0,
+          "pending": 0
+        },
+        "email-normalizer": {
+          "path": "docs/evidence/attempts/Phase006/attempt-6/email-normalizer-vitest.json",
+          "sha256": "fc025de898a7d4c0cc1cff6564430745c86c82204e240fb6838ee43a7a276638",
+          "success": true,
+          "passed": 45,
+          "failed": 0,
+          "pending": 0
+        },
+        "unit-cache": {
+          "path": "docs/evidence/attempts/Phase006/attempt-6/unit-cache-vitest.json",
+          "sha256": "e2ebfbc483042d1c53a48108d53164cd9947a5371e10e2db2768d097b83f440c",
+          "success": true,
+          "passed": 1,
+          "failed": 0,
+          "pending": 2
+        },
+        "unit-errors": {
+          "path": "docs/evidence/attempts/Phase006/attempt-6/unit-errors-vitest.json",
+          "sha256": "58c9e25f0a8d4fd1fcb95b601ea83eb1e024552461b29c8e5c4336b473633129",
+          "success": true,
+          "passed": 1,
+          "failed": 0,
+          "pending": 2
+        },
+        "unit-modes": {
+          "path": "docs/evidence/attempts/Phase006/attempt-6/unit-modes-vitest.json",
+          "sha256": "96181e83bab83b27fa74db36ecedde4728336d3e45ce6f9982ee44dccfa9e706",
+          "success": true,
+          "passed": 1,
+          "failed": 0,
+          "pending": 2
+        },
+        "negative-email-unique": {
+          "path": "docs/evidence/attempts/Phase006/attempt-6/negative-email-unique-vitest.json",
+          "sha256": "a45f4b9b2abed7abe80364683c2c23980e866b1e1ca0cfaa3e5df92d6f89331b",
+          "success": false,
+          "passed": 0,
+          "failed": 2,
+          "pending": 29
+        },
+        "restored-email-unique": {
+          "path": "docs/evidence/attempts/Phase006/attempt-6/restored-email-unique-vitest.json",
+          "sha256": "6ef5732a792ed6602aefb292f9a4c668718d11c63659518f8090532dedde92f2",
+          "success": true,
+          "passed": 2,
+          "failed": 0,
+          "pending": 29
+        },
+        "negative-email-check": {
+          "path": "docs/evidence/attempts/Phase006/attempt-6/negative-email-check-vitest.json",
+          "sha256": "6dfc12df611cdc2417e5a10a4e3d06c71d12176032a534cf3776a8592378601e",
+          "success": false,
+          "passed": 0,
+          "failed": 23,
+          "pending": 8
+        },
+        "restored-email-check": {
+          "path": "docs/evidence/attempts/Phase006/attempt-6/restored-email-check-vitest.json",
+          "sha256": "5b9cecbf95cfebc10eec47d56211550bcfe95a24808ae3aa5f7523a1e33fee7f",
+          "success": true,
+          "passed": 24,
+          "failed": 0,
+          "pending": 7
+        },
+        "negative-role": {
+          "path": "docs/evidence/attempts/Phase006/attempt-6/negative-role-vitest.json",
+          "sha256": "42382cff7810672191bb15f9bfca1908ed5a1ad671f0ae37c9f55e7915b1f5fc",
+          "success": false,
+          "passed": 0,
+          "failed": 1,
+          "pending": 30
+        },
+        "restored-role": {
+          "path": "docs/evidence/attempts/Phase006/attempt-6/restored-role-vitest.json",
+          "sha256": "3d7c10b0c03281f484019db1c3a7abdefb84ba4af135844cc0ddbc456ed83ebd",
+          "success": true,
+          "passed": 1,
+          "failed": 0,
+          "pending": 30
+        },
+        "negative-cache": {
+          "path": "docs/evidence/attempts/Phase006/attempt-6/negative-cache-vitest.json",
+          "sha256": "223f816501645e7f72522ef6428d1496a20d13039807b431d814496f3eb541ef",
+          "success": false,
+          "passed": 0,
+          "failed": 1,
+          "pending": 2
+        },
+        "restored-cache": {
+          "path": "docs/evidence/attempts/Phase006/attempt-6/restored-cache-vitest.json",
+          "sha256": "9302bfe4b7d5b43b2f8dd163705d060fc70d282cec4368bbfc7eeeb7a944e29a",
+          "success": true,
+          "passed": 1,
+          "failed": 0,
+          "pending": 2
+        }
+      }
+    },
+    {
+      "id": "network-isolation",
+      "method": "核验本轮cli-network原始进程/请求事件、实际guard和CLI hash及quality artifact绑定。",
+      "result": "正常0请求/0child；移除开关控制1child、1个checkpoint请求，发起PID匹配child且公网I/O前阻断；两个validate均exit0。",
+      "details": {
+        "path": "docs/evidence/attempts/Phase006/attempt-6/cli-network.json",
+        "sha256": "c8a1013a2b8e1bd8efe76a3a3588f3762f066be9dcfbad72a5cfe4964e3b95f5",
+        "normalRequests": 0,
+        "normalChildren": 0,
+        "controlRequests": 1,
+        "controlChildren": 1,
+        "allControlRequestsBlockedBeforeIO": true
+      }
+    },
+    {
+      "id": "quality-and-finalizer",
+      "method": "核对quality10项及实际命令退出码，并在本复核上下文执行只读complete-phase006 --without-review。",
+      "result": "quality所有命令exit0、10项齐全；只读finalizer exit0且13报告通过。未操作Git索引、提交、推送或运行双shell seal。",
+      "details": {
+        "command": "node docs/phase-plans/complete-phase006.mjs --without-review",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "{\"status\":\"PASS\",\"reports\":13,\"independentReview\":false}\n"
+      }
+    }
+  ],
+  "validationSummary": {
+    "requiredCases": {
+      "passed": 13,
+      "total": 13
+    },
+    "supportingChecks": {
+      "passed": 10,
+      "total": 10
+    },
+    "qualityVitest": {
+      "passed": 148,
+      "total": 148,
+      "failed": 0,
+      "pending": 0
+    },
+    "sourcePaths": 97,
+    "reportPaths": 13,
+    "supplementalReportPaths": 1,
+    "openBlockingIssues": 0,
+    "resolvedIssueIds": [
+      "PHASE006-REVIEW-001",
+      "PHASE006-REVIEW-002"
+    ]
+  },
+  "notPerformed": [
+    "未无差别重跑完整测试套件。",
+    "未重审所有历史Phase或执行未来Phase。",
+    "未更改产品、测试、runner、历史证据或Git索引；Git双提交与双shell seal由主agent负责。"
+  ],
+  "writeScope": {
+    "versioned": [
+      "docs/evidence/attempts/Phase006/attempt-6/review.json"
+    ],
+    "temporary": ".scaffold/phase006-independent-review/phase006-independent-attempt-6-aab4f597-5049-4131-ab8e-d243aede83a2",
+    "previousReviewPreserved": true,
+    "implementationFilesModified": false,
+    "testsModified": false,
+    "runnerModified": false,
+    "gitIndexModified": false
+  }
+}

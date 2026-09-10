@@ -1,0 +1,7 @@
+{
+  "command": "powershell.exe scripts/validate-phase.ps1 -CompletedThrough 5 -Strict -Json",
+  "exitCode": 1,
+  "stdout": "",
+  "stderr": "{\n  \"status\": \"FAIL\",\n  \"error\": \"MANIFEST_ROOT: Manifest roadmapRoot must resolve to current layout\",\n  \"networkPushEvaluated\": false\n}\n",
+  "durationMs": 2127
+}

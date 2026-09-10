@@ -136,6 +136,38 @@
       "integrity": "sha512-UM/ByIoFra8yzV75n1o0Puu0bw5U/9UNnDacrJNspekBewIfsQ3D6ez1nvlWpt7aTsO6rujQtifBpycwIivqlg==",
       "tarball": "https://registry.npmjs.org/sonner/-/sonner-2.0.8.tgz",
       "producerPhase": 5
+    },
+    {
+      "name": "@prisma/client",
+      "version": "6.19.0",
+      "registry": "https://registry.npmjs.org/@prisma/client/6.19.0",
+      "integrity": "sha512-QXFT+N/bva/QI2qoXmjBzL7D6aliPffIwP+81AdTGq0FXDoLxLkWivGMawG8iM5B9BKfxLIXxfWWAF6wbuJU6g==",
+      "tarball": "https://registry.npmjs.org/@prisma/client/-/client-6.19.0.tgz",
+      "producerPhase": 6
+    },
+    {
+      "name": "prisma",
+      "version": "6.19.0",
+      "registry": "https://registry.npmjs.org/prisma/6.19.0",
+      "integrity": "sha512-F3eX7K+tWpkbhl3l4+VkFtrwJlLXbAM+f9jolgoUZbFcm1DgHZ4cq9AgVEgUym2au5Ad/TDLN8lg83D+M10ycw==",
+      "tarball": "https://registry.npmjs.org/prisma/-/prisma-6.19.0.tgz",
+      "producerPhase": 6
+    },
+    {
+      "name": "tr46",
+      "version": "6.0.0",
+      "registry": "https://registry.npmjs.org/tr46/6.0.0",
+      "integrity": "sha512-bLVMLPtstlZ4iMQHpFHTR7GAGj2jxi8Dg0s2h2MafAE4uSWF98FC/3MomU51iQAMf8/qDUbKWf5GxuvvVcXEhw==",
+      "tarball": "https://registry.npmjs.org/tr46/-/tr46-6.0.0.tgz",
+      "producerPhase": 6
+    },
+    {
+      "name": "@types/tr46",
+      "version": "5.0.1",
+      "registry": "https://registry.npmjs.org/@types/tr46/5.0.1",
+      "integrity": "sha512-/nNLTzy884WMMjksAFsrazXpwKcipQn1FltlXu4PycQFD8t6a4aq/z+F7mw05UI7p5O8MUvXLTPbISOoQtaugg==",
+      "tarball": "https://registry.npmjs.org/@types/tr46/-/tr46-5.0.1.tgz",
+      "producerPhase": 6
     }
   ],
   "toolPaths": {
@@ -180,7 +212,11 @@
     "typescript": "5.9.3",
     "vitest": "4.1.11",
     "next-themes": "0.4.6",
-    "sonner": "2.0.8"
+    "sonner": "2.0.8",
+    "@prisma/client": "6.19.0",
+    "prisma": "6.19.0",
+    "tr46": "6.0.0",
+    "@types/tr46": "5.0.1"
   },
   "nextPrivateTestVersionInherited": false,
   "dependencyAdditions": [
@@ -193,6 +229,17 @@
         "sonner": "2.0.8"
       },
       "receiptPath": "docs/evidence/attempts/Phase005/setup/shadcn-sonner.json"
+    },
+    {
+      "phase": 6,
+      "command": "npm install --save-exact @prisma/client@6.19.0 tr46@6.0.0 --no-audit --no-fund then npm install --save-dev --save-exact prisma@6.19.0 @types/tr46@5.0.1 --no-audit --no-fund",
+      "dependencies": {
+        "@prisma/client": "6.19.0",
+        "prisma": "6.19.0",
+        "tr46": "6.0.0",
+        "@types/tr46": "5.0.1"
+      },
+      "receiptPath": "docs/evidence/attempts/Phase006/setup/dependencies.json"
     }
   ]
 }

@@ -1,0 +1,404 @@
+{
+  "phase": 6,
+  "attemptId": "attempt-5",
+  "planPath": "docs/phase-plans/Phase006.json",
+  "planHash": "3b45acb889a67bde198db1461b4cc83777c19be4a73af628c5d1c998f6ac3892",
+  "decision": "PASS",
+  "implementationContextId": "01a08b57-8a87-7b03-abb7-c45f124e96fe:Phase006",
+  "contextId": "01a08ba0-73a0-78c3-8307-116f6ca8a776",
+  "reviewerRunId": "phase006-independent-attempt-5-add8cf56-b3d7-4783-a4e6-13edf763a236",
+  "generatedBy": "Codex independent reviewer in separate CODEX_THREAD_ID; continued independent review of unchanged implementation, inspected attempt-5 changes and actual evaluator/CLI/browser evidence, and independently executed byte-hash audits",
+  "runnerIdentity": {
+    "kind": "INDEPENDENT_CODEX_AGENT",
+    "implementationAuthored": false
+  },
+  "startedAt": "2026-09-10T14:54:14.536Z",
+  "generatedAt": "2026-09-10T15:05:01.427Z",
+  "reviewScope": "Phase006 attempt-5 当前实现、测试、runner及证据的最终独立复核；沿用同一独立上下文上一轮阅读，依据逐字节hash确认未变文件。本轮不扩展到未来Phase或重审其他历史Phase。",
+  "reviewCompletion": "COMPLETE_FOR_CURRENT_PHASE_IMPLEMENTATION_AND_PRE_ARTIFACT_EVIDENCE",
+  "sourceHashes": {
+    ".gitattributes": "851253b716e5448b37969c98629a93622041b2bc7ab105020a69b41ac157fffa",
+    ".gitignore": "eb3d88b97ff365a767b5b3488f3f5e889fd13f4ee1036b99e974ee7c3a17531b",
+    ".prettierignore": "4d0360bfc0e85bcf158669d14e074bff6609ab2bd10cbf6fa0b626c2cb323fc7",
+    ".prettierrc.json": "a8443c8c223de29983998d16e4a8f9298898a008a7244db0c2d84eab18eeeab7",
+    "docs/agent-execution-contract.md": "2919a173e60f0ed50fbf4839a5d8c96bc836afd032410cb012186026736688a2",
+    "docs/auth.md": "d672c3d25e09ae16e61f9cea23c5d6fc500ff4e76156b4b6f5ca3ccc48a4e736",
+    "docs/database.md": "38bb2a4b05b15def09ec0434ca4e4cf6d874109d3d88126333bf1f30209029a0",
+    "docs/directory-structure.md": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df",
+    "docs/env-registry.json": "651168b05d2c85d6eb5bd67d17bac00d5698a87649752c88d8bc309966046b18",
+    "docs/phase-plans/Phase006-inputs.json": "e191b940aaf31c1f075d662d798d078d23331efb3634c4d7c761a704bec28798",
+    "docs/phase-plans/Phase006.json": "3b45acb889a67bde198db1461b4cc83777c19be4a73af628c5d1c998f6ac3892",
+    "docs/phase-plans/complete-phase006.mjs": "92319aee547ed8863006264bf8d967c918a4e1b6a503ff81bfa7cc3b4f7904e4",
+    "docs/phase-plans/phase006-runtime.mjs": "67268215a7fffa5e6d087e234f866c15daadc04a7f7547106f95e4ac8a1f02e1",
+    "docs/phase-plans/setup-phase006.mjs": "af30cf6dca7bb7aff6e316f56faa645aa116299bd7af54972926bfc0d02614d8",
+    "docs/phase-plans/verify-phase006.mjs": "71e03dfd7f02a70552e2d8a0acde77c9c6ca2124caf0fbc816367b0f785879b9",
+    "docs/phase006.md": "a5d9c679b32655d5668aecb9ad4cbbc80c2204ba5b11ad67ad5d9f5e27065890",
+    "docs/project-constitution.md": "8f1dd176e30e815a09502a91c5b0ef2722b7bb71d5e919fbfc70cfecf3e9dedd",
+    "docs/project-layout.json": "7efe30a30fe009a8e1226563cae53d39ed2a2193be78bc0f0a776f57f67710ba",
+    "docs/runtime-baseline.json": "454e0dc1759a2ddfd2f3cd89d4f8988ac9cecaea2a8ca71923bb6180afbdfa6c",
+    "docs/tech-stack.md": "258620f3e18d042eac1e26165f411e8879ecd4b0d91d8e7986aaed4f3f10d2c7",
+    "eslint.config.mjs": "f45d4d5b4e4808481617530c717d97108af6488b39e008e49b4161aefd818708",
+    "next.config.ts": "614bce25b089c3f19b1e17a6346c74b858034040154c6621e7d35303004767cc",
+    "package-lock.json": "b5fab836e7858b930c5e74544ffb65c1a873a7907465bcf00f61f34cb89121fe",
+    "package.json": "a8f420c7cee39e4ba7468ab454a7389850d2879361d266a026e630ca7b7c9e94",
+    "postcss.config.mjs": "141ef24ca27a99d08962210fdf20212d3435fdcfa21b46cd88b44d22f751dfae",
+    "prisma/migrations/20260910000000_init_user/migration.sql": "b65593d8d8a7a1821a2f65415616e5c083a0e38785bcac2a46ea362d126de3a3",
+    "prisma/migrations/migration_lock.toml": "99836963713b4f5b269ad49af0ed3d7b0b2e336115c2f92dc9ac683d139d0900",
+    "prisma/schema.prisma": "7c54f705eb4b28f53f709a38f7096f3f70cf0d5894464e2e5aafeb0aef8a818b",
+    "scripts/check-project-layout.mjs": "d19f27109ff142516a7b0454e7f9b9a03629fd11923e7f6b88c7ee9323eb1d35",
+    "scripts/checkpoint-history.mjs": "673a4f5ff409ce0a4fcb7b1754c2d977199fc502a8732cda01082b9a0eababa1",
+    "scripts/complete-phase003.mjs": "7dfd3f076da235b7b0d33a950fe08e6f48b3ac46b3c6aea70ea81b9cb6b3204f",
+    "scripts/eslint-env.mjs": "f2ded148de31d4d35ede46a162116f81b48b459b869ade8411a5e25c9f5f21ce",
+    "scripts/generate-api-contract.mjs": "6dad8aa0bbd68630b9149babed05e1bdc0c315d262ce16665cbe3fc133dd6009",
+    "scripts/phase-evidence.mjs": "4f6c097483548486127518e613acf67b867347a706ad5eb138148f2701bfada9",
+    "scripts/phase003-evidence.mjs": "5a6660faa40d3710df19b9881f203be6dcb3e459c5b9c4fcf6169548890abbb4",
+    "scripts/prepare-checkpoint-import.mjs": "81f21058f17b87d053f1fc0b2762fca645d53fc7a1440d68ee7908d20ce3ac0a",
+    "scripts/prepare-phase003.mjs": "8a1a7482ee04835e3819bf81dcaa7b27ee4172ba806688b26105cae937b4ca5b",
+    "scripts/test-checkpoint-import.mjs": "9b0d18dda79e9cb8602727a72555ca392b9558b2dcc1360349f73c89560a8e11",
+    "scripts/test-validate-phase.mjs": "b4df52b324137973c12ddc352695f2082177d29aaf9d007ba6ebf1c18a76439c",
+    "scripts/validate-phase.mjs": "3e7392fbb5e59a0cd300579a319dd45fc65cd523cc11bb74cec664f28931c9b0",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319",
+    "scripts/verify-phase003.mjs": "ff50f83beabeea538c7141ee0a6beeed4a6c02664fbf8f58b68d795a80375758",
+    "src/app/(site)/layout.tsx": "dbf6397819844277acac383530a3a616f29e1068b9b5ba2d08f2886b3cca5207",
+    "src/app/(site)/page.tsx": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e",
+    "src/app/admin/layout.tsx": "95d75d00b7761b6370864fceb83980b938f8378cc23f1d33de8f15b981156734",
+    "src/app/favicon.ico": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932",
+    "src/app/globals.css": "f88153c2b0c26a4f65e48626ab5a05e68c8d962952be88ead2032c8a90b10a1f",
+    "src/app/layout.test.ts": "8022cde5595f753306b17f2de43534bc42ee0fd0f46ea19452deb2ee55e7e0cb",
+    "src/app/layout.tsx": "a9de0b5ba9380f5a058487639bd6be0d13c5a1293f720d38965d1b3dec793a6f",
+    "src/components/admin/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/chat/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/common/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/common/common-components.test.tsx": "8a9fcd34cc153236e6d58ad1b1ee0039e2b4020f664f918ffc5f7e9e82f8ed5b",
+    "src/components/common/empty-state.tsx": "a5b1a914935eace3193451be25c9cf8178010345ef76963e0ecb12713e284795",
+    "src/components/common/error-state.tsx": "4ef42505cda6c3a5d4c35180022eedab13ce9f33ac9e412e924dd5b9bb9d808d",
+    "src/components/common/loading-state.tsx": "0a010951d56d20dc1860ed8bd78a5c95671bd1323014330c00b4519aafe1c37f",
+    "src/components/common/page-header.tsx": "c403ac7802dbb0ecf5f83aa57ed043bf598fd3e1806c7250751cdfd9f361b4da",
+    "src/components/layout/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/layout/admin-shell.tsx": "6bb6e05f1ad6cf9c1b6c8e77a89832a3008afaaa5297ef056e3fb89fbe37c819",
+    "src/components/layout/site-header.tsx": "f4fdc237b4a3d76ac8280ff80390966ec3a1fe95d67bba7f2e5abb475ed98295",
+    "src/components/travel/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/ui/button.tsx": "abd7a62c5b38d8836c88906285ea0df0a40d3dd55f7d404a07672f749e37f43f",
+    "src/components/ui/sonner.tsx": "f28cba0be08c0873d121f6f35107c9e0b209ef649b0d0625c32e46cf0b2ed9a2",
+    "src/instrumentation.ts": "4ff6be1caa61426f26540f107f1b609bda7ad79e40b72d5c2b563d7fbb3c4821",
+    "src/lib/ai/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/lib/api-response.test.ts": "4660ad9249e90641f09cbfd7dd914504fa4d1cea7fd180c6c407eb70f2a6cd1d",
+    "src/lib/api-response.ts": "235635f476f988af2f7d2bdb867acc85bd3d4d777a99c8c7da555206b9a65a6a",
+    "src/lib/env-cli.ts": "a70f8eff095adde7d6baf7ff7b6bc30156bb0c110a351fe4dad13ce076539fe4",
+    "src/lib/env-schema.ts": "61c657e715fad05a57737ef8ad037a97c32f724c9a3a6e0a5c76ce5cf65d5731",
+    "src/lib/env.test.ts": "04ad1cbe2db65abe20d9c9d520c52c8cc9f42f6040a516a53e37ade2d0e2b38f",
+    "src/lib/env.ts": "51a3612afe39103e04f214185192f0e39e8bc5cb43d27b21922fdd1748096658",
+    "src/lib/format.test.ts": "bfbf9788fbc9506c299acdafe03debe5ee8ce6bc4baff11092d08d935d2cfdbe",
+    "src/lib/format.ts": "0834ccea0511ed8b0374db59527702e3707a251f44d367e70bf748e27dbe37a0",
+    "src/lib/json.test.ts": "2e17c72f917730c5adabd17ed3f434ab9d50d0215651f768938bff3e9fb50a60",
+    "src/lib/json.ts": "b482e4f8309135800ce6526b771b809aff8ea219d4fc89060c3b4ba057b3ed11",
+    "src/lib/utils.ts": "55bbdc94cef3e0c8a8bba386e94f97228dd2c967fe61466fc565378890550c08",
+    "src/middleware.test.ts": "98671c0f2ada396299964461177c1bd84bc5029d9dad58c3a71d5c2851277461",
+    "src/middleware.ts": "2f3f1b9df69c9cf93a2bffc4f6ba8c9336b0b4111614d9ae3e18d116e9c9934f",
+    "src/server/auth.ts": "af08f9c7a2b08672e5c516d38beb71fd4edd0566f0d5e98b669417d28cbec4fe",
+    "src/server/db.ts": "d2f6bec02e8dc7eb25eb782def2f24d018a1c27358cd62dfd5aeb22030457db7",
+    "src/server/services/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/types/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/lib/auth.test.ts": "fb8bb3b519253cd9d931ec208a6c78954fe94d11aa3b8cd65297ce55ee8a418c",
+    "tests/lib/db.test.ts": "e638b23182053c44a3937c2d63f1baa6e3cb7c8735588ac50002ba85ccfcb136",
+    "tests/phase005/browser.mjs": "65cee15ce4171423bde4c82689466d1b1c45a64cb1a847ec6200661465676881",
+    "tests/phase005/components-fixture.tsx": "d224e44f30a1c481be92f70b2f592388da98b5c567f9736774f617ffc00927dd",
+    "tests/phase005/fixtures/phase003-home.tsx": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e",
+    "tests/phase006/cli-network-guard.cjs": "da1e1020f2d0f5f171f1a721dfa2c3412a2901d858eee176ed730f45f0ad2ab7",
+    "tests/phase006/cli-network.mjs": "21664e3f9f0467ab5e92fdc60b84f2df27c106bb1267ec8a734cfe128f7bbd72",
+    "tests/phase006/database.integration.ts": "10f67850b842abdf0757b68507a334eaa6bbdbc80db48f24751890f8ab8809e4",
+    "tests/phase006/studio.mjs": "0d2557d4278d5f3cd6fe5323b006e046185dbbfb3b23d2ba32a937354be61176",
+    "tests/phase006/user-types.ts": "3ab183310d3add2e18415f83f732cf913f883f18bbdd06a71dc9de0ce76d47c5",
+    "tests/phase006/vitest.database.config.mjs": "b0d0de6cebdd51e1418960674b8b977d64072787cc123d19bd05a0595d58b267",
+    "tsconfig.json": "83d292a6930a317ea31ef48e220097d2ca10c6c505f41d5954795acef48ca3b9",
+    "vitest.config.ts": "cc79644beec0c7ff9c0e466b952b2aaa6410598a575606f633f32e7caf29b966",
+    "vitest.setup.ts": "a54f6b87de09e2b125852fddf97dc7069d9a9026c8af824944aba85e6bd54660",
+    "vitest/stubs/server-only.ts": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+  },
+  "reportHashes": {
+    "docs/evidence/attempts/Phase006/attempt-5/unit-cache.json": "e021bfc8ea01ad7b0368d52f615dbed33163b0be7c72925fdd6eadf008cc2580",
+    "docs/evidence/attempts/Phase006/attempt-5/unit-errors.json": "ebe4f70dd77d8222ed64ec26308ac916236e9b88a94b40ebfeefe6e2b7d373b9",
+    "docs/evidence/attempts/Phase006/attempt-5/unit-modes.json": "4afa4cbd8335a64d3c83b034985509bea66a845dde56a25083e66b014f52547e",
+    "docs/evidence/attempts/Phase006/attempt-5/integration-revision.json": "731811d0eee73e5abb9ded44ae84dfe88b34252130631cda99116974e09425d0",
+    "docs/evidence/attempts/Phase006/attempt-5/integration-client.json": "eaa12eefaf1b9a691f688966806adebd0fe9bc8ecf1f9c9f020edf651a6f151c",
+    "docs/evidence/attempts/Phase006/attempt-5/integration-types.json": "4c234a57e8735a491ab7660496c2aa554fe38643ad445c31deed6c5febb31123",
+    "docs/evidence/attempts/Phase006/attempt-5/negative-email.json": "bc025e53f0f7196898bff42a214c5ff0a63e6cffdb3642bde766263dcfda4f1b",
+    "docs/evidence/attempts/Phase006/attempt-5/negative-role.json": "57f6436e0e6edd64290e0ae6ce4164b861f67be9e66d7a20e1211f645645ee75",
+    "docs/evidence/attempts/Phase006/attempt-5/negative-cache.json": "ee43425088fbae872794c4b221ee6a88fc164669625a2fc2e8dc64416605dddf",
+    "docs/evidence/attempts/Phase006/attempt-5/auto-generate.json": "905c983eba1226ac2624ab4c3c12f20113e7c8d0848915c4b3b32c695305c9d0",
+    "docs/evidence/attempts/Phase006/attempt-5/auto-migrate.json": "b99db45f7213655e8bc564aedbd29a963da185beddff1eaa31b2e7364907437b",
+    "docs/evidence/attempts/Phase006/attempt-5/auto-status.json": "1e84915b11785b9f96cc79eca4ec2b79d253309fcd6bd6d54be3a01b8cd8cf68",
+    "docs/evidence/attempts/Phase006/attempt-5/auto-studio.json": "adafc0ae36334fb583677ee1e4bae0e7de1814861831d9ddf1c721699e3e36a6"
+  },
+  "supplementalReportHashes": {
+    "docs/evidence/attempts/Phase006/attempt-5/quality.json": "38c68fcca0a8f9c6b7d5b96527c683f5066785159160b325d41cc5479669973a"
+  },
+  "issues": [
+    {
+      "id": "PHASE006-REVIEW-001",
+      "priority": "P1",
+      "severity": "BLOCKER",
+      "status": "RESOLVED",
+      "blocking": false,
+      "title": "Prisma checkpoint 禁用变量无效，隔离测试仍尝试更新/遥测外呼",
+      "file": "docs/phase-plans/phase006-runtime.mjs",
+      "line": 63,
+      "originalAttemptId": "attempt-4",
+      "originalReviewPath": "docs/evidence/attempts/Phase006/attempt-4/review.json",
+      "originalReviewHash": "06ed80f60089d10259a55c84b0b50225bb8d8afd55d0fe7e9544e9f746d22f46",
+      "originalFinding": "CHECKPOINT_DISABLE_TELEMETRY 未被已安装 Prisma 6.19.0 读取；上一轮独立探针观察到了真实 checkpoint 请求，并在公网 I/O 前阻断。",
+      "resolution": "主 agent 将 runtime helper 改为显式 CHECKPOINT_DISABLE=1，并加入继承到真实 CLI/fork 的 Node 网络探针及反向控制。正常环境无任何请求、无checkpoint child；移除开关的控制由真实child发起checkpoint请求并在调用原HTTP方法前阻断。quality执行该回归且绑定cli-network.json的实际hash。本轮独立检查实现与原始事件后确认关闭。",
+      "resolvedAt": "2026-09-10T15:05:01.427Z",
+      "resolutionEvidence": [
+        {
+          "path": "docs/phase-plans/phase006-runtime.mjs",
+          "sha256": "67268215a7fffa5e6d087e234f866c15daadc04a7f7547106f95e4ac8a1f02e1",
+          "line": 63
+        },
+        {
+          "path": "tests/phase006/cli-network-guard.cjs",
+          "sha256": "da1e1020f2d0f5f171f1a721dfa2c3412a2901d858eee176ed730f45f0ad2ab7"
+        },
+        {
+          "path": "tests/phase006/cli-network.mjs",
+          "sha256": "21664e3f9f0467ab5e92fdc60b84f2df27c106bb1267ec8a734cfe128f7bbd72"
+        },
+        {
+          "path": "docs/evidence/attempts/Phase006/attempt-5/cli-network.json",
+          "sha256": "533103a738e855e194a451c717339b396690885552bdf279de314b6f436c15a1"
+        },
+        {
+          "path": "docs/evidence/attempts/Phase006/attempt-5/quality.json",
+          "sha256": "38c68fcca0a8f9c6b7d5b96527c683f5066785159160b325d41cc5479669973a"
+        }
+      ],
+      "verification": {
+        "prismaVersion": "6.19.0",
+        "normal": {
+          "cliExitCode": 0,
+          "requestEvents": 0,
+          "checkpointChildren": 0,
+          "checkpointDisabled": true
+        },
+        "control": {
+          "cliExitCode": 0,
+          "checkpointChildren": 1,
+          "checkpointRequestCount": 1,
+          "destination": "https://checkpoint.prisma.io/v1/check/prisma",
+          "requestFromObservedChild": true,
+          "blockedBeforeNetworkIO": true
+        },
+        "publicRequestsCompleted": 0,
+        "qualityArtifactBinding": true,
+        "sourceAndReportHashesMatched": true
+      }
+    }
+  ],
+  "dispositions": [
+    {
+      "issueId": "PHASE006-REVIEW-001",
+      "status": "RESOLVED",
+      "disposition": "FIXED_AND_INDEPENDENTLY_VERIFIED",
+      "attemptId": "attempt-5",
+      "resolvedAt": "2026-09-10T15:05:01.427Z",
+      "evidencePath": "docs/evidence/attempts/Phase006/attempt-5/cli-network.json",
+      "evidenceHash": "533103a738e855e194a451c717339b396690885552bdf279de314b6f436c15a1",
+      "qualityReportPath": "docs/evidence/attempts/Phase006/attempt-5/quality.json",
+      "qualityReportHash": "38c68fcca0a8f9c6b7d5b96527c683f5066785159160b325d41cc5479669973a",
+      "reason": "实际支持的开关已生效，真实CLI/fork反向控制证明探针确实观察并阻断checkpoint请求。新attempt完整原定验收通过且全部绑定当前冻结源码；不依靠隐藏更新提示或仅检查变量字符串。",
+      "waived": false
+    }
+  ],
+  "unresolvedIssues": [],
+  "conclusion": "PASS：PHASE006-REVIEW-001 已关闭，当前 Phase006 范围内未发现其他阻塞问题。97个sourcePaths、13个固定case报告及唯一quality补充报告均与当前字节一致；13/13 evaluator、10项quality检查及148/148 Vitest证据有效。真实PostgreSQL、三类变异与恢复、Studio可见字段、错误脱敏及metadata证据协议已复核。该结论只表示本轮独立代码与证据复核通过；正式Phase完成仍由主agent执行artifact/metadata、双shell seal及同步后确认。",
+  "priorReview": {
+    "path": "docs/evidence/attempts/Phase006/attempt-4/review.json",
+    "sha256": "06ed80f60089d10259a55c84b0b50225bb8d8afd55d0fe7e9544e9f746d22f46",
+    "reviewerRunId": "phase006-independent-fdb9ecfb-cf22-430b-8673-98b5c489c508",
+    "contextId": "01a08ba0-73a0-78c3-8307-116f6ca8a776",
+    "preservedByteForByte": true,
+    "reusedReading": "复用根AGENTS、本地Phase006卡、执行契约、当前auth/db/schema/migration及既有本卡测试与runner的独立阅读；91个原sourcePaths本轮hash未变。",
+    "unchangedPriorSources": 91,
+    "changedPriorSources": [
+      {
+        "path": "docs/phase-plans/Phase006.json",
+        "change": "CHANGED",
+        "previousSha256": "79f441bb6d0e85a0b65aa556634033980a1f26dbbefbe81361a53c14e166c238",
+        "currentSha256": "3b45acb889a67bde198db1461b4cc83777c19be4a73af628c5d1c998f6ac3892"
+      },
+      {
+        "path": "docs/phase-plans/phase006-runtime.mjs",
+        "change": "CHANGED",
+        "previousSha256": "4c942b5b3c78edc2a0dc3b2004455b6b6201de9741e24d410935ab7d5d4e052f",
+        "currentSha256": "67268215a7fffa5e6d087e234f866c15daadc04a7f7547106f95e4ac8a1f02e1"
+      },
+      {
+        "path": "docs/phase-plans/verify-phase006.mjs",
+        "change": "CHANGED",
+        "previousSha256": "0900c085b4339c59d6310f677a715261fe3b9c432069b35d6a5978c3c04cf648",
+        "currentSha256": "71e03dfd7f02a70552e2d8a0acde77c9c6ca2124caf0fbc816367b0f785879b9"
+      },
+      {
+        "path": "docs/phase006.md",
+        "change": "CHANGED",
+        "previousSha256": "abf885373078bf66465e6788d79c997d05283c91034bb50dca48f5ceefda252e",
+        "currentSha256": "a5d9c679b32655d5668aecb9ad4cbbc80c2204ba5b11ad67ad5d9f5e27065890"
+      }
+    ],
+    "addedSources": [
+      {
+        "path": "tests/phase006/cli-network-guard.cjs",
+        "change": "ADDED",
+        "previousSha256": null,
+        "currentSha256": "da1e1020f2d0f5f171f1a721dfa2c3412a2901d858eee176ed730f45f0ad2ab7"
+      },
+      {
+        "path": "tests/phase006/cli-network.mjs",
+        "change": "ADDED",
+        "previousSha256": null,
+        "currentSha256": "21664e3f9f0467ab5e92fdc60b84f2df27c106bb1267ec8a734cfe128f7bbd72"
+      }
+    ],
+    "removedSources": []
+  },
+  "actualVerification": [
+    {
+      "id": "requirements-and-current-scope",
+      "method": "沿用上一轮完整读取的根AGENTS、本地Phase006.md及当前执行契约；本轮完整读取新计划与新增CLI回归，逐项检查变化范围。",
+      "result": "本卡仍仅提供Prisma/User、唯一canonical邮箱服务及数据库单例与可分类连接错误；未增加业务API、UI页面、登录/注册、seed或其他业务表。13个requiredCaseIds、原command/input/expected/denominator和阈值均保留。"
+    },
+    {
+      "id": "implementation-and-boundaries",
+      "method": "以本轮SHA-256确认auth.ts、db.ts、schema、初始迁移和原测试与上一独立复核相同，并复用代码阅读。",
+      "result": "User含13字段；Role仅USER/ADMIN，UserStatus为ACTIVE/DISABLED；email唯一索引且无冗余普通索引，status索引存在；revision/sessionVersion由数据库CHECK保证非负。normalizeEmailV1的ASCII local-part、UTS46 non-transitional转换、DNS标签与长度边界统一实现；数据库CHECK约束持久值ASCII形态。开发/test缓存及production不使用全局缓存符合契约；初始化和connectDb失败抛出固定DatabaseUnavailableError且不保留原cause/连接串。后续路由503、密码业务及会话校验未被误称为本卡实现。"
+    },
+    {
+      "id": "current-source-and-evidence-hashes",
+      "method": "本上下文独立对全部97个sourcePaths、13case及quality逐字节计算SHA-256，比较每个报告中的计划、来源、输入、阈值及所引用artifact hash。",
+      "result": "97/97来源与13/13case绑定通过，quality仅通过supplementalReportHashes单独绑定；cli-network通过quality.artifacts绑定。所有当前受审源文本为LF且无BOM。原attempt-4/review.json的hash仍为06ed80f60089d10259a55c84b0b50225bb8d8afd55d0fe7e9544e9f746d22f46。",
+      "evidencePath": ".scaffold/phase006-independent-review/phase006-independent-attempt-5-add8cf56-b3d7-4783-a4e6-13edf763a236/final-evidence-audit.json",
+      "evidenceHash": "b3cda70fb96242cd2ef1b86350a8eadce6f16db3da2eaedc6f2a6fdb748904c9"
+    },
+    {
+      "id": "real-postgresql-and-types",
+      "method": "核对本轮真实隔离PostgreSQL原始31条集成测试、迁移/状态命令及目标身份收据；检查生成schema/type声明hash和TypeScript检查结果。",
+      "result": "真实PostgreSQL17.11证据31/31通过，包含默认值、revision独立性、非负约束、canonical邮箱边界和并发唯一、真实拒绝连接；45/45normalizer测试通过。Client6.19.0生成schema与当前schema相同，User/Role/UserStatus类型断言通过。迁移通过migrate-dev生成与执行，未使用db push。",
+      "databaseRawReport": {
+        "path": "docs/evidence/attempts/Phase006/attempt-5/database-integration-vitest.json",
+        "sha256": "ce97a8cfc05e37d6498b4357e935395efe6ad71b2a65890756b5acb704d54e90",
+        "success": true,
+        "passed": 31,
+        "failed": 0,
+        "pending": 0,
+        "total": 31
+      },
+      "normalizerRawReport": {
+        "path": "docs/evidence/attempts/Phase006/attempt-5/email-normalizer-vitest.json",
+        "sha256": "58098a856485174ea6bf8cfc7a28bb68419d574b5a9b050d28c66d7dc555236b",
+        "success": true,
+        "passed": 45,
+        "failed": 0,
+        "pending": 0,
+        "total": 45
+      }
+    },
+    {
+      "id": "negative-tests-and-restoration",
+      "method": "检查本轮变异制品、真实底层exitCode和原始Vitest失败原因，再检查恢复报告与迁移状态；未重跑或覆盖evaluator。",
+      "result": "unique变异exit1且2条失败（出现重复成功写入/两名并发赢家），恢复2条通过；canonical CHECK变异exit1且23条失败（禁止写入意外成功），恢复24条通过；真实migrate-dev为第三Role产生ALTER TYPE，enum契约断言exit1，恢复1条通过；cache变异identity断言exit1，恢复1条通过。失败原因均命中目标行为，不是初始化/环境错误。",
+      "rawReportHashes": {
+        "docs/evidence/attempts/Phase006/attempt-5/negative-email-unique-vitest.json": "25929ce635e3f49a2fcfef48c7a4165dc70f74587c3a2418fe75ec1902bfc2cb",
+        "docs/evidence/attempts/Phase006/attempt-5/restored-email-unique-vitest.json": "1218bb5e786c6a7bb48cdb011990c5882c9a8c3b76be238d1d35c504d4990796",
+        "docs/evidence/attempts/Phase006/attempt-5/negative-email-check-vitest.json": "94047925ad0a05d1af7f1c352f89e11c8495f2502fa96a84f57a9686ccc053bd",
+        "docs/evidence/attempts/Phase006/attempt-5/restored-email-check-vitest.json": "612cea9721cacb9c95702ede0d8b78f819854526b46eef369fdd2eb7e5163102",
+        "docs/evidence/attempts/Phase006/attempt-5/negative-role-vitest.json": "cce0e21668aaf87dc467118d91980ed889df666226795124f9b6ef71f32b2050",
+        "docs/evidence/attempts/Phase006/attempt-5/restored-role-vitest.json": "4209268ede6da6a4507625edc4afd45d1566e99f46423c72d046a1a4c41d9598",
+        "docs/evidence/attempts/Phase006/attempt-5/negative-cache-vitest.json": "7cce3b0474f5d4151754fe9b32a1f1d25c2fb4a28e0ac417d0da96d59960cf82",
+        "docs/evidence/attempts/Phase006/attempt-5/restored-cache-vitest.json": "da3c623807c9380af9c21027d284c046677b9c93dd655afa17a34f85e22861b6"
+      }
+    },
+    {
+      "id": "studio-visual",
+      "method": "本轮实际查看attempt-5/studio.png原始3200×1000图像，核对保存DOM、浏览器报告、请求/错误记录与hash。",
+      "result": "User表加载完成，13个列头id/email/phone/name/avatarUrl/passwordHash/role/status/sessionVersion/revision/lastLoginAt/createdAt/updatedAt均真实可见；空表状态正常，没有Fetch加载残留或查询错误。浏览器无pageErrors，公网完成请求为0。",
+      "screenshotPath": "docs/evidence/attempts/Phase006/attempt-5/studio.png",
+      "screenshotHash": "90b134d5583447a70ae7aa26f42c793c0e7625ad0b322813f2304dfb826678b0",
+      "domPath": "docs/evidence/attempts/Phase006/attempt-5/studio.html",
+      "domHash": "8ccf032c749592b8fd73254254d9f64449fd9e70728da27a29f699318cd40f85"
+    },
+    {
+      "id": "cli-isolation-regression",
+      "method": "逐行检查新增preload与调度脚本，核对真实CLI/fork事件；与上一轮独立探针对安装CLI开关语义的验证相结合。",
+      "result": "NODE_OPTIONS被真实fork继承；正常环境只有1个CLI进程事件，0请求、0child；控制组出现CLI及checkpoint child，且由该child发起的GET /v1/check/prisma在公网I/O前被阻断。CLI路径hash和guard源码hash均匹配；两个validate均exit0；quality已执行并绑定该报告。",
+      "evidencePath": "docs/evidence/attempts/Phase006/attempt-5/cli-network.json",
+      "evidenceHash": "533103a738e855e194a451c717339b396690885552bdf279de314b6f436c15a1"
+    },
+    {
+      "id": "quality",
+      "method": "核对主agent本轮质量命令与原始测试结果，不把它们描述为独立复核上下文重新执行。",
+      "result": "10项supportingChecks齐全；Vitest148/148且无pending/failed，lint/typecheck/format/build/layout/Phase003既有回归均exit0；新CLI网络回归exit0。质量制品hash匹配当前文件。",
+      "reportPath": "docs/evidence/attempts/Phase006/attempt-5/quality.json",
+      "reportHash": "38c68fcca0a8f9c6b7d5b96527c683f5066785159160b325d41cc5479669973a",
+      "rawTestsReport": {
+        "path": "docs/evidence/attempts/Phase006/attempt-5/all-tests-vitest.json",
+        "sha256": "49b527d6c1156b742e35f56aaf4304c2374331554c6506f0961b6344642370df",
+        "success": true,
+        "passed": 148,
+        "failed": 0,
+        "pending": 0,
+        "total": 148
+      }
+    },
+    {
+      "id": "metadata-protocol",
+      "method": "复用已读的artifact/metadata与validator逻辑，本轮实际执行只读complete-phase006 --without-review，并核对独立报告身份及精确hash覆盖协议。",
+      "result": "只读finalizer退出0、13报告通过。复核报告与13case报告分开绑定quality，解决上轮已记录的协议边界；未创建Gate/run-state/完成日志。正式metadata必须绑定artifact提交与受测tree，待主agent执行直接子metadata、双shell seal与同步。",
+      "executedAudit": {
+        "command": "node docs/phase-plans/complete-phase006.mjs --without-review",
+        "exitCode": 0,
+        "stdout": "",
+        "stderr": "{\"status\":\"PASS\",\"reports\":13,\"independentReview\":false}\n"
+      },
+      "phaseSealExecutedByReviewer": false
+    }
+  ],
+  "validationSummary": {
+    "requiredCases": {
+      "passed": 13,
+      "total": 13
+    },
+    "supportingChecks": {
+      "passed": 10,
+      "total": 10
+    },
+    "qualityVitest": {
+      "passed": 148,
+      "total": 148,
+      "failed": 0,
+      "pending": 0
+    },
+    "sourcePaths": 97,
+    "reportPaths": 13,
+    "supplementalReportPaths": 1,
+    "openBlockingIssues": 0,
+    "resolvedIssueIds": [
+      "PHASE006-REVIEW-001"
+    ]
+  },
+  "notPerformed": [
+    "遵照用户要求未重新运行完整测试套件或重新生成不可变evaluator/quality。",
+    "未重审所有历史Phase脚本或执行任何未来Phase。",
+    "未暂存、提交或推送；未生成artifact/metadata、Phase006 Gate、run state或双shell seal。"
+  ],
+  "writeScope": {
+    "versioned": [
+      "docs/evidence/attempts/Phase006/attempt-5/review.json"
+    ],
+    "temporary": ".scaffold/phase006-independent-review/phase006-independent-attempt-5-add8cf56-b3d7-4783-a4e6-13edf763a236",
+    "previousReviewPreserved": true,
+    "implementationFilesModified": false,
+    "testsModified": false,
+    "runnerModified": false,
+    "gitIndexModified": false
+  }
+}
