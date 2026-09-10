@@ -45,3 +45,6 @@ Phase004计划：docs/phase-plans/Phase004.json；唯一 Gate：docs/evidence/Ph
 | Phase005 | 目录骨架、精确格式化/JSON/API公共工具、四状态组件、前后台布局、单一Toast与后台空404闸门 | src、tests/phase005、README、依赖登记与执行工具；完整路径/hash见Gate inputs | 29/29验收；Vitest 100/100；lint/typecheck/format:check/build/verify:phase003退出0；M1 6/6、生产路径3/3、开发2/2、5视口浏览器及11项隔离反向验证、独立Agent复核；artifactCommit=c69b7a15f992382002f6541307d2d016315f2edf；attemptId=attempt-3 | 无真实数据库、鉴权、AI、生产流量或真人读屏，均不属于本卡 | 可封口候选；metadata后另执行双shell seal、clean与GitHub同步；用户授权止于005 |
 
 Phase005计划：docs/phase-plans/Phase005.json；唯一Gate：docs/evidence/Phase005-gate.json。原始输出、失败attempt与独立复核均保存在docs/evidence/attempts/Phase005/；旧阶段记录保持原字节。
+| Phase006 | Prisma User聚合根、唯一邮箱规范化、开发缓存与脱敏数据库连接边界；初始迁移含canonical/非负版本CHECK | prisma、src/server/auth.ts、src/server/db.ts、tests/lib、tests/phase006、精确依赖及阶段工具；完整路径/hash见Gate inputs | 13/13固定验收；真实PostgreSQL 17迁移/并发唯一/故障/约束与恢复；三类变异；Prisma Studio真实浏览器13字段；Vitest 148/148；lint/typecheck/format:check/build/layout/上游回归退出0；独立Agent复核；artifactCommit=2a10abc0a0628dd2d7e900804962dad7d24ca4c8；attemptId=attempt-6 | 登录/注册/seed/AuthSession/HTTP 503映射属于后续卡；无生产流量或真实用户资料 | 可封口候选；metadata后另执行双shell seal、clean与GitHub同步；用户授权止于006 |
+
+Phase006计划：docs/phase-plans/Phase006.json；唯一Gate：docs/evidence/Phase006-gate.json；恢复、原始命令、测试、浏览器与独立复核：docs/evidence/attempts/Phase006/。旧检查点保持原字节。

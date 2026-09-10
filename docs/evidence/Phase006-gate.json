@@ -1,0 +1,1552 @@
+{
+  "schemaVersion": "agent-gate-v1",
+  "phase": 6,
+  "attemptId": "attempt-6",
+  "status": "PASS",
+  "simulation": true,
+  "operatorMode": "AGENT_ONLY_AUTOMATED_NEW_BUILD",
+  "environment": {
+    "isolated": true,
+    "syntheticUsers": true,
+    "providerMode": "local-adapter",
+    "productionTraffic": false
+  },
+  "artifactCommit": "2a10abc0a0628dd2d7e900804962dad7d24ca4c8",
+  "requiredCaseIds": [
+    "Phase006:unit-cache",
+    "Phase006:unit-errors",
+    "Phase006:unit-modes",
+    "Phase006:integration-revision",
+    "Phase006:integration-client",
+    "Phase006:integration-types",
+    "Phase006:negative-email",
+    "Phase006:negative-role",
+    "Phase006:negative-cache",
+    "Phase006:auto-generate",
+    "Phase006:auto-migrate",
+    "Phase006:auto-status",
+    "Phase006:auto-studio"
+  ],
+  "results": [
+    {
+      "testCaseId": "Phase006:unit-cache",
+      "command": "node docs/phase-plans/verify-phase006.mjs --case unit-cache",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:e638b23182053c44a3937c2d63f1baa6e3cb7c8735588ac50002ba85ccfcb136",
+      "outputHash": "sha256:9732e816183bf0f507a359ed0209f7b955db2514c04412323a1cbf6813705e0c",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/lib/db.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase006/attempt-6/unit-cache.json",
+        "expected": "Explicit cache hooks and repeated module imports reuse the same PrismaClient in one process."
+      }
+    },
+    {
+      "testCaseId": "Phase006:unit-errors",
+      "command": "node docs/phase-plans/verify-phase006.mjs --case unit-errors",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:e638b23182053c44a3937c2d63f1baa6e3cb7c8735588ac50002ba85ccfcb136",
+      "outputHash": "sha256:7866dd9b234ef6ee6c594dce70c03fc54492b13205f999fd149d14bfc5eb5eb4",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/lib/db.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase006/attempt-6/unit-errors.json",
+        "expected": "Initialization and connection errors become DatabaseUnavailableError without URL, credential, raw cause or log leakage."
+      }
+    },
+    {
+      "testCaseId": "Phase006:unit-modes",
+      "command": "node docs/phase-plans/verify-phase006.mjs --case unit-modes",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:e638b23182053c44a3937c2d63f1baa6e3cb7c8735588ac50002ba85ccfcb136",
+      "outputHash": "sha256:9fc53eab411fcc73783ebe9c00837b969c29ac4964c6400c4440c3df1de54f44",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/lib/db.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase006/attempt-6/unit-modes.json",
+        "expected": "Production ignores and never writes global cache; development and test share cached instances."
+      }
+    },
+    {
+      "testCaseId": "Phase006:integration-revision",
+      "command": "node docs/phase-plans/verify-phase006.mjs --case integration-revision",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:10f67850b842abdf0757b68507a334eaa6bbdbc80db48f24751890f8ab8809e4",
+      "outputHash": "sha256:70e1d05442962aa4c6f484f709bcc8b08ae9a759b2ded0ec2fffcc1dbc95cbcf",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/phase006/database.integration.ts",
+        "outputPath": "docs/evidence/attempts/Phase006/attempt-6/integration-revision.json",
+        "expected": "Real isolated PostgreSQL checks User defaults, all fields, enum/index inventory, revision/sessionVersion nonnegative constraints, timestamps independent of revision, canonical email uniqueness and normalizer boundaries."
+      }
+    },
+    {
+      "testCaseId": "Phase006:integration-client",
+      "command": "node docs/phase-plans/verify-phase006.mjs --case integration-client",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:7c54f705eb4b28f53f709a38f7096f3f70cf0d5894464e2e5aafeb0aef8a818b",
+      "outputHash": "sha256:ccd78351e709745387ff7ba2db7474c64644ed96a186b2ed96dd89cb6c6c930c",
+      "status": "PASS",
+      "details": {
+        "inputPath": "prisma/schema.prisma",
+        "outputPath": "docs/evidence/attempts/Phase006/attempt-6/integration-client.json",
+        "expected": "Generated node_modules/.prisma/client exists, matches Prisma 6.19.0 and the exact User model schema."
+      }
+    },
+    {
+      "testCaseId": "Phase006:integration-types",
+      "command": "node docs/phase-plans/verify-phase006.mjs --case integration-types",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:3ab183310d3add2e18415f83f732cf913f883f18bbdd06a71dc9de0ce76d47c5",
+      "outputHash": "sha256:507f699326c6d167bf8d396dc1522f4eb19a6b66fe9cf9864359831e8a7e9874",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/phase006/user-types.ts",
+        "outputPath": "docs/evidence/attempts/Phase006/attempt-6/integration-types.json",
+        "expected": "TypeScript imports User/Role/UserStatus, proves nonoptional revision/sessionVersion and rejects third roles, invalid statuses and alias fields."
+      }
+    },
+    {
+      "testCaseId": "Phase006:negative-email",
+      "command": "node docs/phase-plans/verify-phase006.mjs --case negative-email",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:10f67850b842abdf0757b68507a334eaa6bbdbc80db48f24751890f8ab8809e4",
+      "outputHash": "sha256:d6af6e7cf736a0d26fdc2f2ae17e005e8aa0b5c10291cbf9680bf55bc1b87d26",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/phase006/database.integration.ts",
+        "outputPath": "docs/evidence/attempts/Phase006/attempt-6/negative-email.json",
+        "expected": "Separate disposable schema/database mutations remove email uniqueness and canonical CHECK; each makes the same constraint assertions fail with an unexpected successful write; restored constraints and assertions pass."
+      }
+    },
+    {
+      "testCaseId": "Phase006:negative-role",
+      "command": "node docs/phase-plans/verify-phase006.mjs --case negative-role",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:7c54f705eb4b28f53f709a38f7096f3f70cf0d5894464e2e5aafeb0aef8a818b",
+      "outputHash": "sha256:3e49b86b496b4c35c696f1ce5359dbc364b00028bd555ee7bca91cbac38d0ff2",
+      "status": "PASS",
+      "details": {
+        "inputPath": "prisma/schema.prisma",
+        "outputPath": "docs/evidence/attempts/Phase006/attempt-6/negative-role.json",
+        "expected": "Adding a third Role only in a disposable schema produces a real new migrate-dev migration containing ALTER TYPE; restore with the original migration chain in a fresh disposable database and recheck enum/status."
+      }
+    },
+    {
+      "testCaseId": "Phase006:negative-cache",
+      "command": "node docs/phase-plans/verify-phase006.mjs --case negative-cache",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:e638b23182053c44a3937c2d63f1baa6e3cb7c8735588ac50002ba85ccfcb136",
+      "outputHash": "sha256:d6281c4b8f26d91a5bfcd87e46fad7ab6bff08d99d706566fda76494f7c3a14d",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/lib/db.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase006/attempt-6/negative-cache.json",
+        "expected": "Removing global cache reuse only in a disposable source copy makes the same module/cache identity assertion fail; restored code passes."
+      }
+    },
+    {
+      "testCaseId": "Phase006:auto-generate",
+      "command": "node docs/phase-plans/verify-phase006.mjs --case auto-generate",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:7c54f705eb4b28f53f709a38f7096f3f70cf0d5894464e2e5aafeb0aef8a818b",
+      "outputHash": "sha256:6937d4b06ce50bc8467e6b5f6001299d09159ea589f7112b142762b56bfddc4c",
+      "status": "PASS",
+      "details": {
+        "inputPath": "prisma/schema.prisma",
+        "outputPath": "docs/evidence/attempts/Phase006/attempt-6/auto-generate.json",
+        "expected": "npm run db:generate exits zero and generated index.d.ts exports User including revision."
+      }
+    },
+    {
+      "testCaseId": "Phase006:auto-migrate",
+      "command": "node docs/phase-plans/verify-phase006.mjs --case auto-migrate",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:b65593d8d8a7a1821a2f65415616e5c083a0e38785bcac2a46ea362d126de3a3",
+      "outputHash": "sha256:d1d31049724a11343e77fdf01e6dd6888ec9e3e95a9c59849b5f760f5992ad44",
+      "status": "PASS",
+      "details": {
+        "inputPath": "prisma/migrations/20260910000000_init_user/migration.sql",
+        "outputPath": "docs/evidence/attempts/Phase006/attempt-6/auto-migrate.json",
+        "expected": "Verify the disposable loopback database and container identity before npm run db:migrate -- --name init_user; the generated migration includes canonical email and nonnegative version CHECKs and applies without db push."
+      }
+    },
+    {
+      "testCaseId": "Phase006:auto-status",
+      "command": "node docs/phase-plans/verify-phase006.mjs --case auto-status",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:7c54f705eb4b28f53f709a38f7096f3f70cf0d5894464e2e5aafeb0aef8a818b",
+      "outputHash": "sha256:21bfb57c062037dad6581c5d7f414bbae587b2d0638174b0ee3f0de8e65b2000",
+      "status": "PASS",
+      "details": {
+        "inputPath": "prisma/schema.prisma",
+        "outputPath": "docs/evidence/attempts/Phase006/attempt-6/auto-status.json",
+        "expected": "npx prisma migrate status exits zero with Database schema is up to date; PostgreSQL major is 17."
+      }
+    },
+    {
+      "testCaseId": "Phase006:auto-studio",
+      "command": "node docs/phase-plans/verify-phase006.mjs --case auto-studio",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:04816f53f00927939193655814e966819ac4aa477eb9042f5b5b2f1b5fbc9916",
+      "outputHash": "sha256:c08ef969307e25af5a561f2747af776e6dd01750018e06a0f0975365bd0a99fb",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/phase006/studio.mjs",
+        "outputPath": "docs/evidence/attempts/Phase006/attempt-6/auto-studio.json",
+        "expected": "npm run db:studio serves real Prisma Studio on loopback; locked Playwright opens User, verifies every field, saves DOM and screenshot, and blocks public requests."
+      }
+    }
+  ],
+  "commands": [
+    {
+      "command": "node docs/phase-plans/verify-phase006.mjs --case unit-cache",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase006.mjs --case unit-errors",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase006.mjs --case unit-modes",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase006.mjs --case integration-revision",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase006.mjs --case integration-client",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase006.mjs --case integration-types",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase006.mjs --case negative-email",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase006.mjs --case negative-role",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase006.mjs --case negative-cache",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase006.mjs --case auto-generate",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase006.mjs --case auto-migrate",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase006.mjs --case auto-status",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase006.mjs --case auto-studio",
+      "exitCode": 0
+    }
+  ],
+  "inputs": [
+    {
+      "path": ".gitattributes",
+      "sha256": "66f2323a3d7b84ba2e810bca035bb5193a3d3cec1c999a8854e94673efa58909"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "eb3d88b97ff365a767b5b3488f3f5e889fd13f4ee1036b99e974ee7c3a17531b"
+    },
+    {
+      "path": ".prettierignore",
+      "sha256": "4d0360bfc0e85bcf158669d14e074bff6609ab2bd10cbf6fa0b626c2cb323fc7"
+    },
+    {
+      "path": ".prettierrc.json",
+      "sha256": "a8443c8c223de29983998d16e4a8f9298898a008a7244db0c2d84eab18eeeab7"
+    },
+    {
+      "path": "docs/agent-execution-contract.md",
+      "sha256": "2919a173e60f0ed50fbf4839a5d8c96bc836afd032410cb012186026736688a2"
+    },
+    {
+      "path": "docs/auth.md",
+      "sha256": "d672c3d25e09ae16e61f9cea23c5d6fc500ff4e76156b4b6f5ca3ccc48a4e736"
+    },
+    {
+      "path": "docs/database.md",
+      "sha256": "38bb2a4b05b15def09ec0434ca4e4cf6d874109d3d88126333bf1f30209029a0"
+    },
+    {
+      "path": "docs/directory-structure.md",
+      "sha256": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df"
+    },
+    {
+      "path": "docs/env-registry.json",
+      "sha256": "651168b05d2c85d6eb5bd67d17bac00d5698a87649752c88d8bc309966046b18"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-1/attempt.json",
+      "sha256": "d917f89b06c2656007b72f6c353ac9ed599d5713db396ffbd126557415354537"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-1/frozen-plan.json",
+      "sha256": "17cb889d5bc2d869c7c97f77d98ff50bf4a38087541ba4999291058e508cc73f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/attempt.json",
+      "sha256": "db592049c021e1af18627535bd8433b25691e4d7737e1ea5518781df3a72fb64"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/auto-generate.json",
+      "sha256": "5e40bd55d56ff23b93a7a0c9002d9c25f182fc3703aeb891ab83795731220795"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/auto-migrate.json",
+      "sha256": "3130d63ec3920a0f6b2d82e73e49daf5458ced9cea644b4ca645f2f66be4f5ae"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/auto-status.json",
+      "sha256": "e9a990d6fb0a0d737059d07349eb4e71d389de9135509c77d3075aacdd14a73e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/auto-studio.json",
+      "sha256": "7cdba3c57b832c75399173cf58c3fff936ea5508bac67f8ab9e843aaa998920b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/database-integration-vitest.json",
+      "sha256": "55ff75231d8555e506559e15116a6b612e10bd44d647e04dabdef5c91bf2828e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/email-normalizer-vitest.json",
+      "sha256": "a8027958a0e1b41189f275a9454e745ac3d1e065ad3ef054ad5278461c381ea1"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/frozen-plan.json",
+      "sha256": "05206c119bb3a8f900ef88ddeb4a19388531fc846f4b7b9ca0b82274195d7ed0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/integration-client.json",
+      "sha256": "2e9df0b656d946b8b047fdf1f70c5c47dce26367317dc468f35c2f585655d2ea"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/integration-revision.json",
+      "sha256": "15e124a45b86288bbaa03b9bca9b3fbe6f564a141d701d0a9283c8c497a37628"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/integration-types.json",
+      "sha256": "ab1056342ea9a103f1337e4f3764e3776dad3bd9c5283aea1c9285692c347c1b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/mutations/email-check.prisma",
+      "sha256": "7c54f705eb4b28f53f709a38f7096f3f70cf0d5894464e2e5aafeb0aef8a818b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/mutations/email-check.sql",
+      "sha256": "7fc3e6ec9cf42212ef83f9a91efe96408607d2da9b4d5cb612081a30480f4080"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/mutations/email-unique.prisma",
+      "sha256": "141ab06575f202e57ad972392545fda3c0d2af2b6eac86ef5c3730d61abcd763"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/mutations/email-unique.sql",
+      "sha256": "2409a8143e5477311d100e35e51cb9a1790b9abfa7d9233b5f65b00eca1e07e0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/mutations/third-role-generated.sql",
+      "sha256": "7da49105bab92f74b91841e822b97b3c37278112b3ef63789c0afbd5c95abe14"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/mutations/third-role.prisma",
+      "sha256": "f7d1fc597ae5996bab89d52497309362900d8181e90c12e844cc307f3e658b7d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/negative-email-check-vitest.json",
+      "sha256": "a8ba8d2fcf30895e390094d4dc883f081c75296a23358574395c606df0fa7505"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/negative-email-unique-vitest.json",
+      "sha256": "217a95303f2c564f293367cea00a8659a9c4702f05ae7129326bfb5b9d664f22"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/negative-email.json",
+      "sha256": "2970c398d6860ce6aeff777efa58569a41b8b7ab4cbdf100ab78307fca98c940"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/restored-email-check-vitest.json",
+      "sha256": "31996d1a64f3d2406da8fe715e84a97c59227f2030b0d919c537b1ea57e4d2c9"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/restored-email-unique-vitest.json",
+      "sha256": "91539647fef7ace8c3e9cc177fa12bbf1f0523cf2a6a9defc676588692f2bf9b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/studio.html",
+      "sha256": "bc6dab152e20dba011d569f6d2a911e14a1c3349188790b3d204b551da63cf67"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/studio.json",
+      "sha256": "5e6dd46345c9dcf8505fc583171cc2d2f7ba921e829ff498ff75a02cb8b2ed1a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/studio.png",
+      "sha256": "ea125c6792a29c5bfb05735da743716dfc416759098e212ab628b2c08fa241a2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/unit-cache-vitest.json",
+      "sha256": "3dc7fc33dbc486b69a00eb6cfd425fc9cf7e2ae71b2479dbc5a0f2e0e5732936"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/unit-cache.json",
+      "sha256": "3df8b98e99922cbb54657678b2ee0b37139670b8ffa67608dabbd6c208469228"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/unit-errors-vitest.json",
+      "sha256": "c262f163348b4f366f75bb9051855465d4808e1151493c1509577aa697b5418c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/unit-errors.json",
+      "sha256": "561ea7f99be68c1aaa4304942b579586f0279d83eff47351fcd5fe3445d4f3c6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/unit-modes-vitest.json",
+      "sha256": "b19a660bfffce2359ae4f9b8008605dda985a81c2d0bba345d9d73974969b8ca"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-2/unit-modes.json",
+      "sha256": "fa38665fccf002d5dc59c528154577103f3675dc227fce0de5241acba2a7eca8"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/all-tests-vitest.json",
+      "sha256": "1ae61046c7d51a0123ea2cd50bd914a33f2e202bf87867afb53f173a4d5ba3d2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/attempt.json",
+      "sha256": "9f82ae62201b6864f681586736b604c8e746aea8331ab2da037ab3adfc70bbeb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/auto-generate.json",
+      "sha256": "891a0135e8e08cd365f12d4d0f4c0a6fc1d6ff95c6c401f29e5162f6a602b157"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/auto-migrate.json",
+      "sha256": "33503e4160b0acb9fea311af0a49ba9816b6d3683cc5dbbe3dac9102ebaeb9e3"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/auto-status.json",
+      "sha256": "e39cd22f52ac8d276f83be6d2081f2243dc9b8a495280ec868c012e4b156191e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/auto-studio.json",
+      "sha256": "43e82411123a4a317c81ba33217137456c964e71f14e701a3dd8fbe0c532f540"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/database-integration-vitest.json",
+      "sha256": "e7222e42018e2f18a37bed97872a2171086742a64b476cb0a409e126f6400327"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/email-normalizer-vitest.json",
+      "sha256": "8ffa0f9dcf8fbd736d0c95303f773475c0f0a585efb7c76012453f5216924d8f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/frozen-plan.json",
+      "sha256": "86b1d40575164b8ae872e6b61e355fd571b273226be507c90d64226df7f26983"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/integration-client.json",
+      "sha256": "bbd76cd4fcbc68475f985f6a8cd8bb19f5315d2597dc48abc4658b6b2a438ced"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/integration-revision.json",
+      "sha256": "94caf2cba910880ea5c463081307e568a5c78a3c8998053e10033f7e05e13635"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/integration-types.json",
+      "sha256": "85612b180c3e8afdbb35deff46e8d2c79d88b5cb4f85ef85b0e463a77ca468e5"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/mutations/email-check.prisma",
+      "sha256": "7c54f705eb4b28f53f709a38f7096f3f70cf0d5894464e2e5aafeb0aef8a818b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/mutations/email-check.sql",
+      "sha256": "7fc3e6ec9cf42212ef83f9a91efe96408607d2da9b4d5cb612081a30480f4080"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/mutations/email-unique.prisma",
+      "sha256": "141ab06575f202e57ad972392545fda3c0d2af2b6eac86ef5c3730d61abcd763"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/mutations/email-unique.sql",
+      "sha256": "2409a8143e5477311d100e35e51cb9a1790b9abfa7d9233b5f65b00eca1e07e0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/mutations/no-cache.ts",
+      "sha256": "c8b31cbfef82027eaff64e1312f7b6e3208bb73421d552de8d338e65dbbf0ceb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/mutations/third-role-generated.sql",
+      "sha256": "7da49105bab92f74b91841e822b97b3c37278112b3ef63789c0afbd5c95abe14"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/mutations/third-role.prisma",
+      "sha256": "f7d1fc597ae5996bab89d52497309362900d8181e90c12e844cc307f3e658b7d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/negative-cache-vitest.json",
+      "sha256": "76eb006330b0660d385f3a3a8a13a85363047db012361fe02570e8eb3640a523"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/negative-cache.json",
+      "sha256": "823e7b3d3a5322d2a181ce9c9c3f65e29e3dcd523a44557a492bcbffa3da65a8"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/negative-email-check-vitest.json",
+      "sha256": "7f3d6a0d4828d386069fbc69f7f79ae5629361948076e6704318141ae0818304"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/negative-email-unique-vitest.json",
+      "sha256": "1163c4251fb353859f7ce7a2f73ef8759dc761cb24ea1ec0fb356da25fff1119"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/negative-email.json",
+      "sha256": "9485bf1bd2ae6e7d0a8b57b3112815c32a2d41b8376595c0676c1e566df04e2b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/negative-role-vitest.json",
+      "sha256": "dbd76262bfdd350065d0673ca99ac646aa130d76b6694b6de3a8a39c5d6567e8"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/negative-role.json",
+      "sha256": "e5c9fcf87e8334ce498e7278809a025c739844b9c5d713d2fa2207ca3750cf6b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/quality.json",
+      "sha256": "d38be6466c4e4555e26e29ba1cd38317be32d5ccd22cbcf7a82ce30551ba3670"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/restored-cache-vitest.json",
+      "sha256": "782494b9b1d4c80a02d23d284136483c2026687f63631b29e848073413dcf8b6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/restored-email-check-vitest.json",
+      "sha256": "3ff6e0a9684d5fd24d1d9635c8d3c61917d40165779ed7e874609933bc3da10f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/restored-email-unique-vitest.json",
+      "sha256": "87a7b624eed36607d4b069c9c87ba45a29cf29305292b626aaa36b49fb6a658a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/restored-role-vitest.json",
+      "sha256": "271cc4aa6f6b369e8ceb75af17ec843a4d912bb70a304e896c5e8e77cf57a004"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/studio.html",
+      "sha256": "bc6dab152e20dba011d569f6d2a911e14a1c3349188790b3d204b551da63cf67"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/studio.json",
+      "sha256": "4f719114e7c8940748d70cf216ea8f1306a9c974c5ea8c2692f4af3bf2cf5b3f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/studio.png",
+      "sha256": "ea125c6792a29c5bfb05735da743716dfc416759098e212ab628b2c08fa241a2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/unit-cache-vitest.json",
+      "sha256": "aeb3e2d0475e019a16287580c2278392a77ff98d02065180cc609eb8e34bb5af"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/unit-cache.json",
+      "sha256": "1a418b28f80e2146f8a6d6f9bc19c21839a0a4d72e41b505a4d0e95e7e72766c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/unit-errors-vitest.json",
+      "sha256": "9626daf09ebbe0ac4df8d83dfc5b1bc72eb11a7e03145b3e10149cc66f6f133e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/unit-errors.json",
+      "sha256": "ff51b062837e9a119f58adb299567ee84339668cfddc89a1e26cc5688b8ee93d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/unit-modes-vitest.json",
+      "sha256": "129c931c00b8b8a05de3c2463341ffe4c2af15485e3264384ecb369a70b2d839"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-3/unit-modes.json",
+      "sha256": "4cba0f5ea40f24155c73c3b814fcdd9f5bb2e65dcd6ab6206584295a393e8aeb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/all-tests-vitest.json",
+      "sha256": "a0287f59c7ac2efc4e0b47efe5b01d04235099feaff9719ac3dd4880b157effb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/attempt.json",
+      "sha256": "e6d7368a6de7b7d3267c1ea196898439a6cb3da1eb5ce77ce6b4a7aaefcb4c70"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/auto-generate.json",
+      "sha256": "9d0fe964252f3838f2331bc2b0157880b8fc37d5333cb3392e4740fd14d9dc24"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/auto-migrate.json",
+      "sha256": "f6cd975fd33d1b28085c68dd1db78270313c9f43a8e7a17def4ee2c18b5a1698"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/auto-status.json",
+      "sha256": "2831642569ee6a34f793c0e704e048a4467f8e3d99b14ada1a30baa4a1925157"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/auto-studio.json",
+      "sha256": "d8aa8582fd0509b6065e42f7a054bd62911f992940b65b5d1df460687b008927"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/database-integration-vitest.json",
+      "sha256": "0df7cfea191ae36550c9defe0f5f59718a42b9599b33ec1a6ac52c3e66ba6efd"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/email-normalizer-vitest.json",
+      "sha256": "04dcffc9d70448f2e5a1375563eafcfa35dbf878ab578afd093d53ec391b366c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/frozen-plan.json",
+      "sha256": "79f441bb6d0e85a0b65aa556634033980a1f26dbbefbe81361a53c14e166c238"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/integration-client.json",
+      "sha256": "3a954841c207a00ec26aba8852f126ed2761ccc432bccc4f8f7c90ef2f311da2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/integration-revision.json",
+      "sha256": "c7495b84705de9614e7a4eb292eccd3499575a3479363c3fa0554177f487d57e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/integration-types.json",
+      "sha256": "1aff074b75df1cf4937c2a1c3eb72d49fef5b0319257200f2b0892cc1f54c1f5"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/mutations/email-check.prisma",
+      "sha256": "7c54f705eb4b28f53f709a38f7096f3f70cf0d5894464e2e5aafeb0aef8a818b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/mutations/email-check.sql",
+      "sha256": "7fc3e6ec9cf42212ef83f9a91efe96408607d2da9b4d5cb612081a30480f4080"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/mutations/email-unique.prisma",
+      "sha256": "141ab06575f202e57ad972392545fda3c0d2af2b6eac86ef5c3730d61abcd763"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/mutations/email-unique.sql",
+      "sha256": "2409a8143e5477311d100e35e51cb9a1790b9abfa7d9233b5f65b00eca1e07e0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/mutations/no-cache.ts",
+      "sha256": "c8b31cbfef82027eaff64e1312f7b6e3208bb73421d552de8d338e65dbbf0ceb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/mutations/third-role-generated.sql",
+      "sha256": "7da49105bab92f74b91841e822b97b3c37278112b3ef63789c0afbd5c95abe14"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/mutations/third-role.prisma",
+      "sha256": "f7d1fc597ae5996bab89d52497309362900d8181e90c12e844cc307f3e658b7d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/negative-cache-vitest.json",
+      "sha256": "befe21eb04648248554ed33e2aefcecf5a795d8b5f8fe3d8eaba4a7a4aef5f90"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/negative-cache.json",
+      "sha256": "0b0e4f080a49a1978d6627be6a42ac3fe139d2e3245ac8c51a9265bb49223d61"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/negative-email-check-vitest.json",
+      "sha256": "ff38c46f7069d5d941e7d614329efe94372b8d890bf5827b26b3369a84e1675c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/negative-email-unique-vitest.json",
+      "sha256": "5d70366d0bbdc08cee023743dbd65ca62aa662180a2f423ccb464bbe7cf335d0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/negative-email.json",
+      "sha256": "6a834ae17232c99d9dc6e501da21c84d61f9a520cd16a08b584c7f8962403bd0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/negative-role-vitest.json",
+      "sha256": "8341790b26a75d81461200acf26a8893e2ca0d084cbf705db983f8a65e6bde7e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/negative-role.json",
+      "sha256": "742aae8b40ed0a901d4722363a438a795eea631d52b9e4e6533175cd7a753630"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/quality.json",
+      "sha256": "445462c29088dfaf76804d13132a187b721992c1d5f721089d3d98f0113a5574"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/restored-cache-vitest.json",
+      "sha256": "465e76f427677aa0de0308e49fa3536f76124b1e249fdbd57d7735e1364b714b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/restored-email-check-vitest.json",
+      "sha256": "19c69b8d6a47e3dc13ba03fb9b260c43a0a235fe268664e0f5aaa8c2e93d12f3"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/restored-email-unique-vitest.json",
+      "sha256": "0ef0d1ea7b7d0c51fa03a53e6130187b767eb8eb82b29197e0ecb24c08494f5f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/restored-role-vitest.json",
+      "sha256": "3e271fd64bea89a6237089d3e258d14b882791993843ce166146b2d4b7bd99c5"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/review.json",
+      "sha256": "06ed80f60089d10259a55c84b0b50225bb8d8afd55d0fe7e9544e9f746d22f46"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/reviewer-support/network-guard.cjs",
+      "sha256": "f8368e4efc5322d86473b3d5b1f4ce5a03c5990c48421743143becfd8cb9eab7"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/reviewer-support/references.json",
+      "sha256": "00c4a47649ad8ba18755d65281dc8c954c194e386fd436cb781cded8e06d0f50"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/reviewer-support/telemetry-probe.json",
+      "sha256": "a6dd74f8ed3ee7d32074bad2837fec7f942a391bb5a641ac0cbb493b930edda1"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/studio.html",
+      "sha256": "8ccf032c749592b8fd73254254d9f64449fd9e70728da27a29f699318cd40f85"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/studio.json",
+      "sha256": "17e70025bc00e7ea82402c15beb72c6dc01158971c5c505a73718f3074c75308"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/studio.png",
+      "sha256": "90b134d5583447a70ae7aa26f42c793c0e7625ad0b322813f2304dfb826678b0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/unit-cache-vitest.json",
+      "sha256": "89d2e51e8b54c727e4fc85669ba1687bfdbe14d941d977e91433e23f7cface25"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/unit-cache.json",
+      "sha256": "7438da548124750ba21aaa38b02ba5718aab02744fe00b6582aef0a4080e8d52"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/unit-errors-vitest.json",
+      "sha256": "f231a2a6d2f9ecafcae40714b36c9bb1919707e828bf23e9a4d1dc3fe5b1943c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/unit-errors.json",
+      "sha256": "88ed71b898c37ce9b317b897ef7c24dfb12513174b5148b517d4b08b15b164ed"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/unit-modes-vitest.json",
+      "sha256": "502b3d85a18feaef545c217078a05e49d8a8fbc5768d1b64b22f870214c05a4b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-4/unit-modes.json",
+      "sha256": "8969455c362e7b161497d5e32c479abbb17dbc0918251e74eb25f94acb553e39"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/all-tests-vitest.json",
+      "sha256": "49b527d6c1156b742e35f56aaf4304c2374331554c6506f0961b6344642370df"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/attempt.json",
+      "sha256": "cfc58fbd579ccd751745cb6fa695df7613cf426ebc51450b5917c562245f1e7f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/auto-generate.json",
+      "sha256": "905c983eba1226ac2624ab4c3c12f20113e7c8d0848915c4b3b32c695305c9d0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/auto-migrate.json",
+      "sha256": "b99db45f7213655e8bc564aedbd29a963da185beddff1eaa31b2e7364907437b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/auto-status.json",
+      "sha256": "1e84915b11785b9f96cc79eca4ec2b79d253309fcd6bd6d54be3a01b8cd8cf68"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/auto-studio.json",
+      "sha256": "adafc0ae36334fb583677ee1e4bae0e7de1814861831d9ddf1c721699e3e36a6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/cli-network.json",
+      "sha256": "533103a738e855e194a451c717339b396690885552bdf279de314b6f436c15a1"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/database-integration-vitest.json",
+      "sha256": "ce97a8cfc05e37d6498b4357e935395efe6ad71b2a65890756b5acb704d54e90"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/email-normalizer-vitest.json",
+      "sha256": "58098a856485174ea6bf8cfc7a28bb68419d574b5a9b050d28c66d7dc555236b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/frozen-plan.json",
+      "sha256": "3b45acb889a67bde198db1461b4cc83777c19be4a73af628c5d1c998f6ac3892"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/integration-client.json",
+      "sha256": "eaa12eefaf1b9a691f688966806adebd0fe9bc8ecf1f9c9f020edf651a6f151c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/integration-revision.json",
+      "sha256": "731811d0eee73e5abb9ded44ae84dfe88b34252130631cda99116974e09425d0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/integration-types.json",
+      "sha256": "4c234a57e8735a491ab7660496c2aa554fe38643ad445c31deed6c5febb31123"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/mutations/email-check.prisma",
+      "sha256": "7c54f705eb4b28f53f709a38f7096f3f70cf0d5894464e2e5aafeb0aef8a818b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/mutations/email-check.sql",
+      "sha256": "7fc3e6ec9cf42212ef83f9a91efe96408607d2da9b4d5cb612081a30480f4080"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/mutations/email-unique.prisma",
+      "sha256": "141ab06575f202e57ad972392545fda3c0d2af2b6eac86ef5c3730d61abcd763"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/mutations/email-unique.sql",
+      "sha256": "2409a8143e5477311d100e35e51cb9a1790b9abfa7d9233b5f65b00eca1e07e0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/mutations/no-cache.ts",
+      "sha256": "c8b31cbfef82027eaff64e1312f7b6e3208bb73421d552de8d338e65dbbf0ceb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/mutations/third-role-generated.sql",
+      "sha256": "7da49105bab92f74b91841e822b97b3c37278112b3ef63789c0afbd5c95abe14"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/mutations/third-role.prisma",
+      "sha256": "f7d1fc597ae5996bab89d52497309362900d8181e90c12e844cc307f3e658b7d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/negative-cache-vitest.json",
+      "sha256": "7cce3b0474f5d4151754fe9b32a1f1d25c2fb4a28e0ac417d0da96d59960cf82"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/negative-cache.json",
+      "sha256": "ee43425088fbae872794c4b221ee6a88fc164669625a2fc2e8dc64416605dddf"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/negative-email-check-vitest.json",
+      "sha256": "94047925ad0a05d1af7f1c352f89e11c8495f2502fa96a84f57a9686ccc053bd"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/negative-email-unique-vitest.json",
+      "sha256": "25929ce635e3f49a2fcfef48c7a4165dc70f74587c3a2418fe75ec1902bfc2cb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/negative-email.json",
+      "sha256": "bc025e53f0f7196898bff42a214c5ff0a63e6cffdb3642bde766263dcfda4f1b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/negative-role-vitest.json",
+      "sha256": "cce0e21668aaf87dc467118d91980ed889df666226795124f9b6ef71f32b2050"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/negative-role.json",
+      "sha256": "57f6436e0e6edd64290e0ae6ce4164b861f67be9e66d7a20e1211f645645ee75"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/quality.json",
+      "sha256": "38c68fcca0a8f9c6b7d5b96527c683f5066785159160b325d41cc5479669973a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/restored-cache-vitest.json",
+      "sha256": "da3c623807c9380af9c21027d284c046677b9c93dd655afa17a34f85e22861b6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/restored-email-check-vitest.json",
+      "sha256": "612cea9721cacb9c95702ede0d8b78f819854526b46eef369fdd2eb7e5163102"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/restored-email-unique-vitest.json",
+      "sha256": "1218bb5e786c6a7bb48cdb011990c5882c9a8c3b76be238d1d35c504d4990796"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/restored-role-vitest.json",
+      "sha256": "4209268ede6da6a4507625edc4afd45d1566e99f46423c72d046a1a4c41d9598"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/review.json",
+      "sha256": "9db0f0f2c3f9167913787f7d535c9461d411e55d4f7dd274f15c9071d0783e2e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/staged-diff-check.json",
+      "sha256": "00d51a7c0a9dddc4d4163e7e3d54562fd1611c904b7fdc5e1352c0086a04089f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/studio.html",
+      "sha256": "8ccf032c749592b8fd73254254d9f64449fd9e70728da27a29f699318cd40f85"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/studio.json",
+      "sha256": "1cf0f077f31ed35885fbc8ffd64edff3692108a3a97c6531225117d3bf535681"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/studio.png",
+      "sha256": "90b134d5583447a70ae7aa26f42c793c0e7625ad0b322813f2304dfb826678b0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/unit-cache-vitest.json",
+      "sha256": "bb588fe49cce57a63cf9a43ca9f112c33e93aa674d708c886e8d4577084c0add"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/unit-cache.json",
+      "sha256": "e021bfc8ea01ad7b0368d52f615dbed33163b0be7c72925fdd6eadf008cc2580"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/unit-errors-vitest.json",
+      "sha256": "39a2e5ff414a253a7851cadaeebccb316a27fadcc907acaec8058313c6b26dcb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/unit-errors.json",
+      "sha256": "ebe4f70dd77d8222ed64ec26308ac916236e9b88a94b40ebfeefe6e2b7d373b9"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/unit-modes-vitest.json",
+      "sha256": "f5b0c00a367dbd37d777c94d384d1a7a4bf8fc9413a69c0b20add48b465ac2fe"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-5/unit-modes.json",
+      "sha256": "4afa4cbd8335a64d3c83b034985509bea66a845dde56a25083e66b014f52547e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/all-tests-vitest.json",
+      "sha256": "217145542a837aee30baaac6573dca97da01fdbf8e48501880b80ee9a38ff9bf"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/auto-generate.json",
+      "sha256": "6937d4b06ce50bc8467e6b5f6001299d09159ea589f7112b142762b56bfddc4c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/auto-migrate.json",
+      "sha256": "d1d31049724a11343e77fdf01e6dd6888ec9e3e95a9c59849b5f760f5992ad44"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/auto-status.json",
+      "sha256": "21bfb57c062037dad6581c5d7f414bbae587b2d0638174b0ee3f0de8e65b2000"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/auto-studio.json",
+      "sha256": "c08ef969307e25af5a561f2747af776e6dd01750018e06a0f0975365bd0a99fb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/cli-network.json",
+      "sha256": "c8a1013a2b8e1bd8efe76a3a3588f3762f066be9dcfbad72a5cfe4964e3b95f5"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/database-integration-vitest.json",
+      "sha256": "ef3250cbd7a6f692ee645124fac1e645f361dcd75f691e0807426d97e7a43061"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/email-normalizer-vitest.json",
+      "sha256": "fc025de898a7d4c0cc1cff6564430745c86c82204e240fb6838ee43a7a276638"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/integration-client.json",
+      "sha256": "ccd78351e709745387ff7ba2db7474c64644ed96a186b2ed96dd89cb6c6c930c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/integration-revision.json",
+      "sha256": "70e1d05442962aa4c6f484f709bcc8b08ae9a759b2ded0ec2fffcc1dbc95cbcf"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/integration-types.json",
+      "sha256": "507f699326c6d167bf8d396dc1522f4eb19a6b66fe9cf9864359831e8a7e9874"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/mutations/email-check.prisma",
+      "sha256": "7c54f705eb4b28f53f709a38f7096f3f70cf0d5894464e2e5aafeb0aef8a818b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/mutations/email-check.sql",
+      "sha256": "7fc3e6ec9cf42212ef83f9a91efe96408607d2da9b4d5cb612081a30480f4080"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/mutations/email-unique.prisma",
+      "sha256": "141ab06575f202e57ad972392545fda3c0d2af2b6eac86ef5c3730d61abcd763"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/mutations/email-unique.sql",
+      "sha256": "2409a8143e5477311d100e35e51cb9a1790b9abfa7d9233b5f65b00eca1e07e0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/mutations/no-cache.ts",
+      "sha256": "c8b31cbfef82027eaff64e1312f7b6e3208bb73421d552de8d338e65dbbf0ceb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/mutations/third-role-generated.sql",
+      "sha256": "7da49105bab92f74b91841e822b97b3c37278112b3ef63789c0afbd5c95abe14"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/mutations/third-role.prisma",
+      "sha256": "f7d1fc597ae5996bab89d52497309362900d8181e90c12e844cc307f3e658b7d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/negative-cache-vitest.json",
+      "sha256": "223f816501645e7f72522ef6428d1496a20d13039807b431d814496f3eb541ef"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/negative-cache.json",
+      "sha256": "d6281c4b8f26d91a5bfcd87e46fad7ab6bff08d99d706566fda76494f7c3a14d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/negative-email-check-vitest.json",
+      "sha256": "6dfc12df611cdc2417e5a10a4e3d06c71d12176032a534cf3776a8592378601e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/negative-email-unique-vitest.json",
+      "sha256": "a45f4b9b2abed7abe80364683c2c23980e866b1e1ca0cfaa3e5df92d6f89331b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/negative-email.json",
+      "sha256": "d6af6e7cf736a0d26fdc2f2ae17e005e8aa0b5c10291cbf9680bf55bc1b87d26"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/negative-role-vitest.json",
+      "sha256": "42382cff7810672191bb15f9bfca1908ed5a1ad671f0ae37c9f55e7915b1f5fc"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/negative-role.json",
+      "sha256": "3e49b86b496b4c35c696f1ce5359dbc364b00028bd555ee7bca91cbac38d0ff2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/quality.json",
+      "sha256": "cf9579a6e115aee5d1d752e97a27f21194d1ca52e5aa2ca8dd975e7e9effd48a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/restored-cache-vitest.json",
+      "sha256": "9302bfe4b7d5b43b2f8dd163705d060fc70d282cec4368bbfc7eeeb7a944e29a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/restored-email-check-vitest.json",
+      "sha256": "5b9cecbf95cfebc10eec47d56211550bcfe95a24808ae3aa5f7523a1e33fee7f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/restored-email-unique-vitest.json",
+      "sha256": "6ef5732a792ed6602aefb292f9a4c668718d11c63659518f8090532dedde92f2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/restored-role-vitest.json",
+      "sha256": "3d7c10b0c03281f484019db1c3a7abdefb84ba4af135844cc0ddbc456ed83ebd"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/review.json",
+      "sha256": "a01667dfc9f3644d97b5673db18a496db757f4402d14f7371223546a55096950"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/studio.html",
+      "sha256": "a263528ed5252f9ffe2b7960dae5b6b2ace746d31f5d541c95fa4b717e62bd10"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/studio.json",
+      "sha256": "572ad3014e662b90a42ad16f93c03eec48ec0195ed4073de0f2ec320ed3d36f7"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/studio.png",
+      "sha256": "90b134d5583447a70ae7aa26f42c793c0e7625ad0b322813f2304dfb826678b0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/unit-cache-vitest.json",
+      "sha256": "e2ebfbc483042d1c53a48108d53164cd9947a5371e10e2db2768d097b83f440c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/unit-cache.json",
+      "sha256": "9732e816183bf0f507a359ed0209f7b955db2514c04412323a1cbf6813705e0c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/unit-errors-vitest.json",
+      "sha256": "58c9e25f0a8d4fd1fcb95b601ea83eb1e024552461b29c8e5c4336b473633129"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/unit-errors.json",
+      "sha256": "7866dd9b234ef6ee6c594dce70c03fc54492b13205f999fd149d14bfc5eb5eb4"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/unit-modes-vitest.json",
+      "sha256": "96181e83bab83b27fa74db36ecedde4728336d3e45ce6f9982ee44dccfa9e706"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/attempt-6/unit-modes.json",
+      "sha256": "9fc53eab411fcc73783ebe9c00837b969c29ac4964c6400c4440c3df1de54f44"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/interrupted-context/attempt.json",
+      "sha256": "ac6e00a4cd4490c52e9c1b3f80578f3fd981eb1eacba5c5ab2e4441d71598da7"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/preflight-2/powershell.exe.json",
+      "sha256": "1d9a85cf3f9aa905dcd7963447e57a022be529c3c21a41dcf701f8de216f1726"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/preflight-3/powershell.exe.json",
+      "sha256": "715049eb95206c9d8b7a2135dce09a1593515e4c9ce570348d3d67280ec70e09"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/preflight-4/powershell.exe.json",
+      "sha256": "823d8b969322cf4262cfba021bd6199f9c2c56ba4b80bc31697d55b5ec25128a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/preflight-4/pwsh.exe.json",
+      "sha256": "7b2fd7fd5736143a945f70e9e211b44ca088a13dd5d31efc01ffb4c5a1b2c941"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/preflight/powershell.exe.json",
+      "sha256": "fc939d815bb8e606a31a6fdc90752e0852700873f847ac56c4ab63e456db0ee8"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/setup/dependencies.json",
+      "sha256": "70ecc8220de26d4777cc3731aa2dd1b03eff5b340a702478354530bc57fdeb48"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/setup/migration-generation.json",
+      "sha256": "d01f465902152439367e457579c2573707af7b01b55f81bd7b0839ab95a9b2d2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase006/setup/postgresql.json",
+      "sha256": "d8f8c019a8fb5435b8bef6eee7b0d510edf2e092f5f985ae775be85bfd6eedb0"
+    },
+    {
+      "path": "docs/phase-plans/Phase006-inputs.json",
+      "sha256": "e191b940aaf31c1f075d662d798d078d23331efb3634c4d7c761a704bec28798"
+    },
+    {
+      "path": "docs/phase-plans/Phase006.json",
+      "sha256": "376192ccacc4bec06979652357e6e3f237336043b834876b9e8abc8afba6bc68"
+    },
+    {
+      "path": "docs/phase-plans/complete-phase006.mjs",
+      "sha256": "92319aee547ed8863006264bf8d967c918a4e1b6a503ff81bfa7cc3b4f7904e4"
+    },
+    {
+      "path": "docs/phase-plans/phase006-runtime.mjs",
+      "sha256": "67268215a7fffa5e6d087e234f866c15daadc04a7f7547106f95e4ac8a1f02e1"
+    },
+    {
+      "path": "docs/phase-plans/setup-phase006.mjs",
+      "sha256": "af30cf6dca7bb7aff6e316f56faa645aa116299bd7af54972926bfc0d02614d8"
+    },
+    {
+      "path": "docs/phase-plans/verify-phase006.mjs",
+      "sha256": "71e03dfd7f02a70552e2d8a0acde77c9c6ca2124caf0fbc816367b0f785879b9"
+    },
+    {
+      "path": "docs/phase006.md",
+      "sha256": "a5d9c679b32655d5668aecb9ad4cbbc80c2204ba5b11ad67ad5d9f5e27065890"
+    },
+    {
+      "path": "docs/project-constitution.md",
+      "sha256": "8f1dd176e30e815a09502a91c5b0ef2722b7bb71d5e919fbfc70cfecf3e9dedd"
+    },
+    {
+      "path": "docs/project-layout.json",
+      "sha256": "7efe30a30fe009a8e1226563cae53d39ed2a2193be78bc0f0a776f57f67710ba"
+    },
+    {
+      "path": "docs/runtime-baseline.json",
+      "sha256": "454e0dc1759a2ddfd2f3cd89d4f8988ac9cecaea2a8ca71923bb6180afbdfa6c"
+    },
+    {
+      "path": "docs/tech-stack.md",
+      "sha256": "258620f3e18d042eac1e26165f411e8879ecd4b0d91d8e7986aaed4f3f10d2c7"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "sha256": "f45d4d5b4e4808481617530c717d97108af6488b39e008e49b4161aefd818708"
+    },
+    {
+      "path": "next.config.ts",
+      "sha256": "614bce25b089c3f19b1e17a6346c74b858034040154c6621e7d35303004767cc"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "b5fab836e7858b930c5e74544ffb65c1a873a7907465bcf00f61f34cb89121fe"
+    },
+    {
+      "path": "package.json",
+      "sha256": "a8f420c7cee39e4ba7468ab454a7389850d2879361d266a026e630ca7b7c9e94"
+    },
+    {
+      "path": "postcss.config.mjs",
+      "sha256": "141ef24ca27a99d08962210fdf20212d3435fdcfa21b46cd88b44d22f751dfae"
+    },
+    {
+      "path": "prisma/migrations/20260910000000_init_user/migration.sql",
+      "sha256": "b65593d8d8a7a1821a2f65415616e5c083a0e38785bcac2a46ea362d126de3a3"
+    },
+    {
+      "path": "prisma/migrations/migration_lock.toml",
+      "sha256": "99836963713b4f5b269ad49af0ed3d7b0b2e336115c2f92dc9ac683d139d0900"
+    },
+    {
+      "path": "prisma/schema.prisma",
+      "sha256": "7c54f705eb4b28f53f709a38f7096f3f70cf0d5894464e2e5aafeb0aef8a818b"
+    },
+    {
+      "path": "scripts/check-project-layout.mjs",
+      "sha256": "d19f27109ff142516a7b0454e7f9b9a03629fd11923e7f6b88c7ee9323eb1d35"
+    },
+    {
+      "path": "scripts/checkpoint-history.mjs",
+      "sha256": "673a4f5ff409ce0a4fcb7b1754c2d977199fc502a8732cda01082b9a0eababa1"
+    },
+    {
+      "path": "scripts/complete-phase003.mjs",
+      "sha256": "7dfd3f076da235b7b0d33a950fe08e6f48b3ac46b3c6aea70ea81b9cb6b3204f"
+    },
+    {
+      "path": "scripts/eslint-env.mjs",
+      "sha256": "f2ded148de31d4d35ede46a162116f81b48b459b869ade8411a5e25c9f5f21ce"
+    },
+    {
+      "path": "scripts/generate-api-contract.mjs",
+      "sha256": "6dad8aa0bbd68630b9149babed05e1bdc0c315d262ce16665cbe3fc133dd6009"
+    },
+    {
+      "path": "scripts/phase-evidence.mjs",
+      "sha256": "4f6c097483548486127518e613acf67b867347a706ad5eb138148f2701bfada9"
+    },
+    {
+      "path": "scripts/phase003-evidence.mjs",
+      "sha256": "5a6660faa40d3710df19b9881f203be6dcb3e459c5b9c4fcf6169548890abbb4"
+    },
+    {
+      "path": "scripts/prepare-checkpoint-import.mjs",
+      "sha256": "81f21058f17b87d053f1fc0b2762fca645d53fc7a1440d68ee7908d20ce3ac0a"
+    },
+    {
+      "path": "scripts/prepare-phase003.mjs",
+      "sha256": "8a1a7482ee04835e3819bf81dcaa7b27ee4172ba806688b26105cae937b4ca5b"
+    },
+    {
+      "path": "scripts/test-checkpoint-import.mjs",
+      "sha256": "9b0d18dda79e9cb8602727a72555ca392b9558b2dcc1360349f73c89560a8e11"
+    },
+    {
+      "path": "scripts/test-validate-phase.mjs",
+      "sha256": "b4df52b324137973c12ddc352695f2082177d29aaf9d007ba6ebf1c18a76439c"
+    },
+    {
+      "path": "scripts/validate-phase.mjs",
+      "sha256": "3e7392fbb5e59a0cd300579a319dd45fc65cd523cc11bb74cec664f28931c9b0"
+    },
+    {
+      "path": "scripts/validate-phase.ps1",
+      "sha256": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319"
+    },
+    {
+      "path": "scripts/verify-phase003.mjs",
+      "sha256": "ff50f83beabeea538c7141ee0a6beeed4a6c02664fbf8f58b68d795a80375758"
+    },
+    {
+      "path": "src/app/(site)/layout.tsx",
+      "sha256": "dbf6397819844277acac383530a3a616f29e1068b9b5ba2d08f2886b3cca5207"
+    },
+    {
+      "path": "src/app/(site)/page.tsx",
+      "sha256": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e"
+    },
+    {
+      "path": "src/app/admin/layout.tsx",
+      "sha256": "95d75d00b7761b6370864fceb83980b938f8378cc23f1d33de8f15b981156734"
+    },
+    {
+      "path": "src/app/favicon.ico",
+      "sha256": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932"
+    },
+    {
+      "path": "src/app/globals.css",
+      "sha256": "f88153c2b0c26a4f65e48626ab5a05e68c8d962952be88ead2032c8a90b10a1f"
+    },
+    {
+      "path": "src/app/layout.test.ts",
+      "sha256": "8022cde5595f753306b17f2de43534bc42ee0fd0f46ea19452deb2ee55e7e0cb"
+    },
+    {
+      "path": "src/app/layout.tsx",
+      "sha256": "a9de0b5ba9380f5a058487639bd6be0d13c5a1293f720d38965d1b3dec793a6f"
+    },
+    {
+      "path": "src/components/admin/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/components/chat/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/components/common/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/components/common/common-components.test.tsx",
+      "sha256": "8a9fcd34cc153236e6d58ad1b1ee0039e2b4020f664f918ffc5f7e9e82f8ed5b"
+    },
+    {
+      "path": "src/components/common/empty-state.tsx",
+      "sha256": "a5b1a914935eace3193451be25c9cf8178010345ef76963e0ecb12713e284795"
+    },
+    {
+      "path": "src/components/common/error-state.tsx",
+      "sha256": "4ef42505cda6c3a5d4c35180022eedab13ce9f33ac9e412e924dd5b9bb9d808d"
+    },
+    {
+      "path": "src/components/common/loading-state.tsx",
+      "sha256": "0a010951d56d20dc1860ed8bd78a5c95671bd1323014330c00b4519aafe1c37f"
+    },
+    {
+      "path": "src/components/common/page-header.tsx",
+      "sha256": "c403ac7802dbb0ecf5f83aa57ed043bf598fd3e1806c7250751cdfd9f361b4da"
+    },
+    {
+      "path": "src/components/layout/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/components/layout/admin-shell.tsx",
+      "sha256": "6bb6e05f1ad6cf9c1b6c8e77a89832a3008afaaa5297ef056e3fb89fbe37c819"
+    },
+    {
+      "path": "src/components/layout/site-header.tsx",
+      "sha256": "f4fdc237b4a3d76ac8280ff80390966ec3a1fe95d67bba7f2e5abb475ed98295"
+    },
+    {
+      "path": "src/components/travel/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "sha256": "abd7a62c5b38d8836c88906285ea0df0a40d3dd55f7d404a07672f749e37f43f"
+    },
+    {
+      "path": "src/components/ui/sonner.tsx",
+      "sha256": "f28cba0be08c0873d121f6f35107c9e0b209ef649b0d0625c32e46cf0b2ed9a2"
+    },
+    {
+      "path": "src/instrumentation.ts",
+      "sha256": "4ff6be1caa61426f26540f107f1b609bda7ad79e40b72d5c2b563d7fbb3c4821"
+    },
+    {
+      "path": "src/lib/ai/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/lib/api-response.test.ts",
+      "sha256": "4660ad9249e90641f09cbfd7dd914504fa4d1cea7fd180c6c407eb70f2a6cd1d"
+    },
+    {
+      "path": "src/lib/api-response.ts",
+      "sha256": "235635f476f988af2f7d2bdb867acc85bd3d4d777a99c8c7da555206b9a65a6a"
+    },
+    {
+      "path": "src/lib/env-cli.ts",
+      "sha256": "a70f8eff095adde7d6baf7ff7b6bc30156bb0c110a351fe4dad13ce076539fe4"
+    },
+    {
+      "path": "src/lib/env-schema.ts",
+      "sha256": "61c657e715fad05a57737ef8ad037a97c32f724c9a3a6e0a5c76ce5cf65d5731"
+    },
+    {
+      "path": "src/lib/env.test.ts",
+      "sha256": "04ad1cbe2db65abe20d9c9d520c52c8cc9f42f6040a516a53e37ade2d0e2b38f"
+    },
+    {
+      "path": "src/lib/env.ts",
+      "sha256": "51a3612afe39103e04f214185192f0e39e8bc5cb43d27b21922fdd1748096658"
+    },
+    {
+      "path": "src/lib/format.test.ts",
+      "sha256": "bfbf9788fbc9506c299acdafe03debe5ee8ce6bc4baff11092d08d935d2cfdbe"
+    },
+    {
+      "path": "src/lib/format.ts",
+      "sha256": "0834ccea0511ed8b0374db59527702e3707a251f44d367e70bf748e27dbe37a0"
+    },
+    {
+      "path": "src/lib/json.test.ts",
+      "sha256": "2e17c72f917730c5adabd17ed3f434ab9d50d0215651f768938bff3e9fb50a60"
+    },
+    {
+      "path": "src/lib/json.ts",
+      "sha256": "b482e4f8309135800ce6526b771b809aff8ea219d4fc89060c3b4ba057b3ed11"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "sha256": "55bbdc94cef3e0c8a8bba386e94f97228dd2c967fe61466fc565378890550c08"
+    },
+    {
+      "path": "src/middleware.test.ts",
+      "sha256": "98671c0f2ada396299964461177c1bd84bc5029d9dad58c3a71d5c2851277461"
+    },
+    {
+      "path": "src/middleware.ts",
+      "sha256": "2f3f1b9df69c9cf93a2bffc4f6ba8c9336b0b4111614d9ae3e18d116e9c9934f"
+    },
+    {
+      "path": "src/server/auth.ts",
+      "sha256": "af08f9c7a2b08672e5c516d38beb71fd4edd0566f0d5e98b669417d28cbec4fe"
+    },
+    {
+      "path": "src/server/db.ts",
+      "sha256": "d2f6bec02e8dc7eb25eb782def2f24d018a1c27358cd62dfd5aeb22030457db7"
+    },
+    {
+      "path": "src/server/services/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/types/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/lib/auth.test.ts",
+      "sha256": "fb8bb3b519253cd9d931ec208a6c78954fe94d11aa3b8cd65297ce55ee8a418c"
+    },
+    {
+      "path": "tests/lib/db.test.ts",
+      "sha256": "e638b23182053c44a3937c2d63f1baa6e3cb7c8735588ac50002ba85ccfcb136"
+    },
+    {
+      "path": "tests/phase005/browser.mjs",
+      "sha256": "65cee15ce4171423bde4c82689466d1b1c45a64cb1a847ec6200661465676881"
+    },
+    {
+      "path": "tests/phase005/components-fixture.tsx",
+      "sha256": "d224e44f30a1c481be92f70b2f592388da98b5c567f9736774f617ffc00927dd"
+    },
+    {
+      "path": "tests/phase005/fixtures/phase003-home.tsx",
+      "sha256": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e"
+    },
+    {
+      "path": "tests/phase006/cli-network-guard.cjs",
+      "sha256": "da1e1020f2d0f5f171f1a721dfa2c3412a2901d858eee176ed730f45f0ad2ab7"
+    },
+    {
+      "path": "tests/phase006/cli-network.mjs",
+      "sha256": "21664e3f9f0467ab5e92fdc60b84f2df27c106bb1267ec8a734cfe128f7bbd72"
+    },
+    {
+      "path": "tests/phase006/database.integration.ts",
+      "sha256": "10f67850b842abdf0757b68507a334eaa6bbdbc80db48f24751890f8ab8809e4"
+    },
+    {
+      "path": "tests/phase006/studio.mjs",
+      "sha256": "04816f53f00927939193655814e966819ac4aa477eb9042f5b5b2f1b5fbc9916"
+    },
+    {
+      "path": "tests/phase006/user-types.ts",
+      "sha256": "3ab183310d3add2e18415f83f732cf913f883f18bbdd06a71dc9de0ce76d47c5"
+    },
+    {
+      "path": "tests/phase006/vitest.database.config.mjs",
+      "sha256": "b0d0de6cebdd51e1418960674b8b977d64072787cc123d19bd05a0595d58b267"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "83d292a6930a317ea31ef48e220097d2ca10c6c505f41d5954795acef48ca3b9"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "cc79644beec0c7ff9c0e466b952b2aaa6410598a575606f633f32e7caf29b966"
+    },
+    {
+      "path": "vitest.setup.ts",
+      "sha256": "a54f6b87de09e2b125852fddf97dc7069d9a9026c8af824944aba85e6bd54660"
+    },
+    {
+      "path": "vitest/stubs/server-only.ts",
+      "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+    }
+  ],
+  "failures": [],
+  "generatedAt": "2026-09-10T15:55:40.249Z",
+  "details": {
+    "planPath": "docs/phase-plans/Phase006.json",
+    "planHash": "376192ccacc4bec06979652357e6e3f237336043b834876b9e8abc8afba6bc68",
+    "testedTree": "7af548d23d6175a05c13fae6cd0fda425ab25f79",
+    "reviewerRunId": "phase006-independent-attempt-6-aab4f597-5049-4131-ab8e-d243aede83a2",
+    "reviewReportPath": "docs/evidence/attempts/Phase006/attempt-6/review.json",
+    "reviewReportHash": "a01667dfc9f3644d97b5673db18a496db757f4402d14f7371223546a55096950",
+    "recoveryCommits": [],
+    "originalThreshold": 13,
+    "automatedThreshold": 13,
+    "waived": false,
+    "requestedThrough": 6,
+    "nextPhaseExecutionAuthorized": false,
+    "notEvaluated": [
+      "Login, registration, seed, session validation and HTTP 503 mapping belong to later authorized phases; this card creates no API, UI page or other business model.",
+      "Production traffic and real user data are not evaluated."
+    ],
+    "qualityReportPath": "docs/evidence/attempts/Phase006/attempt-6/quality.json",
+    "qualityReportHash": "cf9579a6e115aee5d1d752e97a27f21194d1ca52e5aa2ca8dd975e7e9effd48a",
+    "runtimeBaselinePath": "docs/runtime-baseline.json",
+    "runtimeBaselineHash": "454e0dc1759a2ddfd2f3cd89d4f8988ac9cecaea2a8ca71923bb6180afbdfa6c",
+    "costAccounting": {
+      "productImplementation": {
+        "durationMs": null,
+        "measurementStatus": "UNMEASURED"
+      },
+      "infrastructure": {
+        "durationMs": null,
+        "measurementStatus": "UNMEASURED"
+      },
+      "verification": "Per-command actual durationMs in reports",
+      "independentReview": {
+        "durationMs": null,
+        "measurementStatus": "UNMEASURED"
+      },
+      "evidencePreparation": {
+        "durationMs": null,
+        "measurementStatus": "UNMEASURED"
+      },
+      "productionRequests": 0,
+      "realProviderRequests": 0
+    }
+  }
+}
