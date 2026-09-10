@@ -74,6 +74,43 @@ Next.js 与 eslint-config-next 固定为 **15.5.24**，shadcn CLI 固定为 **3.
 
 目录定义见 [目录规范](docs/directory-structure.md) 和 [目录配置](docs/project-layout.json)。历史检查点通过独立迁移收据与本地历史备份核验，开发文档不重新进入当前仓库历史。
 
+## 目录约定
+
+| 目录 | 职责 |
+| --- | --- |
+| `src/components/layout/` | 前台站点页头与后台布局外壳 |
+| `src/components/common/` | 可复用的加载、空态、错误态与页头组件 |
+| `src/components/travel/` | 后续旅行展示组件 |
+| `src/components/chat/` | 后续对话界面组件 |
+| `src/components/admin/` | 后续后台业务组件 |
+| `src/lib/ai/` | 后续 AI 纯接口与共享 Schema；实际网络调用归服务端 |
+| `src/server/services/` | 后续服务端业务规则与编排 |
+| `src/types/` | 后续从共享 Schema 推导的公共类型；当前只保留目录 |
+| `prisma/` | 后续数据库 Schema 与迁移；当前只保留目录 |
+
+三个公共工具模块分别为 `src/lib/format.ts`、`src/lib/json.ts` 与 `src/lib/api-response.ts`。`src/lib/utils.ts` 只保留 shadcn 的 `cn`；API 响应类型只在 `api-response.ts` 定义。
+
+日期接受真实的 `YYYY-MM-DD` 本地日期，输出中文日期区间；分钟数须为非负安全整数。金额接受无损十进制字符串，固定 CNY/USD、两位小数、四舍六入五成双，不经过 JavaScript 浮点转换。费用展示保留未知、免费、估算、已核验估算和过期的区别，未知金额不显示为零。`truncate` 按 Unicode 码点计数，长度上限包含末尾省略号。
+
+## 公共组件
+
+| 组件 | 必填 props | 可选 props 与行为 |
+| --- | --- | --- |
+| `LoadingState` | 无 | `label`、`className`；`role="status"`、礼貌播报、减弱动态时静止 |
+| `EmptyState` | `title` | `description`、`action`、`className`；省略说明时不生成空段落 |
+| `ErrorState` | `message` | `onRetry`、`className`；`role="alert"`，仅有回调时显示“重试”按钮 |
+| `PageHeader` | `title` | `actions`、`className`；标题渲染为一级标题 |
+
+`ErrorState` 是客户端组件。服务端组件需要只读错误提示时不传 `onRetry`；交互回调在客户端边界内创建。其余三个组件可直接用于服务端组件。
+
+首页位于 `src/app/(site)/page.tsx`，访问地址仍为 `/`。前台布局提供 `SiteHeader`，后台布局仅提供 `AdminShell`。占位导航是静态文案。全局 Toast 仅在根布局挂载一次，使用浅色主题、右上角位置和4秒默认时长。
+
+## 后台访问闸门
+
+Phase011 之前，`/admin` 及所有子路径在开发、测试、生产环境都无条件返回 **404**，响应体为空。不存在本地绕过变量，也不能通过查询参数或 Cookie 放行。本阶段不提供后台页面和登录页面；布局通过组件测试及静态浏览器 fixture 验证。
+
+完整任务005验收由 `node docs/phase-plans/verify-phase005.mjs --all` 执行，覆盖六个测试文件、质量命令、真实 HTTP、浏览器与临时副本中的反向测试。报告按 attempt 保存，已存在报告不覆盖；失败后使用 `node docs/phase-plans/complete-phase005.mjs --retry` 保存旧计划并开始同阶段的新 attempt。最终 Gate 在 artifact 提交后由 `--metadata` 生成。
+
 ## 启动基线
 
 Next.js App Router + TypeScript + Tailwind CSS 4；数据库 PostgreSQL 17、ORM Prisma、鉴权 Auth.js、测试 Vitest/Playwright。Node 固定 `24.19.0`、npm `11.7.0`、create-next-app/Next.js/eslint-config-next `15.5.24`、shadcn CLI `3.2.1`，以执行包 manifest.runtimePolicy 为机器权威。

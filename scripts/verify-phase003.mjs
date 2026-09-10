@@ -24,7 +24,7 @@ const baseline = json("docs/runtime-baseline.json");
 const planPath = "docs/phase-plans/Phase003.json";
 const plan = json(planPath);
 // Phase005 may move the bootstrap page by changing only this consumer path.
-const homePagePath = "src/app/page.tsx";
+const homePagePath = "src/app/(site)/page.tsx";
 const temporaryParent = fs.realpathSync(os.tmpdir());
 const toolRoot = path.join(root, ".scaffold/tools");
 const npmCli = process.env.npm_execpath ?? path.join(toolRoot, "node_modules/npm/bin/npm-cli.js");

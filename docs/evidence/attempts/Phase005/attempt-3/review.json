@@ -1,0 +1,384 @@
+{
+  "phase": 5,
+  "attemptId": "attempt-3",
+  "planPath": "docs/phase-plans/Phase005.json",
+  "planHash": "624f0eeacc785fa902fab8a8f37dbc8e882460e862d2e5734419d60d6a2316e7",
+  "decision": "PASS",
+  "reviewerRunId": "/root/phase005_evidence_audit:Phase005:attempt-3",
+  "contextId": "/root/phase005_evidence_audit",
+  "generatedBy": "/root/phase005_evidence_audit",
+  "implementationContextId": "01a088d8-bccd-7c10-8967-c60a0b88c8e4:Phase005",
+  "runnerIdentity": {
+    "kind": "INDEPENDENT_CODEX_AGENT",
+    "implementationAuthored": false
+  },
+  "sourceHashes": {
+    ".gitattributes": "851253b716e5448b37969c98629a93622041b2bc7ab105020a69b41ac157fffa",
+    ".gitignore": "eb3d88b97ff365a767b5b3488f3f5e889fd13f4ee1036b99e974ee7c3a17531b",
+    ".prettierignore": "4d0360bfc0e85bcf158669d14e074bff6609ab2bd10cbf6fa0b626c2cb323fc7",
+    ".prettierrc.json": "a8443c8c223de29983998d16e4a8f9298898a008a7244db0c2d84eab18eeeab7",
+    "README.md": "c72380a452df471ebfb502c10fa58efa76035523bfd97db6cad3e8c467770ee6",
+    "components.json": "2cc1a8206b39ade49917b804fd9d67f95f2b9558ecc2a98bd35a211e0423b320",
+    "docs/agent-execution-contract.md": "2919a173e60f0ed50fbf4839a5d8c96bc836afd032410cb012186026736688a2",
+    "docs/api.md": "75ae366841227718bfaf18d8c1187543b390ef0aaf16d2ce1fa5754f116b83c0",
+    "docs/directory-structure.md": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df",
+    "docs/phase-plans/Phase005-inputs.json": "cffe41a1f6b9bde523089c1973bbd439a1ba3bafac22a8a1b455277bfd4d5ab7",
+    "docs/phase-plans/Phase005.json": "624f0eeacc785fa902fab8a8f37dbc8e882460e862d2e5734419d60d6a2316e7",
+    "docs/phase-plans/complete-phase005.mjs": "4269b3a2f722ae24c034d6c3516850d5756b46acdc957d8efee3f1b98cf69438",
+    "docs/phase-plans/phase005-runtime.mjs": "904268c2fe0a3a27a861c485d0d3fc1e78d3eafbb1dbfac9971cd2bb5c30eaf6",
+    "docs/phase-plans/verify-phase005.mjs": "19749d14a79932bddaad5095cc67448a0c576d401bcac1790137f6c8dd796d12",
+    "docs/project-constitution.md": "8f1dd176e30e815a09502a91c5b0ef2722b7bb71d5e919fbfc70cfecf3e9dedd",
+    "docs/project-layout.json": "7efe30a30fe009a8e1226563cae53d39ed2a2193be78bc0f0a776f57f67710ba",
+    "docs/runtime-baseline.json": "da03b0d366908472e535e6818fc74b89989b01484d191615926bdb32b99822fe",
+    "docs/ui-design-system.md": "8b232c6742bf846f131ea3040d5892ed7b270940bfd4109ccfb768ed63fdb158",
+    "eslint.config.mjs": "f45d4d5b4e4808481617530c717d97108af6488b39e008e49b4161aefd818708",
+    "next.config.ts": "614bce25b089c3f19b1e17a6346c74b858034040154c6621e7d35303004767cc",
+    "package-lock.json": "1ab0d3848a1d3f79bf7fbaddf4170e623debb5307a716fb6c946a234c2d9d9a3",
+    "package.json": "f8f6be916e0e4435738682267cb19df1742dff0317cf374d8d6cc579d45408ad",
+    "postcss.config.mjs": "141ef24ca27a99d08962210fdf20212d3435fdcfa21b46cd88b44d22f751dfae",
+    "prisma/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "scripts/phase-evidence.mjs": "4f6c097483548486127518e613acf67b867347a706ad5eb138148f2701bfada9",
+    "scripts/validate-phase.mjs": "3e7392fbb5e59a0cd300579a319dd45fc65cd523cc11bb74cec664f28931c9b0",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319",
+    "scripts/verify-phase003.mjs": "ff50f83beabeea538c7141ee0a6beeed4a6c02664fbf8f58b68d795a80375758",
+    "src/app/(site)/layout.tsx": "dbf6397819844277acac383530a3a616f29e1068b9b5ba2d08f2886b3cca5207",
+    "src/app/(site)/page.tsx": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e",
+    "src/app/admin/layout.tsx": "95d75d00b7761b6370864fceb83980b938f8378cc23f1d33de8f15b981156734",
+    "src/app/globals.css": "f88153c2b0c26a4f65e48626ab5a05e68c8d962952be88ead2032c8a90b10a1f",
+    "src/app/layout.test.ts": "8022cde5595f753306b17f2de43534bc42ee0fd0f46ea19452deb2ee55e7e0cb",
+    "src/app/layout.tsx": "a9de0b5ba9380f5a058487639bd6be0d13c5a1293f720d38965d1b3dec793a6f",
+    "src/components/admin/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/chat/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/common/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/common/common-components.test.tsx": "8a9fcd34cc153236e6d58ad1b1ee0039e2b4020f664f918ffc5f7e9e82f8ed5b",
+    "src/components/common/empty-state.tsx": "a5b1a914935eace3193451be25c9cf8178010345ef76963e0ecb12713e284795",
+    "src/components/common/error-state.tsx": "4ef42505cda6c3a5d4c35180022eedab13ce9f33ac9e412e924dd5b9bb9d808d",
+    "src/components/common/loading-state.tsx": "0a010951d56d20dc1860ed8bd78a5c95671bd1323014330c00b4519aafe1c37f",
+    "src/components/common/page-header.tsx": "c403ac7802dbb0ecf5f83aa57ed043bf598fd3e1806c7250751cdfd9f361b4da",
+    "src/components/layout/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/layout/admin-shell.tsx": "6bb6e05f1ad6cf9c1b6c8e77a89832a3008afaaa5297ef056e3fb89fbe37c819",
+    "src/components/layout/site-header.tsx": "f4fdc237b4a3d76ac8280ff80390966ec3a1fe95d67bba7f2e5abb475ed98295",
+    "src/components/travel/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/ui/button.tsx": "abd7a62c5b38d8836c88906285ea0df0a40d3dd55f7d404a07672f749e37f43f",
+    "src/components/ui/sonner.tsx": "f28cba0be08c0873d121f6f35107c9e0b209ef649b0d0625c32e46cf0b2ed9a2",
+    "src/instrumentation.ts": "4ff6be1caa61426f26540f107f1b609bda7ad79e40b72d5c2b563d7fbb3c4821",
+    "src/lib/ai/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/lib/api-response.test.ts": "4660ad9249e90641f09cbfd7dd914504fa4d1cea7fd180c6c407eb70f2a6cd1d",
+    "src/lib/api-response.ts": "235635f476f988af2f7d2bdb867acc85bd3d4d777a99c8c7da555206b9a65a6a",
+    "src/lib/env-cli.ts": "a70f8eff095adde7d6baf7ff7b6bc30156bb0c110a351fe4dad13ce076539fe4",
+    "src/lib/env-schema.ts": "61c657e715fad05a57737ef8ad037a97c32f724c9a3a6e0a5c76ce5cf65d5731",
+    "src/lib/env.test.ts": "04ad1cbe2db65abe20d9c9d520c52c8cc9f42f6040a516a53e37ade2d0e2b38f",
+    "src/lib/env.ts": "51a3612afe39103e04f214185192f0e39e8bc5cb43d27b21922fdd1748096658",
+    "src/lib/format.test.ts": "bfbf9788fbc9506c299acdafe03debe5ee8ce6bc4baff11092d08d935d2cfdbe",
+    "src/lib/format.ts": "0834ccea0511ed8b0374db59527702e3707a251f44d367e70bf748e27dbe37a0",
+    "src/lib/json.test.ts": "2e17c72f917730c5adabd17ed3f434ab9d50d0215651f768938bff3e9fb50a60",
+    "src/lib/json.ts": "b482e4f8309135800ce6526b771b809aff8ea219d4fc89060c3b4ba057b3ed11",
+    "src/lib/utils.ts": "55bbdc94cef3e0c8a8bba386e94f97228dd2c967fe61466fc565378890550c08",
+    "src/middleware.test.ts": "98671c0f2ada396299964461177c1bd84bc5029d9dad58c3a71d5c2851277461",
+    "src/middleware.ts": "2f3f1b9df69c9cf93a2bffc4f6ba8c9336b0b4111614d9ae3e18d116e9c9934f",
+    "src/server/services/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/types/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/phase005/browser.mjs": "65cee15ce4171423bde4c82689466d1b1c45a64cb1a847ec6200661465676881",
+    "tests/phase005/components-fixture.tsx": "d224e44f30a1c481be92f70b2f592388da98b5c567f9736774f617ffc00927dd",
+    "tests/phase005/fixtures/phase003-home.tsx": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e",
+    "tsconfig.json": "83d292a6930a317ea31ef48e220097d2ca10c6c505f41d5954795acef48ca3b9",
+    "vitest.config.ts": "cc79644beec0c7ff9c0e466b952b2aaa6410598a575606f633f32e7caf29b966",
+    "vitest.setup.ts": "a54f6b87de09e2b125852fddf97dc7069d9a9026c8af824944aba85e6bd54660",
+    "vitest/stubs/server-only.ts": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+  },
+  "reportHashes": {
+    "docs/evidence/attempts/Phase005/attempt-3/structure.json": "c113a450f93504c55e39948cf7ebf63495f9b8c83808d08d42245d9cb253e40d",
+    "docs/evidence/attempts/Phase005/attempt-3/unit-format.json": "b523c63b359c3aca6148c9cd34191e83828a7142ed0eb89b9c4eecc8bfd6fe84",
+    "docs/evidence/attempts/Phase005/attempt-3/unit-json.json": "96723ae4ab7aee0d35f56c6a917bd709a54da7f55c867956d41e3af21942ad62",
+    "docs/evidence/attempts/Phase005/attempt-3/unit-api-response.json": "f74aeaf654784e4736d17c3583966a3634556cfbf806aa3c1cacfe0da425dc41",
+    "docs/evidence/attempts/Phase005/attempt-3/unit-common-components.json": "df9d0e8fb9e3fff736eeeae075281d7d715ca9e57a81006004393f81a9030ff4",
+    "docs/evidence/attempts/Phase005/attempt-3/unit-layout.json": "434b9cde4861f273b395ef8897e20836f60a208ce5ce05f55ccf0a381047b2b1",
+    "docs/evidence/attempts/Phase005/attempt-3/unit-middleware.json": "19a0aaa4011edf92ef9f3846e0722dda93b363062548e37d4c1e9ffccf41eb5f",
+    "docs/evidence/attempts/Phase005/attempt-3/lint.json": "8f6d9430fd47207891970c4acf9790def567d879c2b505d6aa16519df3c988e4",
+    "docs/evidence/attempts/Phase005/attempt-3/typecheck.json": "8a5066dc11ecb0378c90fec440f7d19a3e2304c127b94a5e26f3ad28e621e11a",
+    "docs/evidence/attempts/Phase005/attempt-3/test.json": "1fc62f2eb2e3f39d2ae563f4bebc3472affa4ee178ef34794b530a08ff4cf7d9",
+    "docs/evidence/attempts/Phase005/attempt-3/format-check.json": "625ff4d89d975e214dbd09c4277006e4cbc137c571f4feecb3243149959eaa78",
+    "docs/evidence/attempts/Phase005/attempt-3/build.json": "5b107a3519060d44b71afbe3cfba6491fe1d4f297b1e730e36a4f57f959240c4",
+    "docs/evidence/attempts/Phase005/attempt-3/phase003-regression.json": "8711023cf5dca2c1adbad1139722b0d9d382464d192f7e1e1c5d4cfed87fe54d",
+    "docs/evidence/attempts/Phase005/attempt-3/production-middleware.json": "0e6d67dd8a1eb835f84e816f7126268ec158a1779b7eebc7bf4a34ed90f343fd",
+    "docs/evidence/attempts/Phase005/attempt-3/development-middleware.json": "e35f0fd81c263083106d91e5cec5b32b8a0f12e59bc1e7da760fc595e21fa64e",
+    "docs/evidence/attempts/Phase005/attempt-3/browser-layout.json": "18a238bdeedd9b091a66cbb538a0cf98a98c6a4620c2ec84d4bea2ada4059533",
+    "docs/evidence/attempts/Phase005/attempt-3/negative-remove-return.json": "ba49deb3c238d15570f4485945336d0bab2f538f1db04053f2a5e407b201f094",
+    "docs/evidence/attempts/Phase005/attempt-3/negative-middleware-next.json": "c94fe2fff48c02235cbd580269ecb13ba789f13605fabe43b5493518ede1b455",
+    "docs/evidence/attempts/Phase005/attempt-3/negative-env-bypass.json": "f5e4597e90effa915a0dec0cc4e95e24c6a75cd871d3f8100ea4d85f8a5e1f54",
+    "docs/evidence/attempts/Phase005/attempt-3/negative-query-bypass.json": "fe22f88c133cb0483919ae6f286773c45aad77c82c893b65f9c9606af994acad",
+    "docs/evidence/attempts/Phase005/attempt-3/negative-cookie-bypass.json": "2d33dde6cf3022d17b93c5c6c777288867165c2bd3ffa2ac64fea1ee8470e804",
+    "docs/evidence/attempts/Phase005/attempt-3/negative-matcher.json": "a2cda6a091db8d641897fafbbcada8014ed0500bd0f90644f90cfd19716987bd",
+    "docs/evidence/attempts/Phase005/attempt-3/negative-toaster.json": "b614df3402e07b50af3f982fa709cff2061f34c77176f76fcdcc85db1d1ea775",
+    "docs/evidence/attempts/Phase005/attempt-3/negative-duration.json": "843f8563c2c7a4a471c0b54320d82a463df51658be9e460b3df475f82ea4f832",
+    "docs/evidence/attempts/Phase005/attempt-3/negative-stringify.json": "0dabc124be1b5336e2f106af335e76e74860fb70717bbc3e4000cf5955295eee",
+    "docs/evidence/attempts/Phase005/attempt-3/negative-locale.json": "56e6178c6207dca861864b643f14eaa740abae3c80d031410f8a6ba74feab1db",
+    "docs/evidence/attempts/Phase005/attempt-3/negative-alert.json": "92da1eb4da72a95f3490d19096dc93b49004f5f0bd4cb7d5b315730912eba425",
+    "docs/evidence/attempts/Phase005/attempt-3/evidence-binding.json": "59b19e43ab4c864b4afaa6a26d80ad378320e7b988756778b10d39a235497f75",
+    "docs/evidence/attempts/Phase005/attempt-3/dependency-generation.json": "71cc3114e07ae3045125a4ae57b3a8977dd2788b2216a372213ddfb682891531"
+  },
+  "supplementalEvidenceHashes": {
+    "docs/evidence/attempts/Phase005/attempt-3/components-1280.html": "d1ad1d88272718c0675eddccc11212308b3f305fe558132e208b5548dc9d87c3",
+    "docs/evidence/attempts/Phase005/attempt-3/components-1280.png": "9cc9c496c0ff36d2d990e8bc20e6bdd19a2efa431757db4ea1f094dd919e2fcf",
+    "docs/evidence/attempts/Phase005/attempt-3/components-1920.html": "d1ad1d88272718c0675eddccc11212308b3f305fe558132e208b5548dc9d87c3",
+    "docs/evidence/attempts/Phase005/attempt-3/components-1920.png": "d0312daf734024fe128c259bc69d3497e53dc0d02ef65d9c40db97cf64cc8a88",
+    "docs/evidence/attempts/Phase005/attempt-3/components-320.html": "d1ad1d88272718c0675eddccc11212308b3f305fe558132e208b5548dc9d87c3",
+    "docs/evidence/attempts/Phase005/attempt-3/components-320.png": "dead392c40b67b2c67044cadae1350373e064de57b7f60d2f4c0e33df1bf4aac",
+    "docs/evidence/attempts/Phase005/attempt-3/components-375.html": "d1ad1d88272718c0675eddccc11212308b3f305fe558132e208b5548dc9d87c3",
+    "docs/evidence/attempts/Phase005/attempt-3/components-375.png": "a2193e256a44bcedbc799dbd7870a48605929883001024121c1d43695b1a7eee",
+    "docs/evidence/attempts/Phase005/attempt-3/components-768.html": "d1ad1d88272718c0675eddccc11212308b3f305fe558132e208b5548dc9d87c3",
+    "docs/evidence/attempts/Phase005/attempt-3/components-768.png": "a00282d4727a4d762d8304746b99dd1da74949381dfafff4dd09ca35670fabcc",
+    "docs/evidence/attempts/Phase005/attempt-3/components-focus-1280.html": "d1ad1d88272718c0675eddccc11212308b3f305fe558132e208b5548dc9d87c3",
+    "docs/evidence/attempts/Phase005/attempt-3/components-focus-1280.png": "05979d7b8cf9f8f5c3c7a5bee177e964bf2e3b4fdd64594940b65f60ca13f098",
+    "docs/evidence/attempts/Phase005/attempt-3/restored-quality.json": "1ebcc45546236d8391e1dd4acbf34d16dbeb48e58d1dffea3ca0b0304d646ac7",
+    "docs/evidence/attempts/Phase005/attempt-3/restored-quality.mjs": "9ac25655660397f1f1defc634c1f8cf68de5665266c0dd7febe0089e007216ef",
+    "docs/evidence/attempts/Phase005/attempt-3/site-1280.html": "ae360b60e99c8a60e58883df3e4edcec0afc04eace5e02b1ece37037bc1e3576",
+    "docs/evidence/attempts/Phase005/attempt-3/site-1280.png": "df6b492636582b0fb168759338de286823a08c5475c7a454a3e6a2f45835a3ec",
+    "docs/evidence/attempts/Phase005/attempt-3/site-1920.html": "ae360b60e99c8a60e58883df3e4edcec0afc04eace5e02b1ece37037bc1e3576",
+    "docs/evidence/attempts/Phase005/attempt-3/site-1920.png": "c696e4478040137a032c310111d221c18fa9618e0ed3699a91f86a7ee32ba248",
+    "docs/evidence/attempts/Phase005/attempt-3/site-320.html": "ae360b60e99c8a60e58883df3e4edcec0afc04eace5e02b1ece37037bc1e3576",
+    "docs/evidence/attempts/Phase005/attempt-3/site-320.png": "3fa887e2566f92e394804f197ea7ddda52ce51c19c9f486488ab0d60897c6253",
+    "docs/evidence/attempts/Phase005/attempt-3/site-375.html": "ae360b60e99c8a60e58883df3e4edcec0afc04eace5e02b1ece37037bc1e3576",
+    "docs/evidence/attempts/Phase005/attempt-3/site-375.png": "d3135ba5d8d540ce1c671233178ef0915de78d738bdd1c470fe0a8ec2beb65c8",
+    "docs/evidence/attempts/Phase005/attempt-3/site-768.html": "ae360b60e99c8a60e58883df3e4edcec0afc04eace5e02b1ece37037bc1e3576",
+    "docs/evidence/attempts/Phase005/attempt-3/site-768.png": "bd95b51d681907c17443a5598d407e5ea034d6198feca2aaf06128161130f03c",
+    "docs/evidence/attempts/Phase005/attempt-3/site-focus-1280.html": "ae360b60e99c8a60e58883df3e4edcec0afc04eace5e02b1ece37037bc1e3576",
+    "docs/evidence/attempts/Phase005/attempt-3/site-focus-1280.png": "b9681030b061061850175b9b0aeecf0e00eb71d799dcb198bc79820da1e5c888",
+    "docs/evidence/attempts/Phase005/setup/shadcn-sonner.json": "7cee67df1c75019547d5550a4710d36f38aa5218651c3c531f7d3e09d48525c6",
+    "docs/evidence/attempts/Phase005/setup/sonner.generated.tsx": "13ccc9b0fe4248e622f83a1d3b2f0566b72b5e04162d7d0c8db8945ecc71b55f"
+  },
+  "issues": [],
+  "dispositions": [],
+  "generatedAt": "2026-09-10T02:25:01.526Z",
+  "reviewScope": "INDEPENDENT_IMPLEMENTATION_ASSERTION_AND_VISUAL_REVIEW_BEFORE_GIT_SEAL",
+  "methodology": [
+    "独立读取任务005、根执行契约、冻结计划与必要canonical/API/UI规范，逐项核对实现和测试；未参与产品代码或验收runner实现。",
+    "全文复核verify-phase005.mjs、phase005-runtime.mjs、complete-phase005.mjs、browser.mjs和恢复后补充runner；核对真实进程、隔离副本、HTTP、原始Vitest输出与hash绑定。",
+    "重新计算29份报告中的输入、计划和全部72项源码摘要，检查其精确集合；单独核对补充质量收据及截图/DOM字节。",
+    "使用独立的BigInt商余数参考算法执行120组金额探针，并额外核对世纪闰年、负时长、UTF-16键序及unknown费用；探针不写产品文件。",
+    "通过本地图片查看工具逐张检查5个宽度的首页/组件截图及2张焦点截图，共12张；通过不执行脚本的JSDOM读取12份已保存DOM。"
+  ],
+  "validationSummary": {
+    "requiredCases": {
+      "numerator": 29,
+      "denominator": 29
+    },
+    "fullVitest": {
+      "passed": 100,
+      "total": 100,
+      "failed": 0
+    },
+    "unitMinimumsVerified": {
+      "format": 32,
+      "json": 17,
+      "apiResponse": 10,
+      "commonComponents": 12,
+      "layout": 3,
+      "middleware": 11
+    },
+    "milestone": {
+      "id": "M1",
+      "numerator": 6,
+      "denominator": 6,
+      "productionMatrix": {
+        "numerator": 3,
+        "denominator": 3
+      },
+      "waived": false
+    },
+    "developmentMatrix": {
+      "numerator": 2,
+      "denominator": 2
+    },
+    "mutationVerification": [
+      {
+        "testCaseId": "Phase005:negative-remove-return",
+        "beforeExitCode": 0,
+        "mutationExitCode": 1,
+        "failedTests": 9,
+        "restoredExitCode": 0
+      },
+      {
+        "testCaseId": "Phase005:negative-middleware-next",
+        "beforeExitCode": 0,
+        "mutationExitCode": 1,
+        "failedTests": 9,
+        "restoredExitCode": 0
+      },
+      {
+        "testCaseId": "Phase005:negative-env-bypass",
+        "beforeExitCode": 0,
+        "mutationExitCode": 1,
+        "failedTests": 4,
+        "restoredExitCode": 0
+      },
+      {
+        "testCaseId": "Phase005:negative-query-bypass",
+        "beforeExitCode": 0,
+        "mutationExitCode": 1,
+        "failedTests": 2,
+        "restoredExitCode": 0
+      },
+      {
+        "testCaseId": "Phase005:negative-cookie-bypass",
+        "beforeExitCode": 0,
+        "mutationExitCode": 1,
+        "failedTests": 2,
+        "restoredExitCode": 0
+      },
+      {
+        "testCaseId": "Phase005:negative-matcher",
+        "beforeExitCode": 0,
+        "mutationExitCode": 1,
+        "failedTests": 1,
+        "restoredExitCode": 0
+      },
+      {
+        "testCaseId": "Phase005:negative-toaster",
+        "beforeExitCode": 0,
+        "mutationExitCode": 1,
+        "failedTests": 1,
+        "restoredExitCode": 0
+      },
+      {
+        "testCaseId": "Phase005:negative-duration",
+        "beforeExitCode": 0,
+        "mutationExitCode": 1,
+        "failedTests": 1,
+        "restoredExitCode": 0
+      },
+      {
+        "testCaseId": "Phase005:negative-stringify",
+        "beforeExitCode": 0,
+        "mutationExitCode": 1,
+        "failedTests": 12,
+        "restoredExitCode": 0
+      },
+      {
+        "testCaseId": "Phase005:negative-locale",
+        "beforeExitCode": 0,
+        "mutationExitCode": 1,
+        "failedTests": 2,
+        "restoredExitCode": 0
+      },
+      {
+        "testCaseId": "Phase005:negative-alert",
+        "beforeExitCode": 0,
+        "mutationExitCode": 1,
+        "failedTests": 1,
+        "restoredExitCode": 0
+      }
+    ],
+    "productionMatcherMutation": {
+      "assertionExitCode": 1,
+      "uncoveredBodyBytes": 6551,
+      "restoredMatrixPassed": 3
+    },
+    "restoredQuality": {
+      "commands": 6,
+      "passed": 6,
+      "projectLayoutExitCode": 0,
+      "productionMatrixPassed": 3
+    },
+    "verifiedPinnedInputs": 148
+  },
+  "independentArithmeticProbe": {
+    "command": "node --input-type=module via a read-only stdin review program",
+    "observedExitCode": 0,
+    "numerator": 120,
+    "denominator": 120,
+    "sourcePaths": [
+      "src/lib/format.ts",
+      "src/lib/json.ts"
+    ],
+    "integerParts": [
+      "0",
+      "1",
+      "99",
+      "9007199254740993",
+      "123456789012345678901234567890"
+    ],
+    "fractionalParts": [
+      "",
+      "0",
+      "00",
+      "001",
+      "0049",
+      "005",
+      "0051",
+      "015",
+      "025",
+      "555",
+      "995",
+      "9999999"
+    ],
+    "currencies": [
+      "CNY",
+      "USD"
+    ],
+    "method": "Reference computes exact numerator/10^scale, quotient/remainder at cents, and half-even tie parity; compares grouped two-digit output without floating-point conversion.",
+    "additionalAssertions": [
+      "2000-02-29 accepted",
+      "2100-02-29 rejected",
+      "negative duration rejected",
+      "numeric/accented/surrogate keys use ordinal UTF-16 order",
+      "unknown amount remains null and renders 未知",
+      "unknown amount=0 rejected"
+    ]
+  },
+  "visualReview": {
+    "screenshots": [
+      "docs/evidence/attempts/Phase005/attempt-3/site-320.png",
+      "docs/evidence/attempts/Phase005/attempt-3/components-320.png",
+      "docs/evidence/attempts/Phase005/attempt-3/site-375.png",
+      "docs/evidence/attempts/Phase005/attempt-3/components-375.png",
+      "docs/evidence/attempts/Phase005/attempt-3/site-768.png",
+      "docs/evidence/attempts/Phase005/attempt-3/components-768.png",
+      "docs/evidence/attempts/Phase005/attempt-3/site-1280.png",
+      "docs/evidence/attempts/Phase005/attempt-3/site-focus-1280.png",
+      "docs/evidence/attempts/Phase005/attempt-3/components-1280.png",
+      "docs/evidence/attempts/Phase005/attempt-3/components-focus-1280.png",
+      "docs/evidence/attempts/Phase005/attempt-3/site-1920.png",
+      "docs/evidence/attempts/Phase005/attempt-3/components-1920.png"
+    ],
+    "domSnapshots": [
+      "docs/evidence/attempts/Phase005/attempt-3/site-320.html",
+      "docs/evidence/attempts/Phase005/attempt-3/components-320.html",
+      "docs/evidence/attempts/Phase005/attempt-3/site-375.html",
+      "docs/evidence/attempts/Phase005/attempt-3/components-375.html",
+      "docs/evidence/attempts/Phase005/attempt-3/site-768.html",
+      "docs/evidence/attempts/Phase005/attempt-3/components-768.html",
+      "docs/evidence/attempts/Phase005/attempt-3/site-1280.html",
+      "docs/evidence/attempts/Phase005/attempt-3/site-focus-1280.html",
+      "docs/evidence/attempts/Phase005/attempt-3/components-1280.html",
+      "docs/evidence/attempts/Phase005/attempt-3/components-focus-1280.html",
+      "docs/evidence/attempts/Phase005/attempt-3/site-1920.html",
+      "docs/evidence/attempts/Phase005/attempt-3/components-1920.html"
+    ],
+    "widths": [
+      320,
+      375,
+      768,
+      1280,
+      1920
+    ],
+    "decision": "PASS",
+    "observations": [
+      "首页标题、站点名链接和原bootstrap按钮在全部宽度均可见，无横向溢出、遮挡或文字截断。",
+      "移动端后台fixture按纵向排列；768及以上为224px静态侧栏与右侧内容，导航无可点击项。",
+      "状态组件标题、加载文本、空态说明、重试按钮和只读错误均清楚；只读错误无重试按钮。",
+      "1280宽度的站点名与重试按钮焦点截图均显示可见焦点环。",
+      "12份DOM均恰有一个main和一个h1，唯一链接为/；组件DOM保留polite/busy状态、两个alert及静态后台导航。"
+    ],
+    "fixtureMode": "REAL_REACT_STATIC_RENDER_WITH_PRODUCTION_CSS",
+    "a11yMode": "AUTOMATED_BROWSER_A11Y",
+    "interactiveRetryEvidence": "Testing Library click assertion; browser fixture is static rendering",
+    "screenReader": "NOT_EVALUATED",
+    "externalRequests": 0,
+    "pageErrors": 0
+  },
+  "limitations": [
+    "本复核不声明真实数据库、鉴权、AI调用、生产流量或真人读屏已验证；这些不属于Phase005。",
+    "本报告在artifact/metadata提交前生成；阶段完成仍需主agent执行双shell seal、确认工作树干净并推送核对远端。"
+  ]
+}

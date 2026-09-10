@@ -1,0 +1,553 @@
+{
+  "testCaseId": "Phase005:test",
+  "command": "node docs/phase-plans/verify-phase005.mjs --case test",
+  "status": "PASS",
+  "exitCode": 0,
+  "numerator": 1,
+  "denominator": 1,
+  "inputPath": "vitest.config.ts",
+  "inputHash": "cc79644beec0c7ff9c0e466b952b2aaa6410598a575606f633f32e7caf29b966",
+  "planHash": "219b7242cb5bc1945ab3f1089ffb2dbc8f40f9b17ddd13dcbbb4e656800deeb6",
+  "sourceHashes": {
+    ".gitattributes": "851253b716e5448b37969c98629a93622041b2bc7ab105020a69b41ac157fffa",
+    ".gitignore": "eb3d88b97ff365a767b5b3488f3f5e889fd13f4ee1036b99e974ee7c3a17531b",
+    ".prettierignore": "4d0360bfc0e85bcf158669d14e074bff6609ab2bd10cbf6fa0b626c2cb323fc7",
+    ".prettierrc.json": "a8443c8c223de29983998d16e4a8f9298898a008a7244db0c2d84eab18eeeab7",
+    "README.md": "c72380a452df471ebfb502c10fa58efa76035523bfd97db6cad3e8c467770ee6",
+    "components.json": "2cc1a8206b39ade49917b804fd9d67f95f2b9558ecc2a98bd35a211e0423b320",
+    "docs/agent-execution-contract.md": "2919a173e60f0ed50fbf4839a5d8c96bc836afd032410cb012186026736688a2",
+    "docs/api.md": "75ae366841227718bfaf18d8c1187543b390ef0aaf16d2ce1fa5754f116b83c0",
+    "docs/directory-structure.md": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df",
+    "docs/phase-plans/Phase005-inputs.json": "cffe41a1f6b9bde523089c1973bbd439a1ba3bafac22a8a1b455277bfd4d5ab7",
+    "docs/phase-plans/Phase005.json": "219b7242cb5bc1945ab3f1089ffb2dbc8f40f9b17ddd13dcbbb4e656800deeb6",
+    "docs/phase-plans/complete-phase005.mjs": "4269b3a2f722ae24c034d6c3516850d5756b46acdc957d8efee3f1b98cf69438",
+    "docs/phase-plans/phase005-runtime.mjs": "904268c2fe0a3a27a861c485d0d3fc1e78d3eafbb1dbfac9971cd2bb5c30eaf6",
+    "docs/phase-plans/verify-phase005.mjs": "19749d14a79932bddaad5095cc67448a0c576d401bcac1790137f6c8dd796d12",
+    "docs/project-constitution.md": "8f1dd176e30e815a09502a91c5b0ef2722b7bb71d5e919fbfc70cfecf3e9dedd",
+    "docs/project-layout.json": "7efe30a30fe009a8e1226563cae53d39ed2a2193be78bc0f0a776f57f67710ba",
+    "docs/runtime-baseline.json": "da03b0d366908472e535e6818fc74b89989b01484d191615926bdb32b99822fe",
+    "docs/ui-design-system.md": "8b232c6742bf846f131ea3040d5892ed7b270940bfd4109ccfb768ed63fdb158",
+    "eslint.config.mjs": "f45d4d5b4e4808481617530c717d97108af6488b39e008e49b4161aefd818708",
+    "next.config.ts": "614bce25b089c3f19b1e17a6346c74b858034040154c6621e7d35303004767cc",
+    "package-lock.json": "1ab0d3848a1d3f79bf7fbaddf4170e623debb5307a716fb6c946a234c2d9d9a3",
+    "package.json": "f8f6be916e0e4435738682267cb19df1742dff0317cf374d8d6cc579d45408ad",
+    "postcss.config.mjs": "141ef24ca27a99d08962210fdf20212d3435fdcfa21b46cd88b44d22f751dfae",
+    "prisma/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "scripts/phase-evidence.mjs": "4f6c097483548486127518e613acf67b867347a706ad5eb138148f2701bfada9",
+    "scripts/validate-phase.mjs": "3e7392fbb5e59a0cd300579a319dd45fc65cd523cc11bb74cec664f28931c9b0",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319",
+    "scripts/verify-phase003.mjs": "ff50f83beabeea538c7141ee0a6beeed4a6c02664fbf8f58b68d795a80375758",
+    "src/app/(site)/layout.tsx": "dbf6397819844277acac383530a3a616f29e1068b9b5ba2d08f2886b3cca5207",
+    "src/app/(site)/page.tsx": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e",
+    "src/app/admin/layout.tsx": "95d75d00b7761b6370864fceb83980b938f8378cc23f1d33de8f15b981156734",
+    "src/app/globals.css": "f88153c2b0c26a4f65e48626ab5a05e68c8d962952be88ead2032c8a90b10a1f",
+    "src/app/layout.test.ts": "8022cde5595f753306b17f2de43534bc42ee0fd0f46ea19452deb2ee55e7e0cb",
+    "src/app/layout.tsx": "a9de0b5ba9380f5a058487639bd6be0d13c5a1293f720d38965d1b3dec793a6f",
+    "src/components/admin/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/chat/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/common/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/common/common-components.test.tsx": "8a9fcd34cc153236e6d58ad1b1ee0039e2b4020f664f918ffc5f7e9e82f8ed5b",
+    "src/components/common/empty-state.tsx": "a5b1a914935eace3193451be25c9cf8178010345ef76963e0ecb12713e284795",
+    "src/components/common/error-state.tsx": "4ef42505cda6c3a5d4c35180022eedab13ce9f33ac9e412e924dd5b9bb9d808d",
+    "src/components/common/loading-state.tsx": "0a010951d56d20dc1860ed8bd78a5c95671bd1323014330c00b4519aafe1c37f",
+    "src/components/common/page-header.tsx": "c403ac7802dbb0ecf5f83aa57ed043bf598fd3e1806c7250751cdfd9f361b4da",
+    "src/components/layout/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/layout/admin-shell.tsx": "6bb6e05f1ad6cf9c1b6c8e77a89832a3008afaaa5297ef056e3fb89fbe37c819",
+    "src/components/layout/site-header.tsx": "f4fdc237b4a3d76ac8280ff80390966ec3a1fe95d67bba7f2e5abb475ed98295",
+    "src/components/travel/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/ui/button.tsx": "abd7a62c5b38d8836c88906285ea0df0a40d3dd55f7d404a07672f749e37f43f",
+    "src/components/ui/sonner.tsx": "f28cba0be08c0873d121f6f35107c9e0b209ef649b0d0625c32e46cf0b2ed9a2",
+    "src/instrumentation.ts": "4ff6be1caa61426f26540f107f1b609bda7ad79e40b72d5c2b563d7fbb3c4821",
+    "src/lib/ai/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/lib/api-response.test.ts": "4660ad9249e90641f09cbfd7dd914504fa4d1cea7fd180c6c407eb70f2a6cd1d",
+    "src/lib/api-response.ts": "235635f476f988af2f7d2bdb867acc85bd3d4d777a99c8c7da555206b9a65a6a",
+    "src/lib/env-cli.ts": "a70f8eff095adde7d6baf7ff7b6bc30156bb0c110a351fe4dad13ce076539fe4",
+    "src/lib/env-schema.ts": "61c657e715fad05a57737ef8ad037a97c32f724c9a3a6e0a5c76ce5cf65d5731",
+    "src/lib/env.test.ts": "04ad1cbe2db65abe20d9c9d520c52c8cc9f42f6040a516a53e37ade2d0e2b38f",
+    "src/lib/env.ts": "51a3612afe39103e04f214185192f0e39e8bc5cb43d27b21922fdd1748096658",
+    "src/lib/format.test.ts": "bfbf9788fbc9506c299acdafe03debe5ee8ce6bc4baff11092d08d935d2cfdbe",
+    "src/lib/format.ts": "0834ccea0511ed8b0374db59527702e3707a251f44d367e70bf748e27dbe37a0",
+    "src/lib/json.test.ts": "2e17c72f917730c5adabd17ed3f434ab9d50d0215651f768938bff3e9fb50a60",
+    "src/lib/json.ts": "b482e4f8309135800ce6526b771b809aff8ea219d4fc89060c3b4ba057b3ed11",
+    "src/lib/utils.ts": "55bbdc94cef3e0c8a8bba386e94f97228dd2c967fe61466fc565378890550c08",
+    "src/middleware.test.ts": "98671c0f2ada396299964461177c1bd84bc5029d9dad58c3a71d5c2851277461",
+    "src/middleware.ts": "2f3f1b9df69c9cf93a2bffc4f6ba8c9336b0b4111614d9ae3e18d116e9c9934f",
+    "src/server/services/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/types/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/phase005/browser.mjs": "cf36c65b0be61d466f4d3712f1ad14c8a0496936ebf8199444402902928ceb25",
+    "tests/phase005/components-fixture.tsx": "d224e44f30a1c481be92f70b2f592388da98b5c567f9736774f617ffc00927dd",
+    "tests/phase005/fixtures/phase003-home.tsx": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e",
+    "tsconfig.json": "83d292a6930a317ea31ef48e220097d2ca10c6c505f41d5954795acef48ca3b9",
+    "vitest.config.ts": "cc79644beec0c7ff9c0e466b952b2aaa6410598a575606f633f32e7caf29b966",
+    "vitest.setup.ts": "a54f6b87de09e2b125852fddf97dc7069d9a9026c8af824944aba85e6bd54660",
+    "vitest/stubs/server-only.ts": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+  },
+  "simulation": true,
+  "productionTraffic": false,
+  "details": {
+    "observation": {
+      "command": "npm run test -- --reporter=json",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test",
+        "--",
+        "--reporter=json"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "\n> serendipity@0.1.0 test\n> vitest run --reporter=json\n\n{\"numTotalTestSuites\":24,\"numPassedTestSuites\":24,\"numFailedTestSuites\":0,\"numPendingTestSuites\":0,\"numTotalTests\":100,\"numPassedTests\":100,\"numFailedTests\":0,\"numPendingTests\":0,\"numTodoTests\":0,\"snapshot\":{\"added\":0,\"failure\":false,\"filesAdded\":0,\"filesRemoved\":0,\"filesRemovedList\":[],\"filesUnmatched\":0,\"filesUpdated\":0,\"matched\":0,\"total\":0,\"unchecked\":0,\"uncheckedKeysByFile\":[],\"unmatched\":0,\"updated\":0,\"didUpdate\":false},\"startTime\":1789005734278,\"success\":true,\"testResults\":[{\"assertionResults\":[{\"ancestorTitles\":[\"temporary /admin deny-all gate\"],\"fullName\":\"temporary /admin deny-all gate matches /admin and its descendants without matching /adminx\",\"status\":\"passed\",\"title\":\"matches /admin and its descendants without matching /adminx\",\"duration\":3.6441000000002077,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"temporary /admin deny-all gate\"],\"fullName\":\"temporary /admin deny-all gate returns 404 for /admin\",\"status\":\"passed\",\"title\":\"returns 404 for /admin\",\"duration\":5.238600000000133,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"temporary /admin deny-all gate\"],\"fullName\":\"temporary /admin deny-all gate returns 404 for /admin/settings\",\"status\":\"passed\",\"title\":\"returns 404 for /admin/settings\",\"duration\":1.3194999999998345,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"temporary /admin deny-all gate\"],\"fullName\":\"temporary /admin deny-all gate returns 404 for /admin/login\",\"status\":\"passed\",\"title\":\"returns 404 for /admin/login\",\"duration\":0.7986000000000786,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"temporary /admin deny-all gate\"],\"fullName\":\"temporary /admin deny-all gate returns a null body and no identifying or redirect headers for /admin\",\"status\":\"passed\",\"title\":\"returns a null body and no identifying or redirect headers for /admin\",\"duration\":2.2883999999999105,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"temporary /admin deny-all gate\"],\"fullName\":\"temporary /admin deny-all gate denies /admin in the development environment, including common bypass flags\",\"status\":\"passed\",\"title\":\"denies /admin in the development environment, including common bypass flags\",\"duration\":1.3795999999999822,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"temporary /admin deny-all gate\"],\"fullName\":\"temporary /admin deny-all gate denies /admin in the test environment, including common bypass flags\",\"status\":\"passed\",\"title\":\"denies /admin in the test environment, including common bypass flags\",\"duration\":1.088799999999992,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"temporary /admin deny-all gate\"],\"fullName\":\"temporary /admin deny-all gate denies /admin in the production environment, including common bypass flags\",\"status\":\"passed\",\"title\":\"denies /admin in the production environment, including common bypass flags\",\"duration\":0.9507000000000971,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"temporary /admin deny-all gate\"],\"fullName\":\"temporary /admin deny-all gate ignores query parameters and cookies on /admin\",\"status\":\"passed\",\"title\":\"ignores query parameters and cookies on /admin\",\"duration\":1.9943000000000666,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"temporary /admin deny-all gate\"],\"fullName\":\"temporary /admin deny-all gate keeps both the exact /admin matcher and the /admin descendant matcher\",\"status\":\"passed\",\"title\":\"keeps both the exact /admin matcher and the /admin descendant matcher\",\"duration\":0.5753000000001975,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"temporary /admin deny-all gate\"],\"fullName\":\"temporary /admin deny-all gate has one unconditional empty 404 return with no environment, query or cookie bypass\",\"status\":\"passed\",\"title\":\"has one unconditional empty 404 return with no environment, query or cookie bypass\",\"duration\":18.903099999999995,\"failureMessages\":[],\"meta\":{},\"tags\":[]}],\"startTime\":1789005735638,\"endTime\":1789005735676.903,\"status\":\"passed\",\"message\":\"\",\"name\":\"C:/Users/11295/Desktop/Serendipity · 际遇/src/middleware.test.ts\"},{\"assertionResults\":[{\"ancestorTitles\":[\"application layout boundaries\"],\"fullName\":\"application layout boundaries mounts a single Toaster inside the root layout body\",\"status\":\"passed\",\"title\":\"mounts a single Toaster inside the root layout body\",\"duration\":66.3324,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"application layout boundaries\"],\"fullName\":\"application layout boundaries keeps only the route-group homepage after migration\",\"status\":\"passed\",\"title\":\"keeps only the route-group homepage after migration\",\"duration\":2.3687999999999647,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"application layout boundaries\"],\"fullName\":\"application layout boundaries does not create an admin page before the authentication phase\",\"status\":\"passed\",\"title\":\"does not create an admin page before the authentication phase\",\"duration\":0.8248000000000957,\"failureMessages\":[],\"meta\":{},\"tags\":[]}],\"startTime\":1789005735554,\"endTime\":1789005735623.8247,\"status\":\"passed\",\"message\":\"\",\"name\":\"C:/Users/11295/Desktop/Serendipity · 际遇/src/app/layout.test.ts\"},{\"assertionResults\":[{\"ancestorTitles\":[\"API response constructors\"],\"fullName\":\"API response constructors creates the exact success envelope and preserves data and caller requestId\",\"status\":\"passed\",\"title\":\"creates the exact success envelope and preserves data and caller requestId\",\"duration\":3.503600000000006,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"API response constructors\"],\"fullName\":\"API response constructors creates the exact error envelope without a data field\",\"status\":\"passed\",\"title\":\"creates the exact error envelope without a data field\",\"duration\":0.3953000000001339,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"API response constructors\"],\"fullName\":\"API response constructors preserves explicitly supplied safe details by reference\",\"status\":\"passed\",\"title\":\"preserves explicitly supplied safe details by reference\",\"duration\":0.4551000000001295,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"API response constructors\"],\"fullName\":\"API response constructors omits undefined details and rejects an undefined success payload\",\"status\":\"passed\",\"title\":\"omits undefined details and rejects an undefined success payload\",\"duration\":0.9234000000001288,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"API response constructors\"],\"fullName\":\"API response constructors requires caller-provided requestIds without generating a fallback\",\"status\":\"passed\",\"title\":\"requires caller-provided requestIds without generating a fallback\",\"duration\":0.4722999999999047,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"API response constructors\"],\"fullName\":\"API response constructors allows success and failure values to narrow by the success discriminant\",\"status\":\"passed\",\"title\":\"allows success and failure values to narrow by the success discriminant\",\"duration\":0.3128999999998996,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"isApiError\"],\"fullName\":\"isApiError recognizes the error produced by fail\",\"status\":\"passed\",\"title\":\"recognizes the error produced by fail\",\"duration\":0.2725999999997839,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"isApiError\"],\"fullName\":\"isApiError accepts every public error code declared by the single API contract\",\"status\":\"passed\",\"title\":\"accepts every public error code declared by the single API contract\",\"duration\":2.2545000000000073,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"isApiError\"],\"fullName\":\"isApiError rejects missing or mistyped fields, arrays, inherited fields and extra keys\",\"status\":\"passed\",\"title\":\"rejects missing or mistyped fields, arrays, inherited fields and extra keys\",\"duration\":0.42059999999992215,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"isApiError\"],\"fullName\":\"isApiError rejects unknown codes and internal diagnostics at the public boundary\",\"status\":\"passed\",\"title\":\"rejects unknown codes and internal diagnostics at the public boundary\",\"duration\":0.42849999999998545,\"failureMessages\":[],\"meta\":{},\"tags\":[]}],\"startTime\":1789005737078,\"endTime\":1789005737087.4285,\"status\":\"passed\",\"message\":\"\",\"name\":\"C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/api-response.test.ts\"},{\"assertionResults\":[{\"ancestorTitles\":[\"readEnv\"],\"fullName\":\"readEnv valid configuration accepts all nine required values and coerces typed values\",\"status\":\"passed\",\"title\":\"valid configuration accepts all nine required values and coerces typed values\",\"duration\":2.063100000000304,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"readEnv\"],\"fullName\":\"readEnv reports a missing DATABASE_URL\",\"status\":\"passed\",\"title\":\"reports a missing DATABASE_URL\",\"duration\":1.4574000000002343,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"readEnv\"],\"fullName\":\"readEnv reports two missing values in one error\",\"status\":\"passed\",\"title\":\"reports two missing values in one error\",\"duration\":0.8027999999999338,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"readEnv\"],\"fullName\":\"readEnv rejects a mysql database URL\",\"status\":\"passed\",\"title\":\"rejects a mysql database URL\",\"duration\":0.40249999999969077,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"readEnv\"],\"fullName\":\"readEnv rejects an AUTH_SECRET shorter than 32 characters\",\"status\":\"passed\",\"title\":\"rejects an AUTH_SECRET shorter than 32 characters\",\"duration\":0.2887000000000626,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"readEnv\"],\"fullName\":\"readEnv rejects a 31-byte ENCRYPTION_KEY\",\"status\":\"passed\",\"title\":\"rejects a 31-byte ENCRYPTION_KEY\",\"duration\":0.31970000000001164,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"readEnv\"],\"fullName\":\"readEnv accepts a 32-byte ENCRYPTION_KEY\",\"status\":\"passed\",\"title\":\"accepts a 32-byte ENCRYPTION_KEY\",\"duration\":0.2662999999997737,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"readEnv\"],\"fullName\":\"readEnv rejects TRUE for AI_MOCK\",\"status\":\"passed\",\"title\":\"rejects TRUE for AI_MOCK\",\"duration\":0.2895000000003165,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"readEnv\"],\"fullName\":\"readEnv API key required when AI_MOCK is false\",\"status\":\"passed\",\"title\":\"API key required when AI_MOCK is false\",\"duration\":0.29719999999997526,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"readEnv\"],\"fullName\":\"readEnv mock optional allows an empty AI_API_KEY\",\"status\":\"passed\",\"title\":\"mock optional allows an empty AI_API_KEY\",\"duration\":0.24509999999963838,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"readEnv\"],\"fullName\":\"readEnv rejects http for AI_BASE_URL\",\"status\":\"passed\",\"title\":\"rejects http for AI_BASE_URL\",\"duration\":0.40439999999989595,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"readEnv\"],\"fullName\":\"readEnv rejects invalid and too-small timeout values\",\"status\":\"passed\",\"title\":\"rejects invalid and too-small timeout values\",\"duration\":0.34560000000010405,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"readEnv\"],\"fullName\":\"readEnv requires a positive cost limit\",\"status\":\"passed\",\"title\":\"requires a positive cost limit\",\"duration\":0.21000000000003638,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"readEnv\"],\"fullName\":\"readEnv matches .env.example to the active documented server registry\",\"status\":\"passed\",\"title\":\"matches .env.example to the active documented server registry\",\"duration\":2.2679000000002816,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"readEnv\"],\"fullName\":\"readEnv registers future CLI inputs without activating them for the Web parser\",\"status\":\"passed\",\"title\":\"registers future CLI inputs without activating them for the Web parser\",\"duration\":0.85550000000012,\"failureMessages\":[],\"meta\":{},\"tags\":[]}],\"startTime\":1789005737145,\"endTime\":1789005737155.8555,\"status\":\"passed\",\"message\":\"\",\"name\":\"C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/env.test.ts\"},{\"assertionResults\":[{\"ancestorTitles\":[\"formatDateRange\"],\"fullName\":\"formatDateRange formats fixed local dates without applying an offset or locale\",\"status\":\"passed\",\"title\":\"formats fixed local dates without applying an offset or locale\",\"duration\":2.259399999999914,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatDateRange\"],\"fullName\":\"formatDateRange displays one date for equal endpoints and preserves four-digit early years\",\"status\":\"passed\",\"title\":\"displays one date for equal endpoints and preserves four-digit early years\",\"duration\":0.494499999999789,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatDateRange\"],\"fullName\":\"formatDateRange rejects a reversed range\",\"status\":\"passed\",\"title\":\"rejects a reversed range\",\"duration\":0.5521999999996297,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatDateRange\"],\"fullName\":\"formatDateRange rejects the nonexistent Gregorian date 2025-02-29 at either endpoint\",\"status\":\"passed\",\"title\":\"rejects the nonexistent Gregorian date 2025-02-29 at either endpoint\",\"duration\":0.4130000000000109,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatDateRange\"],\"fullName\":\"formatDateRange rejects the nonexistent Gregorian date 1900-02-29 at either endpoint\",\"status\":\"passed\",\"title\":\"rejects the nonexistent Gregorian date 1900-02-29 at either endpoint\",\"duration\":0.27910000000019863,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatDateRange\"],\"fullName\":\"formatDateRange rejects the nonexistent Gregorian date 2024-02-30 at either endpoint\",\"status\":\"passed\",\"title\":\"rejects the nonexistent Gregorian date 2024-02-30 at either endpoint\",\"duration\":0.2668999999996231,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatDateRange\"],\"fullName\":\"formatDateRange rejects the nonexistent Gregorian date 2026-13-01 at either endpoint\",\"status\":\"passed\",\"title\":\"rejects the nonexistent Gregorian date 2026-13-01 at either endpoint\",\"duration\":0.2353000000002794,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatDateRange\"],\"fullName\":\"formatDateRange rejects the nonexistent Gregorian date 2026-00-01 at either endpoint\",\"status\":\"passed\",\"title\":\"rejects the nonexistent Gregorian date 2026-00-01 at either endpoint\",\"duration\":0.4238000000000284,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatDateRange\"],\"fullName\":\"formatDateRange rejects the nonexistent Gregorian date 0000-01-01 at either endpoint\",\"status\":\"passed\",\"title\":\"rejects the nonexistent Gregorian date 0000-01-01 at either endpoint\",\"duration\":0.1991000000002714,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatDateRange\"],\"fullName\":\"formatDateRange rejects timestamps, missing padding and non-string input\",\"status\":\"passed\",\"title\":\"rejects timestamps, missing padding and non-string input\",\"duration\":0.6132999999999811,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatDuration\"],\"fullName\":\"formatDuration formats 0 minutes as 0分钟\",\"status\":\"passed\",\"title\":\"formats 0 minutes as 0分钟\",\"duration\":0.2242999999998574,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatDuration\"],\"fullName\":\"formatDuration formats 45 minutes as 45分钟\",\"status\":\"passed\",\"title\":\"formats 45 minutes as 45分钟\",\"duration\":0.08690000000024156,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatDuration\"],\"fullName\":\"formatDuration formats 90 minutes as 1小时30分钟\",\"status\":\"passed\",\"title\":\"formats 90 minutes as 1小时30分钟\",\"duration\":0.07160000000021682,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatDuration\"],\"fullName\":\"formatDuration formats 120 minutes as 2小时\",\"status\":\"passed\",\"title\":\"formats 120 minutes as 2小时\",\"duration\":0.0763000000001739,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatDuration\"],\"fullName\":\"formatDuration rejects negative duration values\",\"status\":\"passed\",\"title\":\"rejects negative duration values\",\"duration\":0.16369999999960783,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatDuration\"],\"fullName\":\"formatDuration rejects fractions, nonfinite values, unsafe integers and coerced input\",\"status\":\"passed\",\"title\":\"rejects fractions, nonfinite values, unsafe integers and coerced input\",\"duration\":0.23090000000001965,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatMoney\"],\"fullName\":\"formatMoney formats CNY and USD with fixed symbols, grouping and two decimal places\",\"status\":\"passed\",\"title\":\"formats CNY and USD with fixed symbols, grouping and two decimal places\",\"duration\":0.449500000000171,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatMoney\"],\"fullName\":\"formatMoney keeps all decimal digits beyond Number.MAX_SAFE_INTEGER\",\"status\":\"passed\",\"title\":\"keeps all decimal digits beyond Number.MAX_SAFE_INTEGER\",\"duration\":0.18499999999994543,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatMoney\"],\"fullName\":\"formatMoney uses half-even rounding for ties, preserving a later nonzero digit\",\"status\":\"passed\",\"title\":\"uses half-even rounding for ties, preserving a later nonzero digit\",\"duration\":0.30589999999983775,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatMoney\"],\"fullName\":\"formatMoney rejects malformed decimals without coercion\",\"status\":\"passed\",\"title\":\"rejects malformed decimals without coercion\",\"duration\":0.45879999999988286,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatMoney\"],\"fullName\":\"formatMoney rejects unknown or incorrectly cased currencies\",\"status\":\"passed\",\"title\":\"rejects unknown or incorrectly cased currencies\",\"duration\":0.4806000000003223,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatCostEstimate\"],\"fullName\":\"formatCostEstimate displays the amount with an explicit estimate label\",\"status\":\"passed\",\"title\":\"displays the amount with an explicit estimate label\",\"duration\":0.8915000000001783,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatCostEstimate\"],\"fullName\":\"formatCostEstimate distinguishes a verified estimate from a final price\",\"status\":\"passed\",\"title\":\"distinguishes a verified estimate from a final price\",\"duration\":0.3413999999997941,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatCostEstimate\"],\"fullName\":\"formatCostEstimate displays unknown costs without a zero amount\",\"status\":\"passed\",\"title\":\"displays unknown costs without a zero amount\",\"duration\":0.5454999999997199,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatCostEstimate\"],\"fullName\":\"formatCostEstimate displays free only for an evidenced explicit zero\",\"status\":\"passed\",\"title\":\"displays free only for an evidenced explicit zero\",\"duration\":0.8110000000001492,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatCostEstimate\"],\"fullName\":\"formatCostEstimate keeps stale evidence visible without consulting the current time\",\"status\":\"passed\",\"title\":\"keeps stale evidence visible without consulting the current time\",\"duration\":0.29490000000032524,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatCostEstimate\"],\"fullName\":\"formatCostEstimate rejects incomplete canonical shapes and invalid confidence\",\"status\":\"passed\",\"title\":\"rejects incomplete canonical shapes and invalid confidence\",\"duration\":0.7309999999997672,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatCostEstimate\"],\"fullName\":\"formatCostEstimate requires source evidence and real timestamps for known costs\",\"status\":\"passed\",\"title\":\"requires source evidence and real timestamps for known costs\",\"duration\":0.7445999999999913,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"formatCostEstimate\"],\"fullName\":\"formatCostEstimate does not change source amounts or freshness metadata\",\"status\":\"passed\",\"title\":\"does not change source amounts or freshness metadata\",\"duration\":1.107300000000123,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"truncate\"],\"fullName\":\"truncate keeps strings that fit and includes the ellipsis in the limit\",\"status\":\"passed\",\"title\":\"keeps strings that fit and includes the ellipsis in the limit\",\"duration\":0.21219999999993888,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"truncate\"],\"fullName\":\"truncate counts Unicode code points without splitting a surrogate pair\",\"status\":\"passed\",\"title\":\"counts Unicode code points without splitting a surrogate pair\",\"duration\":0.2687999999998283,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"truncate\"],\"fullName\":\"truncate rejects negative, fractional, nonfinite and unsafe limits\",\"status\":\"passed\",\"title\":\"rejects negative, fractional, nonfinite and unsafe limits\",\"duration\":0.34900000000016007,\"failureMessages\":[],\"meta\":{},\"tags\":[]}],\"startTime\":1789005737067,\"endTime\":1789005737083.349,\"status\":\"passed\",\"message\":\"\",\"name\":\"C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts\"},{\"assertionResults\":[{\"ancestorTitles\":[\"safeJsonParse\"],\"fullName\":\"safeJsonParse returns a discriminated success result with the parsed value\",\"status\":\"passed\",\"title\":\"returns a discriminated success result with the parsed value\",\"duration\":2.48700000000008,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"safeJsonParse\"],\"fullName\":\"safeJsonParse returns a nonempty error for invalid JSON\",\"status\":\"passed\",\"title\":\"returns a nonempty error for invalid JSON\",\"duration\":0.8973000000000866,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"safeJsonParse\"],\"fullName\":\"safeJsonParse distinguishes valid JSON null from a parse failure\",\"status\":\"passed\",\"title\":\"distinguishes valid JSON null from a parse failure\",\"duration\":0.3022999999998319,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"stableStringify\"],\"fullName\":\"stableStringify serializes object keys in a stable order regardless of insertion order\",\"status\":\"passed\",\"title\":\"serializes object keys in a stable order regardless of insertion order\",\"duration\":0.46349999999983993,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"stableStringify\"],\"fullName\":\"stableStringify sorts nested objects while preserving array order\",\"status\":\"passed\",\"title\":\"sorts nested objects while preserving array order\",\"duration\":0.3360000000002401,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"stableStringify\"],\"fullName\":\"stableStringify uses ordinal UTF-16 ordering for numeric, accented and surrogate keys\",\"status\":\"passed\",\"title\":\"uses ordinal UTF-16 ordering for numeric, accented and surrogate keys\",\"duration\":0.17410000000018044,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"stableStringify\"],\"fullName\":\"stableStringify never invokes a locale comparator\",\"status\":\"passed\",\"title\":\"never invokes a locale comparator\",\"duration\":1.073099999999613,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"stableStringify\"],\"fullName\":\"stableStringify supports JSON primitives and escapes strings with JSON syntax\",\"status\":\"passed\",\"title\":\"supports JSON primitives and escapes strings with JSON syntax\",\"duration\":0.279700000000048,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"stableStringify\"],\"fullName\":\"stableStringify allows shared references that do not form a cycle\",\"status\":\"passed\",\"title\":\"allows shared references that do not form a cycle\",\"duration\":0.42039999999997235,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"stableStringify\"],\"fullName\":\"stableStringify rejects direct and indirect cycles\",\"status\":\"passed\",\"title\":\"rejects direct and indirect cycles\",\"duration\":0.8881000000001222,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"stableStringify\"],\"fullName\":\"stableStringify rejects undefined, BigInt, functions, symbols and nonfinite values at every depth\",\"status\":\"passed\",\"title\":\"rejects undefined, BigInt, functions, symbols and nonfinite values at every depth\",\"duration\":1.4331999999999425,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"stableStringify\"],\"fullName\":\"stableStringify rejects nonplain objects instead of applying toJSON or silently emitting an empty object\",\"status\":\"passed\",\"title\":\"rejects nonplain objects instead of applying toJSON or silently emitting an empty object\",\"duration\":0.6213999999999942,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"stableStringify\"],\"fullName\":\"stableStringify rejects sparse arrays and array properties that JSON would silently lose\",\"status\":\"passed\",\"title\":\"rejects sparse arrays and array properties that JSON would silently lose\",\"duration\":0.29939999999987776,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"stableStringify\"],\"fullName\":\"stableStringify rejects symbol keys and nonenumerable data\",\"status\":\"passed\",\"title\":\"rejects symbol keys and nonenumerable data\",\"duration\":0.25999999999976353,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"stableStringify\"],\"fullName\":\"stableStringify rejects accessors without evaluating them\",\"status\":\"passed\",\"title\":\"rejects accessors without evaluating them\",\"duration\":0.24479999999994106,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"stableStringify\"],\"fullName\":\"stableStringify handles null-prototype objects and prototype-looking keys as ordinary data\",\"status\":\"passed\",\"title\":\"handles null-prototype objects and prototype-looking keys as ordinary data\",\"duration\":0.17079999999987194,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"stableStringify\"],\"fullName\":\"stableStringify does not reorder or change input data\",\"status\":\"passed\",\"title\":\"does not reorder or change input data\",\"duration\":0.23739999999997963,\"failureMessages\":[],\"meta\":{},\"tags\":[]}],\"startTime\":1789005737070,\"endTime\":1789005737081.2373,\"status\":\"passed\",\"message\":\"\",\"name\":\"C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/json.test.ts\"},{\"assertionResults\":[{\"ancestorTitles\":[\"LoadingState\"],\"fullName\":\"LoadingState announces a polite, busy status with a visible default label\",\"status\":\"passed\",\"title\":\"announces a polite, busy status with a visible default label\",\"duration\":132.51389999999992,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"LoadingState\"],\"fullName\":\"LoadingState renders a custom loading label\",\"status\":\"passed\",\"title\":\"renders a custom loading label\",\"duration\":6.7960000000002765,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"EmptyState\"],\"fullName\":\"EmptyState renders its title without adding an empty description paragraph\",\"status\":\"passed\",\"title\":\"renders its title without adding an empty description paragraph\",\"duration\":22.39390000000003,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"EmptyState\"],\"fullName\":\"EmptyState renders an optional description\",\"status\":\"passed\",\"title\":\"renders an optional description\",\"duration\":5.292100000000119,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"EmptyState\"],\"fullName\":\"EmptyState renders the action slot\",\"status\":\"passed\",\"title\":\"renders the action slot\",\"duration\":13.977600000000166,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"ErrorState\"],\"fullName\":\"ErrorState announces the error message as an alert\",\"status\":\"passed\",\"title\":\"announces the error message as an alert\",\"duration\":6.976900000000114,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"ErrorState\"],\"fullName\":\"ErrorState invokes the retry handler once when the retry button is clicked\",\"status\":\"passed\",\"title\":\"invokes the retry handler once when the retry button is clicked\",\"duration\":14.591599999999744,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"ErrorState\"],\"fullName\":\"ErrorState omits the retry button when there is no retry handler\",\"status\":\"passed\",\"title\":\"omits the retry button when there is no retry handler\",\"duration\":3.4977999999996428,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"PageHeader\"],\"fullName\":\"PageHeader renders the page title as the level-one heading\",\"status\":\"passed\",\"title\":\"renders the page title as the level-one heading\",\"duration\":7.463400000000092,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"PageHeader\"],\"fullName\":\"PageHeader renders the actions slot\",\"status\":\"passed\",\"title\":\"renders the actions slot\",\"duration\":6.451300000000174,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"layout shells\"],\"fullName\":\"layout shells links the site name to home and keeps the navigation static\",\"status\":\"passed\",\"title\":\"links the site name to home and keeps the navigation static\",\"duration\":17.447899999999663,\"failureMessages\":[],\"meta\":{},\"tags\":[]},{\"ancestorTitles\":[\"layout shells\"],\"fullName\":\"layout shells renders all four static admin items and preserves its children\",\"status\":\"passed\",\"title\":\"renders all four static admin items and preserves its children\",\"duration\":18.20119999999997,\"failureMessages\":[],\"meta\":{},\"tags\":[]}],\"startTime\":1789005737900,\"endTime\":1789005738156.2012,\"status\":\"passed\",\"message\":\"\",\"name\":\"C:/Users/11295/Desktop/Serendipity · 际遇/src/components/common/common-components.test.tsx\"}]}\n",
+      "stderr": "",
+      "durationMs": 5070
+    },
+    "testCount": 100,
+    "passed": 100,
+    "failed": 0,
+    "files": [
+      {
+        "file": "src/middleware.test.ts",
+        "status": "passed",
+        "assertions": [
+          {
+            "fullName": "temporary /admin deny-all gate matches /admin and its descendants without matching /adminx",
+            "status": "passed"
+          },
+          {
+            "fullName": "temporary /admin deny-all gate returns 404 for /admin",
+            "status": "passed"
+          },
+          {
+            "fullName": "temporary /admin deny-all gate returns 404 for /admin/settings",
+            "status": "passed"
+          },
+          {
+            "fullName": "temporary /admin deny-all gate returns 404 for /admin/login",
+            "status": "passed"
+          },
+          {
+            "fullName": "temporary /admin deny-all gate returns a null body and no identifying or redirect headers for /admin",
+            "status": "passed"
+          },
+          {
+            "fullName": "temporary /admin deny-all gate denies /admin in the development environment, including common bypass flags",
+            "status": "passed"
+          },
+          {
+            "fullName": "temporary /admin deny-all gate denies /admin in the test environment, including common bypass flags",
+            "status": "passed"
+          },
+          {
+            "fullName": "temporary /admin deny-all gate denies /admin in the production environment, including common bypass flags",
+            "status": "passed"
+          },
+          {
+            "fullName": "temporary /admin deny-all gate ignores query parameters and cookies on /admin",
+            "status": "passed"
+          },
+          {
+            "fullName": "temporary /admin deny-all gate keeps both the exact /admin matcher and the /admin descendant matcher",
+            "status": "passed"
+          },
+          {
+            "fullName": "temporary /admin deny-all gate has one unconditional empty 404 return with no environment, query or cookie bypass",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "file": "src/app/layout.test.ts",
+        "status": "passed",
+        "assertions": [
+          {
+            "fullName": "application layout boundaries mounts a single Toaster inside the root layout body",
+            "status": "passed"
+          },
+          {
+            "fullName": "application layout boundaries keeps only the route-group homepage after migration",
+            "status": "passed"
+          },
+          {
+            "fullName": "application layout boundaries does not create an admin page before the authentication phase",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "file": "src/lib/api-response.test.ts",
+        "status": "passed",
+        "assertions": [
+          {
+            "fullName": "API response constructors creates the exact success envelope and preserves data and caller requestId",
+            "status": "passed"
+          },
+          {
+            "fullName": "API response constructors creates the exact error envelope without a data field",
+            "status": "passed"
+          },
+          {
+            "fullName": "API response constructors preserves explicitly supplied safe details by reference",
+            "status": "passed"
+          },
+          {
+            "fullName": "API response constructors omits undefined details and rejects an undefined success payload",
+            "status": "passed"
+          },
+          {
+            "fullName": "API response constructors requires caller-provided requestIds without generating a fallback",
+            "status": "passed"
+          },
+          {
+            "fullName": "API response constructors allows success and failure values to narrow by the success discriminant",
+            "status": "passed"
+          },
+          {
+            "fullName": "isApiError recognizes the error produced by fail",
+            "status": "passed"
+          },
+          {
+            "fullName": "isApiError accepts every public error code declared by the single API contract",
+            "status": "passed"
+          },
+          {
+            "fullName": "isApiError rejects missing or mistyped fields, arrays, inherited fields and extra keys",
+            "status": "passed"
+          },
+          {
+            "fullName": "isApiError rejects unknown codes and internal diagnostics at the public boundary",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "file": "src/lib/env.test.ts",
+        "status": "passed",
+        "assertions": [
+          {
+            "fullName": "readEnv valid configuration accepts all nine required values and coerces typed values",
+            "status": "passed"
+          },
+          {
+            "fullName": "readEnv reports a missing DATABASE_URL",
+            "status": "passed"
+          },
+          {
+            "fullName": "readEnv reports two missing values in one error",
+            "status": "passed"
+          },
+          {
+            "fullName": "readEnv rejects a mysql database URL",
+            "status": "passed"
+          },
+          {
+            "fullName": "readEnv rejects an AUTH_SECRET shorter than 32 characters",
+            "status": "passed"
+          },
+          {
+            "fullName": "readEnv rejects a 31-byte ENCRYPTION_KEY",
+            "status": "passed"
+          },
+          {
+            "fullName": "readEnv accepts a 32-byte ENCRYPTION_KEY",
+            "status": "passed"
+          },
+          {
+            "fullName": "readEnv rejects TRUE for AI_MOCK",
+            "status": "passed"
+          },
+          {
+            "fullName": "readEnv API key required when AI_MOCK is false",
+            "status": "passed"
+          },
+          {
+            "fullName": "readEnv mock optional allows an empty AI_API_KEY",
+            "status": "passed"
+          },
+          {
+            "fullName": "readEnv rejects http for AI_BASE_URL",
+            "status": "passed"
+          },
+          {
+            "fullName": "readEnv rejects invalid and too-small timeout values",
+            "status": "passed"
+          },
+          {
+            "fullName": "readEnv requires a positive cost limit",
+            "status": "passed"
+          },
+          {
+            "fullName": "readEnv matches .env.example to the active documented server registry",
+            "status": "passed"
+          },
+          {
+            "fullName": "readEnv registers future CLI inputs without activating them for the Web parser",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "file": "src/lib/format.test.ts",
+        "status": "passed",
+        "assertions": [
+          {
+            "fullName": "formatDateRange formats fixed local dates without applying an offset or locale",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatDateRange displays one date for equal endpoints and preserves four-digit early years",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatDateRange rejects a reversed range",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatDateRange rejects the nonexistent Gregorian date 2025-02-29 at either endpoint",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatDateRange rejects the nonexistent Gregorian date 1900-02-29 at either endpoint",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatDateRange rejects the nonexistent Gregorian date 2024-02-30 at either endpoint",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatDateRange rejects the nonexistent Gregorian date 2026-13-01 at either endpoint",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatDateRange rejects the nonexistent Gregorian date 2026-00-01 at either endpoint",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatDateRange rejects the nonexistent Gregorian date 0000-01-01 at either endpoint",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatDateRange rejects timestamps, missing padding and non-string input",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatDuration formats 0 minutes as 0分钟",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatDuration formats 45 minutes as 45分钟",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatDuration formats 90 minutes as 1小时30分钟",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatDuration formats 120 minutes as 2小时",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatDuration rejects negative duration values",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatDuration rejects fractions, nonfinite values, unsafe integers and coerced input",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatMoney formats CNY and USD with fixed symbols, grouping and two decimal places",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatMoney keeps all decimal digits beyond Number.MAX_SAFE_INTEGER",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatMoney uses half-even rounding for ties, preserving a later nonzero digit",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatMoney rejects malformed decimals without coercion",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatMoney rejects unknown or incorrectly cased currencies",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatCostEstimate displays the amount with an explicit estimate label",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatCostEstimate distinguishes a verified estimate from a final price",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatCostEstimate displays unknown costs without a zero amount",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatCostEstimate displays free only for an evidenced explicit zero",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatCostEstimate keeps stale evidence visible without consulting the current time",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatCostEstimate rejects incomplete canonical shapes and invalid confidence",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatCostEstimate requires source evidence and real timestamps for known costs",
+            "status": "passed"
+          },
+          {
+            "fullName": "formatCostEstimate does not change source amounts or freshness metadata",
+            "status": "passed"
+          },
+          {
+            "fullName": "truncate keeps strings that fit and includes the ellipsis in the limit",
+            "status": "passed"
+          },
+          {
+            "fullName": "truncate counts Unicode code points without splitting a surrogate pair",
+            "status": "passed"
+          },
+          {
+            "fullName": "truncate rejects negative, fractional, nonfinite and unsafe limits",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "file": "src/lib/json.test.ts",
+        "status": "passed",
+        "assertions": [
+          {
+            "fullName": "safeJsonParse returns a discriminated success result with the parsed value",
+            "status": "passed"
+          },
+          {
+            "fullName": "safeJsonParse returns a nonempty error for invalid JSON",
+            "status": "passed"
+          },
+          {
+            "fullName": "safeJsonParse distinguishes valid JSON null from a parse failure",
+            "status": "passed"
+          },
+          {
+            "fullName": "stableStringify serializes object keys in a stable order regardless of insertion order",
+            "status": "passed"
+          },
+          {
+            "fullName": "stableStringify sorts nested objects while preserving array order",
+            "status": "passed"
+          },
+          {
+            "fullName": "stableStringify uses ordinal UTF-16 ordering for numeric, accented and surrogate keys",
+            "status": "passed"
+          },
+          {
+            "fullName": "stableStringify never invokes a locale comparator",
+            "status": "passed"
+          },
+          {
+            "fullName": "stableStringify supports JSON primitives and escapes strings with JSON syntax",
+            "status": "passed"
+          },
+          {
+            "fullName": "stableStringify allows shared references that do not form a cycle",
+            "status": "passed"
+          },
+          {
+            "fullName": "stableStringify rejects direct and indirect cycles",
+            "status": "passed"
+          },
+          {
+            "fullName": "stableStringify rejects undefined, BigInt, functions, symbols and nonfinite values at every depth",
+            "status": "passed"
+          },
+          {
+            "fullName": "stableStringify rejects nonplain objects instead of applying toJSON or silently emitting an empty object",
+            "status": "passed"
+          },
+          {
+            "fullName": "stableStringify rejects sparse arrays and array properties that JSON would silently lose",
+            "status": "passed"
+          },
+          {
+            "fullName": "stableStringify rejects symbol keys and nonenumerable data",
+            "status": "passed"
+          },
+          {
+            "fullName": "stableStringify rejects accessors without evaluating them",
+            "status": "passed"
+          },
+          {
+            "fullName": "stableStringify handles null-prototype objects and prototype-looking keys as ordinary data",
+            "status": "passed"
+          },
+          {
+            "fullName": "stableStringify does not reorder or change input data",
+            "status": "passed"
+          }
+        ]
+      },
+      {
+        "file": "src/components/common/common-components.test.tsx",
+        "status": "passed",
+        "assertions": [
+          {
+            "fullName": "LoadingState announces a polite, busy status with a visible default label",
+            "status": "passed"
+          },
+          {
+            "fullName": "LoadingState renders a custom loading label",
+            "status": "passed"
+          },
+          {
+            "fullName": "EmptyState renders its title without adding an empty description paragraph",
+            "status": "passed"
+          },
+          {
+            "fullName": "EmptyState renders an optional description",
+            "status": "passed"
+          },
+          {
+            "fullName": "EmptyState renders the action slot",
+            "status": "passed"
+          },
+          {
+            "fullName": "ErrorState announces the error message as an alert",
+            "status": "passed"
+          },
+          {
+            "fullName": "ErrorState invokes the retry handler once when the retry button is clicked",
+            "status": "passed"
+          },
+          {
+            "fullName": "ErrorState omits the retry button when there is no retry handler",
+            "status": "passed"
+          },
+          {
+            "fullName": "PageHeader renders the page title as the level-one heading",
+            "status": "passed"
+          },
+          {
+            "fullName": "PageHeader renders the actions slot",
+            "status": "passed"
+          },
+          {
+            "fullName": "layout shells links the site name to home and keeps the navigation static",
+            "status": "passed"
+          },
+          {
+            "fullName": "layout shells renders all four static admin items and preserves its children",
+            "status": "passed"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,438 @@
+{
+  "phase": 5,
+  "attemptId": "attempt-3",
+  "producer": "Phase005",
+  "consumers": [
+    6,
+    11,
+    12,
+    14,
+    24,
+    61
+  ],
+  "scope": "DIRECTORY_SKELETON_SHARED_UTILITIES_COMPONENTS_LAYOUTS_AND_DENY_ALL_ADMIN_GATE",
+  "implementationContextId": "01a088d8-bccd-7c10-8967-c60a0b88c8e4:Phase005",
+  "sourcePaths": [
+    ".gitattributes",
+    ".gitignore",
+    ".prettierignore",
+    ".prettierrc.json",
+    "README.md",
+    "components.json",
+    "docs/agent-execution-contract.md",
+    "docs/api.md",
+    "docs/directory-structure.md",
+    "docs/phase-plans/Phase005-inputs.json",
+    "docs/phase-plans/Phase005.json",
+    "docs/phase-plans/complete-phase005.mjs",
+    "docs/phase-plans/phase005-runtime.mjs",
+    "docs/phase-plans/verify-phase005.mjs",
+    "docs/project-constitution.md",
+    "docs/project-layout.json",
+    "docs/runtime-baseline.json",
+    "docs/ui-design-system.md",
+    "eslint.config.mjs",
+    "next.config.ts",
+    "package-lock.json",
+    "package.json",
+    "postcss.config.mjs",
+    "prisma/.gitkeep",
+    "scripts/phase-evidence.mjs",
+    "scripts/validate-phase.mjs",
+    "scripts/validate-phase.ps1",
+    "scripts/verify-phase003.mjs",
+    "src/app/(site)/layout.tsx",
+    "src/app/(site)/page.tsx",
+    "src/app/admin/layout.tsx",
+    "src/app/globals.css",
+    "src/app/layout.test.ts",
+    "src/app/layout.tsx",
+    "src/components/admin/.gitkeep",
+    "src/components/chat/.gitkeep",
+    "src/components/common/.gitkeep",
+    "src/components/common/common-components.test.tsx",
+    "src/components/common/empty-state.tsx",
+    "src/components/common/error-state.tsx",
+    "src/components/common/loading-state.tsx",
+    "src/components/common/page-header.tsx",
+    "src/components/layout/.gitkeep",
+    "src/components/layout/admin-shell.tsx",
+    "src/components/layout/site-header.tsx",
+    "src/components/travel/.gitkeep",
+    "src/components/ui/button.tsx",
+    "src/components/ui/sonner.tsx",
+    "src/instrumentation.ts",
+    "src/lib/ai/.gitkeep",
+    "src/lib/api-response.test.ts",
+    "src/lib/api-response.ts",
+    "src/lib/env-cli.ts",
+    "src/lib/env-schema.ts",
+    "src/lib/env.test.ts",
+    "src/lib/env.ts",
+    "src/lib/format.test.ts",
+    "src/lib/format.ts",
+    "src/lib/json.test.ts",
+    "src/lib/json.ts",
+    "src/lib/utils.ts",
+    "src/middleware.test.ts",
+    "src/middleware.ts",
+    "src/server/services/.gitkeep",
+    "src/types/.gitkeep",
+    "tests/phase005/browser.mjs",
+    "tests/phase005/components-fixture.tsx",
+    "tests/phase005/fixtures/phase003-home.tsx",
+    "tsconfig.json",
+    "vitest.config.ts",
+    "vitest.setup.ts",
+    "vitest/stubs/server-only.ts"
+  ],
+  "requiredCaseIds": [
+    "Phase005:structure",
+    "Phase005:unit-format",
+    "Phase005:unit-json",
+    "Phase005:unit-api-response",
+    "Phase005:unit-common-components",
+    "Phase005:unit-layout",
+    "Phase005:unit-middleware",
+    "Phase005:lint",
+    "Phase005:typecheck",
+    "Phase005:test",
+    "Phase005:format-check",
+    "Phase005:build",
+    "Phase005:phase003-regression",
+    "Phase005:production-middleware",
+    "Phase005:development-middleware",
+    "Phase005:browser-layout",
+    "Phase005:negative-remove-return",
+    "Phase005:negative-middleware-next",
+    "Phase005:negative-env-bypass",
+    "Phase005:negative-query-bypass",
+    "Phase005:negative-cookie-bypass",
+    "Phase005:negative-matcher",
+    "Phase005:negative-toaster",
+    "Phase005:negative-duration",
+    "Phase005:negative-stringify",
+    "Phase005:negative-locale",
+    "Phase005:negative-alert",
+    "Phase005:evidence-binding",
+    "Phase005:dependency-generation"
+  ],
+  "cases": [
+    {
+      "testCaseId": "Phase005:structure",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case structure",
+      "denominator": 1,
+      "inputPath": "src/middleware.ts",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/structure.json",
+      "expected": "All required files, nine placeholders, allowed dependency changes, API code inventory, client boundaries, static navigation, README and unchanged protected source conform."
+    },
+    {
+      "testCaseId": "Phase005:unit-format",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case unit-format",
+      "denominator": 1,
+      "inputPath": "src/lib/format.test.ts",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/unit-format.json",
+      "expected": "At least 14 tests pass; true local dates, duration, exact large decimal half-even rounding, full cost estimates and truncation fail closed."
+    },
+    {
+      "testCaseId": "Phase005:unit-json",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case unit-json",
+      "denominator": 1,
+      "inputPath": "src/lib/json.test.ts",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/unit-json.json",
+      "expected": "At least 4 tests pass; strict JSON-compatible serializer sorts ordinal UTF-16 keys including numeric keys recursively and rejects unsupported/circular values."
+    },
+    {
+      "testCaseId": "Phase005:unit-api-response",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case unit-api-response",
+      "denominator": 1,
+      "inputPath": "src/lib/api-response.test.ts",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/unit-api-response.json",
+      "expected": "At least 6 tests pass; exact success/error union, all 21 public codes, caller requestId, details and type guard."
+    },
+    {
+      "testCaseId": "Phase005:unit-common-components",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case unit-common-components",
+      "denominator": 1,
+      "inputPath": "src/components/common/common-components.test.tsx",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/unit-common-components.json",
+      "expected": "At least 8 tests pass; ARIA, required text, optional slots, retry click and no empty description node."
+    },
+    {
+      "testCaseId": "Phase005:unit-layout",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case unit-layout",
+      "denominator": 1,
+      "inputPath": "src/app/layout.test.ts",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/unit-layout.json",
+      "expected": "At least 2 tests pass; a single root Toaster, moved homepage and no admin pages."
+    },
+    {
+      "testCaseId": "Phase005:unit-middleware",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case unit-middleware",
+      "denominator": 1,
+      "inputPath": "src/middleware.test.ts",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/unit-middleware.json",
+      "expected": "At least 8 tests pass; path boundaries, 404/null body/no identifying headers, matcher and environment/query/cookie bypass rejection."
+    },
+    {
+      "testCaseId": "Phase005:lint",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case lint",
+      "denominator": 1,
+      "inputPath": "eslint.config.mjs",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/lint.json",
+      "expected": "npm run lint exits zero with no warnings."
+    },
+    {
+      "testCaseId": "Phase005:typecheck",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case typecheck",
+      "denominator": 1,
+      "inputPath": "tsconfig.json",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/typecheck.json",
+      "expected": "npm run typecheck exits zero."
+    },
+    {
+      "testCaseId": "Phase005:test",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case test",
+      "denominator": 1,
+      "inputPath": "vitest.config.ts",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/test.json",
+      "expected": "npm run test discovers all six current files and upstream tests; at least 40 passing tests and no failures."
+    },
+    {
+      "testCaseId": "Phase005:format-check",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case format-check",
+      "denominator": 1,
+      "inputPath": ".prettierrc.json",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/format-check.json",
+      "expected": "npm run format:check and explicit formatting check of Phase005 tooling/fixtures exit zero."
+    },
+    {
+      "testCaseId": "Phase005:build",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case build",
+      "denominator": 1,
+      "inputPath": "package.json",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/build.json",
+      "expected": "npm run build exits zero and produces a production build."
+    },
+    {
+      "testCaseId": "Phase005:phase003-regression",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case phase003-regression",
+      "denominator": 1,
+      "inputPath": "scripts/verify-phase003.mjs",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/phase003-regression.json",
+      "expected": "npm run verify:phase003 preserves all nine assertions after changing only the homepage path constant."
+    },
+    {
+      "testCaseId": "Phase005:production-middleware",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case production-middleware",
+      "denominator": 3,
+      "inputPath": "src/middleware.ts",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/production-middleware.json",
+      "expected": "Production HTTP matrix /admin=404 empty, /admin/settings=404 empty, /=200; no identifying or redirect headers and no sidebar text."
+    },
+    {
+      "testCaseId": "Phase005:development-middleware",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case development-middleware",
+      "denominator": 2,
+      "inputPath": "src/middleware.ts",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/development-middleware.json",
+      "expected": "Development HTTP /admin and /admin/login return 404 with an empty body; no local bypass."
+    },
+    {
+      "testCaseId": "Phase005:browser-layout",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case browser-layout",
+      "denominator": 5,
+      "inputPath": "tests/phase005/browser.mjs",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/browser-layout.json",
+      "expected": "Real Chromium: homepage, SiteHeader, static AdminShell and common-state fixture at 320/375/768/1280/1920 widths; DOM, screenshots, no overflow, focus, reduced motion and deterministic accessibility assertions."
+    },
+    {
+      "testCaseId": "Phase005:negative-remove-return",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case negative-remove-return",
+      "denominator": 1,
+      "inputPath": "src/middleware.test.ts",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/negative-remove-return.json",
+      "expected": "Removing the 404 return in an isolated copy makes real admin tests fail; restored suite passes."
+    },
+    {
+      "testCaseId": "Phase005:negative-middleware-next",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case negative-middleware-next",
+      "denominator": 1,
+      "inputPath": "src/middleware.test.ts",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/negative-middleware-next.json",
+      "expected": "Replacing the 404 response with NextResponse.next in an isolated copy makes admin/subroute/login tests fail; restored suite passes."
+    },
+    {
+      "testCaseId": "Phase005:negative-env-bypass",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case negative-env-bypass",
+      "denominator": 1,
+      "inputPath": "src/middleware.test.ts",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/negative-env-bypass.json",
+      "expected": "An environment-dependent allow branch in an isolated copy fails deny-all source and environment guards; restored suite passes."
+    },
+    {
+      "testCaseId": "Phase005:negative-query-bypass",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case negative-query-bypass",
+      "denominator": 1,
+      "inputPath": "src/middleware.test.ts",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/negative-query-bypass.json",
+      "expected": "A query-dependent allow branch in an isolated copy fails source/runtime guards; restored suite passes."
+    },
+    {
+      "testCaseId": "Phase005:negative-cookie-bypass",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case negative-cookie-bypass",
+      "denominator": 1,
+      "inputPath": "src/middleware.test.ts",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/negative-cookie-bypass.json",
+      "expected": "A cookie-dependent allow branch in an isolated copy fails source/runtime guards; restored suite passes."
+    },
+    {
+      "testCaseId": "Phase005:negative-matcher",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case negative-matcher",
+      "denominator": 1,
+      "inputPath": "src/middleware.test.ts",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/negative-matcher.json",
+      "expected": "Shrinking matcher to /admin fails unit matcher assertions and production empty-body coverage for /admin/settings; restoring matcher restores both checks."
+    },
+    {
+      "testCaseId": "Phase005:negative-toaster",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case negative-toaster",
+      "denominator": 1,
+      "inputPath": "src/app/layout.test.ts",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/negative-toaster.json",
+      "expected": "Adding another Toaster in the site layout fails the single-mount guard; restored suite passes."
+    },
+    {
+      "testCaseId": "Phase005:negative-duration",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case negative-duration",
+      "denominator": 1,
+      "inputPath": "src/lib/format.test.ts",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/negative-duration.json",
+      "expected": "Removing negative duration rejection fails its RangeError tests; restored suite passes."
+    },
+    {
+      "testCaseId": "Phase005:negative-stringify",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case negative-stringify",
+      "denominator": 1,
+      "inputPath": "src/lib/json.test.ts",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/negative-stringify.json",
+      "expected": "Replacing stableStringify with JSON.stringify fails key-order and strict-value tests; restored suite passes."
+    },
+    {
+      "testCaseId": "Phase005:negative-locale",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case negative-locale",
+      "denominator": 1,
+      "inputPath": "src/lib/json.test.ts",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/negative-locale.json",
+      "expected": "Replacing ordinal comparison with localeCompare fails fixed key-order fixtures; restored suite passes."
+    },
+    {
+      "testCaseId": "Phase005:negative-alert",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case negative-alert",
+      "denominator": 1,
+      "inputPath": "src/components/common/common-components.test.tsx",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/negative-alert.json",
+      "expected": "Removing ErrorState role=alert fails the component accessibility test; restored suite passes."
+    },
+    {
+      "testCaseId": "Phase005:evidence-binding",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case evidence-binding",
+      "denominator": 1,
+      "inputPath": "docs/phase-plans/Phase005-inputs.json",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/evidence-binding.json",
+      "expected": "Pinned input hashes and complete source/report bindings validate; wrong source/input/plan hashes and denominators are rejected."
+    },
+    {
+      "testCaseId": "Phase005:dependency-generation",
+      "command": "node docs/phase-plans/verify-phase005.mjs --case dependency-generation",
+      "denominator": 1,
+      "inputPath": "docs/runtime-baseline.json",
+      "outputPath": "docs/evidence/attempts/Phase005/attempt-3/dependency-generation.json",
+      "expected": "The pinned npx shadcn@3.2.1 add sonner command actually ran; generated source and required dependencies have exact versions, lock integrity and a compatible build."
+    }
+  ],
+  "modificationScope": [
+    "src/app/",
+    "src/components/common/",
+    "src/components/layout/",
+    "src/components/ui/sonner.tsx",
+    "src/components/travel/.gitkeep",
+    "src/components/chat/.gitkeep",
+    "src/components/admin/.gitkeep",
+    "src/lib/format.ts",
+    "src/lib/json.ts",
+    "src/lib/api-response.ts",
+    "src/lib/format.test.ts",
+    "src/lib/json.test.ts",
+    "src/lib/api-response.test.ts",
+    "src/lib/ai/.gitkeep",
+    "src/server/services/.gitkeep",
+    "src/types/.gitkeep",
+    "prisma/.gitkeep",
+    "src/middleware.ts",
+    "src/middleware.test.ts",
+    "README.md",
+    "package.json",
+    "package-lock.json",
+    "docs/runtime-baseline.json",
+    "scripts/verify-phase003.mjs",
+    "docs/phase-plans/Phase005.json",
+    "docs/phase-plans/Phase005-inputs.json",
+    "docs/phase-plans/verify-phase005.mjs",
+    "docs/phase-plans/complete-phase005.mjs",
+    "docs/phase-plans/phase005-runtime.mjs",
+    "tests/phase005/",
+    "docs/evidence/attempts/Phase005/"
+  ],
+  "threshold": {
+    "originalThreshold": 29,
+    "automatedThreshold": 29,
+    "requiredPassRate": 1,
+    "waived": false
+  },
+  "milestone": {
+    "id": "M1",
+    "phaseRange": [
+      2,
+      5
+    ],
+    "originalThreshold": 6,
+    "automatedThreshold": 6,
+    "requiredCaseIds": [
+      "lint",
+      "typecheck",
+      "test",
+      "format-check",
+      "build",
+      "production-middleware"
+    ],
+    "productionMatrixDenominator": 3,
+    "waived": false
+  },
+  "decisions": [
+    "Only Phase005 is authorized; currentPhase=6 after seal does not authorize Phase006.",
+    "The current card references absent original examples. Freeze local dates as YYYY年M月D日, ranges separated by ～ with spaces, equal dates once; reject reversed/invalid Gregorian dates. No locale/timezone/current-clock dependency.",
+    "Duration: 0分钟,45分钟,1小时30分钟,2小时. Decimal money: CNY ¥1,234.00 / USD $1,234.00, string/BigInt ROUND_HALF_EVEN at two fraction digits, no Number conversion or requirement-budget integer-size cap.",
+    "CostEstimate keeps all eight canonical fields and full FactFreshness. Unknown shows 未知; free 免费; estimated carries 估算; verified_estimate carries 已核验估算; stale carries 已过期/待核验. No unknown-as-zero rendering.",
+    "truncate uses Unicode code points and its limit includes the ellipsis; zero returns empty and invalid lengths throw RangeError.",
+    "Components use the props explicitly recoverable from this card: LoadingState label?, EmptyState title/description?/action?, ErrorState message/onRetry?, PageHeader title/actions?, plus className. ErrorState has the first-line use client directive formatted with project-required double quotes.",
+    "Phase003 bootstrap content is retained as a versioned fixture and moved homepage. The site wrapper is a div to avoid nesting its existing main landmark; p-gutter and wide:max-w-5xl remain exact.",
+    "No real admin pages exist. A production matcher mutation is observable through the mandated empty-body requirement even when the missing route also returns status 404.",
+    "Prior completion rows are immutable candidate records; admission relies on the actual double-shell Phase004 seal and synced metadata, not retroactive edits to old logs."
+  ],
+  "previousAttempts": [
+    {
+      "attemptId": "attempt-1",
+      "planPath": "docs/evidence/attempts/Phase005/attempt-1/frozen-plan.json",
+      "planHash": "840c3a9dbe2f1aaef225a1a4a67e8906412ad1fd43f91f43ffa69d6bae740288"
+    },
+    {
+      "attemptId": "attempt-2",
+      "planPath": "docs/evidence/attempts/Phase005/attempt-2/frozen-plan.json",
+      "planHash": "219b7242cb5bc1945ab3f1089ffb2dbc8f40f9b17ddd13dcbbb4e656800deeb6"
+    }
+  ],
+  "notApplicable": [
+    "Database, authentication, live AI, production traffic and real screen-reader evaluation are outside Phase005."
+  ]
+}
