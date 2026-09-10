@@ -112,3 +112,148 @@ export function requireReportBinding(report, item, planHash, sources, hashFile) 
   }
   requireHashCoverage(report.sourceHashes, sources, hashFile, "REPORT_SOURCE_HASH");
 }
+
+export function requirePriorCaseBinding(plan, priorPlan, { readJson, hashFile } = {}) {
+  assert.equal(
+    plan.phase,
+    priorPlan.phase,
+    "PRIOR_PLAN_PHASE: prior plan belongs to another phase",
+  );
+  const corrections = plan.inputPathCorrections ?? [];
+  assert(Array.isArray(corrections), "PRIOR_PLAN_INPUT_PATH: corrections must be an array");
+  assert(
+    corrections.length <= 1,
+    "PRIOR_PLAN_INPUT_PATH: only one generated migration correction is supported",
+  );
+  const correction = corrections[0];
+  if (correction) {
+    assert.equal(plan.phase, 7, "PRIOR_PLAN_INPUT_PATH: only Phase007 supports this correction");
+    assert.equal(
+      correction.testCaseId,
+      "Phase007:migration",
+      "PRIOR_PLAN_INPUT_PATH: only the migration case can change its input path",
+    );
+    const migrationPattern = /^prisma\/migrations\/[0-9]{14}_system_config\/migration\.sql$/;
+    for (const key of ["from", "to"]) {
+      assert(
+        typeof correction[key] === "string" && migrationPattern.test(correction[key]),
+        `PRIOR_PLAN_INPUT_PATH: invalid ${key} migration path`,
+      );
+    }
+    assert.notEqual(
+      correction.from,
+      correction.to,
+      "PRIOR_PLAN_INPUT_PATH: correction must change the path",
+    );
+    assert(
+      typeof correction.reason === "string" && correction.reason.trim(),
+      "PRIOR_PLAN_INPUT_PATH: correction reason is required",
+    );
+    const receiptPath = "docs/evidence/attempts/Phase007/setup/migration-generation.json";
+    assert.equal(
+      correction.receiptPath,
+      receiptPath,
+      "PRIOR_PLAN_INPUT_PATH: unexpected generation receipt path",
+    );
+    assert(
+      typeof correction.receiptHash === "string" && /^[0-9a-f]{64}$/.test(correction.receiptHash),
+      "PRIOR_PLAN_INPUT_PATH: invalid receipt hash",
+    );
+    assert(
+      typeof readJson === "function" && typeof hashFile === "function",
+      "PRIOR_PLAN_INPUT_PATH: artifact readers are required",
+    );
+    assert.equal(
+      hashFile(receiptPath),
+      correction.receiptHash,
+      "PRIOR_PLAN_INPUT_PATH: generation receipt bytes changed",
+    );
+    const generation = readJson(receiptPath);
+    assert(
+      generation && typeof generation === "object" && !Array.isArray(generation),
+      "PRIOR_PLAN_INPUT_PATH: invalid generation receipt",
+    );
+    assert.equal(
+      generation.generatedMigrationPath,
+      correction.to,
+      "PRIOR_PLAN_INPUT_PATH: target differs from the actual generated migration",
+    );
+    const current = plan.cases.find((item) => item.testCaseId === correction.testCaseId);
+    assert(current, "PRIOR_PLAN_INPUT_PATH: corrected case is absent");
+    assert.equal(
+      current.inputPath,
+      correction.to,
+      "PRIOR_PLAN_INPUT_PATH: current input does not use the generated path",
+    );
+    const rawPath = generation.rawMigrationPath;
+    assert(
+      typeof rawPath === "string" &&
+        rawPath.startsWith("docs/evidence/attempts/Phase007/setup/") &&
+        rawPath.endsWith(".sql") &&
+        rawPath
+          .split("/")
+          .every((part) => /^[A-Za-z0-9._-]+$/.test(part) && part !== "." && part !== ".."),
+      "PRIOR_PLAN_INPUT_PATH: raw migration must be archived inside Phase007 setup evidence",
+    );
+    assert(
+      typeof generation.rawMigrationHash === "string" &&
+        /^[0-9a-f]{64}$/.test(generation.rawMigrationHash),
+      "PRIOR_PLAN_INPUT_PATH: invalid raw migration hash",
+    );
+    assert.equal(
+      hashFile(rawPath),
+      generation.rawMigrationHash,
+      "PRIOR_PLAN_INPUT_PATH: generated SQL bytes changed",
+    );
+    assert(
+      typeof generation.schemaHash === "string" && /^[0-9a-f]{64}$/.test(generation.schemaHash),
+      "PRIOR_PLAN_INPUT_PATH: invalid generation schema hash",
+    );
+    assert.equal(
+      hashFile("prisma/schema.prisma"),
+      generation.schemaHash,
+      "PRIOR_PLAN_INPUT_PATH: generation schema bytes changed",
+    );
+    const generatedHash = hashFile(correction.to);
+    assert(
+      typeof generatedHash === "string" && /^[0-9a-f]{64}$/.test(generatedHash),
+      "PRIOR_PLAN_INPUT_PATH: generated migration file is missing or has an invalid hash",
+    );
+    // The CLI can omit its summary; the receipt binds the generated SQL and current schema.
+    const commandPattern =
+      /^npm run db:migrate -- (?:--name system_config --create-only|--create-only --name system_config)(?: --skip-generate)?$/;
+    assert(
+      Array.isArray(generation.records) &&
+        generation.records.some(
+          (record) =>
+            record &&
+            record.exitCode === 0 &&
+            record.timedOut === false &&
+            typeof record.command === "string" &&
+            commandPattern.test(record.command) &&
+            typeof record.stdout === "string" &&
+            typeof record.stderr === "string",
+        ),
+      "PRIOR_PLAN_INPUT_PATH: no successful create-only command has complete output records",
+    );
+  }
+  for (const oldCase of priorPlan.cases) {
+    const current = plan.cases.find((item) => item.testCaseId === oldCase.testCaseId);
+    assert(current, `PRIOR_PLAN_CASES: required case removed: ${oldCase.testCaseId}`);
+    for (const key of ["command", "denominator", "expected"]) {
+      assert.equal(
+        current[key],
+        oldCase[key],
+        `PRIOR_PLAN_CASES: frozen assertion changed: ${oldCase.testCaseId}.${key}`,
+      );
+    }
+    if (current.inputPath === oldCase.inputPath) continue;
+    assert(
+      correction &&
+        correction.testCaseId === oldCase.testCaseId &&
+        correction.from === oldCase.inputPath &&
+        correction.to === current.inputPath,
+      `PRIOR_PLAN_INPUT_PATH: undeclared input path change: ${oldCase.testCaseId}`,
+    );
+  }
+}

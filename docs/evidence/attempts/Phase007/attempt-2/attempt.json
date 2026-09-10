@@ -1,0 +1,16 @@
+{
+  "phase": 7,
+  "attemptId": "attempt-2",
+  "status": "FAIL",
+  "artifactCommit": null,
+  "planHash": "db7e3caf58ebcf79930751e015e638b7d5f9a971d1f732e80c14fae715213219",
+  "category": "DERIVED_PLAN_PATH",
+  "reviewerRunId": "codex:/root/phase007_requirements:static-review-1",
+  "reason": "The anticipated migration path conflicted with docs/database.md, which requires retaining Prisma's generated timestamp.",
+  "originalInputPath": "prisma/migrations/20260911000000_system_config/migration.sql",
+  "generatedInputPath": "prisma/migrations/20260910172735_system_config/migration.sql",
+  "generationReceipt": "docs/evidence/attempts/Phase007/setup/migration-generation.json",
+  "generationReceiptHash": "6ba7921bc933047dada99d1e81497714dfe4aabacdedbed7b0b3e2d945c03a60",
+  "disposition": "Freeze the actual generated pathname in attempt-3 using a receipt-bound input path correction; preserve the original eight executable assertions and all previous evidence.",
+  "recordedAt": "2026-09-10T17:33:24.055Z"
+}

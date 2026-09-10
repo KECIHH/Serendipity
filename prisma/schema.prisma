@@ -18,19 +18,37 @@ enum UserStatus {
 }
 
 model User {
-  id             String     @id @default(cuid())
-  email          String     @unique
-  phone          String?
-  name           String?
-  avatarUrl      String?
-  passwordHash   String
-  role           Role       @default(USER)
-  status         UserStatus @default(ACTIVE)
-  sessionVersion Int        @default(0)
-  revision       Int        @default(0)
-  lastLoginAt    DateTime?
-  createdAt      DateTime   @default(now()) @db.Timestamptz(3)
-  updatedAt      DateTime   @updatedAt @db.Timestamptz(3)
+  id                   String         @id @default(cuid())
+  email                String         @unique
+  phone                String?
+  name                 String?
+  avatarUrl            String?
+  passwordHash         String
+  role                 Role           @default(USER)
+  status               UserStatus     @default(ACTIVE)
+  sessionVersion       Int            @default(0)
+  revision             Int            @default(0)
+  lastLoginAt          DateTime?
+  createdAt            DateTime       @default(now()) @db.Timestamptz(3)
+  updatedAt            DateTime       @updatedAt @db.Timestamptz(3)
+  updatedSystemConfigs SystemConfig[]
 
   @@index([status])
+}
+
+model SystemConfig {
+  id            String   @id @default(cuid())
+  key           String   @unique
+  valueJson     Json
+  description   String
+  group         String
+  isPublic      Boolean  @default(false)
+  revision      Int      @default(0)
+  updatedBy     String?
+  createdAt     DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt     DateTime @updatedAt @db.Timestamptz(3)
+  updatedByUser User?    @relation(fields: [updatedBy], references: [id], onDelete: SetNull, onUpdate: Cascade)
+
+  @@index([group, key])
+  @@index([updatedBy])
 }

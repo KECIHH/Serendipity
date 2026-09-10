@@ -1,0 +1,56 @@
+{
+  "phase": 7,
+  "attemptId": "attempt-7",
+  "status": "FAIL",
+  "artifactCommit": null,
+  "command": "node docs/phase-plans/verify-phase007.mjs --quality",
+  "planHash": "8daffcf124683468eafc74540124944b5ad4ba5f864cce015b28ce7b164ab17e",
+  "reason": "Error: Prisma CLI and checkpoint network regression failed: \n{\"command\":\"Prisma validate with inherited network guard: disabled\",\"exitCode\":1,\"durationMs\":114}\nfile:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/phase007-runtime.mjs:100\r\n    const error = new Error(`${result.command} failed: ${result.stdout}\\n${result.stderr}`);\r\n                  ^\r\n\r\nError: Prisma validate with inherited network guard: disabled failed: \r\nC:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase006\\cli-network-guard.cjs:13\r\r\n  throw new Error(\"Probe log must stay inside the Phase006 temporary directory\");\r\r\n  ^\r\r\n\r\r\nError: Probe log must stay inside the Phase006 temporary directory\r\r\n    at Object.<anonymous> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase006\\cli-network-guard.cjs:13:9)\r\r\n    at Module._compile (node:internal/modules/cjs/loader:1872:14)\r\r\n    at Object..js (node:internal/modules/cjs/loader:2003:10)\r\r\n    at Module.load (node:internal/modules/cjs/loader:1594:32)\r\r\n    at Module._load (node:internal/modules/cjs/loader:1396:12)\r\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\r\n    at Module.require (node:internal/modules/cjs/loader:1617:12)\r\r\n    at node:internal/modules/cjs/loader:2164:12\r\r\n    at loadPreloadModules (node:internal/process/pre_execution:710:5)\r\r\n    at initializeModuleLoaders (node:internal/process/pre_execution:243:5)\r\r\n\r\r\nNode.js v24.19.0\r\r\n\r\n    at command (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/phase007-runtime.mjs:100:19)\r\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\r\n    at async file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/tests/phase007/cli-network.mjs:37:18 {\r\n  observation: {\r\n    command: 'Prisma validate with inherited network guard: disabled',\r\n    executable: 'C:\\\\Program Files\\\\nodejs\\\\node.exe',\r\n    arguments: [\r\n      'C:\\\\Users\\\\11295\\\\Desktop\\\\Serendipity · 际遇\\\\node_modules\\\\prisma\\\\build\\\\index.js',\r\n      'validate',\r\n      '--schema',\r\n      'C:\\\\Users\\\\11295\\\\Desktop\\\\Serendipity · 际遇\\\\prisma\\\\schema.prisma'\r\n    ],\r\n    cwd: 'C:\\\\Users\\\\11295\\\\Desktop\\\\Serendipity · 际遇\\\\.scaffold\\\\phase007\\\\network\\\\attempt-7\\\\disabled',\r\n    exitCode: 1,\r\n    signal: null,\r\n    timedOut: false,\r\n    stdout: '',\r\n    stderr: 'C:\\\\Users\\\\11295\\\\Desktop\\\\Serendipity · 际遇\\\\tests\\\\phase006\\\\cli-network-guard.cjs:13\\r\\n' +\r\n      '  throw new Error(\"Probe log must stay inside the Phase006 temporary directory\");\\r\\n' +\r\n      '  ^\\r\\n' +\r\n      '\\r\\n' +\r\n      'Error: Probe log must stay inside the Phase006 temporary directory\\r\\n' +\r\n      '    at Object.<anonymous> (C:\\\\Users\\\\11295\\\\Desktop\\\\Serendipity · 际遇\\\\tests\\\\phase006\\\\cli-network-guard.cjs:13:9)\\r\\n' +\r\n      '    at Module._compile (node:internal/modules/cjs/loader:1872:14)\\r\\n' +\r\n      '    at Object..js (node:internal/modules/cjs/loader:2003:10)\\r\\n' +\r\n      '    at Module.load (node:internal/modules/cjs/loader:1594:32)\\r\\n' +\r\n      '    at Module._load (node:internal/modules/cjs/loader:1396:12)\\r\\n' +\r\n      '    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\\r\\n' +\r\n      '    at Module.require (node:internal/modules/cjs/loader:1617:12)\\r\\n' +\r\n      '    at node:internal/modules/cjs/loader:2164:12\\r\\n' +\r\n      '    at loadPreloadModules (node:internal/process/pre_execution:710:5)\\r\\n' +\r\n      '    at initializeModuleLoaders (node:internal/process/pre_execution:243:5)\\r\\n' +\r\n      '\\r\\n' +\r\n      'Node.js v24.19.0\\r\\n',\r\n    durationMs: 114\r\n  }\r\n}\r\n\r\nNode.js v24.19.0\r\n\n    at command (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/phase007-runtime.mjs:100:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async quality (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase007.mjs:327:21)\n    at async file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase007.mjs:367:22",
+  "observation": {
+    "command": "Prisma CLI and checkpoint network regression",
+    "executable": "C:\\Program Files\\nodejs\\node.exe",
+    "arguments": [
+      "tests/phase007/cli-network.mjs"
+    ],
+    "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+    "exitCode": 1,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "",
+    "stderr": "{\"command\":\"Prisma validate with inherited network guard: disabled\",\"exitCode\":1,\"durationMs\":114}\nfile:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/phase007-runtime.mjs:100\r\n    const error = new Error(`${result.command} failed: ${result.stdout}\\n${result.stderr}`);\r\n                  ^\r\n\r\nError: Prisma validate with inherited network guard: disabled failed: \r\nC:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase006\\cli-network-guard.cjs:13\r\r\n  throw new Error(\"Probe log must stay inside the Phase006 temporary directory\");\r\r\n  ^\r\r\n\r\r\nError: Probe log must stay inside the Phase006 temporary directory\r\r\n    at Object.<anonymous> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase006\\cli-network-guard.cjs:13:9)\r\r\n    at Module._compile (node:internal/modules/cjs/loader:1872:14)\r\r\n    at Object..js (node:internal/modules/cjs/loader:2003:10)\r\r\n    at Module.load (node:internal/modules/cjs/loader:1594:32)\r\r\n    at Module._load (node:internal/modules/cjs/loader:1396:12)\r\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\r\n    at Module.require (node:internal/modules/cjs/loader:1617:12)\r\r\n    at node:internal/modules/cjs/loader:2164:12\r\r\n    at loadPreloadModules (node:internal/process/pre_execution:710:5)\r\r\n    at initializeModuleLoaders (node:internal/process/pre_execution:243:5)\r\r\n\r\r\nNode.js v24.19.0\r\r\n\r\n    at command (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/phase007-runtime.mjs:100:19)\r\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\r\n    at async file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/tests/phase007/cli-network.mjs:37:18 {\r\n  observation: {\r\n    command: 'Prisma validate with inherited network guard: disabled',\r\n    executable: 'C:\\\\Program Files\\\\nodejs\\\\node.exe',\r\n    arguments: [\r\n      'C:\\\\Users\\\\11295\\\\Desktop\\\\Serendipity · 际遇\\\\node_modules\\\\prisma\\\\build\\\\index.js',\r\n      'validate',\r\n      '--schema',\r\n      'C:\\\\Users\\\\11295\\\\Desktop\\\\Serendipity · 际遇\\\\prisma\\\\schema.prisma'\r\n    ],\r\n    cwd: 'C:\\\\Users\\\\11295\\\\Desktop\\\\Serendipity · 际遇\\\\.scaffold\\\\phase007\\\\network\\\\attempt-7\\\\disabled',\r\n    exitCode: 1,\r\n    signal: null,\r\n    timedOut: false,\r\n    stdout: '',\r\n    stderr: 'C:\\\\Users\\\\11295\\\\Desktop\\\\Serendipity · 际遇\\\\tests\\\\phase006\\\\cli-network-guard.cjs:13\\r\\n' +\r\n      '  throw new Error(\"Probe log must stay inside the Phase006 temporary directory\");\\r\\n' +\r\n      '  ^\\r\\n' +\r\n      '\\r\\n' +\r\n      'Error: Probe log must stay inside the Phase006 temporary directory\\r\\n' +\r\n      '    at Object.<anonymous> (C:\\\\Users\\\\11295\\\\Desktop\\\\Serendipity · 际遇\\\\tests\\\\phase006\\\\cli-network-guard.cjs:13:9)\\r\\n' +\r\n      '    at Module._compile (node:internal/modules/cjs/loader:1872:14)\\r\\n' +\r\n      '    at Object..js (node:internal/modules/cjs/loader:2003:10)\\r\\n' +\r\n      '    at Module.load (node:internal/modules/cjs/loader:1594:32)\\r\\n' +\r\n      '    at Module._load (node:internal/modules/cjs/loader:1396:12)\\r\\n' +\r\n      '    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\\r\\n' +\r\n      '    at Module.require (node:internal/modules/cjs/loader:1617:12)\\r\\n' +\r\n      '    at node:internal/modules/cjs/loader:2164:12\\r\\n' +\r\n      '    at loadPreloadModules (node:internal/process/pre_execution:710:5)\\r\\n' +\r\n      '    at initializeModuleLoaders (node:internal/process/pre_execution:243:5)\\r\\n' +\r\n      '\\r\\n' +\r\n      'Node.js v24.19.0\\r\\n',\r\n    durationMs: 114\r\n  }\r\n}\r\n\r\nNode.js v24.19.0\r\n",
+    "durationMs": 231
+  },
+  "observations": [
+    {
+      "command": "node --version",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "--version"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "v24.19.0\r\n",
+      "stderr": "",
+      "durationMs": 82
+    },
+    {
+      "command": "npm --version",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "--version"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "11.7.0\n",
+      "stderr": "",
+      "durationMs": 199
+    }
+  ],
+  "artifacts": [],
+  "recordedAt": "2026-09-10T18:18:25.681Z"
+}

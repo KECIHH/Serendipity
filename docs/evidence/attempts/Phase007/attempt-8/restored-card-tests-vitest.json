@@ -1,0 +1,579 @@
+{
+  "numTotalTestSuites": 6,
+  "numPassedTestSuites": 6,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 44,
+  "numPassedTests": 44,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1789064754323,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract migration: User baseline and one SystemConfig migration are fully applied",
+          "status": "passed",
+          "title": "migration: User baseline and one SystemConfig migration are fully applied",
+          "duration": 5.603199999999958,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: model and database inventories contain only the frozen fields and tables",
+          "status": "passed",
+          "title": "schema: model and database inventories contain only the frozen fields and tables",
+          "duration": 14.478000000000009,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: group listing, actor lookup, uniqueness and CHECK constraints are indexed",
+          "status": "passed",
+          "title": "schema: group listing, actor lookup, uniqueness and CHECK constraints are indexed",
+          "duration": 7.27679999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: required key rejects SQL NULL",
+          "status": "passed",
+          "title": "schema: required key rejects SQL NULL",
+          "duration": 6.80359999999996,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: required valueJson rejects SQL NULL",
+          "status": "passed",
+          "title": "schema: required valueJson rejects SQL NULL",
+          "duration": 3.4904000000000224,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: required description rejects SQL NULL",
+          "status": "passed",
+          "title": "schema: required description rejects SQL NULL",
+          "duration": 2.9669999999999845,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: required group rejects SQL NULL",
+          "status": "passed",
+          "title": "schema: required group rejects SQL NULL",
+          "duration": 3.005999999999972,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: required revision rejects SQL NULL",
+          "status": "passed",
+          "title": "schema: required revision rejects SQL NULL",
+          "duration": 2.988299999999981,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: JSON round-trips and timestamps do not advance revision implicitly",
+          "status": "passed",
+          "title": "schema: JSON round-trips and timestamps do not advance revision implicitly",
+          "duration": 21.21519999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract default-private: omitted visibility reads back false with revision zero and no actor",
+          "status": "passed",
+          "title": "default-private: omitted visibility reads back false with revision zero and no actor",
+          "duration": 9.198399999999992,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract key-uniqueness: a duplicate key is rejected across groups with P2002",
+          "status": "passed",
+          "title": "key-uniqueness: a duplicate key is rejected across groups with P2002",
+          "duration": 12.936399999999992,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract key-uniqueness: concurrent insertion records only the one successful owner ID",
+          "status": "passed",
+          "title": "key-uniqueness: concurrent insertion records only the one successful owner ID",
+          "duration": 19.125599999999963,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract group-validation: the parser and database accept AI",
+          "status": "passed",
+          "title": "group-validation: the parser and database accept AI",
+          "duration": 3.3607999999999834,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract group-validation: the parser and database accept UI",
+          "status": "passed",
+          "title": "group-validation: the parser and database accept UI",
+          "duration": 2.7163000000000466,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract group-validation: the parser and database accept EXPORT",
+          "status": "passed",
+          "title": "group-validation: the parser and database accept EXPORT",
+          "duration": 2.430499999999995,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract group-validation: the parser and database accept SECURITY",
+          "status": "passed",
+          "title": "group-validation: the parser and database accept SECURITY",
+          "duration": 2.9103000000000065,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract group-validation: the parser and database accept GENERAL",
+          "status": "passed",
+          "title": "group-validation: the parser and database accept GENERAL",
+          "duration": 2.8244000000000256,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract group-validation: unknown values fail the parser and direct SQL INSERT/UPDATE CHECK",
+          "status": "passed",
+          "title": "group-validation: unknown values fail the parser and direct SQL INSERT/UPDATE CHECK",
+          "duration": 9.902900000000045,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract user-fk: unknown actors fail Prisma and direct SQL foreign-key validation",
+          "status": "passed",
+          "title": "user-fk: unknown actors fail Prisma and direct SQL foreign-key validation",
+          "duration": 6.660499999999956,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract user-fk: deleting the actor sets updatedBy to null and preserves the configuration",
+          "status": "passed",
+          "title": "user-fk: deleting the actor sets updatedBy to null and preserves the configuration",
+          "duration": 9.66050000000007,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract user-fk: updating an actor ID cascades and the generated inverse relation is exact",
+          "status": "passed",
+          "title": "user-fk: updating an actor ID cascades and the generated inverse relation is exact",
+          "duration": 13.544700000000034,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract projection: real Prisma selects return exactly public eight and admin nine safe fields",
+          "status": "passed",
+          "title": "projection: real Prisma selects return exactly public eight and admin nine safe fields",
+          "duration": 8.830400000000054,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract",
+            "cleanup ownership isolation"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract cleanup ownership isolation cleanup: parallel first test removes only its successful IDs and preserves the fixture",
+          "status": "passed",
+          "title": "cleanup: parallel first test removes only its successful IDs and preserves the fixture",
+          "duration": 17.320800000000077,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract",
+            "cleanup ownership isolation"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract cleanup ownership isolation cleanup: parallel second test removes only its successful IDs and preserves the fixture",
+          "status": "passed",
+          "title": "cleanup: parallel second test removes only its successful IDs and preserves the fixture",
+          "duration": 27.745599999999968,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789064754776,
+      "endTime": 1789064754979.7456,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "public-user projection contract"
+          ],
+          "fullName": "public-user projection contract projection: public fields are exactly the eight authorized account fields",
+          "status": "passed",
+          "title": "projection: public fields are exactly the eight authorized account fields",
+          "duration": 3.383899999999983,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "public-user projection contract"
+          ],
+          "fullName": "public-user projection contract projection: admin fields add only the management revision",
+          "status": "passed",
+          "title": "projection: admin fields add only the management revision",
+          "duration": 0.7774000000000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "public-user projection contract"
+          ],
+          "fullName": "public-user projection contract projection: immutable Prisma selects contain only their exact whitelist",
+          "status": "passed",
+          "title": "projection: immutable Prisma selects contain only their exact whitelist",
+          "duration": 0.31670000000002574,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "public-user projection contract"
+          ],
+          "fullName": "public-user projection contract projection: both runtime projection modules retain the server-only boundary",
+          "status": "passed",
+          "title": "projection: both runtime projection modules retain the server-only boundary",
+          "duration": 0.7088999999999714,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: the closed group registry contains exactly five values",
+          "status": "passed",
+          "title": "group-validation: the closed group registry contains exactly five values",
+          "duration": 0.18849999999997635,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: parses the registered group AI",
+          "status": "passed",
+          "title": "group-validation: parses the registered group AI",
+          "duration": 0.17650000000003274,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: parses the registered group UI",
+          "status": "passed",
+          "title": "group-validation: parses the registered group UI",
+          "duration": 0.12360000000001037,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: parses the registered group EXPORT",
+          "status": "passed",
+          "title": "group-validation: parses the registered group EXPORT",
+          "duration": 0.10219999999998208,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: parses the registered group SECURITY",
+          "status": "passed",
+          "title": "group-validation: parses the registered group SECURITY",
+          "duration": 0.11849999999998317,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: parses the registered group GENERAL",
+          "status": "passed",
+          "title": "group-validation: parses the registered group GENERAL",
+          "duration": 0.1452000000000453,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input \"UNKNOWN\"",
+          "status": "passed",
+          "title": "group-validation: rejects unregistered runtime input \"UNKNOWN\"",
+          "duration": 0.7697999999999752,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input \"general\"",
+          "status": "passed",
+          "title": "group-validation: rejects unregistered runtime input \"general\"",
+          "duration": 0.1916999999999689,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input \" GENERAL \"",
+          "status": "passed",
+          "title": "group-validation: rejects unregistered runtime input \" GENERAL \"",
+          "duration": 0.1461999999999648,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input \"\"",
+          "status": "passed",
+          "title": "group-validation: rejects unregistered runtime input \"\"",
+          "duration": 0.13339999999999463,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input null",
+          "status": "passed",
+          "title": "group-validation: rejects unregistered runtime input null",
+          "duration": 0.13749999999998863,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input undefined",
+          "status": "passed",
+          "title": "group-validation: rejects unregistered runtime input undefined",
+          "duration": 0.12439999999998008,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input 7",
+          "status": "passed",
+          "title": "group-validation: rejects unregistered runtime input 7",
+          "duration": 0.12229999999999563,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input {}",
+          "status": "passed",
+          "title": "group-validation: rejects unregistered runtime input {}",
+          "duration": 0.11959999999999127,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input undefined",
+          "status": "passed",
+          "title": "group-validation: rejects unregistered runtime input undefined",
+          "duration": 0.14560000000000173,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input \"GENERAL\"",
+          "status": "passed",
+          "title": "group-validation: rejects unregistered runtime input \"GENERAL\"",
+          "duration": 0.14809999999999945,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789064754722,
+      "endTime": 1789064754730.1482,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/public-user.test.ts"
+    }
+  ]
+}

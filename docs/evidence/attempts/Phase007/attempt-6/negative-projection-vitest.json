@@ -1,0 +1,548 @@
+{
+  "numTotalTestSuites": 6,
+  "numPassedTestSuites": 2,
+  "numFailedTestSuites": 4,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 44,
+  "numPassedTests": 1,
+  "numFailedTests": 4,
+  "numPendingTests": 39,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1789063953827,
+  "success": false,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract migration: User baseline and one SystemConfig migration are fully applied",
+          "status": "skipped",
+          "title": "migration: User baseline and one SystemConfig migration are fully applied",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: model and database inventories contain only the frozen fields and tables",
+          "status": "skipped",
+          "title": "schema: model and database inventories contain only the frozen fields and tables",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: group listing, actor lookup, uniqueness and CHECK constraints are indexed",
+          "status": "skipped",
+          "title": "schema: group listing, actor lookup, uniqueness and CHECK constraints are indexed",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: required key rejects SQL NULL",
+          "status": "skipped",
+          "title": "schema: required key rejects SQL NULL",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: required valueJson rejects SQL NULL",
+          "status": "skipped",
+          "title": "schema: required valueJson rejects SQL NULL",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: required description rejects SQL NULL",
+          "status": "skipped",
+          "title": "schema: required description rejects SQL NULL",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: required group rejects SQL NULL",
+          "status": "skipped",
+          "title": "schema: required group rejects SQL NULL",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: required revision rejects SQL NULL",
+          "status": "skipped",
+          "title": "schema: required revision rejects SQL NULL",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: JSON round-trips and timestamps do not advance revision implicitly",
+          "status": "skipped",
+          "title": "schema: JSON round-trips and timestamps do not advance revision implicitly",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract default-private: omitted visibility reads back false with revision zero and no actor",
+          "status": "skipped",
+          "title": "default-private: omitted visibility reads back false with revision zero and no actor",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract key-uniqueness: a duplicate key is rejected across groups with P2002",
+          "status": "skipped",
+          "title": "key-uniqueness: a duplicate key is rejected across groups with P2002",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract key-uniqueness: concurrent insertion records only the one successful owner ID",
+          "status": "skipped",
+          "title": "key-uniqueness: concurrent insertion records only the one successful owner ID",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract group-validation: the parser and database accept AI",
+          "status": "skipped",
+          "title": "group-validation: the parser and database accept AI",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract group-validation: the parser and database accept UI",
+          "status": "skipped",
+          "title": "group-validation: the parser and database accept UI",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract group-validation: the parser and database accept EXPORT",
+          "status": "skipped",
+          "title": "group-validation: the parser and database accept EXPORT",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract group-validation: the parser and database accept SECURITY",
+          "status": "skipped",
+          "title": "group-validation: the parser and database accept SECURITY",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract group-validation: the parser and database accept GENERAL",
+          "status": "skipped",
+          "title": "group-validation: the parser and database accept GENERAL",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract group-validation: unknown values fail the parser and direct SQL INSERT/UPDATE CHECK",
+          "status": "skipped",
+          "title": "group-validation: unknown values fail the parser and direct SQL INSERT/UPDATE CHECK",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract user-fk: unknown actors fail Prisma and direct SQL foreign-key validation",
+          "status": "skipped",
+          "title": "user-fk: unknown actors fail Prisma and direct SQL foreign-key validation",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract user-fk: deleting the actor sets updatedBy to null and preserves the configuration",
+          "status": "skipped",
+          "title": "user-fk: deleting the actor sets updatedBy to null and preserves the configuration",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract user-fk: updating an actor ID cascades and the generated inverse relation is exact",
+          "status": "skipped",
+          "title": "user-fk: updating an actor ID cascades and the generated inverse relation is exact",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract projection: real Prisma selects return exactly public eight and admin nine safe fields",
+          "status": "failed",
+          "title": "projection: real Prisma selects return exactly public eight and admin nine safe fields",
+          "duration": 24.99090000000001,
+          "failureMessages": [
+            "AssertionError: expected [ 'avatarUrl', 'createdAt', …(7) ] to deeply equal [ 'avatarUrl', 'createdAt', …(6) ]\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase007/fixtures/mutation-projection-4Qh8wR/tests/integration/config-models.test.ts:374:44\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract",
+            "cleanup ownership isolation"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract cleanup ownership isolation cleanup: parallel first test removes only its successful IDs and preserves the fixture",
+          "status": "skipped",
+          "title": "cleanup: parallel first test removes only its successful IDs and preserves the fixture",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract",
+            "cleanup ownership isolation"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract cleanup ownership isolation cleanup: parallel second test removes only its successful IDs and preserves the fixture",
+          "status": "skipped",
+          "title": "cleanup: parallel second test removes only its successful IDs and preserves the fixture",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789063954342,
+      "endTime": 1789063954366.991,
+      "status": "failed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase007/fixtures/mutation-projection-4Qh8wR/tests/integration/config-models.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "public-user projection contract"
+          ],
+          "fullName": "public-user projection contract projection: public fields are exactly the eight authorized account fields",
+          "status": "failed",
+          "title": "projection: public fields are exactly the eight authorized account fields",
+          "duration": 7.280599999999993,
+          "failureMessages": [
+            "AssertionError: expected [ 'id', 'email', 'name', …(6) ] to deeply equal [ 'id', 'email', 'name', …(5) ]\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase007/fixtures/mutation-projection-4Qh8wR/tests/lib/public-user.test.ts:14:32\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2305:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2272:10)\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2956:64"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "public-user projection contract"
+          ],
+          "fullName": "public-user projection contract projection: admin fields add only the management revision",
+          "status": "failed",
+          "title": "projection: admin fields add only the management revision",
+          "duration": 1.0061000000000035,
+          "failureMessages": [
+            "AssertionError: expected [ 'id', 'email', 'name', …(7) ] to deeply equal [ 'id', 'email', 'name', …(6) ]\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase007/fixtures/mutation-projection-4Qh8wR/tests/lib/public-user.test.ts:23:31\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2305:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2272:10)\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2956:64"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "public-user projection contract"
+          ],
+          "fullName": "public-user projection contract projection: immutable Prisma selects contain only their exact whitelist",
+          "status": "failed",
+          "title": "projection: immutable Prisma selects contain only their exact whitelist",
+          "duration": 1.0394000000000005,
+          "failureMessages": [
+            "AssertionError: expected [ 'id', 'email', 'name', …(6) ] to deeply equal [ 'id', 'email', 'name', …(5) ]\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase007/fixtures/mutation-projection-4Qh8wR/tests/lib/public-user.test.ts:33:45\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2305:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2272:10)\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2956:64"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "public-user projection contract"
+          ],
+          "fullName": "public-user projection contract projection: both runtime projection modules retain the server-only boundary",
+          "status": "passed",
+          "title": "projection: both runtime projection modules retain the server-only boundary",
+          "duration": 1.0241999999999507,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: the closed group registry contains exactly five values",
+          "status": "skipped",
+          "title": "group-validation: the closed group registry contains exactly five values",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: parses the registered group AI",
+          "status": "skipped",
+          "title": "group-validation: parses the registered group AI",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: parses the registered group UI",
+          "status": "skipped",
+          "title": "group-validation: parses the registered group UI",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: parses the registered group EXPORT",
+          "status": "skipped",
+          "title": "group-validation: parses the registered group EXPORT",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: parses the registered group SECURITY",
+          "status": "skipped",
+          "title": "group-validation: parses the registered group SECURITY",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: parses the registered group GENERAL",
+          "status": "skipped",
+          "title": "group-validation: parses the registered group GENERAL",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input \"UNKNOWN\"",
+          "status": "skipped",
+          "title": "group-validation: rejects unregistered runtime input \"UNKNOWN\"",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input \"general\"",
+          "status": "skipped",
+          "title": "group-validation: rejects unregistered runtime input \"general\"",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input \" GENERAL \"",
+          "status": "skipped",
+          "title": "group-validation: rejects unregistered runtime input \" GENERAL \"",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input \"\"",
+          "status": "skipped",
+          "title": "group-validation: rejects unregistered runtime input \"\"",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input null",
+          "status": "skipped",
+          "title": "group-validation: rejects unregistered runtime input null",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input undefined",
+          "status": "skipped",
+          "title": "group-validation: rejects unregistered runtime input undefined",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input 7",
+          "status": "skipped",
+          "title": "group-validation: rejects unregistered runtime input 7",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input {}",
+          "status": "skipped",
+          "title": "group-validation: rejects unregistered runtime input {}",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input undefined",
+          "status": "skipped",
+          "title": "group-validation: rejects unregistered runtime input undefined",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input \"GENERAL\"",
+          "status": "skipped",
+          "title": "group-validation: rejects unregistered runtime input \"GENERAL\"",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789063954283,
+      "endTime": 1789063954293.0242,
+      "status": "failed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase007/fixtures/mutation-projection-4Qh8wR/tests/lib/public-user.test.ts"
+    }
+  ]
+}

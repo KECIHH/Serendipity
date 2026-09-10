@@ -1,0 +1,138 @@
+{
+  "phase": 7,
+  "attemptId": "attempt-5",
+  "status": "FAIL",
+  "artifactCommit": null,
+  "command": "node docs/phase-plans/verify-phase007.mjs --case mutation",
+  "planHash": "9d29267bf37f45e7025dbdd5bb7dfbd0306588bb5bec1e641c869ec80ee08119",
+  "reason": "AssertionError [ERR_ASSERTION]: Mutation failed for the wrong reason\n    at mutations (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase007.mjs:251:7)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase007.mjs:373:23",
+  "observations": [
+    {
+      "command": "docker exec -i f9110e8ed24197ebadde7967cce59e4f0c40f9c88c87fc940c656e7ab280b144 psql -X -v ON_ERROR_STOP=1 -U phase007_runner -d postgres -At",
+      "executable": "docker.exe",
+      "arguments": [
+        "exec",
+        "-i",
+        "f9110e8ed24197ebadde7967cce59e4f0c40f9c88c87fc940c656e7ab280b144",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "phase007_runner",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "CREATE DATABASE\n",
+      "stderr": "",
+      "durationMs": 271
+    },
+    {
+      "command": "docker exec -i f9110e8ed24197ebadde7967cce59e4f0c40f9c88c87fc940c656e7ab280b144 psql -X -v ON_ERROR_STOP=1 -U phase007_runner -d postgres -At",
+      "executable": "docker.exe",
+      "arguments": [
+        "exec",
+        "-i",
+        "f9110e8ed24197ebadde7967cce59e4f0c40f9c88c87fc940c656e7ab280b144",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "phase007_runner",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "COMMENT\n",
+      "stderr": "",
+      "durationMs": 244
+    },
+    {
+      "command": "npm exec -- prisma migrate deploy",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "exec",
+        "--",
+        "prisma",
+        "migrate",
+        "deploy"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase007\\fixtures\\mutation-default-ynSVpT",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "Prisma schema loaded from prisma\\schema.prisma\nDatasource \"db\": PostgreSQL database \"phase007_disposable_1b748b58054d_a5_mut_default\", schema \"public\" at \"127.0.0.1:52349\"\n\n2 migrations found in prisma/migrations\n\nApplying migration `20260910000000_init_user`\nApplying migration `20260910172735_system_config`\n\nThe following migration(s) have been applied:\n\nmigrations/\n  └─ 20260910000000_init_user/\n    └─ migration.sql\n  └─ 20260910172735_system_config/\n    └─ migration.sql\n      \nAll migrations have been successfully applied.\n",
+      "stderr": "",
+      "durationMs": 1716
+    },
+    {
+      "command": "npm run test -- tests/integration/config-models.test.ts -t default-private: --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase007\\attempt-5-negative-default-vitest.json",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test",
+        "--",
+        "tests/integration/config-models.test.ts",
+        "-t",
+        "default-private:",
+        "--reporter=json",
+        "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase007\\attempt-5-negative-default-vitest.json"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase007\\fixtures\\mutation-default-ynSVpT",
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/integration/config-models.test.ts -t default-private: --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase007\\attempt-5-negative-default-vitest.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase007/attempt-5-negative-default-vitest.json\n",
+      "stderr": "",
+      "durationMs": 1488
+    },
+    {
+      "command": "docker exec -i f9110e8ed24197ebadde7967cce59e4f0c40f9c88c87fc940c656e7ab280b144 psql -X -v ON_ERROR_STOP=1 -U phase007_runner -d postgres -At",
+      "executable": "docker.exe",
+      "arguments": [
+        "exec",
+        "-i",
+        "f9110e8ed24197ebadde7967cce59e4f0c40f9c88c87fc940c656e7ab280b144",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "phase007_runner",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "DROP DATABASE\n",
+      "stderr": "",
+      "durationMs": 252
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/attempts/Phase007/attempt-5/mutations/default.sql",
+      "sha256": "6ce8cd69ff6edc36896e6f51cfbbd218d85e44dfc20730d832826a545a7000ef"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase007/attempt-5/negative-default-vitest.json",
+      "sha256": "4afc046cb4ca8387c4cecf9a9d68bae07296722d9fb421559e5dce7b0da1d09d"
+    }
+  ],
+  "recordedAt": "2026-09-10T18:08:16.107Z"
+}

@@ -1,0 +1,19 @@
+{
+  "phase": 7,
+  "attemptId": "attempt-1",
+  "status": "BLOCKED",
+  "blockedCategory": "ENV",
+  "artifactCommit": null,
+  "command": "node docs/phase-plans/setup-phase007.mjs --database",
+  "exitCode": 1,
+  "planHash": "11e822a7112bbe9eade1d65faa13f91fd19101680aa2dc0b6add77e158559d84",
+  "reason": "The asynchronous Docker Desktop startup had not yet created the dockerDesktopLinuxEngine pipe. The pinned PostgreSQL image inspect command failed before any database or container was created.",
+  "observation": {
+    "command": "docker image inspect --format {{json .RepoDigests}} postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0",
+    "exitCode": 1,
+    "durationMs": 197,
+    "stderr": "failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified."
+  },
+  "recovery": "Docker Desktop was started with docker desktop start --detach. Subsequent docker info, docker version and pinned image inspect returned exit code 0. Freeze a new attempt and run database setup again.",
+  "recordedAt": "2026-09-10T17:10:57.958Z"
+}

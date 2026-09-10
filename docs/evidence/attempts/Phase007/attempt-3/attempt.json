@@ -1,0 +1,13 @@
+{
+  "phase": 7,
+  "attemptId": "attempt-3",
+  "status": "FAIL",
+  "artifactCommit": null,
+  "planHash": "c176d4c83524ddea07719954dc32fc0720ed0984526ae9cb652d045671c93eba",
+  "command": "node docs/phase-plans/complete-phase007.mjs --without-review",
+  "exitCode": 1,
+  "observation": "AssertionError [ERR_ASSERTION]: PRIOR_PLAN_INPUT_PATH: no successful create-only command names the generated directory\n    at requirePriorCaseBinding (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/scripts/phase-evidence.mjs:212:5)\n    at audit (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/complete-phase007.mjs:33:5)\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/complete-phase007.mjs:161:25\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n",
+  "reason": "The new migration input-path verifier assumed Prisma printed the generated directory. The real successful create-only report had no such output. Independent review reproduced the failure.",
+  "disposition": "Keep the original receipt unchanged. Bind the verified generated pathname, raw SQL/hash, schema hash and successful command, support silent output, expand secret scanning to schema and migration, and rerun all eight cases in a new attempt.",
+  "recordedAt": "2026-09-10T17:51:54.689Z"
+}

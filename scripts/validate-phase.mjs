@@ -10,6 +10,7 @@ import {
   requireHashCoverage,
   requireReviewIdentity,
   requireReportBinding,
+  requirePriorCaseBinding,
 } from "./phase-evidence.mjs";
 import { checkpointHistoryEnvironment, validateCheckpointImport } from "./checkpoint-history.mjs";
 
@@ -703,17 +704,10 @@ export function validatePhase({
         "PRIOR_PLAN_ATTEMPT",
         "Current attempt cannot be its own previous attempt",
       );
-      for (const oldCase of old.cases) {
-        const current = plan.cases.find((item) => item.testCaseId === oldCase.testCaseId);
-        ensure(current, "PRIOR_PLAN_CASES", `Required case removed: ${oldCase.testCaseId}`);
-        for (const key of ["command", "denominator", "inputPath", "expected"])
-          same(
-            current[key],
-            oldCase[key],
-            "PRIOR_PLAN_CASES",
-            `Frozen previous assertion changed: ${oldCase.testCaseId}.${key}`,
-          );
-      }
+      requirePriorCaseBinding(plan, old, {
+        readJson: artifactJson,
+        hashFile: (file) => sha256(artifactBlob(file)),
+      });
       ensure(
         plan.threshold?.originalThreshold >= old.threshold?.originalThreshold,
         "PRIOR_PLAN_THRESHOLD",
