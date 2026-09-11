@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "phase": 11,
+  "status": "FAIL",
+  "simulation": true,
+  "productionTraffic": false,
+  "verificationScope": "AUTOMATED_BROWSER_A11Y",
+  "humanScreenReaderExperience": "NOT_EVALUATED",
+  "caseCount": 1,
+  "results": [
+    {
+      "id": "public-routing",
+      "status": "FAIL",
+      "diagnostic": "AssertionError [ERR_ASSERTION]: The middleware adapter must preserve the exact configured authentication origin\n+ actual - expected\n\n+ '/admin/login'\n- 'http://127.0.0.1:59377/admin/login'\n\n    at <anonymous> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase011\\browser.mjs:409:16)\n    at async caseRun (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase011\\browser.mjs:108:26)\n    at async <anonymous> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase011\\browser.mjs:406:7)\n    at async withAuthDatabase (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase011\\auth-fixture.ts:200:12)\n    at async runBrowser (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase011\\browser.mjs:331:3)\n    at async <anonymous> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase011\\browser.mjs:906:3)"
+    }
+  ],
+  "artifacts": [],
+  "commands": [
+    {
+      "command": "npm run build",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "build"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "\n> serendipity@0.1.0 build\n> next build\n\n   ▲ Next.js 15.5.24\n   - Environments: .env.local\n\n   Creating an optimized production build ...\n ✓ Compiled successfully in 5.3s\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/7) ...\n   Generating static pages (1/7) \r\n   Generating static pages (3/7) \r\n   Generating static pages (5/7) \r\n ✓ Generating static pages (7/7)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                                 Size  First Load JS\n┌ ○ /                                    77.2 kB         180 kB\n├ ○ /_not-found                            993 B         104 kB\n├ ƒ /admin                                2.4 kB         120 kB\n├ ○ /admin/login                         2.04 kB         120 kB\n├ ƒ /api/auth/[...nextauth]                126 B         103 kB\n└ ○ /login                               2.03 kB         117 kB\n+ First Load JS shared by all             103 kB\n  ├ chunks/255-c5a697ddbf82d774.js       46.4 kB\n  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB\n  └ other shared chunks (total)             2 kB\n\n\nƒ Middleware                             37.5 kB\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+      "stderr": "",
+      "durationMs": 23345
+    },
+    {
+      "command": "npm start (browser fixture)",
+      "ready": true,
+      "stoppedByFixture": true,
+      "stdout": "\n> serendipity@0.1.0 start\n> node --import tsx scripts/auth-server.mjs --port 59377 --hostname 127.0.0.1\n\nSerendipity listening on 127.0.0.1:59377\n",
+      "stderr": "",
+      "durationMs": 4839
+    }
+  ],
+  "browserVersion": "140.0.7339.186",
+  "configuredBrowserOrigin": "http://127.0.0.1:59377",
+  "localRequestCount": 0,
+  "externalRequestCount": 0,
+  "blockedRequestDestinations": [],
+  "credentials": "SYNTHETIC_NOT_ARCHIVED",
+  "diagnostic": "Error: Browser case public-routing failed.\n    at caseRun (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase011\\browser.mjs:112:11)\n    at async <anonymous> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase011\\browser.mjs:406:7)\n    at async withAuthDatabase (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase011\\auth-fixture.ts:200:12)\n    at async runBrowser (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase011\\browser.mjs:331:3)\n    at async <anonymous> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase011\\browser.mjs:906:3)"
+}

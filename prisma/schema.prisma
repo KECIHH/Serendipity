@@ -23,6 +23,19 @@ enum ApiKeyStatus {
   REVOKED
 }
 
+enum AuthSessionStatus {
+  ACTIVE
+  REVOKED
+  EXPIRED
+}
+
+enum AuthLoginAttemptStatus {
+  RESERVED
+  FAILED
+  SUCCEEDED
+  EXPIRED
+}
+
 enum TravelStatus {
   DRAFT
   NEEDS_INFO
@@ -61,6 +74,7 @@ model User {
   updatedSystemConfigs SystemConfig[]
   travelRecords        TravelRecord[]
   auditLogs            AuditLog[]
+  authSessions         AuthSession[]
 
   @@index([status])
 }
@@ -151,11 +165,45 @@ model ApiKeyConfig {
   envelopeVersion Int          @default(1)
   keyFingerprint  String       @unique @db.Char(64)
   status          ApiKeyStatus @default(ACTIVE)
-  lastUsedAt      DateTime?     @db.Timestamptz(3)
-  revokedAt       DateTime?     @db.Timestamptz(3)
-  createdAt       DateTime      @default(now()) @db.Timestamptz(3)
-  updatedAt       DateTime      @updatedAt @db.Timestamptz(3)
+  lastUsedAt      DateTime?    @db.Timestamptz(3)
+  revokedAt       DateTime?    @db.Timestamptz(3)
+  createdAt       DateTime     @default(now()) @db.Timestamptz(3)
+  updatedAt       DateTime     @updatedAt @db.Timestamptz(3)
   revision        Int          @default(0)
 
   @@index([provider, status])
+}
+
+model AuthSession {
+  id             String            @id @default(cuid())
+  userId         String
+  tokenHash      String            @unique @db.Char(64)
+  audience       String            @db.VarChar(16)
+  sessionVersion Int
+  status         AuthSessionStatus @default(ACTIVE)
+  issuedAt       DateTime          @db.Timestamptz(3)
+  expiresAt      DateTime          @db.Timestamptz(3)
+  lastSeenAt     DateTime?         @db.Timestamptz(3)
+  revokedAt      DateTime?         @db.Timestamptz(3)
+  createdAt      DateTime          @default(now()) @db.Timestamptz(3)
+  user           User              @relation(fields: [userId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  @@index([userId, status, expiresAt, id])
+  @@index([expiresAt])
+}
+
+model AuthLoginAttempt {
+  id            String                 @id @default(cuid())
+  scope         String                 @db.VarChar(16)
+  ipHash        String                 @db.Char(64)
+  accountHash   String                 @db.Char(64)
+  status        AuthLoginAttemptStatus @default(RESERVED)
+  reservedUntil DateTime               @db.Timestamptz(3)
+  createdAt     DateTime               @default(now()) @db.Timestamptz(3)
+  completedAt   DateTime?              @db.Timestamptz(3)
+  requestId     String                 @unique @db.VarChar(36)
+
+  @@index([scope, ipHash, createdAt])
+  @@index([scope, accountHash, createdAt])
+  @@index([status, reservedUntil, id])
 }

@@ -1,0 +1,37 @@
+{
+  "phase": 11,
+  "attemptId": "attempt-4",
+  "status": "FAIL",
+  "kind": "SUPPORTING_CHECK",
+  "artifactCommit": null,
+  "command": "npm run lint",
+  "exitCode": 1,
+  "planHash": "e6cefa4051c8350661eb48785df3c0f58eb65502c266176eeaa4795bb73c3c73",
+  "reason": "Pre-Gate lint rejected an unused worker parameter; TypeScript rejected two ProcessEnv objects without NODE_ENV and one SystemConfig create fixture without description. Real diagnostic commands and source snapshots are retained. These are fixture/check failures, not successful product Gate evidence.",
+  "failureReports": [
+    {
+      "path": "docs/evidence/attempts/Phase011/attempt-4/diagnostic-lint-1789142986245.json",
+      "sha256": "e239c49dd87fe60a5015a9ff362c7d7b75ba47789715b54f4e8fe93c6a8c7bab",
+      "command": "npm run lint",
+      "exitCode": 1
+    },
+    {
+      "path": "docs/evidence/attempts/Phase011/attempt-4/diagnostic-typecheck-1789142986245.json",
+      "sha256": "57a82133fba5f51df9ade0f17356e948d2e0b7de5747c134fcad8312f61aa925",
+      "command": "npm run typecheck",
+      "exitCode": 2
+    }
+  ],
+  "supportingDiagnostic": {
+    "path": "docs/evidence/attempts/Phase011/attempt-4/diagnostic-unit-1789142986245.json",
+    "sha256": "14a551ef1ffbf67cbe63dc0ad4ae5b3e4c3d3cdacb0d462cb8c53b943836b9f2",
+    "passedTests": 122,
+    "formalCaseEvidence": false
+  },
+  "evidencePreparationObservation": {
+    "command": "Inline receipt creation through node --input-type=module",
+    "exitCode": 1,
+    "error": "ERR_INVALID_ARG_TYPE: Array.map passed its index as json(file, base). No receipt was written by that failed preparation command; an explicit file-only callback corrects preparation without changing product evidence."
+  },
+  "recordedAt": "2026-09-11T16:12:13.905Z"
+}

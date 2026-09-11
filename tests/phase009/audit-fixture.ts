@@ -75,7 +75,7 @@ export function systemInput(targetId: string | null = null): AuditLogInput {
 export function readPhase009Target(
   value: string | undefined,
   runtime: boolean,
-): { url: URL; runId: string; phase: "009" | "010" } {
+): { url: URL; runId: string; phase: "009" | "010" | "011" } {
   let url: URL;
   try {
     if (value === undefined) throw new Error();
@@ -83,7 +83,9 @@ export function readPhase009Target(
   } catch {
     throw new Error("Phase009 requires an explicit disposable database URL");
   }
-  const match = /^\/phase(009|010)_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(url.pathname);
+  const match = /^\/phase(009|010|011)_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(
+    url.pathname,
+  );
   if (
     !match ||
     url.pathname.length > 64 ||
@@ -97,7 +99,7 @@ export function readPhase009Target(
     )
   )
     throw new Error("Phase009 rejected an unowned database target");
-  return { url, runId: match[2], phase: match[1] as "009" | "010" };
+  return { url, runId: match[2], phase: match[1] as "009" | "010" | "011" };
 }
 
 export async function connectPhase009Database(

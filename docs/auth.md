@@ -34,6 +34,8 @@ ERASE 的重新认证仅使用当前密码及 confirmErasure=true；EXPORT 禁�
 
 ## 可执行规则与验证
 
+Phase011 的真实实现及当前运行边界见 [阶段说明](phase011.md)。两入口复用一个 Credentials Provider；Auth.js JWE 与 Cookie 的到期时间均固定为数据库的绝对期限。Node ingress 的连接证明、固定 origin、默认不信代理、请求范围防重放及最小列权限由 [hosting](hosting.md) 与阶段说明展开。退出须以严格解码的当前会话完成撤销，框架解析失败不能冒充成功；本机清 Cookie 与数据库撤销结果分别表达。
+
 以下块是本文件机器规则；测试用合成字符串与注入时钟解释规则，不声称已经运行 Auth.js、bcrypt 或 PostgreSQL。Phase011/083 必须再通过真实实现和并发数据库验证。
 
 <!-- contract:auth-policy -->

@@ -1,0 +1,1450 @@
+{
+  "numTotalTestSuites": 16,
+  "numPassedTestSuites": 16,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 113,
+  "numPassedTests": 113,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1789151063581,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "admin-login real PostgreSQL security"
+          ],
+          "fullName": "admin-login real PostgreSQL security valid-login: real seeded administrator creates one fixed-lifetime session and transactional audit",
+          "status": "passed",
+          "title": "valid-login: real seeded administrator creates one fixed-lifetime session and transactional audit",
+          "duration": 2152.0095,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin-login real PostgreSQL security"
+          ],
+          "fullName": "admin-login real PostgreSQL security valid-login: schema and application privileges prohibit history edits, weak deadlines and raw identities",
+          "status": "passed",
+          "title": "valid-login: schema and application privileges prohibit history edits, weak deadlines and raw identities",
+          "duration": 2169.9394,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin-login real PostgreSQL security"
+          ],
+          "fullName": "admin-login real PostgreSQL security uniform-failure: four valid-format failures all perform one real cost12 comparison with indistinguishable result and timing",
+          "status": "passed",
+          "title": "uniform-failure: four valid-format failures all perform one real cost12 comparison with indistinguishable result and timing",
+          "duration": 19810.677499999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin-login real PostgreSQL security"
+          ],
+          "fullName": "admin-login real PostgreSQL security uniform-failure: bounds prevent bcrypt truncation and client role or session claims cannot authorize a USER",
+          "status": "passed",
+          "title": "uniform-failure: bounds prevent bcrypt truncation and client role or session claims cannot authorize a USER",
+          "duration": 2422.443299999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin-login real PostgreSQL security"
+          ],
+          "fullName": "admin-login real PostgreSQL security dual-throttle: sixth account and twenty-first IP attempts deny independently; success preserves attack history",
+          "status": "passed",
+          "title": "dual-throttle: sixth account and twenty-first IP attempts deny independently; success preserves attack history",
+          "duration": 8940.658300000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin-login real PostgreSQL security"
+          ],
+          "fullName": "admin-login real PostgreSQL security dual-throttle: advisory locks enforce both budgets under parallel independent real connections",
+          "status": "passed",
+          "title": "dual-throttle: advisory locks enforce both budgets under parallel independent real connections",
+          "duration": 2370.7079999999987,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin-login real PostgreSQL security"
+          ],
+          "fullName": "admin-login real PostgreSQL security dual-throttle: reservation convergence is idempotent and a crashed reservation releases only after its database TTL",
+          "status": "passed",
+          "title": "dual-throttle: reservation convergence is idempotent and a crashed reservation releases only after its database TTL",
+          "duration": 1902.9066999999995,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin-login real PostgreSQL security"
+          ],
+          "fullName": "admin-login real PostgreSQL security persistence-proxy: reconnect and independent process retain buckets; forged forwarding cannot select another identity",
+          "status": "passed",
+          "title": "persistence-proxy: reconnect and independent process retain buckets; forged forwarding cannot select another identity",
+          "duration": 3797.2249999999985,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin-login real PostgreSQL security"
+          ],
+          "fullName": "admin-login real PostgreSQL security session-revocation: version change invalidates the old token on the next database check",
+          "status": "passed",
+          "title": "session-revocation: version change invalidates the old token on the next database check",
+          "duration": 2380.9461999999985,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin-login real PostgreSQL security"
+          ],
+          "fullName": "admin-login real PostgreSQL security session-revocation: role change invalidates the old token on the next database check",
+          "status": "passed",
+          "title": "session-revocation: role change invalidates the old token on the next database check",
+          "duration": 2386.415700000005,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin-login real PostgreSQL security"
+          ],
+          "fullName": "admin-login real PostgreSQL security session-revocation: status change invalidates the old token on the next database check",
+          "status": "passed",
+          "title": "session-revocation: status change invalidates the old token on the next database check",
+          "duration": 2379.0213000000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin-login real PostgreSQL security"
+          ],
+          "fullName": "admin-login real PostgreSQL security session-revocation: expiry change invalidates the old token on the next database check",
+          "status": "passed",
+          "title": "session-revocation: expiry change invalidates the old token on the next database check",
+          "duration": 2459.9231,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin-login real PostgreSQL security"
+          ],
+          "fullName": "admin-login real PostgreSQL security session-revocation: logout change invalidates the old token on the next database check",
+          "status": "passed",
+          "title": "session-revocation: logout change invalidates the old token on the next database check",
+          "duration": 2428.3147000000026,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin-login real PostgreSQL security"
+          ],
+          "fullName": "admin-login real PostgreSQL security session-revocation: a concurrent passwordHash change between comparison and issuance cannot inherit the prior credential check",
+          "status": "passed",
+          "title": "session-revocation: a concurrent passwordHash change between comparison and issuance cannot inherit the prior credential check",
+          "duration": 2086.655200000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin-login real PostgreSQL security"
+          ],
+          "fullName": "admin-login real PostgreSQL security session-revocation: a concurrent sessionVersion change between comparison and issuance cannot inherit the prior credential check",
+          "status": "passed",
+          "title": "session-revocation: a concurrent sessionVersion change between comparison and issuance cannot inherit the prior credential check",
+          "duration": 2086.1368,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin-login real PostgreSQL security"
+          ],
+          "fullName": "admin-login real PostgreSQL security session-revocation: a concurrent role change between comparison and issuance cannot inherit the prior credential check",
+          "status": "passed",
+          "title": "session-revocation: a concurrent role change between comparison and issuance cannot inherit the prior credential check",
+          "duration": 2087.9530000000013,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin-login real PostgreSQL security"
+          ],
+          "fullName": "admin-login real PostgreSQL security session-revocation: a concurrent status change between comparison and issuance cannot inherit the prior credential check",
+          "status": "passed",
+          "title": "session-revocation: a concurrent status change between comparison and issuance cannot inherit the prior credential check",
+          "duration": 2107.5043000000005,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin-login real PostgreSQL security"
+          ],
+          "fullName": "admin-login real PostgreSQL security guards: real Next request stores and database-backed Route/Action guards precede all resource queries and writes",
+          "status": "passed",
+          "title": "guards: real Next request stores and database-backed Route/Action guards precede all resource queries and writes",
+          "duration": 2988.3319000000047,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin-login real PostgreSQL security"
+          ],
+          "fullName": "admin-login real PostgreSQL security guards: database, throttle and audit failures fail closed and rollback every session/user success effect",
+          "status": "passed",
+          "title": "guards: database, throttle and audit failures fail closed and rollback every session/user success effect",
+          "duration": 2451.4742000000115,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin-login real PostgreSQL security"
+          ],
+          "fullName": "admin-login real PostgreSQL security routing-logout: USER and ADMIN share one service while logout revokes only its current row",
+          "status": "passed",
+          "title": "routing-logout: USER and ADMIN share one service while logout revokes only its current row",
+          "duration": 2428.7954000000027,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789151064353,
+      "endTime": 1789151136194.7954,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/admin-login.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "shared administrator and user login form"
+          ],
+          "fullName": "shared administrator and user login form labels inputs, masks the password and posts only to the single Auth.js provider",
+          "status": "passed",
+          "title": "labels inputs, masks the password and posts only to the single Auth.js provider",
+          "duration": 117.80970000000002,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "shared administrator and user login form"
+          ],
+          "fullName": "shared administrator and user login form shows a safe accessible error on status 401 without navigating",
+          "status": "passed",
+          "title": "shows a safe accessible error on status 401 without navigating",
+          "duration": 32.74980000000005,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "shared administrator and user login form"
+          ],
+          "fullName": "shared administrator and user login form shows a safe accessible error on status 429 without navigating",
+          "status": "passed",
+          "title": "shows a safe accessible error on status 429 without navigating",
+          "duration": 26.36180000000013,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "shared administrator and user login form"
+          ],
+          "fullName": "shared administrator and user login form shows a safe accessible error on status 503 without navigating",
+          "status": "passed",
+          "title": "shows a safe accessible error on status 503 without navigating",
+          "duration": 30.889799999999923,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "shared administrator and user login form"
+          ],
+          "fullName": "shared administrator and user login form shares the handler for USER login and returns to the site",
+          "status": "passed",
+          "title": "shares the handler for USER login and returns to the site",
+          "duration": 12.331500000000005,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "shared administrator and user login form"
+          ],
+          "fullName": "shared administrator and user login form does not submit credentials when CSRF bootstrap is unavailable",
+          "status": "passed",
+          "title": "does not submit credentials when CSRF bootstrap is unavailable",
+          "duration": 16.311800000000176,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "administrator logout"
+          ],
+          "fullName": "administrator logout uses Auth.js signout and navigates only after confirmed success",
+          "status": "passed",
+          "title": "uses Auth.js signout and navigates only after confirmed success",
+          "duration": 15.478200000000015,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "administrator logout"
+          ],
+          "fullName": "administrator logout does not claim server logout success after the handler clears its cookie on database failure",
+          "status": "passed",
+          "title": "does not claim server logout success after the handler clears its cookie on database failure",
+          "duration": 22.200900000000047,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "administrator logout"
+          ],
+          "fullName": "administrator logout allows retry without claiming cookie cleanup when a service failure has no cleanup receipt",
+          "status": "passed",
+          "title": "allows retry without claiming cookie cleanup when a service failure has no cleanup receipt",
+          "duration": 11.524999999999864,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789151137647,
+      "endTime": 1789151137933.525,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/admin-login-ui.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "requireAdmin server authorization"
+          ],
+          "fullName": "requireAdmin server authorization queries the database on every invocation, with only the cookie token and ADMIN audience",
+          "status": "passed",
+          "title": "queries the database on every invocation, with only the cookie token and ADMIN audience",
+          "duration": 26.972699999999975,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "requireAdmin server authorization"
+          ],
+          "fullName": "requireAdmin server authorization rejects missing, fabricated and preview cookies before any database or resource query",
+          "status": "passed",
+          "title": "rejects missing, fabricated and preview cookies before any database or resource query",
+          "duration": 3.159999999999968,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "requireAdmin server authorization"
+          ],
+          "fullName": "requireAdmin server authorization propagates typed revocation, role and database failures instead of trusting an old JWE",
+          "status": "passed",
+          "title": "propagates typed revocation, role and database failures instead of trusting an old JWE",
+          "duration": 3.6632999999999925,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "management page, Route Handler and Server Action guard ordering"
+          ],
+          "fullName": "management page, Route Handler and Server Action guard ordering runs the real protected page guard and redirects unauthenticated requests to public login",
+          "status": "passed",
+          "title": "runs the real protected page guard and redirects unauthenticated requests to public login",
+          "duration": 3.9547000000000025,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "management page, Route Handler and Server Action guard ordering"
+          ],
+          "fullName": "management page, Route Handler and Server Action guard ordering executes zero API resource queries or writes for missing and USER principals",
+          "status": "passed",
+          "title": "executes zero API resource queries or writes for missing and USER principals",
+          "duration": 3.8976000000000113,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "management page, Route Handler and Server Action guard ordering"
+          ],
+          "fullName": "management page, Route Handler and Server Action guard ordering runs API resource work only after authentication and CSRF/Origin validation",
+          "status": "passed",
+          "title": "runs API resource work only after authentication and CSRF/Origin validation",
+          "duration": 3.6742999999999597,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "management page, Route Handler and Server Action guard ordering"
+          ],
+          "fullName": "management page, Route Handler and Server Action guard ordering fails closed with a safe API error when the database is unavailable",
+          "status": "passed",
+          "title": "fails closed with a safe API error when the database is unavailable",
+          "duration": 1.8765000000000214,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "management page, Route Handler and Server Action guard ordering"
+          ],
+          "fullName": "management page, Route Handler and Server Action guard ordering executes zero Server Action work for unauthenticated or unauthorized requests",
+          "status": "passed",
+          "title": "executes zero Server Action work for unauthenticated or unauthorized requests",
+          "duration": 1.815499999999986,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "management page, Route Handler and Server Action guard ordering"
+          ],
+          "fullName": "management page, Route Handler and Server Action guard ordering authorizes a Server Action from the original Cookie header despite mutable cookie serialization",
+          "status": "passed",
+          "title": "authorizes a Server Action from the original Cookie header despite mutable cookie serialization",
+          "duration": 3.112099999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "management page, Route Handler and Server Action guard ordering"
+          ],
+          "fullName": "management page, Route Handler and Server Action guard ordering rejects duplicate incoming Cookie names before Server Action database or resource work",
+          "status": "passed",
+          "title": "rejects duplicate incoming Cookie names before Server Action database or resource work",
+          "duration": 1.3827999999999747,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "management page, Route Handler and Server Action guard ordering"
+          ],
+          "fullName": "management page, Route Handler and Server Action guard ordering ignores client identity claims and verifies CSRF before invoking Server Action work",
+          "status": "passed",
+          "title": "ignores client identity claims and verifies CSRF before invoking Server Action work",
+          "duration": 2.5300000000000296,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789151139136,
+      "endTime": 1789151139192.53,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-guards.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "Auth.js HTTP authentication boundary"
+          ],
+          "fullName": "Auth.js HTTP authentication boundary keeps the real CSRF and single Credentials provider handlers available",
+          "status": "passed",
+          "title": "keeps the real CSRF and single Credentials provider handlers available",
+          "duration": 15.655300000000011,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Auth.js HTTP authentication boundary"
+          ],
+          "fullName": "Auth.js HTTP authentication boundary gives all four credential failure categories byte-identical status, body and headers",
+          "status": "passed",
+          "title": "gives all four credential failure categories byte-identical status, body and headers",
+          "duration": 14.23210000000006,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Auth.js HTTP authentication boundary"
+          ],
+          "fullName": "Auth.js HTTP authentication boundary returns real 429 and safe Retry-After instead of Auth.js's error redirect",
+          "status": "passed",
+          "title": "returns real 429 and safe Retry-After instead of Auth.js's error redirect",
+          "duration": 2.65829999999994,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Auth.js HTTP authentication boundary"
+          ],
+          "fullName": "Auth.js HTTP authentication boundary blocks missing/invalid CSRF, cross-site metadata and a foreign Origin before credentials",
+          "status": "passed",
+          "title": "blocks missing/invalid CSRF, cross-site metadata and a foreign Origin before credentials",
+          "duration": 2.020399999999995,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Auth.js HTTP authentication boundary"
+          ],
+          "fullName": "Auth.js HTTP authentication boundary bounds raw bodies and rejects an invalid audience without creating a login attempt",
+          "status": "passed",
+          "title": "bounds raw bodies and rejects an invalid audience without creating a login attempt",
+          "duration": 1.868099999999913,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Auth.js HTTP authentication boundary"
+          ],
+          "fullName": "Auth.js HTTP authentication boundary fails closed when the request has no trusted client-address attestation",
+          "status": "passed",
+          "title": "fails closed when the request has no trusted client-address attestation",
+          "duration": 1.3626999999999043,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Auth.js HTTP authentication boundary"
+          ],
+          "fullName": "Auth.js HTTP authentication boundary delivers only an encrypted opaque token with a fixed 12-hour Cookie",
+          "status": "passed",
+          "title": "delivers only an encrypted opaque token with a fixed 12-hour Cookie",
+          "duration": 11.396499999999946,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Auth.js HTTP authentication boundary"
+          ],
+          "fullName": "Auth.js HTTP authentication boundary does not slide the JWT, public session expiry or Cookie expiry on refresh",
+          "status": "passed",
+          "title": "does not slide the JWT, public session expiry or Cookie expiry on refresh",
+          "duration": 7.130500000000097,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Auth.js HTTP authentication boundary"
+          ],
+          "fullName": "Auth.js HTTP authentication boundary returns 503 and clears the local cookie when session validation is unavailable",
+          "status": "passed",
+          "title": "returns 503 and clears the local cookie when session validation is unavailable",
+          "duration": 4.376100000000065,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Auth.js HTTP authentication boundary"
+          ],
+          "fullName": "Auth.js HTTP authentication boundary does not claim logout succeeded when database revocation fails",
+          "status": "passed",
+          "title": "does not claim logout succeeded when database revocation fails",
+          "duration": 3.884400000000028,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Auth.js HTTP authentication boundary"
+          ],
+          "fullName": "Auth.js HTTP authentication boundary revokes the database session and rejects its old cookie despite unrelated prefix cookies ",
+          "status": "passed",
+          "title": "revokes the database session and rejects its old cookie despite unrelated prefix cookies ",
+          "duration": 6.320100000000025,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Auth.js HTTP authentication boundary"
+          ],
+          "fullName": "Auth.js HTTP authentication boundary revokes the database session and rejects its old cookie despite unrelated prefix cookies ; authjs.session-token-foreign=untrusted-suffix",
+          "status": "passed",
+          "title": "revokes the database session and rejects its old cookie despite unrelated prefix cookies ; authjs.session-token-foreign=untrusted-suffix",
+          "duration": 6.533800000000042,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Auth.js HTTP authentication boundary"
+          ],
+          "fullName": "Auth.js HTTP authentication boundary does not report successful server logout for an ambiguous base and chunk cookie",
+          "status": "passed",
+          "title": "does not report successful server logout for an ambiguous base and chunk cookie",
+          "duration": 2.90949999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Auth.js HTTP authentication boundary"
+          ],
+          "fullName": "Auth.js HTTP authentication boundary rejects cross-site logout before revocation or clearing the local session",
+          "status": "passed",
+          "title": "rejects cross-site logout before revocation or clearing the local session",
+          "duration": 2.4284999999999854,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Auth.js HTTP authentication boundary"
+          ],
+          "fullName": "Auth.js HTTP authentication boundary shares the provider with the USER audience and never follows client redirect destinations",
+          "status": "passed",
+          "title": "shares the provider with the USER audience and never follows client redirect destinations",
+          "duration": 2.9478000000000293,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Auth.js HTTP authentication boundary"
+          ],
+          "fullName": "Auth.js HTTP authentication boundary accepts neither a fabricated cookie, a bearer token nor an expired opaque envelope",
+          "status": "passed",
+          "title": "accepts neither a fabricated cookie, a bearer token nor an expired opaque envelope",
+          "duration": 2.9797000000000935,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789151138657,
+      "endTime": 1789151138745.9797,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-http.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "auth trusted transport"
+          ],
+          "fullName": "auth trusted transport canonicalizes IPv6 and mapped IPv4 without hostnames or zone identifiers",
+          "status": "passed",
+          "title": "canonicalizes IPv6 and mapped IPv4 without hostnames or zone identifiers",
+          "duration": 5.4635000000000105,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "auth trusted transport"
+          ],
+          "fullName": "auth trusted transport ignores even malformed forwarding headers from an untrusted direct peer",
+          "status": "passed",
+          "title": "ignores even malformed forwarding headers from an untrusted direct peer",
+          "duration": 1.291199999999975,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "auth trusted transport"
+          ],
+          "fullName": "auth trusted transport walks trusted proxy chains from the socket toward the first untrusted hop",
+          "status": "passed",
+          "title": "walks trusted proxy chains from the socket toward the first untrusted hop",
+          "duration": 2.2045999999999992,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "auth trusted transport"
+          ],
+          "fullName": "auth trusted transport uses a real socket and rejects missing, altered, wrong-key, wrong-path and wrong-method proofs",
+          "status": "passed",
+          "title": "uses a real socket and rejects missing, altered, wrong-key, wrong-path and wrong-method proofs",
+          "duration": 39.123099999999965,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "auth trusted transport"
+          ],
+          "fullName": "auth trusted transport keeps concurrent asynchronous request proofs isolated and single-use",
+          "status": "passed",
+          "title": "keeps concurrent asynchronous request proofs isolated and single-use",
+          "duration": 9.119899999999973,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789151139496,
+      "endTime": 1789151139554.1199,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-ingress.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "auth services input and security primitives"
+          ],
+          "fullName": "auth services input and security primitives normalizes the account through V1 while retaining exact password bytes",
+          "status": "passed",
+          "title": "normalizes the account through V1 while retaining exact password bytes",
+          "duration": 2.562599999999975,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "auth services input and security primitives"
+          ],
+          "fullName": "auth services input and security primitives rejects oversized and malformed UTF-8 before bcrypt can silently truncate",
+          "status": "passed",
+          "title": "rejects oversized and malformed UTF-8 before bcrypt can silently truncate",
+          "duration": 0.637299999999982,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "auth services input and security primitives"
+          ],
+          "fullName": "auth services input and security primitives uses keyed domain-separated hashes and one canonical address identity",
+          "status": "passed",
+          "title": "uses keyed domain-separated hashes and one canonical address identity",
+          "duration": 5.732699999999909,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "auth services input and security primitives"
+          ],
+          "fullName": "auth services input and security primitives requires both advisory bucket keys in a deterministic order",
+          "status": "passed",
+          "title": "requires both advisory bucket keys in a deterministic order",
+          "duration": 0.24549999999999272,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "auth services input and security primitives"
+          ],
+          "fullName": "auth services input and security primitives waits until both buckets admit, retaining failures when reservations expire",
+          "status": "passed",
+          "title": "waits until both buckets admit, retaining failures when reservations expire",
+          "duration": 0.5193000000000438,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "auth services input and security primitives"
+          ],
+          "fullName": "auth services input and security primitives requires enough rows to leave the window when a bucket already exceeds its limit",
+          "status": "passed",
+          "title": "requires enough rows to leave the window when a bucket already exceeds its limit",
+          "duration": 0.18360000000006949,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "auth services input and security primitives"
+          ],
+          "fullName": "auth services input and security primitives accepts only canonical 256-bit opaque tokens and persists only their digest",
+          "status": "passed",
+          "title": "accepts only canonical 256-bit opaque tokens and persists only their digest",
+          "duration": 0.5848000000000866,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789151140466,
+      "endTime": 1789151140476.5847,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-services.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes   Alice.Smith+TAG@EXAMPLE.COM\t without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes   Alice.Smith+TAG@EXAMPLE.COM\t without URL host rewriting",
+          "duration": 2.2205999999999904,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@例え.テスト without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@例え.テスト without URL host rewriting",
+          "duration": 1.113599999999991,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@XN--R8JZ45G.XN--ZCKZAH without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@XN--R8JZ45G.XN--ZCKZAH without URL host rewriting",
+          "duration": 0.3762999999999863,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@faß.de without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@faß.de without URL host rewriting",
+          "duration": 0.22530000000000427,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@ＦＯＯ。example without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@ＦＯＯ。example without URL host rewriting",
+          "duration": 0.21270000000001232,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@σόλος.example without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@σόλος.example without URL host rewriting",
+          "duration": 0.21119999999999095,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@127.1 without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@127.1 without URL host rewriting",
+          "duration": 0.15750000000002728,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@2130706433 without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@2130706433 without URL host rewriting",
+          "duration": 0.14789999999999281,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@localhost without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@localhost without URL host rewriting",
+          "duration": 0.1623000000000161,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes !#$%&'*+/=?^_`{|}~-@example.com without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes !#$%&'*+/=?^_`{|}~-@example.com without URL host rewriting",
+          "duration": 0.19649999999998613,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"\"",
+          "duration": 0.8439999999999941,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"user\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"user\"",
+          "duration": 0.1605000000000132,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"user@@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"user@@example.com\"",
+          "duration": 0.14670000000000982,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"@example.com\"",
+          "duration": 0.1390999999999849,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@\"",
+          "duration": 0.1331000000000131,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \".a@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \".a@example.com\"",
+          "duration": 0.13859999999999673,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a.@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a.@example.com\"",
+          "duration": 0.12340000000000373,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a..b@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a..b@example.com\"",
+          "duration": 0.11490000000000578,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"用户@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"用户@example.com\"",
+          "duration": 0.19020000000000437,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"ü@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"ü@example.com\"",
+          "duration": 0.16169999999999618,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a b@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a b@example.com\"",
+          "duration": 0.12959999999998217,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"\\\"a\\\"@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"\\\"a\\\"@example.com\"",
+          "duration": 0.1255000000000166,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a\\u0000@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a\\u0000@example.com\"",
+          "duration": 0.12019999999998277,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@-example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@-example.com\"",
+          "duration": 0.15399999999999636,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example-.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example-.com\"",
+          "duration": 0.15409999999999968,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@a..com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@a..com\"",
+          "duration": 0.15000000000000568,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com.\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com.\"",
+          "duration": 0.16339999999999577,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example_.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example_.com\"",
+          "duration": 0.13980000000000814,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@[127.0.0.1]\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@[127.0.0.1]\"",
+          "duration": 0.15520000000000778,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com/path\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com/path\"",
+          "duration": 0.22870000000000346,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com\\\\path\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com\\\\path\"",
+          "duration": 0.22640000000001237,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com:443\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com:443\"",
+          "duration": 0.25279999999997926,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com?x\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com?x\"",
+          "duration": 0.172300000000007,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com#x\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com#x\"",
+          "duration": 0.17439999999999145,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@exa\\tmple.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@exa\\tmple.com\"",
+          "duration": 0.18089999999997985,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@exa\\nmple.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@exa\\nmple.com\"",
+          "duration": 0.1676999999999964,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@%65xample.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@%65xample.com\"",
+          "duration": 0.16920000000001778,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@xn--a.example\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@xn--a.example\"",
+          "duration": 0.18559999999999377,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@ab--cd.example\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@ab--cd.example\"",
+          "duration": 0.17130000000000223,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@a‌b.example\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@a‌b.example\"",
+          "duration": 0.6911000000000058,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com\"",
+          "duration": 0.13599999999999568,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com\"",
+          "duration": 0.2720000000000198,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\"",
+          "duration": 0.5142999999999915,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 accepts the exact 64-byte local and 254-byte total boundaries",
+          "status": "passed",
+          "title": "accepts the exact 64-byte local and 254-byte total boundaries",
+          "duration": 0.5411000000000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects runtime non-string input without exposing it",
+          "status": "passed",
+          "title": "rejects runtime non-string input without exposing it",
+          "duration": 0.27180000000001314,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789151139844,
+      "endTime": 1789151139857.2717,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "numTotalTestSuites": 2,
+  "numPassedTestSuites": 2,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 14,
+  "numPassedTests": 14,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1789147808053,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "administrator routing prefilter"
+          ],
+          "fullName": "administrator routing prefilter matches /admin and descendants without matching /adminx",
+          "status": "passed",
+          "title": "matches /admin and descendants without matching /adminx",
+          "duration": 2.836900000000014,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "administrator routing prefilter"
+          ],
+          "fullName": "administrator routing prefilter keeps the public login/framework route /admin/login reachable",
+          "status": "passed",
+          "title": "keeps the public login/framework route /admin/login reachable",
+          "duration": 4.4331999999999425,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "administrator routing prefilter"
+          ],
+          "fullName": "administrator routing prefilter keeps the public login/framework route /admin/login/ reachable",
+          "status": "passed",
+          "title": "keeps the public login/framework route /admin/login/ reachable",
+          "duration": 1.143699999999967,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "administrator routing prefilter"
+          ],
+          "fullName": "administrator routing prefilter keeps the public login/framework route /api/auth/callback/credentials reachable",
+          "status": "passed",
+          "title": "keeps the public login/framework route /api/auth/callback/credentials reachable",
+          "duration": 0.8710999999999558,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "administrator routing prefilter"
+          ],
+          "fullName": "administrator routing prefilter keeps the public login/framework route /login reachable",
+          "status": "passed",
+          "title": "keeps the public login/framework route /login reachable",
+          "duration": 0.7518000000000029,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "administrator routing prefilter"
+          ],
+          "fullName": "administrator routing prefilter redirects an unauthenticated /admin to login",
+          "status": "passed",
+          "title": "redirects an unauthenticated /admin to login",
+          "duration": 1.8797000000000708,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "administrator routing prefilter"
+          ],
+          "fullName": "administrator routing prefilter redirects an unauthenticated /admin/settings to login",
+          "status": "passed",
+          "title": "redirects an unauthenticated /admin/settings to login",
+          "duration": 1.2182000000000244,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "administrator routing prefilter"
+          ],
+          "fullName": "administrator routing prefilter does not derive an external redirect from a supplied host",
+          "status": "passed",
+          "title": "does not derive an external redirect from a supplied host",
+          "duration": 1.6353000000000293,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "administrator routing prefilter"
+          ],
+          "fullName": "administrator routing prefilter preserves the configured origin through the real Next middleware adapter",
+          "status": "passed",
+          "title": "preserves the configured origin through the real Next middleware adapter",
+          "duration": 788.8408000000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "administrator routing prefilter"
+          ],
+          "fullName": "administrator routing prefilter has no preview environment, query or cookie bypass in development",
+          "status": "passed",
+          "title": "has no preview environment, query or cookie bypass in development",
+          "duration": 1.1615999999999076,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "administrator routing prefilter"
+          ],
+          "fullName": "administrator routing prefilter has no preview environment, query or cookie bypass in test",
+          "status": "passed",
+          "title": "has no preview environment, query or cookie bypass in test",
+          "duration": 0.6070999999999458,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "administrator routing prefilter"
+          ],
+          "fullName": "administrator routing prefilter has no preview environment, query or cookie bypass in production",
+          "status": "passed",
+          "title": "has no preview environment, query or cookie bypass in production",
+          "duration": 0.6439000000000306,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "administrator routing prefilter"
+          ],
+          "fullName": "administrator routing prefilter only prefilters cookie presence and leaves database authorization to the server guard",
+          "status": "passed",
+          "title": "only prefilters cookie presence and leaves database authorization to the server guard",
+          "duration": 1.236699999999928,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "administrator routing prefilter"
+          ],
+          "fullName": "administrator routing prefilter keeps the exact route matcher and excludes database or server auth code from Edge",
+          "status": "passed",
+          "title": "keeps the exact route matcher and excludes database or server auth code from Edge",
+          "duration": 15.356600000000071,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789147809074,
+      "endTime": 1789147809896.3567,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/src/middleware.test.ts"
+    }
+  ]
+}

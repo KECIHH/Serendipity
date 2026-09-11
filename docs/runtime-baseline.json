@@ -184,6 +184,14 @@
       "integrity": "sha512-ytQKuwgmrrkDTFP4LjR0ToE2nqgy886GpvRSpU0JAnrdBYppuY5rLkRUYPU1yCryb24SsKBTL/hlDQAEFVwtZg==",
       "tarball": "https://registry.npmjs.org/tsx/-/tsx-4.20.6.tgz",
       "producerPhase": 10
+    },
+    {
+      "name": "next-auth",
+      "version": "5.0.0-beta.30",
+      "registry": "https://registry.npmjs.org/next-auth/5.0.0-beta.30",
+      "integrity": "sha512-+c51gquM3F6nMVmoAusRJ7RIoY0K4Ts9HCCwyy/BRoe4mp3msZpOzYMyb5LAYc1wSo74PMQkGDcaghIO7W6Xjg==",
+      "tarball": "https://registry.npmjs.org/next-auth/-/next-auth-5.0.0-beta.30.tgz",
+      "producerPhase": 11
     }
   ],
   "toolPaths": {
@@ -234,7 +242,8 @@
     "tr46": "6.0.0",
     "@types/tr46": "5.0.1",
     "bcryptjs": "3.0.2",
-    "tsx": "4.20.6"
+    "tsx": "4.20.6",
+    "next-auth": "5.0.0-beta.30"
   },
   "nextPrivateTestVersionInherited": false,
   "dependencyAdditions": [
@@ -267,6 +276,15 @@
         "tsx": "4.20.6"
       },
       "receiptPath": "docs/evidence/attempts/Phase010/setup/dependencies.json"
+    },
+    {
+      "phase": 11,
+      "command": "npm install --save-exact next-auth@5.0.0-beta.30 --no-audit --no-fund",
+      "dependencies": {
+        "next-auth": "5.0.0-beta.30",
+        "bcryptjs": "3.0.2"
+      },
+      "receiptPath": "docs/evidence/attempts/Phase011/setup/dependencies.json"
     }
   ]
 }

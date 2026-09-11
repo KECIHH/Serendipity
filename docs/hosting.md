@@ -30,6 +30,16 @@ Phase015 起，Prompt、模型、Provider 与规划策略以已激活的不可�
 
 ## 网络、任务与恢复
 
+### Phase011 可信认证入口
+
+`scripts/auth-server.mjs` 是当前 dev/start 的 Node 入口，调用 Next App Router，使用 socket.remoteAddress 作为直连来源。`AUTH_URL` 经统一 registry 校验为固定 origin，只有精确 localhost/127.0.0.1/[::1] 允许 HTTP；外部主机必须 HTTPS。Cookie Secure、Origin allowlist、middleware 重定向与 Auth.js 回调统一以该配置为据，不接受请求 Host/Proto 改写。入口默认仅绑定127.0.0.1，可用显式 `--hostname`/`--port` 启动参数配置监听。
+
+`AUTH_TRUSTED_PROXY_CIDRS` 默认空。部署配置必须明确列出可信代理，且网络应限制只有这些代理能转发到应用；代理必须覆盖/追加真实上一跳信息。仅直连peer命中列表才解析 Forwarded 或 X-Forwarded-For，从右向左剥离可信跳数，到第一个不可信地址停止；同时提供两类链、重复/不合法/过长链拒绝。未信任peer的全部转发头忽略。IP统一规范化，包括IPv4-mapped IPv6，不能通过文本表示拆分bucket。
+
+Node入口覆盖 `x-serendipity-*` 客户端内部头，对规范地址、请求method/path、短时钟与nonce作带域分离的HMAC签名，再由同一请求的AsyncLocalStorage范围绑定并单次消费；Next Node handler同时核验签名、时限、路径和范围。缺少证明、跨请求/重复证明或篡改均拒绝认证。该机制只传递当前连接事实，没有进程内限流计数；AuthLoginAttempt仍为所有实例的唯一持久权威。运行认证须使用此入口，不能让独立的 `next start` 绕开连接证明。
+
+会话/尝试的最小运行角色grant及DB clock维护边界见 [Phase011](phase011.md)。本阶段仅在独占PG17与合成HTTP/browser环境验证上述机制；生产反向代理、TLS证书和部署拓扑仍由部署阶段配置和验证。
+
 本路线运行环境为 ISOLATED_SYNTHETIC。准备阶段可下载公开制品并固定 hash，运行阶段只用受控 HTTP/record-replay，真实 Provider 调用与生产流量为零。外部调用经过 Provider SSRF/许可/时限/预算边界，在数据库提交事务外执行；任务 claim/heartbeat/提交均检查 lease 与 fencingToken，不声称至少一次任务投递可以保证网络外呼恰好一次。
 
 恢复时先停止对外流量、读取独立 ledger 当前水位，再重放 ERASE、CONSENT_WITHDRAWAL、SESSION_REVOKE、SHARE_REVOKE、PUBLICATION_REVOKE、MEDIA_REVOKE 和 KILL_DISABLE，完成应用正文/快照/缓存/对象删除与撤权投影后验证。水位缺失、回退或无法证明投影已追上时 readiness=false；旧备份不能把已擦除主体、公开授权或 kill switch 恢复为有效。仅轮换 token 不能代替正文删除。

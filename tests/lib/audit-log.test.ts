@@ -270,6 +270,10 @@ describe("audit-log pure boundary", () => {
       "API_KEY_ROTATE",
       "SEED_ADMIN_CREATE",
       "SEED_CONFIG_CREATE",
+      "LOGIN_SUCCESS",
+      "LOGIN_FAILURE",
+      "LOGIN_THROTTLED",
+      "SESSION_LOGOUT",
     ]);
   });
 });

@@ -173,7 +173,7 @@ describe.skipIf(!process.env.PHASE010_FIXTURE_CONFIG)("api-key-schema PostgreSQL
     });
   }, 60_000);
 
-  it("governance-absence: only M2 models exist and migration creates no key rows", async () => {
+  it("governance-absence: only produced models exist and migrations create no key rows", async () => {
     const expected = [
       "ApiKeyConfig",
       "AuditLog",
@@ -182,6 +182,9 @@ describe.skipIf(!process.env.PHASE010_FIXTURE_CONFIG)("api-key-schema PostgreSQL
       "TravelRecord",
       "User",
     ];
+    if (Prisma.dmmf.datamodel.models.some((model) => model.name === "AuthSession"))
+      expected.push("AuthLoginAttempt", "AuthSession");
+    expected.sort();
     expect(Prisma.dmmf.datamodel.models.map((model) => model.name).sort()).toEqual(expected);
     await withSeedDatabase(async ({ app }) => {
       const tables = await app.$queryRaw<

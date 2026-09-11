@@ -77,6 +77,8 @@ Phase010 基础 seed 只创建本次隔离 run 的合成管理员与三项内部
 
 ## 删除、归档与恢复
 
+Phase011认证审计新增 LOGIN_SUCCESS、LOGIN_FAILURE、LOGIN_THROTTLED、SESSION_LOGOUT，使用SYSTEM/MAINTENANCE主体；登录失败没有User FK/邮箱快照或原IP。detail只允许已登记的结果/原因枚举、audience、scope以及64位小写HMAC的ipHash/accountHash。成功目标可定位已验证User，退出目标可定位AuthSession；密码、opaque token、JWE/Cookie和邮箱/地址原文均不进入认证审计detail、普通日志或证据。限流计数独立于AuditLog，只由AuthLoginAttempt承担。原审计事务来源、异步等待、失败回滚与append-only限制继续生效。
+
 ### Phase009 审计落库边界
 
 AuditLog 是同事务的只追加安全摘要，独立于普通日志输出。actorEmailSnapshot 仅来自可信已认证 actor 的 normalizeEmailV1 规范邮箱，限254字符，后台受权追溯使用；主体删除后 FK 可为空而快照仍保留，后续 ERASE/retention 专用程序承担去标识责任，应用角色不能自行改写或删除历史。当前不把这项未来维护责任当作已实现。

@@ -78,11 +78,15 @@ describe("application layout boundaries", () => {
     expect(existsSync(resolve(repositoryRoot, "src/app/(site)/page.tsx"))).toBe(true);
   });
 
-  it("does not create an admin page before the authentication phase", () => {
+  it("has only the public login and the guarded temporary administrator page", () => {
     const adminPages = sourceFiles(resolve(repositoryRoot, "src/app/admin")).filter((filePath) =>
       /[/\\]page\.[jt]sx?$/.test(filePath),
     );
 
-    expect(adminPages).toEqual([]);
+    expect(
+      adminPages.map((filePath) => relative(repositoryRoot, filePath).replaceAll("\\", "/")).sort(),
+    ).toEqual(["src/app/admin/login/page.tsx", "src/app/admin/page.tsx"]);
+    const adminLayout = readFileSync(resolve(repositoryRoot, "src/app/admin/layout.tsx"), "utf8");
+    expect(adminLayout).not.toMatch(/AdminShell|AdminSidebar|SiteHeader/);
   });
 });

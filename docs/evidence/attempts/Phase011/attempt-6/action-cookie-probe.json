@@ -1,0 +1,33 @@
+{
+  "phase": 11,
+  "attemptId": "attempt-6",
+  "status": "REPRODUCED",
+  "formalCaseEvidence": false,
+  "description": "Real Next.js action Cookie serialization diagnostic, independent of the product guard. Two request cookies become mutable ResponseCookies with repeated response attributes; raw headers preserve the request format.",
+  "command": {
+    "executable": "node",
+    "args": [
+      "--conditions=react-server",
+      "-e",
+      "require(\"next/dist/server/node-environment-baseline\");const {NextRequest}=require(\"next/server\");const {createRequestStoreForAPI}=require(\"next/dist/server/async-storage/request-store\");const {createWorkStore}=require(\"next/dist/server/async-storage/work-store\");const {workAsyncStorage}=require(\"next/dist/server/app-render/work-async-storage.external\");const {workUnitAsyncStorage}=require(\"next/dist/server/app-render/work-unit-async-storage.external\");const {cookies,headers}=require(\"next/headers\");const request=new NextRequest(\"http://127.0.0.1/admin\",{headers:{cookie:\"fixture-a=one; fixture-b=two\"}});const unit=createRequestStoreForAPI(request,new URL(request.url),{tags:[],expirationsByCacheKind:new Map()},undefined,undefined);const work=createWorkStore({page:\"/admin/page\",buildId:\"phase011-diagnostic\",previouslyRevalidatedTags:[],renderOpts:{supportsDynamicResponse:true,isPossibleServerAction:true,experimental:{cacheComponents:false,isRoutePPREnabled:false,authInterrupts:false},onClose(){},waitUntil:undefined,onAfterTaskError:undefined}});workAsyncStorage.run(work,()=>workUnitAsyncStorage.run(unit,async()=>{const serialized=(await cookies()).toString();process.stdout.write(JSON.stringify({mutableCookieAttributes:(serialized.match(/Path=\\//g)||[]).length,rawCookiePreserved:(await headers()).get(\"cookie\")===request.headers.get(\"cookie\"),phase:unit.phase}));})).catch(()=>{process.stderr.write(\"FRAMEWORK_PROBE_FAILED\");process.exitCode=1;});"
+    ]
+  },
+  "exitCode": 0,
+  "stdout": "{\"mutableCookieAttributes\":2,\"rawCookiePreserved\":true,\"phase\":\"action\"}",
+  "stderr": "",
+  "observation": {
+    "mutableCookieAttributes": 2,
+    "rawCookiePreserved": true,
+    "phase": "action"
+  },
+  "nodeVersion": "v24.19.0",
+  "nextVersion": "15.5.24",
+  "frameworkHashes": {
+    "node_modules/next/dist/server/request/cookies.js": "6339f1d1e197033902558be7b3273e11ed7a63cddbe741346b0f6865d1ab7034",
+    "node_modules/next/dist/server/request/headers.js": "8fe2f21d757cf4122f9e91cf0865f5fe62f65c0326353177020d1195e963aa0e",
+    "node_modules/next/dist/server/async-storage/request-store.js": "5e19149c11de105dad02f10c7b6986d34146ee54424bf6d55fc743e26410f5a6",
+    "node_modules/next/dist/server/async-storage/work-store.js": "2361e566caffc043e659b447c31e826d6d6db4326b070ef08a0830da0f934288"
+  },
+  "startedAt": "2026-09-11T16:37:01.942Z",
+  "completedAt": "2026-09-11T16:37:02.155Z"
+}

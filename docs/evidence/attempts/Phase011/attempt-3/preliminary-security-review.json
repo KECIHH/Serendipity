@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "phase": 11,
+  "attemptId": "attempt-3",
+  "reportType": "PRELIMINARY_INDEPENDENT_SECURITY_REVIEW",
+  "generatedBy": "independent-agent:/root/auth_security_review",
+  "contextId": "codex:/root/auth_security_review:Phase011:20260911",
+  "reviewerRunId": "3e2ce986-464e-430b-9a77-84a4855f051a",
+  "recordedAt": "2026-09-11T15:55:31Z",
+  "decision": "FAIL",
+  "planPath": "docs/phase-plans/Phase011.json",
+  "planHash": "51b1f0c764db3f2775592468ece43e1b28c8e0affab96ba3606e87b80a90ba0e",
+  "planHashCapture": "The hash was read while preparing this report, after the preliminary observations and before the next attempt was frozen.",
+  "sourceHashes": null,
+  "sourceHashCapture": {
+    "status": "NOT_CAPTURED_AT_OBSERVATION",
+    "explanation": "The initial review read the live shared worktree before fixes. Exact source bytes and a tested-tree hash were not captured at that time. Current files are already being changed by the implementation agents; no post-fix hash is substituted for the reviewed pre-fix source."
+  },
+  "independence": {
+    "implementationAuthor": false,
+    "agentTaskPath": "/root/auth_security_review",
+    "productEdits": false,
+    "gitMutations": false,
+    "onlyAuthorizedReportPath": "docs/evidence/attempts/Phase011/attempt-3/preliminary-security-review.json"
+  },
+  "environment": {
+    "simulation": true,
+    "productionTraffic": false,
+    "databaseExecuted": false,
+    "browserExecuted": false,
+    "completeGateExecuted": false,
+    "executionKind": [
+      "READ_ONLY_CODE_REVIEW",
+      "IN_MEMORY_REAL_AUTH_JS_LIBRARY_REPRODUCTION",
+      "EPHEMERAL_LOOPBACK_SOCKET_REPRODUCTION"
+    ],
+    "runtimeVersion": null,
+    "secretsAndIdentityValuesPersisted": false
+  },
+  "inspectedPaths": [
+    "docs/phase-plans/Phase011.json",
+    "docs/auth.md",
+    "docs/hosting.md",
+    "docs/agent-execution-contract.md",
+    "src/server/auth",
+    "src/server/ingress.ts",
+    "scripts/auth-server.mjs",
+    "prisma/schema.prisma",
+    "prisma/migrations/20260911151715_auth_session_login_attempt/migration.sql",
+    "src/server/audit-log.ts",
+    "src/server/services/audit-log-service.ts",
+    "src/middleware.ts",
+    "src/app/admin/layout.tsx",
+    "src/app/admin/page.tsx",
+    "src/components/auth",
+    "tests/lib/auth-http.test.ts",
+    "tests/lib/auth-ingress.test.ts",
+    "tests/lib/auth-services.test.ts",
+    "tests/lib/auth-guards.test.ts",
+    "tests/lib/admin-login-ui.test.tsx",
+    "tests/phase011/auth-fixture.ts",
+    "node_modules/@auth/core/lib/utils/cookie.js",
+    "node_modules/@auth/core/lib/actions/signout.js",
+    "node_modules/@auth/core/lib/actions/session.js"
+  ],
+  "findings": [
+    {
+      "id": "AUTH011-SEC-01",
+      "priority": "P2",
+      "statusAtObservation": "OPEN",
+      "title": "Session-cookie prefix pollution can skip revocation while the logout handler reports success",
+      "requiredCaseIds": [
+        "Phase011:session-revocation",
+        "Phase011:routing-logout"
+      ],
+      "reviewedLocations": [
+        {
+          "path": "src/server/auth/auth-handler.ts",
+          "line": 143
+        },
+        {
+          "path": "src/server/auth/cookie.ts",
+          "line": 86
+        },
+        {
+          "path": "node_modules/@auth/core/lib/utils/cookie.js",
+          "line": 130
+        }
+      ],
+      "codeObservation": "The application's readAuthCookie accepts only the exact session cookie or numbered chunks. Auth.js SessionStore collects every cookie name beginning with the session-cookie prefix. The logout branch checked logoutFailed/unavailable but did not check frameworkFailed. Thus a valid base cookie plus a non-chunk prefix cookie reaches Auth.js as a concatenated invalid JWE; Auth.js logs the decode error and skips its signOut event, but its raw result still contains the logout redirect and cookie clearing.",
+      "reproduction": {
+        "command": "$securityReviewScript | node --input-type=module",
+        "shell": "PowerShell",
+        "tool": "functions.exec -> tools.exec_command",
+        "method": [
+          "The inline script imported the installed real @auth/core encode/decode, SessionStore and signOut implementations.",
+          "It generated a synthetic random signing secret and random opaque session token in memory, then used real Auth.js encode to create a valid encrypted session cookie.",
+          "It initialized SessionStore with that base cookie plus the non-chunk cookie name authjs.session-token-foreign carrying a fixed non-secret test value.",
+          "It invoked real signOut with a counter in events.signOut and a separate counter in logger.error, then decrypted the original base cookie again.",
+          "Only safe booleans, event counts, the fixed local redirect path and cleared cookie names were printed. No database was connected."
+        ],
+        "exitCode": 0,
+        "observedOutput": {
+          "baseCookieStillDecrypts": true,
+          "revocationEvents": 0,
+          "frameworkErrors": 1,
+          "rawRedirect": "/admin/login",
+          "cookiesCleared": [
+            "authjs.session-token",
+            "authjs.session-token-foreign"
+          ]
+        },
+        "fullApplicationHttpExecuted": false,
+        "databaseRevocationExecuted": false,
+        "evidenceBoundary": "The event omission and raw Auth.js result were directly observed. The application's success response and persistence of an ACTIVE database row were inferred from the reviewed handler/event code, not observed in a PostgreSQL run."
+      },
+      "recommendedVerification": "Exercise the real HTTP handler with a valid session and an extra prefix cookie. A successful logout must revoke the original database session before clearing cookies; a framework failure must return a safe failure. Reuse the original cookie against the real database guard to verify the resulting state."
+    },
+    {
+      "id": "AUTH011-SEC-02",
+      "priority": "P2",
+      "statusAtObservation": "OPEN",
+      "title": "A valid transport proof could be replayed for the same method and target during its validity window",
+      "requiredCaseIds": [
+        "Phase011:persistence-proxy"
+      ],
+      "reviewedLocations": [
+        {
+          "path": "src/server/ingress.ts",
+          "line": 169
+        }
+      ],
+      "codeObservation": "The reviewed verifier validated HMAC, method, target and a 30-second timestamp window, but did not bind the proof to a currently active request context or consume its nonce.",
+      "reproduction": {
+        "command": "$securityReviewScript | node --import tsx --input-type=module",
+        "shell": "PowerShell",
+        "tool": "functions.exec -> tools.exec_command",
+        "method": [
+          "The inline script loaded the actual src/server/ingress.ts through createRequire and tsx.",
+          "It created an ephemeral loopback HTTP server on an automatically assigned port and generated a random synthetic HMAC secret in memory.",
+          "The test-only server stamped the real IncomingMessage with stampTrustedRequest and returned that synthetic proof to the test driver.",
+          "The driver constructed two separate Request objects using the same POST method, auth callback target and captured proof, then called verifyTrustedRequest on both.",
+          "The production application was not modified to reflect proofs. The ephemeral server was closed after the observation."
+        ],
+        "exitCode": 0,
+        "observedOutput": {
+          "firstAccepted": true,
+          "samePathSameMethodReplayAccepted": true
+        },
+        "databaseExecuted": false,
+        "evidenceBoundary": "Same-proof replay at the internal verification boundary was directly observed. The production Node ingress overwrites caller-supplied proofs, so this review did not demonstrate a public-network address-forgery or throttle-bypass exploit."
+      },
+      "recommendedVerification": "Require a live request-bound context and single consumption. Verify first-use acceptance, second-use rejection, replay in a different request context, cross-request concurrency isolation, and rejection after the original request context is absent."
+    },
+    {
+      "id": "AUTH011-SEC-03",
+      "priority": "P2",
+      "statusAtObservation": "OPEN",
+      "title": "The logout UI claimed local cookie clearing for every 503 response",
+      "requiredCaseIds": [
+        "Phase011:routing-logout"
+      ],
+      "reviewedLocations": [
+        {
+          "path": "src/components/auth/logout-button.tsx",
+          "line": 31
+        },
+        {
+          "path": "scripts/auth-server.mjs",
+          "line": null
+        }
+      ],
+      "codeObservation": "LogoutButton treated any HTTP 503 as proof that local login cookies had been cleared and disabled retry. The custom Node ingress and generic request-handler failure paths can return 503 without any Set-Cookie clearing header. Therefore status alone does not prove local clearing.",
+      "reproduction": {
+        "command": null,
+        "exitCode": null,
+        "method": [
+          "Read the LogoutButton 503 branch and the custom server's generic 503 response paths."
+        ],
+        "observedOutput": null,
+        "executionStatus": "CODE_REVIEW_ONLY"
+      },
+      "recommendedVerification": "Only show the local-clearing message after a dedicated response receipt from the Auth.js wrapper's cookie-clearing path. For a generic ingress/proxy 503 without that receipt, retain a safe retryable failure. Cover both responses in UI tests."
+    }
+  ],
+  "additionalObservation": {
+    "kind": "TEST_ASSERTION_SEMANTICS",
+    "description": "The browser test queried LOGIN_SUCCESS by actorId, while the credentials service deliberately records a SYSTEM actor with the successful User in targetId. This mismatch was reported to the UI agent. The UI agent stated that it would align the assertion; this report does not claim the revised browser test passed."
+  },
+  "repairStatusAtRecording": {
+    "ingress": "The main agent reported a request-bound AsyncLocalStorage and one-time consumption fix; the updated code was read while preparing this report. The preliminary reproduction was not rerun against that fix in this review.",
+    "logoutAndUi": "The UI agent was assigned strict logout-cookie handling and an explicit local-clearing receipt. Their final code and execution evidence have not been independently verified here.",
+    "overall": "Fixes in progress do not change this historical FAIL decision."
+  },
+  "limitations": [
+    "No PostgreSQL integration scenario, mutation suite, browser run or complete Phase011 Gate was executed by this reviewer in this preliminary review.",
+    "No original reviewed-source hashes were captured; exact pre-fix source bytes cannot be reconstructed from this report alone.",
+    "No full application HTTP logout reproduction was executed. AUTH011-SEC-01 clearly distinguishes the real Auth.js observation from application/database consequences inferred from source.",
+    "The code review found no other direct bypass in dual-bucket admission, the dummy bcrypt path, or per-request database role/status/sessionVersion checks; this is not a proof that those areas pass their required dynamic cases.",
+    "Final closure requires a new attempt with the fixes, the original targeted regressions and independent review of actual database/browser/Gate evidence."
+  ]
+}

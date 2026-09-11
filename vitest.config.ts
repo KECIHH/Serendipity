@@ -12,6 +12,7 @@ export default defineConfig({
     globals: true,
     setupFiles: "./vitest.setup.ts",
     include: ["src/**/*.test.{ts,tsx}", "tests/**/*.test.{ts,tsx}"],
+    server: { deps: { inline: ["next-auth", "@auth/core"] } },
   },
   resolve: {
     alias: {

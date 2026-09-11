@@ -1,0 +1,80 @@
+{
+  "phase": 11,
+  "head": "df8334db6acc1e4fa679ca9ae5be1c3b6efb948d",
+  "remoteHead": "df8334db6acc1e4fa679ca9ae5be1c3b6efb948d",
+  "workingTree": "",
+  "shells": [
+    {
+      "shell": "Windows PowerShell 5.1",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 10 -Strict -Json",
+      "exitCode": 0,
+      "result": {
+        "status": "PASS",
+        "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+        "protocolFixture": false,
+        "layoutVersion": 2,
+        "repositoryRoot": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+        "projectRoot": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+        "projectGitPrefix": "",
+        "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+        "completedThrough": 10,
+        "currentPhase": 11,
+        "artifactCommit": "0d2a5eb5c7d3c7cfe33720628598d203c6da527f",
+        "metadataCommit": "df8334db6acc1e4fa679ca9ae5be1c3b6efb948d",
+        "historicalPhase": 0,
+        "preservedHistoricalFiles": 44,
+        "checkpointImport": {
+          "path": "docs/checkpoint-migrations/history-20260909.json",
+          "sha256": "45bc0742f7b12506a007c84a0f3f9808f2f9b9e8d292a60fab345f4966e1d5b4",
+          "importedThrough": 2,
+          "continuationBaselineCommit": "8c5eb222b62c304f00d4b26b1c5f192db13491b9",
+          "currentHead": "df8334db6acc1e4fa679ca9ae5be1c3b6efb948d",
+          "admissionOnly": false
+        },
+        "localIgnoredInputsVerified": 151,
+        "contractCoverage": {
+          "numerator": 33,
+          "denominator": 33
+        },
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "shell": "PowerShell 7",
+      "command": "pwsh -NoProfile -File scripts/validate-phase.ps1 -CompletedThrough 10 -Strict -Json",
+      "exitCode": 0,
+      "result": {
+        "status": "PASS",
+        "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+        "protocolFixture": false,
+        "layoutVersion": 2,
+        "repositoryRoot": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+        "projectRoot": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+        "projectGitPrefix": "",
+        "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+        "completedThrough": 10,
+        "currentPhase": 11,
+        "artifactCommit": "0d2a5eb5c7d3c7cfe33720628598d203c6da527f",
+        "metadataCommit": "df8334db6acc1e4fa679ca9ae5be1c3b6efb948d",
+        "historicalPhase": 0,
+        "preservedHistoricalFiles": 44,
+        "checkpointImport": {
+          "path": "docs/checkpoint-migrations/history-20260909.json",
+          "sha256": "45bc0742f7b12506a007c84a0f3f9808f2f9b9e8d292a60fab345f4966e1d5b4",
+          "importedThrough": 2,
+          "continuationBaselineCommit": "8c5eb222b62c304f00d4b26b1c5f192db13491b9",
+          "currentHead": "df8334db6acc1e4fa679ca9ae5be1c3b6efb948d",
+          "admissionOnly": false
+        },
+        "localIgnoredInputsVerified": 151,
+        "contractCoverage": {
+          "numerator": 33,
+          "denominator": 33
+        },
+        "networkPushEvaluated": false
+      }
+    }
+  ],
+  "collectionNote": "The initial nested PowerShell process returned no stdout to its Node parent; its JSON collection failed. These fresh direct-shell runs both returned a complete PASS result.",
+  "generatedAt": "2026-09-11 14:45:14 UTC"
+}

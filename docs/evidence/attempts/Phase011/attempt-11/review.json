@@ -1,0 +1,1008 @@
+{
+  "schemaVersion": 1,
+  "phase": 11,
+  "reportType": "FINAL_INDEPENDENT_SECURITY_AND_EVIDENCE_REVIEW",
+  "generatedBy": "independent-agent:/root/auth_security_review",
+  "contextId": "codex:/root/auth_security_review:Phase011:20260911",
+  "implementationContextId": "codex:/root:Phase011:20260911",
+  "runnerIdentity": {
+    "kind": "INDEPENDENT_CODEX_AGENT",
+    "implementationAuthored": false,
+    "agentTaskPath": "/root/auth_security_review",
+    "productFilesModified": false,
+    "gitMutations": false
+  },
+  "simulation": true,
+  "productionTraffic": false,
+  "requiredCaseIds": [
+    "Phase011:valid-login",
+    "Phase011:uniform-failure",
+    "Phase011:dual-throttle",
+    "Phase011:persistence-proxy",
+    "Phase011:session-revocation",
+    "Phase011:guards",
+    "Phase011:routing-logout",
+    "Phase011:mutation"
+  ],
+  "preliminaryReview": {
+    "path": "docs/evidence/attempts/Phase011/attempt-3/preliminary-security-review.json",
+    "sha256": "ffe0391ff7ffd7e5346b7dcc2da0a63ae1eb5a766c03e30cfc84eafceef76855",
+    "historicalDecision": "FAIL",
+    "sourceHashesCapturedAtInitialObservation": false,
+    "evidenceBoundary": "The initial Auth.js event omission and ingress replay were directly reproduced. The initial database logout effect was inferred from source, not dynamically observed. The historical FAIL and this limitation are unchanged."
+  },
+  "issues": [
+    {
+      "id": "AUTH011-SEC-01",
+      "priority": "P2",
+      "title": "Session-cookie prefix pollution could skip database revocation while logout reported success",
+      "status": "RESOLVED",
+      "resolution": "The application verifies CSRF and configured Origin, strictly decodes the original session cookie, awaits database revocation itself before Auth.js cleanup, passes only registered cookie names into Auth.js, and treats framework failures as safe failures."
+    },
+    {
+      "id": "AUTH011-SEC-02",
+      "priority": "P2",
+      "title": "Transport proof was reusable within its timestamp window",
+      "status": "RESOLVED",
+      "resolution": "The actual Node ingress wraps the request handler in AsyncLocalStorage. Verification requires the proof of that live request and consumes it once. Cross-request, repeated and out-of-scope proofs are rejected; the database remains the throttle authority."
+    },
+    {
+      "id": "AUTH011-SEC-03",
+      "priority": "P2",
+      "title": "Every HTTP 503 was incorrectly treated as proof of local cookie cleanup",
+      "status": "RESOLVED",
+      "resolution": "Only the explicit x-auth-session-cleared response receipt enables the local-cleanup message. Generic failures retain retry. A database logout failure returns 503, clears the browser cookie with a receipt, and does not claim database revocation."
+    }
+  ],
+  "reviewedRegressions": [
+    {
+      "id": "ACTION_COOKIE_SERIALIZATION",
+      "conclusion": "requireAdmin reads the original Next request headers. It does not reserialize mutable ResponseCookies or use a cookie map that would hide duplicate names. The real Next request-store fixture exercises accepted ADMIN and rejected missing/USER/duplicate inputs before resource work."
+    },
+    {
+      "id": "CONFIGURED_ORIGIN_PRESERVATION",
+      "conclusion": "The standard skipMiddlewareUrlNormalize option prevents NextURL from replacing numeric loopback with localhost. The middleware uses fixed AUTH_URL. The browser resolves relative Location against the actual request URL, requires the exact configured destination and final page origin, and keeps external request count at zero."
+    },
+    {
+      "id": "FAILURE_ARCHIVAL_ORDER",
+      "conclusion": "Vitest and browser raw reports are scanned and archived before nonzero exit checks. Attempt-8 and attempt-9 retain actual failing browser output. Earlier reports remain immutable; completed reports use exclusive writes."
+    },
+    {
+      "id": "CONSOLE_OBSERVATION_CAPTURE",
+      "conclusion": "The final runner uses default plus JSON reporters, scans and archives the raw outputs, and reads exactly one actual console observation from the formal case command. The uniform-failure and guards reports contain their own measured values. Missing or invalid observations fail the case. Integer sample precision and the source-derived order are identified explicitly."
+    },
+    {
+      "id": "LEGACY_SEED_RUNTIME_ROLE",
+      "conclusion": "The earlier full quality run failed with PostgreSQL 42704 when two Phase010 seed fixtures named the former runtime role. The fix uses the fixture configuration's strictly validated and quoted appUser. The original retry-exhaustion and all-or-nothing audit rollback assertions remain unchanged. The earlier failure and a changed-source diagnostic are retained."
+    }
+  ],
+  "limitations": [
+    "The reviewer independently read source, assertions, recorded outputs and image artifacts, and ran read-only hash/binding checks. The formal PostgreSQL/browser/quality commands were executed by the stage runner, not rerun by this reviewer.",
+    "The independent 16-request ingress reproduction was run before the final attempt. Its source hash must match the final ingress bytes; it is supplementary and does not replace a frozen case.",
+    "Timing samples from earlier JSON-only runs were not retained. The final attempt's formal case captures its own fresh measurements; earlier supplemental results are historical and do not substitute for the final attempt. Sample values are integer-rounded while reported statistics use the same run's unrounded elapsed times.",
+    "The interleaved timing order is derived from the frozen deterministic loop, not a separately instrumented runtime trace.",
+    "No production traffic, real identity, external provider or public deployment was used. Human screen-reader experience remains NOT_EVALUATED.",
+    "Artifact commit, metadata commit, dual-shell seal and GitHub synchronization occur after this independent review and are not claimed here."
+  ],
+  "historicalSupplement": {
+    "path": "docs/evidence/attempts/Phase011/attempt-10/supplemental-observations.json",
+    "sha256": "72ae2006c22ba60425607f466c6f9675bcff0cc34737f3f6beeb532e0991fc48",
+    "status": "HISTORICAL_SUPPLEMENT_ONLY",
+    "finalCaseEvidence": false
+  },
+  "attemptId": "attempt-11",
+  "planPath": "docs/phase-plans/Phase011.json",
+  "planHash": "4d851b278f440dd3d9f053ed05486ea9b596fd172e7d0c812b20dec8d2a27089",
+  "reviewerRunId": "3b24c050-e033-4725-a0b8-2e4a6df36c49",
+  "recordedAt": "2026-09-11T19:10:09.581Z",
+  "decision": "PASS",
+  "phaseCompletionStatus": "READY_FOR_ARTIFACT_AND_METADATA_SEAL",
+  "conclusion": "The frozen Phase011 implementation, all eight formal cases, original security mutation failures and restorations, native measurements, browser artifacts and all twenty quality checks are consistent. No unresolved security or evidence blocker remains in the reviewed scope.",
+  "sourceHashes": {
+    ".env.example": "8d1e5b830a44ea6746a7436b8a17be766deba0b789fc3d767dcf3363228fa4f3",
+    ".gitattributes": "5f52d486cab522fa6daa07235ca6c5ff8131ba803fb675bb2db588a7a1f1f7e4",
+    ".gitignore": "eb3d88b97ff365a767b5b3488f3f5e889fd13f4ee1036b99e974ee7c3a17531b",
+    "README.md": "d8a010484ef871b6fbb1d830b00b6eac99e03c1485e85823840d8320467f8970",
+    "docs/agent-execution-contract.md": "2919a173e60f0ed50fbf4839a5d8c96bc836afd032410cb012186026736688a2",
+    "docs/api.md": "75ae366841227718bfaf18d8c1187543b390ef0aaf16d2ce1fa5754f116b83c0",
+    "docs/auth.md": "c9f5eff199d128b2a74e7b020737bf0b28fbf3885287f343f1aa51d6f89ee25c",
+    "docs/database.md": "ba0c03ab0f5fbb7aafd053cb19db88cca91d9b53e6bb0aefd93d047e6ba850af",
+    "docs/env-registry.json": "c77464fe2c071dbeb8f3f5212a99928b47dc713a522450d9860746ca950c6a48",
+    "docs/evidence/attempts/Phase011/setup/migration-generation.json": "311408871731b0479e94b118ea2853e6f13c4207c089c9eeaeb508c6fc6a72c7",
+    "docs/hosting.md": "fdd88dcd151a1bde24bb756c882c917093c153f9f1a010957af5ed5327152810",
+    "docs/phase-plans/Phase011-inputs.json": "f1f9b930bd0d1a56b643d2d78640491dc336a996658311618fe457d6776f708e",
+    "docs/phase-plans/Phase011.json": "4d851b278f440dd3d9f053ed05486ea9b596fd172e7d0c812b20dec8d2a27089",
+    "docs/phase-plans/auth-session-protection.sql": "bb3f717b326bf7f5624faf171e1adc4a34e47a089e3498f4980fd9343a121d2d",
+    "docs/phase-plans/complete-phase011.mjs": "fe7e4b8e47115b3afa3369b51e6d78b16628a06040fbe09ff42f3dc612a8ac53",
+    "docs/phase-plans/phase011-evidence.mjs": "fc97669ebe463d5aaa89d10a0f461d883180f2e13b0714f9cb32831ac6d822a2",
+    "docs/phase-plans/phase011-runtime.mjs": "4c1988410bca547b0e9b8951858bfdfd742c06d5b92d92b79d21acd518723ec9",
+    "docs/phase-plans/prepare-phase011.mjs": "3b2b008e503eccd6435a66f023755a67580b3a2e3b30035a1c02889b487ae5cf",
+    "docs/phase-plans/setup-phase011.mjs": "a01c949dc62a9887409eea47b55947ed669ac07fd5936481092a66f6e3920031",
+    "docs/phase-plans/verify-phase011.mjs": "dee35b5b5c926590a8b30dbdcc055dbec63f9a554c21a32d29b629d9723ea9dd",
+    "docs/phase011.md": "734a8a017921ff0ab683a0a1d255230a11f1d1d0b9d68162376b064ef291605a",
+    "docs/privacy-and-user-data.md": "5db5365fea00b265f707b144869744bf44c7d75c85a36cc25092f7675dd84b96",
+    "docs/project-layout.json": "7efe30a30fe009a8e1226563cae53d39ed2a2193be78bc0f0a776f57f67710ba",
+    "docs/runtime-baseline.json": "4676117c22c618491cd41192866f8c221f274cf61ee9fcc480d2326a860018de",
+    "eslint.config.mjs": "f45d4d5b4e4808481617530c717d97108af6488b39e008e49b4161aefd818708",
+    "package-lock.json": "e1253d4a0e5aba2d25e397b0774abc10100629c2af247e282a5ec0ace8330b1d",
+    "package.json": "b676ac97cba16076b4119e8f3dae2cd9bbeca9e407d5f4521e5086ec1031e1e1",
+    "prisma/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "prisma/migrations/20260910000000_init_user/migration.sql": "b65593d8d8a7a1821a2f65415616e5c083a0e38785bcac2a46ea362d126de3a3",
+    "prisma/migrations/20260910172735_system_config/migration.sql": "25f5d0d35a216ee085fad468f5d69d740610369ff91fcdd0ebe4a188deef45cc",
+    "prisma/migrations/20260911002217_travel_record_chat_message/migration.sql": "761979289b28f413d47c09290f43e9d01ffc22421918103a51d6c67b638bb48f",
+    "prisma/migrations/20260911042258_audit_log/migration.sql": "9707b78108c51f9a10ebfa86fa816d7caf353bcd1f09a0cce2eefcac6b392373",
+    "prisma/migrations/20260911104017_api_key_config/migration.sql": "9bc311e50f3dccc7dc7885a901285fd1f359beb0e3b808bdc1e4c16ab4ce79d1",
+    "prisma/migrations/migration_lock.toml": "99836963713b4f5b269ad49af0ed3d7b0b2e336115c2f92dc9ac683d139d0900",
+    "prisma/schema.prisma": "32c6283fc798053cc5405da2193fac810368c85309a930816025f8abe03b9a53",
+    "prisma/seed.ts": "dea4fc6ad30555657a06cdc1fad50af5968e45ad35884ec65df6f244035a07fa",
+    "scripts/auth-server.mjs": "bad8d4aa1e8469aa7d1f7bafe9b96ca1a2e904916b0faba37c13a87033212458",
+    "scripts/check-project-layout.mjs": "d19f27109ff142516a7b0454e7f9b9a03629fd11923e7f6b88c7ee9323eb1d35",
+    "scripts/checkpoint-history.mjs": "673a4f5ff409ce0a4fcb7b1754c2d977199fc502a8732cda01082b9a0eababa1",
+    "scripts/eslint-env.mjs": "f2ded148de31d4d35ede46a162116f81b48b459b869ade8411a5e25c9f5f21ce",
+    "scripts/phase-evidence.mjs": "454f1911b53a21aed6f014d8cb6b36d748a6f9ec8b8e7547187d45cd20ce96c9",
+    "scripts/phase003-evidence.mjs": "5a6660faa40d3710df19b9881f203be6dcb3e459c5b9c4fcf6169548890abbb4",
+    "scripts/test-phase-input-paths.mjs": "ce18f4dbde62c19eba879e3354af7a6d92d2ee71a191ba89bf6dd10dbddce1c5",
+    "scripts/test-validate-phase.mjs": "b4df52b324137973c12ddc352695f2082177d29aaf9d007ba6ebf1c18a76439c",
+    "scripts/validate-phase.mjs": "06bcd9955531054ace725393d8504f037256a428b80f5fe883b95587c31062d1",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319",
+    "scripts/verify-phase003.mjs": "f3b77a187709cab823dcd7a6fc84b1644dacdf3f0c5a728b4202aca357510955",
+    "src/app/(site)/layout.tsx": "dbf6397819844277acac383530a3a616f29e1068b9b5ba2d08f2886b3cca5207",
+    "src/app/(site)/login/page.tsx": "f249db17070503c398e3797298b3e7dcfe479822a68dbbf8cc948713098318f0",
+    "src/app/(site)/page.tsx": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e",
+    "src/app/admin/layout.tsx": "8b4bbf2a89ea590d1a686b332736450d8a0864c866027d367c825a17b3ace374",
+    "src/app/admin/login/page.tsx": "e4d2826c6d3cc7535c2f25bdaedf82bfb282f1cdd05f5090a9e51f990348132a",
+    "src/app/admin/page.tsx": "f01c9e65959d700f03a6b0d1ef9bd205d8617849a6a10c460283d55a262302e9",
+    "src/app/api/auth/[...nextauth]/route.ts": "dd450e1faa1e87afceb14785dfb22559a24edff039e355d64c01dc1d9f060fa7",
+    "src/app/favicon.ico": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932",
+    "src/app/globals.css": "f88153c2b0c26a4f65e48626ab5a05e68c8d962952be88ead2032c8a90b10a1f",
+    "src/app/layout.test.ts": "366831eb417230c677860edd838117ac0bf1f51601f7e0760e1f3ad0c005d22e",
+    "src/app/layout.tsx": "a9de0b5ba9380f5a058487639bd6be0d13c5a1293f720d38965d1b3dec793a6f",
+    "src/components/admin/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/auth/login-form.tsx": "5166c864dd671f361efe75d334cb8b7a8a6724a484af2b0b5368893fad9ae7e2",
+    "src/components/auth/logout-button.tsx": "9c41908cbf849d013720de1ef39000d173440fff2c4a5cf371454eeca1684035",
+    "src/components/chat/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/common/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/common/common-components.test.tsx": "8a9fcd34cc153236e6d58ad1b1ee0039e2b4020f664f918ffc5f7e9e82f8ed5b",
+    "src/components/common/empty-state.tsx": "a5b1a914935eace3193451be25c9cf8178010345ef76963e0ecb12713e284795",
+    "src/components/common/error-state.tsx": "4ef42505cda6c3a5d4c35180022eedab13ce9f33ac9e412e924dd5b9bb9d808d",
+    "src/components/common/loading-state.tsx": "0a010951d56d20dc1860ed8bd78a5c95671bd1323014330c00b4519aafe1c37f",
+    "src/components/common/page-header.tsx": "c403ac7802dbb0ecf5f83aa57ed043bf598fd3e1806c7250751cdfd9f361b4da",
+    "src/components/layout/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/layout/admin-shell.tsx": "6bb6e05f1ad6cf9c1b6c8e77a89832a3008afaaa5297ef056e3fb89fbe37c819",
+    "src/components/layout/site-header.tsx": "f4fdc237b4a3d76ac8280ff80390966ec3a1fe95d67bba7f2e5abb475ed98295",
+    "src/components/travel/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/ui/button.tsx": "abd7a62c5b38d8836c88906285ea0df0a40d3dd55f7d404a07672f749e37f43f",
+    "src/components/ui/sonner.tsx": "f28cba0be08c0873d121f6f35107c9e0b209ef649b0d0625c32e46cf0b2ed9a2",
+    "src/instrumentation.ts": "4ff6be1caa61426f26540f107f1b609bda7ad79e40b72d5c2b563d7fbb3c4821",
+    "src/lib/ai/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/lib/api-response.test.ts": "4660ad9249e90641f09cbfd7dd914504fa4d1cea7fd180c6c407eb70f2a6cd1d",
+    "src/lib/api-response.ts": "235635f476f988af2f7d2bdb867acc85bd3d4d777a99c8c7da555206b9a65a6a",
+    "src/lib/env-cli.ts": "1090373f099810914b9fb8405226c095e9101463608922f163e4b399a416937f",
+    "src/lib/env-schema.ts": "8bd4d436a81d38c32de28b805c6b6ddb179b4da9b9f0bb6f3f6e9d30d89d6722",
+    "src/lib/env.test.ts": "6b522cdacb683da40687fde494f78d75c81ac2d956523e6d5823dae858cc6e38",
+    "src/lib/env.ts": "51a3612afe39103e04f214185192f0e39e8bc5cb43d27b21922fdd1748096658",
+    "src/lib/format.test.ts": "bfbf9788fbc9506c299acdafe03debe5ee8ce6bc4baff11092d08d935d2cfdbe",
+    "src/lib/format.ts": "0834ccea0511ed8b0374db59527702e3707a251f44d367e70bf748e27dbe37a0",
+    "src/lib/json.test.ts": "2e17c72f917730c5adabd17ed3f434ab9d50d0215651f768938bff3e9fb50a60",
+    "src/lib/json.ts": "b482e4f8309135800ce6526b771b809aff8ea219d4fc89060c3b4ba057b3ed11",
+    "src/lib/schemas/system-config.ts": "84cab5c3e15856c75595c6f165417356ab17756bc4cbee6fc98625d54d696c43",
+    "src/lib/utils.ts": "55bbdc94cef3e0c8a8bba386e94f97228dd2c967fe61466fc565378890550c08",
+    "src/middleware.test.ts": "20c52096c0a600447be63fc93ab922d1254c543e3982c5da5ea14944eb9c86c0",
+    "src/middleware.ts": "d243eec2e62a52fb2d661c2b4386a5f22f28229831644735769a27332c488322",
+    "src/server/anonymous-owner.ts": "7250641a004fe8994a7eae0ce06ed9a5330b7260e5ad4da7e8c87bf2c082c0ea",
+    "src/server/api-key-envelope.ts": "814dad96afc484b82aea53c8e8fdceb2787bae58b9417ce9ad45a005d3bdebc4",
+    "src/server/audit-log.ts": "817b705eedb33458e67b554aab5081a15fbf5789ab22781393e9424abe6fe5dd",
+    "src/server/auth.ts": "af08f9c7a2b08672e5c516d38beb71fd4edd0566f0d5e98b669417d28cbec4fe",
+    "src/server/auth/auth-config.ts": "12bfc18d7104851f9969a5fdae3c6546bfd72df0be92000ca72e87684f3129b1",
+    "src/server/auth/auth-handler.ts": "f9478cc627dbad5fd4cff7ffa5c56d4afcf8541632b31a5e4651d49f109916fe",
+    "src/server/auth/clock.ts": "1dd54d5679fb14a38cb4d2a7a28fde5a479155267812a2bca36e6c323e33b68e",
+    "src/server/auth/cookie.ts": "2b8b16cd9c1a5abdb1de86020e530378b46e7ec99dff2190c3d58909927dcd15",
+    "src/server/auth/credentials-service.ts": "0f12e60c5c1cf24ec324984a74b120619745078427d37226ecceab84dae50f09",
+    "src/server/auth/errors.ts": "ee3dbd777a25889c877cbc9954466b3033ec2850eb306394bdcdc3aeee777f3b",
+    "src/server/auth/guards.ts": "850c4b508d35265967d6432e386b6209a7875df24253f64228a5a709628dc9e2",
+    "src/server/auth/login-throttle.ts": "4d78d969fbfa4b152b968a3214c3083710b7450f7854b78d63bc8dbb47aa3e3a",
+    "src/server/auth/require-admin.ts": "5463258472cc77adb6c88af93ff28d01db235d218a877029a73d7ae7185f204e",
+    "src/server/auth/session-service.ts": "867697b3d9679dc0d33524a8ba6f96a13784764601781f069078dd543ca7bdab",
+    "src/server/auth/trusted-client.ts": "2efb55c8197a40d006ead049a0de720c90dc2c0a04789b9e5f605a85bdc0fc84",
+    "src/server/auth/types.ts": "88e0a3508f077cf5f99199133a8ba9a581f799e105500b50443996ed360c9d5a",
+    "src/server/db.ts": "d2f6bec02e8dc7eb25eb782def2f24d018a1c27358cd62dfd5aeb22030457db7",
+    "src/server/ingress.ts": "b03b16891cdc66e760c2dd6fb8779e979eb1a43a8fbc244c87e5b7ab085975ad",
+    "src/server/projections/admin-user.ts": "396c25dc8b29d3a865f2490192f3665071c87112055c4ddc5ecfc9cfc72c1de3",
+    "src/server/projections/public-user.ts": "de8e550fe63c9c2bbf0e8f33ba39b518227dd7358680ec9eb77449be4c96a680",
+    "src/server/repositories/chat-message.ts": "707d2e77b7534a1e0cdd16a1d05c8b472372a1349036d4ca76dd2d81ddfecad4",
+    "src/server/repositories/data-layer-error.ts": "c62080e20792a91c18bed5c9e39c1c8d58f13c383601a46c86b25478a27d9ad1",
+    "src/server/repositories/travel-record.ts": "334a0ebd7118a8584089482713196c786ceee7956fd884f72d6f3ec980b3907f",
+    "src/server/seed-input.ts": "ca76b7628f8fd60230062cd0692e05130461bb7f4dadea7458fab2c7b7de252a",
+    "src/server/services/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/server/services/audit-log-service.ts": "9396444990f0bcc750118711b6e9924e746df207def7a216f22734a5858a334f",
+    "src/server/services/seed-service.ts": "ca76e7aa52fb62e009c38d0472eb399d1bb6b60814a316d9d00d6383c6911c35",
+    "src/types/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/integration/admin-login.test.ts": "1727b67c51917d4d3e91d3bf34210d2aa19225e40d75fc530822dc7abe035ea4",
+    "tests/integration/api-key-schema.test.ts": "c792ec99fc129c5bba53b087abb1ce53bc8dde73e9109855c58d132d89d97cf9",
+    "tests/integration/audit-log.test.ts": "b0f9423ac080489f063ec1cc2a6c34899c8f41261c64592b469337a0c6e0e173",
+    "tests/integration/chat-message.test.ts": "23dcf6dc0107e54c00aeace6352e1bce0921cabff3ceb9101674d90794c80b0b",
+    "tests/integration/config-models.test.ts": "54f6abb50b6ab83c410d4019651248538edd07d8d1f78699cecc9ab6448ee2be",
+    "tests/integration/seed.test.ts": "b1c3171398c7fe0495b770b509c577a556d85ec9a717a49de0437edc45651bde",
+    "tests/integration/travel-record.test.ts": "3bdfb894b709ac1c5d838649384599b6710537a9c6dc403e7640a3883fad5716",
+    "tests/lib/admin-login-ui.test.tsx": "3dded57571706f75968024bca5664e55005d0ca6fc49789e76420435762e9eaa",
+    "tests/lib/api-key-schema.test.ts": "cb3ebdfe084e7068ba8aed3d7edec09e32ea7d9da39e606533e38f3baa421111",
+    "tests/lib/audit-log.test.ts": "a23b15e730d9b35de35d4ec887c50029ec4702431bac99d770dc7dfcb7522476",
+    "tests/lib/auth-guards.test.ts": "101acd8feade00e64fc9e63ee7f72359f988f42ae9b9cc7aeb8ccb1c808ed338",
+    "tests/lib/auth-http.test.ts": "624284e59d7ccd6a88dbed9aa54e1bdbdb41814492feced3195f111865fab34d",
+    "tests/lib/auth-ingress.test.ts": "0ec1077654776a812812fe05eecf9d445076baf560f769f585861ce60d52bf0d",
+    "tests/lib/auth-services.test.ts": "435c4113d321659851ab8bda56264e46735bab0c5fa2de30780cc8712a0e14c1",
+    "tests/lib/auth.test.ts": "fb8bb3b519253cd9d931ec208a6c78954fe94d11aa3b8cd65297ce55ee8a418c",
+    "tests/lib/chat-message.test.ts": "d2d380b64f03dc2c2ffbaaa6176c6d5b565f3ba91d90c5a15871efc00c12fffb",
+    "tests/lib/db.test.ts": "e638b23182053c44a3937c2d63f1baa6e3cb7c8735588ac50002ba85ccfcb136",
+    "tests/lib/public-user.test.ts": "fadb0b242ed03b69654ab0e7aeb1f0761190a109f126a7a3b25f1d216dc20555",
+    "tests/lib/seed.test.ts": "63373fc0ac7f10f632f982580bd0594d9fa2da927adc6c4248fb04808da55154",
+    "tests/lib/travel-record.test.ts": "b657b5c2e59ac83917ddda4fc5a8ad3fcca44ac9783d6570750f2aba7ffd265c",
+    "tests/phase005/browser.mjs": "65cee15ce4171423bde4c82689466d1b1c45a64cb1a847ec6200661465676881",
+    "tests/phase005/components-fixture.tsx": "d224e44f30a1c481be92f70b2f592388da98b5c567f9736774f617ffc00927dd",
+    "tests/phase005/fixtures/phase003-home.tsx": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e",
+    "tests/phase006/cli-network-guard.cjs": "da1e1020f2d0f5f171f1a721dfa2c3412a2901d858eee176ed730f45f0ad2ab7",
+    "tests/phase006/cli-network.mjs": "21664e3f9f0467ab5e92fdc60b84f2df27c106bb1267ec8a734cfe128f7bbd72",
+    "tests/phase006/database.integration.ts": "1adb6812f267b3290f5f6baa9b26b5e7102e421dc2d47fa1ef58d82f7a72d038",
+    "tests/phase006/studio.mjs": "04816f53f00927939193655814e966819ac4aa477eb9042f5b5b2f1b5fbc9916",
+    "tests/phase006/user-types.ts": "3ab183310d3add2e18415f83f732cf913f883f18bbdd06a71dc9de0ce76d47c5",
+    "tests/phase006/vitest.database.config.mjs": "b0d0de6cebdd51e1418960674b8b977d64072787cc123d19bd05a0595d58b267",
+    "tests/phase007/cli-network.mjs": "e7a842985395ccb9111d165f7e1aeb56de02fa509ecf6a449dffc4a69c00e312",
+    "tests/phase007/config-fixture.ts": "a47ad51c9dae3a4224ce3971e8051e7e17240bc6dac1dd47ab8b2e4fcaf8d1e5",
+    "tests/phase007/config-types.ts": "ce6093ffc4aa4929631b2e25c2819d2ee16bc7ad5346a0b1db06e89055931709",
+    "tests/phase008/cli-network.mjs": "ff64f0299c5ed5ab62509d3b9bd26c7a17fcc657a1b2186e493584df67b7b7f7",
+    "tests/phase008/data-fixture.ts": "47cd96d4bb71a29b5f11319915a7639e69bfc8a875cea75a2c73334d17a1eb6c",
+    "tests/phase008/data-types.ts": "c854d2e0e84b57ff593a7ff82dab2a7f68488659a854d6e5e06527f5af14166e",
+    "tests/phase008/evidence-guards.mjs": "086c5341e065310597f14bc09432eca2f6a6ef7129eea9d9732fa505a7eae683",
+    "tests/phase009/audit-fixture.ts": "7b95fa636c814c2532a4fa263987339289bd34ddb99e10790f157ea05764fff3",
+    "tests/phase009/audit-types.ts": "ad6e2865de09a24facaff29ef15ad266694515420bf86e2066ae5de43ba4274e",
+    "tests/phase009/cli-network.mjs": "10218552478835c1d2338bc50515ca66140dbcc478073e7d138fe4e68a5954ae",
+    "tests/phase009/evidence-guards.mjs": "ad68ea652122a0eb28fc73497710772942b43f14c4a71f854f822cbef0a76be6",
+    "tests/phase010/api-key-fixture.ts": "d542ba5e7e0973dae9a5dedcb7f02efe13fea791d29d2ed1a8992fa28be200ad",
+    "tests/phase010/api-key-types.ts": "96ad6dc0927901c526ddc4532deb47fb2edc24009ca7397cc8646a6bd7347973",
+    "tests/phase010/cli-network.mjs": "2d4a5f37b631ab222ff5ca822d061d7e7c16eb1841c02e767700a69dd0a4623a",
+    "tests/phase010/evidence-guards.mjs": "fbf173e4f7a43a571069c0d5423dfb9cc73f8c2de2156052aa6c76730017e0db",
+    "tests/phase010/seed-fixture.ts": "85a2917035a13526ef01cdd1c07a1b72717128e950de5bc0a92af39d91a1d79a",
+    "tests/phase011/auth-fixture.ts": "036ebb678e42ee73c9434243afcd1008eff23bafe240f572d78d02d5f899e7da",
+    "tests/phase011/auth-types.ts": "0693390b60b2cadf9a29c2111f952c895f82ca641ae703619ff24912bc53e5b3",
+    "tests/phase011/auth-worker.ts": "3b0c86786f97db34b721d09a17392c7057a2a5302c51645d2e245e34d49276e5",
+    "tests/phase011/browser.mjs": "19c9d81f7efaa7b37140fe9d6be44bb6926c009617dd3c05a4f622c02ea63f28",
+    "tests/phase011/cli-network.mjs": "698e7c1d72d4f3c2b05e44b86e84912ea6d1e248d5e9774630e81f31bc158af1",
+    "tests/phase011/evidence-guards.mjs": "fca1e525c57bccd66c26005c985c81fad359e306e8b9ba6f8c259d5bdf767b35",
+    "tsconfig.json": "83d292a6930a317ea31ef48e220097d2ca10c6c505f41d5954795acef48ca3b9",
+    "vitest.config.ts": "95e128668d32ac732a57a4e82bb68b78017b5db9e738116549b252e2d75a72a0",
+    "vitest.setup.ts": "e512871a40d72cd44e0c0d96189a3f105ab192d021a3016e9f3d014aa8937035",
+    "vitest/stubs/server-only.ts": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+    "next.config.ts": "085a0c4e7d9e80f806b4e7b1efa62d1c8015707381bdafde49fd1887b3348072"
+  },
+  "reportHashes": {
+    "docs/evidence/attempts/Phase011/attempt-11/valid-login.json": "3abe8383cf9c2d0f94c62b7f92abeb05447f76621425f4d810a1f56dbb0fdf32",
+    "docs/evidence/attempts/Phase011/attempt-11/uniform-failure.json": "7acd31f16025dc0451bbbef7aab2df6438f0598edde10d4f379d3459c44676b1",
+    "docs/evidence/attempts/Phase011/attempt-11/dual-throttle.json": "fe6cb5c2f23eb15bbcc1e4b7aa80592c1dee2261001ba4df9bc3f355d9499f11",
+    "docs/evidence/attempts/Phase011/attempt-11/persistence-proxy.json": "c5838859a1369966fe54a075c9c91fa9c68ddc48167b832ff1b19149f63ba69e",
+    "docs/evidence/attempts/Phase011/attempt-11/session-revocation.json": "e56f589ce0841e09333b5be2e45279442b3a75b2494448c1a489e5b4a331e11d",
+    "docs/evidence/attempts/Phase011/attempt-11/guards.json": "0b9b7bb6a1407591ab906ff7983c6efed4876e7e9f704a19e02b4c01369c69fd",
+    "docs/evidence/attempts/Phase011/attempt-11/routing-logout.json": "64f37d98630033d3615bf5a5cc8b51f489ac128fd6f2312fd4e6f1132fe6d521",
+    "docs/evidence/attempts/Phase011/attempt-11/mutation.json": "49c87c68b9f45b5d6dfa649ae1c348cba2d521fee2df7b11a03a0cba0057f9b5"
+  },
+  "supplementalReportHashes": {
+    "docs/evidence/attempts/Phase011/attempt-11/quality.json": "b570bcc8ed1474587c4b0e66c37696caf56b760fc8a0749c095129616ff7612f"
+  },
+  "sourceFreeze": {
+    "path": "docs/evidence/attempts/Phase011/attempt-11/source-freeze.json",
+    "sha256": "afc888d4d2efae9ab2287284e32e68c8c0946f73f8789c692fd0896de1ef5967",
+    "aggregateHash": "49cd47a7d1c43dfc0f25d7f4df1448a5328656d4d1ffe7e387ba9da2a0567ca5",
+    "sourceCount": 174
+  },
+  "reviewedArtifactHashes": {
+    "prisma/migrations/20260911151715_auth_session_login_attempt/migration.sql": "e4913a97a5ff09d9ee71efaebd58163b8b5f5db9f0fe7747bd07783aed66c08f",
+    "docs/evidence/attempts/Phase011/attempt-11/valid-login-vitest.json": "5dc502acea03e95bd50ae3cc77c0e1d12eabe91532d87df38a8c9983ab2e78ca",
+    "docs/evidence/attempts/Phase011/attempt-11/uniform-failure-vitest.json": "071f07440602740c806ccc27314773e0b99ac1c88846987bc2741fcfb830e387",
+    "docs/evidence/attempts/Phase011/attempt-11/dual-throttle-vitest.json": "7b42de8f314f43cbdde8809f7ec7765b7759a11486bb8371589bba0b46f7f09f",
+    "docs/evidence/attempts/Phase011/attempt-11/persistence-proxy-vitest.json": "cfd253a77c7c73d8ebf6f05c0a029a148f2f6365666dfd0c23444561d6d07804",
+    "docs/evidence/attempts/Phase011/attempt-11/session-revocation-vitest.json": "3eff22adc0c6101f1fb238476f3b5804620cbf4912b706d9381ef680b44a6987",
+    "docs/evidence/attempts/Phase011/attempt-11/guards-vitest.json": "f0f6ac4c2e2466084233f90a9621eaf6e03d3f04debd35f5270378a868d4d124",
+    "docs/evidence/attempts/Phase011/attempt-11/routing-logout-vitest.json": "c67beda3aac91e1ceb8e224a50fc5faec391b3a72bafc54683f44cace3c1384f",
+    "docs/evidence/attempts/Phase011/attempt-11/browser.json": "179a3bdf1b9dfde8e74453299cc7a054e3498190e8a7d04559fa7170f4c31698",
+    "docs/evidence/attempts/Phase011/attempt-11/auth-login-375-a11y.txt": "9e414c1c2675e386f427716bc5778a3f1715afcae51fb58e1c9e9a56f0edd5a3",
+    "docs/evidence/attempts/Phase011/attempt-11/auth-login-375-axe.json": "fffbee303f0830c2a5a329d0f0cdd2d4e2d1fa03e4263a332d167f7d97ace760",
+    "docs/evidence/attempts/Phase011/attempt-11/auth-login-375.png": "54ce443938800bcb85a082ca3fe7be427aeb19d79b4c906c40d0ad923b839313",
+    "docs/evidence/attempts/Phase011/attempt-11/auth-login-375.html": "a62fc585f9420ce871b300f06c2a53bcccdc1ecbd9b841a57e1e94b16fc76841",
+    "docs/evidence/attempts/Phase011/attempt-11/auth-login-1280-a11y.txt": "9e414c1c2675e386f427716bc5778a3f1715afcae51fb58e1c9e9a56f0edd5a3",
+    "docs/evidence/attempts/Phase011/attempt-11/auth-login-1280-axe.json": "e05536646de26465689a7fbaf6de2272c97e75d3ae738c29d156a88c50a2d5cd",
+    "docs/evidence/attempts/Phase011/attempt-11/auth-login-1280.png": "614d5e83ca73d84d96387e428a2f3858faf32da24f71d8af65a4421c9275d5d5",
+    "docs/evidence/attempts/Phase011/attempt-11/auth-login-1280.html": "a62fc585f9420ce871b300f06c2a53bcccdc1ecbd9b841a57e1e94b16fc76841",
+    "docs/evidence/attempts/Phase011/attempt-11/auth-admin-success-axe.json": "b552cc7af7a51b3598e8a8d9f7c3543c6ecafbc7d6f7abc3d53da6dbbec6286b",
+    "docs/evidence/attempts/Phase011/attempt-11/auth-admin-success.png": "ea016bf80c50437cf1631ba0572dfe6443172b7d0e02e061ff26ba74ddd01afb",
+    "docs/evidence/attempts/Phase011/attempt-11/auth-admin-success.html": "47b7bfec1288387d98fa0ca073775dc53de5a716493eca46849a05150000c6d9",
+    "docs/evidence/attempts/Phase011/attempt-11/auth-logout-unavailable.png": "ca5e110ce22eac02ebfed8af6c5bea46f60fed42c0f8079caeb19051f56ce867",
+    "docs/evidence/attempts/Phase011/attempt-11/auth-logout-unavailable.html": "1c0398b6542987e52cb87904690857539ee34c3f2b6640814ad0a15a1b9c4713",
+    "docs/evidence/attempts/Phase011/attempt-11/baseline-db-recheck-vitest.json": "fe4833f6d68245b23bef4baf30509fdd32e8b7eb09cb4065cc2b11dcb7eaa936",
+    "docs/evidence/attempts/Phase011/attempt-11/mutations/db-recheck.json": "a4215a125038dd8f0922d8daa0fa2e95aa8f6fa022a7212ca6d091d01af92493",
+    "docs/evidence/attempts/Phase011/attempt-11/negative-db-recheck-vitest.json": "2ff4792dd796654467ce21b59714c8181f3f94f17f466ba9bceaf233a09e5774",
+    "docs/evidence/attempts/Phase011/attempt-11/restored-db-recheck-vitest.json": "8f7fd297ca9b9a549098bd617ddf50ff7acf600c0d9d97a83400355db4f9d5ff",
+    "docs/evidence/attempts/Phase011/attempt-11/baseline-session-version-vitest.json": "57bf783dbd8bc382edddae12cddbeb6c57853282507e50825c7f7143b450249b",
+    "docs/evidence/attempts/Phase011/attempt-11/mutations/session-version.json": "25b149a0d3ca2d2ef63d143bf1d2d493ab605896f752d63f6d708d60601cd100",
+    "docs/evidence/attempts/Phase011/attempt-11/negative-session-version-vitest.json": "ec63debebef138148d63ae687a0d6189a68f989b69e65e6fd8857f697470c080",
+    "docs/evidence/attempts/Phase011/attempt-11/restored-session-version-vitest.json": "ab20a2575d5c14afa085c1fea0d2bcacfa0351c23077f85c26e29f4156939709",
+    "docs/evidence/attempts/Phase011/attempt-11/baseline-dummy-compare-vitest.json": "a3902a00de1abe78081e0ea20c906830b0f94a5fc1073cf61d83ead0fe0081f3",
+    "docs/evidence/attempts/Phase011/attempt-11/mutations/dummy-compare.json": "f828f34b7a9ed389bc441608581a71b7a6060b988927fb8a74fbc4843e05d6e8",
+    "docs/evidence/attempts/Phase011/attempt-11/negative-dummy-compare-vitest.json": "3f2237846a331180334afbe7587cb131ef32c392a2f9f64179a8a3c19fa6b60a",
+    "docs/evidence/attempts/Phase011/attempt-11/restored-dummy-compare-vitest.json": "14a82a0e19a8e6bfc29fd120c98bab1f2fde80c09e45edf4ec3454eaf94e210d",
+    "docs/evidence/attempts/Phase011/attempt-11/baseline-account-bucket-vitest.json": "bfcd2aad0c8d455bbca0beb20a4e070c23bbccbf62a90f86818760f5d0cb67d7",
+    "docs/evidence/attempts/Phase011/attempt-11/mutations/account-bucket.json": "6a13f38cee853e978f0f7fee0041099f816d11fbba26d42f99c2d47cc5594677",
+    "docs/evidence/attempts/Phase011/attempt-11/negative-account-bucket-vitest.json": "46c4242e8a4749df29913439e3a80c161b2cf98450faf65997c0efa17d52247b",
+    "docs/evidence/attempts/Phase011/attempt-11/restored-account-bucket-vitest.json": "a7b9b19b465e30355709c0c914689ba6a552b9b89fe550095b58597fa0bb94da",
+    "docs/evidence/attempts/Phase011/attempt-11/baseline-advisory-lock-vitest.json": "f86f210fc83f460567d9e809710167626482f5dc9238c0cfb6254ab7238457a7",
+    "docs/evidence/attempts/Phase011/attempt-11/mutations/advisory-lock.json": "91bd18bee928b0d63a1ffc57d1fabd8a60888fda9c9ad7d936b87110c46c0530",
+    "docs/evidence/attempts/Phase011/attempt-11/negative-advisory-lock-vitest.json": "1ba89d63a70780fd5dd8176ee7c57cf3aa1f474b3eb31cd41c75677a10260cc0",
+    "docs/evidence/attempts/Phase011/attempt-11/restored-advisory-lock-vitest.json": "a2294d18dd30e7d8042d0cefa14daa8ff0a8a2c1a835a0c1993a92bd28e932d0",
+    "docs/evidence/attempts/Phase011/attempt-11/restored-auth-tests-vitest.json": "0a5236908206318e8e14b826c835a1660f0de2cbaf2e943d073f9153bcf25d9a",
+    "docs/evidence/attempts/Phase011/attempt-11/cli-network.json": "a3d7af4aa5b2dd7ee4801fb66f5af28a6135a27efeb97fc7f8360278493016e6",
+    "docs/evidence/attempts/Phase011/attempt-11/auth-admin-login-vitest.json": "1376151d0ec0edbaa05bc6ffe331df49b9f80e2b8a8a37b96aac5c16a47038b2",
+    "docs/evidence/attempts/Phase011/attempt-11/all-tests-vitest.json": "b98549ccfbf805d80a48b32ba03fbfbf7852d954afdd8cc789a10dcd18db50cd",
+    "docs/evidence/attempts/Phase011/attempt-11/phase006-user-regression-vitest.json": "4515bc0a69b118e1f67174924d39b12647b9699d2401bde258d26872ab1af806",
+    "docs/evidence/attempts/Phase011/attempt-11/validator-regression.json": "3b676fdbbcb1ae92b569a4a7eed7dc1da2e4b41e6a9075fb32934a23277b09fe",
+    "docs/evidence/attempts/Phase011/attempt-11/evidence-guards.json": "1fddc0879f24748d0e2d94cfbb04aa4ad63e489cfd0eb5b64d994220ff19a8c7"
+  },
+  "dispositions": [
+    {
+      "issueId": "AUTH011-SEC-01",
+      "status": "RESOLVED",
+      "sourcePaths": [
+        "src/server/auth/auth-handler.ts",
+        "src/server/auth/cookie.ts",
+        "src/server/auth/session-service.ts"
+      ],
+      "evidence": [
+        {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/routing-logout.json",
+          "sha256": "64f37d98630033d3615bf5a5cc8b51f489ac128fd6f2312fd4e6f1132fe6d521"
+        },
+        {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/session-revocation.json",
+          "sha256": "e56f589ce0841e09333b5be2e45279442b3a75b2494448c1a489e5b4a331e11d"
+        },
+        {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/browser.json",
+          "sha256": "179a3bdf1b9dfde8e74453299cc7a054e3498190e8a7d04559fa7170f4c31698"
+        },
+        {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/auth-admin-login-vitest.json",
+          "sha256": "1376151d0ec0edbaa05bc6ffe331df49b9f80e2b8a8a37b96aac5c16a47038b2"
+        }
+      ],
+      "passedAssertions": [
+        "Auth.js HTTP authentication boundary revokes the database session and rejects its old cookie despite unrelated prefix cookies ",
+        "Auth.js HTTP authentication boundary revokes the database session and rejects its old cookie despite unrelated prefix cookies ; authjs.session-token-foreign=untrusted-suffix",
+        "Auth.js HTTP authentication boundary does not report successful server logout for an ambiguous base and chunk cookie"
+      ],
+      "realBrowserAndDatabaseObservation": {
+        "sessionRevoked": true,
+        "cookieCleared": true,
+        "cookieCleanupReceipt": true,
+        "oldCookieAuthorizedRequests": 0,
+        "loginReachable": true,
+        "pollutedCookiePrefixBypass": false
+      },
+      "assessment": "The final real browser run adds an unrelated prefix cookie, receives a successful logout only after the PostgreSQL row is REVOKED, and observes rejection of the saved old cookie. Ambiguous base/chunk input is rejected by the Auth.js boundary regression."
+    },
+    {
+      "issueId": "AUTH011-SEC-02",
+      "status": "RESOLVED",
+      "sourcePaths": [
+        "src/server/ingress.ts",
+        "scripts/auth-server.mjs",
+        "src/server/auth/trusted-client.ts"
+      ],
+      "evidence": [
+        {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/persistence-proxy.json",
+          "sha256": "c5838859a1369966fe54a075c9c91fa9c68ddc48167b832ff1b19149f63ba69e"
+        },
+        {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/auth-admin-login-vitest.json",
+          "sha256": "1376151d0ec0edbaa05bc6ffe331df49b9f80e2b8a8a37b96aac5c16a47038b2"
+        },
+        {
+          "path": "docs/evidence/attempts/Phase011/attempt-5/independent-transport-review.json",
+          "sha256": "e9693135990e02b5c6f8de24efba51a9580999f864d99fc2a836fa0ba9a5013e"
+        }
+      ],
+      "passedAssertions": [
+        "auth trusted transport keeps concurrent asynchronous request proofs isolated and single-use"
+      ],
+      "independentReproduction": {
+        "observedInPriorAttempt": true,
+        "ingressBytesUnchanged": true,
+        "requestCount": 16,
+        "ownProofAccepted": 16,
+        "crossRequestRejected": 16,
+        "repeatedUseRejected": 16,
+        "outsideContextRejected": 16
+      },
+      "assessment": "Current formal tests exercise trusted transport and durable admission. The independently executed 16-request socket reproduction remains applicable to the identical ingress bytes, and is explicitly supplementary to the final formal cases."
+    },
+    {
+      "issueId": "AUTH011-SEC-03",
+      "status": "RESOLVED",
+      "sourcePaths": [
+        "src/components/auth/logout-button.tsx",
+        "src/server/auth/cookie.ts",
+        "src/server/auth/auth-handler.ts"
+      ],
+      "evidence": [
+        {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/routing-logout.json",
+          "sha256": "64f37d98630033d3615bf5a5cc8b51f489ac128fd6f2312fd4e6f1132fe6d521"
+        },
+        {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/browser.json",
+          "sha256": "179a3bdf1b9dfde8e74453299cc7a054e3498190e8a7d04559fa7170f4c31698"
+        },
+        {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/auth-admin-login-vitest.json",
+          "sha256": "1376151d0ec0edbaa05bc6ffe331df49b9f80e2b8a8a37b96aac5c16a47038b2"
+        }
+      ],
+      "passedAssertions": [
+        "administrator logout allows retry without claiming cookie cleanup when a service failure has no cleanup receipt"
+      ],
+      "realBrowserAndDatabaseObservation": {
+        "failureStatus": 503,
+        "cookieClearedOnFailure": true,
+        "cookieCleanupReceipt": true,
+        "serverSuccessClaimed": false,
+        "serverSessionUnchangedDuringFailure": true,
+        "recoveryRevoked": true,
+        "externalCallbackFollowed": false
+      },
+      "assessment": "The UI keeps retry available when a 503 lacks the cleanup receipt. The real PostgreSQL privilege-failure browser scenario returns 503 with cookie cleanup, shows an explicit unfinished server-logout message, preserves the active server row during failure, and verifies successful later revocation."
+    }
+  ],
+  "additionalRegressionEvidence": {
+    "actionOriginalCookieHeader": {
+      "assertions": [
+        "management page, Route Handler and Server Action guard ordering authorizes a Server Action from the original Cookie header despite mutable cookie serialization",
+        "management page, Route Handler and Server Action guard ordering rejects duplicate incoming Cookie names before Server Action database or resource work"
+      ],
+      "formalGuardObservation": {
+        "status": "PASS",
+        "deniedRoute": [
+          401,
+          403,
+          401
+        ],
+        "deniedAction": [
+          401,
+          403,
+          401
+        ],
+        "unauthorizedQueries": 0,
+        "unauthorizedWrites": 0,
+        "authorizedQueries": 2,
+        "authorizedWrites": 2,
+        "revokedRoute": 401,
+        "revokedAction": 401,
+        "requestContext": "REAL_NEXT_REQUEST_STORE",
+        "database": "REAL_POSTGRESQL17"
+      }
+    },
+    "originPreservation": {
+      "browser": {
+        "path": "docs/evidence/attempts/Phase011/attempt-11/browser.json",
+        "sha256": "179a3bdf1b9dfde8e74453299cc7a054e3498190e8a7d04559fa7170f4c31698"
+      },
+      "observations": {
+        "loginPage": 200,
+        "unauthenticatedAdmin": 307,
+        "userLoginPage": 200,
+        "providerReachable": true,
+        "businessAliases": "ABSENT",
+        "redirectLoop": false,
+        "initialRedirectOriginPreserved": true,
+        "finalPageOriginPreserved": true
+      },
+      "blockedExternalRequests": 0,
+      "configurationSource": {
+        "path": "next.config.ts",
+        "sha256": "085a0c4e7d9e80f806b4e7b1efa62d1c8015707381bdafde49fd1887b3348072"
+      }
+    },
+    "seedRoleBinding": {
+      "assertions": [
+        "seed real CLI concurrent-seed: only three retries then read-only reconciliation; exhausted conflicts leave no rows",
+        "seed real CLI first-seed: audit failure rolls back the administrator and all configuration writes"
+      ],
+      "finalFullTestReport": {
+        "path": "docs/evidence/attempts/Phase011/attempt-11/all-tests-vitest.json",
+        "sha256": "b98549ccfbf805d80a48b32ba03fbfbf7852d954afdd8cc789a10dcd18db50cd"
+      },
+      "finalFullTestStatus": "425_OF_425_PASS"
+    },
+    "nativeMeasurementCapture": {
+      "formalTimingReport": {
+        "path": "docs/evidence/attempts/Phase011/attempt-11/uniform-failure.json",
+        "sha256": "7acd31f16025dc0451bbbef7aab2df6438f0598edde10d4f379d3459c44676b1"
+      },
+      "formalGuardReport": {
+        "path": "docs/evidence/attempts/Phase011/attempt-11/guards.json",
+        "sha256": "0b9b7bb6a1407591ab906ff7983c6efed4876e7e9f704a19e02b4c01369c69fd"
+      },
+      "capturedFromTheirOwnCommandStdout": true,
+      "historicalSupplementUsedAsFinalCaseEvidence": false
+    }
+  },
+  "verification": {
+    "requiredCases": {
+      "numerator": 8,
+      "denominator": 8,
+      "requiredPassRate": 1,
+      "waived": false
+    },
+    "nonMutationIntegrationAssertions": 20,
+    "authTests": {
+      "passed": 113,
+      "failed": 0,
+      "pending": 0
+    },
+    "completeTests": {
+      "passed": 425,
+      "failed": 0,
+      "pending": 0,
+      "files": 27
+    },
+    "phase006IndependentDatabaseTests": {
+      "passed": 31,
+      "failed": 0,
+      "pending": 0
+    },
+    "supportingChecks": [
+      {
+        "checkId": "lint",
+        "status": "PASS"
+      },
+      {
+        "checkId": "typecheck",
+        "status": "PASS"
+      },
+      {
+        "checkId": "auth-admin-login",
+        "status": "PASS",
+        "reportPath": "docs/evidence/attempts/Phase011/attempt-11/auth-admin-login-vitest.json",
+        "testCount": 113
+      },
+      {
+        "checkId": "test",
+        "status": "PASS",
+        "reportPath": "docs/evidence/attempts/Phase011/attempt-11/all-tests-vitest.json",
+        "testCount": 425
+      },
+      {
+        "checkId": "format-check",
+        "status": "PASS"
+      },
+      {
+        "checkId": "build",
+        "status": "PASS"
+      },
+      {
+        "checkId": "project-layout",
+        "status": "PASS"
+      },
+      {
+        "checkId": "phase003-regression",
+        "status": "PASS"
+      },
+      {
+        "checkId": "phase006-user-regression",
+        "status": "PASS",
+        "testCount": 31,
+        "reportPath": "docs/evidence/attempts/Phase011/attempt-11/phase006-user-regression-vitest.json"
+      },
+      {
+        "checkId": "phase007-config-regression",
+        "status": "PASS",
+        "testCount": 44,
+        "reportPath": "docs/evidence/attempts/Phase011/attempt-11/all-tests-vitest.json"
+      },
+      {
+        "checkId": "phase008-data-regression",
+        "status": "PASS",
+        "testCount": 86,
+        "reportPath": "docs/evidence/attempts/Phase011/attempt-11/all-tests-vitest.json"
+      },
+      {
+        "checkId": "phase009-audit-regression",
+        "status": "PASS",
+        "testCount": 35,
+        "reportPath": "docs/evidence/attempts/Phase011/attempt-11/all-tests-vitest.json"
+      },
+      {
+        "checkId": "phase010-seed-regression",
+        "status": "PASS",
+        "testCount": 40,
+        "reportPath": "docs/evidence/attempts/Phase011/attempt-11/all-tests-vitest.json"
+      },
+      {
+        "checkId": "migration-schema",
+        "status": "PASS",
+        "schemaHash": "32c6283fc798053cc5405da2193fac810368c85309a930816025f8abe03b9a53",
+        "migrationHash": "e4913a97a5ff09d9ee71efaebd58163b8b5f5db9f0fe7747bd07783aed66c08f"
+      },
+      {
+        "checkId": "evidence-binding",
+        "status": "PASS",
+        "reports": 8,
+        "rejectedMutations": 5
+      },
+      {
+        "checkId": "dependency-versions",
+        "status": "PASS",
+        "dependencyCount": 35,
+        "nodeExecutableSha256": "3602f2bb1a10f2cbab4c36886218a33c1ab3db87290e73b033c46c77147d0237"
+      },
+      {
+        "checkId": "prisma-cli-network-isolation",
+        "status": "PASS",
+        "reportPath": "docs/evidence/attempts/Phase011/attempt-11/cli-network.json"
+      },
+      {
+        "checkId": "secret-and-scope-scan",
+        "status": "PASS",
+        "previousMigrationsPreserved": 5,
+        "modelCount": 8,
+        "generatedSecretHits": 0,
+        "sensitiveEvidenceHits": 0,
+        "rawOutputScannedBeforeArchival": true,
+        "filesScanned": 253
+      },
+      {
+        "checkId": "validator-regression",
+        "status": "PASS",
+        "reportPath": "docs/evidence/attempts/Phase011/attempt-11/validator-regression.json",
+        "caseCount": 3
+      },
+      {
+        "checkId": "phase011-evidence-guards",
+        "status": "PASS",
+        "reportPath": "docs/evidence/attempts/Phase011/attempt-11/evidence-guards.json",
+        "caseCount": 48
+      }
+    ],
+    "qualityCommandCount": 37,
+    "qualityCommandsAllExitZero": true,
+    "executionDependencyHashCount": 46,
+    "nativeTiming": {
+      "samplesPerGroup": 16,
+      "groups": 4,
+      "retainedSamples": 64,
+      "warmupPerGroup": 1,
+      "mediansMs": [
+        262.6498999999999,
+        261.1665000000007,
+        261.22419999999966,
+        262.2076500000003
+      ],
+      "medianRatio": 1.0056799015187596,
+      "maximumMedianRatio": 1.5,
+      "permutationP": 0.7261369315342329,
+      "minimumPermutationP": 0.01,
+      "samplePrecision": "Integer milliseconds rounded by the frozen test console output",
+      "statisticPrecision": "The frozen test computes medians, medianRatio and permutationP from its original unrounded elapsed times",
+      "sourceDerivedScheduleIsMeasuredEventLog": false
+    },
+    "guardObservation": {
+      "status": "PASS",
+      "deniedRoute": [
+        401,
+        403,
+        401
+      ],
+      "deniedAction": [
+        401,
+        403,
+        401
+      ],
+      "unauthorizedQueries": 0,
+      "unauthorizedWrites": 0,
+      "authorizedQueries": 2,
+      "authorizedWrites": 2,
+      "revokedRoute": 401,
+      "revokedAction": 401,
+      "requestContext": "REAL_NEXT_REQUEST_STORE",
+      "database": "REAL_POSTGRESQL17"
+    },
+    "mutationObservations": [
+      {
+        "mutation": "db-recheck",
+        "sourcePath": "src/server/auth/session-service.ts",
+        "originalHash": "867697b3d9679dc0d33524a8ba6f96a13784764601781f069078dd543ca7bdab",
+        "baseline": {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/baseline-db-recheck-vitest.json",
+          "sha256": "fe4833f6d68245b23bef4baf30509fdd32e8b7eb09cb4065cc2b11dcb7eaa936"
+        },
+        "baselinePassed": 9,
+        "negative": {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/negative-db-recheck-vitest.json",
+          "sha256": "2ff4792dd796654467ce21b59714c8181f3f94f17f466ba9bceaf233a09e5774"
+        },
+        "actualExitCode": 1,
+        "failures": [
+          {
+            "name": "admin-login real PostgreSQL security session-revocation: logout change invalidates the old token on the next database check",
+            "diagnostic": [
+              "AssertionError: expected { outcome: 'ACCEPTED' } to deeply equal { outcome: 'REJECTED', status: 401 }"
+            ]
+          }
+        ],
+        "restored": {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/restored-db-recheck-vitest.json",
+          "sha256": "8f7fd297ca9b9a549098bd617ddf50ff7acf600c0d9d97a83400355db4f9d5ff"
+        },
+        "restoredPassed": 9
+      },
+      {
+        "mutation": "session-version",
+        "sourcePath": "src/server/auth/session-service.ts",
+        "originalHash": "867697b3d9679dc0d33524a8ba6f96a13784764601781f069078dd543ca7bdab",
+        "baseline": {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/baseline-session-version-vitest.json",
+          "sha256": "57bf783dbd8bc382edddae12cddbeb6c57853282507e50825c7f7143b450249b"
+        },
+        "baselinePassed": 9,
+        "negative": {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/negative-session-version-vitest.json",
+          "sha256": "ec63debebef138148d63ae687a0d6189a68f989b69e65e6fd8857f697470c080"
+        },
+        "actualExitCode": 1,
+        "failures": [
+          {
+            "name": "admin-login real PostgreSQL security session-revocation: version change invalidates the old token on the next database check",
+            "diagnostic": [
+              "AssertionError: expected { outcome: 'ACCEPTED' } to deeply equal { outcome: 'REJECTED', status: 401 }"
+            ]
+          }
+        ],
+        "restored": {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/restored-session-version-vitest.json",
+          "sha256": "ab20a2575d5c14afa085c1fea0d2bcacfa0351c23077f85c26e29f4156939709"
+        },
+        "restoredPassed": 9
+      },
+      {
+        "mutation": "dummy-compare",
+        "sourcePath": "src/server/auth/credentials-service.ts",
+        "originalHash": "0f12e60c5c1cf24ec324984a74b120619745078427d37226ecceab84dae50f09",
+        "baseline": {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/baseline-dummy-compare-vitest.json",
+          "sha256": "a3902a00de1abe78081e0ea20c906830b0f94a5fc1073cf61d83ead0fe0081f3"
+        },
+        "baselinePassed": 2,
+        "negative": {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/negative-dummy-compare-vitest.json",
+          "sha256": "3f2237846a331180334afbe7587cb131ef32c392a2f9f64179a8a3c19fa6b60a"
+        },
+        "actualExitCode": 1,
+        "failures": [
+          {
+            "name": "admin-login real PostgreSQL security uniform-failure: four valid-format failures all perform one real cost12 comparison with indistinguishable result and timing",
+            "diagnostic": [
+              "AssertionError: expected +0 to be 1 // Object.is equality"
+            ]
+          }
+        ],
+        "restored": {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/restored-dummy-compare-vitest.json",
+          "sha256": "14a82a0e19a8e6bfc29fd120c98bab1f2fde80c09e45edf4ec3454eaf94e210d"
+        },
+        "restoredPassed": 2
+      },
+      {
+        "mutation": "account-bucket",
+        "sourcePath": "src/server/auth/login-throttle.ts",
+        "originalHash": "4d78d969fbfa4b152b968a3214c3083710b7450f7854b78d63bc8dbb47aa3e3a",
+        "baseline": {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/baseline-account-bucket-vitest.json",
+          "sha256": "bfcd2aad0c8d455bbca0beb20a4e070c23bbccbf62a90f86818760f5d0cb67d7"
+        },
+        "baselinePassed": 3,
+        "negative": {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/negative-account-bucket-vitest.json",
+          "sha256": "46c4242e8a4749df29913439e3a80c161b2cf98450faf65997c0efa17d52247b"
+        },
+        "actualExitCode": 1,
+        "failures": [
+          {
+            "name": "admin-login real PostgreSQL security dual-throttle: sixth account and twenty-first IP attempts deny independently; success preserves attack history",
+            "diagnostic": [
+              "AssertionError: expected { kind: 'INVALID_CREDENTIALS' } to deeply equal { kind: 'RATE_LIMITED', …(1) }"
+            ]
+          },
+          {
+            "name": "admin-login real PostgreSQL security dual-throttle: advisory locks enforce both budgets under parallel independent real connections",
+            "diagnostic": [
+              "AssertionError: expected [ { kind: 'RESERVED', …(1) }, …(22) ] to have a length of 4 but got 23"
+            ]
+          },
+          {
+            "name": "admin-login real PostgreSQL security dual-throttle: reservation convergence is idempotent and a crashed reservation releases only after its database TTL",
+            "diagnostic": [
+              "AssertionError: expected { kind: 'RESERVED', …(1) } to match object { Object (kind, retryAfter) }"
+            ]
+          }
+        ],
+        "restored": {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/restored-account-bucket-vitest.json",
+          "sha256": "a7b9b19b465e30355709c0c914689ba6a552b9b89fe550095b58597fa0bb94da"
+        },
+        "restoredPassed": 3
+      },
+      {
+        "mutation": "advisory-lock",
+        "sourcePath": "src/server/auth/login-throttle.ts",
+        "originalHash": "4d78d969fbfa4b152b968a3214c3083710b7450f7854b78d63bc8dbb47aa3e3a",
+        "baseline": {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/baseline-advisory-lock-vitest.json",
+          "sha256": "f86f210fc83f460567d9e809710167626482f5dc9238c0cfb6254ab7238457a7"
+        },
+        "baselinePassed": 3,
+        "negative": {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/negative-advisory-lock-vitest.json",
+          "sha256": "1ba89d63a70780fd5dd8176ee7c57cf3aa1f474b3eb31cd41c75677a10260cc0"
+        },
+        "actualExitCode": 1,
+        "failures": [
+          {
+            "name": "admin-login real PostgreSQL security dual-throttle: advisory locks enforce both budgets under parallel independent real connections",
+            "diagnostic": [
+              "AssertionError: expected false to be true // Object.is equality"
+            ]
+          }
+        ],
+        "restored": {
+          "path": "docs/evidence/attempts/Phase011/attempt-11/restored-advisory-lock-vitest.json",
+          "sha256": "a2294d18dd30e7d8042d0cefa14daa8ff0a8a2c1a835a0c1993a92bd28e932d0"
+        },
+        "restoredPassed": 3
+      }
+    ],
+    "restoredAuthTestsAfterAllMutations": 113,
+    "browser": {
+      "report": {
+        "path": "docs/evidence/attempts/Phase011/attempt-11/browser.json",
+        "sha256": "179a3bdf1b9dfde8e74453299cc7a054e3498190e8a7d04559fa7170f4c31698"
+      },
+      "casesPassed": 10,
+      "externalRequests": 0,
+      "artifactsVerified": 13,
+      "automatedAxeReports": 3,
+      "automatedViolations": 0,
+      "humanScreenReaderExperience": "NOT_EVALUATED"
+    },
+    "migration": {
+      "path": "prisma/migrations/20260911151715_auth_session_login_attempt/migration.sql",
+      "sha256": "e4913a97a5ff09d9ee71efaebd58163b8b5f5db9f0fe7747bd07783aed66c08f",
+      "previousMigrationsPreserved": 5,
+      "schemaModelCount": 8,
+      "appliedAndGeneratedBytesVerified": true
+    },
+    "scans": {
+      "previousMigrationsPreserved": 5,
+      "modelCount": 8,
+      "generatedSecretHits": 0,
+      "sensitiveEvidenceHits": 0,
+      "rawOutputScannedBeforeArchival": true,
+      "filesScanned": 253
+    },
+    "validatorCompatibilityCases": 3,
+    "evidenceRejectionCases": 48
+  },
+  "visualReview": {
+    "method": "DIRECT_IMAGE_REVIEW_WITH_BYTE_IDENTICAL_FINAL_ARTIFACT_CONTINUITY",
+    "directlyViewedAttempt": "attempt-10",
+    "finalAttempt": "attempt-11",
+    "screenshots": [
+      {
+        "path": "docs/evidence/attempts/Phase011/attempt-11/auth-login-375.png",
+        "sha256": "54ce443938800bcb85a082ca3fe7be427aeb19d79b4c906c40d0ad923b839313",
+        "directlyViewedArtifact": {
+          "path": "docs/evidence/attempts/Phase011/attempt-10/auth-login-375.png",
+          "sha256": "54ce443938800bcb85a082ca3fe7be427aeb19d79b4c906c40d0ad923b839313"
+        },
+        "byteIdenticalToDirectlyViewed": true
+      },
+      {
+        "path": "docs/evidence/attempts/Phase011/attempt-11/auth-login-1280.png",
+        "sha256": "614d5e83ca73d84d96387e428a2f3858faf32da24f71d8af65a4421c9275d5d5",
+        "directlyViewedArtifact": {
+          "path": "docs/evidence/attempts/Phase011/attempt-10/auth-login-1280.png",
+          "sha256": "614d5e83ca73d84d96387e428a2f3858faf32da24f71d8af65a4421c9275d5d5"
+        },
+        "byteIdenticalToDirectlyViewed": true
+      },
+      {
+        "path": "docs/evidence/attempts/Phase011/attempt-11/auth-admin-success.png",
+        "sha256": "ea016bf80c50437cf1631ba0572dfe6443172b7d0e02e061ff26ba74ddd01afb",
+        "directlyViewedArtifact": {
+          "path": "docs/evidence/attempts/Phase011/attempt-10/auth-admin-success.png",
+          "sha256": "ea016bf80c50437cf1631ba0572dfe6443172b7d0e02e061ff26ba74ddd01afb"
+        },
+        "byteIdenticalToDirectlyViewed": true
+      },
+      {
+        "path": "docs/evidence/attempts/Phase011/attempt-11/auth-logout-unavailable.png",
+        "sha256": "ca5e110ce22eac02ebfed8af6c5bea46f60fed42c0f8079caeb19051f56ce867",
+        "directlyViewedArtifact": {
+          "path": "docs/evidence/attempts/Phase011/attempt-10/auth-logout-unavailable.png",
+          "sha256": "ca5e110ce22eac02ebfed8af6c5bea46f60fed42c0f8079caeb19051f56ce867"
+        },
+        "byteIdenticalToDirectlyViewed": true
+      }
+    ],
+    "conclusion": "Both login viewports show empty credential fields, visible labels and focus, and no clipped controls. The success page provides logout. The database-failure screenshot clearly distinguishes local cookie cleanup from incomplete server revocation. The final screenshots have exactly the previously viewed image bytes."
+  },
+  "scopeAdjustmentAudit": {
+    "receipt": {
+      "path": "docs/evidence/attempts/Phase011/attempt-8/scope-adjustment.json",
+      "sha256": "dc96bcc325dbe9f4ae798280d99e74813d306d33bddacf4e058309581391de76"
+    },
+    "originalFrozenPlan": {
+      "path": "docs/evidence/attempts/Phase011/attempt-8/frozen-plan.json",
+      "sha256": "7aac75f879adde4c875cdc88deaf9b16ff737c330ed664a5168ac3b4d5d74ca6"
+    },
+    "originalSourceCount": 173,
+    "finalSourceCount": 174,
+    "additions": [
+      "next.config.ts"
+    ],
+    "originalCaseBindingHash": "921cfc13d91e0fa05aa8a942833658f1b5267b0ea97da02ca012dcb777613e78",
+    "originalCasesAndThresholdUnchanged": true,
+    "frameworkHashesAndConfigurationGitBlobVerified": true,
+    "failureAndBrowserObservationHashesVerified": true,
+    "method": "INDEPENDENT_READ_ONLY_HASH_AND_CONTENT_CHECK",
+    "dedicatedReceiptMutationSuiteClaimed": false
+  },
+  "historyAudit": {
+    "priorFailureCount": 10,
+    "completeOrderedImmutableChainVerified": true,
+    "latestHistoricalFailure": {
+      "path": "docs/evidence/attempts/Phase011/attempt-10/attempt.json",
+      "sha256": "dfde4ceaf4399853f18a136554853efac19e6076b6d1340b4b293c9759167ec7"
+    },
+    "priorSupplementAndPostFailureDiagnosticDoNotReplaceCurrentCases": true
+  },
+  "independentlyExecutedChecks": [
+    {
+      "scope": "Attempt11 freeze, source aggregate and failure/case history",
+      "toolChunkId": "f8d74b",
+      "exitCode": 0
+    },
+    {
+      "scope": "Attempt11 seven case reports, original console measurements and browser artifact continuity",
+      "toolChunkId": "145ab6",
+      "exitCode": 0
+    },
+    {
+      "scope": "Attempt11 mutation low-level assertions and restored results",
+      "toolChunkId": "c0dbaf",
+      "exitCode": 0
+    },
+    {
+      "scope": "Final quality raw results, seed regression closure and artifact hashes",
+      "toolChunkId": "f4e30c",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/complete-phase011.mjs --without-review",
+      "toolChunkId": "faea3d",
+      "exitCode": 0,
+      "reportedCases": 8
+    }
+  ],
+  "costAccounting": {
+    "independentReview": {
+      "durationMs": null,
+      "measurementStatus": "UNMEASURED"
+    }
+  }
+}

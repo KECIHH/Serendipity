@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "phase": 11,
+  "attemptId": "attempt-5",
+  "reportType": "SUPPLEMENTAL_INDEPENDENT_TRANSPORT_SECURITY_VERIFICATION",
+  "scope": "CURRENT_REQUEST_BINDING_SINGLE_CONSUMPTION_AND_CONCURRENT_CONTEXT_ISOLATION",
+  "generatedBy": "independent-agent:/root/auth_security_review",
+  "contextId": "codex:/root/auth_security_review:Phase011:20260911",
+  "reviewerRunId": "cd0b3d65-c1ed-44e6-8938-a16a27763dcb",
+  "recordedAt": "2026-09-11T16:21:16Z",
+  "planPath": "docs/phase-plans/Phase011.json",
+  "planHash": "d74a1a8d43478ece96a6ec9cfeb87a0637b72f53857ce1752d19e8071e9143ce",
+  "result": "PASS",
+  "formalCaseEvidence": false,
+  "finalGateDecision": null,
+  "priorFindingId": "AUTH011-SEC-02",
+  "priorFindingAssessment": "FIX_VERIFIED_AT_REAL_NODE_MODULE_AND_SOCKET_BOUNDARY",
+  "sourceContinuity": {
+    "executionAttempt": "attempt-4",
+    "executionPlanHash": "e6cefa4051c8350661eb48785df3c0f58eb65502c266176eeaa4795bb73c3c73",
+    "executionTimestamp": null,
+    "executionTimestampStatus": "NOT_CAPTURED",
+    "reportAttempt": "attempt-5",
+    "explanation": "The independent inline command ran while attempt-4 was active. The main agent then requested preservation under attempt-5. The reviewed ingress bytes were hashed before the command, asserted unchanged at its end, and read again before this report. All three hashes match. This report does not claim that the command was rerun under attempt-5.",
+    "sourcePath": "src/server/ingress.ts",
+    "sourceHashBefore": "b03b16891cdc66e760c2dd6fb8779e979eb1a43a8fbc244c87e5b7ab085975ad",
+    "sourceHashAfter": "b03b16891cdc66e760c2dd6fb8779e979eb1a43a8fbc244c87e5b7ab085975ad",
+    "currentSourceHash": "b03b16891cdc66e760c2dd6fb8779e979eb1a43a8fbc244c87e5b7ab085975ad",
+    "sourceStableDuringCommand": true,
+    "sourceUnchangedAtRecording": true
+  },
+  "environment": {
+    "simulation": true,
+    "productionTraffic": false,
+    "databaseExecuted": false,
+    "browserExecuted": false,
+    "fullNextServerExecuted": false,
+    "finalGateExecuted": false,
+    "network": "EPHEMERAL_LOCAL_LOOPBACK_ONLY",
+    "nodeVersionObserved": "v24.19.0",
+    "productFilesModified": false,
+    "gitMutations": false
+  },
+  "command": {
+    "shell": "PowerShell",
+    "shellCommand": "$securityReviewScript | node --import tsx --input-type=module",
+    "scriptLocation": "INLINE_ONLY_NOT_PERSISTED",
+    "executionTool": "functions.exec -> tools.exec_command",
+    "toolChunkId": "d000eb",
+    "exitCode": 0,
+    "wallTimeSeconds": 0.849997,
+    "method": [
+      "Load the actual src/server/ingress.ts with createRequire and tsx; capture its SHA-256 directly from disk.",
+      "Generate a synthetic random HMAC secret in process and open a real Node HTTP server on an ephemeral local loopback port.",
+      "Send 16 simultaneous POST requests to the auth callback target. Each real IncomingMessage is stamped by stampTrustedRequest and wrapped by runWithTrustedRequest.",
+      "Wait for all 16 requests to enter and cross an asynchronous setImmediate boundary, ensuring the checks execute with multiple live AsyncLocalStorage scopes.",
+      "Inside each request's scope, attempt a different concurrent request's proof and require IngressError; then accept its own proof once and require IngressError on its second use.",
+      "After all HTTP responses complete, attempt each saved proof outside any active request scope and require IngressError.",
+      "Assert all four observed counts equal 16, assert the source hash is unchanged, print only safe counts and the source hash, and close the server in finally."
+    ]
+  },
+  "observations": {
+    "sourceHash": "b03b16891cdc66e760c2dd6fb8779e979eb1a43a8fbc244c87e5b7ab085975ad",
+    "requestCount": 16,
+    "activeContextValid": 16,
+    "crossRequestReplayRejected": 16,
+    "sameContextReplayRejected": 16,
+    "outsideContextRejected": 16,
+    "databaseExecuted": false
+  },
+  "assertions": [
+    {
+      "name": "Own valid proof survives asynchronous request handling",
+      "expected": 16,
+      "actual": 16
+    },
+    {
+      "name": "Another concurrent request's proof is rejected",
+      "expected": 16,
+      "actual": 16
+    },
+    {
+      "name": "A second use in the same request scope is rejected",
+      "expected": 16,
+      "actual": 16
+    },
+    {
+      "name": "Proofs outside a live request scope are rejected",
+      "expected": 16,
+      "actual": 16
+    }
+  ],
+  "limitations": [
+    "This is supplemental independent evidence for the ingress module, not a replacement for any of the eight frozen Phase011 cases.",
+    "The actual Next.js production request pipeline, PostgreSQL admission, Auth.js logout, browser UI and complete quality suite were not executed by this command.",
+    "The other two preliminary findings were inspected separately at the source/assertion level; this bounded transport report does not claim their database or browser closure.",
+    "A final independent review remains pending until the formal database, browser, mutation and quality evidence is available."
+  ]
+}

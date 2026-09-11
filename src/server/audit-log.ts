@@ -11,6 +11,10 @@ export const AUDIT_LOG_ACTIONS = Object.freeze({
   API_KEY_ROTATE: "API_KEY_ROTATE",
   SEED_ADMIN_CREATE: "SEED_ADMIN_CREATE",
   SEED_CONFIG_CREATE: "SEED_CONFIG_CREATE",
+  LOGIN_SUCCESS: "LOGIN_SUCCESS",
+  LOGIN_FAILURE: "LOGIN_FAILURE",
+  LOGIN_THROTTLED: "LOGIN_THROTTLED",
+  SESSION_LOGOUT: "SESSION_LOGOUT",
 } as const);
 
 export type AuditLogAction = keyof typeof AUDIT_LOG_ACTIONS;
@@ -21,6 +25,10 @@ export const AUDIT_ACTION_TARGETS = Object.freeze({
   API_KEY_ROTATE: "ApiKeyConfig",
   SEED_ADMIN_CREATE: "User",
   SEED_CONFIG_CREATE: "SystemConfig",
+  LOGIN_SUCCESS: "User",
+  LOGIN_FAILURE: "User",
+  LOGIN_THROTTLED: "User",
+  SESSION_LOGOUT: "AuthSession",
 } as const);
 
 export type AuditTargetType = (typeof AUDIT_ACTION_TARGETS)[AuditLogAction];
@@ -238,11 +246,27 @@ const changedFields = new Set([
   "keyFingerprint",
 ]);
 const summaryEnums: Readonly<Record<string, readonly string[]>> = Object.freeze({
-  result: ["SUCCESS"],
-  reasonCode: ["CONFIG_CHANGED", "USER_DISABLED", "KEY_ROTATED", "SCHEDULED", "MAINTENANCE"],
+  result: ["SUCCESS", "FAILURE", "DENIED"],
+  reasonCode: [
+    "CONFIG_CHANGED",
+    "USER_DISABLED",
+    "KEY_ROTATED",
+    "SCHEDULED",
+    "MAINTENANCE",
+    "LOGIN_ACCEPTED",
+    "UNKNOWN_ACCOUNT",
+    "PASSWORD_MISMATCH",
+    "ROLE_NOT_ALLOWED",
+    "ACCOUNT_DISABLED",
+    "STATE_CHANGED",
+    "RATE_LIMITED",
+    "SESSION_REVOKED",
+  ],
   status: ["ACTIVE", "DISABLED", "REVOKED"],
   group: ["AI", "UI", "EXPORT", "SECURITY", "GENERAL"],
   role: ["USER", "ADMIN"],
+  audience: ["USER", "ADMIN"],
+  scope: ["LOGIN", "REGISTER"],
   systemActor: AUDIT_SYSTEM_ACTORS,
 });
 
@@ -265,7 +289,7 @@ function validateSummary(value: Json): void {
     } else if (key === "seedRunId") {
       if (typeof item !== "string" || !/^(phase[0-9]{3}|serendipity)_[a-f0-9]{12}$/.test(item))
         invalid();
-    } else if (key === "seedFingerprint") {
+    } else if (["seedFingerprint", "ipHash", "accountHash"].includes(key)) {
       if (typeof item !== "string" || !/^[a-f0-9]{64}$/.test(item)) invalid();
     } else if (key === "changedFields") {
       if (

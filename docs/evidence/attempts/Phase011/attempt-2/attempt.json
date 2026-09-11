@@ -1,0 +1,25 @@
+{
+  "phase": 11,
+  "attemptId": "attempt-2",
+  "status": "FAIL",
+  "kind": "PLAN_SCOPE",
+  "artifactCommit": null,
+  "command": "node docs/phase-plans/complete-phase011.mjs --scope-check",
+  "exitCode": 1,
+  "planHash": "38c2718c28075567ba48d62ea793bb666d74ea0b9a70069a7e4d166e3c11d880",
+  "reason": "Shared test/runtime configuration is required to execute real Auth.js dependencies and registered auth environment values, but its supporting paths were omitted from modificationScope.",
+  "scopeAdditions": [
+    "vitest.config.ts",
+    "tsconfig.json",
+    "scripts/eslint-env.mjs"
+  ],
+  "supportingFailureReports": [
+    {
+      "path": "docs/evidence/attempts/Phase011/attempt-1/ui-unit-1789140478188.json",
+      "sha256": "60df2c505fb1057780063da1e4e2d9c110766169f5acf4ca84a5fd155a137f64",
+      "originatingAttempt": "attempt-1",
+      "description": "The actual earlier UI command exited 1 because Auth.js external ESM next/server resolution failed during collection; no failed report is reassigned to this attempt."
+    }
+  ],
+  "recordedAt": "2026-09-11T15:38:08.059Z"
+}

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "phase": 11,
+  "originatingAttempt": "attempt-8",
+  "kind": "ADDITIVE_SUPPORT_FILE_SCOPE_ADJUSTMENT",
+  "planPath": "docs/evidence/attempts/Phase011/attempt-8/frozen-plan.json",
+  "planHash": "7aac75f879adde4c875cdc88deaf9b16ff737c330ed664a5168ac3b4d5d74ca6",
+  "failure": {
+    "path": "docs/evidence/attempts/Phase011/attempt-8/attempt.json",
+    "sha256": "afb2a57f8516bf175f063f42a30d4c6908a60bf8ddb9870012b39fe0983e7b8c"
+  },
+  "browserObservation": {
+    "path": "docs/evidence/attempts/Phase011/attempt-8/browser.json",
+    "sha256": "5995b44984c27b936f6d43b481fd01868c64ab3fbd97c4446e4f94b31cbeaa4f",
+    "configuredOrigin": "http://127.0.0.1:61520",
+    "blockedOrigins": [
+      "http://localhost:61520"
+    ],
+    "blockedCount": 10
+  },
+  "frameworkCodeReview": [
+    {
+      "path": "node_modules/next/dist/server/web/next-url.js",
+      "sha256": "5b467b1b3e8ab98a0c2baad575421b575e075773d2022ccb12f3b0f845a4ac1c",
+      "observedBehavior": "parseURL replaces loopback numeric hosts with localhost before constructing NextURL."
+    },
+    {
+      "path": "node_modules/next/dist/server/web/adapter.js",
+      "sha256": "d2e0ed6e26fc733ffc5cf7e6918e9c520e14a659eab465f3c997a3f516639153",
+      "observedBehavior": "The middleware adapter rewrites same-host Location using normalized NextURL unless middleware URL normalization is disabled."
+    }
+  ],
+  "authorization": {
+    "actor": "codex:/root",
+    "scope": "Use the standard NextConfig skipMiddlewareUrlNormalize option to preserve the fixed AUTH_URL origin; register its configuration source in the next frozen attempt."
+  },
+  "sourcePathsAdded": [
+    "next.config.ts"
+  ],
+  "modificationScopeAdded": [
+    "next.config.ts"
+  ],
+  "originalSourceCount": 173,
+  "originalSourcePathsHash": "5b8eb59c3c63c62c79bf8f63211621e0693c2e5b6b927189598aaffec7c528e5",
+  "expectedSourceCount": 174,
+  "originalRequiredCaseIds": [
+    "Phase011:valid-login",
+    "Phase011:uniform-failure",
+    "Phase011:dual-throttle",
+    "Phase011:persistence-proxy",
+    "Phase011:session-revocation",
+    "Phase011:guards",
+    "Phase011:routing-logout",
+    "Phase011:mutation"
+  ],
+  "caseBindingsHash": "921cfc13d91e0fa05aa8a942833658f1b5267b0ea97da02ca012dcb777613e78",
+  "threshold": {
+    "originalThreshold": 8,
+    "automatedThreshold": 8,
+    "requiredPassRate": 1,
+    "waived": false
+  },
+  "configurationBaseline": {
+    "commit": "df8334db6acc1e4fa679ca9ae5be1c3b6efb948d",
+    "path": "next.config.ts",
+    "sha256": "614bce25b089c3f19b1e17a6346c74b858034040154c6621e7d35303004767cc"
+  },
+  "historicalReportsUnchanged": true,
+  "formalCaseEvidence": false,
+  "recordedAt": "2026-09-11T17:24:45.634Z"
+}

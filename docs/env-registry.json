@@ -26,6 +26,37 @@
     ]
   },
   {
+    "key": "AUTH_URL",
+    "scope": "server",
+    "producerPhase": 11,
+    "requiredWhen": "always",
+    "secret": false,
+    "schema": "auth-origin",
+    "defaultValue": "http://localhost:3000",
+    "documentInExample": true,
+    "readerPaths": [
+      "src/lib/env.ts",
+      "src/lib/env-cli.ts",
+      "src/middleware.ts",
+      "vitest.setup.ts"
+    ]
+  },
+  {
+    "key": "AUTH_TRUSTED_PROXY_CIDRS",
+    "scope": "server",
+    "producerPhase": 11,
+    "requiredWhen": "always",
+    "secret": false,
+    "schema": "string",
+    "defaultValue": "",
+    "documentInExample": true,
+    "readerPaths": [
+      "src/lib/env.ts",
+      "src/lib/env-cli.ts",
+      "vitest.setup.ts"
+    ]
+  },
+  {
     "key": "ENCRYPTION_KEY",
     "scope": "server",
     "producerPhase": 4,

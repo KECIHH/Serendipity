@@ -5,7 +5,7 @@ import { describe, expect, it } from "vitest";
 
 import { EnvConfigError, REQUIRED_ENV_KEYS, readEnv } from "@/lib/env";
 import { readCliEnv } from "@/lib/env-cli";
-import { envRegistry, type EnvRegistryEntry } from "@/lib/env-schema";
+import { ENV_SCHEMA_PHASE, envRegistry, type EnvRegistryEntry } from "@/lib/env-schema";
 
 function validSource(): Record<string, string | undefined> {
   return Object.fromEntries(REQUIRED_ENV_KEYS.map((key) => [key, process.env[key]]));
@@ -22,7 +22,7 @@ function expectInvalid(source: Record<string, string | undefined>, key: string):
 }
 
 describe("readEnv", () => {
-  it("valid configuration accepts all nine required values and coerces typed values", () => {
+  it("valid configuration accepts registered required values and coerces typed values", () => {
     const result = readEnv(validSource());
     expect(Object.isFrozen(result)).toBe(true);
     expect(typeof result.AI_TIMEOUT_MS).toBe("number");
@@ -134,7 +134,7 @@ describe("readEnv", () => {
       .filter(
         (entry) =>
           entry.documentInExample &&
-          entry.producerPhase <= 4 &&
+          entry.producerPhase <= ENV_SCHEMA_PHASE &&
           (entry.scope === "server" || entry.scope === "client"),
       )
       .map((entry) => entry.key);
@@ -147,7 +147,7 @@ describe("readEnv", () => {
         (entry) => entry.scope === "client" && entry.secret && entry.documentInExample,
       ),
     ).toHaveLength(0);
-    expect(expectedKeys).toHaveLength(9);
+    expect(expectedKeys).toHaveLength(11);
   });
 
   it("registers future CLI inputs without activating them for the Web parser", () => {
@@ -169,5 +169,32 @@ describe("readEnv", () => {
     });
     expect(REQUIRED_ENV_KEYS).not.toContain("ADMIN_EMAIL");
     expect(REQUIRED_ENV_KEYS).not.toContain("ADMIN_INITIAL_PASSWORD");
+  });
+
+  it("auth origin is fixed, credential-free, and requires HTTPS outside exact loopback hosts", () => {
+    const source = validSource();
+    for (const invalid of [
+      "http://example.invalid",
+      "http://localhost.example.invalid",
+      "https://example.invalid/path",
+      "https://user:pass@example.invalid",
+      "https://example.invalid?x=1",
+      "https://example.invalid#x",
+      "//example.invalid",
+      "http://0.0.0.0:3000",
+      "http://127.1:3000",
+    ]) {
+      source.AUTH_URL = invalid;
+      expectInvalid(source, "AUTH_URL");
+    }
+    for (const valid of [
+      "http://localhost:3000",
+      "http://127.0.0.1:3200",
+      "http://[::1]:3000",
+      "https://example.invalid",
+    ]) {
+      source.AUTH_URL = valid;
+      expect(readEnv(source).AUTH_URL).toBe(valid);
+    }
   });
 });

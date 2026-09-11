@@ -1,0 +1,172 @@
+{
+  "numTotalTestSuites": 3,
+  "numPassedTestSuites": 3,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 11,
+  "numPassedTests": 11,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1789145135812,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "requireAdmin server authorization"
+          ],
+          "fullName": "requireAdmin server authorization queries the database on every invocation, with only the cookie token and ADMIN audience",
+          "status": "passed",
+          "title": "queries the database on every invocation, with only the cookie token and ADMIN audience",
+          "duration": 33.42020000000002,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "requireAdmin server authorization"
+          ],
+          "fullName": "requireAdmin server authorization rejects missing, fabricated and preview cookies before any database or resource query",
+          "status": "passed",
+          "title": "rejects missing, fabricated and preview cookies before any database or resource query",
+          "duration": 3.6989999999999554,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "requireAdmin server authorization"
+          ],
+          "fullName": "requireAdmin server authorization propagates typed revocation, role and database failures instead of trusting an old JWE",
+          "status": "passed",
+          "title": "propagates typed revocation, role and database failures instead of trusting an old JWE",
+          "duration": 4.088100000000054,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "management page, Route Handler and Server Action guard ordering"
+          ],
+          "fullName": "management page, Route Handler and Server Action guard ordering runs the real protected page guard and redirects unauthenticated requests to public login",
+          "status": "passed",
+          "title": "runs the real protected page guard and redirects unauthenticated requests to public login",
+          "duration": 4.239399999999932,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "management page, Route Handler and Server Action guard ordering"
+          ],
+          "fullName": "management page, Route Handler and Server Action guard ordering executes zero API resource queries or writes for missing and USER principals",
+          "status": "passed",
+          "title": "executes zero API resource queries or writes for missing and USER principals",
+          "duration": 4.552000000000021,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "management page, Route Handler and Server Action guard ordering"
+          ],
+          "fullName": "management page, Route Handler and Server Action guard ordering runs API resource work only after authentication and CSRF/Origin validation",
+          "status": "passed",
+          "title": "runs API resource work only after authentication and CSRF/Origin validation",
+          "duration": 4.564300000000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "management page, Route Handler and Server Action guard ordering"
+          ],
+          "fullName": "management page, Route Handler and Server Action guard ordering fails closed with a safe API error when the database is unavailable",
+          "status": "passed",
+          "title": "fails closed with a safe API error when the database is unavailable",
+          "duration": 3.11080000000004,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "management page, Route Handler and Server Action guard ordering"
+          ],
+          "fullName": "management page, Route Handler and Server Action guard ordering executes zero Server Action work for unauthenticated or unauthorized requests",
+          "status": "passed",
+          "title": "executes zero Server Action work for unauthenticated or unauthorized requests",
+          "duration": 3.137200000000007,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "management page, Route Handler and Server Action guard ordering"
+          ],
+          "fullName": "management page, Route Handler and Server Action guard ordering authorizes a Server Action from the original Cookie header despite mutable cookie serialization",
+          "status": "passed",
+          "title": "authorizes a Server Action from the original Cookie header despite mutable cookie serialization",
+          "duration": 4.323299999999904,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "management page, Route Handler and Server Action guard ordering"
+          ],
+          "fullName": "management page, Route Handler and Server Action guard ordering rejects duplicate incoming Cookie names before Server Action database or resource work",
+          "status": "passed",
+          "title": "rejects duplicate incoming Cookie names before Server Action database or resource work",
+          "duration": 1.6878000000000384,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "management page, Route Handler and Server Action guard ordering"
+          ],
+          "fullName": "management page, Route Handler and Server Action guard ordering ignores client identity claims and verifies CSRF before invoking Server Action work",
+          "status": "passed",
+          "title": "ignores client identity claims and verifies CSRF before invoking Server Action work",
+          "duration": 5.08400000000006,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789145136487,
+      "endTime": 1789145136559.084,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-guards.test.ts"
+    }
+  ]
+}

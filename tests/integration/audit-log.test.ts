@@ -23,7 +23,7 @@ const runtimeUrl = process.env.PHASE009_RUNTIME_DATABASE_URL;
 let admin: PrismaClient;
 let app: PrismaClient;
 let fixture: AuditFixture;
-let databasePhase: "009" | "010";
+let databasePhase: "009" | "010" | "011";
 
 function indexNames(value: unknown): string[] {
   if (Array.isArray(value)) return value.flatMap(indexNames);
@@ -239,6 +239,9 @@ describe.skipIf(!databaseUrl)("audit-log real PostgreSQL contract", () => {
     const expectedModels = ["AuditLog", "ChatMessage", "SystemConfig", "TravelRecord", "User"];
     if (Prisma.dmmf.datamodel.models.some(({ name }) => name === "ApiKeyConfig"))
       expectedModels.unshift("ApiKeyConfig");
+    if (Prisma.dmmf.datamodel.models.some(({ name }) => name === "AuthSession"))
+      expectedModels.push("AuthLoginAttempt", "AuthSession");
+    expectedModels.sort();
     expect(Prisma.dmmf.datamodel.models.map(({ name }) => name).sort()).toEqual(expectedModels);
     const columns = await admin.$queryRaw<
       Array<{
@@ -358,7 +361,7 @@ describe.skipIf(!databaseUrl)("audit-log real PostgreSQL contract", () => {
       FROM pg_roles r, pg_class c WHERE r.rolname=current_user AND c.oid='"AuditLog"'::regclass
     `;
     expect(role).toEqual({
-      name: databasePhase === "010" ? "phase010_app" : "phase009_app",
+      name: `phase${databasePhase}_app`,
       superuser: false,
       createRole: false,
       createDb: false,
@@ -380,9 +383,11 @@ describe.skipIf(!databaseUrl)("audit-log real PostgreSQL contract", () => {
       () => app.$executeRaw`ALTER TABLE "AuditLog" DISABLE TRIGGER "AuditLog_append_only"`,
       () => app.$executeRaw`DROP TRIGGER "AuditLog_append_only" ON "AuditLog"`,
       () =>
-        databasePhase === "010"
-          ? app.$executeRaw`SET ROLE phase010_runner`
-          : app.$executeRaw`SET ROLE phase009_runner`,
+        databasePhase === "011"
+          ? app.$executeRaw`SET ROLE phase011_runner`
+          : databasePhase === "010"
+            ? app.$executeRaw`SET ROLE phase010_runner`
+            : app.$executeRaw`SET ROLE phase009_runner`,
     ])
       expect(await rejectsOperation(operation)).toBe(true);
   });
@@ -390,7 +395,9 @@ describe.skipIf(!databaseUrl)("audit-log real PostgreSQL contract", () => {
   for (const operation of ["UPDATE", "DELETE", "TRUNCATE"] as const) {
     it(`append-only: trigger rejects ${operation} even after accidental DML grants`, async () => {
       const ref = await runAuditedTransaction((tx) => writeAuditLog(tx, systemInput(fixture.id())));
-      if (databasePhase === "010")
+      if (databasePhase === "011")
+        await admin.$executeRaw`GRANT UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" TO phase011_app`;
+      else if (databasePhase === "010")
         await admin.$executeRaw`GRANT UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" TO phase010_app`;
       else
         await admin.$executeRaw`GRANT UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" TO phase009_app`;
@@ -405,7 +412,9 @@ describe.skipIf(!databaseUrl)("audit-log real PostgreSQL contract", () => {
         expect(rejected).toBe(true);
         expect(await app.auditLog.findUnique({ where: { id: ref.id } })).not.toBeNull();
       } finally {
-        if (databasePhase === "010")
+        if (databasePhase === "011")
+          await admin.$executeRaw`REVOKE UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" FROM phase011_app`;
+        else if (databasePhase === "010")
           await admin.$executeRaw`REVOKE UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" FROM phase010_app`;
         else
           await admin.$executeRaw`REVOKE UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" FROM phase009_app`;

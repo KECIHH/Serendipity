@@ -29,9 +29,9 @@ const temporaryParent = fs.realpathSync(os.tmpdir());
 const toolRoot = path.join(root, ".scaffold/tools");
 const npmCli = process.env.npm_execpath ?? path.join(toolRoot, "node_modules/npm/bin/npm-cli.js");
 const requiredScripts = Object.freeze({
-  dev: "next dev",
+  dev: "node --import tsx scripts/auth-server.mjs --dev",
   build: "next build",
-  start: "next start",
+  start: "node --import tsx scripts/auth-server.mjs",
   lint: "eslint . --max-warnings 0",
   typecheck: "tsc --noEmit",
   "verify:phase003": "node scripts/verify-phase003.mjs",

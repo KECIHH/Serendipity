@@ -8,6 +8,7 @@ export type EnvSchema =
   | "base64-bytes:32"
   | "string"
   | "https-url"
+  | "auth-origin"
   | "non-empty"
   | "boolean-literal"
   | "integer-min:1000"
@@ -25,7 +26,7 @@ export type EnvRegistryEntry = Readonly<{
   readerPaths: readonly string[];
 }>;
 
-export const ENV_SCHEMA_PHASE = 4;
+export const ENV_SCHEMA_PHASE = 11;
 
 export const envRegistry = [
   {
@@ -47,6 +48,28 @@ export const envRegistry = [
     schema: "secret-min-length:32",
     documentInExample: true,
     readerPaths: ["src/lib/env.ts", "vitest.setup.ts"],
+  },
+  {
+    key: "AUTH_URL",
+    scope: "server",
+    producerPhase: 11,
+    requiredWhen: "always",
+    secret: false,
+    schema: "auth-origin",
+    defaultValue: "http://localhost:3000",
+    documentInExample: true,
+    readerPaths: ["src/lib/env.ts", "src/lib/env-cli.ts", "src/middleware.ts", "vitest.setup.ts"],
+  },
+  {
+    key: "AUTH_TRUSTED_PROXY_CIDRS",
+    scope: "server",
+    producerPhase: 11,
+    requiredWhen: "always",
+    secret: false,
+    schema: "string",
+    defaultValue: "",
+    documentInExample: true,
+    readerPaths: ["src/lib/env.ts", "src/lib/env-cli.ts", "vitest.setup.ts"],
   },
   {
     key: "ENCRYPTION_KEY",
@@ -270,6 +293,25 @@ function parseValue(value: string, schema: EnvSchema): EnvValue | null {
         return null;
       }
     }
+    case "auth-origin": {
+      try {
+        const url = new URL(value);
+        const local = ["localhost", "127.0.0.1", "[::1]"].includes(url.hostname);
+        if (
+          url.username ||
+          url.password ||
+          url.search ||
+          url.hash ||
+          url.pathname !== "/" ||
+          (url.protocol !== "https:" && !(url.protocol === "http:" && local)) ||
+          (value !== url.origin && value !== `${url.origin}/`)
+        )
+          return null;
+        return url.origin;
+      } catch {
+        return null;
+      }
+    }
     case "non-empty":
       return value.trim().length > 0 ? value : null;
     case "boolean-literal":
@@ -375,4 +417,13 @@ export function validateEnvExample(example: string, context: EnvParserContext = 
   const missing = [...expected].filter((key) => !seen.has(key));
   if (missing.length > 0)
     throw new Error(`Missing environment example keys: ${missing.join(", ")}`);
+}
+
+/** Edge routing consumes only the registered public origin, never the full server environment. */
+export function readAuthOrigin(source: EnvSource): string {
+  const parsed = parseEnv(source, "server", {
+    currentPhase: 11,
+    registry: envRegistry.filter((entry) => entry.key === "AUTH_URL"),
+  });
+  return String(parsed.AUTH_URL);
 }

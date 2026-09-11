@@ -36,7 +36,7 @@ function readDisposableTarget(value: string | undefined): {
   } catch {
     throw new Error("PHASE007_DATABASE_URL must identify this run's disposable database");
   }
-  const name = /^\/phase(00[789]|010)_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(
+  const name = /^\/phase(00[789]|01[01])_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(
     target.pathname,
   );
   const allowedOptions = new Set(["schema", "connect_timeout", "pool_timeout", "connection_limit"]);
@@ -112,9 +112,11 @@ describe.skipIf(databaseUrl === undefined)("SystemConfig real PostgreSQL contrac
     );
     const includesAudit = Prisma.dmmf.datamodel.models.some(({ name }) => name === "AuditLog");
     const includesApiKey = Prisma.dmmf.datamodel.models.some(({ name }) => name === "ApiKeyConfig");
+    const includesAuth = Prisma.dmmf.datamodel.models.some(({ name }) => name === "AuthSession");
     expect(migrations).toHaveLength(
-      includesApiKey ? 5 : includesAudit ? 4 : includesTravelLayer ? 3 : 2,
+      includesAuth ? 6 : includesApiKey ? 5 : includesAudit ? 4 : includesTravelLayer ? 3 : 2,
     );
+    if (includesAuth) expect(migrations[5].name).toMatch(/^\d{14}_auth_session_login_attempt$/);
     if (includesApiKey) expect(migrations[4].name).toMatch(/^\d{14}_api_key_config$/);
     if (includesAudit) expect(migrations[3].name).toMatch(/^\d{14}_audit_log$/);
     expect(migrations[0].name).toBe("20260910000000_init_user");
@@ -136,6 +138,9 @@ describe.skipIf(databaseUrl === undefined)("SystemConfig real PostgreSQL contrac
       : ["SystemConfig", "User"];
     if (models.some(({ name }) => name === "AuditLog")) expectedModels.unshift("AuditLog");
     if (models.some(({ name }) => name === "ApiKeyConfig")) expectedModels.unshift("ApiKeyConfig");
+    if (models.some(({ name }) => name === "AuthSession"))
+      expectedModels.push("AuthLoginAttempt", "AuthSession");
+    expectedModels.sort();
     expect(models.map(({ name }) => name).sort()).toEqual(expectedModels);
     const model = models.find(({ name }) => name === "SystemConfig");
     const fieldNames = [

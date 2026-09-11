@@ -262,6 +262,8 @@ Phase010 增加 `SEED_ADMIN_CREATE→User`、`SEED_CONFIG_CREATE→SystemConfig`
 
 不建User FK。按已排序IP/account bucket取得PostgreSQL advisory transaction locks，15分钟窗计未过期RESERVED+FAILED；账户5次或IP20次锁15分钟。索引(scope,ipHash,createdAt)、(scope,accountHash,createdAt)与reservation清理索引显式建立。终态只收敛一次，成功不清空同IP失败记录，AuditLog不作限流权威。
 
+Phase011 首产的两张认证表使用唯一 `auth_session_login_attempt` migration；签发、撤销、预留和完成的时间来自 `public.auth_now()`，应用角色不能修改该函数。普通角色只对生命周期列拥有 UPDATE；摘要、归属、版本和绝对期限不可修改，终态不可恢复，DELETE/TRUNCATE拒绝。精确SQL与并发/TTL验收见 [Phase011说明](phase011.md)，旧migration保持原字节。受控保留清理由后续隐私/维护阶段实现，当前不删除历史安全记录。
+
 ### 2.9 AiOutputRecord
 
 | 字段 | 类型 | nullable | 约束 |

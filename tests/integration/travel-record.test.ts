@@ -244,7 +244,9 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
     `;
     const includesAudit = Prisma.dmmf.datamodel.models.some(({ name }) => name === "AuditLog");
     const includesApiKey = Prisma.dmmf.datamodel.models.some(({ name }) => name === "ApiKeyConfig");
-    expect(migrations).toHaveLength(includesApiKey ? 5 : includesAudit ? 4 : 3);
+    const includesAuth = Prisma.dmmf.datamodel.models.some(({ name }) => name === "AuthSession");
+    expect(migrations).toHaveLength(includesAuth ? 6 : includesApiKey ? 5 : includesAudit ? 4 : 3);
+    if (includesAuth) expect(migrations[5].name).toMatch(/^\d{14}_auth_session_login_attempt$/);
     if (includesApiKey) expect(migrations[4].name).toMatch(/^\d{14}_api_key_config$/);
     if (includesAudit) expect(migrations[3].name).toMatch(/^\d{14}_audit_log$/);
     expect(migrations[0].name).toBe("20260910000000_init_user");
@@ -261,9 +263,13 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
     const models = Prisma.dmmf.datamodel.models;
     const auditModels = models.some(({ name }) => name === "AuditLog") ? ["AuditLog"] : [];
     const apiKeyModels = models.some(({ name }) => name === "ApiKeyConfig") ? ["ApiKeyConfig"] : [];
+    const authModels = models.some(({ name }) => name === "AuthSession")
+      ? ["AuthLoginAttempt", "AuthSession"]
+      : [];
     expect(models.map(({ name }) => name).sort()).toEqual([
       ...apiKeyModels,
       ...auditModels,
+      ...authModels,
       "ChatMessage",
       "SystemConfig",
       "TravelRecord",
@@ -284,6 +290,7 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
     expect(tables.map(({ name }) => name)).toEqual([
       ...apiKeyModels,
       ...auditModels,
+      ...authModels,
       "ChatMessage",
       "SystemConfig",
       "TravelRecord",
@@ -347,8 +354,10 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
       WHERE n.nspname = 'public' ORDER BY t.typname, e.enumsortorder
     `;
     const includesApiKey = Prisma.dmmf.datamodel.models.some(({ name }) => name === "ApiKeyConfig");
+    const includesAuth = Prisma.dmmf.datamodel.models.some(({ name }) => name === "AuthSession");
     expect([...new Set(rows.map(({ name }) => name))]).toEqual([
       ...(includesApiKey ? ["ApiKeyStatus"] : []),
+      ...(includesAuth ? ["AuthLoginAttemptStatus", "AuthSessionStatus"] : []),
       "ChatMessageKind",
       "MessageRole",
       "Role",
@@ -361,6 +370,14 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
         "DISABLED",
         "REVOKED",
       ]);
+    if (includesAuth) {
+      expect(
+        rows.filter(({ name }) => name === "AuthSessionStatus").map(({ value }) => value),
+      ).toEqual(["ACTIVE", "REVOKED", "EXPIRED"]);
+      expect(
+        rows.filter(({ name }) => name === "AuthLoginAttemptStatus").map(({ value }) => value),
+      ).toEqual(["RESERVED", "FAILED", "SUCCEEDED", "EXPIRED"]);
+    }
     expect(rows.filter(({ name }) => name === "TravelStatus").map(({ value }) => value)).toEqual(
       TRAVEL_STATUSES,
     );

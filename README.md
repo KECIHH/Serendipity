@@ -1,6 +1,6 @@
 # Serendipity · 际遇
 
-中文旅行规划工具的开发仓库。本目录就是项目根目录。当前提供可构建的 Next.js App Router 基础首页、统一样式令牌和 shadcn Button，后续阶段接入旅行规划功能。
+中文旅行规划工具的开发仓库。本目录就是项目根目录。当前提供 Next.js App Router 基础首页、数据库基础和管理员认证，后续阶段接入旅行规划功能。
 
 ## 本地启动
 
@@ -26,6 +26,8 @@ Copy-Item .env.example .env.local
 | --- | --- |
 | `DATABASE_URL` | PostgreSQL 数据库连接地址 |
 | `AUTH_SECRET` | Auth.js 会话签名密钥 |
+| `AUTH_URL` | 固定认证 origin；本地为 `http://localhost:3000`，其他主机必须 HTTPS |
+| `AUTH_TRUSTED_PROXY_CIDRS` | 可信代理 CIDR 逗号列表；默认空，不接受客户端伪造的转发地址 |
 | `ENCRYPTION_KEY` | 服务端 AES-256-GCM 加密主密钥（32 字节 Base64） |
 | `AI_API_KEY` | AI Provider 凭据；模拟模式可留空 |
 | `AI_BASE_URL` | AI Provider HTTPS 地址 |
@@ -103,11 +105,13 @@ Next.js 与 eslint-config-next 固定为 **15.5.24**，shadcn CLI 固定为 **3.
 
 `ErrorState` 是客户端组件。服务端组件需要只读错误提示时不传 `onRetry`；交互回调在客户端边界内创建。其余三个组件可直接用于服务端组件。
 
-首页位于 `src/app/(site)/page.tsx`，访问地址仍为 `/`。前台布局提供 `SiteHeader`，后台布局仅提供 `AdminShell`。占位导航是静态文案。全局 Toast 仅在根布局挂载一次，使用浅色主题、右上角位置和4秒默认时长。
+首页位于 `src/app/(site)/page.tsx`，访问地址仍为 `/`。前台布局提供 `SiteHeader`，后台 layout 为无导航的中性容器。全局 Toast 仅在根布局挂载一次，使用浅色主题、右上角位置和4秒默认时长。
 
 ## 后台访问闸门
 
-Phase011 之前，`/admin` 及所有子路径在开发、测试、生产环境都无条件返回 **404**，响应体为空。不存在本地绕过变量，也不能通过查询参数或 Cookie 放行。本阶段不提供后台页面和登录页面；布局通过组件测试及静态浏览器 fixture 验证。
+`/admin/login` 提供管理员登录，登录后 `/admin` 展示临时成功页与退出操作。`/login` 使用相同凭据服务供 ACTIVE USER/ADMIN 登录；注册与用户管理留待其生产阶段。未知账户、密码错误、普通用户进入管理入口以及停用账户均显示“邮箱或密码错误”。
+
+`dev`/`start` 使用 Node 入口 `scripts/auth-server.mjs`，从真实连接取得限流地址；请通过 npm 脚本启动。会话最多12小时，每次服务端请求复核数据库中的会话、角色、状态与 sessionVersion。登录失败按账户5次/IP20次的15分钟窗口持久限流，退出先撤销数据库会话。没有预览变量、查询参数或 Cookie 后门。配置与验证细节见 [Phase011说明](docs/phase011.md)。
 
 完整任务005验收由 `node docs/phase-plans/verify-phase005.mjs --all` 执行，覆盖六个测试文件、质量命令、真实 HTTP、浏览器与临时副本中的反向测试。报告按 attempt 保存，已存在报告不覆盖；失败后使用 `node docs/phase-plans/complete-phase005.mjs --retry` 保存旧计划并开始同阶段的新 attempt。最终 Gate 在 artifact 提交后由 `--metadata` 生成。
 

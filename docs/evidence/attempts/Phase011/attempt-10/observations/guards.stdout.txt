@@ -1,0 +1,20 @@
+
+> serendipity@0.1.0 test
+> vitest run tests/integration/admin-login.test.ts -t guards: --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\Users\11295\Desktop\Serendipity · 际遇\.scaffold\phase011\attempt-10-observe-guards-vitest.json
+
+
+ RUN  v4.1.11 C:/Users/11295/Desktop/Serendipity · 际遇
+
+stdout | tests/integration/admin-login.test.ts > admin-login real PostgreSQL security > guards: real Next request stores and database-backed Route/Action guards precede all resource queries and writes
+{"guardObservation":{"status":"PASS","deniedRoute":[401,403,401],"deniedAction":[401,403,401],"unauthorizedQueries":0,"unauthorizedWrites":0,"authorizedQueries":2,"authorizedWrites":2,"revokedRoute":401,"revokedAction":401,"requestContext":"REAL_NEXT_REQUEST_STORE","database":"REAL_POSTGRESQL17"}}
+
+ ✓ tests/integration/admin-login.test.ts (20 tests | 18 skipped) 5771ms
+     ✓ guards: real Next request stores and database-backed Route/Action guards precede all resource queries and writes  3151ms
+     ✓ guards: database, throttle and audit failures fail closed and rollback every session/user success effect  2619ms
+
+ Test Files  1 passed (1)
+      Tests  2 passed | 18 skipped (20)
+   Start at  02:22:41
+   Duration  6.55s (transform 190ms, setup 104ms, import 474ms, tests 5.77s, environment 0ms)
+
+JSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase011/attempt-10-observe-guards-vitest.json

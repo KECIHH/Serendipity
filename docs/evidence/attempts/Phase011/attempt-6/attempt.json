@@ -1,0 +1,27 @@
+{
+  "phase": 11,
+  "attemptId": "attempt-6",
+  "status": "FAIL",
+  "kind": "SUPPORTING_CHECK",
+  "artifactCommit": null,
+  "command": "npm run typecheck",
+  "exitCode": 2,
+  "planHash": "d5e2a3be47b8634089c21911261723dce3abf5d63fef10d4e2c2a2e7bdb7fc36",
+  "reason": "The real Next request-context fixture still needs required RequestLifecycleOpts fields for TypeScript. The real guard worker now reaches its denied-status assertion but exits 1 at the safe assert-denied stage. Raw diagnostic outputs and source snapshots are retained; no formal case was run for this failed attempt.",
+  "failureReports": [
+    {
+      "path": "docs/evidence/attempts/Phase011/attempt-6/diagnostic-typecheck-1789144139400.json",
+      "sha256": "5a27f54f4d60b0989d9c836557db11badb2c9b5fd315997f7a8dfe6a8b475d81",
+      "command": "npm run typecheck",
+      "exitCode": 2
+    },
+    {
+      "path": "docs/evidence/attempts/Phase011/attempt-6/diagnostic-guards-1789144139400.json",
+      "sha256": "bff5359b4a7c602379cafb0e75dc85a95f24ee958a3ac5b0613a9868d627e388",
+      "command": "npm run test -- tests/integration/admin-login.test.ts -t guards: --no-file-parallelism --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase011\\attempt-6-diagnostic-guards-1789144139400.json",
+      "exitCode": 1
+    }
+  ],
+  "formalCaseEvidence": false,
+  "recordedAt": "2026-09-11T16:30:21.943Z"
+}

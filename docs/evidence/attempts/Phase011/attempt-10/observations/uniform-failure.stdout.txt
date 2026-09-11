@@ -1,0 +1,20 @@
+
+> serendipity@0.1.0 test
+> vitest run tests/integration/admin-login.test.ts -t uniform-failure: --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\Users\11295\Desktop\Serendipity · 际遇\.scaffold\phase011\attempt-10-observe-uniform-failure-vitest.json
+
+
+ RUN  v4.1.11 C:/Users/11295/Desktop/Serendipity · 际遇
+
+stdout | tests/integration/admin-login.test.ts > admin-login real PostgreSQL security > uniform-failure: four valid-format failures all perform one real cost12 comparison with indistinguishable result and timing
+{"authTiming":{"samplesPerGroup":16,"warmupPerGroup":1,"alpha":0.01,"maxMedianRatio":1.5,"permutationP":0.4522738630684658,"medianRatio":1.0079142024751135,"medians":[263.60009999999966,264.22474999999986,263.40620000000035,265.4908500000006],"samplesMs":[[281,260,259,265,264,259,261,259,263,264,273,287,302,266,290,260],[260,259,262,264,261,262,259,265,264,269,272,265,268,271,262,274],[267,287,260,260,260,261,264,267,263,260,271,273,267,268,260,263],[267,264,259,265,259,260,260,290,275,259,282,268,271,266,282,260]]}}
+
+ ✓ tests/integration/admin-login.test.ts (20 tests | 18 skipped) 22786ms
+     ✓ uniform-failure: four valid-format failures all perform one real cost12 comparison with indistinguishable result and timing  20360ms
+     ✓ uniform-failure: bounds prevent bcrypt truncation and client role or session claims cannot authorize a USER  2424ms
+
+ Test Files  1 passed (1)
+      Tests  2 passed | 18 skipped (20)
+   Start at  02:22:16
+   Duration  23.59s (transform 197ms, setup 113ms, import 485ms, tests 22.79s, environment 0ms)
+
+JSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase011/attempt-10-observe-uniform-failure-vitest.json

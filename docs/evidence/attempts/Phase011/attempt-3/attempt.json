@@ -1,0 +1,26 @@
+{
+  "phase": 11,
+  "attemptId": "attempt-3",
+  "status": "FAIL",
+  "kind": "INDEPENDENT_REVIEW",
+  "artifactCommit": null,
+  "command": null,
+  "exitCode": null,
+  "planHash": "51b1f0c764db3f2775592468ece43e1b28c8e0affab96ba3606e87b80a90ba0e",
+  "reason": "Independent preliminary security review found logout session-cookie prefix pollution, replayable ingress proofs, and an unsupported local-cookie-clearing claim for generic HTTP 503 responses. The historical FAIL is preserved; fixes require a new frozen attempt and actual regression evidence.",
+  "independentReview": {
+    "path": "docs/evidence/attempts/Phase011/attempt-3/preliminary-security-review.json",
+    "sha256": "ffe0391ff7ffd7e5346b7dcc2da0a63ae1eb5a766c03e30cfc84eafceef76855",
+    "decision": "FAIL",
+    "contextId": "codex:/root/auth_security_review:Phase011:20260911",
+    "reviewerRunId": "3e2ce986-464e-430b-9a77-84a4855f051a",
+    "generatedBy": "independent-agent:/root/auth_security_review",
+    "findingIds": [
+      "AUTH011-SEC-01",
+      "AUTH011-SEC-02",
+      "AUTH011-SEC-03"
+    ]
+  },
+  "evidenceBoundary": "The first two reproductions exited 0 while observing security failures; the third was code review only. No failing process exit or pre-fix source hashes are inferred. The linked report records these limits and is retained byte-for-byte.",
+  "recordedAt": "2026-09-11T16:06:09.227Z"
+}

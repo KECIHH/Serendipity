@@ -240,10 +240,10 @@ describe.skipIf(!enabled)("seed real CLI", () => {
   }, 60_000);
 
   it("concurrent-seed: only three retries then read-only reconciliation; exhausted conflicts leave no rows", async () => {
-    await withSeedDatabase(async ({ admin, app, url }) => {
+    await withSeedDatabase(async ({ admin, app, url, config }) => {
       await admin.$executeRawUnsafe("CREATE SEQUENCE seed_conflict_count");
       await admin.$executeRawUnsafe(
-        "GRANT USAGE, SELECT ON SEQUENCE seed_conflict_count TO phase010_app",
+        `GRANT USAGE, SELECT ON SEQUENCE seed_conflict_count TO "${config.appUser}"`,
       );
       await admin.$executeRawUnsafe(
         "CREATE FUNCTION seed_conflict() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN PERFORM nextval('seed_conflict_count'); RAISE EXCEPTION 'Synthetic serialization conflict' USING ERRCODE='40001'; END; $$",
@@ -315,8 +315,8 @@ describe.skipIf(!enabled)("seed real CLI", () => {
   }, 60_000);
 
   it("first-seed: audit failure rolls back the administrator and all configuration writes", async () => {
-    await withSeedDatabase(async ({ admin, app, url }) => {
-      await admin.$executeRawUnsafe('REVOKE INSERT ON "AuditLog" FROM phase010_app');
+    await withSeedDatabase(async ({ admin, app, url, config }) => {
+      await admin.$executeRawUnsafe(`REVOKE INSERT ON "AuditLog" FROM "${config.appUser}"`);
       const before = await rowSnapshot(app);
       const result = await runSeed(syntheticSeedEnv(url));
       expect(result.exitCode).not.toBe(0);

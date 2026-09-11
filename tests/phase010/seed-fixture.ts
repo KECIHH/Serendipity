@@ -4,9 +4,10 @@ import path from "node:path";
 import { createHash, randomBytes } from "node:crypto";
 import { spawn } from "node:child_process";
 import { pathToFileURL } from "node:url";
-import { PrismaClient } from "@prisma/client";
+import { Prisma, PrismaClient } from "@prisma/client";
 
 interface Config {
+  phase: "010" | "011";
   runId: string;
   database: string;
   url: string;
@@ -20,12 +21,17 @@ interface Config {
 export function fixtureConfig(): Config {
   const file = process.env.PHASE010_FIXTURE_CONFIG;
   assert(file, "Phase010 requires its task-owned database configuration");
-  const config = JSON.parse(fs.readFileSync(file, "utf8")) as Config;
+  const config = JSON.parse(fs.readFileSync(file, "utf8")) as Omit<Config, "phase">;
   assert.match(config.runId, /^[a-f0-9]{12}$/);
-  assert.equal(config.database, `phase010_disposable_${config.runId}`);
+  const match = /^phase(010|011)_disposable_([a-f0-9]{12})$/.exec(config.database);
+  assert(match, "Seed regression requires an owned Phase010 or Phase011 database");
+  const phase = match[1] as Config["phase"];
+  assert.equal(config.database, `phase${phase}_disposable_${config.runId}`);
+  assert.equal(config.user, `phase${phase}_runner`);
+  assert.equal(config.appUser, `phase${phase}_app`);
   for (const [value, username] of [
-    [config.url, "phase010_runner"],
-    [config.appUrl, "phase010_app"],
+    [config.url, config.user],
+    [config.appUrl, config.appUser],
   ]) {
     const url = new URL(value);
     assert.equal(url.protocol, "postgresql:");
@@ -34,7 +40,7 @@ export function fixtureConfig(): Config {
     assert.equal(url.pathname, `/${config.database}`);
     assert.equal(url.username, username);
   }
-  return config;
+  return { ...config, phase };
 }
 
 export async function childCommand(
@@ -44,9 +50,10 @@ export async function childCommand(
 ): Promise<{ exitCode: number | null; stdout: string; stderr: string }> {
   const configFile = process.env.PHASE010_FIXTURE_CONFIG;
   assert(configFile, "CLI fixtures require the task-owned scan configuration");
+  const config = fixtureConfig();
   const runtimePath = path.resolve(
     path.dirname(configFile),
-    "../../docs/phase-plans/phase010-runtime.mjs",
+    `../../docs/phase-plans/phase${config.phase}-runtime.mjs`,
   );
   const { scanSensitiveText } = await import(pathToFileURL(runtimePath).href);
   return new Promise((resolve, reject) => {
@@ -98,7 +105,15 @@ export function syntheticSeedEnv(url: string): Record<string, string | undefined
     NODE_OPTIONS: "",
   };
   // Exercise the real CLI without any Web-only secret or bootstrap Provider input.
-  for (const key of ["AUTH_SECRET", "ENCRYPTION_KEY", "AI_API_KEY", "AI_BASE_URL", "AI_MODEL"])
+  for (const key of [
+    "AUTH_SECRET",
+    "AUTH_URL",
+    "AUTH_TRUSTED_PROXY_CIDRS",
+    "ENCRYPTION_KEY",
+    "AI_API_KEY",
+    "AI_BASE_URL",
+    "AI_MODEL",
+  ])
     delete env[key as keyof typeof env];
   const local = path.join(
     path.dirname(process.env.PHASE010_FIXTURE_CONFIG!),
@@ -141,20 +156,21 @@ export async function withSeedDatabase<T>(
   const config = fixtureConfig();
   const database = `${config.database}_t${randomBytes(5).toString("hex")}`;
   assert(database.length <= 63);
-  assert.match(database, /^phase010_disposable_[a-f0-9]{12}_t[a-f0-9]{10}$/);
+  assert.match(database, /^phase(?:010|011)_disposable_[a-f0-9]{12}_t[a-f0-9]{10}$/);
   const control = new PrismaClient({ datasourceUrl: config.url, log: [] });
   const [identity] = await control.$queryRaw<
-    Array<{ name: string; marker: string | null; version: string }>
+    Array<{ name: string; role: string; marker: string | null; version: string }>
   >`
-    SELECT current_database() AS name, shobj_description(oid,'pg_database') AS marker, current_setting('server_version') AS version
+    SELECT current_database() AS name, current_user AS role, shobj_description(oid,'pg_database') AS marker, current_setting('server_version') AS version
     FROM pg_database WHERE datname=current_database()
   `;
   assert.equal(identity.name, config.database);
-  assert.equal(identity.marker, `serendipity-phase010-disposable:${config.runId}`);
+  assert.equal(identity.role, config.user);
+  assert.equal(identity.marker, `serendipity-phase${config.phase}-disposable:${config.runId}`);
   assert.match(identity.version, /^17\./);
   await control.$executeRawUnsafe(`CREATE DATABASE "${database}"`);
   await control.$executeRawUnsafe(
-    `COMMENT ON DATABASE "${database}" IS 'serendipity-phase010-disposable:${config.runId}'`,
+    `COMMENT ON DATABASE "${database}" IS 'serendipity-phase${config.phase}-disposable:${config.runId}'`,
   );
   const ownerUrl = new URL(config.url);
   ownerUrl.pathname = `/${database}`;
@@ -170,12 +186,21 @@ export async function withSeedDatabase<T>(
     assert.equal(migrated.exitCode, 0, "Fixture migration must succeed");
     for (const statement of [
       "REVOKE CREATE ON SCHEMA public FROM PUBLIC",
-      "GRANT USAGE ON SCHEMA public TO phase010_app",
-      'GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE "User", "SystemConfig", "TravelRecord", "ChatMessage", "ApiKeyConfig" TO phase010_app',
-      'GRANT SELECT, INSERT ON TABLE "AuditLog" TO phase010_app',
-      'GRANT SELECT ON TABLE "_prisma_migrations" TO phase010_app',
+      `GRANT USAGE ON SCHEMA public TO "${config.appUser}"`,
+      `GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE "User", "SystemConfig", "TravelRecord", "ChatMessage", "ApiKeyConfig" TO "${config.appUser}"`,
+      `GRANT SELECT, INSERT ON TABLE "AuditLog" TO "${config.appUser}"`,
+      `GRANT SELECT ON TABLE "_prisma_migrations" TO "${config.appUser}"`,
     ])
       await admin.$executeRawUnsafe(statement);
+    if (Prisma.dmmf.datamodel.models.some(({ name }) => name === "AuthSession")) {
+      for (const statement of [
+        `GRANT SELECT, INSERT ON TABLE "AuthSession", "AuthLoginAttempt" TO "${config.appUser}"`,
+        `GRANT UPDATE ("status", "lastSeenAt", "revokedAt") ON TABLE "AuthSession" TO "${config.appUser}"`,
+        `GRANT UPDATE ("status", "completedAt") ON TABLE "AuthLoginAttempt" TO "${config.appUser}"`,
+        `GRANT EXECUTE ON FUNCTION public.auth_now() TO "${config.appUser}"`,
+      ])
+        await admin.$executeRawUnsafe(statement);
+    }
     return await operation({ admin, app, url: runtimeUrl.toString(), database, config });
   } finally {
     await app.$disconnect();
@@ -192,5 +217,13 @@ export async function rowSnapshot(client: PrismaClient): Promise<string> {
     UNION ALL SELECT 'SystemConfig', encode(sha256(convert_to(row_to_json(t)::text,'UTF8')),'hex') FROM "SystemConfig" t
     UNION ALL SELECT 'AuditLog', encode(sha256(convert_to(row_to_json(t)::text,'UTF8')),'hex') FROM "AuditLog" t ORDER BY 1,2
   `;
-  return createHash("sha256").update(JSON.stringify(rows)).digest("hex");
+  const authRows = Prisma.dmmf.datamodel.models.some(({ name }) => name === "AuthSession")
+    ? await client.$queryRaw<Array<{ table: string; hash: string }>>`
+        SELECT 'AuthSession' AS table, encode(sha256(convert_to(row_to_json(t)::text,'UTF8')),'hex') AS hash FROM "AuthSession" t
+        UNION ALL SELECT 'AuthLoginAttempt', encode(sha256(convert_to(row_to_json(t)::text,'UTF8')),'hex') FROM "AuthLoginAttempt" t ORDER BY 1,2
+      `
+    : [];
+  return createHash("sha256")
+    .update(JSON.stringify([...rows, ...authRows]))
+    .digest("hex");
 }

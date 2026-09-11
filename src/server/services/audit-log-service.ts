@@ -163,6 +163,16 @@ export function openAuditedSeedDatabase(databaseUrl: string) {
   });
 }
 
+/** Auth services own a real connection; caller-supplied transaction wrappers are never enrolled. */
+export function openAuditedAuthDatabase(databaseUrl: string) {
+  const client = new PrismaClient({ datasourceUrl: databaseUrl, log: [] });
+  return Object.freeze({
+    transaction: <T>(operation: (tx: AuditTransactionClient) => Promise<T>) =>
+      enrolledTransaction(client, operation, Prisma.TransactionIsolationLevel.ReadCommitted),
+    disconnect: () => client.$disconnect(),
+  });
+}
+
 function prepare(
   input: AuditLogInput,
 ): Prisma.AuditLogUncheckedCreateInput & { action: AuditLogAction } {

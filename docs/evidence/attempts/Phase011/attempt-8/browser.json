@@ -1,0 +1,363 @@
+{
+  "schemaVersion": 1,
+  "phase": 11,
+  "status": "FAIL",
+  "simulation": true,
+  "productionTraffic": false,
+  "verificationScope": "AUTOMATED_BROWSER_A11Y",
+  "humanScreenReaderExperience": "NOT_EVALUATED",
+  "caseCount": 10,
+  "results": [
+    {
+      "id": "public-routing",
+      "status": "PASS",
+      "observations": {
+        "loginPage": 200,
+        "unauthenticatedAdmin": 307,
+        "userLoginPage": 200,
+        "providerReachable": true,
+        "businessAliases": "ABSENT",
+        "redirectLoop": false
+      }
+    },
+    {
+      "id": "login-keyboard-and-accessibility",
+      "status": "PASS",
+      "observations": {
+        "views": [
+          {
+            "width": 375,
+            "focusVisible": true,
+            "tabOrder": [
+              "email",
+              "password",
+              "submit"
+            ],
+            "metrics": {
+              "width": 375,
+              "documentWidth": 375,
+              "bodyWidth": 375
+            },
+            "axe": {
+              "violations": 0,
+              "passes": 23,
+              "incomplete": 0,
+              "version": "4.13.0"
+            }
+          },
+          {
+            "width": 1280,
+            "focusVisible": true,
+            "tabOrder": [
+              "email",
+              "password",
+              "submit"
+            ],
+            "metrics": {
+              "width": 1280,
+              "documentWidth": 1280,
+              "bodyWidth": 1280
+            },
+            "axe": {
+              "violations": 0,
+              "passes": 23,
+              "incomplete": 0,
+              "version": "4.13.0"
+            }
+          }
+        ],
+        "screenshotsExcludeCredentials": true
+      }
+    },
+    {
+      "id": "valid-admin-login-and-fixed-session",
+      "status": "PASS",
+      "observations": {
+        "pageStatus": 200,
+        "absoluteMaxAgeSeconds": 43200,
+        "httpOnly": true,
+        "sameSite": "Lax",
+        "path": "/",
+        "secure": false,
+        "environment": "LOOPBACK_HTTP",
+        "rawTokenPersisted": false,
+        "publicTokenExposure": false,
+        "refreshExtendsExpiry": false,
+        "lastLoginUpdated": true,
+        "loginAuditCount": 1
+      }
+    },
+    {
+      "id": "uniform-http-credential-failures",
+      "status": "PASS",
+      "observations": {
+        "categories": [
+          "UNKNOWN_ACCOUNT",
+          "PASSWORD_MISMATCH",
+          "USER_ACCOUNT",
+          "DISABLED_ADMIN"
+        ],
+        "status": 401,
+        "bodyHash": "0ea63441adc1aa2d36842db11708aaeeec1530c0e0dfb75be997c7dc0eb4e770",
+        "headerNames": [
+          "cache-control",
+          "connection",
+          "content-type",
+          "keep-alive",
+          "transfer-encoding",
+          "vary"
+        ],
+        "observableDifferences": 0,
+        "excludedTransportHeaderValues": [
+          "date"
+        ]
+      }
+    },
+    {
+      "id": "csrf-origin-and-fetch-metadata",
+      "status": "PASS",
+      "observations": {
+        "rejectedCases": 4,
+        "unauthorizedAdmissions": 0
+      }
+    },
+    {
+      "id": "logout-revokes-before-cookie-clear",
+      "status": "PASS",
+      "observations": {
+        "sessionRevoked": true,
+        "cookieCleared": true,
+        "cookieCleanupReceipt": true,
+        "oldCookieAuthorizedRequests": 0,
+        "loginReachable": true,
+        "pollutedCookiePrefixBypass": false
+      }
+    },
+    {
+      "id": "logout-database-failure-is-visible",
+      "status": "PASS",
+      "observations": {
+        "failureStatus": 503,
+        "cookieClearedOnFailure": true,
+        "cookieCleanupReceipt": true,
+        "serverSuccessClaimed": false,
+        "serverSessionUnchangedDuringFailure": true,
+        "recoveryRevoked": true,
+        "externalCallbackFollowed": false
+      }
+    },
+    {
+      "id": "cookie-and-preview-bypass-rejection",
+      "status": "PASS",
+      "observations": {
+        "previewEnvironmentEnabledForProbe": true,
+        "queryBypass": false,
+        "previewCookieBypass": false,
+        "forgedAuthCookieBypass": false,
+        "redirectLoop": false
+      }
+    },
+    {
+      "id": "shared-user-login-has-no-admin-authority",
+      "status": "PASS",
+      "observations": {
+        "provider": "credentials",
+        "userAudience": "USER",
+        "adminPageAuthorized": false,
+        "userLandingStatus": 200
+      }
+    },
+    {
+      "id": "durable-dual-throttle-http-responses",
+      "status": "PASS",
+      "observations": {
+        "accountAdmitted": 5,
+        "accountNextStatus": 429,
+        "ipAdmitted": 20,
+        "ipNextStatus": 429,
+        "retryAfterSeconds": 900,
+        "publicBucketDifferences": 0,
+        "forwardingSpoofChangesKey": false,
+        "distinctDirectClientBuckets": 1
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/attempts/Phase011/attempt-8/auth-login-375-a11y.txt",
+      "sha256": "9e414c1c2675e386f427716bc5778a3f1715afcae51fb58e1c9e9a56f0edd5a3"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase011/attempt-8/auth-login-375-axe.json",
+      "sha256": "ae900881db6ce77a6062b03dbd7f0fad83c520c4a6d1c27a5ef587ab0c857b7f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase011/attempt-8/auth-login-375.png",
+      "sha256": "54ce443938800bcb85a082ca3fe7be427aeb19d79b4c906c40d0ad923b839313"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase011/attempt-8/auth-login-375.html",
+      "sha256": "7c9ed3a7d97de3595245eb4f39c4217529ca2d3409afef928b0495eae0ee1414"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase011/attempt-8/auth-login-1280-a11y.txt",
+      "sha256": "9e414c1c2675e386f427716bc5778a3f1715afcae51fb58e1c9e9a56f0edd5a3"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase011/attempt-8/auth-login-1280-axe.json",
+      "sha256": "d7335ad6649145b5806090b9488fac342c94749f009688409caf86445eae6f7e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase011/attempt-8/auth-login-1280.png",
+      "sha256": "614d5e83ca73d84d96387e428a2f3858faf32da24f71d8af65a4421c9275d5d5"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase011/attempt-8/auth-login-1280.html",
+      "sha256": "92f8acb255364795bcd80e8235687c137a077d5d3d914020b520e2ce8e293b73"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase011/attempt-8/auth-admin-success-axe.json",
+      "sha256": "e7e58f0f7589a915a359a3648a25da3a30b53d436945430f05242f07bd266a71"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase011/attempt-8/auth-admin-success.png",
+      "sha256": "ea016bf80c50437cf1631ba0572dfe6443172b7d0e02e061ff26ba74ddd01afb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase011/attempt-8/auth-admin-success.html",
+      "sha256": "13c129e6534054ad4f8dd4843df9e14d1f5ec28f2f2351a2096d419a410f661c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase011/attempt-8/auth-logout-unavailable.png",
+      "sha256": "ca5e110ce22eac02ebfed8af6c5bea46f60fed42c0f8079caeb19051f56ce867"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase011/attempt-8/auth-logout-unavailable.html",
+      "sha256": "b5bdc80b1b11ddfd651e28451f081372e29e3049e0faa24d85c70cda080b6c07"
+    }
+  ],
+  "commands": [
+    {
+      "command": "npm run build",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "build"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "\n> serendipity@0.1.0 build\n> next build\n\n   ▲ Next.js 15.5.24\n   - Environments: .env.local\n\n   Creating an optimized production build ...\n ✓ Compiled successfully in 4.1s\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/7) ...\n   Generating static pages (1/7) \r\n   Generating static pages (3/7) \r\n   Generating static pages (5/7) \r\n ✓ Generating static pages (7/7)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                                 Size  First Load JS\n┌ ○ /                                    77.2 kB         180 kB\n├ ○ /_not-found                            993 B         104 kB\n├ ƒ /admin                                2.4 kB         120 kB\n├ ○ /admin/login                         2.04 kB         120 kB\n├ ƒ /api/auth/[...nextauth]                126 B         103 kB\n└ ○ /login                               2.03 kB         117 kB\n+ First Load JS shared by all             103 kB\n  ├ chunks/255-c5a697ddbf82d774.js       46.4 kB\n  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB\n  └ other shared chunks (total)             2 kB\n\n\nƒ Middleware                             37.6 kB\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+      "stderr": "",
+      "durationMs": 22225
+    },
+    {
+      "command": "npm start (browser fixture)",
+      "ready": true,
+      "stoppedByFixture": true,
+      "stdout": "\n> serendipity@0.1.0 start\n> node --import tsx scripts/auth-server.mjs --port 61520 --hostname 127.0.0.1\n\nSerendipity listening on 127.0.0.1:61520\n",
+      "stderr": "",
+      "durationMs": 21308
+    }
+  ],
+  "browserVersion": "140.0.7339.186",
+  "configuredBrowserOrigin": "http://127.0.0.1:61520",
+  "localRequestCount": 86,
+  "externalRequestCount": 10,
+  "blockedRequestDestinations": [
+    {
+      "protocol": "http:",
+      "origin": "http://localhost:61520",
+      "pathnameSha256": "2ec690d7de163d2a7a282fa9170d3cbbba359823e9a6eccd930948cdf47dac03",
+      "observedDuringCase": "public-routing",
+      "resourceType": "stylesheet",
+      "isNavigationRequest": false,
+      "count": 1
+    },
+    {
+      "protocol": "http:",
+      "origin": "http://localhost:61520",
+      "pathnameSha256": "190d34245a8521df2cc10b64cea3dac28a809aa04c54779cfad8994ae2fa4e38",
+      "observedDuringCase": "public-routing",
+      "resourceType": "script",
+      "isNavigationRequest": false,
+      "count": 1
+    },
+    {
+      "protocol": "http:",
+      "origin": "http://localhost:61520",
+      "pathnameSha256": "60313e45d3eb3d4df037a9cfc00149626909d25c3404e6548cfb05bf3e09ba6c",
+      "observedDuringCase": "public-routing",
+      "resourceType": "script",
+      "isNavigationRequest": false,
+      "count": 1
+    },
+    {
+      "protocol": "http:",
+      "origin": "http://localhost:61520",
+      "pathnameSha256": "93a45dc9cf03fcb6840176cb61a99973cd90800ee90def2bd0cfc59794d277d2",
+      "observedDuringCase": "public-routing",
+      "resourceType": "script",
+      "isNavigationRequest": false,
+      "count": 1
+    },
+    {
+      "protocol": "http:",
+      "origin": "http://localhost:61520",
+      "pathnameSha256": "d05b54dae693269fcf99c6e453d83133572e8627cb86654f449180133e6d0bfc",
+      "observedDuringCase": "public-routing",
+      "resourceType": "script",
+      "isNavigationRequest": false,
+      "count": 1
+    },
+    {
+      "protocol": "http:",
+      "origin": "http://localhost:61520",
+      "pathnameSha256": "8c514e50b5abc47b4944f20e57eabd131d1e7c5f6a3d5219dc220e50f69d15ad",
+      "observedDuringCase": "public-routing",
+      "resourceType": "script",
+      "isNavigationRequest": false,
+      "count": 1
+    },
+    {
+      "protocol": "http:",
+      "origin": "http://localhost:61520",
+      "pathnameSha256": "ca2b0fa6702f412d4ab2f4eff375076cf0acd6c3662e1014cd00632076be9426",
+      "observedDuringCase": "public-routing",
+      "resourceType": "script",
+      "isNavigationRequest": false,
+      "count": 1
+    },
+    {
+      "protocol": "http:",
+      "origin": "http://localhost:61520",
+      "pathnameSha256": "5eb6ecb5f834432730445bc34c3c131c3559d5f30bbdd3611aaed9b328073498",
+      "observedDuringCase": "public-routing",
+      "resourceType": "script",
+      "isNavigationRequest": false,
+      "count": 1
+    },
+    {
+      "protocol": "http:",
+      "origin": "http://localhost:61520",
+      "pathnameSha256": "1730ddb1b820fd15a0c3aae346dfa5ae13f74451391aa11137daa8f24ad591e0",
+      "observedDuringCase": "public-routing",
+      "resourceType": "script",
+      "isNavigationRequest": false,
+      "count": 1
+    },
+    {
+      "protocol": "http:",
+      "origin": "http://localhost:61520",
+      "pathnameSha256": "35fa71a67e1891e26d870f7a6e32278855bb1e4a01a436d75882cc0da68b5437",
+      "observedDuringCase": "public-routing",
+      "resourceType": "script",
+      "isNavigationRequest": false,
+      "count": 1
+    }
+  ],
+  "credentials": "SYNTHETIC_NOT_ARCHIVED",
+  "diagnostic": "AssertionError [ERR_ASSERTION]: Browser must not contact public services\n\n10 !== 0\n\n    at <anonymous> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase011\\browser.mjs:886:14)\n    at async withAuthDatabase (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase011\\auth-fixture.ts:200:12)\n    at async runBrowser (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase011\\browser.mjs:331:3)\n    at async <anonymous> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase011\\browser.mjs:897:3)"
+}

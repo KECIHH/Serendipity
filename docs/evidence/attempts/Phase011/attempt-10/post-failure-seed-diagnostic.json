@@ -1,0 +1,55 @@
+{
+  "phase": 11,
+  "originatingAttempt": "attempt-10",
+  "kind": "POST_FAILURE_DIAGNOSTIC_NOT_GATE",
+  "status": "PASS",
+  "description": "After the recorded full-test failure, the two seed fixture grants use the validated current runtime role. Original retry-exhaustion and transaction-rollback assertions are unchanged. This is a diagnostic run of changed test bytes and does not reuse the failed attempt as a Gate.",
+  "planPath": "docs/phase-plans/Phase011.json",
+  "planHash": "326638b781a2c85990ac0629d469f7c2457313dd19aac386f513389a52597856",
+  "sourceHashes": {
+    "tests/integration/seed.test.ts": "b1c3171398c7fe0495b770b509c577a556d85ec9a717a49de0437edc45651bde",
+    "tests/phase010/seed-fixture.ts": "85a2917035a13526ef01cdd1c07a1b72717128e950de5bc0a92af39d91a1d79a",
+    "src/server/services/seed-service.ts": "ca76e7aa52fb62e009c38d0472eb399d1bb6b60814a316d9d00d6383c6911c35",
+    "src/server/seed-input.ts": "ca76b7628f8fd60230062cd0692e05130461bb7f4dadea7458fab2c7b7de252a",
+    "prisma/seed.ts": "dea4fc6ad30555657a06cdc1fad50af5968e45ad35884ec65df6f244035a07fa"
+  },
+  "sourceHashesAfter": {
+    "tests/integration/seed.test.ts": "b1c3171398c7fe0495b770b509c577a556d85ec9a717a49de0437edc45651bde",
+    "tests/phase010/seed-fixture.ts": "85a2917035a13526ef01cdd1c07a1b72717128e950de5bc0a92af39d91a1d79a",
+    "src/server/services/seed-service.ts": "ca76e7aa52fb62e009c38d0472eb399d1bb6b60814a316d9d00d6383c6911c35",
+    "src/server/seed-input.ts": "ca76b7628f8fd60230062cd0692e05130461bb7f4dadea7458fab2c7b7de252a",
+    "prisma/seed.ts": "dea4fc6ad30555657a06cdc1fad50af5968e45ad35884ec65df6f244035a07fa"
+  },
+  "observation": {
+    "command": "npm run test -- tests/integration/seed.test.ts -t only three retries|audit failure rolls back --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase011\\post-failure-seed-vitest.json",
+    "executable": "C:\\Program Files\\nodejs\\node.exe",
+    "arguments": [
+      "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+      "run",
+      "test",
+      "--",
+      "tests/integration/seed.test.ts",
+      "-t",
+      "only three retries|audit failure rolls back",
+      "--no-file-parallelism",
+      "--reporter=default",
+      "--reporter=json",
+      "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase011\\post-failure-seed-vitest.json"
+    ],
+    "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+    "exitCode": 0,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/integration/seed.test.ts -t only three retries|audit failure rolls back --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase011\\post-failure-seed-vitest.json\n\n\n RUN  v4.1.11 C:/Users/11295/Desktop/Serendipity · 际遇\n\n ✓ tests/integration/seed.test.ts (26 tests | 24 skipped) 4482ms\n     ✓ concurrent-seed: only three retries then read-only reconciliation; exhausted conflicts leave no rows  2461ms\n     ✓ first-seed: audit failure rolls back the administrator and all configuration writes  2020ms\n\n Test Files  1 passed (1)\n      Tests  2 passed | 24 skipped (26)\n   Start at  02:36:57\n   Duration  4.91s (transform 124ms, setup 103ms, import 133ms, tests 4.48s, environment 0ms)\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase011/post-failure-seed-vitest.json\n",
+    "stderr": "",
+    "durationMs": 5830
+  },
+  "rawReport": {
+    "path": "docs/evidence/attempts/Phase011/attempt-10/post-failure-seed-vitest.json",
+    "sha256": "c68b7839e2b9d4e05016197e0ab38f2cfc3ae664c5e1b8bd112f3ee3f342d5b8"
+  },
+  "passedTests": 2,
+  "failedTests": 0,
+  "simulation": true,
+  "productionTraffic": false
+}
