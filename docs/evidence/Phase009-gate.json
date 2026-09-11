@@ -1,0 +1,1417 @@
+{
+  "schemaVersion": "agent-gate-v1",
+  "phase": 9,
+  "attemptId": "attempt-4",
+  "status": "PASS",
+  "simulation": true,
+  "operatorMode": "AGENT_ONLY_AUTOMATED_NEW_BUILD",
+  "environment": {
+    "isolated": true,
+    "syntheticUsers": true,
+    "providerMode": "local-adapter",
+    "productionTraffic": false
+  },
+  "artifactCommit": "e58842f494433aca60c15a684fca35fc98ae2ebb",
+  "requiredCaseIds": [
+    "Phase009:schema",
+    "Phase009:append-only",
+    "Phase009:recursive-redaction",
+    "Phase009:transaction",
+    "Phase009:system-actor",
+    "Phase009:lookup",
+    "Phase009:bounded-metadata",
+    "Phase009:mutation"
+  ],
+  "results": [
+    {
+      "testCaseId": "Phase009:schema",
+      "command": "node docs/phase-plans/verify-phase009.mjs --case schema",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:40cc1e1cc5b870c06babf0cf0ab2017b249c8be306a14b6d1e026b0dec39c20d",
+      "outputHash": "sha256:44e5f447b593575060b627a58bad9e13a7e27bac8af0547f1ddf77cabddaa9e7",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/integration/audit-log.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase009/attempt-4/schema.json",
+        "expected": "One Prisma-generated additive migration creates exactly AuditLog, its optional actor relation, five specified indexes, bounded columns/CHECKs and append-only protection. All existing scalar schemas and migration bytes/data remain unchanged, replay/status/generate and drift checks pass."
+      }
+    },
+    {
+      "testCaseId": "Phase009:append-only",
+      "command": "node docs/phase-plans/verify-phase009.mjs --case append-only",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:40cc1e1cc5b870c06babf0cf0ab2017b249c8be306a14b6d1e026b0dec39c20d",
+      "outputHash": "sha256:7fa6129f77f8ffddf38dc4ae85986c34beed881baed562bb246c7d128ac584e6",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/integration/audit-log.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase009/attempt-4/append-only.json",
+        "expected": "The non-owner, non-superuser runtime role can INSERT/SELECT but cannot UPDATE/DELETE/TRUNCATE, disable/drop triggers or escalate privileges. Protection also rejects mutations after accidental DML grants. Only the actual User FK deletion can null actorId, preserving every other audit field and its email snapshot."
+      }
+    },
+    {
+      "testCaseId": "Phase009:recursive-redaction",
+      "command": "node docs/phase-plans/verify-phase009.mjs --case recursive-redaction",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:5137871bbea0efd3bef5cc06cfddd0bb6a30605dcf63add4a602a5285ae270bf",
+      "outputHash": "sha256:67cac819de0da97842f1ce876251d9fc240dce0efa3eff93f6a20dbe5dbc68f7",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/lib/audit-log.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase009/attempt-4/recursive-redaction.json",
+        "expected": "Objects/arrays recursively redact all denylisted camel/snake/kebab and mixed-case keys. Unknown free text cannot enter a structured audit summary. Input is immutable, exceptions expose no values, raw synthetic secrets have zero matches in persisted rows, captured output and archived evidence. IP uses a server HMAC; UA controls are removed. Sensitive field names are exact normalized registry entries, never dynamic carriers for private text."
+      }
+    },
+    {
+      "testCaseId": "Phase009:transaction",
+      "command": "node docs/phase-plans/verify-phase009.mjs --case transaction",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:40cc1e1cc5b870c06babf0cf0ab2017b249c8be306a14b6d1e026b0dec39c20d",
+      "outputHash": "sha256:2cd101488ccaa33feb445f94c55091a2e26accccce7a7a911a2d9cb657934446",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/integration/audit-log.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase009/attempt-4/transaction.json",
+        "expected": "The helper accepts only an interactive Prisma transaction, rejects the global client at compile time and runtime, and returns only id/action/createdAt. Business+audit success counts match; audit DB failure, invalid metadata and business failure roll back both. Concurrent successes remain paired and errors never become best-effort success. Private server enrollment rejects global delegate wrappers, copied and expired clients; caught audit failures still abort the transaction."
+      }
+    },
+    {
+      "testCaseId": "Phase009:system-actor",
+      "command": "node docs/phase-plans/verify-phase009.mjs --case system-actor",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:40cc1e1cc5b870c06babf0cf0ab2017b249c8be306a14b6d1e026b0dec39c20d",
+      "outputHash": "sha256:434e2bbcfb80743568370e9d28edb4539678ca14b47f004785f2d59c784a6f5b",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/integration/audit-log.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase009/attempt-4/system-actor.json",
+        "expected": "USER and SYSTEM discriminated actors persist correctly; SYSTEM has null actorId/email, a closed systemActor detail value and nullable targetId. Invalid/ambiguous/spoofed actors, registry actions and target combinations fail before insertion."
+      }
+    },
+    {
+      "testCaseId": "Phase009:lookup",
+      "command": "node docs/phase-plans/verify-phase009.mjs --case lookup",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:40cc1e1cc5b870c06babf0cf0ab2017b249c8be306a14b6d1e026b0dec39c20d",
+      "outputHash": "sha256:03e1d4e7c193523b00ab02f33db92307d773535ed340c095ccfb67d87521dbc4",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/integration/audit-log.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase009/attempt-4/lookup.json",
+        "expected": "Request/trace IDs originate in an opaque server-generated context and satisfy fixed UUID formats. Exact request, trace, target, actor and action lookups return the expected rows; all five indexes exist and EXPLAIN proves the intended access paths. Empty queries and real DB failure remain distinguishable."
+      }
+    },
+    {
+      "testCaseId": "Phase009:bounded-metadata",
+      "command": "node docs/phase-plans/verify-phase009.mjs --case bounded-metadata",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:5137871bbea0efd3bef5cc06cfddd0bb6a30605dcf63add4a602a5285ae270bf",
+      "outputHash": "sha256:05da1fb48f838860428fcb102970b954d4ed525663aa284b829825258863ed94",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/lib/audit-log.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase009/attempt-4/bounded-metadata.json",
+        "expected": "Fixed action/target/ID/email/UA limits and detail depth/node/UTF-8 byte budgets reject excess or non-JSON inputs before insertion. Cycles, accessors, prototypes, sparse arrays and forged contexts cannot bypass validation; a 257-character UA normalizes to 256 without splitting Unicode. Excessive own-key counts are rejected before property copying."
+      }
+    },
+    {
+      "testCaseId": "Phase009:mutation",
+      "command": "node docs/phase-plans/verify-phase009.mjs --case mutation",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:40cc1e1cc5b870c06babf0cf0ab2017b249c8be306a14b6d1e026b0dec39c20d",
+      "outputHash": "sha256:0063c474dfcb952f31f0636747efbc3e07cd4ce59ed0622248fd6987668c37f2",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/integration/audit-log.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase009/attempt-4/mutation.json",
+        "expected": "An isolated database copy with append-only triggers removed and an isolated source copy with recursive redaction removed must make the original targeted assertions red with actual nonzero exits. Restored copies and the complete eight-group audit suite pass; product and applied migration bytes remain unchanged."
+      }
+    }
+  ],
+  "commands": [
+    {
+      "command": "node docs/phase-plans/verify-phase009.mjs --case schema",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase009.mjs --case append-only",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase009.mjs --case recursive-redaction",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase009.mjs --case transaction",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase009.mjs --case system-actor",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase009.mjs --case lookup",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase009.mjs --case bounded-metadata",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase009.mjs --case mutation",
+      "exitCode": 0
+    }
+  ],
+  "inputs": [
+    {
+      "path": ".gitattributes",
+      "sha256": "5f52d486cab522fa6daa07235ca6c5ff8131ba803fb675bb2db588a7a1f1f7e4"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "eb3d88b97ff365a767b5b3488f3f5e889fd13f4ee1036b99e974ee7c3a17531b"
+    },
+    {
+      "path": ".prettierignore",
+      "sha256": "4d0360bfc0e85bcf158669d14e074bff6609ab2bd10cbf6fa0b626c2cb323fc7"
+    },
+    {
+      "path": ".prettierrc.json",
+      "sha256": "a8443c8c223de29983998d16e4a8f9298898a008a7244db0c2d84eab18eeeab7"
+    },
+    {
+      "path": "docs/agent-execution-contract.md",
+      "sha256": "2919a173e60f0ed50fbf4839a5d8c96bc836afd032410cb012186026736688a2"
+    },
+    {
+      "path": "docs/api.md",
+      "sha256": "75ae366841227718bfaf18d8c1187543b390ef0aaf16d2ce1fa5754f116b83c0"
+    },
+    {
+      "path": "docs/auth.md",
+      "sha256": "d672c3d25e09ae16e61f9cea23c5d6fc500ff4e76156b4b6f5ca3ccc48a4e736"
+    },
+    {
+      "path": "docs/code-style.md",
+      "sha256": "7b2ef781010f47a11b77788241cf6ee660e57b420c0f7a87ad2eae0a42571734"
+    },
+    {
+      "path": "docs/database.md",
+      "sha256": "8eee808d2d2e734b76b30d45663a77b533398d9451069900aedf537d4333dd5e"
+    },
+    {
+      "path": "docs/directory-structure.md",
+      "sha256": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df"
+    },
+    {
+      "path": "docs/env-registry.json",
+      "sha256": "651168b05d2c85d6eb5bd67d17bac00d5698a87649752c88d8bc309966046b18"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase008/setup/migration-generation.json",
+      "sha256": "7f0263a78a3fb00f42f6ef289bdafcc76c2b86abe88134e56154c8fcda1dac7c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/all-tests-vitest.json",
+      "sha256": "666bd0cfde4d6d6b9737010e0f0afa7554e9bccce08809ba39f067bc9183a8fd"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/append-only-vitest.json",
+      "sha256": "361acafc46c62b09931084595ea6324c4d858b2ba21d1de8653245db42f4907a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/append-only.json",
+      "sha256": "4f4f3e6636ffac8c8222493c69414d34a682514350a89402d8cc7f0c247051c6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/attempt.json",
+      "sha256": "291e6b09ce396cdb272a5c83ef3344895794370634c5be3750767f87857c24ff"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/bounded-metadata-vitest.json",
+      "sha256": "a697884205ffbbab61d341daf8a1f76e3415b4a6333242da1c0fea824c06e61d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/bounded-metadata.json",
+      "sha256": "380122989698d7d218638835ce7a37a631cdc6c17bb44921a542ef55572e8870"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/cli-network.json",
+      "sha256": "829030362cee47a9d2821aae952a4c17d9d9faabd58398cffbf635c168b4e3e1"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/compile-precheck.json",
+      "sha256": "3344eb73401ee1557fd76c1394cc993bf4c22fa67584fcc9ed9d0a4e3c6f47ff"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/frozen-plan.json",
+      "sha256": "6f8d4ae9c21f8491387b9330d5d166b47bdb1cef2d7cda045e0587a38bb13d1e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/lookup-vitest.json",
+      "sha256": "0a35faed886da5e0a3790f30cfd1e26e70fd163cc35642bd8d6ca5fc7ee8b5ad"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/lookup.json",
+      "sha256": "1eab939a14c936a7ae35b21f3bdbee1700b2ea9fb5542748e4c26f5deede0abc"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/mutation.json",
+      "sha256": "a54183a7bc3c3921c83430e9ef38be3591706505c02893ce3e2052a785302509"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/mutations/sanitizer.json",
+      "sha256": "123d055ea362e53a66fa6a9abb9be3ec4bdebd9d210b8fce8edcb6505f902ea6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/mutations/trigger.sql",
+      "sha256": "70025725c130611c5b4904730e8eef1bb9a6f6bebcf9a1f604357dd99bbb456e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/negative-sanitizer-vitest.json",
+      "sha256": "f9a28a70a9cf23b53ae0525ed8cfaa3a8c4d40d0ece968be3b70d6fc0c81e904"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/negative-trigger-vitest.json",
+      "sha256": "c659d7f6af0ae6c6ba31ba877e1b284078b20b95570117fdd2d8747b9350df03"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/preliminary-review.json",
+      "sha256": "f032b1b20e455132b0a5d1294e41e6030b3f3a2f052fa289d9d17a39095015e4"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/recursive-redaction-vitest.json",
+      "sha256": "6faccfec80c4c8bf9a6afae22daade88d3e75c76675067519a9ede7d825dc061"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/recursive-redaction.json",
+      "sha256": "d4715a2cef92f4268c776804e83538b4f6e1fee4d13ba4cda4aee25c6847a344"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/restored-card-tests-vitest.json",
+      "sha256": "3bcf51b729a955db495846357da398cfe3b11df024cbd11697c20128b8c995ac"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/restored-sanitizer-vitest.json",
+      "sha256": "3d0098cab43b7494a86074a2cd051eba2f797edf6085916ba175dd7621bd630f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/restored-trigger-vitest.json",
+      "sha256": "922bd945726f19fe1780739824ab3e96046dd536dc53ce34b15954d0c63274c8"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/schema-vitest.json",
+      "sha256": "d5a8fbf920a1f9fd1727bf4c5bd1aeb8e2adf35a786a759a177d018c95ef74d2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/schema.json",
+      "sha256": "e27fae5d28c849681a43cd00ebdec7b07b67ce7e758a7c9c84ceabb83f953082"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/system-actor-vitest.json",
+      "sha256": "ee3d070435f3b4052afe1ae310ad7e65482dc1ea4f2889ac548dcded99bb2df0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/system-actor.json",
+      "sha256": "10512feaec79a46e2da06233ac8c6ae35bc70608632d4d55b93232c03adf1964"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/transaction-vitest.json",
+      "sha256": "08e71aeb3d6a50dd2ffe6202bbbc6e22236ed193cb22a6c0941e71154f9abd2e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-1/transaction.json",
+      "sha256": "d383cd9a7612cfa78858e6f348ffe6d0178b12e5f9964cd100cf80855e8638a4"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/all-tests-vitest.json",
+      "sha256": "174ca0ef57c8ea5891bdab404eb0560f15b35695698f91fa29db35e00c47f70c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/append-only-vitest.json",
+      "sha256": "707a4c016f0ea18da5bf9042a8815e37d88bf9255000806ff40c59ceb63c6687"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/append-only.json",
+      "sha256": "3262932dc0c794f21a019bb582bf6ef826d46705df89ea299b21d7f23c6c9465"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/attempt.json",
+      "sha256": "7e049e2b2bc783df68bcd6b46f0d0f6509449ca8a78166838aa01a05911bd06b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/binding-failure.json",
+      "sha256": "7d631d67445d598fae7326b67b5c16816a9799499ffa8243227a57de02547864"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/bounded-metadata-vitest.json",
+      "sha256": "cbbaec2deee499a28ab035b5e9a31f5469fa4980c2be212acdbf4f51de2a2c5e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/bounded-metadata.json",
+      "sha256": "a6be60cde4ea2c8d90ddc1a21017465fb78f010284681c5ef5b7f02ae6e9c3c6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/cli-network.json",
+      "sha256": "4928e8467d28b257cd2b0ba67033dfc3408b50380924d9b167dacf1996ec14ad"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/compile-precheck.json",
+      "sha256": "f2d244c7776115af36c3fc68c41e243761357d7af94c5719538577ac4d29fb18"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/evidence-guards.json",
+      "sha256": "e9a037503dee38c7690602cdc550a9ed9c29bf2099b13ab0b7f501235dc0b354"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/frozen-plan.json",
+      "sha256": "2d0a1a1d82322b1949fec1805c8c630b64bcef63a73ccaa23a7cac41d21f30a5"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/lookup-vitest.json",
+      "sha256": "440547c78a81f2918b3a18c07b1f446542006cb7f52c5a9f54f153b47f900fdf"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/lookup.json",
+      "sha256": "337f3cfba5acd220f5b146049bcc2a59a66822a45dc8d0191edc812de6d61899"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/mutation.json",
+      "sha256": "691a3f6aa3c0fc61b549a707a793f624368c8fe53b9c270db2ee1f32d938026a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/mutations/sanitizer.json",
+      "sha256": "9233d4dd65a0e2630e872f76690691ef27473cfceb180c15cf4300137517731f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/mutations/trigger.sql",
+      "sha256": "70025725c130611c5b4904730e8eef1bb9a6f6bebcf9a1f604357dd99bbb456e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/negative-sanitizer-vitest.json",
+      "sha256": "34633aeccae6e4f79f3bfeb74199233bf11b7db76549b8dc4696ac353376c6a7"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/negative-trigger-vitest.json",
+      "sha256": "f2684ec72d496256a2f3730c57d9e6a267e6c1532173419eb28c7b890c1698a4"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/phase006-user-regression-vitest.json",
+      "sha256": "48a32a757779d16f412ab0e24822da7ceb875a62bbbd3638447a251e45b6c8e4"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/quality.json",
+      "sha256": "197aa76cca838405d1aab9edf12a8dc27fc39e86e7973e1443c08c0844092069"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/recursive-redaction-vitest.json",
+      "sha256": "d98a8b6a33f5f3a91b3f220ad12ded12188c0f4e1297f33b297da3fc9174c96d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/recursive-redaction.json",
+      "sha256": "012193eaf35c17073a99da218cad452d9361cbef2651ee3ca11b683084bf88f3"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/restored-card-tests-vitest.json",
+      "sha256": "2cffb82d51029f484fa129468ba4ca5ce398638191054dac6eb7aa5276f6b3a1"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/restored-sanitizer-vitest.json",
+      "sha256": "b8ef079ee7ddb6b2da4ac83ed921ef4f637aec704209a10082920252379495b5"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/restored-trigger-vitest.json",
+      "sha256": "813d669664f68f5ff08ac4d8d9c9567bc13780c55b96f37053cf0c96683ec75c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/schema-vitest.json",
+      "sha256": "a1b02cae8b74350b4f02f78dbd2bb1c577d2ae8f4c9ee0329808fcd000b83e61"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/schema.json",
+      "sha256": "ec8dff9d4952cb3bf464e60e40bd2a1fb6d37eac77c6589d5b528e04a5ae5d68"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/system-actor-vitest.json",
+      "sha256": "eaef1bc24547752231339021ee73e938984a2c6c3f4b22754e269191e5f4d71a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/system-actor.json",
+      "sha256": "41c05310e7ed0ecf0b86df9117e3b1441b44a0159c70266d9e0983b169c19870"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/transaction-vitest.json",
+      "sha256": "bf81ff2ab1aa6bdfdf951a33d0bc72088227302bacaf40098545e2c41bbb3740"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/transaction.json",
+      "sha256": "4d0c7080d6a2a89fe3fb122c8792ef56b4343c80c453af85f0be99c98284c516"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-2/validator-regression.json",
+      "sha256": "6e57f54846561df2a53cae2f2ba185399645fbfd40cdaa4fd568bb53908a2d20"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/all-tests-vitest.json",
+      "sha256": "9af4e773445c2501f91d008fb72a68c66159d96103575477ab313082559948f2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/append-only-vitest.json",
+      "sha256": "9b9ac612b0b6e131cf135e384c7a94cc3b8e4aa4c83b294db229e1d709cdee62"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/append-only.json",
+      "sha256": "f0e71bcd9e1f6a148771e23c301e7fd76ed66c3cf206f63c282c193af4e47f9d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/attempt.json",
+      "sha256": "005b1b59155764858a9318dcebf7245b7874e0c66496991efea93263fb4f9bb3"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/bounded-metadata-vitest.json",
+      "sha256": "839414522a7f0627498c2584eef32af7715d77aae480bf6cd3839f9e145334fc"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/bounded-metadata.json",
+      "sha256": "fb285942acd43f3b98fe57bd07d6c2da3fab470e428e414f68e3b85010efd724"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/cli-network.json",
+      "sha256": "ad3203076646878038ec998fb08c08f2684b74476cda21779986881e4659a16b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/compile-precheck.json",
+      "sha256": "a253b540deca3fa7baee2dee080fb37e71a9645b192d96530cd8306dd7e7f68b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/evidence-guards.json",
+      "sha256": "399ec8e3e10e2c1e1f2a0f797da5a4901d08e3019597dba073d0f98c208fdceb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/frozen-plan.json",
+      "sha256": "5c0e94251f2509d6854031b3ea673b527a717abc784a8fce5b9ead7012aaa059"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/independent-rollback-probe.json",
+      "sha256": "e3becaeda1359f8610b3f517dc979c5d905ccfec7c3b0c690e7d8d4e4e533dd8"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/lookup-vitest.json",
+      "sha256": "c7ddf232a883d9f9e155836a8ef44f0e1ceb7e1c673e5d277ec929af867ee388"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/lookup.json",
+      "sha256": "d4c9a30843456d1efe86a1ca7be30b935fec523299209db184798e826450364a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/mutation.json",
+      "sha256": "b26d612e717281d9c5f3be403b6fc3f73c38fa072571290c0656a62a6247190f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/mutations/sanitizer.json",
+      "sha256": "9233d4dd65a0e2630e872f76690691ef27473cfceb180c15cf4300137517731f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/mutations/trigger.sql",
+      "sha256": "70025725c130611c5b4904730e8eef1bb9a6f6bebcf9a1f604357dd99bbb456e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/negative-sanitizer-vitest.json",
+      "sha256": "23d5fb6e31ad322d1a6fd00200748494b9e8ca388462849c33b744d4ec1a0da2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/negative-trigger-vitest.json",
+      "sha256": "ca19911fae4eb435b2dbe2e3e3d67b5e10875d63efab0c5167e93acbaed509cb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/phase006-user-regression-vitest.json",
+      "sha256": "d3c8c2d85af2e2533c6201eb7ad83bfdda97f5360007c4c4a2506091d5c2e6d9"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/quality.json",
+      "sha256": "5fc2f2de4742532a6c8be71f42f7651c86186e924dfe1ea99518ac1f84b87c0a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/recursive-redaction-vitest.json",
+      "sha256": "5767834901bfb007718051a27d8984ce8d7a2801dc847732ed8292416fe08fa6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/recursive-redaction.json",
+      "sha256": "a35bd542420cee0f92efadb14370be963ec3a1df77363583dab825849f02574d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/restored-card-tests-vitest.json",
+      "sha256": "54e94a307e639a9668a281b6bec95e6fbec51f8271bbd0b98c31b0fde08a5ec2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/restored-sanitizer-vitest.json",
+      "sha256": "65fee7f2eb447f5fd0098b307df585d3861d064c38dfd057be9a29291d569dc0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/restored-trigger-vitest.json",
+      "sha256": "a7a34dc9dfc787c2e14702e7e91dcf52b7efd9d801eb7b7198f2edaf46f6edf5"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/schema-vitest.json",
+      "sha256": "b73470275072b1ed7d71ffae3a765dc8796d3e92b3f19f0cddded46fee202a78"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/schema.json",
+      "sha256": "4d6a66e9c2717b4ec8f57143bfa7c42515b7c303bde3da30d24e44d71741387f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/system-actor-vitest.json",
+      "sha256": "ff47540fd84bf404f4d68dcbabea642a9957bf5ced4afe1cd7b9b1aa168e1c9f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/system-actor.json",
+      "sha256": "3487bded006506734cd33f4a4fff95a1abadf9a88486bc7913c40c05b6f6354b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/transaction-vitest.json",
+      "sha256": "e6c46ba8e230877fad77d18cbac70cfb903ffba8e708e6c522d9c7e790638e8b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/transaction.json",
+      "sha256": "e3e8146fe650c28e2c3963b46885323bedc99fd0008976554c675ecdbaffc0fa"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-3/validator-regression.json",
+      "sha256": "29625ffd923c94e040145aeb46f881d886cdf6af84f147bc75891f157a4b19fa"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/all-tests-vitest.json",
+      "sha256": "83ae3811296807618c482f0e1e2e14fb890dea4f9a0db375e0545719ecef9496"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/append-only-vitest.json",
+      "sha256": "afaf5d11a1a72976a0f42780abb2cddd28ce3376497801e5c28627488f6cf2c6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/append-only.json",
+      "sha256": "7fa6129f77f8ffddf38dc4ae85986c34beed881baed562bb246c7d128ac584e6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/bounded-metadata-vitest.json",
+      "sha256": "daa7ff06de26e1ce01d465a3929cda241465f58959cdaaa2ef6db2726ee27f91"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/bounded-metadata.json",
+      "sha256": "05da1fb48f838860428fcb102970b954d4ed525663aa284b829825258863ed94"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/cli-network.json",
+      "sha256": "e49e88c3f7d4c2586cebea237ee9921d51c0ce3c9466b79cca14ea9d7f31f5db"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/compile-precheck.json",
+      "sha256": "5308b355529ff2d8dcf65d895a1a40d6d844edfc19e797843646ef2e6bfb2b71"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/evidence-guards.json",
+      "sha256": "399ec8e3e10e2c1e1f2a0f797da5a4901d08e3019597dba073d0f98c208fdceb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/frozen-plan.json",
+      "sha256": "38345e26825cf9783b201e0aabe2736148a2ae0c8db8894a627174ca9f483b56"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/lookup-vitest.json",
+      "sha256": "d77c81150ceab21adb74b96a48d85d3f44d1957b26c1f5b8af7025b4a8219675"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/lookup.json",
+      "sha256": "03e1d4e7c193523b00ab02f33db92307d773535ed340c095ccfb67d87521dbc4"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/mutation.json",
+      "sha256": "0063c474dfcb952f31f0636747efbc3e07cd4ce59ed0622248fd6987668c37f2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/mutations/sanitizer.json",
+      "sha256": "9233d4dd65a0e2630e872f76690691ef27473cfceb180c15cf4300137517731f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/mutations/trigger.sql",
+      "sha256": "70025725c130611c5b4904730e8eef1bb9a6f6bebcf9a1f604357dd99bbb456e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/negative-sanitizer-vitest.json",
+      "sha256": "93e738862047c2ce6fe653714cb0a48d8016c92634243fca6bdf74311f53c5dd"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/negative-trigger-vitest.json",
+      "sha256": "f559d51d823b80c8e5b3eac6da9726658546abc439042dc8adec8be1f7e658c9"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/phase006-user-regression-vitest.json",
+      "sha256": "ec14a4c18fea01e6130bb92f141d5021c8fc729b60f29a0d58175ab97b1fa97f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/quality.json",
+      "sha256": "30205cc72c8e92e6cc5464b72fcdc112f4b5187e4794cbe2dea967fdf1b358e7"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/recursive-redaction-vitest.json",
+      "sha256": "4148fd9c69538e4b17afe78a84a151bde50a4f9c423a56aea082a706827e5685"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/recursive-redaction.json",
+      "sha256": "67cac819de0da97842f1ce876251d9fc240dce0efa3eff93f6a20dbe5dbc68f7"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/restored-card-tests-vitest.json",
+      "sha256": "dc76487d24a07b5f8dc997c75286357d3bc4cd9b5527bf84c02e1f1bb7894464"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/restored-sanitizer-vitest.json",
+      "sha256": "6776160692aaeb163a9c803567c4995e424fd9bbf4b3789928487782b4eb4883"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/restored-trigger-vitest.json",
+      "sha256": "2344183fbce5ebf33c09f1309ed141e32f15fe170eb50b8487d8ad9df08482fc"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/review.json",
+      "sha256": "0f0a92fdf1f0e3d7185e0a354f982e8e8acb81d58b910942aab2ee768bd4f7ed"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/schema-vitest.json",
+      "sha256": "f1f807081f2712df3bc1790957b13cb0831592f66ff66450765b97d633569302"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/schema.json",
+      "sha256": "44e5f447b593575060b627a58bad9e13a7e27bac8af0547f1ddf77cabddaa9e7"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/system-actor-vitest.json",
+      "sha256": "a0727cf48143178980b122721d17a37751f5400069011e6ea457ff304e664976"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/system-actor.json",
+      "sha256": "434e2bbcfb80743568370e9d28edb4539678ca14b47f004785f2d59c784a6f5b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/transaction-vitest.json",
+      "sha256": "9732cfab20414041b3fdc5e1c55bcea33f3e2a8f926b80eb9a4603721b3238ee"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/transaction.json",
+      "sha256": "2cd101488ccaa33feb445f94c55091a2e26accccce7a7a911a2d9cb657934446"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/attempt-4/validator-regression.json",
+      "sha256": "764c31fc0269d588e6c7caa3ea74f43cbb2fdb196145075d0bc57f7ade0a05da"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/setup/audit_log.generated.sql",
+      "sha256": "bac8e43285518b5250c245a39f932ded89013f259317f08e3b0b7870e5a25d5a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/setup/client-generation.json",
+      "sha256": "51561eb5259886d156e50de5bc4d7983b98e4bdd13f3983beedaba168c776c94"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/setup/migration-generation.json",
+      "sha256": "5ae51b8e2a98e30f3a4c99de7290773d7f3516f3d6e21527beb23831b22d5ca7"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/setup/postgresql.json",
+      "sha256": "0c896d2678a7fb40e303222defcfde1bcdb2435e8c903e3a56d573ea0d068073"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/setup/preflight.json",
+      "sha256": "86ae2058633bf35ea74e32a9c284e97f7d6e055d270a5b8455b243bcd9372f81"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/setup/schema-format.json",
+      "sha256": "90711c529046f1103fc5455aa301557d67176ab1e92e67613ae67f4d6da6f387"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase009/setup/source-format.json",
+      "sha256": "065743cdbb7b1a4c0efa507d054bf6f02d0b24f67dd9ae9b1363f27fb2391c89"
+    },
+    {
+      "path": "docs/phase-plans/Phase006-inputs.json",
+      "sha256": "e191b940aaf31c1f075d662d798d078d23331efb3634c4d7c761a704bec28798"
+    },
+    {
+      "path": "docs/phase-plans/Phase006.json",
+      "sha256": "376192ccacc4bec06979652357e6e3f237336043b834876b9e8abc8afba6bc68"
+    },
+    {
+      "path": "docs/phase-plans/Phase007-inputs.json",
+      "sha256": "db29c02627b15120b8213a32f31805191f942697d4db06f85907273d168f3603"
+    },
+    {
+      "path": "docs/phase-plans/Phase007.json",
+      "sha256": "a5b711a15cc60c620be16007e45be6e6e28f389fc0c676379e2171a89edd0f06"
+    },
+    {
+      "path": "docs/phase-plans/Phase008-inputs.json",
+      "sha256": "4ff3cac606c6b57cd44a7d602c5e830d637043beed45e0b83c7f8259d3e1bb5d"
+    },
+    {
+      "path": "docs/phase-plans/Phase008.json",
+      "sha256": "3410317c6af68ae81647ae2419710783051542b8b937882f376737054bcd0928"
+    },
+    {
+      "path": "docs/phase-plans/Phase009-inputs.json",
+      "sha256": "27cf28065b87a9dd84f0957f4ef2965f1534c6ee845f47ee2a78a71c171c3e0c"
+    },
+    {
+      "path": "docs/phase-plans/Phase009.json",
+      "sha256": "38345e26825cf9783b201e0aabe2736148a2ae0c8db8894a627174ca9f483b56"
+    },
+    {
+      "path": "docs/phase-plans/audit-log-protection.sql",
+      "sha256": "2d5d7635c37e6e08ddd309d1e32f55aaea747234101c0e2636f64ebb8d9f2adb"
+    },
+    {
+      "path": "docs/phase-plans/complete-phase006.mjs",
+      "sha256": "92319aee547ed8863006264bf8d967c918a4e1b6a503ff81bfa7cc3b4f7904e4"
+    },
+    {
+      "path": "docs/phase-plans/complete-phase007.mjs",
+      "sha256": "70daa68f36ca897da3afa851897cf7433fca2c0109d49670e8a498d4e5e033b1"
+    },
+    {
+      "path": "docs/phase-plans/complete-phase008.mjs",
+      "sha256": "85b5ee40845f0cefb7ee5a1643d6349cec139fe028d966cd479ca46ddca158f3"
+    },
+    {
+      "path": "docs/phase-plans/complete-phase009.mjs",
+      "sha256": "71e71b567a658d41794790edf71fcb24bde5d0315d868c716fedfee1977ad979"
+    },
+    {
+      "path": "docs/phase-plans/phase006-runtime.mjs",
+      "sha256": "67268215a7fffa5e6d087e234f866c15daadc04a7f7547106f95e4ac8a1f02e1"
+    },
+    {
+      "path": "docs/phase-plans/phase007-runtime.mjs",
+      "sha256": "2cd3e74bf6b99923c97201dbd101de33bba56b336306d02284648b5abe6400c3"
+    },
+    {
+      "path": "docs/phase-plans/phase008-evidence.mjs",
+      "sha256": "215a8b998e6c9efb57381c9a5829a50cdb290de6cd74ef0fea75a28f2ce4003e"
+    },
+    {
+      "path": "docs/phase-plans/phase008-runtime.mjs",
+      "sha256": "952ca850f7ab183815383ebfd7400b2b1e20ffaa1b73454e4e19a66a0b3410bd"
+    },
+    {
+      "path": "docs/phase-plans/phase009-evidence.mjs",
+      "sha256": "f05752a18fa46e2233f497a06804b4b310e861dad3a4962e19af8459038e4a42"
+    },
+    {
+      "path": "docs/phase-plans/phase009-runtime.mjs",
+      "sha256": "f5ae1ca46e0832bbaeb91ce47b691b46381999e2daaabba271bfa75923762245"
+    },
+    {
+      "path": "docs/phase-plans/prepare-phase007.mjs",
+      "sha256": "71d345b6288234aafcc28fd0802ada9e0ce3ddb77309ddcd558e6e559bddc7d7"
+    },
+    {
+      "path": "docs/phase-plans/prepare-phase008.mjs",
+      "sha256": "33798fc97b4a902098b375821a1b945d46fc50f72bf3d9d2f7730b3b08f8165b"
+    },
+    {
+      "path": "docs/phase-plans/prepare-phase009.mjs",
+      "sha256": "02f4ce35d1eebfbd4f0fb6d88a4635c4d492e4e599eb1a60c3c5157049b79dcf"
+    },
+    {
+      "path": "docs/phase-plans/setup-phase006.mjs",
+      "sha256": "af30cf6dca7bb7aff6e316f56faa645aa116299bd7af54972926bfc0d02614d8"
+    },
+    {
+      "path": "docs/phase-plans/setup-phase007.mjs",
+      "sha256": "cebc4f99e9db132549a9f1b3079a7972e425422d6e604fcaa10d27e3513bf20c"
+    },
+    {
+      "path": "docs/phase-plans/setup-phase008.mjs",
+      "sha256": "42a76197af0634bc5f0f14a57db82aab41e7c4fc98a1b48d714e46b809ea0e6d"
+    },
+    {
+      "path": "docs/phase-plans/setup-phase009.mjs",
+      "sha256": "dbc5b0cc55e34d2e94c47115168bbe43a6d24d763ce8106fa0f9dc97ed393ae0"
+    },
+    {
+      "path": "docs/phase-plans/verify-phase006.mjs",
+      "sha256": "71e03dfd7f02a70552e2d8a0acde77c9c6ca2124caf0fbc816367b0f785879b9"
+    },
+    {
+      "path": "docs/phase-plans/verify-phase007.mjs",
+      "sha256": "c26a198dad77589680923e478233bc10645804625ba8a4b884c47e492c72af51"
+    },
+    {
+      "path": "docs/phase-plans/verify-phase008.mjs",
+      "sha256": "efb31f593e8e0e93bf5f0d005336b79bddd98d4ae5e29a64f07fce8a18c94d6f"
+    },
+    {
+      "path": "docs/phase-plans/verify-phase009.mjs",
+      "sha256": "139b75d10e9d0be9fb4eeb1c47cbba65c57dcfb1e247939bcd296adf4abda88b"
+    },
+    {
+      "path": "docs/phase006.md",
+      "sha256": "a5d9c679b32655d5668aecb9ad4cbbc80c2204ba5b11ad67ad5d9f5e27065890"
+    },
+    {
+      "path": "docs/phase007.md",
+      "sha256": "3b170faf843a27a198c8fb4d9e827cafa74b45c654473c4a2ad2dcad485cf9f7"
+    },
+    {
+      "path": "docs/phase008.md",
+      "sha256": "6707cb0b787ab010f93e3a78d015746148a6defa6c0a1134d6f617996b444baf"
+    },
+    {
+      "path": "docs/phase009.md",
+      "sha256": "10688bbb3a2ba2416bafa85101e5f79882a5da5f40f2837bd2f39ca3af271e17"
+    },
+    {
+      "path": "docs/privacy-and-user-data.md",
+      "sha256": "fcf2859e1d1a14740fa0ad4b9298a829295ba14e0021bba86a5d631a0c1fa530"
+    },
+    {
+      "path": "docs/project-constitution.md",
+      "sha256": "8f1dd176e30e815a09502a91c5b0ef2722b7bb71d5e919fbfc70cfecf3e9dedd"
+    },
+    {
+      "path": "docs/project-layout.json",
+      "sha256": "7efe30a30fe009a8e1226563cae53d39ed2a2193be78bc0f0a776f57f67710ba"
+    },
+    {
+      "path": "docs/runtime-baseline.json",
+      "sha256": "454e0dc1759a2ddfd2f3cd89d4f8988ac9cecaea2a8ca71923bb6180afbdfa6c"
+    },
+    {
+      "path": "docs/tech-stack.md",
+      "sha256": "258620f3e18d042eac1e26165f411e8879ecd4b0d91d8e7986aaed4f3f10d2c7"
+    },
+    {
+      "path": "docs/travel-plan-schema.md",
+      "sha256": "d3f0492c8d0d22e6de3b21e44368dbf4bb9a49018180e99adf8eb796badb40cd"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "sha256": "f45d4d5b4e4808481617530c717d97108af6488b39e008e49b4161aefd818708"
+    },
+    {
+      "path": "next.config.ts",
+      "sha256": "614bce25b089c3f19b1e17a6346c74b858034040154c6621e7d35303004767cc"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "b5fab836e7858b930c5e74544ffb65c1a873a7907465bcf00f61f34cb89121fe"
+    },
+    {
+      "path": "package.json",
+      "sha256": "a8f420c7cee39e4ba7468ab454a7389850d2879361d266a026e630ca7b7c9e94"
+    },
+    {
+      "path": "postcss.config.mjs",
+      "sha256": "141ef24ca27a99d08962210fdf20212d3435fdcfa21b46cd88b44d22f751dfae"
+    },
+    {
+      "path": "prisma/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "prisma/migrations/20260910000000_init_user/migration.sql",
+      "sha256": "b65593d8d8a7a1821a2f65415616e5c083a0e38785bcac2a46ea362d126de3a3"
+    },
+    {
+      "path": "prisma/migrations/20260910172735_system_config/migration.sql",
+      "sha256": "25f5d0d35a216ee085fad468f5d69d740610369ff91fcdd0ebe4a188deef45cc"
+    },
+    {
+      "path": "prisma/migrations/20260911002217_travel_record_chat_message/migration.sql",
+      "sha256": "761979289b28f413d47c09290f43e9d01ffc22421918103a51d6c67b638bb48f"
+    },
+    {
+      "path": "prisma/migrations/20260911042258_audit_log/migration.sql",
+      "sha256": "9707b78108c51f9a10ebfa86fa816d7caf353bcd1f09a0cce2eefcac6b392373"
+    },
+    {
+      "path": "prisma/migrations/migration_lock.toml",
+      "sha256": "99836963713b4f5b269ad49af0ed3d7b0b2e336115c2f92dc9ac683d139d0900"
+    },
+    {
+      "path": "prisma/schema.prisma",
+      "sha256": "1001f26be75c9d6ed48249b51b3f75e478eaf112fca224147e56f5a1492275c4"
+    },
+    {
+      "path": "scripts/check-project-layout.mjs",
+      "sha256": "d19f27109ff142516a7b0454e7f9b9a03629fd11923e7f6b88c7ee9323eb1d35"
+    },
+    {
+      "path": "scripts/checkpoint-history.mjs",
+      "sha256": "673a4f5ff409ce0a4fcb7b1754c2d977199fc502a8732cda01082b9a0eababa1"
+    },
+    {
+      "path": "scripts/complete-phase003.mjs",
+      "sha256": "7dfd3f076da235b7b0d33a950fe08e6f48b3ac46b3c6aea70ea81b9cb6b3204f"
+    },
+    {
+      "path": "scripts/eslint-env.mjs",
+      "sha256": "f2ded148de31d4d35ede46a162116f81b48b459b869ade8411a5e25c9f5f21ce"
+    },
+    {
+      "path": "scripts/generate-api-contract.mjs",
+      "sha256": "6dad8aa0bbd68630b9149babed05e1bdc0c315d262ce16665cbe3fc133dd6009"
+    },
+    {
+      "path": "scripts/phase-evidence.mjs",
+      "sha256": "454f1911b53a21aed6f014d8cb6b36d748a6f9ec8b8e7547187d45cd20ce96c9"
+    },
+    {
+      "path": "scripts/phase003-evidence.mjs",
+      "sha256": "5a6660faa40d3710df19b9881f203be6dcb3e459c5b9c4fcf6169548890abbb4"
+    },
+    {
+      "path": "scripts/prepare-checkpoint-import.mjs",
+      "sha256": "81f21058f17b87d053f1fc0b2762fca645d53fc7a1440d68ee7908d20ce3ac0a"
+    },
+    {
+      "path": "scripts/prepare-phase003.mjs",
+      "sha256": "8a1a7482ee04835e3819bf81dcaa7b27ee4172ba806688b26105cae937b4ca5b"
+    },
+    {
+      "path": "scripts/test-checkpoint-import.mjs",
+      "sha256": "9b0d18dda79e9cb8602727a72555ca392b9558b2dcc1360349f73c89560a8e11"
+    },
+    {
+      "path": "scripts/test-phase-input-paths.mjs",
+      "sha256": "ce18f4dbde62c19eba879e3354af7a6d92d2ee71a191ba89bf6dd10dbddce1c5"
+    },
+    {
+      "path": "scripts/test-validate-phase.mjs",
+      "sha256": "b4df52b324137973c12ddc352695f2082177d29aaf9d007ba6ebf1c18a76439c"
+    },
+    {
+      "path": "scripts/validate-phase.mjs",
+      "sha256": "06bcd9955531054ace725393d8504f037256a428b80f5fe883b95587c31062d1"
+    },
+    {
+      "path": "scripts/validate-phase.ps1",
+      "sha256": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319"
+    },
+    {
+      "path": "scripts/verify-phase003.mjs",
+      "sha256": "ff50f83beabeea538c7141ee0a6beeed4a6c02664fbf8f58b68d795a80375758"
+    },
+    {
+      "path": "src/app/(site)/layout.tsx",
+      "sha256": "dbf6397819844277acac383530a3a616f29e1068b9b5ba2d08f2886b3cca5207"
+    },
+    {
+      "path": "src/app/(site)/page.tsx",
+      "sha256": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e"
+    },
+    {
+      "path": "src/app/admin/layout.tsx",
+      "sha256": "95d75d00b7761b6370864fceb83980b938f8378cc23f1d33de8f15b981156734"
+    },
+    {
+      "path": "src/app/favicon.ico",
+      "sha256": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932"
+    },
+    {
+      "path": "src/app/globals.css",
+      "sha256": "f88153c2b0c26a4f65e48626ab5a05e68c8d962952be88ead2032c8a90b10a1f"
+    },
+    {
+      "path": "src/app/layout.test.ts",
+      "sha256": "8022cde5595f753306b17f2de43534bc42ee0fd0f46ea19452deb2ee55e7e0cb"
+    },
+    {
+      "path": "src/app/layout.tsx",
+      "sha256": "a9de0b5ba9380f5a058487639bd6be0d13c5a1293f720d38965d1b3dec793a6f"
+    },
+    {
+      "path": "src/components/admin/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/components/chat/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/components/common/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/components/common/common-components.test.tsx",
+      "sha256": "8a9fcd34cc153236e6d58ad1b1ee0039e2b4020f664f918ffc5f7e9e82f8ed5b"
+    },
+    {
+      "path": "src/components/common/empty-state.tsx",
+      "sha256": "a5b1a914935eace3193451be25c9cf8178010345ef76963e0ecb12713e284795"
+    },
+    {
+      "path": "src/components/common/error-state.tsx",
+      "sha256": "4ef42505cda6c3a5d4c35180022eedab13ce9f33ac9e412e924dd5b9bb9d808d"
+    },
+    {
+      "path": "src/components/common/loading-state.tsx",
+      "sha256": "0a010951d56d20dc1860ed8bd78a5c95671bd1323014330c00b4519aafe1c37f"
+    },
+    {
+      "path": "src/components/common/page-header.tsx",
+      "sha256": "c403ac7802dbb0ecf5f83aa57ed043bf598fd3e1806c7250751cdfd9f361b4da"
+    },
+    {
+      "path": "src/components/layout/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/components/layout/admin-shell.tsx",
+      "sha256": "6bb6e05f1ad6cf9c1b6c8e77a89832a3008afaaa5297ef056e3fb89fbe37c819"
+    },
+    {
+      "path": "src/components/layout/site-header.tsx",
+      "sha256": "f4fdc237b4a3d76ac8280ff80390966ec3a1fe95d67bba7f2e5abb475ed98295"
+    },
+    {
+      "path": "src/components/travel/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "sha256": "abd7a62c5b38d8836c88906285ea0df0a40d3dd55f7d404a07672f749e37f43f"
+    },
+    {
+      "path": "src/components/ui/sonner.tsx",
+      "sha256": "f28cba0be08c0873d121f6f35107c9e0b209ef649b0d0625c32e46cf0b2ed9a2"
+    },
+    {
+      "path": "src/instrumentation.ts",
+      "sha256": "4ff6be1caa61426f26540f107f1b609bda7ad79e40b72d5c2b563d7fbb3c4821"
+    },
+    {
+      "path": "src/lib/ai/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/lib/api-response.test.ts",
+      "sha256": "4660ad9249e90641f09cbfd7dd914504fa4d1cea7fd180c6c407eb70f2a6cd1d"
+    },
+    {
+      "path": "src/lib/api-response.ts",
+      "sha256": "235635f476f988af2f7d2bdb867acc85bd3d4d777a99c8c7da555206b9a65a6a"
+    },
+    {
+      "path": "src/lib/env-cli.ts",
+      "sha256": "a70f8eff095adde7d6baf7ff7b6bc30156bb0c110a351fe4dad13ce076539fe4"
+    },
+    {
+      "path": "src/lib/env-schema.ts",
+      "sha256": "61c657e715fad05a57737ef8ad037a97c32f724c9a3a6e0a5c76ce5cf65d5731"
+    },
+    {
+      "path": "src/lib/env.test.ts",
+      "sha256": "04ad1cbe2db65abe20d9c9d520c52c8cc9f42f6040a516a53e37ade2d0e2b38f"
+    },
+    {
+      "path": "src/lib/env.ts",
+      "sha256": "51a3612afe39103e04f214185192f0e39e8bc5cb43d27b21922fdd1748096658"
+    },
+    {
+      "path": "src/lib/format.test.ts",
+      "sha256": "bfbf9788fbc9506c299acdafe03debe5ee8ce6bc4baff11092d08d935d2cfdbe"
+    },
+    {
+      "path": "src/lib/format.ts",
+      "sha256": "0834ccea0511ed8b0374db59527702e3707a251f44d367e70bf748e27dbe37a0"
+    },
+    {
+      "path": "src/lib/json.test.ts",
+      "sha256": "2e17c72f917730c5adabd17ed3f434ab9d50d0215651f768938bff3e9fb50a60"
+    },
+    {
+      "path": "src/lib/json.ts",
+      "sha256": "b482e4f8309135800ce6526b771b809aff8ea219d4fc89060c3b4ba057b3ed11"
+    },
+    {
+      "path": "src/lib/schemas/system-config.ts",
+      "sha256": "84cab5c3e15856c75595c6f165417356ab17756bc4cbee6fc98625d54d696c43"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "sha256": "55bbdc94cef3e0c8a8bba386e94f97228dd2c967fe61466fc565378890550c08"
+    },
+    {
+      "path": "src/middleware.test.ts",
+      "sha256": "98671c0f2ada396299964461177c1bd84bc5029d9dad58c3a71d5c2851277461"
+    },
+    {
+      "path": "src/middleware.ts",
+      "sha256": "2f3f1b9df69c9cf93a2bffc4f6ba8c9336b0b4111614d9ae3e18d116e9c9934f"
+    },
+    {
+      "path": "src/server/anonymous-owner.ts",
+      "sha256": "7250641a004fe8994a7eae0ce06ed9a5330b7260e5ad4da7e8c87bf2c082c0ea"
+    },
+    {
+      "path": "src/server/audit-log.ts",
+      "sha256": "a4a6764dc933ec44f0bdc29c4afb7e822575814d96eb40fa406513f20bc01252"
+    },
+    {
+      "path": "src/server/auth.ts",
+      "sha256": "af08f9c7a2b08672e5c516d38beb71fd4edd0566f0d5e98b669417d28cbec4fe"
+    },
+    {
+      "path": "src/server/db.ts",
+      "sha256": "d2f6bec02e8dc7eb25eb782def2f24d018a1c27358cd62dfd5aeb22030457db7"
+    },
+    {
+      "path": "src/server/projections/admin-user.ts",
+      "sha256": "396c25dc8b29d3a865f2490192f3665071c87112055c4ddc5ecfc9cfc72c1de3"
+    },
+    {
+      "path": "src/server/projections/public-user.ts",
+      "sha256": "de8e550fe63c9c2bbf0e8f33ba39b518227dd7358680ec9eb77449be4c96a680"
+    },
+    {
+      "path": "src/server/repositories/chat-message.ts",
+      "sha256": "707d2e77b7534a1e0cdd16a1d05c8b472372a1349036d4ca76dd2d81ddfecad4"
+    },
+    {
+      "path": "src/server/repositories/data-layer-error.ts",
+      "sha256": "c62080e20792a91c18bed5c9e39c1c8d58f13c383601a46c86b25478a27d9ad1"
+    },
+    {
+      "path": "src/server/repositories/travel-record.ts",
+      "sha256": "334a0ebd7118a8584089482713196c786ceee7956fd884f72d6f3ec980b3907f"
+    },
+    {
+      "path": "src/server/services/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/server/services/audit-log-service.ts",
+      "sha256": "52b75e727ddcb7fe3454001f28d4957502f92ff0687ffeff077a51a910a82452"
+    },
+    {
+      "path": "src/types/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/integration/audit-log.test.ts",
+      "sha256": "40cc1e1cc5b870c06babf0cf0ab2017b249c8be306a14b6d1e026b0dec39c20d"
+    },
+    {
+      "path": "tests/integration/chat-message.test.ts",
+      "sha256": "23dcf6dc0107e54c00aeace6352e1bce0921cabff3ceb9101674d90794c80b0b"
+    },
+    {
+      "path": "tests/integration/config-models.test.ts",
+      "sha256": "cb1b962f5300e17ef85254cf5be2bb1cbea222c3a22e7a6c12309f13f349351a"
+    },
+    {
+      "path": "tests/integration/travel-record.test.ts",
+      "sha256": "b127789472fb4fefa83a3461cd98df619a743d4709adf810526345e9e3f35a33"
+    },
+    {
+      "path": "tests/lib/audit-log.test.ts",
+      "sha256": "5137871bbea0efd3bef5cc06cfddd0bb6a30605dcf63add4a602a5285ae270bf"
+    },
+    {
+      "path": "tests/lib/auth.test.ts",
+      "sha256": "fb8bb3b519253cd9d931ec208a6c78954fe94d11aa3b8cd65297ce55ee8a418c"
+    },
+    {
+      "path": "tests/lib/chat-message.test.ts",
+      "sha256": "d2d380b64f03dc2c2ffbaaa6176c6d5b565f3ba91d90c5a15871efc00c12fffb"
+    },
+    {
+      "path": "tests/lib/db.test.ts",
+      "sha256": "e638b23182053c44a3937c2d63f1baa6e3cb7c8735588ac50002ba85ccfcb136"
+    },
+    {
+      "path": "tests/lib/public-user.test.ts",
+      "sha256": "fadb0b242ed03b69654ab0e7aeb1f0761190a109f126a7a3b25f1d216dc20555"
+    },
+    {
+      "path": "tests/lib/travel-record.test.ts",
+      "sha256": "b657b5c2e59ac83917ddda4fc5a8ad3fcca44ac9783d6570750f2aba7ffd265c"
+    },
+    {
+      "path": "tests/phase005/browser.mjs",
+      "sha256": "65cee15ce4171423bde4c82689466d1b1c45a64cb1a847ec6200661465676881"
+    },
+    {
+      "path": "tests/phase005/components-fixture.tsx",
+      "sha256": "d224e44f30a1c481be92f70b2f592388da98b5c567f9736774f617ffc00927dd"
+    },
+    {
+      "path": "tests/phase005/fixtures/phase003-home.tsx",
+      "sha256": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e"
+    },
+    {
+      "path": "tests/phase006/cli-network-guard.cjs",
+      "sha256": "da1e1020f2d0f5f171f1a721dfa2c3412a2901d858eee176ed730f45f0ad2ab7"
+    },
+    {
+      "path": "tests/phase006/cli-network.mjs",
+      "sha256": "21664e3f9f0467ab5e92fdc60b84f2df27c106bb1267ec8a734cfe128f7bbd72"
+    },
+    {
+      "path": "tests/phase006/database.integration.ts",
+      "sha256": "c0a649613f4cdb3dcb0b05a7f399bfa9c0073729313910fae5b8828dee0d13dc"
+    },
+    {
+      "path": "tests/phase006/studio.mjs",
+      "sha256": "04816f53f00927939193655814e966819ac4aa477eb9042f5b5b2f1b5fbc9916"
+    },
+    {
+      "path": "tests/phase006/user-types.ts",
+      "sha256": "3ab183310d3add2e18415f83f732cf913f883f18bbdd06a71dc9de0ce76d47c5"
+    },
+    {
+      "path": "tests/phase006/vitest.database.config.mjs",
+      "sha256": "b0d0de6cebdd51e1418960674b8b977d64072787cc123d19bd05a0595d58b267"
+    },
+    {
+      "path": "tests/phase007/cli-network.mjs",
+      "sha256": "e7a842985395ccb9111d165f7e1aeb56de02fa509ecf6a449dffc4a69c00e312"
+    },
+    {
+      "path": "tests/phase007/config-fixture.ts",
+      "sha256": "a47ad51c9dae3a4224ce3971e8051e7e17240bc6dac1dd47ab8b2e4fcaf8d1e5"
+    },
+    {
+      "path": "tests/phase007/config-types.ts",
+      "sha256": "ce6093ffc4aa4929631b2e25c2819d2ee16bc7ad5346a0b1db06e89055931709"
+    },
+    {
+      "path": "tests/phase008/cli-network.mjs",
+      "sha256": "ff64f0299c5ed5ab62509d3b9bd26c7a17fcc657a1b2186e493584df67b7b7f7"
+    },
+    {
+      "path": "tests/phase008/data-fixture.ts",
+      "sha256": "4257da32c84cc07f1627d10789e5433251d39c8fabb5d461b33d8c0ba2ee01f2"
+    },
+    {
+      "path": "tests/phase008/data-types.ts",
+      "sha256": "c854d2e0e84b57ff593a7ff82dab2a7f68488659a854d6e5e06527f5af14166e"
+    },
+    {
+      "path": "tests/phase008/evidence-guards.mjs",
+      "sha256": "086c5341e065310597f14bc09432eca2f6a6ef7129eea9d9732fa505a7eae683"
+    },
+    {
+      "path": "tests/phase009/audit-fixture.ts",
+      "sha256": "47819f62a6ec73e3e831bda2bc69babe41928751993bb3ec7cc1bac010b24e4c"
+    },
+    {
+      "path": "tests/phase009/audit-types.ts",
+      "sha256": "ad6e2865de09a24facaff29ef15ad266694515420bf86e2066ae5de43ba4274e"
+    },
+    {
+      "path": "tests/phase009/cli-network.mjs",
+      "sha256": "10218552478835c1d2338bc50515ca66140dbcc478073e7d138fe4e68a5954ae"
+    },
+    {
+      "path": "tests/phase009/evidence-guards.mjs",
+      "sha256": "ad68ea652122a0eb28fc73497710772942b43f14c4a71f854f822cbef0a76be6"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "83d292a6930a317ea31ef48e220097d2ca10c6c505f41d5954795acef48ca3b9"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "cc79644beec0c7ff9c0e466b952b2aaa6410598a575606f633f32e7caf29b966"
+    },
+    {
+      "path": "vitest.setup.ts",
+      "sha256": "a54f6b87de09e2b125852fddf97dc7069d9a9026c8af824944aba85e6bd54660"
+    },
+    {
+      "path": "vitest/stubs/server-only.ts",
+      "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+    }
+  ],
+  "failures": [],
+  "generatedAt": "2026-09-11T06:24:57.566Z",
+  "details": {
+    "planPath": "docs/phase-plans/Phase009.json",
+    "planHash": "38345e26825cf9783b201e0aabe2736148a2ae0c8db8894a627174ca9f483b56",
+    "testedTree": "ae7131aa9255358fbcd5cb7e0040e900fcde3405",
+    "reviewerRunId": "phase009-attempt-4-static-review-ee701e25-0775-4760-9834-bfa63bce4924",
+    "reviewReportPath": "docs/evidence/attempts/Phase009/attempt-4/review.json",
+    "reviewReportHash": "0f0a92fdf1f0e3d7185e0a354f982e8e8acb81d58b910942aab2ee768bd4f7ed",
+    "recoveryCommits": [],
+    "originalThreshold": 8,
+    "automatedThreshold": 8,
+    "waived": false,
+    "requestedThrough": 9,
+    "nextPhaseExecutionAuthorized": false,
+    "notEvaluated": [
+      "Maintenance/retention/ERASE implementation, audit UI and configuration APIs belong to later producers.",
+      "No production database, real users, real provider traffic or future Phase010 implementation is exercised."
+    ],
+    "qualityReportPath": "docs/evidence/attempts/Phase009/attempt-4/quality.json",
+    "qualityReportHash": "30205cc72c8e92e6cc5464b72fcdc112f4b5187e4794cbe2dea967fdf1b358e7",
+    "runtimeBaselinePath": "docs/runtime-baseline.json",
+    "runtimeBaselineHash": "454e0dc1759a2ddfd2f3cd89d4f8988ac9cecaea2a8ca71923bb6180afbdfa6c",
+    "manifestHash": "497689843e4576c5f8e8a6636d29b04023ac997309a3ffab83cc67d90ea7bf3e",
+    "projectCommit": "e58842f494433aca60c15a684fca35fc98ae2ebb",
+    "schemaPath": "prisma/schema.prisma",
+    "schemaHash": "1001f26be75c9d6ed48249b51b3f75e478eaf112fca224147e56f5a1492275c4",
+    "migrationPath": "prisma/migrations/20260911042258_audit_log/migration.sql",
+    "migrationHash": "9707b78108c51f9a10ebfa86fa816d7caf353bcd1f09a0cce2eefcac6b392373",
+    "databaseRoles": {
+      "migration": "phase009_runner",
+      "runtime": "phase009_app",
+      "runtimeOwner": false,
+      "runtimeSuperuser": false
+    },
+    "databaseFingerprint": {
+      "host": "127.0.0.1",
+      "port": 61833,
+      "database": "phase009_disposable_1fa6bf64550f",
+      "containerId": "31fe7bc2f03eded63046f6c7c3069013f592de1ad6693cb69dc5c5a4497d3f4e",
+      "image": "postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0",
+      "sha256": "feca9ca1416d79323c79343d984f0bafd74261b53d7432a4dea8f78e958b3621",
+      "credentials": "SYNTHETIC_REDACTED"
+    },
+    "costAccounting": {
+      "productImplementation": {
+        "durationMs": null,
+        "measurementStatus": "UNMEASURED"
+      },
+      "infrastructure": {
+        "durationMs": null,
+        "measurementStatus": "UNMEASURED"
+      },
+      "verification": "Actual per-command durationMs in reports",
+      "independentReview": {
+        "durationMs": null,
+        "measurementStatus": "UNMEASURED"
+      },
+      "evidencePreparation": {
+        "durationMs": null,
+        "measurementStatus": "UNMEASURED"
+      },
+      "productionRequests": 0,
+      "realProviderRequests": 0
+    }
+  }
+}
