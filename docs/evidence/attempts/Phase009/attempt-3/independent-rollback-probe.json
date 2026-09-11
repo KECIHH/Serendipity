@@ -1,0 +1,109 @@
+{
+  "phase": 9,
+  "reviewedAttemptId": "attempt-3",
+  "planHash": "5c0e94251f2509d6854031b3ea673b527a717abc784a8fce5b9ead7012aaa059",
+  "sourceHashes": {
+    "src/server/services/audit-log-service.ts": "3e93fbd35a8c8e500717cc2e418bfbc7207cc10e3fc404161ffdf81536252085",
+    "src/server/audit-log.ts": "a4a6764dc933ec44f0bdc29c4afb7e822575814d96eb40fa406513f20bc01252",
+    "tests/integration/audit-log.test.ts": "8f5836e9fc91d984c83723473c1d2810d84eecf2cdb474420f5bf2e00f94b2ee",
+    "tests/lib/audit-log.test.ts": "5137871bbea0efd3bef5cc06cfddd0bb6a30605dcf63add4a602a5285ae270bf",
+    "prisma/migrations/20260911042258_audit_log/migration.sql": "9707b78108c51f9a10ebfa86fa816d7caf353bcd1f09a0cce2eefcac6b392373"
+  },
+  "method": "REAL_POSTGRESQL_17_WITH_UNMODIFIED_PRODUCT_MODULES_TRANSPILED_IN_MEMORY",
+  "simulation": true,
+  "productionTraffic": false,
+  "checks": [
+    {
+      "name": "global-wrapper",
+      "expected": "REJECT_AND_ROLL_BACK_ALL_BUSINESS_AND_AUDIT_WRITES",
+      "status": "FAIL",
+      "observed": {
+        "callbackError": "VALIDATION_ERROR",
+        "outerError": null,
+        "returned": "returned-after-catching-audit-failure",
+        "lateError": null,
+        "revisions": [
+          1,
+          1
+        ],
+        "auditCounts": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "name": "transaction-clone",
+      "expected": "REJECT_AND_ROLL_BACK_ALL_BUSINESS_AND_AUDIT_WRITES",
+      "status": "FAIL",
+      "observed": {
+        "callbackError": "VALIDATION_ERROR",
+        "outerError": null,
+        "returned": "returned-after-catching-audit-failure",
+        "lateError": null,
+        "revisions": [
+          1,
+          1
+        ],
+        "auditCounts": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "name": "validation-after-success",
+      "expected": "REJECT_AND_ROLL_BACK_ALL_BUSINESS_AND_AUDIT_WRITES",
+      "status": "PASS",
+      "observed": {
+        "callbackError": "VALIDATION_ERROR",
+        "outerError": {
+          "name": "AuditLogError",
+          "code": "INTERNAL_ERROR",
+          "message": "Audit write failed."
+        },
+        "returned": null,
+        "lateError": null,
+        "revisions": [
+          0,
+          0
+        ],
+        "auditCounts": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "pending-after-success",
+      "expected": "REJECT_AND_ROLL_BACK_ALL_BUSINESS_AND_AUDIT_WRITES",
+      "status": "PASS",
+      "observed": {
+        "callbackError": null,
+        "outerError": {
+          "name": "AuditLogError",
+          "code": "INTERNAL_ERROR",
+          "message": "Audit write failed."
+        },
+        "returned": null,
+        "lateError": "INTERNAL_ERROR",
+        "revisions": [
+          0,
+          0
+        ],
+        "auditCounts": [
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "databaseRemoved": true,
+  "recordedAt": "2026-09-11T05:10:57.582Z",
+  "database": {
+    "database": "phase009_disposable_1fa6bf64550f_reviewer_a0cebc207f89",
+    "role": "phase009_app",
+    "version": "17.11 (Debian 17.11-1.pgdg12+2)"
+  },
+  "status": "FAIL"
+}

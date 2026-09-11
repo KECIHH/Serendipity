@@ -36,7 +36,7 @@ function readDisposableTarget(value: string | undefined): {
   } catch {
     throw new Error("PHASE007_DATABASE_URL must identify this run's disposable database");
   }
-  const name = /^\/phase00([78])_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(target.pathname);
+  const name = /^\/phase00([789])_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(target.pathname);
   const allowedOptions = new Set(["schema", "connect_timeout", "pool_timeout", "connection_limit"]);
   if (
     !["postgresql:", "postgres:"].includes(target.protocol) ||
@@ -108,7 +108,9 @@ describe.skipIf(databaseUrl === undefined)("SystemConfig real PostgreSQL contrac
     const includesTravelLayer = Prisma.dmmf.datamodel.models.some(
       ({ name }) => name === "TravelRecord",
     );
-    expect(migrations).toHaveLength(includesTravelLayer ? 3 : 2);
+    const includesAudit = Prisma.dmmf.datamodel.models.some(({ name }) => name === "AuditLog");
+    expect(migrations).toHaveLength(includesAudit ? 4 : includesTravelLayer ? 3 : 2);
+    if (includesAudit) expect(migrations[3].name).toMatch(/^\d{14}_audit_log$/);
     expect(migrations[0].name).toBe("20260910000000_init_user");
     expect(migrations[1].name).toBe("20260910172735_system_config");
     if (includesTravelLayer)
@@ -126,6 +128,7 @@ describe.skipIf(databaseUrl === undefined)("SystemConfig real PostgreSQL contrac
     const expectedModels = models.some(({ name }) => name === "TravelRecord")
       ? ["ChatMessage", "SystemConfig", "TravelRecord", "User"]
       : ["SystemConfig", "User"];
+    if (models.some(({ name }) => name === "AuditLog")) expectedModels.unshift("AuditLog");
     expect(models.map(({ name }) => name).sort()).toEqual(expectedModels);
     const model = models.find(({ name }) => name === "SystemConfig");
     const fieldNames = [

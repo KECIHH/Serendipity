@@ -1,0 +1,13 @@
+{
+  "phase": 9,
+  "attemptId": "attempt-3",
+  "status": "FAIL",
+  "artifactCommit": null,
+  "planHash": "5c0e94251f2509d6854031b3ea673b527a717abc784a8fce5b9ead7012aaa059",
+  "command": "Independent Agent PostgreSQL rollback probe",
+  "reviewerRunId": "phase009-independent-01a08eba-29cc-7143-ad5c-4df7d527737e-r1",
+  "reason": "After one successful audit, catching an invalid wrapped/cloned transaction input left current transaction failure state unset. Independent real database probe committed two business writes with one audit.",
+  "probePath": "docs/evidence/attempts/Phase009/attempt-3/independent-rollback-probe.json",
+  "probeHash": "e3becaeda1359f8610b3f517dc979c5d905ccfec7c3b0c690e7d8d4e4e533dd8",
+  "recordedAt": "2026-09-11T05:37:30.930Z"
+}

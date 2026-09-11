@@ -119,6 +119,75 @@ export function requirePriorCaseBinding(plan, priorPlan, { readJson, hashFile } 
     priorPlan.phase,
     "PRIOR_PLAN_PHASE: prior plan belongs to another phase",
   );
+  const extensions = plan.expectationExtensions ?? [];
+  assert(Array.isArray(extensions), "PRIOR_PLAN_EXPECTATION: extensions must be an array");
+  const extensionKeys = new Set();
+  const validatedExtensions = [];
+  for (const extension of extensions) {
+    // Phase009's failed attempt preserved all original text but added review requirements.
+    // Accept only an explicit append bound to the immutable prior plan, never replacement text.
+    assert.equal(plan.phase, 9, "PRIOR_PLAN_EXPECTATION: unsupported phase");
+    assert.equal(typeof readJson, "function", "PRIOR_PLAN_EXPECTATION: artifact reader required");
+    assert.equal(typeof hashFile, "function", "PRIOR_PLAN_EXPECTATION: hash reader required");
+    assert.deepEqual(
+      Object.keys(extension).sort(),
+      [
+        "testCaseId",
+        "priorPlanPath",
+        "priorPlanHash",
+        "originalExpected",
+        "appendedExpected",
+        "reason",
+      ].sort(),
+      "PRIOR_PLAN_EXPECTATION: unexpected receipt fields",
+    );
+    const binding = plan.previousAttempts?.find(
+      (entry) => entry.planPath === extension.priorPlanPath,
+    );
+    assert(binding, "PRIOR_PLAN_EXPECTATION: receipt must bind a recorded prior attempt");
+    assert.equal(
+      extension.priorPlanHash,
+      binding.planHash,
+      "PRIOR_PLAN_EXPECTATION: prior binding differs",
+    );
+    assert.equal(
+      hashFile(binding.planPath),
+      binding.planHash,
+      "PRIOR_PLAN_EXPECTATION: prior bytes changed",
+    );
+    const previous = readJson(binding.planPath);
+    assert.equal(previous.phase, plan.phase, "PRIOR_PLAN_EXPECTATION: wrong prior phase");
+    assert.equal(
+      previous.attemptId,
+      binding.attemptId,
+      "PRIOR_PLAN_EXPECTATION: wrong prior attempt",
+    );
+    const old = previous.cases.find((entry) => entry.testCaseId === extension.testCaseId);
+    const current = plan.cases.find((entry) => entry.testCaseId === extension.testCaseId);
+    assert(old && current, "PRIOR_PLAN_EXPECTATION: unknown case");
+    assert.equal(
+      extension.originalExpected,
+      old.expected,
+      "PRIOR_PLAN_EXPECTATION: original requirement changed",
+    );
+    assert(
+      typeof extension.appendedExpected === "string" && /^ \S/.test(extension.appendedExpected),
+      "PRIOR_PLAN_EXPECTATION: nonempty appended requirement required",
+    );
+    assert(
+      typeof extension.reason === "string" && extension.reason.trim(),
+      "PRIOR_PLAN_EXPECTATION: reason required",
+    );
+    assert.equal(
+      current.expected,
+      old.expected + extension.appendedExpected,
+      "PRIOR_PLAN_EXPECTATION: original requirement must remain verbatim",
+    );
+    const key = `${binding.attemptId}:${extension.testCaseId}`;
+    assert(!extensionKeys.has(key), "PRIOR_PLAN_EXPECTATION: duplicate receipt");
+    extensionKeys.add(key);
+    validatedExtensions.push({ ...extension, priorAttemptId: binding.attemptId });
+  }
   const corrections = plan.inputPathCorrections ?? [];
   assert(Array.isArray(corrections), "PRIOR_PLAN_INPUT_PATH: corrections must be an array");
   assert(
@@ -240,13 +309,22 @@ export function requirePriorCaseBinding(plan, priorPlan, { readJson, hashFile } 
   for (const oldCase of priorPlan.cases) {
     const current = plan.cases.find((item) => item.testCaseId === oldCase.testCaseId);
     assert(current, `PRIOR_PLAN_CASES: required case removed: ${oldCase.testCaseId}`);
-    for (const key of ["command", "denominator", "expected"]) {
+    for (const key of ["command", "denominator"]) {
       assert.equal(
         current[key],
         oldCase[key],
         `PRIOR_PLAN_CASES: frozen assertion changed: ${oldCase.testCaseId}.${key}`,
       );
     }
+    const extension = validatedExtensions.find(
+      (entry) =>
+        entry.testCaseId === oldCase.testCaseId && entry.priorAttemptId === priorPlan.attemptId,
+    );
+    assert.equal(
+      current.expected,
+      extension ? oldCase.expected + extension.appendedExpected : oldCase.expected,
+      `PRIOR_PLAN_CASES: frozen assertion changed: ${oldCase.testCaseId}.expected`,
+    );
     if (current.inputPath === oldCase.inputPath) continue;
     assert(
       correction &&

@@ -54,6 +54,7 @@ model User {
   updatedAt            DateTime       @updatedAt @db.Timestamptz(3)
   updatedSystemConfigs SystemConfig[]
   travelRecords        TravelRecord[]
+  auditLogs            AuditLog[]
 
   @@index([status])
 }
@@ -111,4 +112,26 @@ model ChatMessage {
   @@unique([travelRecordId, sequence])
   @@unique([travelRecordId, clientMessageId])
   @@index([replyToMessageId])
+}
+
+model AuditLog {
+  id                 String   @id @default(cuid())
+  actorId            String?
+  actorEmailSnapshot String?  @db.VarChar(254)
+  action             String   @db.VarChar(64)
+  targetType         String   @db.VarChar(64)
+  targetId           String?  @db.VarChar(128)
+  requestId          String?  @db.VarChar(36)
+  traceId            String?  @db.VarChar(36)
+  detailJson         Json?
+  ipHash             String?  @db.Char(64)
+  userAgentSummary   String?  @db.VarChar(256)
+  createdAt          DateTime @default(now()) @db.Timestamptz(3)
+  actor              User?    @relation(fields: [actorId], references: [id], onDelete: SetNull, onUpdate: Restrict)
+
+  @@index([targetType, targetId, createdAt])
+  @@index([actorId, createdAt])
+  @@index([action, createdAt])
+  @@index([requestId])
+  @@index([traceId])
 }

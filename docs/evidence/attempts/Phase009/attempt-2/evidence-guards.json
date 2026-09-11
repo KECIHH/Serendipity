@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "phase": 9,
+  "results": [
+    {
+      "name": "actual preflight requires both successful distinct shells",
+      "status": "PASS"
+    },
+    {
+      "name": "reject preflight duplicate-shell",
+      "status": "PASS"
+    },
+    {
+      "name": "reject preflight wrong-phase",
+      "status": "PASS"
+    },
+    {
+      "name": "reject preflight dirty-worktree",
+      "status": "PASS"
+    },
+    {
+      "name": "reject preflight wrong-parent",
+      "status": "PASS"
+    },
+    {
+      "name": "reject preflight unsynced-remote",
+      "status": "PASS"
+    },
+    {
+      "name": "actual generated migration has immutable SQL and schema bindings",
+      "status": "PASS"
+    },
+    {
+      "name": "reject migration altered-sql-hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject migration missing-generation-command",
+      "status": "PASS"
+    },
+    {
+      "name": "reject migration failed-generation",
+      "status": "PASS"
+    },
+    {
+      "name": "reject migration missing-old-migration",
+      "status": "PASS"
+    },
+    {
+      "name": "actual failure history is complete and frozen",
+      "status": "PASS"
+    },
+    {
+      "name": "retry preserves prior plan and failure hashes",
+      "status": "PASS"
+    },
+    {
+      "name": "implementation bytes and inventory cannot change after verification",
+      "status": "PASS"
+    }
+  ],
+  "caseCount": 14,
+  "testedSourceHashes": {
+    "docs/phase-plans/phase009-evidence.mjs": "f05752a18fa46e2233f497a06804b4b310e861dad3a4962e19af8459038e4a42",
+    "tests/phase009/evidence-guards.mjs": "e80487c021a9cf7c8c72da20a4234ff51676902554982e0b7943398f85a3e76f"
+  }
+}

@@ -1,0 +1,3942 @@
+{
+  "numTotalTestSuites": 46,
+  "numPassedTestSuites": 46,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 313,
+  "numPassedTests": 313,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1789105576768,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "temporary /admin deny-all gate"
+          ],
+          "fullName": "temporary /admin deny-all gate matches /admin and its descendants without matching /adminx",
+          "status": "passed",
+          "title": "matches /admin and its descendants without matching /adminx",
+          "duration": 4.908400000000029,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "temporary /admin deny-all gate"
+          ],
+          "fullName": "temporary /admin deny-all gate returns 404 for /admin",
+          "status": "passed",
+          "title": "returns 404 for /admin",
+          "duration": 5.918899999999894,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "temporary /admin deny-all gate"
+          ],
+          "fullName": "temporary /admin deny-all gate returns 404 for /admin/settings",
+          "status": "passed",
+          "title": "returns 404 for /admin/settings",
+          "duration": 1.2192000000000007,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "temporary /admin deny-all gate"
+          ],
+          "fullName": "temporary /admin deny-all gate returns 404 for /admin/login",
+          "status": "passed",
+          "title": "returns 404 for /admin/login",
+          "duration": 0.9757999999999356,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "temporary /admin deny-all gate"
+          ],
+          "fullName": "temporary /admin deny-all gate returns a null body and no identifying or redirect headers for /admin",
+          "status": "passed",
+          "title": "returns a null body and no identifying or redirect headers for /admin",
+          "duration": 2.5389000000000124,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "temporary /admin deny-all gate"
+          ],
+          "fullName": "temporary /admin deny-all gate denies /admin in the development environment, including common bypass flags",
+          "status": "passed",
+          "title": "denies /admin in the development environment, including common bypass flags",
+          "duration": 2.1107999999999265,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "temporary /admin deny-all gate"
+          ],
+          "fullName": "temporary /admin deny-all gate denies /admin in the test environment, including common bypass flags",
+          "status": "passed",
+          "title": "denies /admin in the test environment, including common bypass flags",
+          "duration": 1.5631000000000768,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "temporary /admin deny-all gate"
+          ],
+          "fullName": "temporary /admin deny-all gate denies /admin in the production environment, including common bypass flags",
+          "status": "passed",
+          "title": "denies /admin in the production environment, including common bypass flags",
+          "duration": 1.2165999999999713,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "temporary /admin deny-all gate"
+          ],
+          "fullName": "temporary /admin deny-all gate ignores query parameters and cookies on /admin",
+          "status": "passed",
+          "title": "ignores query parameters and cookies on /admin",
+          "duration": 2.297599999999875,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "temporary /admin deny-all gate"
+          ],
+          "fullName": "temporary /admin deny-all gate keeps both the exact /admin matcher and the /admin descendant matcher",
+          "status": "passed",
+          "title": "keeps both the exact /admin matcher and the /admin descendant matcher",
+          "duration": 0.7756999999999152,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "temporary /admin deny-all gate"
+          ],
+          "fullName": "temporary /admin deny-all gate has one unconditional empty 404 return with no environment, query or cookie bypass",
+          "status": "passed",
+          "title": "has one unconditional empty 404 return with no environment, query or cookie bypass",
+          "duration": 21.260299999999916,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789105578589,
+      "endTime": 1789105578634.2603,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/src/middleware.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "application layout boundaries"
+          ],
+          "fullName": "application layout boundaries mounts a single Toaster inside the root layout body",
+          "status": "passed",
+          "title": "mounts a single Toaster inside the root layout body",
+          "duration": 91.26479999999992,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "application layout boundaries"
+          ],
+          "fullName": "application layout boundaries keeps only the route-group homepage after migration",
+          "status": "passed",
+          "title": "keeps only the route-group homepage after migration",
+          "duration": 1.7416000000000622,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "application layout boundaries"
+          ],
+          "fullName": "application layout boundaries does not create an admin page before the authentication phase",
+          "status": "passed",
+          "title": "does not create an admin page before the authentication phase",
+          "duration": 0.8563999999998941,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789105578522,
+      "endTime": 1789105578615.8564,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/src/app/layout.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "API response constructors"
+          ],
+          "fullName": "API response constructors creates the exact success envelope and preserves data and caller requestId",
+          "status": "passed",
+          "title": "creates the exact success envelope and preserves data and caller requestId",
+          "duration": 4.494900000000143,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "API response constructors"
+          ],
+          "fullName": "API response constructors creates the exact error envelope without a data field",
+          "status": "passed",
+          "title": "creates the exact error envelope without a data field",
+          "duration": 0.6710000000002765,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "API response constructors"
+          ],
+          "fullName": "API response constructors preserves explicitly supplied safe details by reference",
+          "status": "passed",
+          "title": "preserves explicitly supplied safe details by reference",
+          "duration": 0.8341999999997824,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "API response constructors"
+          ],
+          "fullName": "API response constructors omits undefined details and rejects an undefined success payload",
+          "status": "passed",
+          "title": "omits undefined details and rejects an undefined success payload",
+          "duration": 1.5988000000002103,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "API response constructors"
+          ],
+          "fullName": "API response constructors requires caller-provided requestIds without generating a fallback",
+          "status": "passed",
+          "title": "requires caller-provided requestIds without generating a fallback",
+          "duration": 0.8605999999999767,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "API response constructors"
+          ],
+          "fullName": "API response constructors allows success and failure values to narrow by the success discriminant",
+          "status": "passed",
+          "title": "allows success and failure values to narrow by the success discriminant",
+          "duration": 0.39809999999988577,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "isApiError"
+          ],
+          "fullName": "isApiError recognizes the error produced by fail",
+          "status": "passed",
+          "title": "recognizes the error produced by fail",
+          "duration": 0.45779999999967913,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "isApiError"
+          ],
+          "fullName": "isApiError accepts every public error code declared by the single API contract",
+          "status": "passed",
+          "title": "accepts every public error code declared by the single API contract",
+          "duration": 3.747400000000198,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "isApiError"
+          ],
+          "fullName": "isApiError rejects missing or mistyped fields, arrays, inherited fields and extra keys",
+          "status": "passed",
+          "title": "rejects missing or mistyped fields, arrays, inherited fields and extra keys",
+          "duration": 0.6714000000001761,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "isApiError"
+          ],
+          "fullName": "isApiError rejects unknown codes and internal diagnostics at the public boundary",
+          "status": "passed",
+          "title": "rejects unknown codes and internal diagnostics at the public boundary",
+          "duration": 1.052900000000136,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789105579954,
+      "endTime": 1789105579970.053,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/api-response.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv valid configuration accepts all nine required values and coerces typed values",
+          "status": "passed",
+          "title": "valid configuration accepts all nine required values and coerces typed values",
+          "duration": 2.714299999999639,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv reports a missing DATABASE_URL",
+          "status": "passed",
+          "title": "reports a missing DATABASE_URL",
+          "duration": 1.5819000000001324,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv reports two missing values in one error",
+          "status": "passed",
+          "title": "reports two missing values in one error",
+          "duration": 1.0286999999998443,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv rejects a mysql database URL",
+          "status": "passed",
+          "title": "rejects a mysql database URL",
+          "duration": 0.5336999999999534,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv rejects an AUTH_SECRET shorter than 32 characters",
+          "status": "passed",
+          "title": "rejects an AUTH_SECRET shorter than 32 characters",
+          "duration": 0.4556999999999789,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv rejects a 31-byte ENCRYPTION_KEY",
+          "status": "passed",
+          "title": "rejects a 31-byte ENCRYPTION_KEY",
+          "duration": 0.5045999999997548,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv accepts a 32-byte ENCRYPTION_KEY",
+          "status": "passed",
+          "title": "accepts a 32-byte ENCRYPTION_KEY",
+          "duration": 0.4414999999999054,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv rejects TRUE for AI_MOCK",
+          "status": "passed",
+          "title": "rejects TRUE for AI_MOCK",
+          "duration": 0.6411000000002787,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv API key required when AI_MOCK is false",
+          "status": "passed",
+          "title": "API key required when AI_MOCK is false",
+          "duration": 0.6961999999998625,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv mock optional allows an empty AI_API_KEY",
+          "status": "passed",
+          "title": "mock optional allows an empty AI_API_KEY",
+          "duration": 0.4717999999998028,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv rejects http for AI_BASE_URL",
+          "status": "passed",
+          "title": "rejects http for AI_BASE_URL",
+          "duration": 0.3787000000002081,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv rejects invalid and too-small timeout values",
+          "status": "passed",
+          "title": "rejects invalid and too-small timeout values",
+          "duration": 0.35140000000001237,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv requires a positive cost limit",
+          "status": "passed",
+          "title": "requires a positive cost limit",
+          "duration": 0.2768999999998414,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv matches .env.example to the active documented server registry",
+          "status": "passed",
+          "title": "matches .env.example to the active documented server registry",
+          "duration": 2.078299999999672,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "readEnv"
+          ],
+          "fullName": "readEnv registers future CLI inputs without activating them for the Web parser",
+          "status": "passed",
+          "title": "registers future CLI inputs without activating them for the Web parser",
+          "duration": 0.5666999999998552,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789105580543,
+      "endTime": 1789105580555.5667,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/env.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "formatDateRange"
+          ],
+          "fullName": "formatDateRange formats fixed local dates without applying an offset or locale",
+          "status": "passed",
+          "title": "formats fixed local dates without applying an offset or locale",
+          "duration": 3.3154999999997017,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDateRange"
+          ],
+          "fullName": "formatDateRange displays one date for equal endpoints and preserves four-digit early years",
+          "status": "passed",
+          "title": "displays one date for equal endpoints and preserves four-digit early years",
+          "duration": 0.43679999999994834,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDateRange"
+          ],
+          "fullName": "formatDateRange rejects a reversed range",
+          "status": "passed",
+          "title": "rejects a reversed range",
+          "duration": 0.3910000000000764,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDateRange"
+          ],
+          "fullName": "formatDateRange rejects the nonexistent Gregorian date 2025-02-29 at either endpoint",
+          "status": "passed",
+          "title": "rejects the nonexistent Gregorian date 2025-02-29 at either endpoint",
+          "duration": 0.2865999999999076,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDateRange"
+          ],
+          "fullName": "formatDateRange rejects the nonexistent Gregorian date 1900-02-29 at either endpoint",
+          "status": "passed",
+          "title": "rejects the nonexistent Gregorian date 1900-02-29 at either endpoint",
+          "duration": 0.411200000000008,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDateRange"
+          ],
+          "fullName": "formatDateRange rejects the nonexistent Gregorian date 2024-02-30 at either endpoint",
+          "status": "passed",
+          "title": "rejects the nonexistent Gregorian date 2024-02-30 at either endpoint",
+          "duration": 0.30370000000039,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDateRange"
+          ],
+          "fullName": "formatDateRange rejects the nonexistent Gregorian date 2026-13-01 at either endpoint",
+          "status": "passed",
+          "title": "rejects the nonexistent Gregorian date 2026-13-01 at either endpoint",
+          "duration": 0.26510000000007494,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDateRange"
+          ],
+          "fullName": "formatDateRange rejects the nonexistent Gregorian date 2026-00-01 at either endpoint",
+          "status": "passed",
+          "title": "rejects the nonexistent Gregorian date 2026-00-01 at either endpoint",
+          "duration": 0.2640999999998712,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDateRange"
+          ],
+          "fullName": "formatDateRange rejects the nonexistent Gregorian date 0000-01-01 at either endpoint",
+          "status": "passed",
+          "title": "rejects the nonexistent Gregorian date 0000-01-01 at either endpoint",
+          "duration": 0.276299999999992,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDateRange"
+          ],
+          "fullName": "formatDateRange rejects timestamps, missing padding and non-string input",
+          "status": "passed",
+          "title": "rejects timestamps, missing padding and non-string input",
+          "duration": 0.7550999999998567,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDuration"
+          ],
+          "fullName": "formatDuration formats 0 minutes as 0分钟",
+          "status": "passed",
+          "title": "formats 0 minutes as 0分钟",
+          "duration": 0.2889999999997599,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDuration"
+          ],
+          "fullName": "formatDuration formats 45 minutes as 45分钟",
+          "status": "passed",
+          "title": "formats 45 minutes as 45分钟",
+          "duration": 0.1283000000003085,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDuration"
+          ],
+          "fullName": "formatDuration formats 90 minutes as 1小时30分钟",
+          "status": "passed",
+          "title": "formats 90 minutes as 1小时30分钟",
+          "duration": 0.07589999999981956,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDuration"
+          ],
+          "fullName": "formatDuration formats 120 minutes as 2小时",
+          "status": "passed",
+          "title": "formats 120 minutes as 2小时",
+          "duration": 0.07780000000002474,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDuration"
+          ],
+          "fullName": "formatDuration rejects negative duration values",
+          "status": "passed",
+          "title": "rejects negative duration values",
+          "duration": 0.22899999999981446,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatDuration"
+          ],
+          "fullName": "formatDuration rejects fractions, nonfinite values, unsafe integers and coerced input",
+          "status": "passed",
+          "title": "rejects fractions, nonfinite values, unsafe integers and coerced input",
+          "duration": 0.34269999999969514,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatMoney"
+          ],
+          "fullName": "formatMoney formats CNY and USD with fixed symbols, grouping and two decimal places",
+          "status": "passed",
+          "title": "formats CNY and USD with fixed symbols, grouping and two decimal places",
+          "duration": 0.4459999999999127,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatMoney"
+          ],
+          "fullName": "formatMoney keeps all decimal digits beyond Number.MAX_SAFE_INTEGER",
+          "status": "passed",
+          "title": "keeps all decimal digits beyond Number.MAX_SAFE_INTEGER",
+          "duration": 0.2335000000002765,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatMoney"
+          ],
+          "fullName": "formatMoney uses half-even rounding for ties, preserving a later nonzero digit",
+          "status": "passed",
+          "title": "uses half-even rounding for ties, preserving a later nonzero digit",
+          "duration": 0.43109999999978754,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatMoney"
+          ],
+          "fullName": "formatMoney rejects malformed decimals without coercion",
+          "status": "passed",
+          "title": "rejects malformed decimals without coercion",
+          "duration": 0.587699999999586,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatMoney"
+          ],
+          "fullName": "formatMoney rejects unknown or incorrectly cased currencies",
+          "status": "passed",
+          "title": "rejects unknown or incorrectly cased currencies",
+          "duration": 0.3152999999997519,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatCostEstimate"
+          ],
+          "fullName": "formatCostEstimate displays the amount with an explicit estimate label",
+          "status": "passed",
+          "title": "displays the amount with an explicit estimate label",
+          "duration": 0.7729000000003907,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatCostEstimate"
+          ],
+          "fullName": "formatCostEstimate distinguishes a verified estimate from a final price",
+          "status": "passed",
+          "title": "distinguishes a verified estimate from a final price",
+          "duration": 0.2397000000000844,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatCostEstimate"
+          ],
+          "fullName": "formatCostEstimate displays unknown costs without a zero amount",
+          "status": "passed",
+          "title": "displays unknown costs without a zero amount",
+          "duration": 0.515400000000227,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatCostEstimate"
+          ],
+          "fullName": "formatCostEstimate displays free only for an evidenced explicit zero",
+          "status": "passed",
+          "title": "displays free only for an evidenced explicit zero",
+          "duration": 0.803899999999885,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatCostEstimate"
+          ],
+          "fullName": "formatCostEstimate keeps stale evidence visible without consulting the current time",
+          "status": "passed",
+          "title": "keeps stale evidence visible without consulting the current time",
+          "duration": 0.30709999999999127,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatCostEstimate"
+          ],
+          "fullName": "formatCostEstimate rejects incomplete canonical shapes and invalid confidence",
+          "status": "passed",
+          "title": "rejects incomplete canonical shapes and invalid confidence",
+          "duration": 0.7097000000003391,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatCostEstimate"
+          ],
+          "fullName": "formatCostEstimate requires source evidence and real timestamps for known costs",
+          "status": "passed",
+          "title": "requires source evidence and real timestamps for known costs",
+          "duration": 0.6820999999999913,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "formatCostEstimate"
+          ],
+          "fullName": "formatCostEstimate does not change source amounts or freshness metadata",
+          "status": "passed",
+          "title": "does not change source amounts or freshness metadata",
+          "duration": 1.1938000000000102,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "truncate"
+          ],
+          "fullName": "truncate keeps strings that fit and includes the ellipsis in the limit",
+          "status": "passed",
+          "title": "keeps strings that fit and includes the ellipsis in the limit",
+          "duration": 0.38239999999996144,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "truncate"
+          ],
+          "fullName": "truncate counts Unicode code points without splitting a surrogate pair",
+          "status": "passed",
+          "title": "counts Unicode code points without splitting a surrogate pair",
+          "duration": 0.1916999999998552,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "truncate"
+          ],
+          "fullName": "truncate rejects negative, fractional, nonfinite and unsafe limits",
+          "status": "passed",
+          "title": "rejects negative, fractional, nonfinite and unsafe limits",
+          "duration": 0.29690000000027794,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789105580032,
+      "endTime": 1789105580048.3823,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "safeJsonParse"
+          ],
+          "fullName": "safeJsonParse returns a discriminated success result with the parsed value",
+          "status": "passed",
+          "title": "returns a discriminated success result with the parsed value",
+          "duration": 2.7600000000002183,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "safeJsonParse"
+          ],
+          "fullName": "safeJsonParse returns a nonempty error for invalid JSON",
+          "status": "passed",
+          "title": "returns a nonempty error for invalid JSON",
+          "duration": 1.1233000000001994,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "safeJsonParse"
+          ],
+          "fullName": "safeJsonParse distinguishes valid JSON null from a parse failure",
+          "status": "passed",
+          "title": "distinguishes valid JSON null from a parse failure",
+          "duration": 0.3656999999998334,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify serializes object keys in a stable order regardless of insertion order",
+          "status": "passed",
+          "title": "serializes object keys in a stable order regardless of insertion order",
+          "duration": 0.6201000000000931,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify sorts nested objects while preserving array order",
+          "status": "passed",
+          "title": "sorts nested objects while preserving array order",
+          "duration": 0.3737999999998465,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify uses ordinal UTF-16 ordering for numeric, accented and surrogate keys",
+          "status": "passed",
+          "title": "uses ordinal UTF-16 ordering for numeric, accented and surrogate keys",
+          "duration": 0.16889999999966676,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify never invokes a locale comparator",
+          "status": "passed",
+          "title": "never invokes a locale comparator",
+          "duration": 1.5867000000002918,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify supports JSON primitives and escapes strings with JSON syntax",
+          "status": "passed",
+          "title": "supports JSON primitives and escapes strings with JSON syntax",
+          "duration": 0.3987999999999374,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify allows shared references that do not form a cycle",
+          "status": "passed",
+          "title": "allows shared references that do not form a cycle",
+          "duration": 0.35159999999996217,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify rejects direct and indirect cycles",
+          "status": "passed",
+          "title": "rejects direct and indirect cycles",
+          "duration": 0.5840000000002874,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify rejects undefined, BigInt, functions, symbols and nonfinite values at every depth",
+          "status": "passed",
+          "title": "rejects undefined, BigInt, functions, symbols and nonfinite values at every depth",
+          "duration": 0.8598000000001775,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify rejects nonplain objects instead of applying toJSON or silently emitting an empty object",
+          "status": "passed",
+          "title": "rejects nonplain objects instead of applying toJSON or silently emitting an empty object",
+          "duration": 0.5566000000003442,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify rejects sparse arrays and array properties that JSON would silently lose",
+          "status": "passed",
+          "title": "rejects sparse arrays and array properties that JSON would silently lose",
+          "duration": 0.3024999999997817,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify rejects symbol keys and nonenumerable data",
+          "status": "passed",
+          "title": "rejects symbol keys and nonenumerable data",
+          "duration": 0.21610000000009677,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify rejects accessors without evaluating them",
+          "status": "passed",
+          "title": "rejects accessors without evaluating them",
+          "duration": 0.27389999999968495,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify handles null-prototype objects and prototype-looking keys as ordinary data",
+          "status": "passed",
+          "title": "handles null-prototype objects and prototype-looking keys as ordinary data",
+          "duration": 0.15180000000009386,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "stableStringify"
+          ],
+          "fullName": "stableStringify does not reorder or change input data",
+          "status": "passed",
+          "title": "does not reorder or change input data",
+          "duration": 0.23450000000002547,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789105580516,
+      "endTime": 1789105580527.3025,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/json.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract transaction: global delegate wrappers and cloned clients cannot escape rollback",
+          "status": "passed",
+          "title": "transaction: global delegate wrappers and cloned clients cannot escape rollback",
+          "duration": 64.19800000000009,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract transaction: catching invalid clients after an earlier audit rolls back both business writes",
+          "status": "passed",
+          "title": "transaction: catching invalid clients after an earlier audit rolls back both business writes",
+          "duration": 87.30270000000019,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract transaction: failure poisoning stays within its own concurrent async scope",
+          "status": "passed",
+          "title": "transaction: failure poisoning stays within its own concurrent async scope",
+          "duration": 85.48559999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract transaction: nested audited transactions cannot commit a separate inner write",
+          "status": "passed",
+          "title": "transaction: nested audited transactions cannot commit a separate inner write",
+          "duration": 44.83379999999988,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract transaction: caught audit failures and missing audits still prevent a business commit",
+          "status": "passed",
+          "title": "transaction: caught audit failures and missing audits still prevent a business commit",
+          "duration": 81.3759,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract transaction: an enrolled transaction cannot be reused after its callback ends",
+          "status": "passed",
+          "title": "transaction: an enrolled transaction cannot be reused after its callback ends",
+          "duration": 12.339799999999968,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract recursive-redaction: private text in a key name rejects the whole audited write",
+          "status": "passed",
+          "title": "recursive-redaction: private text in a key name rejects the whole audited write",
+          "duration": 18.794399999999996,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract schema: exact fields, five indexes, optional FK and database column limits match",
+          "status": "passed",
+          "title": "schema: exact fields, five indexes, optional FK and database column limits match",
+          "duration": 43.27249999999981,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract schema: database rejects malformed metadata even through raw delegate writes",
+          "status": "passed",
+          "title": "schema: database rejects malformed metadata even through raw delegate writes",
+          "duration": 92.34840000000008,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract append-only: runtime role has INSERT/SELECT without ownership, mutation or DDL privilege",
+          "status": "passed",
+          "title": "append-only: runtime role has INSERT/SELECT without ownership, mutation or DDL privilege",
+          "duration": 49.087600000000066,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract append-only: trigger rejects UPDATE even after accidental DML grants",
+          "status": "passed",
+          "title": "append-only: trigger rejects UPDATE even after accidental DML grants",
+          "duration": 43.932299999999714,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract append-only: trigger rejects DELETE even after accidental DML grants",
+          "status": "passed",
+          "title": "append-only: trigger rejects DELETE even after accidental DML grants",
+          "duration": 27.16859999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract append-only: trigger rejects TRUNCATE even after accidental DML grants",
+          "status": "passed",
+          "title": "append-only: trigger rejects TRUNCATE even after accidental DML grants",
+          "duration": 27.88050000000021,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract append-only: actual User deletion nulls only its FK while retaining the snapshot",
+          "status": "passed",
+          "title": "append-only: actual User deletion nulls only its FK while retaining the snapshot",
+          "duration": 56.54419999999982,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract system-actor: USER and every closed SYSTEM actor support safe references and nullable targets",
+          "status": "passed",
+          "title": "system-actor: USER and every closed SYSTEM actor support safe references and nullable targets",
+          "duration": 62.71889999999985,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract system-actor: ambiguous identities and spoofed registry/context values insert nothing",
+          "status": "passed",
+          "title": "system-actor: ambiguous identities and spoofed registry/context values insert nothing",
+          "duration": 33.45759999999973,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract transaction: successful business writes and audits are paired under concurrency",
+          "status": "passed",
+          "title": "transaction: successful business writes and audits are paired under concurrency",
+          "duration": 157.09810000000016,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract transaction: audit FK failure rolls back the business write and leaks no driver details",
+          "status": "passed",
+          "title": "transaction: audit FK failure rolls back the business write and leaks no driver details",
+          "duration": 28.439400000000205,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract transaction: business failure after audit and sanitizer failure after business both roll back",
+          "status": "passed",
+          "title": "transaction: business failure after audit and sanitizer failure after business both roll back",
+          "duration": 49.83190000000013,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract recursive-redaction: persistence contains only recursively sanitized summaries and network hashes",
+          "status": "passed",
+          "title": "recursive-redaction: persistence contains only recursively sanitized summaries and network hashes",
+          "duration": 22.482600000000275,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract bounded-metadata: excess detail fails atomically and normalized Unicode UA fits the database",
+          "status": "passed",
+          "title": "bounded-metadata: excess detail fails atomically and normalized Unicode UA fits the database",
+          "duration": 49.84640000000036,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract bounded-metadata: malformed write fields are rejected before the database delegate",
+          "status": "passed",
+          "title": "bounded-metadata: malformed write fields are rejected before the database delegate",
+          "duration": 75.97830000000022,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract lookup: exact request trace target actor queries and EXPLAIN use all five indexes",
+          "status": "passed",
+          "title": "lookup: exact request trace target actor queries and EXPLAIN use all five indexes",
+          "duration": 69.05119999999988,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract lookup: empty reads differ from an actual unavailable database",
+          "status": "passed",
+          "title": "lookup: empty reads differ from an actual unavailable database",
+          "duration": 2025.9782000000005,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789105578326,
+      "endTime": 1789105581635.9783,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: ChatMessage fields SQL nullability timestamps and indexes are exact",
+          "status": "passed",
+          "title": "ordered-messages: ChatMessage fields SQL nullability timestamps and indexes are exact",
+          "duration": 36.65460000000007,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: duplicate sequence is rejected",
+          "status": "passed",
+          "title": "ordered-messages: duplicate sequence is rejected",
+          "duration": 44.906200000000126,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: concurrent equal sequences have one database winner",
+          "status": "passed",
+          "title": "ordered-messages: concurrent equal sequences have one database winner",
+          "duration": 49.77109999999993,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: sequence is required positive and unique only within its record",
+          "status": "passed",
+          "title": "ordered-messages: sequence is required positive and unique only within its record",
+          "duration": 65.3177999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: same-millisecond messages paginate by sequence without skips or duplicates",
+          "status": "passed",
+          "title": "ordered-messages: same-millisecond messages paginate by sequence without skips or duplicates",
+          "duration": 138.77109999999993,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: cursor verifies its record and persisted sequence-id anchor",
+          "status": "passed",
+          "title": "ordered-messages: cursor verifies its record and persisted sequence-id anchor",
+          "duration": 63.187200000000075,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: an authorized empty history is empty while missing or foreign records are errors",
+          "status": "passed",
+          "title": "ordered-messages: an authorized empty history is empty while missing or foreign records are errors",
+          "duration": 41.36030000000005,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: PostgreSQL text accepts a long message without truncation",
+          "status": "passed",
+          "title": "ordered-messages: PostgreSQL text accepts a long message without truncation",
+          "duration": 83.83799999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: required role rejects SQL NULL",
+          "status": "passed",
+          "title": "ordered-messages: required role rejects SQL NULL",
+          "duration": 15.323300000000017,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: required kind rejects SQL NULL",
+          "status": "passed",
+          "title": "ordered-messages: required kind rejects SQL NULL",
+          "duration": 14.026299999999992,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: required content rejects SQL NULL",
+          "status": "passed",
+          "title": "ordered-messages: required content rejects SQL NULL",
+          "duration": 11.113299999999981,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: a missing parent record fails the real foreign key",
+          "status": "passed",
+          "title": "ordered-messages: a missing parent record fails the real foreign key",
+          "duration": 7.52189999999996,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract client-idempotency: duplicate client id is rejected",
+          "status": "passed",
+          "title": "client-idempotency: duplicate client id is rejected",
+          "duration": 17.812900000000127,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract client-idempotency: concurrent duplicate client ids have one database winner",
+          "status": "passed",
+          "title": "client-idempotency: concurrent duplicate client ids have one database winner",
+          "duration": 29.306600000000117,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract client-idempotency: null ids can repeat and non-null ids are scoped to one record",
+          "status": "passed",
+          "title": "client-idempotency: null ids can repeat and non-null ids are scoped to one record",
+          "duration": 47.635899999999765,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract client-idempotency: concurrent equal payload retries replay the persisted message",
+          "status": "passed",
+          "title": "client-idempotency: concurrent equal payload retries replay the persisted message",
+          "duration": 39.32749999999987,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract client-idempotency: retries ignore new scheduling sequence while preserving id and timestamp",
+          "status": "passed",
+          "title": "client-idempotency: retries ignore new scheduling sequence while preserving id and timestamp",
+          "duration": 28.329600000000028,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract client-idempotency: payload mismatches conflict without extra messages or record updates",
+          "status": "passed",
+          "title": "client-idempotency: payload mismatches conflict without extra messages or record updates",
+          "duration": 73.89949999999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract client-idempotency: repositories preserve null semantics and allow the same key on another record",
+          "status": "passed",
+          "title": "client-idempotency: repositories preserve null semantics and allow the same key on another record",
+          "duration": 85.4717999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract client-idempotency: structured or unvalidated JSON input fails closed before a replay or write",
+          "status": "passed",
+          "title": "client-idempotency: structured or unvalidated JSON input fails closed before a replay or write",
+          "duration": 19.334799999999632,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract client-idempotency: a unique failure rolls back prior work and stops following writes",
+          "status": "passed",
+          "title": "client-idempotency: a unique failure rolls back prior work and stops following writes",
+          "duration": 39.566299999999956,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract reply-relation: missing reply targets fail the actual self foreign key",
+          "status": "passed",
+          "title": "reply-relation: missing reply targets fail the actual self foreign key",
+          "duration": 20.67699999999968,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract reply-relation: valid same-record replies are readable from both relation directions",
+          "status": "passed",
+          "title": "reply-relation: valid same-record replies are readable from both relation directions",
+          "duration": 46.56150000000025,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract reply-relation: repository rejects missing and cross-record targets with no later writes",
+          "status": "passed",
+          "title": "reply-relation: repository rejects missing and cross-record targets with no later writes",
+          "duration": 47.57659999999987,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract reply-relation: the record lock rechecks current ownership before appending a reply",
+          "status": "passed",
+          "title": "reply-relation: the record lock rechecks current ownership before appending a reply",
+          "duration": 72.14579999999978,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract delete-policy: User Restrict record Cascade and reply SetNull are exact foreign-key policies",
+          "status": "passed",
+          "title": "delete-policy: User Restrict record Cascade and reply SetNull are exact foreign-key policies",
+          "duration": 7.778600000000097,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract delete-policy: deleting an owning user is restricted and preserves its travel history",
+          "status": "passed",
+          "title": "delete-policy: deleting an owning user is restricted and preserves its travel history",
+          "duration": 39.44680000000017,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract delete-policy: exact fixture record purge cascades only that record's messages",
+          "status": "passed",
+          "title": "delete-policy: exact fixture record purge cascades only that record's messages",
+          "duration": 31.326400000000376,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract delete-policy: deleting a reply target sets its reply links to null without deleting replies",
+          "status": "passed",
+          "title": "delete-policy: deleting a reply target sets its reply links to null without deleting replies",
+          "duration": 26.00940000000037,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract delete-policy: business repository exposes no individual deletion or sequence allocator",
+          "status": "passed",
+          "title": "delete-policy: business repository exposes no individual deletion or sequence allocator",
+          "duration": 0.37150000000019645,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract delete-policy: concurrent fixtures clean only their recorded IDs and preserve every other fixture",
+          "status": "passed",
+          "title": "delete-policy: concurrent fixtures clean only their recorded IDs and preserve every other fixture",
+          "duration": 68.46140000000014,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789105578303,
+      "endTime": 1789105579617.4614,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract migration: User and SystemConfig baseline migrations remain applied as current models evolve",
+          "status": "passed",
+          "title": "migration: User and SystemConfig baseline migrations remain applied as current models evolve",
+          "duration": 16.62220000000002,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: model and database inventories contain only the frozen fields and tables",
+          "status": "passed",
+          "title": "schema: model and database inventories contain only the frozen fields and tables",
+          "duration": 29.35460000000012,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: group listing, actor lookup, uniqueness and CHECK constraints are indexed",
+          "status": "passed",
+          "title": "schema: group listing, actor lookup, uniqueness and CHECK constraints are indexed",
+          "duration": 15.254100000000108,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: required key rejects SQL NULL",
+          "status": "passed",
+          "title": "schema: required key rejects SQL NULL",
+          "duration": 13.406100000000151,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: required valueJson rejects SQL NULL",
+          "status": "passed",
+          "title": "schema: required valueJson rejects SQL NULL",
+          "duration": 7.213500000000067,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: required description rejects SQL NULL",
+          "status": "passed",
+          "title": "schema: required description rejects SQL NULL",
+          "duration": 5.886400000000094,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: required group rejects SQL NULL",
+          "status": "passed",
+          "title": "schema: required group rejects SQL NULL",
+          "duration": 8.779999999999973,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: required revision rejects SQL NULL",
+          "status": "passed",
+          "title": "schema: required revision rejects SQL NULL",
+          "duration": 5.938699999999926,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract schema: JSON round-trips and timestamps do not advance revision implicitly",
+          "status": "passed",
+          "title": "schema: JSON round-trips and timestamps do not advance revision implicitly",
+          "duration": 37.539000000000215,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract default-private: omitted visibility reads back false with revision zero and no actor",
+          "status": "passed",
+          "title": "default-private: omitted visibility reads back false with revision zero and no actor",
+          "duration": 20.425899999999956,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract key-uniqueness: a duplicate key is rejected across groups with P2002",
+          "status": "passed",
+          "title": "key-uniqueness: a duplicate key is rejected across groups with P2002",
+          "duration": 24.61760000000004,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract key-uniqueness: concurrent insertion records only the one successful owner ID",
+          "status": "passed",
+          "title": "key-uniqueness: concurrent insertion records only the one successful owner ID",
+          "duration": 42.71309999999994,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract group-validation: the parser and database accept AI",
+          "status": "passed",
+          "title": "group-validation: the parser and database accept AI",
+          "duration": 6.654600000000073,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract group-validation: the parser and database accept UI",
+          "status": "passed",
+          "title": "group-validation: the parser and database accept UI",
+          "duration": 7.642699999999877,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract group-validation: the parser and database accept EXPORT",
+          "status": "passed",
+          "title": "group-validation: the parser and database accept EXPORT",
+          "duration": 7.580899999999929,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract group-validation: the parser and database accept SECURITY",
+          "status": "passed",
+          "title": "group-validation: the parser and database accept SECURITY",
+          "duration": 8.804900000000089,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract group-validation: the parser and database accept GENERAL",
+          "status": "passed",
+          "title": "group-validation: the parser and database accept GENERAL",
+          "duration": 5.601100000000088,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract group-validation: unknown values fail the parser and direct SQL INSERT/UPDATE CHECK",
+          "status": "passed",
+          "title": "group-validation: unknown values fail the parser and direct SQL INSERT/UPDATE CHECK",
+          "duration": 24.152900000000045,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract user-fk: unknown actors fail Prisma and direct SQL foreign-key validation",
+          "status": "passed",
+          "title": "user-fk: unknown actors fail Prisma and direct SQL foreign-key validation",
+          "duration": 16.200799999999845,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract user-fk: deleting the actor sets updatedBy to null and preserves the configuration",
+          "status": "passed",
+          "title": "user-fk: deleting the actor sets updatedBy to null and preserves the configuration",
+          "duration": 22.571100000000115,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract user-fk: updating an actor ID cascades and the generated inverse relation is exact",
+          "status": "passed",
+          "title": "user-fk: updating an actor ID cascades and the generated inverse relation is exact",
+          "duration": 39.37079999999992,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract projection: real Prisma selects return exactly public eight and admin nine safe fields",
+          "status": "passed",
+          "title": "projection: real Prisma selects return exactly public eight and admin nine safe fields",
+          "duration": 20.71569999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract",
+            "cleanup ownership isolation"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract cleanup ownership isolation cleanup: parallel first test removes only its successful IDs and preserves the fixture",
+          "status": "passed",
+          "title": "cleanup: parallel first test removes only its successful IDs and preserves the fixture",
+          "duration": 52.63300000000004,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig real PostgreSQL contract",
+            "cleanup ownership isolation"
+          ],
+          "fullName": "SystemConfig real PostgreSQL contract cleanup ownership isolation cleanup: parallel second test removes only its successful IDs and preserves the fixture",
+          "status": "passed",
+          "title": "cleanup: parallel second test removes only its successful IDs and preserves the fixture",
+          "duration": 79.18230000000017,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789105578300,
+      "endTime": 1789105578774.1824,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract ownership: anonymous and authenticated owners each persist exactly one owner",
+          "status": "passed",
+          "title": "ownership: anonymous and authenticated owners each persist exactly one owner",
+          "duration": 51.79099999999994,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract ownership: ownerless rows are rejected",
+          "status": "passed",
+          "title": "ownership: ownerless rows are rejected",
+          "duration": 13.390099999999848,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract ownership: dual-owned rows are rejected",
+          "status": "passed",
+          "title": "ownership: dual-owned rows are rejected",
+          "duration": 16.20750000000021,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract ownership: owner CHECK and foreign key also reject invalid updates",
+          "status": "passed",
+          "title": "ownership: owner CHECK and foreign key also reject invalid updates",
+          "duration": 40.56639999999993,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract ownership: wrong and missing owners cannot read a known record",
+          "status": "passed",
+          "title": "ownership: wrong and missing owners cannot read a known record",
+          "duration": 25.170000000000073,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract ownership: transfer atomically replaces the anonymous owner and preserves history",
+          "status": "passed",
+          "title": "ownership: transfer atomically replaces the anonymous owner and preserves history",
+          "duration": 69.99760000000015,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract ownership: failed transfer leaves the original owner and messages unchanged",
+          "status": "passed",
+          "title": "ownership: failed transfer leaves the original owner and messages unchanged",
+          "duration": 60.362100000000055,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract ownership: concurrent transfers have only one authenticated owner",
+          "status": "passed",
+          "title": "ownership: concurrent transfers have only one authenticated owner",
+          "duration": 66.09959999999978,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: baseline travel migrations remain applied as current models evolve",
+          "status": "passed",
+          "title": "lifecycle-version: baseline travel migrations remain applied as current models evolve",
+          "duration": 7.740799999999808,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: model inventory and generated fields contain only current producers",
+          "status": "passed",
+          "title": "lifecycle-version: model inventory and generated fields contain only current producers",
+          "duration": 12.170100000000048,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: TravelRecord SQL types nullability defaults and timestamps are exact",
+          "status": "passed",
+          "title": "lifecycle-version: TravelRecord SQL types nullability defaults and timestamps are exact",
+          "duration": 22.848500000000058,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: all three new enum inventories match their exact contracts",
+          "status": "passed",
+          "title": "lifecycle-version: all three new enum inventories match their exact contracts",
+          "duration": 6.73070000000007,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: owner and status query indexes and CHECK constraints exist",
+          "status": "passed",
+          "title": "lifecycle-version: owner and status query indexes and CHECK constraints exist",
+          "duration": 12.569300000000112,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: status DRAFT round-trips without implying transition rules",
+          "status": "passed",
+          "title": "lifecycle-version: status DRAFT round-trips without implying transition rules",
+          "duration": 10.981400000000122,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: status NEEDS_INFO round-trips without implying transition rules",
+          "status": "passed",
+          "title": "lifecycle-version: status NEEDS_INFO round-trips without implying transition rules",
+          "duration": 14.233200000000124,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: status PLANNED round-trips without implying transition rules",
+          "status": "passed",
+          "title": "lifecycle-version: status PLANNED round-trips without implying transition rules",
+          "duration": 10.319200000000137,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: status MODIFIED round-trips without implying transition rules",
+          "status": "passed",
+          "title": "lifecycle-version: status MODIFIED round-trips without implying transition rules",
+          "duration": 13.690400000000182,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: status FINALIZED round-trips without implying transition rules",
+          "status": "passed",
+          "title": "lifecycle-version: status FINALIZED round-trips without implying transition rules",
+          "duration": 12.343699999999899,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: status NEEDS_REVALIDATION round-trips without implying transition rules",
+          "status": "passed",
+          "title": "lifecycle-version: status NEEDS_REVALIDATION round-trips without implying transition rules",
+          "duration": 10.088700000000017,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: status ARCHIVED round-trips without implying transition rules",
+          "status": "passed",
+          "title": "lifecycle-version: status ARCHIVED round-trips without implying transition rules",
+          "duration": 20.41079999999988,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: a fresh record starts at DRAFT version zero with no requirement",
+          "status": "passed",
+          "title": "lifecycle-version: a fresh record starts at DRAFT version zero with no requirement",
+          "duration": 18.57230000000004,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: updating a title advances updatedAt without incrementing version",
+          "status": "passed",
+          "title": "lifecycle-version: updating a title advances updatedAt without incrementing version",
+          "duration": 16.838399999999865,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: the repository persists a cleaned display title without adding identity fields",
+          "status": "passed",
+          "title": "lifecycle-version: the repository persists a cleaned display title without adding identity fields",
+          "duration": 8.37889999999993,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: negative versions fail INSERT and UPDATE with no partial write",
+          "status": "passed",
+          "title": "lifecycle-version: negative versions fail INSERT and UPDATE with no partial write",
+          "duration": 18.46849999999995,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: required title rejects SQL NULL",
+          "status": "passed",
+          "title": "lifecycle-version: required title rejects SQL NULL",
+          "duration": 5.959299999999985,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: required status rejects SQL NULL",
+          "status": "passed",
+          "title": "lifecycle-version: required status rejects SQL NULL",
+          "duration": 5.956200000000081,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: required version rejects SQL NULL",
+          "status": "passed",
+          "title": "lifecycle-version: required version rejects SQL NULL",
+          "duration": 4.965099999999893,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: nullable JSON schema storage is separate from unavailable product validation",
+          "status": "passed",
+          "title": "lifecycle-version: nullable JSON schema storage is separate from unavailable product validation",
+          "duration": 15.125300000000152,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: unavailable JSON schema fails closed without creating a record",
+          "status": "passed",
+          "title": "lifecycle-version: unavailable JSON schema fails closed without creating a record",
+          "duration": 6.1831999999999425,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract hash: malformed hash values fail the real database format CHECK",
+          "status": "passed",
+          "title": "hash: malformed hash values fail the real database format CHECK",
+          "duration": 48.43319999999994,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract hash: the fixed-width column rejects oversized input rather than silently truncating it",
+          "status": "passed",
+          "title": "hash: the fixed-width column rejects oversized input rather than silently truncating it",
+          "duration": 7.983299999999872,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract ownership: a failed CHECK rolls back earlier writes and stops later writes",
+          "status": "passed",
+          "title": "ownership: a failed CHECK rolls back earlier writes and stops later writes",
+          "duration": 32.7683999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789105578302,
+      "endTime": 1789105578990.7683,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "audit-log pure boundary"
+          ],
+          "fullName": "audit-log pure boundary recursive-redaction: dynamic sensitive field names cannot carry private canaries",
+          "status": "passed",
+          "title": "recursive-redaction: dynamic sensitive field names cannot carry private canaries",
+          "duration": 5.40339999999992,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log pure boundary"
+          ],
+          "fullName": "audit-log pure boundary bounded-metadata: excessive own-key counts fail before descriptor copying",
+          "status": "passed",
+          "title": "bounded-metadata: excessive own-key counts fail before descriptor copying",
+          "duration": 28.547800000000052,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log pure boundary"
+          ],
+          "fullName": "audit-log pure boundary recursive-redaction: nested objects, arrays, separator and case variants never retain canaries",
+          "status": "passed",
+          "title": "recursive-redaction: nested objects, arrays, separator and case variants never retain canaries",
+          "duration": 3.685999999999922,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log pure boundary"
+          ],
+          "fullName": "audit-log pure boundary recursive-redaction: safe summaries are preserved and arbitrary private text fails closed",
+          "status": "passed",
+          "title": "recursive-redaction: safe summaries are preserved and arbitrary private text fails closed",
+          "duration": 1.3125,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log pure boundary"
+          ],
+          "fullName": "audit-log pure boundary recursive-redaction: network addresses use canonical domain-separated HMAC",
+          "status": "passed",
+          "title": "recursive-redaction: network addresses use canonical domain-separated HMAC",
+          "duration": 9.842300000000023,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log pure boundary"
+          ],
+          "fullName": "audit-log pure boundary bounded-metadata: depth and node limits include redacted subtrees",
+          "status": "passed",
+          "title": "bounded-metadata: depth and node limits include redacted subtrees",
+          "duration": 4.739000000000033,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log pure boundary"
+          ],
+          "fullName": "audit-log pure boundary bounded-metadata: exact UTF-8 byte budgets fail instead of truncating detail",
+          "status": "passed",
+          "title": "bounded-metadata: exact UTF-8 byte budgets fail instead of truncating detail",
+          "duration": 0.8506999999999607,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log pure boundary"
+          ],
+          "fullName": "audit-log pure boundary bounded-metadata: malformed JSON, accessors and prototype tricks cannot execute",
+          "status": "passed",
+          "title": "bounded-metadata: malformed JSON, accessors and prototype tricks cannot execute",
+          "duration": 2.1112000000000535,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log pure boundary"
+          ],
+          "fullName": "audit-log pure boundary bounded-metadata: 257-character UA normalizes, Unicode stays intact, huge input fails",
+          "status": "passed",
+          "title": "bounded-metadata: 257-character UA normalizes, Unicode stays intact, huge input fails",
+          "duration": 1.5976000000000568,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log pure boundary"
+          ],
+          "fullName": "audit-log pure boundary lookup: server contexts are immutable, bounded, unique and unforgeable by copying",
+          "status": "passed",
+          "title": "lookup: server contexts are immutable, bounded, unique and unforgeable by copying",
+          "duration": 2.059400000000096,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log pure boundary"
+          ],
+          "fullName": "audit-log pure boundary transaction: a real global Prisma client cannot be passed to the helper",
+          "status": "passed",
+          "title": "transaction: a real global Prisma client cannot be passed to the helper",
+          "duration": 25.92789999999991,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789105578169,
+      "endTime": 1789105578255.928,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/audit-log.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes   Alice.Smith+TAG@EXAMPLE.COM\t without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes   Alice.Smith+TAG@EXAMPLE.COM\t without URL host rewriting",
+          "duration": 4.969000000000051,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@例え.テスト without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@例え.テスト without URL host rewriting",
+          "duration": 1.9113000000000966,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@XN--R8JZ45G.XN--ZCKZAH without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@XN--R8JZ45G.XN--ZCKZAH without URL host rewriting",
+          "duration": 0.6542000000000598,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@faß.de without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@faß.de without URL host rewriting",
+          "duration": 0.40200000000004366,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@ＦＯＯ。example without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@ＦＯＯ。example without URL host rewriting",
+          "duration": 0.4759999999999991,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@σόλος.example without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@σόλος.example without URL host rewriting",
+          "duration": 0.4512999999999465,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@127.1 without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@127.1 without URL host rewriting",
+          "duration": 0.3088999999999942,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@2130706433 without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@2130706433 without URL host rewriting",
+          "duration": 0.9302999999998747,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes USER@localhost without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes USER@localhost without URL host rewriting",
+          "duration": 0.43280000000004293,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 normalizes !#$%&'*+/=?^_`{|}~-@example.com without URL host rewriting",
+          "status": "passed",
+          "title": "normalizes !#$%&'*+/=?^_`{|}~-@example.com without URL host rewriting",
+          "duration": 0.5947000000001026,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"\"",
+          "duration": 1.7615000000000691,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"user\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"user\"",
+          "duration": 0.4733000000001084,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"user@@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"user@@example.com\"",
+          "duration": 0.36199999999985266,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"@example.com\"",
+          "duration": 0.3502000000000862,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@\"",
+          "duration": 0.3352999999999611,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \".a@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \".a@example.com\"",
+          "duration": 0.31510000000002947,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a.@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a.@example.com\"",
+          "duration": 0.2680000000000291,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a..b@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a..b@example.com\"",
+          "duration": 0.2555999999999585,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"用户@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"用户@example.com\"",
+          "duration": 2.18730000000005,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"ü@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"ü@example.com\"",
+          "duration": 0.52150000000006,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a b@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a b@example.com\"",
+          "duration": 0.3428000000001248,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"\\\"a\\\"@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"\\\"a\\\"@example.com\"",
+          "duration": 0.3262999999999465,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a\\u0000@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a\\u0000@example.com\"",
+          "duration": 0.29290000000014516,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@-example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@-example.com\"",
+          "duration": 0.3954999999998563,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example-.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example-.com\"",
+          "duration": 0.3712000000000444,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@a..com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@a..com\"",
+          "duration": 0.35599999999999454,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com.\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com.\"",
+          "duration": 0.3871999999998934,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example_.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example_.com\"",
+          "duration": 0.3166000000001077,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@[127.0.0.1]\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@[127.0.0.1]\"",
+          "duration": 0.33750000000009095,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com/path\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com/path\"",
+          "duration": 0.49240000000008877,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com\\\\path\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com\\\\path\"",
+          "duration": 0.4800999999999931,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com:443\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com:443\"",
+          "duration": 1.2461000000000695,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com?x\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com?x\"",
+          "duration": 0.4915000000000873,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@example.com#x\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@example.com#x\"",
+          "duration": 0.47220000000015716,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@exa\\tmple.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@exa\\tmple.com\"",
+          "duration": 0.5677000000000589,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@exa\\nmple.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@exa\\nmple.com\"",
+          "duration": 0.41429999999991196,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@%65xample.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@%65xample.com\"",
+          "duration": 0.4293999999999869,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@xn--a.example\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@xn--a.example\"",
+          "duration": 0.44020000000000437,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@ab--cd.example\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@ab--cd.example\"",
+          "duration": 0.3624999999999545,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@a‌b.example\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@a‌b.example\"",
+          "duration": 1.5101999999999407,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com\"",
+          "duration": 0.4050999999999476,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"a@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"a@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com\"",
+          "duration": 1.8536000000001422,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects invalid identity \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\"",
+          "status": "passed",
+          "title": "rejects invalid identity \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\"",
+          "duration": 1.7304999999998927,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 accepts the exact 64-byte local and 254-byte total boundaries",
+          "status": "passed",
+          "title": "accepts the exact 64-byte local and 254-byte total boundaries",
+          "duration": 1.297399999999925,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "normalizeEmailV1"
+          ],
+          "fullName": "normalizeEmailV1 rejects runtime non-string input without exposing it",
+          "status": "passed",
+          "title": "rejects runtime non-string input without exposing it",
+          "duration": 0.501700000000028,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789105578145,
+      "endTime": 1789105578180.5017,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "ChatMessage repository boundary"
+          ],
+          "fullName": "ChatMessage repository boundary ordered-messages: cursor round-trips the record sequence and message identity",
+          "status": "passed",
+          "title": "ordered-messages: cursor round-trips the record sequence and message identity",
+          "duration": 5.507699999999886,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage repository boundary"
+          ],
+          "fullName": "ChatMessage repository boundary ordered-messages: malformed noncanonical and ambiguous cursor payloads are rejected",
+          "status": "passed",
+          "title": "ordered-messages: malformed noncanonical and ambiguous cursor payloads are rejected",
+          "duration": 3.258100000000013,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage repository boundary"
+          ],
+          "fullName": "ChatMessage repository boundary ordered-messages: cursor encoder rejects missing extra and invalid anchor fields",
+          "status": "passed",
+          "title": "ordered-messages: cursor encoder rejects missing extra and invalid anchor fields",
+          "duration": 1.1164000000001124,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage repository boundary"
+          ],
+          "fullName": "ChatMessage repository boundary ownership: reading and appending require exactly one owner before SQL",
+          "status": "passed",
+          "title": "ownership: reading and appending require exactly one owner before SQL",
+          "duration": 6.843499999999949,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage repository boundary"
+          ],
+          "fullName": "ChatMessage repository boundary ordered-messages: missing nonintegral and out-of-range sequences fail before SQL",
+          "status": "passed",
+          "title": "ordered-messages: missing nonintegral and out-of-range sequences fail before SQL",
+          "duration": 3.5150000000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage repository boundary"
+          ],
+          "fullName": "ChatMessage repository boundary ordered-messages: invalid role kind content and record identities fail before SQL",
+          "status": "passed",
+          "title": "ordered-messages: invalid role kind content and record identities fail before SQL",
+          "duration": 4.128399999999829,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage repository boundary"
+          ],
+          "fullName": "ChatMessage repository boundary ordered-messages: bad page sizes and foreign or malformed cursors fail before SQL",
+          "status": "passed",
+          "title": "ordered-messages: bad page sizes and foreign or malformed cursors fail before SQL",
+          "duration": 2.4559999999999036,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage repository boundary"
+          ],
+          "fullName": "ChatMessage repository boundary client-idempotency: absent structured validation rejects all non-null JSON before SQL",
+          "status": "passed",
+          "title": "client-idempotency: absent structured validation rejects all non-null JSON before SQL",
+          "duration": 2.6271999999999025,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage repository boundary"
+          ],
+          "fullName": "ChatMessage repository boundary client-idempotency: invalid client and reply identifiers fail before SQL",
+          "status": "passed",
+          "title": "client-idempotency: invalid client and reply identifiers fail before SQL",
+          "duration": 3.4565000000000055,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage repository boundary"
+          ],
+          "fullName": "ChatMessage repository boundary ordered-messages: database faults remain redacted errors and never become empty pages",
+          "status": "passed",
+          "title": "ordered-messages: database faults remain redacted errors and never become empty pages",
+          "duration": 3.588600000000042,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage repository boundary"
+          ],
+          "fullName": "ChatMessage repository boundary delete-policy: ordinary repository exports no message deletion or sequence allocation",
+          "status": "passed",
+          "title": "delete-policy: ordinary repository exports no message deletion or sequence allocation",
+          "duration": 0.5157999999998992,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789105578168,
+      "endTime": 1789105578205.5159,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/chat-message.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "Prisma client lifecycle"
+          ],
+          "fullName": "Prisma client lifecycle cache: repeated resolutions and module imports reuse one client",
+          "status": "passed",
+          "title": "cache: repeated resolutions and module imports reuse one client",
+          "duration": 7.323800000000119,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Prisma client lifecycle"
+          ],
+          "fullName": "Prisma client lifecycle errors: initialization and connection failures are classified and redacted",
+          "status": "passed",
+          "title": "errors: initialization and connection failures are classified and redacted",
+          "duration": 13.143399999999929,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "Prisma client lifecycle"
+          ],
+          "fullName": "Prisma client lifecycle modes: production leaves globals untouched; development and test reuse cache",
+          "status": "passed",
+          "title": "modes: production leaves globals untouched; development and test reuse cache",
+          "duration": 1.6815999999998894,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789105578267,
+      "endTime": 1789105578288.6816,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/db.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "public-user projection contract"
+          ],
+          "fullName": "public-user projection contract projection: public fields are exactly the eight authorized account fields",
+          "status": "passed",
+          "title": "projection: public fields are exactly the eight authorized account fields",
+          "duration": 6.219500000000039,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "public-user projection contract"
+          ],
+          "fullName": "public-user projection contract projection: admin fields add only the management revision",
+          "status": "passed",
+          "title": "projection: admin fields add only the management revision",
+          "duration": 1.9694999999999254,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "public-user projection contract"
+          ],
+          "fullName": "public-user projection contract projection: immutable Prisma selects contain only their exact whitelist",
+          "status": "passed",
+          "title": "projection: immutable Prisma selects contain only their exact whitelist",
+          "duration": 0.9659000000000333,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "public-user projection contract"
+          ],
+          "fullName": "public-user projection contract projection: both runtime projection modules retain the server-only boundary",
+          "status": "passed",
+          "title": "projection: both runtime projection modules retain the server-only boundary",
+          "duration": 1.88900000000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: the closed group registry contains exactly five values",
+          "status": "passed",
+          "title": "group-validation: the closed group registry contains exactly five values",
+          "duration": 0.34790000000009513,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: parses the registered group AI",
+          "status": "passed",
+          "title": "group-validation: parses the registered group AI",
+          "duration": 0.5596000000000458,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: parses the registered group UI",
+          "status": "passed",
+          "title": "group-validation: parses the registered group UI",
+          "duration": 0.3407999999999447,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: parses the registered group EXPORT",
+          "status": "passed",
+          "title": "group-validation: parses the registered group EXPORT",
+          "duration": 0.323099999999954,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: parses the registered group SECURITY",
+          "status": "passed",
+          "title": "group-validation: parses the registered group SECURITY",
+          "duration": 0.4470999999999776,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: parses the registered group GENERAL",
+          "status": "passed",
+          "title": "group-validation: parses the registered group GENERAL",
+          "duration": 0.29930000000001655,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input \"UNKNOWN\"",
+          "status": "passed",
+          "title": "group-validation: rejects unregistered runtime input \"UNKNOWN\"",
+          "duration": 1.4015999999999167,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input \"general\"",
+          "status": "passed",
+          "title": "group-validation: rejects unregistered runtime input \"general\"",
+          "duration": 0.47690000000000055,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input \" GENERAL \"",
+          "status": "passed",
+          "title": "group-validation: rejects unregistered runtime input \" GENERAL \"",
+          "duration": 0.34169999999994616,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input \"\"",
+          "status": "passed",
+          "title": "group-validation: rejects unregistered runtime input \"\"",
+          "duration": 0.6398000000000366,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input null",
+          "status": "passed",
+          "title": "group-validation: rejects unregistered runtime input null",
+          "duration": 0.44049999999992906,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input undefined",
+          "status": "passed",
+          "title": "group-validation: rejects unregistered runtime input undefined",
+          "duration": 0.3004999999999427,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input 7",
+          "status": "passed",
+          "title": "group-validation: rejects unregistered runtime input 7",
+          "duration": 0.3021999999999707,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input {}",
+          "status": "passed",
+          "title": "group-validation: rejects unregistered runtime input {}",
+          "duration": 0.35579999999993106,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input undefined",
+          "status": "passed",
+          "title": "group-validation: rejects unregistered runtime input undefined",
+          "duration": 1.0147000000000617,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "SystemConfig group schema"
+          ],
+          "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input \"GENERAL\"",
+          "status": "passed",
+          "title": "group-validation: rejects unregistered runtime input \"GENERAL\"",
+          "duration": 0.5042000000000826,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789105578157,
+      "endTime": 1789105578176.5042,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/public-user.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary hash: canonical 256-bit Cookie material hashes its exact UTF-8 bytes deterministically",
+          "status": "passed",
+          "title": "hash: canonical 256-bit Cookie material hashes its exact UTF-8 bytes deterministically",
+          "duration": 5.711999999999989,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary hash: wrong lengths encodings and non-string values fail with a redacted error",
+          "status": "passed",
+          "title": "hash: wrong lengths encodings and non-string values fail with a redacted error",
+          "duration": 15.178100000000086,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary ownership: owner parser accepts exactly one trusted scalar owner",
+          "status": "passed",
+          "title": "ownership: owner parser accepts exactly one trusted scalar owner",
+          "duration": 2.0535999999999603,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary ownership: owner parser rejects missing ambiguous inherited and alternate identity fields",
+          "status": "passed",
+          "title": "ownership: owner parser rejects missing ambiguous inherited and alternate identity fields",
+          "duration": 3.536200000000008,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary ownership: owner parser rejects accessors and hidden or symbol keys without invoking getters",
+          "status": "passed",
+          "title": "ownership: owner parser rejects accessors and hidden or symbol keys without invoking getters",
+          "duration": 1.5924999999999727,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary hash: request token alternatives and malformed persisted hashes are not valid owner inputs",
+          "status": "passed",
+          "title": "hash: request token alternatives and malformed persisted hashes are not valid owner inputs",
+          "duration": 2.7934000000000196,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary ownership: all repositories reject invalid owners before touching SQL",
+          "status": "passed",
+          "title": "ownership: all repositories reject invalid owners before touching SQL",
+          "duration": 3.2111999999999625,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary lifecycle-version: JSON schema absence fails closed before starting SQL",
+          "status": "passed",
+          "title": "lifecycle-version: JSON schema absence fails closed before starting SQL",
+          "duration": 2.960800000000063,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary ownership: transfer requires an anonymous owner and a nonempty destination user",
+          "status": "passed",
+          "title": "ownership: transfer requires an anonymous owner and a nonempty destination user",
+          "duration": 1.344000000000051,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary ownership: database failures are safe errors rather than records or missing-record responses",
+          "status": "passed",
+          "title": "ownership: database failures are safe errors rather than records or missing-record responses",
+          "duration": 1.779299999999921,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary ownership: repository exports only this phase's owned record primitives",
+          "status": "passed",
+          "title": "ownership: repository exports only this phase's owned record primitives",
+          "duration": 0.34410000000002583,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary ownership: database fixtures reject non-loopback unknown and unowned targets before connecting",
+          "status": "passed",
+          "title": "ownership: database fixtures reject non-loopback unknown and unowned targets before connecting",
+          "duration": 3.1327000000001135,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789105578169,
+      "endTime": 1789105578212.1328,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/travel-record.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "LoadingState"
+          ],
+          "fullName": "LoadingState announces a polite, busy status with a visible default label",
+          "status": "passed",
+          "title": "announces a polite, busy status with a visible default label",
+          "duration": 118.39300000000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "LoadingState"
+          ],
+          "fullName": "LoadingState renders a custom loading label",
+          "status": "passed",
+          "title": "renders a custom loading label",
+          "duration": 5.51090000000022,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "EmptyState"
+          ],
+          "fullName": "EmptyState renders its title without adding an empty description paragraph",
+          "status": "passed",
+          "title": "renders its title without adding an empty description paragraph",
+          "duration": 17.547099999999773,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "EmptyState"
+          ],
+          "fullName": "EmptyState renders an optional description",
+          "status": "passed",
+          "title": "renders an optional description",
+          "duration": 4.159099999999853,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "EmptyState"
+          ],
+          "fullName": "EmptyState renders the action slot",
+          "status": "passed",
+          "title": "renders the action slot",
+          "duration": 11.271799999999985,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ErrorState"
+          ],
+          "fullName": "ErrorState announces the error message as an alert",
+          "status": "passed",
+          "title": "announces the error message as an alert",
+          "duration": 4.834399999999732,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ErrorState"
+          ],
+          "fullName": "ErrorState invokes the retry handler once when the retry button is clicked",
+          "status": "passed",
+          "title": "invokes the retry handler once when the retry button is clicked",
+          "duration": 15.096300000000156,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ErrorState"
+          ],
+          "fullName": "ErrorState omits the retry button when there is no retry handler",
+          "status": "passed",
+          "title": "omits the retry button when there is no retry handler",
+          "duration": 2.483799999999974,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "PageHeader"
+          ],
+          "fullName": "PageHeader renders the page title as the level-one heading",
+          "status": "passed",
+          "title": "renders the page title as the level-one heading",
+          "duration": 7.314700000000357,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "PageHeader"
+          ],
+          "fullName": "PageHeader renders the actions slot",
+          "status": "passed",
+          "title": "renders the actions slot",
+          "duration": 8.421699999999873,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "layout shells"
+          ],
+          "fullName": "layout shells links the site name to home and keeps the navigation static",
+          "status": "passed",
+          "title": "links the site name to home and keeps the navigation static",
+          "duration": 16.757800000000316,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "layout shells"
+          ],
+          "fullName": "layout shells renders all four static admin items and preserves its children",
+          "status": "passed",
+          "title": "renders all four static admin items and preserves its children",
+          "duration": 17.03359999999975,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789105580569,
+      "endTime": 1789105580799.0337,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/src/components/common/common-components.test.tsx"
+    }
+  ]
+}

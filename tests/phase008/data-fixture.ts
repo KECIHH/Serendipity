@@ -42,7 +42,11 @@ export const CHAT_MESSAGE_FIELDS = [
   "createdAt",
 ] as const;
 
-export function readPhase008Target(value: string | undefined): { target: URL; runId: string } {
+export function readPhase008Target(value: string | undefined): {
+  target: URL;
+  runId: string;
+  phase: string;
+} {
   let target: URL;
   try {
     if (value === undefined) throw new Error();
@@ -50,7 +54,7 @@ export function readPhase008Target(value: string | undefined): { target: URL; ru
   } catch {
     throw new Error("PHASE008_DATABASE_URL must identify this run's disposable database");
   }
-  const name = /^\/phase008_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(target.pathname);
+  const name = /^\/phase00([89])_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(target.pathname);
   const allowedOptions = new Set(["schema", "connect_timeout", "pool_timeout", "connection_limit"]);
   if (
     !["postgresql:", "postgres:"].includes(target.protocol) ||
@@ -63,12 +67,12 @@ export function readPhase008Target(value: string | undefined): { target: URL; ru
   ) {
     throw new Error("Phase008 database guard rejected an unowned target");
   }
-  return { target, runId: name[1] };
+  return { target, phase: name[1], runId: name[2] };
 }
 
 /** Resolve the application singleton only after the URL guard, then prove the database marker. */
 export async function connectPhase008Database(value: string | undefined): Promise<PrismaClient> {
-  const { target, runId } = readPhase008Target(value);
+  const { target, runId, phase } = readPhase008Target(value);
   process.env.DATABASE_URL = target.toString();
   const { connectDb, db } = await import("@/server/db");
   await connectDb();
@@ -82,7 +86,7 @@ export async function connectPhase008Database(value: string | undefined): Promis
   if (
     identity?.name !== target.pathname.slice(1) ||
     !/^17\./.test(identity.version) ||
-    identity.marker !== `serendipity-phase008-disposable:${runId}`
+    identity.marker !== `serendipity-phase00${phase}-disposable:${runId}`
   ) {
     await db.$disconnect();
     throw new Error("Phase008 database identity guard rejected the connected target");

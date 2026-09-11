@@ -1,0 +1,26 @@
+{
+  "phase": 9,
+  "attemptId": "attempt-2",
+  "status": "FAIL",
+  "artifactCommit": null,
+  "planHash": "2d0a1a1d82322b1949fec1805c8c630b64bcef63a73ccaa23a7cac41d21f30a5",
+  "command": "node docs/phase-plans/complete-phase009.mjs --without-review",
+  "exitCode": 1,
+  "reason": "Prior frozen expected text was extended without an explicit hash-bound additive extension receipt. Product and quality passed, but checkpoint binding was rejected.",
+  "observation": {
+    "command": "node docs/phase-plans/complete-phase009.mjs --without-review",
+    "executable": "C:\\Program Files\\nodejs\\node.exe",
+    "arguments": [
+      "docs/phase-plans/complete-phase009.mjs",
+      "--without-review"
+    ],
+    "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+    "exitCode": 1,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "",
+    "stderr": "AssertionError [ERR_ASSERTION]: PRIOR_PLAN_CASES: frozen assertion changed: Phase009:recursive-redaction.expected\n+ actual - expected\n\n+ 'Objects/arrays recursively redact all denylisted camel/snake/kebab and mixed-case keys. Unknown free text cannot enter a structured audit summary. Input is immutable, exceptions expose no values, raw synthetic secrets have zero matches in persisted rows, captured output and archived evidence. IP uses a server HMAC; UA controls are removed. Sensitive field names are exact normalized registry entries, never dynamic carriers for private text.'\n- 'Objects/arrays recursively redact all denylisted camel/snake/kebab and mixed-case keys. Unknown free text cannot enter a structured audit summary. Input is immutable, exceptions expose no values, raw synthetic secrets have zero matches in persisted rows, captured output and archived evidence. IP uses a server HMAC; UA controls are removed.'\n\n    at requirePriorCaseBinding (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/scripts/phase-evidence.mjs:244:14)\n    at audit (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/complete-phase009.mjs:36:5)\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/complete-phase009.mjs:166:25\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n",
+    "durationMs": 240
+  },
+  "recordedAt": "2026-09-11T05:08:01.713Z"
+}

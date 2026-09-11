@@ -67,6 +67,14 @@ DATA_RECEIPT/FEEDBACK_RECEIPT 在客户端创建请求前由 Web Crypto 生成 2
 
 ## 删除、归档与恢复
 
+### Phase009 审计落库边界
+
+AuditLog 是同事务的只追加安全摘要，独立于普通日志输出。actorEmailSnapshot 仅来自可信已认证 actor 的 normalizeEmailV1 规范邮箱，限254字符，后台受权追溯使用；主体删除后 FK 可为空而快照仍保留，后续 ERASE/retention 专用程序承担去标识责任，应用角色不能自行改写或删除历史。当前不把这项未来维护责任当作已实现。
+
+递归 denylist 统一 NFKC、大小写和分隔符，覆盖 password/passwordHash/secret/apiKey/encryptedKey/authorization/cookie/token/anonToken/shareToken/promptContent/DATABASE_URL，并包含上述 logging 敏感头、envelope、receipt、原始响应、聊天及联系方式等限制。仅允许 NFKC/大小写和 ASCII 点、空格、下划线、连字符变体的已登记完整敏感键名，动态后缀/未知字符拒绝以防字段名携带私文；命中键值替换为 `***`；仍先检查完整输入大小、深度和 JSON 合法性。其余字段仅允许 [Phase009 摘要字段](phase009.md) 中的枚举、有界数字、布尔、字段名和递归容器；未知 key、自由文本和原始配置正文拒绝。输入与脱敏输出限16KiB/8层/1024节点，拒绝超限而不截掉审计事实。
+
+请求上下文由服务端 CSPRNG 生成并保持不可变，不接受客户端 requestId/traceId；网络地址仅经注入的32-byte server HMAC key及 audit/ip/v1 域分离输出64位小写 HMAC-SHA256。原始地址与 HMAC key 不进入审计参数或错误。UA 去控制字符后按码点限制256，最多接收4096个 UTF-16 单元。数据库/验证异常只暴露固定错误码和安全模板；测试和证据扫描要求敏感 canary 明文命中0。
+
 首次 ERASE 先用当前密码重新认证，在主体/session/revision 锁下向独立 PrivacyRevocationLedger 可靠 append 不可撤销意图，然后在应用库投影同一 DataRequest、禁止该主体新增业务、递增 sessionVersion 并撤会话。ledger 使用独立 PostgreSQL database/卷/备份集；受锁 head 与 entry 同事务保证连续水位，不用裸 sequence 跳号证明完整性。ledger 仅存 intentId/scopeHash/requestId/requestHash/receiptHash/ownerKeyHash 与最小受控定位，禁止原密码、回执、个人正文。
 
 跨库不宣称原子。ledger 失败不能确认接受；ledger 成功、本库或响应失败时按原意图/receipt 对账补齐同一请求，独立意图已阻断主体继续写入。ERASE 技术失败保持 RUNNING；单个 DurableTask 重试耗尽可 FAILED，协调器以 revision/continuationSequence CAS 创建至多一个后继 task，继承意图/范围/checkpoint/水位和 fencing，不重开旧任务，不要求已失效会话、密码或第二份授权，不允许取消删除。EXPORT 可 FAILED，新请求仍须活动 owner。

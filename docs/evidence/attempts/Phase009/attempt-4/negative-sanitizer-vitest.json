@@ -1,0 +1,437 @@
+{
+  "numTotalTestSuites": 4,
+  "numPassedTestSuites": 2,
+  "numFailedTestSuites": 2,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 35,
+  "numPassedTests": 0,
+  "numFailedTests": 1,
+  "numPendingTests": 34,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1789105541821,
+  "success": false,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract transaction: global delegate wrappers and cloned clients cannot escape rollback",
+          "status": "skipped",
+          "title": "transaction: global delegate wrappers and cloned clients cannot escape rollback",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract transaction: catching invalid clients after an earlier audit rolls back both business writes",
+          "status": "skipped",
+          "title": "transaction: catching invalid clients after an earlier audit rolls back both business writes",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract transaction: failure poisoning stays within its own concurrent async scope",
+          "status": "skipped",
+          "title": "transaction: failure poisoning stays within its own concurrent async scope",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract transaction: nested audited transactions cannot commit a separate inner write",
+          "status": "skipped",
+          "title": "transaction: nested audited transactions cannot commit a separate inner write",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract transaction: caught audit failures and missing audits still prevent a business commit",
+          "status": "skipped",
+          "title": "transaction: caught audit failures and missing audits still prevent a business commit",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract transaction: an enrolled transaction cannot be reused after its callback ends",
+          "status": "skipped",
+          "title": "transaction: an enrolled transaction cannot be reused after its callback ends",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract recursive-redaction: private text in a key name rejects the whole audited write",
+          "status": "skipped",
+          "title": "recursive-redaction: private text in a key name rejects the whole audited write",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract schema: exact fields, five indexes, optional FK and database column limits match",
+          "status": "skipped",
+          "title": "schema: exact fields, five indexes, optional FK and database column limits match",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract schema: database rejects malformed metadata even through raw delegate writes",
+          "status": "skipped",
+          "title": "schema: database rejects malformed metadata even through raw delegate writes",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract append-only: runtime role has INSERT/SELECT without ownership, mutation or DDL privilege",
+          "status": "skipped",
+          "title": "append-only: runtime role has INSERT/SELECT without ownership, mutation or DDL privilege",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract append-only: trigger rejects UPDATE even after accidental DML grants",
+          "status": "skipped",
+          "title": "append-only: trigger rejects UPDATE even after accidental DML grants",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract append-only: trigger rejects DELETE even after accidental DML grants",
+          "status": "skipped",
+          "title": "append-only: trigger rejects DELETE even after accidental DML grants",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract append-only: trigger rejects TRUNCATE even after accidental DML grants",
+          "status": "skipped",
+          "title": "append-only: trigger rejects TRUNCATE even after accidental DML grants",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract append-only: actual User deletion nulls only its FK while retaining the snapshot",
+          "status": "skipped",
+          "title": "append-only: actual User deletion nulls only its FK while retaining the snapshot",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract system-actor: USER and every closed SYSTEM actor support safe references and nullable targets",
+          "status": "skipped",
+          "title": "system-actor: USER and every closed SYSTEM actor support safe references and nullable targets",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract system-actor: ambiguous identities and spoofed registry/context values insert nothing",
+          "status": "skipped",
+          "title": "system-actor: ambiguous identities and spoofed registry/context values insert nothing",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract transaction: successful business writes and audits are paired under concurrency",
+          "status": "skipped",
+          "title": "transaction: successful business writes and audits are paired under concurrency",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract transaction: audit FK failure rolls back the business write and leaks no driver details",
+          "status": "skipped",
+          "title": "transaction: audit FK failure rolls back the business write and leaks no driver details",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract transaction: business failure after audit and sanitizer failure after business both roll back",
+          "status": "skipped",
+          "title": "transaction: business failure after audit and sanitizer failure after business both roll back",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract recursive-redaction: persistence contains only recursively sanitized summaries and network hashes",
+          "status": "skipped",
+          "title": "recursive-redaction: persistence contains only recursively sanitized summaries and network hashes",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract bounded-metadata: excess detail fails atomically and normalized Unicode UA fits the database",
+          "status": "skipped",
+          "title": "bounded-metadata: excess detail fails atomically and normalized Unicode UA fits the database",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract bounded-metadata: malformed write fields are rejected before the database delegate",
+          "status": "skipped",
+          "title": "bounded-metadata: malformed write fields are rejected before the database delegate",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract lookup: exact request trace target actor queries and EXPLAIN use all five indexes",
+          "status": "skipped",
+          "title": "lookup: exact request trace target actor queries and EXPLAIN use all five indexes",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log real PostgreSQL contract"
+          ],
+          "fullName": "audit-log real PostgreSQL contract lookup: empty reads differ from an actual unavailable database",
+          "status": "skipped",
+          "title": "lookup: empty reads differ from an actual unavailable database",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789105541821,
+      "endTime": 1789105541821,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase009/fixtures/mut-sanitizer-ymCn8d/tests/integration/audit-log.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "audit-log pure boundary"
+          ],
+          "fullName": "audit-log pure boundary recursive-redaction: dynamic sensitive field names cannot carry private canaries",
+          "status": "skipped",
+          "title": "recursive-redaction: dynamic sensitive field names cannot carry private canaries",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log pure boundary"
+          ],
+          "fullName": "audit-log pure boundary bounded-metadata: excessive own-key counts fail before descriptor copying",
+          "status": "skipped",
+          "title": "bounded-metadata: excessive own-key counts fail before descriptor copying",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log pure boundary"
+          ],
+          "fullName": "audit-log pure boundary recursive-redaction: nested objects, arrays, separator and case variants never retain canaries",
+          "status": "failed",
+          "title": "recursive-redaction: nested objects, arrays, separator and case variants never retain canaries",
+          "duration": 6.485199999999963,
+          "failureMessages": [
+            "AuditLogError: Audit input is invalid.\n    at invalid (C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase009/fixtures/mut-sanitizer-ymCn8d/src/server/audit-log.ts:53:9)\n    at validateSummary (C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase009/fixtures/mut-sanitizer-ymCn8d/src/server/audit-log.ts:253:27)\n    at validateSummary (C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase009/fixtures/mut-sanitizer-ymCn8d/src/server/audit-log.ts:247:31)\n    at validateSummary (C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase009/fixtures/mut-sanitizer-ymCn8d/src/server/audit-log.ts:254:37)\n    at validateSummary (C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase009/fixtures/mut-sanitizer-ymCn8d/src/server/audit-log.ts:254:37)\n    at sanitizeAuditDetail (C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase009/fixtures/mut-sanitizer-ymCn8d/src/server/audit-log.ts:277:3)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase009/fixtures/mut-sanitizer-ymCn8d/tests/lib/audit-log.test.ts:73:20\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log pure boundary"
+          ],
+          "fullName": "audit-log pure boundary recursive-redaction: safe summaries are preserved and arbitrary private text fails closed",
+          "status": "skipped",
+          "title": "recursive-redaction: safe summaries are preserved and arbitrary private text fails closed",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log pure boundary"
+          ],
+          "fullName": "audit-log pure boundary recursive-redaction: network addresses use canonical domain-separated HMAC",
+          "status": "skipped",
+          "title": "recursive-redaction: network addresses use canonical domain-separated HMAC",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log pure boundary"
+          ],
+          "fullName": "audit-log pure boundary bounded-metadata: depth and node limits include redacted subtrees",
+          "status": "skipped",
+          "title": "bounded-metadata: depth and node limits include redacted subtrees",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log pure boundary"
+          ],
+          "fullName": "audit-log pure boundary bounded-metadata: exact UTF-8 byte budgets fail instead of truncating detail",
+          "status": "skipped",
+          "title": "bounded-metadata: exact UTF-8 byte budgets fail instead of truncating detail",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log pure boundary"
+          ],
+          "fullName": "audit-log pure boundary bounded-metadata: malformed JSON, accessors and prototype tricks cannot execute",
+          "status": "skipped",
+          "title": "bounded-metadata: malformed JSON, accessors and prototype tricks cannot execute",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log pure boundary"
+          ],
+          "fullName": "audit-log pure boundary bounded-metadata: 257-character UA normalizes, Unicode stays intact, huge input fails",
+          "status": "skipped",
+          "title": "bounded-metadata: 257-character UA normalizes, Unicode stays intact, huge input fails",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log pure boundary"
+          ],
+          "fullName": "audit-log pure boundary lookup: server contexts are immutable, bounded, unique and unforgeable by copying",
+          "status": "skipped",
+          "title": "lookup: server contexts are immutable, bounded, unique and unforgeable by copying",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "audit-log pure boundary"
+          ],
+          "fullName": "audit-log pure boundary transaction: a real global Prisma client cannot be passed to the helper",
+          "status": "skipped",
+          "title": "transaction: a real global Prisma client cannot be passed to the helper",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789105542341,
+      "endTime": 1789105542347.485,
+      "status": "failed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase009/fixtures/mut-sanitizer-ymCn8d/tests/lib/audit-log.test.ts"
+    }
+  ]
+}

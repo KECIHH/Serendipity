@@ -235,14 +235,16 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
     });
   });
 
-  it("lifecycle-version: the two baseline migrations and one additive migration are applied", async () => {
+  it("lifecycle-version: baseline travel migrations remain applied as current models evolve", async () => {
     const migrations = await getDatabase().$queryRaw<
       Array<{ name: string; finished: Date | null; rolledBack: Date | null; steps: number }>
     >`
       SELECT migration_name AS name, finished_at AS finished, rolled_back_at AS "rolledBack",
              applied_steps_count AS steps FROM "_prisma_migrations" ORDER BY migration_name
     `;
-    expect(migrations).toHaveLength(3);
+    const includesAudit = Prisma.dmmf.datamodel.models.some(({ name }) => name === "AuditLog");
+    expect(migrations).toHaveLength(includesAudit ? 4 : 3);
+    if (includesAudit) expect(migrations[3].name).toMatch(/^\d{14}_audit_log$/);
     expect(migrations[0].name).toBe("20260910000000_init_user");
     expect(migrations[1].name).toBe("20260910172735_system_config");
     expect(migrations[2].name).toMatch(/^\d{14}_travel_record_chat_message$/);
@@ -255,7 +257,9 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
 
   it("lifecycle-version: model inventory and generated fields contain only current producers", async () => {
     const models = Prisma.dmmf.datamodel.models;
+    const auditModels = models.some(({ name }) => name === "AuditLog") ? ["AuditLog"] : [];
     expect(models.map(({ name }) => name).sort()).toEqual([
+      ...auditModels,
       "ChatMessage",
       "SystemConfig",
       "TravelRecord",
@@ -274,6 +278,7 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
       SELECT tablename AS name FROM pg_tables WHERE schemaname = 'public' ORDER BY tablename
     `;
     expect(tables.map(({ name }) => name)).toEqual([
+      ...auditModels,
       "ChatMessage",
       "SystemConfig",
       "TravelRecord",

@@ -200,7 +200,6 @@ Phase008 的实际标量列 exact 为 `id/travelRecordId/role/kind/content/conte
 | 字段 | 类型 | nullable | 约束 |
 |---|---|---|---|
 | id | String | 否 | PK |
-| actorType | String | 否 | USER/ADMIN/SYSTEM，操作者类型，不新增User.role |
 | actorId | String | 是 | FK User SetNull，系统动作为null |
 | actorEmailSnapshot | String | 是 | 仅冻结隐私策略允许时保存，ERASE清理身份 |
 | targetType | String | 否 | 来源于受控审计目标registry |
@@ -213,7 +212,13 @@ Phase008 的实际标量列 exact 为 `id/travelRecordId/role/kind/content/conte
 | userAgentSummary | String | 是 | 限长且去除可识别细节 |
 | createdAt | DateTime | 否 | default now()，无普通updatedAt |
 
-Phase009首次建表，数据库应用角色禁止UPDATE/DELETE并用trigger拒绝绕过；关键业务写入与审计同事务，审计失败回滚。action/target值在首次动作生产阶段登记，本卡不虚构未来动作全集。actor FK索引以及(targetType,targetId,createdAt,id)、(action,createdAt,id)、requestId/traceId索引服务追溯。受控retention/ERASE通过专用角色去标识，不授应用角色任意修改历史。
+Phase009 已首产此表，精确字段以该生产卡为准：actor kind 是服务参数 USER/SYSTEM 判别联合，不额外持久化 actorType。五个固定索引为 (targetType,targetId,createdAt)、(actorId,createdAt)、(action,createdAt)、requestId、traceId。时间使用 timestamptz(3)，id 使用 cuid，actor 外键 onDelete:SetNull/onUpdate:Restrict。
+
+action/targetType 最多64字符，targetId/actorId 最多128，邮箱快照最多254，requestId/traceId 为服务端生成的36字符 UUID v4，ipHash 为 Char(64) 小写 HMAC，userAgentSummary 为 VarChar(256)。SYSTEM 两个主体字段均 null，detailJson.systemActor 限 MIGRATION/SCHEDULER/MAINTENANCE。只有可信服务器生成的 opaque context 可传入 helper。递归摘要的完整输入/脱敏输出各限16KiB、8层和1024节点；数据库另设32KiB JSONB文本上限，给其空白序列化开销留界限。
+
+`src/server/services/audit-log-service.ts` 的 writeAuditLog 只接受 runAuditedTransaction 用私有 WeakMap 登记的真实交互事务客户端（拒绝全局 delegate 包装、复制和过期对象），写成功返回安全引用，验证或持久化失败抛出安全错误并由调用事务回滚，调用方吞错、未等待审计或没有成功审计也不能提交。关键业务变更和审计同事务，禁止吞错成功或两次提交。初始封闭 action/target registry 为 CONFIG_UPDATE→SystemConfig、USER_DISABLE→User、API_KEY_ROTATE→ApiKeyConfig；未来动作由首次消费者显式登记。
+
+运行期应用角色非 table/schema owner、非 superuser、无 DDL/角色提升能力，只授审计 SELECT/INSERT。UPDATE/DELETE 行 trigger 与 TRUNCATE statement trigger 拒绝篡改，包括意外授予 DML 权限时。实际 User 删除产生的嵌套 FK action 仅可清 actorId，并核验旧父行消失及其他字段逐值不变，保留邮箱快照；普通直接置空也失败。物理清理和 ERASE 去标识责任仍属后续受控 maintenance role/procedure，必须另留审计；当前不存在应用可用的清理旁路。完整边界及合成实库验证见 [Phase009](phase009.md)。
 
 ### 2.7 AuthSession
 
