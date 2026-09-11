@@ -1,0 +1,154 @@
+{
+  "numTotalTestSuites": 4,
+  "numPassedTestSuites": 2,
+  "numFailedTestSuites": 2,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 9,
+  "numPassedTests": 3,
+  "numFailedTests": 1,
+  "numPendingTests": 5,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1789126908005,
+  "success": false,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "api-key-schema pure boundary"
+          ],
+          "fullName": "api-key-schema pure boundary accepts exact canonical envelopes across minimum and maximum ciphertext sizes",
+          "status": "skipped",
+          "title": "accepts exact canonical envelopes across minimum and maximum ciphertext sizes",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "api-key-schema pure boundary"
+          ],
+          "fullName": "api-key-schema pure boundary rejects every malformed encoding/schema/canonical serialization without echoing input",
+          "status": "skipped",
+          "title": "rejects every malformed encoding/schema/canonical serialization without echoing input",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "api-key-schema pure boundary"
+          ],
+          "fullName": "api-key-schema pure boundary fingerprints trimmed original UTF-8 bytes, preserves case and rejects invalid lengths",
+          "status": "skipped",
+          "title": "fingerprints trimmed original UTF-8 bytes, preserves case and rejects invalid lengths",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "api-key-schema pure boundary"
+          ],
+          "fullName": "api-key-schema pure boundary binds AAD to record, provider and envelope version using JCS",
+          "status": "skipped",
+          "title": "binds AAD to record, provider and envelope version using JCS",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789126908005,
+      "endTime": 1789126908005,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/api-key-schema.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "api-key-schema PostgreSQL"
+          ],
+          "fullName": "api-key-schema PostgreSQL migration: exact field, enum, type, check and index inventory",
+          "status": "failed",
+          "title": "migration: exact field, enum, type, check and index inventory",
+          "duration": 1392.4841,
+          "failureMessages": [
+            "AssertionError: expected [ 'ApiKeyConfig_envelope', …(3) ] to deeply equal [ 'ApiKeyConfig_envelope', …(3) ]\n    at C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/api-key-schema.test.ts:49:49\n    at withSeedDatabase (C:/Users/11295/Desktop/Serendipity · 际遇/tests/phase010/seed-fixture.ts:179:12)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/api-key-schema.test.ts:25:5\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "api-key-schema PostgreSQL"
+          ],
+          "fullName": "api-key-schema PostgreSQL migration: SQL rejects the full malformed envelope matrix and column mismatches",
+          "status": "passed",
+          "title": "migration: SQL rejects the full malformed envelope matrix and column mismatches",
+          "duration": 1409.0887999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "api-key-schema PostgreSQL"
+          ],
+          "fullName": "api-key-schema PostgreSQL migration: fingerprint is globally unique and immutable content cannot be overwritten",
+          "status": "passed",
+          "title": "migration: fingerprint is globally unique and immutable content cannot be overwritten",
+          "duration": 1339.8428,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "api-key-schema PostgreSQL"
+          ],
+          "fullName": "api-key-schema PostgreSQL migration: real changes increment revision once and REVOKED cannot recover",
+          "status": "passed",
+          "title": "migration: real changes increment revision once and REVOKED cannot recover",
+          "duration": 1384.7816000000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "api-key-schema PostgreSQL"
+          ],
+          "fullName": "api-key-schema PostgreSQL governance-absence: only M2 models exist and migration creates no key rows",
+          "status": "skipped",
+          "title": "governance-absence: only M2 models exist and migration creates no key rows",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789126908438,
+      "endTime": 1789126913964.7815,
+      "status": "failed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/api-key-schema.test.ts"
+    }
+  ]
+}

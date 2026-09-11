@@ -1,0 +1,24 @@
+{
+  "command": "docker exec -i e853723c15ad0b173f1df1a7bd3a02cf42979bdc65fdeb70fad665073a449913 psql -X -v ON_ERROR_STOP=1 -U phase010_runner -d phase010_disposable_426ad15d2619",
+  "executable": "docker.exe",
+  "arguments": [
+    "exec",
+    "-i",
+    "e853723c15ad0b173f1df1a7bd3a02cf42979bdc65fdeb70fad665073a449913",
+    "psql",
+    "-X",
+    "-v",
+    "ON_ERROR_STOP=1",
+    "-U",
+    "phase010_runner",
+    "-d",
+    "phase010_disposable_426ad15d2619"
+  ],
+  "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+  "exitCode": 3,
+  "signal": null,
+  "timedOut": false,
+  "stdout": "BEGIN\nSET\n",
+  "stderr": "ERROR:  new row for relation \"AuditLog\" violates check constraint \"AuditLog_actor_shape\"\nDETAIL:  Failing row contains (synthetic-seed-actor-diagnostic, null, null, SEED_CONFIG_CREATE, SystemConfig, null, null, null, {\"result\": \"SUCCESS\", \"systemActor\": \"SEED\"}, null, null, 2026-09-11 11:50:41.662+00).\n",
+  "durationMs": 308
+}

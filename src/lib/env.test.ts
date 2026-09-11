@@ -155,10 +155,13 @@ describe("readEnv", () => {
     expect(cliEntries.map((entry) => entry.key)).toEqual(["ADMIN_EMAIL", "ADMIN_INITIAL_PASSWORD"]);
     expect(cliEntries.every((entry) => entry.producerPhase === 10)).toBe(true);
     expect(readCliEnv({}, { currentPhase: 4 })).toEqual({});
-    expect(() => readCliEnv({}, { currentPhase: 10 })).toThrowError(EnvConfigError);
+    expect(readCliEnv({}, { currentPhase: 10 })).toEqual({});
+    expect(() => readCliEnv({}, { currentPhase: 10, command: "seed" })).toThrowError(
+      EnvConfigError,
+    );
     const cliValues = readCliEnv(
       { ADMIN_EMAIL: "admin@example.test", ADMIN_INITIAL_PASSWORD: "placeholder" },
-      { currentPhase: 10 },
+      { currentPhase: 10, command: "seed" },
     );
     expect(cliValues).toEqual({
       ADMIN_EMAIL: "admin@example.test",

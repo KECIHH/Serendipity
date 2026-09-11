@@ -1,0 +1,24 @@
+{
+  "phase": 10,
+  "attemptId": "attempt-1",
+  "status": "FAIL",
+  "blockedCategory": "IMPLEMENTATION",
+  "artifactCommit": null,
+  "planHash": "969ce1b9713b7850773c766c16c798d31e46eb635864b2b775e542eaccbb2a0f",
+  "command": "node .scaffold/phase010/dependencies.mjs",
+  "exitCode": 1,
+  "reason": "Dependency installation succeeded; receipt assembly referenced the nonexistent runtime.dependencies field.",
+  "observations": [
+    {
+      "command": "npm install --save-exact bcryptjs@3.0.2 --no-audit --no-fund",
+      "exitCode": 0,
+      "durationMs": 4259
+    },
+    {
+      "command": "npm install --save-dev --save-exact tsx@4.20.6 --no-audit --no-fund",
+      "exitCode": 0,
+      "durationMs": 8663
+    }
+  ],
+  "recordedAt": "2026-09-11T08:09:29.932Z"
+}

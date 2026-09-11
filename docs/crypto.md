@@ -24,6 +24,14 @@ ACTIVE 可进入 DISABLED 或 REVOKED，DISABLED 可恢复 ACTIVE 或进入 REVO
 
 encryptedKey 永不原地更新。常规轮换按管理契约创建 DISABLED 新行，经受控测试与全引用事务切换后撤销旧行；只有受保护候选测试可解密本次 DISABLED 候选，普通外呼仍仅接受 ACTIVE。紧急撤销立即拒绝新调用。Phase010 seed 不创建任何 ApiKeyConfig，不能将 bootstrap 环境 API key 复制成占位配置。
 
+## Phase010 存储实现与消费边界
+
+`src/server/api-key-envelope.ts` 首产 `parseApiKeyEnvelope`、`apiKeyFingerprint` 与 `apiKeyAad`，作为 Phase013 的共同输入边界。完整 envelope 最多22500 UTF-8 bytes；合法字段值全部为固定 ASCII 字面值、hex 或 base64，因此 SQL 可以按 `algorithm/ciphertext/iv/keyId/tag/version` 键序精确重建 JCS 并与原文本逐字节比较。数据库与 TypeScript 均拒绝空白/键序/转义的非规范序列化、重复或未知字段、版本类型错误、非标准 base64、padding/长度错误及列绑定不一致。AAD 的 JCS 键序为 `envelopeVersion/provider/recordId`，内容取当前行，不在 envelope 增加 AAD 字段。
+
+数据库更新保护固定 `id/provider/encryptedKey/encryptionKeyId/envelopeVersion/keyFingerprint/createdAt`；重新命名或状态实际变化时 revision 恰加1，否则保持原值。REVOKED 必须且只有该状态具有 revokedAt，撤销后状态和时间均不可改变。name/lastUsedAt/updatedAt 的可更新性不允许覆盖秘密内容；受权命令的 expectedVersion 校验及审计由 Phase013 服务消费，不能仅依靠 trigger 替代授权。
+
+本阶段实现的是存储格式、指纹/AAD 字节与数据库生命周期约束。parser 不解密，也不能证明 tag 来自正确主密钥；AES-GCM 加解密、随机 IV、KeyResolver、受保护候选测试、轮换服务及 API 安全投影须在 Phase013 实现并验收。Phase015 的 `secretRef` 直接引用现有 `ApiKeyConfig.id`；不另造 secret store。`credentialRequirement=NONE` 不解密且不发凭据，REQUIRED 的普通调用只解析 ACTIVE 行；这些治理模型与调用行为不由 Phase010 提前生产。验收范围见 [Phase010](phase010.md)。
+
 ## 可执行规则与验证
 
 <!-- contract:crypto-policy -->

@@ -1,0 +1,75 @@
+{
+  "records": [
+    {
+      "command": "npm install --save-exact bcryptjs@3.0.2 --no-audit --no-fund",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "install",
+        "--save-exact",
+        "bcryptjs@3.0.2",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "\nup to date in 3s\n",
+      "stderr": "",
+      "durationMs": 2744
+    },
+    {
+      "command": "npm install --save-dev --save-exact tsx@4.20.6 --no-audit --no-fund",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "install",
+        "--save-dev",
+        "--save-exact",
+        "tsx@4.20.6",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "\nup to date in 2s\n",
+      "stderr": "",
+      "durationMs": 2624
+    }
+  ],
+  "dependencies": {
+    "bcryptjs": {
+      "version": "3.0.2",
+      "resolved": "https://registry.npmjs.org/bcryptjs/-/bcryptjs-3.0.2.tgz",
+      "integrity": "sha512-k38b3XOZKv60C4E2hVsXTolJWfkGRMbILBIe2IBITXciy5bOsTKot5kDrf3ZfufQtQOUN5mXceUEpU1rTl9Uog==",
+      "license": "BSD-3-Clause",
+      "bin": {
+        "bcrypt": "bin/bcrypt"
+      }
+    },
+    "tsx": {
+      "version": "4.20.6",
+      "resolved": "https://registry.npmjs.org/tsx/-/tsx-4.20.6.tgz",
+      "integrity": "sha512-ytQKuwgmrrkDTFP4LjR0ToE2nqgy886GpvRSpU0JAnrdBYppuY5rLkRUYPU1yCryb24SsKBTL/hlDQAEFVwtZg==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "esbuild": "~0.25.0",
+        "get-tsconfig": "^4.7.5"
+      },
+      "bin": {
+        "tsx": "dist/cli.mjs"
+      },
+      "engines": {
+        "node": ">=18.0.0"
+      },
+      "optionalDependencies": {
+        "fsevents": "~2.3.3"
+      }
+    }
+  },
+  "networkScope": "PUBLIC_DEPENDENCY_PREPARATION_ONLY"
+}

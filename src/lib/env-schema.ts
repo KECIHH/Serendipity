@@ -17,7 +17,7 @@ export type EnvRegistryEntry = Readonly<{
   key: string;
   scope: EnvScope;
   producerPhase: number;
-  requiredWhen: "always" | "platform-provided" | "AI_MOCK=false";
+  requiredWhen: "always" | "platform-provided" | "AI_MOCK=false" | "seed";
   secret: boolean;
   schema: EnvSchema;
   defaultValue?: string;
@@ -147,7 +147,7 @@ export const envRegistry = [
     key: "ADMIN_EMAIL",
     scope: "cli",
     producerPhase: 10,
-    requiredWhen: "always",
+    requiredWhen: "seed",
     secret: false,
     schema: "non-empty",
     documentInExample: false,
@@ -157,7 +157,7 @@ export const envRegistry = [
     key: "ADMIN_INITIAL_PASSWORD",
     scope: "cli",
     producerPhase: 10,
-    requiredWhen: "always",
+    requiredWhen: "seed",
     secret: true,
     schema: "string",
     documentInExample: false,
@@ -168,6 +168,7 @@ export const envRegistry = [
 export type EnvParserContext = Readonly<{
   registry?: readonly EnvRegistryEntry[];
   currentPhase?: number;
+  command?: "seed";
 }>;
 
 type ValueForSchema<T extends EnvSchema> = T extends "boolean-literal"
@@ -235,6 +236,7 @@ export function requiredEnvKeys(
         (entry) =>
           entry.scope === scope &&
           entry.producerPhase <= (context.currentPhase ?? ENV_SCHEMA_PHASE) &&
+          (entry.requiredWhen !== "seed" || context.command === "seed") &&
           entry.requiredWhen !== "platform-provided",
       )
       .map((entry) => entry.key),
@@ -301,7 +303,9 @@ export function parseEnv(
   validateEnvRegistry(registry);
   const entries = registry.filter(
     (entry) =>
-      entry.scope === scope && entry.producerPhase <= (context.currentPhase ?? ENV_SCHEMA_PHASE),
+      entry.scope === scope &&
+      entry.producerPhase <= (context.currentPhase ?? ENV_SCHEMA_PHASE) &&
+      (entry.requiredWhen !== "seed" || context.command === "seed"),
   );
   const missing: string[] = [];
   const invalid: string[] = [];

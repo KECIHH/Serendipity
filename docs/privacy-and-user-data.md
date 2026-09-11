@@ -65,6 +65,16 @@ DATA_RECEIPT/FEEDBACK_RECEIPT 在客户端创建请求前由 Web Crypto 生成 2
 
 日志在首边界剥离敏感 header，再递归白名单输出机器块 logging 允许的安全标识/枚举/有界数字。denylist 禁止密码、hash/envelope/原始秘密、Cookie、token/receipt、完整 Prompt/rawOutput/rawResponse/query、聊天/私人文本、邮箱/电话/地址/坐标；即使放在深层未知字段或伪装安全 message 也不记录。普通日志不保留任意自由文本；原始调试数据的受控持久化必须按自身类别授权/期限，不能借日志旁路。指标标签低基数，不含 URL、地点名、userId 或敏感查询。
 
+### Phase010 秘密存储与 seed 来源
+
+ApiKeyConfig 只保存 exact AES-256-GCM envelope、完整 keyFingerprint、主密钥标识及生命周期字段；格式、JCS、AAD 与不可变列由 [加密契约](crypto.md#phase010-存储实现与消费边界) 统一定义。完整 fingerprint 仅用于服务端去重/追溯，管理展示短值运行时派生；明文、完整 fingerprint、encryptedKey/envelope 和 encryptionKeyId 不进入用户/ADMIN 响应、普通日志、trace 或 Gate evidence。`secretRef` 将是现有 `ApiKeyConfig.id`，不能借引用建立第二份凭据存储。撤销限制新调用，不等于已经实现历史秘密的保留清理；相应维护能力仍按其生产阶段交付。
+
+Phase010 基础 seed 只创建本次隔离 run 的合成管理员与三项内部非秘密 SystemConfig。ADMIN_INITIAL_PASSWORD 只从 CLI 命令环境读取，CSPRNG 生成值仅在被忽略的受控本地准备区保留；数据库只收到 bcryptjs cost12 hash。缺变量或校验失败不回显邮箱、密码或 URL。seed 不读取、生成或复制 Provider 凭据，不创建 ApiKeyConfig 行，也不提前生产 Phase015 的治理表或数据。
+
+管理员创建与 `SEED_ADMIN_CREATE`、配置创建与 `SEED_CONFIG_CREATE` 均同事务；使用既有 SYSTEM/MIGRATION 主体，actorId/actorEmailSnapshot 均为 null。审计只增加受限 `sourceMarker/seedRunId/seedFingerprint` 及安全计数/结果：固定来源为 PHASE010_BASE_SEED_V1，seedRunId 是可稳定重读的非秘密 disposable-run 标识；seedFingerprint 对已落库管理员行的指定字段（包含加盐 bcrypt hash）连同来源取 JCS SHA-256，精确字段见 [数据库规范](database.md#seed-执行规则)。不直接 hash 明文密码，不将管理员邮箱、bcrypt hash 或指纹输入对象放进 detailJson；普通日志和证据也不输出该行指纹值。
+
+重放同时验证来源、当前行指纹、ADMIN/ACTIVE 和 bcrypt 密码；仅全部匹配才零写入返回。已有普通用户、停用管理员、来源缺失或修改后的凭据/配置均拒绝，seed 不承担提权、启用、重置口令或恢复生产账户的职责。重复 seed 也不追加独立 run 审计。验收在归档 stdout/stderr 前扫描实际原始输出，证据只记录退出码、安全分类、计数与文件 hash；密文虽已加密仍不得作为 fixture 内容复制到 evidence。保留/ERASE 继续遵循本文件既有类别规则，不由 seed 扩大用途或期限。
+
 ## 删除、归档与恢复
 
 ### Phase009 审计落库边界

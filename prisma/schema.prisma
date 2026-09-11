@@ -17,6 +17,12 @@ enum UserStatus {
   DISABLED
 }
 
+enum ApiKeyStatus {
+  ACTIVE
+  DISABLED
+  REVOKED
+}
+
 enum TravelStatus {
   DRAFT
   NEEDS_INFO
@@ -134,4 +140,22 @@ model AuditLog {
   @@index([action, createdAt])
   @@index([requestId])
   @@index([traceId])
+}
+
+model ApiKeyConfig {
+  id              String       @id @default(cuid())
+  name            String
+  provider        String
+  encryptedKey    String       @db.Text
+  encryptionKeyId String
+  envelopeVersion Int          @default(1)
+  keyFingerprint  String       @unique @db.Char(64)
+  status          ApiKeyStatus @default(ACTIVE)
+  lastUsedAt      DateTime?     @db.Timestamptz(3)
+  revokedAt       DateTime?     @db.Timestamptz(3)
+  createdAt       DateTime      @default(now()) @db.Timestamptz(3)
+  updatedAt       DateTime      @updatedAt @db.Timestamptz(3)
+  revision        Int          @default(0)
+
+  @@index([provider, status])
 }

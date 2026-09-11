@@ -12,7 +12,9 @@ let fixturePrefix: string;
 
 beforeAll(async () => {
   expect(target.hostname).toBe("127.0.0.1");
-  expect(target.pathname).toMatch(/^\/phase00[6789]_disposable_[a-f0-9]{12}(?:_[a-z0-9_]+)?$/);
+  expect(target.pathname).toMatch(
+    /^\/phase(?:00[6789]|010)_disposable_[a-f0-9]{12}(?:_[a-z0-9_]+)?$/,
+  );
   await connectDb();
   const [identity] = await db.$queryRaw<
     Array<{ name: string; version: string; marker: string | null }>
@@ -23,13 +25,11 @@ beforeAll(async () => {
   `;
   expect(identity.name).toBe(target.pathname.slice(1));
   expect(identity.version).toMatch(/^17\./);
-  const markedPhase = /^\/phase00([789])_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(
+  const markedPhase = /^\/phase(00[789]|010)_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(
     target.pathname,
   );
   if (markedPhase)
-    expect(identity.marker).toBe(
-      `serendipity-phase00${markedPhase[1]}-disposable:${markedPhase[2]}`,
-    );
+    expect(identity.marker).toBe(`serendipity-phase${markedPhase[1]}-disposable:${markedPhase[2]}`);
 });
 beforeEach(() => {
   createdUserIds = new Set<string>();

@@ -183,10 +183,10 @@ Phase008 的实际标量列 exact 为 `id/travelRecordId/role/kind/content/conte
 | name | String | 否 | 管理名称 |
 | provider | String | 否 | 注册Provider标识，不是客户端URL |
 | encryptedKey | String @db.Text | 否 | Phase010首产；版本化AES-256-GCM envelope的RFC8785 JCS canonical JSON文本；解析后Schema校验，保留规范字节 |
-| encryptionKeyId | String | 否 | 由当前加密key的非秘密指纹派生 |
+| encryptionKeyId | String | 否 | 解码后32-byte主密钥的SHA-256小写64位hex，与envelope.keyId一致 |
 | envelopeVersion | Int | 否 | default 1；envelope协议版本，解密必须匹配 |
 | keyFingerprint | String @db.Char(64) | 否 | 完整SHA-256小写hex，unique；ADMIN仅运行时派生短指纹 |
-| status | ApiKeyStatus | 否 | ACTIVE/DISABLED/REVOKED |
+| status | ApiKeyStatus | 否 | default ACTIVE；ACTIVE/DISABLED/REVOKED |
 | revision | Int | 否 | Phase010首产；default 0，非负CHECK；名称/状态实际变更CAS+1，不复用updatedAt |
 | lastUsedAt | DateTime | 是 | 尚未调用为null |
 | revokedAt | DateTime | 是 | REVOKED时非空且不可恢复 |
@@ -194,6 +194,12 @@ Phase008 的实际标量列 exact 为 `id/travelRecordId/role/kind/content/conte
 | updatedAt | DateTime | 否 | 生命周期/lastUsedAt更新，不允许覆盖密文 |
 
 无user归属。轮换创建新行，经KeyRotationRun验证全部活跃引用后原子切换；DISABLED可恢复，REVOKED终态。被ProviderConfigVersion引用时Restrict，@@index([provider,status])支撑候选/列表。旧envelope不可原地重加密覆盖，key ring轮换保留encryptionKeyId和旧版本解密能力直到受控清理。
+
+Phase010 的新增迁移为此表建立 fingerprint、envelope、revision 与 revocation CHECK，以及更新保护 trigger。`id/provider/encryptedKey/encryptionKeyId/envelopeVersion/keyFingerprint/createdAt` 全部不可变；`name/status` 任一实际改变时 revision 必须且只能加1，两者均不变时 revision 必须保持原值。`lastUsedAt/updatedAt` 不使 revision 递增。`status=REVOKED` 与 `revokedAt IS NOT NULL` 必须等价，进入 REVOKED 后状态和 revokedAt 均不可再改；ACTIVE/DISABLED 的 revokedAt 必须为 null。管理入口对 expectedVersion 的授权与 CAS 由 Phase013 实现，不能把当前数据库 trigger 当作已实现的管理服务。
+
+存储校验与 `src/server/api-key-envelope.ts` 共享 exact v1 边界：只允许 `version/keyId/algorithm/iv/ciphertext/tag` 六字段、规范 RFC8785 JCS 字节、列绑定及标准 padded base64；未知/重复字段、非规范 JSON、错误类型、超长及不匹配的列均拒绝。完整 envelope 文本上限22500 UTF-8 bytes；IV/tag/ciphertext 的解码长度分别为12/16/1–16384 bytes。JCS/AAD、明文规范化与两种指纹的含义以 [加密契约](crypto.md) 为准。结构合法不代表已经验证 GCM tag，实际加解密由 Phase013 消费该 parser 和 `apiKeyAad`。
+
+Phase010 migration 与基础 seed 均不创建 ApiKeyConfig 行。未来 `ProviderConfigVersion.secretRef` 就是本表现有 `id` 的引用，Phase015 才创建该治理表及外键；本阶段没有第二张 secret 表、平行明文字段或占位 Provider 记录。实现范围与验收要求见 [Phase010](phase010.md)。
 
 ### 2.6 AuditLog
 
@@ -217,6 +223,8 @@ Phase009 已首产此表，精确字段以该生产卡为准：actor kind 是服
 action/targetType 最多64字符，targetId/actorId 最多128，邮箱快照最多254，requestId/traceId 为服务端生成的36字符 UUID v4，ipHash 为 Char(64) 小写 HMAC，userAgentSummary 为 VarChar(256)。SYSTEM 两个主体字段均 null，detailJson.systemActor 限 MIGRATION/SCHEDULER/MAINTENANCE。只有可信服务器生成的 opaque context 可传入 helper。递归摘要的完整输入/脱敏输出各限16KiB、8层和1024节点；数据库另设32KiB JSONB文本上限，给其空白序列化开销留界限。
 
 `src/server/services/audit-log-service.ts` 的 writeAuditLog 只接受 runAuditedTransaction 用私有 WeakMap 登记的真实交互事务客户端（拒绝全局 delegate 包装、复制和过期对象），写成功返回安全引用，验证或持久化失败抛出安全错误并由调用事务回滚，调用方吞错、未等待审计或没有成功审计也不能提交。关键业务变更和审计同事务，禁止吞错成功或两次提交。初始封闭 action/target registry 为 CONFIG_UPDATE→SystemConfig、USER_DISABLE→User、API_KEY_ROTATE→ApiKeyConfig；未来动作由首次消费者显式登记。
+
+Phase010 增加 `SEED_ADMIN_CREATE→User`、`SEED_CONFIG_CREATE→SystemConfig` 及受限来源摘要，主体复用 SYSTEM/MIGRATION，保持既有 AuditLog CHECK 不变。CLI 使用 helper 自行创建的 Prisma 连接和 Serializable 事务，不接受调用方伪造事务包装。完全验证后的幂等 no-op 用内部信号中止只读事务并返回 UNCHANGED，不产生审计或业务写入，也不放宽“成功提交必须包含已等待的成功审计”边界。
 
 运行期应用角色非 table/schema owner、非 superuser、无 DDL/角色提升能力，只授审计 SELECT/INSERT。UPDATE/DELETE 行 trigger 与 TRUNCATE statement trigger 拒绝篡改，包括意外授予 DML 权限时。实际 User 删除产生的嵌套 FK action 仅可清 actorId，并核验旧父行消失及其他字段逐值不变，保留邮箱快照；普通直接置空也失败。物理清理和 ERASE 去标识责任仍属后续受控 maintenance role/procedure，必须另留审计；当前不存在应用可用的清理旁路。完整边界及合成实库验证见 [Phase009](phase009.md)。
 
@@ -569,7 +577,23 @@ PostgreSQL不会自动为外键创建引用列索引；主键和unique自带索�
 
 ## seed 执行规则
 
-Phase010 seed只在development/test幂等写入环境变量提供的管理员账户和非敏感SystemConfig，ADMIN_EMAIL经normalizeEmailV1，ADMIN_INITIAL_PASSWORD经UTF-8 12-72 bytes校验；秘密不写文档或日志。重复seed不覆盖已有密码、管理员修改和业务数据，不产生重复行；production直接拒绝。
+Phase010 的 `npm run db:seed` 由 `prisma/seed.ts` 读取统一 `env-cli` parser；`ADMIN_EMAIL/ADMIN_INITIAL_PASSWORD` 登记为 `scope=cli`、`producerPhase=10`、`requiredWhen=seed`，不属于 Web 启动必需集，也不进入 `.env.example`。入口只消费它们和 `NODE_ENV/DATABASE_URL`，不要求 Auth 或 Provider 凭据。必须显式指定 development/test；production、缺失或未知环境在创建数据库客户端前拒绝。目标仅限与本次 run 标记一致的 loopback disposable PostgreSQL17，核对数据库名、comment、最小权限运行角色和全部已应用迁移的名称/checksum/完成状态后才读取业务表；具体命名与部署限制见 [托管规范](hosting.md)。
+
+`ADMIN_EMAIL` 经 normalizeEmailV1；密码不 trim、不改大小写或 Unicode，必须是合法 UTF-8 12–72 bytes，包含大小写字母、数字和非空白特殊字符，拒绝控制字符，使用 bcryptjs cost12。合成密码由 CSPRNG 生成并仅用于隔离环境；原值不写文档、输出、审计或证据。基础 seed 只 create，不用 upsert/update：规范邮箱不存在时创建 ADMIN/ACTIVE；已存在时，仅匹配本次 seed 来源的 ACTIVE ADMIN 才可视为重放。USER、DISABLED ADMIN、无来源的管理员或任一来源/凭据冲突均失败，不提权、启用或重置口令。
+
+来源保存在同事务的 append-only 创建审计中，不增加 User/SystemConfig 的 seed 平行列。`sourceMarker=PHASE010_BASE_SEED_V1`，稳定的非秘密 `seedRunId` 由 disposable 命名中的阶段/项目标识和12位运行标识派生。管理员创建审计的 `seedFingerprint` 是以下对象的 JCS UTF-8 SHA-256：`sourceMarker/seedRunId/id/email/passwordHash/role/status/revision/sessionVersion/createdAt`，createdAt 使用 ISO 时间；不保存明文密码的直接摘要。重放要求唯一匹配的 SEED_ADMIN_CREATE、目标行 ID、MIGRATION 系统主体、来源、当前行指纹及 bcrypt cost12 密码验证全部一致。完整匹配才返回 UNCHANGED；变更邮箱或已改动的角色、状态、口令、revision/sessionVersion、来源指纹不会触发修复性写入。
+
+冻结基础配置如下，均为 `group=GENERAL`、`isPublic=false`，不进入 publicProjection。已有同 key 时，valueJson、group 和内部可见性必须一致；不一致即整事务失败。相同内容保持原有描述、revision、时间及操作者信息，缺失项才创建。
+
+| key | valueJson |
+|---|---|
+| planner.quick.defaultDurationDays | 3 |
+| planner.quick.defaultTravelerCount | 1 |
+| planner.quick.defaultPace | "moderate" |
+
+首次空库应得到1个管理员、3项配置及4条创建审计；同输入重复 seed 新增/更新业务行和新增审计均为0。业务创建和审计在同一 Serializable 事务；仅 serialization/unique 冲突按固定25/50/100ms退避最多重试3次，每次重读并验证全部内容。耗尽后只做一次只读核对；缺行或冲突仍非零退出，不能把竞争失败伪装成成功。审计失败回滚本次全部创建。
+
+部署环境变量是不可被 DB 动态突破的硬上限，类型化 SystemConfig 只在该范围内提供运行值；seed 默认值只用于首次缺失项初始化，不覆盖已有配置。完整配置优先级与治理来源见 [托管规范](hosting.md)。Phase010 不插入 ApiKeyConfig，不创建 Prompt、Model、Provider、AiOutputRecord 等治理表或记录，也不将 AI_API_KEY 复制到数据库。
 
 Phase015独立seed创建首次不可变Prompt/Model/Provider/PlanningPolicy版本及对应指针，不存在来源过渡表和搬迁导入。MOCK组合DISABLED、ai.calls.enabled=false，经正式受控服务评测/激活后才显式启用。后续扩Prompt产生新不可变版本，不能更新已激活正文或用seed重置用户状态。
 

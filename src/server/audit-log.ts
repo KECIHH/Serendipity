@@ -9,6 +9,8 @@ export const AUDIT_LOG_ACTIONS = Object.freeze({
   CONFIG_UPDATE: "CONFIG_UPDATE",
   USER_DISABLE: "USER_DISABLE",
   API_KEY_ROTATE: "API_KEY_ROTATE",
+  SEED_ADMIN_CREATE: "SEED_ADMIN_CREATE",
+  SEED_CONFIG_CREATE: "SEED_CONFIG_CREATE",
 } as const);
 
 export type AuditLogAction = keyof typeof AUDIT_LOG_ACTIONS;
@@ -17,6 +19,8 @@ export const AUDIT_ACTION_TARGETS = Object.freeze({
   CONFIG_UPDATE: "SystemConfig",
   USER_DISABLE: "User",
   API_KEY_ROTATE: "ApiKeyConfig",
+  SEED_ADMIN_CREATE: "User",
+  SEED_CONFIG_CREATE: "SystemConfig",
 } as const);
 
 export type AuditTargetType = (typeof AUDIT_ACTION_TARGETS)[AuditLogAction];
@@ -256,6 +260,13 @@ function validateSummary(value: Json): void {
       if (typeof item !== "number" || !Number.isSafeInteger(item) || item < 0) invalid();
     } else if (key === "isPublic" || key === "enabled") {
       if (typeof item !== "boolean") invalid();
+    } else if (key === "sourceMarker") {
+      if (item !== "PHASE010_BASE_SEED_V1") invalid();
+    } else if (key === "seedRunId") {
+      if (typeof item !== "string" || !/^(phase[0-9]{3}|serendipity)_[a-f0-9]{12}$/.test(item))
+        invalid();
+    } else if (key === "seedFingerprint") {
+      if (typeof item !== "string" || !/^[a-f0-9]{64}$/.test(item)) invalid();
     } else if (key === "changedFields") {
       if (
         !Array.isArray(item) ||

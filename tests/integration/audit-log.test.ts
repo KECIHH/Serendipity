@@ -12,6 +12,7 @@ import {
   AUDIT_INDEXES,
   AuditFixture,
   connectPhase009Database,
+  readPhase009Target,
   rejectsOperation,
   sensitiveCanary,
   systemInput,
@@ -22,6 +23,7 @@ const runtimeUrl = process.env.PHASE009_RUNTIME_DATABASE_URL;
 let admin: PrismaClient;
 let app: PrismaClient;
 let fixture: AuditFixture;
+let databasePhase: "009" | "010";
 
 function indexNames(value: unknown): string[] {
   if (Array.isArray(value)) return value.flatMap(indexNames);
@@ -35,6 +37,7 @@ function indexNames(value: unknown): string[] {
 
 describe.skipIf(!databaseUrl)("audit-log real PostgreSQL contract", () => {
   beforeAll(async () => {
+    databasePhase = readPhase009Target(runtimeUrl, true).phase;
     ({ admin, app } = await connectPhase009Database(databaseUrl, runtimeUrl));
   });
   beforeEach(() => {
@@ -233,13 +236,10 @@ describe.skipIf(!databaseUrl)("audit-log real PostgreSQL contract", () => {
     expect(model?.fields.filter(({ kind }) => kind !== "object").map(({ name }) => name)).toEqual(
       AUDIT_FIELDS,
     );
-    expect(Prisma.dmmf.datamodel.models.map(({ name }) => name).sort()).toEqual([
-      "AuditLog",
-      "ChatMessage",
-      "SystemConfig",
-      "TravelRecord",
-      "User",
-    ]);
+    const expectedModels = ["AuditLog", "ChatMessage", "SystemConfig", "TravelRecord", "User"];
+    if (Prisma.dmmf.datamodel.models.some(({ name }) => name === "ApiKeyConfig"))
+      expectedModels.unshift("ApiKeyConfig");
+    expect(Prisma.dmmf.datamodel.models.map(({ name }) => name).sort()).toEqual(expectedModels);
     const columns = await admin.$queryRaw<
       Array<{
         name: string;
@@ -358,7 +358,7 @@ describe.skipIf(!databaseUrl)("audit-log real PostgreSQL contract", () => {
       FROM pg_roles r, pg_class c WHERE r.rolname=current_user AND c.oid='"AuditLog"'::regclass
     `;
     expect(role).toEqual({
-      name: "phase009_app",
+      name: databasePhase === "010" ? "phase010_app" : "phase009_app",
       superuser: false,
       createRole: false,
       createDb: false,
@@ -379,7 +379,10 @@ describe.skipIf(!databaseUrl)("audit-log real PostgreSQL contract", () => {
       () => app.$executeRaw`TRUNCATE TABLE "AuditLog"`,
       () => app.$executeRaw`ALTER TABLE "AuditLog" DISABLE TRIGGER "AuditLog_append_only"`,
       () => app.$executeRaw`DROP TRIGGER "AuditLog_append_only" ON "AuditLog"`,
-      () => app.$executeRaw`SET ROLE phase009_runner`,
+      () =>
+        databasePhase === "010"
+          ? app.$executeRaw`SET ROLE phase010_runner`
+          : app.$executeRaw`SET ROLE phase009_runner`,
     ])
       expect(await rejectsOperation(operation)).toBe(true);
   });
@@ -387,7 +390,10 @@ describe.skipIf(!databaseUrl)("audit-log real PostgreSQL contract", () => {
   for (const operation of ["UPDATE", "DELETE", "TRUNCATE"] as const) {
     it(`append-only: trigger rejects ${operation} even after accidental DML grants`, async () => {
       const ref = await runAuditedTransaction((tx) => writeAuditLog(tx, systemInput(fixture.id())));
-      await admin.$executeRaw`GRANT UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" TO phase009_app`;
+      if (databasePhase === "010")
+        await admin.$executeRaw`GRANT UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" TO phase010_app`;
+      else
+        await admin.$executeRaw`GRANT UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" TO phase009_app`;
       try {
         const rejected = await rejectsOperation(() =>
           operation === "UPDATE"
@@ -399,7 +405,10 @@ describe.skipIf(!databaseUrl)("audit-log real PostgreSQL contract", () => {
         expect(rejected).toBe(true);
         expect(await app.auditLog.findUnique({ where: { id: ref.id } })).not.toBeNull();
       } finally {
-        await admin.$executeRaw`REVOKE UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" FROM phase009_app`;
+        if (databasePhase === "010")
+          await admin.$executeRaw`REVOKE UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" FROM phase010_app`;
+        else
+          await admin.$executeRaw`REVOKE UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" FROM phase009_app`;
       }
     });
   }

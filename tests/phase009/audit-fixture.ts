@@ -75,7 +75,7 @@ export function systemInput(targetId: string | null = null): AuditLogInput {
 export function readPhase009Target(
   value: string | undefined,
   runtime: boolean,
-): { url: URL; runId: string } {
+): { url: URL; runId: string; phase: "009" | "010" } {
   let url: URL;
   try {
     if (value === undefined) throw new Error();
@@ -83,7 +83,7 @@ export function readPhase009Target(
   } catch {
     throw new Error("Phase009 requires an explicit disposable database URL");
   }
-  const match = /^\/phase009_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(url.pathname);
+  const match = /^\/phase(009|010)_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(url.pathname);
   if (
     !match ||
     url.pathname.length > 64 ||
@@ -91,13 +91,13 @@ export function readPhase009Target(
     url.hostname !== "127.0.0.1" ||
     !url.port ||
     url.hash ||
-    url.username !== (runtime ? "phase009_app" : "phase009_runner") ||
+    url.username !== `phase${match[1]}_${runtime ? "app" : "runner"}` ||
     [...url.searchParams.keys()].some(
       (key) => !["connect_timeout", "pool_timeout", "connection_limit"].includes(key),
     )
   )
     throw new Error("Phase009 rejected an unowned database target");
-  return { url, runId: match[1] };
+  return { url, runId: match[2], phase: match[1] as "009" | "010" };
 }
 
 export async function connectPhase009Database(
@@ -115,8 +115,8 @@ export async function connectPhase009Database(
   await connectDb(admin);
   try {
     for (const [client, role] of [
-      [app, "phase009_app"],
-      [admin, "phase009_runner"],
+      [app, `phase${runtime.phase}_app`],
+      [admin, `phase${owner.phase}_runner`],
     ] as const) {
       const [identity] = await client.$queryRaw<
         Array<{ name: string; role: string; version: string; marker: string | null }>
@@ -128,7 +128,7 @@ export async function connectPhase009Database(
         identity?.name !== owner.url.pathname.slice(1) ||
         identity.role !== role ||
         !/^17\./.test(identity.version) ||
-        identity.marker !== `serendipity-phase009-disposable:${owner.runId}`
+        identity.marker !== `serendipity-phase${owner.phase}-disposable:${owner.runId}`
       )
         throw new Error("Phase009 rejected the connected database identity");
     }

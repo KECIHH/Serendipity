@@ -54,7 +54,9 @@ export function readPhase008Target(value: string | undefined): {
   } catch {
     throw new Error("PHASE008_DATABASE_URL must identify this run's disposable database");
   }
-  const name = /^\/phase00([89])_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(target.pathname);
+  const name = /^\/phase(00[89]|010)_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(
+    target.pathname,
+  );
   const allowedOptions = new Set(["schema", "connect_timeout", "pool_timeout", "connection_limit"]);
   if (
     !["postgresql:", "postgres:"].includes(target.protocol) ||
@@ -86,7 +88,7 @@ export async function connectPhase008Database(value: string | undefined): Promis
   if (
     identity?.name !== target.pathname.slice(1) ||
     !/^17\./.test(identity.version) ||
-    identity.marker !== `serendipity-phase00${phase}-disposable:${runId}`
+    identity.marker !== `serendipity-phase${phase}-disposable:${runId}`
   ) {
     await db.$disconnect();
     throw new Error("Phase008 database identity guard rejected the connected target");

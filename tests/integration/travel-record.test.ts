@@ -243,7 +243,9 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
              applied_steps_count AS steps FROM "_prisma_migrations" ORDER BY migration_name
     `;
     const includesAudit = Prisma.dmmf.datamodel.models.some(({ name }) => name === "AuditLog");
-    expect(migrations).toHaveLength(includesAudit ? 4 : 3);
+    const includesApiKey = Prisma.dmmf.datamodel.models.some(({ name }) => name === "ApiKeyConfig");
+    expect(migrations).toHaveLength(includesApiKey ? 5 : includesAudit ? 4 : 3);
+    if (includesApiKey) expect(migrations[4].name).toMatch(/^\d{14}_api_key_config$/);
     if (includesAudit) expect(migrations[3].name).toMatch(/^\d{14}_audit_log$/);
     expect(migrations[0].name).toBe("20260910000000_init_user");
     expect(migrations[1].name).toBe("20260910172735_system_config");
@@ -258,7 +260,9 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
   it("lifecycle-version: model inventory and generated fields contain only current producers", async () => {
     const models = Prisma.dmmf.datamodel.models;
     const auditModels = models.some(({ name }) => name === "AuditLog") ? ["AuditLog"] : [];
+    const apiKeyModels = models.some(({ name }) => name === "ApiKeyConfig") ? ["ApiKeyConfig"] : [];
     expect(models.map(({ name }) => name).sort()).toEqual([
+      ...apiKeyModels,
       ...auditModels,
       "ChatMessage",
       "SystemConfig",
@@ -278,6 +282,7 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
       SELECT tablename AS name FROM pg_tables WHERE schemaname = 'public' ORDER BY tablename
     `;
     expect(tables.map(({ name }) => name)).toEqual([
+      ...apiKeyModels,
       ...auditModels,
       "ChatMessage",
       "SystemConfig",
@@ -341,13 +346,21 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
       JOIN pg_type t ON t.oid = e.enumtypid JOIN pg_namespace n ON n.oid = t.typnamespace
       WHERE n.nspname = 'public' ORDER BY t.typname, e.enumsortorder
     `;
+    const includesApiKey = Prisma.dmmf.datamodel.models.some(({ name }) => name === "ApiKeyConfig");
     expect([...new Set(rows.map(({ name }) => name))]).toEqual([
+      ...(includesApiKey ? ["ApiKeyStatus"] : []),
       "ChatMessageKind",
       "MessageRole",
       "Role",
       "TravelStatus",
       "UserStatus",
     ]);
+    if (includesApiKey)
+      expect(rows.filter(({ name }) => name === "ApiKeyStatus").map(({ value }) => value)).toEqual([
+        "ACTIVE",
+        "DISABLED",
+        "REVOKED",
+      ]);
     expect(rows.filter(({ name }) => name === "TravelStatus").map(({ value }) => value)).toEqual(
       TRAVEL_STATUSES,
     );

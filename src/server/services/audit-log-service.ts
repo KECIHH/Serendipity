@@ -1,7 +1,7 @@
 import "server-only";
 
 import { AsyncLocalStorage } from "node:async_hooks";
-import { Prisma } from "@prisma/client";
+import { Prisma, PrismaClient } from "@prisma/client";
 import { normalizeEmailV1 } from "@/server/auth";
 import {
   AUDIT_ACTION_TARGETS,
@@ -94,33 +94,73 @@ function requireTransaction(tx: AuditTransactionClient): TransactionState {
   return state;
 }
 
-/** Only this boundary can enroll a real client; callers cannot bless wrappers or global delegates. */
+/** Safe classification retains retry semantics without retaining a driver's rejected data. */
+export class AuditTransactionConflictError extends AuditLogError {
+  constructor() {
+    super("INTERNAL_ERROR");
+    this.name = "AuditTransactionConflictError";
+  }
+}
+
+function safeTransactionError(error: unknown): never {
+  if (error instanceof AuditLogError) throw error;
+  if (
+    error instanceof Prisma.PrismaClientKnownRequestError &&
+    ["P2034", "P2002"].includes(error.code)
+  ) {
+    throw new AuditTransactionConflictError();
+  }
+  throw new AuditLogError("INTERNAL_ERROR");
+}
+
+/** Enrollment is private: callers cannot supply transaction wrappers or global delegates. */
+async function enrolledTransaction<T>(
+  client: PrismaClient,
+  operation: (tx: AuditTransactionClient) => Promise<T>,
+  isolationLevel?: Prisma.TransactionIsolationLevel,
+): Promise<T> {
+  if (typeof operation !== "function" || transactionScopes.getStore()) invalid();
+  try {
+    return await client.$transaction(
+      (tx) => {
+        const state: TransactionState = { failed: false, pending: 0, writes: 0 };
+        transactions.set(tx, state);
+        return transactionScopes.run({ client: tx, state }, async () => {
+          try {
+            // This assertion grants only the private provenance brand, after actual Prisma enrollment.
+            const result = await operation(tx as AuditTransactionClient);
+            if (state.failed || state.pending !== 0 || state.writes === 0) {
+              throw new AuditLogError("INTERNAL_ERROR");
+            }
+            return result;
+          } finally {
+            transactions.delete(tx);
+          }
+        });
+      },
+      { isolationLevel, maxWait: 5_000, timeout: 15_000 },
+    );
+  } catch (error: unknown) {
+    return safeTransactionError(error);
+  }
+}
+
 export async function runAuditedTransaction<T>(
   operation: (tx: AuditTransactionClient) => Promise<T>,
 ): Promise<T> {
   if (typeof operation !== "function" || transactionScopes.getStore()) invalid();
   const { db } = await import("@/server/db");
-  try {
-    return await db.$transaction((tx) => {
-      const state: TransactionState = { failed: false, pending: 0, writes: 0 };
-      transactions.set(tx, state);
-      return transactionScopes.run({ client: tx, state }, async () => {
-        try {
-          // This assertion grants only the private provenance brand, after actual Prisma enrollment.
-          const result = await operation(tx as AuditTransactionClient);
-          if (state.failed || state.pending !== 0 || state.writes === 0) {
-            throw new AuditLogError("INTERNAL_ERROR");
-          }
-          return result;
-        } finally {
-          transactions.delete(tx);
-        }
-      });
-    });
-  } catch (error: unknown) {
-    if (error instanceof AuditLogError) throw error;
-    throw new AuditLogError("INTERNAL_ERROR");
-  }
+  return enrolledTransaction(db, operation);
+}
+
+/** CLI-only connection; constructed here, never supplied or enrolled by a caller. */
+export function openAuditedSeedDatabase(databaseUrl: string) {
+  const client = new PrismaClient({ datasourceUrl: databaseUrl, log: [] });
+  return Object.freeze({
+    transaction: <T>(operation: (tx: AuditTransactionClient) => Promise<T>) =>
+      enrolledTransaction(client, operation, Prisma.TransactionIsolationLevel.Serializable),
+    disconnect: () => client.$disconnect(),
+  });
 }
 
 function prepare(
@@ -201,9 +241,8 @@ export async function writeAuditLog(
     return { id: row.id, action: data.action, createdAt: row.createdAt };
   } catch (error: unknown) {
     state.failed = true;
-    if (error instanceof AuditLogError) throw error;
     // Driver diagnostics can contain the rejected row; they never cross this boundary.
-    throw new AuditLogError("INTERNAL_ERROR");
+    return safeTransactionError(error);
   } finally {
     state.pending -= 1;
   }

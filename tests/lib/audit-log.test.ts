@@ -268,6 +268,8 @@ describe("audit-log pure boundary", () => {
       "CONFIG_UPDATE",
       "USER_DISABLE",
       "API_KEY_ROTATE",
+      "SEED_ADMIN_CREATE",
+      "SEED_CONFIG_CREATE",
     ]);
   });
 });

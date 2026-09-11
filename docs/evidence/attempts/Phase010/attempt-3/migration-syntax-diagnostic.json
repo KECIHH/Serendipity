@@ -1,0 +1,24 @@
+{
+  "command": "docker exec -i e853723c15ad0b173f1df1a7bd3a02cf42979bdc65fdeb70fad665073a449913 psql -X -v ON_ERROR_STOP=1 -U phase010_runner -d phase010_disposable_426ad15d2619_syntax_probe",
+  "executable": "docker.exe",
+  "arguments": [
+    "exec",
+    "-i",
+    "e853723c15ad0b173f1df1a7bd3a02cf42979bdc65fdeb70fad665073a449913",
+    "psql",
+    "-X",
+    "-v",
+    "ON_ERROR_STOP=1",
+    "-U",
+    "phase010_runner",
+    "-d",
+    "phase010_disposable_426ad15d2619_syntax_probe"
+  ],
+  "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+  "exitCode": 3,
+  "signal": null,
+  "timedOut": false,
+  "stdout": "CREATE TYPE\nCREATE TABLE\nCREATE INDEX\nCREATE INDEX\nCREATE FUNCTION\nCREATE FUNCTION\nALTER TABLE\n",
+  "stderr": "ERROR:  syntax error at end of input\nLINE 10: ...status) IS DISTINCT FROM ROW(OLD.name, OLD.status) THEN 1 EL...\n                                                              ^\n",
+  "durationMs": 264
+}

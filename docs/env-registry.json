@@ -7,7 +7,10 @@
     "secret": true,
     "schema": "postgresql-url",
     "documentInExample": true,
-    "readerPaths": ["src/lib/env.ts", "vitest.setup.ts"]
+    "readerPaths": [
+      "src/lib/env.ts",
+      "vitest.setup.ts"
+    ]
   },
   {
     "key": "AUTH_SECRET",
@@ -17,7 +20,10 @@
     "secret": true,
     "schema": "secret-min-length:32",
     "documentInExample": true,
-    "readerPaths": ["src/lib/env.ts", "vitest.setup.ts"]
+    "readerPaths": [
+      "src/lib/env.ts",
+      "vitest.setup.ts"
+    ]
   },
   {
     "key": "ENCRYPTION_KEY",
@@ -27,7 +33,10 @@
     "secret": true,
     "schema": "base64-bytes:32",
     "documentInExample": true,
-    "readerPaths": ["src/lib/env.ts", "vitest.setup.ts"]
+    "readerPaths": [
+      "src/lib/env.ts",
+      "vitest.setup.ts"
+    ]
   },
   {
     "key": "AI_API_KEY",
@@ -37,7 +46,10 @@
     "secret": true,
     "schema": "string",
     "documentInExample": true,
-    "readerPaths": ["src/lib/env.ts", "vitest.setup.ts"]
+    "readerPaths": [
+      "src/lib/env.ts",
+      "vitest.setup.ts"
+    ]
   },
   {
     "key": "AI_BASE_URL",
@@ -48,7 +60,10 @@
     "schema": "https-url",
     "defaultValue": "https://api.deepseek.com",
     "documentInExample": true,
-    "readerPaths": ["src/lib/env.ts", "vitest.setup.ts"]
+    "readerPaths": [
+      "src/lib/env.ts",
+      "vitest.setup.ts"
+    ]
   },
   {
     "key": "AI_MODEL",
@@ -59,7 +74,10 @@
     "schema": "non-empty",
     "defaultValue": "deepseek-chat",
     "documentInExample": true,
-    "readerPaths": ["src/lib/env.ts", "vitest.setup.ts"]
+    "readerPaths": [
+      "src/lib/env.ts",
+      "vitest.setup.ts"
+    ]
   },
   {
     "key": "AI_MOCK",
@@ -70,7 +88,10 @@
     "schema": "boolean-literal",
     "defaultValue": "true",
     "documentInExample": true,
-    "readerPaths": ["src/lib/env.ts", "vitest.setup.ts"]
+    "readerPaths": [
+      "src/lib/env.ts",
+      "vitest.setup.ts"
+    ]
   },
   {
     "key": "AI_TIMEOUT_MS",
@@ -81,7 +102,10 @@
     "schema": "integer-min:1000",
     "defaultValue": "60000",
     "documentInExample": true,
-    "readerPaths": ["src/lib/env.ts", "vitest.setup.ts"]
+    "readerPaths": [
+      "src/lib/env.ts",
+      "vitest.setup.ts"
+    ]
   },
   {
     "key": "AI_DAILY_COST_LIMIT",
@@ -92,7 +116,10 @@
     "schema": "finite-positive-number",
     "defaultValue": "5",
     "documentInExample": true,
-    "readerPaths": ["src/lib/env.ts", "vitest.setup.ts"]
+    "readerPaths": [
+      "src/lib/env.ts",
+      "vitest.setup.ts"
+    ]
   },
   {
     "key": "NODE_ENV",
@@ -102,7 +129,10 @@
     "secret": false,
     "schema": "string",
     "documentInExample": false,
-    "readerPaths": ["next.config.ts", "vitest.config.ts"]
+    "readerPaths": [
+      "next.config.ts",
+      "vitest.config.ts"
+    ]
   },
   {
     "key": "PORT",
@@ -112,26 +142,32 @@
     "secret": false,
     "schema": "string",
     "documentInExample": false,
-    "readerPaths": ["next.config.ts"]
+    "readerPaths": [
+      "next.config.ts"
+    ]
   },
   {
     "key": "ADMIN_EMAIL",
     "scope": "cli",
     "producerPhase": 10,
-    "requiredWhen": "always",
+    "requiredWhen": "seed",
     "secret": false,
     "schema": "non-empty",
     "documentInExample": false,
-    "readerPaths": ["src/lib/env-cli.ts"]
+    "readerPaths": [
+      "src/lib/env-cli.ts"
+    ]
   },
   {
     "key": "ADMIN_INITIAL_PASSWORD",
     "scope": "cli",
     "producerPhase": 10,
-    "requiredWhen": "always",
+    "requiredWhen": "seed",
     "secret": true,
     "schema": "string",
     "documentInExample": false,
-    "readerPaths": ["src/lib/env-cli.ts"]
+    "readerPaths": [
+      "src/lib/env-cli.ts"
+    ]
   }
 ]
