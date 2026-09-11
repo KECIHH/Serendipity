@@ -1,0 +1,1032 @@
+{
+  "schemaVersion": "agent-gate-v1",
+  "phase": 10,
+  "attemptId": "attempt-7",
+  "status": "PASS",
+  "simulation": true,
+  "operatorMode": "AGENT_ONLY_AUTOMATED_NEW_BUILD",
+  "environment": {
+    "isolated": true,
+    "syntheticUsers": true,
+    "providerMode": "local-adapter",
+    "productionTraffic": false
+  },
+  "artifactCommit": "0d2a5eb5c7d3c7cfe33720628598d203c6da527f",
+  "requiredCaseIds": [
+    "Phase010:migration",
+    "Phase010:first-seed",
+    "Phase010:repeated-seed",
+    "Phase010:concurrent-seed",
+    "Phase010:secret-privilege",
+    "Phase010:governance-absence"
+  ],
+  "results": [
+    {
+      "testCaseId": "Phase010:migration",
+      "command": "node docs/phase-plans/verify-phase010.mjs --case migration",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:95b30d60d3e8a208d962ded3f0597a9c39616be3eb6953dbb8a3b2288605fb32",
+      "outputHash": "sha256:32cdf7175e366289a2a39596dcb75ea816b046a2ecc7de3ff0eceb9455425084",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/integration/api-key-schema.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase010/attempt-7/migration.json",
+        "expected": "Exactly one Prisma-generated additive api_key_config migration replays from Phase009; earlier tables/data/migration bytes stay unchanged. ApiKeyConfig has the exact fields/indexes, full unique lowercase fingerprint, bounded canonical padded-base64/JCS envelope with exact column bindings, nonnegative revision, consistent revocation timestamps, immutable identity/provider/ciphertext and irreversible REVOKED lifecycle. Name/status changes alone increment revision; malformed/duplicate/unknown/oversize/column-mismatched envelopes and invalid state transitions are rejected. Generate/status/drift/type checks pass."
+      }
+    },
+    {
+      "testCaseId": "Phase010:first-seed",
+      "command": "node docs/phase-plans/verify-phase010.mjs --case first-seed",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:5ebf619de6c1e3b3fe3742a4b9f9994c22db1fd63012b4cff74ed7655ca142fe",
+      "outputHash": "sha256:381f506095703c599b2867d78adfc8cff8c2e7a3d6e1f55e65108dffaff071b1",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/integration/seed.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase010/attempt-7/first-seed.json",
+        "expected": "On an explicitly marked disposable development/test PostgreSQL17 database, the real db:seed CLI creates exactly one normalized ADMIN/ACTIVE, three frozen internal SystemConfig defaults and same-transaction append-only creation audits. bcryptjs cost12 verifies the CSPRNG password without persisting plaintext. Seed provenance has a stable nonsecret seedRunId/source marker and an administrator-row fingerprint. Missing/invalid input, ambiguous target, migration drift and audit failure exit nonzero without credential/URL disclosure or partial writes."
+      }
+    },
+    {
+      "testCaseId": "Phase010:repeated-seed",
+      "command": "node docs/phase-plans/verify-phase010.mjs --case repeated-seed",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:5ebf619de6c1e3b3fe3742a4b9f9994c22db1fd63012b4cff74ed7655ca142fe",
+      "outputHash": "sha256:20492fd1e14ba0c6c0acc8b646a9b1eba7fdda6e0ec65a957159668dd286e5d5",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/integration/seed.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase010/attempt-7/repeated-seed.json",
+        "expected": "The same seed input creates/updates zero administrator/config/audit rows on repetition. Password hash, creation timestamps, role/status/sessionVersion/revision and every config value remain identical. Only the matching previously seeded administrator and fingerprint count as replay; changed password, email, source marker, fingerprint, privilege/status or config content is rejected without mutation."
+      }
+    },
+    {
+      "testCaseId": "Phase010:concurrent-seed",
+      "command": "node docs/phase-plans/verify-phase010.mjs --case concurrent-seed",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:5ebf619de6c1e3b3fe3742a4b9f9994c22db1fd63012b4cff74ed7655ca142fe",
+      "outputHash": "sha256:7d19be486d016aef4751805e26e4b5cc825b3ecdef7d158fee48bcaa9b24d52c",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/integration/seed.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase010/attempt-7/concurrent-seed.json",
+        "expected": "Two independent real seed CLI processes from the same initially empty fixture produce one administrator, one row per key and one audit per creation. Serializable/unique conflicts use only three fixed bounded retries, re-read and validate all existing content; exhausted conflicts get one read-only reconciliation and never silently succeed with missing or conflicting rows. No partial or duplicate rows remain."
+      }
+    },
+    {
+      "testCaseId": "Phase010:secret-privilege",
+      "command": "node docs/phase-plans/verify-phase010.mjs --case secret-privilege",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:5ebf619de6c1e3b3fe3742a4b9f9994c22db1fd63012b4cff74ed7655ca142fe",
+      "outputHash": "sha256:3986c78441141217249584a8c6aac6d308ae56bd0b79843d21700bfba2b5caa0",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/integration/seed.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase010/attempt-7/secret-privilege.json",
+        "expected": "Missing variables, invalid email, weak/overlong password, production/unknown environment, unowned database, pre-existing USER, DISABLED admin, unproven admin and conflicting config fail closed with no changes. Schema/migration/seed/output/evidence contain no generated password, provider-key pattern or encryptedKey value; raw stdout/stderr scans precede safe archival. Isolated create-only-to-update and removed-production-guard mutations turn the original assertions red with actual nonzero exits; restored tests pass. Audit failure rolls back every business write."
+      }
+    },
+    {
+      "testCaseId": "Phase010:governance-absence",
+      "command": "node docs/phase-plans/verify-phase010.mjs --case governance-absence",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:95b30d60d3e8a208d962ded3f0597a9c39616be3eb6953dbb8a3b2288605fb32",
+      "outputHash": "sha256:0ca44cb6819fdb00116f3ad1380e91a62a2245cf82113b32b4456930fe6bad1f",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/integration/api-key-schema.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase010/attempt-7/governance-absence.json",
+        "expected": "The migration and base seed create zero ApiKeyConfig rows and no Prompt/Model/Provider/AiOutputRecord governance tables or records. No temporary governance models or parallel secret fields exist. All Phase006-009 domain/schema/audit regressions, the full product quality commands, exact evidence/hash/failure-chain checks and independent Agent review pass for M2 closure."
+      }
+    }
+  ],
+  "commands": [
+    {
+      "command": "node docs/phase-plans/verify-phase010.mjs --case migration",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase010.mjs --case first-seed",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase010.mjs --case repeated-seed",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase010.mjs --case concurrent-seed",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase010.mjs --case secret-privilege",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase010.mjs --case governance-absence",
+      "exitCode": 0
+    }
+  ],
+  "inputs": [
+    {
+      "path": ".env.example",
+      "sha256": "0394c4d5dd9452744df7692fc313ecb7e4981dfe9ace51e25fc4d00d9c7edc06"
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "5f52d486cab522fa6daa07235ca6c5ff8131ba803fb675bb2db588a7a1f1f7e4"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "eb3d88b97ff365a767b5b3488f3f5e889fd13f4ee1036b99e974ee7c3a17531b"
+    },
+    {
+      "path": "docs/agent-execution-contract.md",
+      "sha256": "2919a173e60f0ed50fbf4839a5d8c96bc836afd032410cb012186026736688a2"
+    },
+    {
+      "path": "docs/crypto.md",
+      "sha256": "c1fc7151ae6f093b9ec34d163583531f76168d9271a8253237c3cbcc5e48eb8f"
+    },
+    {
+      "path": "docs/database.md",
+      "sha256": "986ca877386c4f4a37ac81d60d82156e2c03e9036585c5c7b23460f265298922"
+    },
+    {
+      "path": "docs/env-registry.json",
+      "sha256": "492bff3fe81aab93e0fad0be17772a4ba19f6401f3ef6a9dded7d5c1b6de6bcf"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-1/attempt.json",
+      "sha256": "5338d5dc8a380e757e79f3fbff50a3723e6ae25c3bdad4d2930b90b1cd1b5a31"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-1/frozen-plan.json",
+      "sha256": "969ce1b9713b7850773c766c16c798d31e46eb635864b2b775e542eaccbb2a0f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-2/attempt.json",
+      "sha256": "ee38be3048cc1a61f0f0737774f4791c0c01fb07a184427aceca675104fea91b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-2/frozen-plan.json",
+      "sha256": "4ef683796297f8ec69e33c0185ec2c28c0f0f0e19fd57844c30b49b30e491235"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-3/attempt.json",
+      "sha256": "5b74a2999583f26473e151c55a9598fc4cd4dff01061510e9c249dd9dcdc7af7"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-3/frozen-plan.json",
+      "sha256": "9924c1f70ed6dde13a07c5d555085bc2cf77c3236b31335ac06552eb8387c977"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-3/migration-syntax-diagnostic.json",
+      "sha256": "0e678a0917efe87ffe3748abbef47d851e775b40493e0385158a6cfbde068314"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-4/attempt.json",
+      "sha256": "1491e7cde537683daa808c4937ff2c345545277dcbe6987984fe65e7d0f1b0e9"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-4/frozen-plan.json",
+      "sha256": "c3d4edbe865886ebab109a8dab99529656063e0618a3f30d64639a9cd8a4a17e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-4/migration-vitest.json",
+      "sha256": "ca4180fafa9810ed4e8ef0e326407cecf9462432758d1387a25c6d77d99c7600"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-5/attempt.json",
+      "sha256": "b0c0bbdef0504916f9b4c66c107cd64c11f4175f595e8bdb6e06d2581c28dbfd"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-5/frozen-plan.json",
+      "sha256": "80eee2210e77d24ddddb12fb0e7ce8757629ac7e2380191eb7211dab53440049"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-5/migration-vitest.json",
+      "sha256": "f286f0294562a226037e774c00b5d0212fb5d7fc0b06625c46fd62f7c414b318"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-5/migration.json",
+      "sha256": "c831c1e4f46d03ce2d6382fd4d4708786ff7b274b5e01792e9a0a4db6cca7859"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-5/seed-actor-diagnostic.json",
+      "sha256": "d32d8a052eb1a73ebee9bc5ddacc0a64d1cacefbe3aea648addef92c644aee2b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/all-tests-vitest.json",
+      "sha256": "5fc3fcc73aa26fee570bb65dfd87502a841d7f52db9844c013f4cca51c8bbf07"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/attempt.json",
+      "sha256": "8c1dcab8fa07eea0001aedfd1b3324a7d8b120f50fd2b44328ba56ac17c0ec60"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/cli-network.json",
+      "sha256": "be6e36ff90bba023d879f85e5fd88589809832981538ad4cd8ab99b273ca0c5d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/concurrent-seed-vitest.json",
+      "sha256": "ea0e2a7a1ba0d6db349a37c1a56ad59d6a738e652ab3f19cb078d91fde1f8b57"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/concurrent-seed.json",
+      "sha256": "03598c51d5711a3e996b59bb9fcf1320dd09e391e4df2e5e92199ce39c3c11f2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/first-seed-vitest.json",
+      "sha256": "60d20a93d7b1d7f38a5a6d705dc7b7b1d0d2989871976733ba4daf0e18671c1e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/first-seed.json",
+      "sha256": "32e63abebbfc4b2ec802c399ad6378608c1b5770a21114dd6060318d46fec5da"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/frozen-plan.json",
+      "sha256": "3b181295dd3818fca0a074727b44a3ab2c1191dbf24d8fce9effa9cbea5cfb09"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/governance-absence-vitest.json",
+      "sha256": "b1f8fe32af1abf4ed2004a8d70efe67d45f2c98235200aa4c9469a6321eb7403"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/governance-absence.json",
+      "sha256": "efdccc0e4947940ed346dc80a8c83cfcfb5c66fd4ee1b167e51af0194338edf5"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/migration-vitest.json",
+      "sha256": "904782da599b03e03a90bcec28fe2ba7e0be5d43c74eecc436ef108a93023587"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/migration.json",
+      "sha256": "e08e0b996c1c0ef78d5713eacb3d2f28a72f83795392b3ceed5bf4b226eeb575"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/mutations/create-only.json",
+      "sha256": "98007f404bf5b0debdd10450a39f94c30813272274599b0dc97a68cbf14d1c0c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/mutations/production-guard.json",
+      "sha256": "97fdc17aca4425aba38ac2750506cbe6c144ae49f19da1a6f8fddda995f94ca3"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/negative-create-only-vitest.json",
+      "sha256": "07b71d0f41912262dc21fdeb2de1ef874a58f8d6bbe3db6b95f2da03c41d13af"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/negative-production-guard-vitest.json",
+      "sha256": "3c934c7611c5fe0f7427db0eb9865aa144e494e5918e1f369a81b1903f456c19"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/repeated-seed-vitest.json",
+      "sha256": "03d532454aca4be8377788a31ca74366b1819ff23bac6792e9ddc455a716eebb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/repeated-seed.json",
+      "sha256": "653c97874feb221a1ac812e59db6580a3f6e5fe836c44577a0ae03f259673207"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/restored-card-tests-vitest.json",
+      "sha256": "751e4ce56523cf11a95296da52739ccd790146a3dd0a3a948ddab2874f359eaf"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/restored-create-only-vitest.json",
+      "sha256": "10489cffc87ffd9278b55c0221348cc7cfaada3c55e9e0ef5c8e303b7c861354"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/restored-production-guard-vitest.json",
+      "sha256": "3ab1d228b4c4573d950903c63f01eb8c2b3f55985fb40846557c7a67c057f5bc"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/secret-privilege-vitest.json",
+      "sha256": "5054a01431fcbef73ae19c1f3f787818d8334ba306700c92765491227feaa32e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-6/secret-privilege.json",
+      "sha256": "c0a837486eda23da3ee511736b2cbf536653405e03797d7d846358c08185289a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/all-tests-vitest.json",
+      "sha256": "9391499912d31ddc144638405859507cbc7021e23e6e3223414c81e44d90c4dc"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/cli-network.json",
+      "sha256": "2053638a403156ba96d46f7830504529933f1241da1721b8ba119f8f08306433"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/concurrent-seed-vitest.json",
+      "sha256": "1b92a1ae70c824c6e76d2553fa8a217c0f1fa94fbcbbf61baa58f0cb70032155"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/concurrent-seed.json",
+      "sha256": "7d19be486d016aef4751805e26e4b5cc825b3ecdef7d158fee48bcaa9b24d52c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/evidence-guards.json",
+      "sha256": "b798f8648d30f64aef8f23f62893a4f5a8e3f2e9b75aab15db632b08eb0e4713"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/first-seed-vitest.json",
+      "sha256": "f8ec2a4e2b9b694cad139560a459ff2f2224730ec2756bbfa63abd7eee0deaaa"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/first-seed.json",
+      "sha256": "381f506095703c599b2867d78adfc8cff8c2e7a3d6e1f55e65108dffaff071b1"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/frozen-plan.json",
+      "sha256": "affe0d5f94491de61a31a151fa02485f6741c2bab221ed8cd4f73d850d746c3e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/governance-absence-vitest.json",
+      "sha256": "d207c862eda5b77b78d506129117bebd4750a9b0e6809d501c26cf75a754b217"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/governance-absence.json",
+      "sha256": "0ca44cb6819fdb00116f3ad1380e91a62a2245cf82113b32b4456930fe6bad1f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/migration-vitest.json",
+      "sha256": "9fcf71cf58620fbcfeeb30db74b4549b9ce1abe339e5b8d582c91f9d8b459a8b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/migration.json",
+      "sha256": "32cdf7175e366289a2a39596dcb75ea816b046a2ecc7de3ff0eceb9455425084"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/mutations/create-only.json",
+      "sha256": "98007f404bf5b0debdd10450a39f94c30813272274599b0dc97a68cbf14d1c0c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/mutations/production-guard.json",
+      "sha256": "97fdc17aca4425aba38ac2750506cbe6c144ae49f19da1a6f8fddda995f94ca3"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/negative-create-only-vitest.json",
+      "sha256": "ee6b3dbb44812a12b79ec31cc745c9d74bded29a1203714b4a28ee7ae3cd5a42"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/negative-production-guard-vitest.json",
+      "sha256": "8277e37f82002948911a761d522c3497570c840b2a35b3471f4fbaac401fd60d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/phase006-user-regression-vitest.json",
+      "sha256": "3b46c6ec40fe40a7610e780032a49143784de8b9157502f3acf9b0a555d8f36d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/quality.json",
+      "sha256": "4e91c570192be48818021a6d6cd2fcc703ea6605badb6758216d8e53b0cdbdb3"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/repeated-seed-vitest.json",
+      "sha256": "931828111cfa917e46d88eb201e16dbf48eba2eb089c4256ac39378f39229e77"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/repeated-seed.json",
+      "sha256": "20492fd1e14ba0c6c0acc8b646a9b1eba7fdda6e0ec65a957159668dd286e5d5"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/restored-card-tests-vitest.json",
+      "sha256": "790ff47b13c378181f6598c57bc8ed493da773bf3e88083e784ebf19dd48c6bc"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/restored-create-only-vitest.json",
+      "sha256": "6f90451cf52c2c1aa3605fbda391357b805e680722d91148a2d8e8c79d596445"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/restored-production-guard-vitest.json",
+      "sha256": "0e5fb08d98897b1fbdaa18d9117b3759436bbed947068748273304d1eb9bfcd4"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/review.json",
+      "sha256": "959449a9787cdcf9337c87cb15453abdeea3ff45cbb6d6c74143c97a776aeb57"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/secret-privilege-vitest.json",
+      "sha256": "66800ccc791ac23f5478ee037e59980ac7e28b2dad72a8d473816085e740dbe0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/secret-privilege.json",
+      "sha256": "3986c78441141217249584a8c6aac6d308ae56bd0b79843d21700bfba2b5caa0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/attempt-7/validator-regression.json",
+      "sha256": "c29b3b025403839c029fe5e03dd14bfeac87664dd2bd6dfe4355fe2a7a890c2e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/setup/api_key_config.generated.sql",
+      "sha256": "8e5939934fd55243b9257e17f059462b9a2b3cedf37f4f582fd9b04e5f6a23de"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/setup/dependencies.json",
+      "sha256": "47f1c617ff3175e439c979c62b2a3ba010063cb3e6a9c8bbc1248cff445ef53f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/setup/migration-generation.json",
+      "sha256": "1e5a4d1876d6b78202a5cdb82b2442b7f3e81c867644caa7a154aeed19e75007"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/setup/migration-prepared.json",
+      "sha256": "66c7da63663adc84efdf44293578b4d63ce3d67c81749c62fbde653d013abad2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/setup/postgresql.json",
+      "sha256": "5097bfb77dc37ff25d2cf4ee2f87cc31aad65860687f912246652daf6be9f47b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/setup/preflight.json",
+      "sha256": "9c0741a5bdd3dd979d9fd75cfc1078cae8bec127081eefce57270ce48dde8873"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase010/setup/rejected-api-key-config.sql",
+      "sha256": "831ecbaecd0dc70e979631d018ca4bc850cb02acc3ca4aa38203b9461c2ca2a2"
+    },
+    {
+      "path": "docs/hosting.md",
+      "sha256": "f0ecc2030b321893265fa61ed6c287b38c68f5136cf4c0a7af3f1d392f2cc2a3"
+    },
+    {
+      "path": "docs/phase-plans/Phase010-inputs.json",
+      "sha256": "9331ec1f7a5e594bf8a1483a7c4d9c96417994e6e6b688e94c8f1ced8ed55063"
+    },
+    {
+      "path": "docs/phase-plans/Phase010.json",
+      "sha256": "affe0d5f94491de61a31a151fa02485f6741c2bab221ed8cd4f73d850d746c3e"
+    },
+    {
+      "path": "docs/phase-plans/api-key-config-protection.sql",
+      "sha256": "3f136157b41d9a9d7c25cb13f09774874a0098df9be9fa94cd5bbef98579c367"
+    },
+    {
+      "path": "docs/phase-plans/complete-phase010.mjs",
+      "sha256": "1f037fa841a0a7062dfc1906ae0551188799811b2a92a41e0d78bf5e569cb72b"
+    },
+    {
+      "path": "docs/phase-plans/phase010-evidence.mjs",
+      "sha256": "dc98c69e9252edfe60e66603c5c8ab7217798febc77a132d14e0f155fc83b843"
+    },
+    {
+      "path": "docs/phase-plans/phase010-runtime.mjs",
+      "sha256": "448d26d0f1b699b926fc35fd916011706ec72e6b1935af83b2132397bbc1e9cd"
+    },
+    {
+      "path": "docs/phase-plans/prepare-phase010.mjs",
+      "sha256": "4de44554fa33609420f5afa51c9f34098d3a621964f12296e48c08a048bf93cd"
+    },
+    {
+      "path": "docs/phase-plans/setup-phase010.mjs",
+      "sha256": "433d27512c665e358e9f424d87f9776f4cd55478c7bc69b9db557137f8af2f5e"
+    },
+    {
+      "path": "docs/phase-plans/verify-phase010.mjs",
+      "sha256": "9cc40d8f54b3b14ba5af2644ff46d6932d4a324a986d6d83d1f32a5cc535b6ed"
+    },
+    {
+      "path": "docs/phase010.md",
+      "sha256": "de96ae0b48b03df7d0961e3b9ff903fcc39990dd019e353adbb430f19730e89a"
+    },
+    {
+      "path": "docs/privacy-and-user-data.md",
+      "sha256": "5e7812b007c1808692e1e27ee8c8e3dd266ddcba7026618671e2464f52a7d507"
+    },
+    {
+      "path": "docs/project-layout.json",
+      "sha256": "7efe30a30fe009a8e1226563cae53d39ed2a2193be78bc0f0a776f57f67710ba"
+    },
+    {
+      "path": "docs/runtime-baseline.json",
+      "sha256": "e96fc86c5c664116ac5c735e24dd4e6c261913d574752baca2ae7c7d33a23457"
+    },
+    {
+      "path": "docs/travel-data-provider-strategy.md",
+      "sha256": "019f1af4ba95cd6870d4a600d0e3f494f37e29610318b6b5973d8687bafd40e6"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "sha256": "f45d4d5b4e4808481617530c717d97108af6488b39e008e49b4161aefd818708"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "e8ac5d798497b35295903015a2a29d236810765805c231fc054e708738abd385"
+    },
+    {
+      "path": "package.json",
+      "sha256": "f4c34a8ec9f9b05f7892ef2abb202eb6da1179222b6676c303c42e6ade9d703c"
+    },
+    {
+      "path": "prisma/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "prisma/migrations/20260910000000_init_user/migration.sql",
+      "sha256": "b65593d8d8a7a1821a2f65415616e5c083a0e38785bcac2a46ea362d126de3a3"
+    },
+    {
+      "path": "prisma/migrations/20260910172735_system_config/migration.sql",
+      "sha256": "25f5d0d35a216ee085fad468f5d69d740610369ff91fcdd0ebe4a188deef45cc"
+    },
+    {
+      "path": "prisma/migrations/20260911002217_travel_record_chat_message/migration.sql",
+      "sha256": "761979289b28f413d47c09290f43e9d01ffc22421918103a51d6c67b638bb48f"
+    },
+    {
+      "path": "prisma/migrations/20260911042258_audit_log/migration.sql",
+      "sha256": "9707b78108c51f9a10ebfa86fa816d7caf353bcd1f09a0cce2eefcac6b392373"
+    },
+    {
+      "path": "prisma/migrations/20260911104017_api_key_config/migration.sql",
+      "sha256": "9bc311e50f3dccc7dc7885a901285fd1f359beb0e3b808bdc1e4c16ab4ce79d1"
+    },
+    {
+      "path": "prisma/migrations/migration_lock.toml",
+      "sha256": "99836963713b4f5b269ad49af0ed3d7b0b2e336115c2f92dc9ac683d139d0900"
+    },
+    {
+      "path": "prisma/schema.prisma",
+      "sha256": "3ba0231268c92d918ae05f2fb134a6cab18752f525de9d5b719d7bac8e6ffc3a"
+    },
+    {
+      "path": "prisma/seed.ts",
+      "sha256": "dea4fc6ad30555657a06cdc1fad50af5968e45ad35884ec65df6f244035a07fa"
+    },
+    {
+      "path": "scripts/check-project-layout.mjs",
+      "sha256": "d19f27109ff142516a7b0454e7f9b9a03629fd11923e7f6b88c7ee9323eb1d35"
+    },
+    {
+      "path": "scripts/eslint-env.mjs",
+      "sha256": "f2ded148de31d4d35ede46a162116f81b48b459b869ade8411a5e25c9f5f21ce"
+    },
+    {
+      "path": "scripts/phase-evidence.mjs",
+      "sha256": "454f1911b53a21aed6f014d8cb6b36d748a6f9ec8b8e7547187d45cd20ce96c9"
+    },
+    {
+      "path": "scripts/test-validate-phase.mjs",
+      "sha256": "b4df52b324137973c12ddc352695f2082177d29aaf9d007ba6ebf1c18a76439c"
+    },
+    {
+      "path": "scripts/validate-phase.mjs",
+      "sha256": "06bcd9955531054ace725393d8504f037256a428b80f5fe883b95587c31062d1"
+    },
+    {
+      "path": "scripts/validate-phase.ps1",
+      "sha256": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319"
+    },
+    {
+      "path": "src/app/(site)/layout.tsx",
+      "sha256": "dbf6397819844277acac383530a3a616f29e1068b9b5ba2d08f2886b3cca5207"
+    },
+    {
+      "path": "src/app/(site)/page.tsx",
+      "sha256": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e"
+    },
+    {
+      "path": "src/app/admin/layout.tsx",
+      "sha256": "95d75d00b7761b6370864fceb83980b938f8378cc23f1d33de8f15b981156734"
+    },
+    {
+      "path": "src/app/favicon.ico",
+      "sha256": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932"
+    },
+    {
+      "path": "src/app/globals.css",
+      "sha256": "f88153c2b0c26a4f65e48626ab5a05e68c8d962952be88ead2032c8a90b10a1f"
+    },
+    {
+      "path": "src/app/layout.test.ts",
+      "sha256": "8022cde5595f753306b17f2de43534bc42ee0fd0f46ea19452deb2ee55e7e0cb"
+    },
+    {
+      "path": "src/app/layout.tsx",
+      "sha256": "a9de0b5ba9380f5a058487639bd6be0d13c5a1293f720d38965d1b3dec793a6f"
+    },
+    {
+      "path": "src/components/admin/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/components/chat/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/components/common/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/components/common/common-components.test.tsx",
+      "sha256": "8a9fcd34cc153236e6d58ad1b1ee0039e2b4020f664f918ffc5f7e9e82f8ed5b"
+    },
+    {
+      "path": "src/components/common/empty-state.tsx",
+      "sha256": "a5b1a914935eace3193451be25c9cf8178010345ef76963e0ecb12713e284795"
+    },
+    {
+      "path": "src/components/common/error-state.tsx",
+      "sha256": "4ef42505cda6c3a5d4c35180022eedab13ce9f33ac9e412e924dd5b9bb9d808d"
+    },
+    {
+      "path": "src/components/common/loading-state.tsx",
+      "sha256": "0a010951d56d20dc1860ed8bd78a5c95671bd1323014330c00b4519aafe1c37f"
+    },
+    {
+      "path": "src/components/common/page-header.tsx",
+      "sha256": "c403ac7802dbb0ecf5f83aa57ed043bf598fd3e1806c7250751cdfd9f361b4da"
+    },
+    {
+      "path": "src/components/layout/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/components/layout/admin-shell.tsx",
+      "sha256": "6bb6e05f1ad6cf9c1b6c8e77a89832a3008afaaa5297ef056e3fb89fbe37c819"
+    },
+    {
+      "path": "src/components/layout/site-header.tsx",
+      "sha256": "f4fdc237b4a3d76ac8280ff80390966ec3a1fe95d67bba7f2e5abb475ed98295"
+    },
+    {
+      "path": "src/components/travel/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "sha256": "abd7a62c5b38d8836c88906285ea0df0a40d3dd55f7d404a07672f749e37f43f"
+    },
+    {
+      "path": "src/components/ui/sonner.tsx",
+      "sha256": "f28cba0be08c0873d121f6f35107c9e0b209ef649b0d0625c32e46cf0b2ed9a2"
+    },
+    {
+      "path": "src/instrumentation.ts",
+      "sha256": "4ff6be1caa61426f26540f107f1b609bda7ad79e40b72d5c2b563d7fbb3c4821"
+    },
+    {
+      "path": "src/lib/ai/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/lib/api-response.test.ts",
+      "sha256": "4660ad9249e90641f09cbfd7dd914504fa4d1cea7fd180c6c407eb70f2a6cd1d"
+    },
+    {
+      "path": "src/lib/api-response.ts",
+      "sha256": "235635f476f988af2f7d2bdb867acc85bd3d4d777a99c8c7da555206b9a65a6a"
+    },
+    {
+      "path": "src/lib/env-cli.ts",
+      "sha256": "3973fe8dfb72b05da1839908dfb67d77084245df33213854cfbf63d7a3f176ca"
+    },
+    {
+      "path": "src/lib/env-schema.ts",
+      "sha256": "50623e8fb2a75d506d4b439dc96ed876b92735aab393586be45cbaaac56feb22"
+    },
+    {
+      "path": "src/lib/env.test.ts",
+      "sha256": "1fa39e8007c092c16c10a19773cc07078cf75a4f91cbc9487f75f580bfe5efe2"
+    },
+    {
+      "path": "src/lib/env.ts",
+      "sha256": "51a3612afe39103e04f214185192f0e39e8bc5cb43d27b21922fdd1748096658"
+    },
+    {
+      "path": "src/lib/format.test.ts",
+      "sha256": "bfbf9788fbc9506c299acdafe03debe5ee8ce6bc4baff11092d08d935d2cfdbe"
+    },
+    {
+      "path": "src/lib/format.ts",
+      "sha256": "0834ccea0511ed8b0374db59527702e3707a251f44d367e70bf748e27dbe37a0"
+    },
+    {
+      "path": "src/lib/json.test.ts",
+      "sha256": "2e17c72f917730c5adabd17ed3f434ab9d50d0215651f768938bff3e9fb50a60"
+    },
+    {
+      "path": "src/lib/json.ts",
+      "sha256": "b482e4f8309135800ce6526b771b809aff8ea219d4fc89060c3b4ba057b3ed11"
+    },
+    {
+      "path": "src/lib/schemas/system-config.ts",
+      "sha256": "84cab5c3e15856c75595c6f165417356ab17756bc4cbee6fc98625d54d696c43"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "sha256": "55bbdc94cef3e0c8a8bba386e94f97228dd2c967fe61466fc565378890550c08"
+    },
+    {
+      "path": "src/middleware.test.ts",
+      "sha256": "98671c0f2ada396299964461177c1bd84bc5029d9dad58c3a71d5c2851277461"
+    },
+    {
+      "path": "src/middleware.ts",
+      "sha256": "2f3f1b9df69c9cf93a2bffc4f6ba8c9336b0b4111614d9ae3e18d116e9c9934f"
+    },
+    {
+      "path": "src/server/anonymous-owner.ts",
+      "sha256": "7250641a004fe8994a7eae0ce06ed9a5330b7260e5ad4da7e8c87bf2c082c0ea"
+    },
+    {
+      "path": "src/server/api-key-envelope.ts",
+      "sha256": "814dad96afc484b82aea53c8e8fdceb2787bae58b9417ce9ad45a005d3bdebc4"
+    },
+    {
+      "path": "src/server/audit-log.ts",
+      "sha256": "f3c1be6c418329179be9036e5251bf640c0e402dc1f031ac7d6a25a15c0cab77"
+    },
+    {
+      "path": "src/server/auth.ts",
+      "sha256": "af08f9c7a2b08672e5c516d38beb71fd4edd0566f0d5e98b669417d28cbec4fe"
+    },
+    {
+      "path": "src/server/db.ts",
+      "sha256": "d2f6bec02e8dc7eb25eb782def2f24d018a1c27358cd62dfd5aeb22030457db7"
+    },
+    {
+      "path": "src/server/projections/admin-user.ts",
+      "sha256": "396c25dc8b29d3a865f2490192f3665071c87112055c4ddc5ecfc9cfc72c1de3"
+    },
+    {
+      "path": "src/server/projections/public-user.ts",
+      "sha256": "de8e550fe63c9c2bbf0e8f33ba39b518227dd7358680ec9eb77449be4c96a680"
+    },
+    {
+      "path": "src/server/repositories/chat-message.ts",
+      "sha256": "707d2e77b7534a1e0cdd16a1d05c8b472372a1349036d4ca76dd2d81ddfecad4"
+    },
+    {
+      "path": "src/server/repositories/data-layer-error.ts",
+      "sha256": "c62080e20792a91c18bed5c9e39c1c8d58f13c383601a46c86b25478a27d9ad1"
+    },
+    {
+      "path": "src/server/repositories/travel-record.ts",
+      "sha256": "334a0ebd7118a8584089482713196c786ceee7956fd884f72d6f3ec980b3907f"
+    },
+    {
+      "path": "src/server/seed-input.ts",
+      "sha256": "ca76b7628f8fd60230062cd0692e05130461bb7f4dadea7458fab2c7b7de252a"
+    },
+    {
+      "path": "src/server/services/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/server/services/audit-log-service.ts",
+      "sha256": "23f7573240f81f7857b2962f1a7d70c5e7940d944feaa82e6040862c3c1ede22"
+    },
+    {
+      "path": "src/server/services/seed-service.ts",
+      "sha256": "ca76e7aa52fb62e009c38d0472eb399d1bb6b60814a316d9d00d6383c6911c35"
+    },
+    {
+      "path": "src/types/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/integration/api-key-schema.test.ts",
+      "sha256": "95b30d60d3e8a208d962ded3f0597a9c39616be3eb6953dbb8a3b2288605fb32"
+    },
+    {
+      "path": "tests/integration/audit-log.test.ts",
+      "sha256": "c92ae65638792f4d512e62db95e821e5d8abe3abf7b63b9e69f3fe552d9e3165"
+    },
+    {
+      "path": "tests/integration/chat-message.test.ts",
+      "sha256": "23dcf6dc0107e54c00aeace6352e1bce0921cabff3ceb9101674d90794c80b0b"
+    },
+    {
+      "path": "tests/integration/config-models.test.ts",
+      "sha256": "23c5e7c6219dfa45c972854b2cb63b991620286219bcba3833349ff02df94bc5"
+    },
+    {
+      "path": "tests/integration/seed.test.ts",
+      "sha256": "5ebf619de6c1e3b3fe3742a4b9f9994c22db1fd63012b4cff74ed7655ca142fe"
+    },
+    {
+      "path": "tests/integration/travel-record.test.ts",
+      "sha256": "91a18021db248bfffa418df99732162c7d9e93552b2d9046eb453003035666a3"
+    },
+    {
+      "path": "tests/lib/api-key-schema.test.ts",
+      "sha256": "cb3ebdfe084e7068ba8aed3d7edec09e32ea7d9da39e606533e38f3baa421111"
+    },
+    {
+      "path": "tests/lib/audit-log.test.ts",
+      "sha256": "3060b2ac702221950c1d6f85b47c1ccbfb0cf71026fdc587d3a031be625d8370"
+    },
+    {
+      "path": "tests/lib/auth.test.ts",
+      "sha256": "fb8bb3b519253cd9d931ec208a6c78954fe94d11aa3b8cd65297ce55ee8a418c"
+    },
+    {
+      "path": "tests/lib/chat-message.test.ts",
+      "sha256": "d2d380b64f03dc2c2ffbaaa6176c6d5b565f3ba91d90c5a15871efc00c12fffb"
+    },
+    {
+      "path": "tests/lib/db.test.ts",
+      "sha256": "e638b23182053c44a3937c2d63f1baa6e3cb7c8735588ac50002ba85ccfcb136"
+    },
+    {
+      "path": "tests/lib/public-user.test.ts",
+      "sha256": "fadb0b242ed03b69654ab0e7aeb1f0761190a109f126a7a3b25f1d216dc20555"
+    },
+    {
+      "path": "tests/lib/seed.test.ts",
+      "sha256": "63373fc0ac7f10f632f982580bd0594d9fa2da927adc6c4248fb04808da55154"
+    },
+    {
+      "path": "tests/lib/travel-record.test.ts",
+      "sha256": "b657b5c2e59ac83917ddda4fc5a8ad3fcca44ac9783d6570750f2aba7ffd265c"
+    },
+    {
+      "path": "tests/phase005/browser.mjs",
+      "sha256": "65cee15ce4171423bde4c82689466d1b1c45a64cb1a847ec6200661465676881"
+    },
+    {
+      "path": "tests/phase005/components-fixture.tsx",
+      "sha256": "d224e44f30a1c481be92f70b2f592388da98b5c567f9736774f617ffc00927dd"
+    },
+    {
+      "path": "tests/phase005/fixtures/phase003-home.tsx",
+      "sha256": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e"
+    },
+    {
+      "path": "tests/phase006/cli-network-guard.cjs",
+      "sha256": "da1e1020f2d0f5f171f1a721dfa2c3412a2901d858eee176ed730f45f0ad2ab7"
+    },
+    {
+      "path": "tests/phase006/cli-network.mjs",
+      "sha256": "21664e3f9f0467ab5e92fdc60b84f2df27c106bb1267ec8a734cfe128f7bbd72"
+    },
+    {
+      "path": "tests/phase006/database.integration.ts",
+      "sha256": "f35f2e0b460453e530737ce047a3842fd76c8a4ceb8b9ea33379f1271068c218"
+    },
+    {
+      "path": "tests/phase006/studio.mjs",
+      "sha256": "04816f53f00927939193655814e966819ac4aa477eb9042f5b5b2f1b5fbc9916"
+    },
+    {
+      "path": "tests/phase006/user-types.ts",
+      "sha256": "3ab183310d3add2e18415f83f732cf913f883f18bbdd06a71dc9de0ce76d47c5"
+    },
+    {
+      "path": "tests/phase006/vitest.database.config.mjs",
+      "sha256": "b0d0de6cebdd51e1418960674b8b977d64072787cc123d19bd05a0595d58b267"
+    },
+    {
+      "path": "tests/phase007/cli-network.mjs",
+      "sha256": "e7a842985395ccb9111d165f7e1aeb56de02fa509ecf6a449dffc4a69c00e312"
+    },
+    {
+      "path": "tests/phase007/config-fixture.ts",
+      "sha256": "a47ad51c9dae3a4224ce3971e8051e7e17240bc6dac1dd47ab8b2e4fcaf8d1e5"
+    },
+    {
+      "path": "tests/phase007/config-types.ts",
+      "sha256": "ce6093ffc4aa4929631b2e25c2819d2ee16bc7ad5346a0b1db06e89055931709"
+    },
+    {
+      "path": "tests/phase008/cli-network.mjs",
+      "sha256": "ff64f0299c5ed5ab62509d3b9bd26c7a17fcc657a1b2186e493584df67b7b7f7"
+    },
+    {
+      "path": "tests/phase008/data-fixture.ts",
+      "sha256": "eb88df878ea570d9237b2d16dece850a2a6e0921abc34b36b64f49dcb2ac9894"
+    },
+    {
+      "path": "tests/phase008/data-types.ts",
+      "sha256": "c854d2e0e84b57ff593a7ff82dab2a7f68488659a854d6e5e06527f5af14166e"
+    },
+    {
+      "path": "tests/phase008/evidence-guards.mjs",
+      "sha256": "086c5341e065310597f14bc09432eca2f6a6ef7129eea9d9732fa505a7eae683"
+    },
+    {
+      "path": "tests/phase009/audit-fixture.ts",
+      "sha256": "9ad91cb208867c357f0e5626e738f0562a979b6e7b9394cf7798182530635973"
+    },
+    {
+      "path": "tests/phase009/audit-types.ts",
+      "sha256": "ad6e2865de09a24facaff29ef15ad266694515420bf86e2066ae5de43ba4274e"
+    },
+    {
+      "path": "tests/phase009/cli-network.mjs",
+      "sha256": "10218552478835c1d2338bc50515ca66140dbcc478073e7d138fe4e68a5954ae"
+    },
+    {
+      "path": "tests/phase009/evidence-guards.mjs",
+      "sha256": "ad68ea652122a0eb28fc73497710772942b43f14c4a71f854f822cbef0a76be6"
+    },
+    {
+      "path": "tests/phase010/api-key-fixture.ts",
+      "sha256": "d542ba5e7e0973dae9a5dedcb7f02efe13fea791d29d2ed1a8992fa28be200ad"
+    },
+    {
+      "path": "tests/phase010/api-key-types.ts",
+      "sha256": "96ad6dc0927901c526ddc4532deb47fb2edc24009ca7397cc8646a6bd7347973"
+    },
+    {
+      "path": "tests/phase010/cli-network.mjs",
+      "sha256": "2d4a5f37b631ab222ff5ca822d061d7e7c16eb1841c02e767700a69dd0a4623a"
+    },
+    {
+      "path": "tests/phase010/evidence-guards.mjs",
+      "sha256": "fbf173e4f7a43a571069c0d5423dfb9cc73f8c2de2156052aa6c76730017e0db"
+    },
+    {
+      "path": "tests/phase010/seed-fixture.ts",
+      "sha256": "1dfe31ef65ee913402cbe16291172b283a7f3677e750ab28434aa6cba43cdce3"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "83d292a6930a317ea31ef48e220097d2ca10c6c505f41d5954795acef48ca3b9"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "cc79644beec0c7ff9c0e466b952b2aaa6410598a575606f633f32e7caf29b966"
+    },
+    {
+      "path": "vitest.setup.ts",
+      "sha256": "a54f6b87de09e2b125852fddf97dc7069d9a9026c8af824944aba85e6bd54660"
+    }
+  ],
+  "failures": [],
+  "generatedAt": "2026-09-11T13:04:09.297Z",
+  "details": {
+    "planPath": "docs/phase-plans/Phase010.json",
+    "planHash": "affe0d5f94491de61a31a151fa02485f6741c2bab221ed8cd4f73d850d746c3e",
+    "testedTree": "4d96311272d5e58a307881323c50c9648c40a44a",
+    "reviewerRunId": "/root/review_phase010:Phase010:attempt-7:2026-09-11T12:59:47.145Z",
+    "reviewReportPath": "docs/evidence/attempts/Phase010/attempt-7/review.json",
+    "reviewReportHash": "959449a9787cdcf9337c87cb15453abdeea3ff45cbb6d6c74143c97a776aeb57",
+    "recoveryCommits": [],
+    "originalThreshold": 6,
+    "automatedThreshold": 6,
+    "waived": false,
+    "requestedThrough": 10,
+    "nextPhaseExecutionAuthorized": false,
+    "notEvaluated": [
+      "No production database, real identities, provider requests, encryption/rotation management API, authentication session or future governance implementation is exercised."
+    ],
+    "qualityReportPath": "docs/evidence/attempts/Phase010/attempt-7/quality.json",
+    "qualityReportHash": "4e91c570192be48818021a6d6cd2fcc703ea6605badb6758216d8e53b0cdbdb3",
+    "runtimeBaselinePath": "docs/runtime-baseline.json",
+    "runtimeBaselineHash": "e96fc86c5c664116ac5c735e24dd4e6c261913d574752baca2ae7c7d33a23457",
+    "manifestHash": "497689843e4576c5f8e8a6636d29b04023ac997309a3ffab83cc67d90ea7bf3e",
+    "projectCommit": "0d2a5eb5c7d3c7cfe33720628598d203c6da527f",
+    "schemaPath": "prisma/schema.prisma",
+    "schemaHash": "3ba0231268c92d918ae05f2fb134a6cab18752f525de9d5b719d7bac8e6ffc3a",
+    "migrationPath": "prisma/migrations/20260911104017_api_key_config/migration.sql",
+    "migrationHash": "9bc311e50f3dccc7dc7885a901285fd1f359beb0e3b808bdc1e4c16ab4ce79d1",
+    "databaseRoles": {
+      "migration": "phase010_runner",
+      "runtime": "phase010_app",
+      "runtimeOwner": false,
+      "runtimeSuperuser": false
+    },
+    "databaseFingerprint": {
+      "host": "127.0.0.1",
+      "port": 50467,
+      "database": "phase010_disposable_426ad15d2619",
+      "containerId": "e853723c15ad0b173f1df1a7bd3a02cf42979bdc65fdeb70fad665073a449913",
+      "image": "postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0",
+      "sha256": "26588201651f0541b75b28f46994a1249abe91439230aa4aabb59a0429f3a1a1",
+      "credentials": "SYNTHETIC_REDACTED"
+    },
+    "costAccounting": {
+      "productImplementation": {
+        "durationMs": null,
+        "measurementStatus": "UNMEASURED"
+      },
+      "infrastructure": {
+        "durationMs": null,
+        "measurementStatus": "UNMEASURED"
+      },
+      "verification": "Actual per-command durationMs in reports",
+      "independentReview": {
+        "durationMs": null,
+        "measurementStatus": "UNMEASURED"
+      },
+      "evidencePreparation": {
+        "durationMs": null,
+        "measurementStatus": "UNMEASURED"
+      },
+      "productionRequests": 0,
+      "realProviderRequests": 0
+    }
+  }
+}
