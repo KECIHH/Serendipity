@@ -2,6 +2,8 @@
 
 Owner: 需求与规划 Schema；producerPhase: 2；运行时首次生产: Phase017；消费者: Phase019-024、Phase053、Phase062。本文是 TravelRequirement 与 TravelPlanSummaryDraft v1 的唯一字段定义。当前 [数据库规范](database.md) 负责持久模型；本地旧任务卡中的“database 2.5 TravelRequirement”仅是旧章节定位，当前需求结构应定位本文，不改变数据库 2.5 的 ApiKeyConfig 定义。
 
+Phase008 先建立 nullable `TravelRecord.requirementJson` 持久列，但不提前生产本文的运行时 Schema。其 repository 只接受缺省/null 并写为 SQL NULL，任何非空 JSON 在 SQL 前拒绝；不能用简化结构、外部验证回调或自报“已校验”绕过。Phase017 消费本文唯一字段定义并接入真实校验后，才开放非空快照持久化；当前 fail-closed 边界不表示已实现需求提取、合并或 readiness。`ChatMessage.contentJson` 同样等待对应内容 Schema，Phase008 只开放无结构的 TEXT 写入。
+
 路线包输入的规范化绝对路径、SHA-256、读取卡片及基线记录在 [Phase002 输入清单](phase-plans/Phase002-inputs.json)，权威顺序见 [项目宪法](project-constitution.md)。本文仅生产文档与可执行文档校验，不生产应用类型、Prisma、数据库、路由或正式计划。公开边界见 [API](api.md)，隐私与 consent 生命周期见 [隐私规范](privacy-and-user-data.md)，模型只能消费 [Prompt 契约](prompt-design.md) 允许的数据。
 
 ## 版本与所有权

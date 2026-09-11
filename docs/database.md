@@ -13,7 +13,7 @@
 |---|---|---|---|---|---|---|---|---|---|
 | `User` | 6 | id PK；normalizeEmailV1(email) unique；revision>=0 | phone/name/avatarUrl/lastLoginAt 可空；6 时 email/passwordHash 必填；84 擦除壳才允许两者为空 | role=USER/ADMIN；status=ACTIVE/DISABLED | id 不变；role/status 实变时 revision 与 sessionVersion 原子递增 | 普通路径禁物理删除；84 专用 ERASE 清除身份并保留不可恢复 DISABLED 壳 | PUBLIC_USER_FIELDS 为 id/email/name/avatarUrl/role/status/lastLoginAt/createdAt，仅授权账户上下文；ADMIN 加 revision；share/public 不含用户 | prisma/schema.prisma#User | Phase006/007/012/084；canonical 2 |
 | `SystemConfig` | 7 | id PK；key unique；revision>=0 | updatedBy? -> User，SetNull；description 非空；valueJson 必填 | 无生命周期；group CHECK=AI/UI/EXPORT/SECURITY/GENERAL | key 身份不变；valueJson 以 revision CAS 更新并同事务审计 | 不级联删除 User；受控删除需验证配置无消费者 | 仅 isPublic=true 且命中配置白名单的 key/value；排除秘密和治理正文 | prisma/schema.prisma#SystemConfig | Phase007/014；canonical 2.2 |
-| `TravelRecord` | 8 | id PK；version>=0；requirementRevision 独立 CAS | userId? -> User Restrict 与 anonTokenHash? 恰一非空；requirementJson?；25 增 currentPlanVersionId?/finalPlanVersionId? -> 同记录版本 | DRAFT/NEEDS_INFO/PLANNED/MODIFIED/FINALIZED/NEEDS_REVALIDATION/ARCHIVED | 不含 planJson；current 与 version 同事务移动，final 不跟随 current；CLONE 目标固定 NEEDS_REVALIDATION | ARCHIVED 只读不可恢复；84 专用 ERASE；禁止 owner 删除级联误删他人副本 | owner 安全摘要；share/public 只经指定版本 PlanViewModel，不暴露 owner/需求 | prisma/schema.prisma#TravelRecord | Phase008/025/062/085；PRD 5；state-machines 1 |
+| `TravelRecord` | 8 | id PK；version>=0；25 增 requirementRevision 独立 CAS | userId? -> User Restrict 与 anonTokenHash? 恰一非空；requirementJson?；25 增 currentPlanVersionId?/finalPlanVersionId? -> 同记录版本 | DRAFT/NEEDS_INFO/PLANNED/MODIFIED/FINALIZED/NEEDS_REVALIDATION/ARCHIVED | 不含 planJson；current 与 version 同事务移动，final 不跟随 current；CLONE 目标固定 NEEDS_REVALIDATION | ARCHIVED 只读不可恢复；84 专用 ERASE；禁止 owner 删除级联误删他人副本 | owner 安全摘要；share/public 只经指定版本 PlanViewModel，不暴露 owner/需求 | prisma/schema.prisma#TravelRecord | Phase008/025/062/085；PRD 5；state-machines 1 |
 | `ChatMessage` | 8 | id PK；(travelRecordId,sequence) unique；非空 (travelRecordId,clientMessageId) unique | travelRecordId -> TravelRecord Cascade；replyToMessageId? -> 同记录消息 SetNull；contentJson?/clientMessageId?；16 增 commandId? | role=USER/ASSISTANT/SYSTEM；kind=TEXT/STRUCTURED | sequence>0；消息追加；命令 USER 和最终 ASSISTANT 各最多一条 | 普通业务禁单条删除；专用 record purge 才 Cascade，保留脱敏审计 | 仅当前 owner；不进入 share/public/公开导出 | prisma/schema.prisma#ChatMessage | Phase008/016 |
 | `AuditLog` | 9 | id PK；requestId/traceId 可检索，非唯一 | actorId? -> User SetNull；actorEmailSnapshot?/targetId?/requestId?/traceId?/detailJson?/ipHash?/userAgentSummary? | 无生命周期；action 使用封闭 action registry | append-only；运行期数据库角色禁止 UPDATE/DELETE | 专用 retention/ERASE 去标识流程；禁止业务删除审计；actor 邮箱按隐私规则清除 | 仅 requireAdmin 脱敏投影；不含密钥、token、完整 Prompt 或私人原文 | prisma/schema.prisma#AuditLog | Phase009；根 agent-execution-contract 审计规则 |
 | `ApiKeyConfig` | 10 | id PK；keyFingerprint unique；revision>=0 | 无 userId；lastUsedAt?/revokedAt?；secretRef 的目标 | ACTIVE/DISABLED/REVOKED | encryptedKey/versioned envelope 不原地覆盖；轮换新行；REVOKED 终态 | 被治理引用时 Restrict；撤销后按密钥审计保留规则清理 | ADMIN 仅安全名称、provider、状态、派生短 fingerprint、revision；永不读回明文/envelope | prisma/schema.prisma#ApiKeyConfig | Phase010/013；canonical 2 |
@@ -107,20 +107,28 @@ normalizeEmailV1：trim输入，local-part仅ASCII且1-64 bytes，不允许首�
 
 | 字段 | 类型 | nullable | 约束 |
 |---|---|---|---|
-| id | String | 否 | PK，cuid() |
-| userId | String | 是 | FK User.id，Restrict，与anonTokenHash恰好一个非空 |
-| anonTokenHash | Char(64) | 是 | 小写SHA-256，数据库格式CHECK，原文不落库 |
+| id | String | 否 | Phase008；PK，cuid() |
+| userId | String | 是 | Phase008；FK User.id，onDelete Restrict / onUpdate Cascade，与anonTokenHash恰好一个非空 |
+| anonTokenHash | Char(64) | 是 | Phase008；小写SHA-256，数据库格式CHECK，原文不落库 |
 | title | String | 否 | 清洗后的展示标题，不作唯一身份 |
-| status | TravelStatus | 否 | DRAFT/NEEDS_INFO/PLANNED/MODIFIED/FINALIZED/NEEDS_REVALIDATION/ARCHIVED |
-| requirementJson | Json | 是 | Phase008建，写前校验当期需求Schema，无需求为null |
+| status | TravelStatus | 否 | Phase008；default DRAFT；DRAFT/NEEDS_INFO/PLANNED/MODIFIED/FINALIZED/NEEDS_REVALIDATION/ARCHIVED |
+| requirementJson | Json | 是 | Phase008建JSONB列；无需求为SQL NULL；非空写入必须通过当期需求Schema，见本节持久边界 |
 | version | Int | 否 | default 0，CHECK>=0，唯一当前正式版本计数 |
 | currentPlanVersionId | String | 是 | Phase025增，同记录同version复合FK |
 | finalPlanVersionId | String | 是 | Phase025增，独立同记录复合FK，不跟随current |
 | requirementRevision | Int | 否；Phase025增 | default 0，独立需求CAS，供PlannerRun.expectedRequirementRevision，Phase062消费PATCH |
-| createdAt | DateTime | 否 | default now() |
-| updatedAt | DateTime | 否 | 自动更新，不作为CAS |
+| createdAt | DateTime | 否 | Phase008；Timestamptz(3)，default now() |
+| updatedAt | DateTime | 否 | Phase008；Timestamptz(3)，@updatedAt，不作为CAS |
 
 Phase008仅建owner/需求/version=0和时间；无计划正文列，也不提前建版本指针。Phase025增加CHECK `version=0 <=> currentPlanVersionId IS NULL`；`(currentPlanVersionId,id,version)` 引用版本 `(id,travelRecordId,version)` 候选唯一键，final的 `(finalPlanVersionId,id)` 引用 `(id,travelRecordId)`，允许null的final用MATCH SIMPLE。循环写入在同一事务按record、run/workspace、版本、指针顺序完成，确需延迟的FK显式DEFERRABLE并验证COMMIT时约束。
+
+Phase008 的实际标量列 exact 为 `id/userId/anonTokenHash/title/status/version/requirementJson/createdAt/updatedAt`，关系为 `user/messages`，User 反向关系为 `travelRecords`。迁移增加 `TravelRecord_owner_xor`（两列恰一非空）、`TravelRecord_anonTokenHash_format`（非空值转 text 后匹配 `^[0-9a-f]{64}$`）、`TravelRecord_version_nonnegative`（`version>=0`）。后续字段按登记阶段迁移，不能靠 nullable 提前加列。
+
+当前持久边界由 `src/server/repositories/travel-record.ts` 提供。`createTravelRecord({owner,title,requirementJson?})` 只接受缺省或 null 的 requirementJson，并明确写为 `Prisma.DbNull`；Phase017 的真实需求 Schema 尚未生产时，任何非空 JSON 都在 SQL 前以安全 `VALIDATION_ERROR` 拒绝，包括结构看似完整的值。没有允许调用方自报“已校验”的布尔标记、类型断言或验证回调。Phase017 接入 [唯一旅行 Schema](travel-plan-schema.md) 后才能开放同一入口的非空写入；本卡不实现需求提取、合并、readiness 或业务状态转换。
+
+`src/server/anonymous-owner.ts` 的 owner 是 `{userId} | {anonTokenHash}` 排他联合，hash 类型为 branded string；运行时仅接受恰好一个自有数据属性，拒绝附加字段、双字段（另一字段为 undefined/null 也拒绝）、访问器及继承的 owner。服务器 hash utility 只接收已验证 Cookie 封装内的 canonical base64url 原文：无 padding、43 字符、解码为32 bytes且重新编码相同；对该原文字符串的 UTF-8 字节做 SHA-256，返回64字符小写hex。此处不签发 Cookie，也不验证签名或声称随机性由字符串格式证明。原文、签名和 Authorization 不进入数据库、日志或证据。
+
+读取在同一查询中比较记录 ID 和当前 owner；内部匿名到用户的 `transferAnonymousTravelRecordToUser` 在事务中以 `FOR UPDATE` 锁记录、重新比较匿名 owner，再同时设置 userId 与清空 hash。它只是当前记录的所有权原子操作，不消费匿名凭据、不建立 alias/收据，也不实现 Phase082 完整合并。不存在和非 owner 统一 `NOT_FOUND`；数据库故障只抛固定安全错误，不带 SQL、输入或内部 cause。
 
 初稿成功PLANNED，修改追加MODIFIED；FINALIZED只确认一个版本，随后允许追加版本且保留旧PlanFinalization/final指针。clone新记录目标固定NEEDS_REVALIDATION，version1 trigger=CLONE、qualityStatus=revalidation_required，独立空锁、重映射引用；成功REVALIDATE追加版本后转MODIFIED。NEEDS_REVALIDATION禁止finalize/分享/发布及“已核验”导出。ARCHIVED只读不可恢复，归档撤公开授权，不物理删记录。索引为(userId,createdAt,id)、(anonTokenHash,createdAt,id)、(status,updatedAt,id)；两个版本指针按联表/删除检查增加索引。
 
@@ -128,19 +136,27 @@ Phase008仅建owner/需求/version=0和时间；无计划正文列，也不提�
 
 | 字段 | 类型 | nullable | 约束 |
 |---|---|---|---|
-| id | String | 否 | PK |
-| travelRecordId | String | 否 | FK TravelRecord，专用purge Cascade |
-| role | MessageRole | 否 | USER/ASSISTANT/SYSTEM |
-| kind | ChatMessageKind | 否 | TEXT/STRUCTURED |
-| sequence | Int | 否 | >0，(travelRecordId,sequence) unique，按此排序 |
+| id | String | 否 | Phase008；PK，cuid() |
+| travelRecordId | String | 否 | Phase008；FK TravelRecord，onDelete Cascade / onUpdate Cascade，专用purge使用 |
+| role | MessageRole | 否 | Phase008；USER/ASSISTANT/SYSTEM；无默认值 |
+| kind | ChatMessageKind | 否 | Phase008；TEXT/STRUCTURED；无默认值 |
+| sequence | Int | 否 | Phase008；CHECK >0，Int上界2147483647，(travelRecordId,sequence) unique；无默认值 |
 | clientMessageId | String | 是 | 非空时(travelRecordId,clientMessageId) unique，null可重复 |
-| replyToMessageId | String | 是 | Self FK SetNull，事务校验reply属于同一记录 |
+| replyToMessageId | String | 是 | Self FK onDelete SetNull / onUpdate Cascade，事务校验reply属于同一记录 |
 | content | Text | 否 | 应用长度上限，不假设PostgreSQL text为255字符 |
-| contentJson | Json | 是 | STRUCTURED必须通过当期Schema，TEXT无结构时null |
+| contentJson | Json | 是 | JSONB；STRUCTURED必须通过当期Schema，TEXT无结构时SQL NULL；当前非空写入关闭 |
 | commandId | String | 是；Phase016增 | 与ChatCommand同迁移，USER与最终ASSISTANT各最多一条 |
-| createdAt | DateTime | 否 | default now()；同毫秒也按sequence有序 |
+| createdAt | DateTime | 否 | Phase008；Timestamptz(3)，default now()；同毫秒也按sequence有序 |
 
 普通服务不提供单条删除。序号在record锁或原子分配下产生，不用无锁max+1；分页cursor绑定(travelRecordId,sequence,id)。已有两个复合unique覆盖record前缀，reply和command FK仍按各自访问路径建索引。公开PlanViewModel不含消息。
+
+Phase008 的实际标量列 exact 为 `id/travelRecordId/role/kind/content/contentJson/sequence/clientMessageId/replyToMessageId/createdAt`，关系为 `travelRecord/replyTo/replies`。`ChatMessage_sequence_positive` CHECK 拒绝零和负数；两个唯一索引分别为 `(travelRecordId,sequence)` 与 `(travelRecordId,clientMessageId)`，NULL clientMessageId 可以重复，并建立 `replyToMessageId` 查询索引。本卡共新增 `TravelStatus/MessageRole/ChatMessageKind` 三个枚举，不把任务卡中的概括数量当作删减字段类型的依据。
+
+`src/server/repositories/chat-message.ts` 的 `appendChatMessage` 要求调用方显式提供合法 sequence；Phase016 才生产序号分配和命令账。当前仅接受 TEXT 与缺省/null contentJson，任意 STRUCTURED 或非空 contentJson 均在 SQL 前拒绝，直到实际内容 Schema 生产。TEXT 原文不 trim 或截断，拒绝全空白、NUL 与非法 UTF-16；产品长度上限由后续输入边界确定，不假设 PostgreSQL text 有255字符限制。显示标题会移除标签形态及尖括号、将控制字符和连续空白归一，再拒绝空标题；它不是身份键或 HTML 输出。
+
+消息追加在同一事务中锁住当前 owned record，再查重与验证 reply target 属于该记录。相同非空 clientMessageId 的重试比较 `role/kind/content/contentJson/replyToMessageId`：相同返回 `{message,replayed:true}`，不同抛 `IDEMPOTENCY_KEY_REUSED` 且零额外写入；服务端分配的 id/createdAt/sequence 不属于请求 payload，重试不能据新调度值制造第二条消息。新消息返回 `replayed:false`。数据库唯一、CHECK 或外键错误令事务失败并返回固定安全错误，不转换为空列表或成功结果。
+
+`listChatMessages` 返回 `{messages,nextCursor}`，默认 limit=20、范围1–100，按 `sequence ASC,id ASC` 读取。内部游标是 `(travelRecordId,sequence,id)` 数组的 canonical JSON UTF-8 base64url，解码后必须重新编码相等；读取在记录锁内复核当前 owner、游标 record 和数据库锚点的全部三字段，越记录或失效锚点为 `VALIDATION_ERROR`。下一页使用严格更大 sequence，避免同毫秒跳项/重复。此游标仅为 repository 协议，Phase052 的 HTTP 入口还须按 API 契约加签名、owner/filter/水位封装；本卡不提供无签名公共游标端点。
 
 ### 2.4 SystemConfig
 

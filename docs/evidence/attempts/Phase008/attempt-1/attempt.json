@@ -1,0 +1,25 @@
+{
+  "phase": 8,
+  "attemptId": "attempt-1",
+  "status": "FAIL",
+  "blockedCategory": "ENV",
+  "artifactCommit": null,
+  "command": "node docs/phase-plans/setup-phase008.mjs --database",
+  "exitCode": 1,
+  "planHash": "ed6448d5c0bc061072a0ec56e98e57650c77e4ae8c21cbf123a9a2995bd6ff2d",
+  "inputHashes": {
+    "docs/phase-plans/setup-phase008.mjs": "e8dc9030e2a5d856d00e8032daaddfbbe468e9f3f79970ff3807a32f8bc8bd00",
+    "docs/phase-plans/phase008-runtime.mjs": "44497c3218f33331c5ccc39da8009e7cb68e59b685b44fcfbf220e2fca38c526"
+  },
+  "reason": "The copied Docker label was still serendipity.phase=007. The Phase008 target guard rejected the fresh container before any application migration.",
+  "observation": {
+    "command": "docker inspect --format labels/name/id <task container>",
+    "exitCode": 0,
+    "labels": {
+      "serendipity.phase": "007",
+      "serendipity.run": "95f62c6b8c9a"
+    },
+    "containerId": "7a8262c491a3762398ccb43d87af19a88b685ba0282c920ada73752a343f0e7f"
+  },
+  "recordedAt": "2026-09-11T00:14:57.483Z"
+}

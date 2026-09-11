@@ -1,0 +1,144 @@
+{
+  "phase": 8,
+  "attemptId": "attempt-5",
+  "planPath": "docs/phase-plans/Phase008.json",
+  "planHash": "89089a63ec93d2bc547714ea803fc99025ca73b6b25e5773549aa3181abdd7b6",
+  "decision": "FAIL",
+  "implementationContextId": "codex:/root:Phase008:20260911",
+  "contextId": "codex:/root/inspect_phase_runner",
+  "reviewerRunId": "phase008-failure-chain-attempt-5-172bb11a-a5ad-42ea-a2d1-00df58f44c8a",
+  "generatedBy": "Independent Codex reviewer in agent task /root/inspect_phase_runner; read-only product and evidence-protocol inspection, real in-memory rejection probes, and creation of this review report only.",
+  "runnerIdentity": {
+    "kind": "INDEPENDENT_CODEX_AGENT",
+    "implementationAuthored": false
+  },
+  "generatedAt": "2026-09-11T01:28:47.325Z",
+  "reviewCompletion": "FOLLOW_UP_FAILURE_CHAIN_PROTOCOL_REVIEW",
+  "reviewScope": "Verify the preservation and completeness of immutable prior failure receipts after the preliminary Phase008 review. Product/schema/test inspection found no additional product defect at this point; final complete acceptance review is still pending.",
+  "sourceHashCoverage": "Exact current files used to inspect or execute this failure-chain follow-up; this is not a full final-source acceptance report.",
+  "sourceHashes": {
+    "docs/evidence/attempts/Phase008/attempt-1/attempt.json": "a7397583f335ef8ffd4c563ee397c6a1e4aa0c03a160e348646f3aa89a8ca029",
+    "docs/evidence/attempts/Phase008/attempt-1/frozen-plan.json": "ed6448d5c0bc061072a0ec56e98e57650c77e4ae8c21cbf123a9a2995bd6ff2d",
+    "docs/evidence/attempts/Phase008/attempt-2/attempt.json": "b5e2b67d667dc05fa5bf2786a3309f6af9eb9a7d91eed6847b2b1cdf55a778e2",
+    "docs/evidence/attempts/Phase008/attempt-2/frozen-plan.json": "b609ac82b48ad0d678e643b7313485e989dd964163c2d02f66df8daf4d6ea4c9",
+    "docs/evidence/attempts/Phase008/attempt-3/attempt.json": "a1758958bd16f40d4f4ac21f197a4062b6e40986298ad1162de745751619b99c",
+    "docs/evidence/attempts/Phase008/attempt-3/frozen-plan.json": "3c199526fde5b7cf5f7ee7ee4192e109328f08b945581ea5e5225aa6972453b3",
+    "docs/evidence/attempts/Phase008/attempt-4/attempt.json": "ee26b9efd688df18aab1c81ce65f363bc56158549b344d531fae0ac21d0ecf64",
+    "docs/evidence/attempts/Phase008/attempt-4/frozen-plan.json": "da525ac857b497e768cd023b5ed355d8e9ec25dee6644a4aa07b87f7f72e7960",
+    "docs/evidence/attempts/Phase008/attempt-5/frozen-plan.json": "89089a63ec93d2bc547714ea803fc99025ca73b6b25e5773549aa3181abdd7b6",
+    "docs/phase-plans/Phase008.json": "89089a63ec93d2bc547714ea803fc99025ca73b6b25e5773549aa3181abdd7b6",
+    "docs/phase-plans/complete-phase008.mjs": "17bffc4a5cbea396c87bcafffa57d44ee410a712033cf69d02e5497f4b0ef882",
+    "docs/phase-plans/phase008-evidence.mjs": "bf3b314f0ba5b949b151a4aedf266ed3d6b200a81386e269633fcf957b9931cb",
+    "tests/phase008/evidence-guards.mjs": "12c25ce8471e5f918d927df1e95d3ee7bae99b2056c4be4d3e7a2a7db7d5ac1c"
+  },
+  "probeOutputs": [
+    {
+      "id": "PHASE008-FAILURE-CHAIN-PROBE-001",
+      "command": "node --eval <probeSource>",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "{\"scope\":\"READ_ONLY_REAL_PHASE008_FAILURE_CHAIN_FUNCTION\",\"attemptId\":\"attempt-5\",\"baselineAccepted\":true,\"originalPreviousCount\":4,\"filesModified\":false,\"databaseAccessed\":false,\"cases\":[{\"name\":\"drop-all-previous-attempts\",\"actual\":\"ACCEPT\",\"required\":\"REJECT\",\"providedAttempts\":[]},{\"name\":\"omit-an-earlier-attempt\",\"actual\":\"ACCEPT\",\"required\":\"REJECT\",\"providedAttempts\":[\"attempt-1\",\"attempt-3\",\"attempt-4\"]},{\"name\":\"reverse-previous-attempt-order\",\"actual\":\"ACCEPT\",\"required\":\"REJECT\",\"providedAttempts\":[\"attempt-4\",\"attempt-3\",\"attempt-2\",\"attempt-1\"]},{\"name\":\"alter-old-failure-and-rebind-only-current-plan-hash\",\"actual\":\"ACCEPT\",\"required\":\"REJECT\",\"failurePath\":\"docs/evidence/attempts/Phase008/attempt-1/attempt.json\",\"oldFailureHash\":\"a7397583f335ef8ffd4c563ee397c6a1e4aa0c03a160e348646f3aa89a8ca029\",\"newFailureHash\":\"6c21ee1d2d506c5ac721e3b84f426214d4771995d5ae686bec197bfd86cbfe47\",\"olderFrozenPlanMappingsChanged\":false}]}\n",
+      "stderr": "",
+      "result": {
+        "scope": "READ_ONLY_REAL_PHASE008_FAILURE_CHAIN_FUNCTION",
+        "attemptId": "attempt-5",
+        "baselineAccepted": true,
+        "originalPreviousCount": 4,
+        "filesModified": false,
+        "databaseAccessed": false,
+        "cases": [
+          {
+            "name": "drop-all-previous-attempts",
+            "actual": "ACCEPT",
+            "required": "REJECT",
+            "providedAttempts": []
+          },
+          {
+            "name": "omit-an-earlier-attempt",
+            "actual": "ACCEPT",
+            "required": "REJECT",
+            "providedAttempts": [
+              "attempt-1",
+              "attempt-3",
+              "attempt-4"
+            ]
+          },
+          {
+            "name": "reverse-previous-attempt-order",
+            "actual": "ACCEPT",
+            "required": "REJECT",
+            "providedAttempts": [
+              "attempt-4",
+              "attempt-3",
+              "attempt-2",
+              "attempt-1"
+            ]
+          },
+          {
+            "name": "alter-old-failure-and-rebind-only-current-plan-hash",
+            "actual": "ACCEPT",
+            "required": "REJECT",
+            "failurePath": "docs/evidence/attempts/Phase008/attempt-1/attempt.json",
+            "oldFailureHash": "a7397583f335ef8ffd4c563ee397c6a1e4aa0c03a160e348646f3aa89a8ca029",
+            "newFailureHash": "6c21ee1d2d506c5ac721e3b84f426214d4771995d5ae686bec197bfd86cbfe47",
+            "olderFrozenPlanMappingsChanged": false
+          }
+        ]
+      },
+      "probeSource": "\nconst fs = require('node:fs');\nconst crypto = require('node:crypto');\nconst assert = require('node:assert/strict');\n(async () => {\n const { requirePhase008FailureChain } = await import('./docs/phase-plans/phase008-evidence.mjs');\n const digest = (bytes) => crypto.createHash('sha256').update(bytes).digest('hex');\n const readJson = (file) => JSON.parse(fs.readFileSync(file));\n const hashFile = (file) => digest(fs.readFileSync(file));\n const original = readJson('docs/phase-plans/Phase008.json');\n assert.equal(original.attemptId,'attempt-5');\n requirePhase008FailureChain(original,{readJson,hashFile});\n const cases=[];\n for(const [name,change] of [\n  ['drop-all-previous-attempts',value=>{value.previousAttempts=[];}],\n  ['omit-an-earlier-attempt',value=>{value.previousAttempts.splice(1,1);}],\n  ['reverse-previous-attempt-order',value=>{value.previousAttempts.reverse();}]\n ]) {\n  const value=structuredClone(original);\n  change(value);\n  requirePhase008FailureChain(value,{readJson,hashFile});\n  cases.push({name,actual:'ACCEPT',required:'REJECT',providedAttempts:value.previousAttempts.map(entry=>entry.attemptId)});\n }\n const rebound=structuredClone(original);\n const previous=rebound.previousAttempts[0];\n const changed=readJson(previous.failurePath);\n changed.reason='Synthetic replacement diagnostic for an already hash-bound historical failure';\n const changedBytes=Buffer.from(JSON.stringify(changed)+'\\n');\n const newHash=digest(changedBytes);\n assert.notEqual(previous.failureHash,newHash);\n const oldFailureHash=previous.failureHash;\n previous.failureHash=newHash;\n requirePhase008FailureChain(rebound,{\n  readJson:file=>file===previous.failurePath?JSON.parse(changedBytes):readJson(file),\n  hashFile:file=>file===previous.failurePath?newHash:hashFile(file),\n });\n cases.push({name:'alter-old-failure-and-rebind-only-current-plan-hash',actual:'ACCEPT',required:'REJECT',failurePath:previous.failurePath,oldFailureHash,newFailureHash:newHash,olderFrozenPlanMappingsChanged:false});\n console.log(JSON.stringify({scope:'READ_ONLY_REAL_PHASE008_FAILURE_CHAIN_FUNCTION',attemptId:original.attemptId,baselineAccepted:true,originalPreviousCount:original.previousAttempts.length,filesModified:false,databaseAccessed:false,cases}));\n})().catch(error=>{console.error(error);process.exitCode=1;});\n"
+    }
+  ],
+  "issues": [
+    {
+      "id": "PHASE008-REVIEW-006",
+      "relatesTo": "PHASE008-REVIEW-003",
+      "priority": "P2",
+      "status": "OPEN",
+      "title": "Failure-chain completeness and inherited hashes are not enforced",
+      "verification": "REPRODUCED_BY_READ_ONLY_REAL_VALIDATOR_PROBES_AND_RETRY_CONTROL_FLOW_INSPECTION",
+      "references": [
+        {
+          "path": "docs/phase-plans/phase008-evidence.mjs",
+          "line": 69
+        },
+        {
+          "path": "docs/phase-plans/complete-phase008.mjs",
+          "line": 99
+        },
+        {
+          "path": "docs/phase-plans/complete-phase008.mjs",
+          "line": 101
+        }
+      ],
+      "finding": "The validator checks only entries that are present. An attempt-5 plan with all prior entries removed, one older entry omitted, or their order reversed is accepted. Retry also refreshes every previous failureHash without first validating inherited bindings. A changed older failure receipt can therefore be accepted after rebinding its hash in the newest plan even though historical frozen plans retain the original binding. The four acceptance gaps were reproduced without editing any file or database.",
+      "currentEvidenceState": "No corruption of the actual existing failure receipts was observed. The issue is that the validator and retry code do not reject these history mutations.",
+      "requiredChange": "For attempt-N require exactly the ordered attempt-1 through attempt-(N-1) entries. Check mappings inherited from every older frozen plan, including any earliest already-recorded failurePath/hash. Validate the current failure chain before retry expansion, preserve all established bindings, and add only the newly failed current attempt. For old plans predating failure fields, bridge through the later earliest recorded binding without overwriting the old plan or receipt. Add omission, empty-chain, reordering and changed-then-rebound rejection tests."
+    }
+  ],
+  "dispositions": [],
+  "validationSummary": {
+    "openBlockingIssues": 1,
+    "actualProbeProcesses": 1,
+    "actualAcceptanceGaps": 4,
+    "filesMutatedByProbes": 0,
+    "databaseAccessed": false,
+    "formalPhaseAcceptance": "PENDING"
+  },
+  "writeScope": {
+    "versioned": [
+      "docs/evidence/attempts/Phase008/attempt-5/failure-chain-review.json"
+    ],
+    "temporary": [],
+    "implementationFilesModified": false,
+    "testsModified": false,
+    "runnerModified": false,
+    "gitIndexModified": false,
+    "priorEvidenceModified": false
+  },
+  "notPerformed": [
+    "No implementation, schema, migration, test, runner, plan or old receipt was changed.",
+    "No database command or full acceptance run was executed by this follow-up.",
+    "No Phase PASS, artifact/metadata seal or push is claimed."
+  ]
+}

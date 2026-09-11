@@ -1,0 +1,1099 @@
+{
+  "numTotalTestSuites": 8,
+  "numPassedTestSuites": 8,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 86,
+  "numPassedTests": 86,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1789092577442,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: ChatMessage fields SQL nullability timestamps and indexes are exact",
+          "status": "passed",
+          "title": "ordered-messages: ChatMessage fields SQL nullability timestamps and indexes are exact",
+          "duration": 25.675200000000018,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: duplicate sequence is rejected",
+          "status": "passed",
+          "title": "ordered-messages: duplicate sequence is rejected",
+          "duration": 26.411100000000033,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: concurrent equal sequences have one database winner",
+          "status": "passed",
+          "title": "ordered-messages: concurrent equal sequences have one database winner",
+          "duration": 29.457499999999982,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: sequence is required positive and unique only within its record",
+          "status": "passed",
+          "title": "ordered-messages: sequence is required positive and unique only within its record",
+          "duration": 30.45040000000006,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: same-millisecond messages paginate by sequence without skips or duplicates",
+          "status": "passed",
+          "title": "ordered-messages: same-millisecond messages paginate by sequence without skips or duplicates",
+          "duration": 61.61329999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: cursor verifies its record and persisted sequence-id anchor",
+          "status": "passed",
+          "title": "ordered-messages: cursor verifies its record and persisted sequence-id anchor",
+          "duration": 26.725599999999986,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: an authorized empty history is empty while missing or foreign records are errors",
+          "status": "passed",
+          "title": "ordered-messages: an authorized empty history is empty while missing or foreign records are errors",
+          "duration": 15.536000000000058,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: PostgreSQL text accepts a long message without truncation",
+          "status": "passed",
+          "title": "ordered-messages: PostgreSQL text accepts a long message without truncation",
+          "duration": 32.32650000000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: required role rejects SQL NULL",
+          "status": "passed",
+          "title": "ordered-messages: required role rejects SQL NULL",
+          "duration": 6.796399999999949,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: required kind rejects SQL NULL",
+          "status": "passed",
+          "title": "ordered-messages: required kind rejects SQL NULL",
+          "duration": 6.661399999999958,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: required content rejects SQL NULL",
+          "status": "passed",
+          "title": "ordered-messages: required content rejects SQL NULL",
+          "duration": 5.805399999999963,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract ordered-messages: a missing parent record fails the real foreign key",
+          "status": "passed",
+          "title": "ordered-messages: a missing parent record fails the real foreign key",
+          "duration": 3.2875000000000227,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract client-idempotency: duplicate client id is rejected",
+          "status": "passed",
+          "title": "client-idempotency: duplicate client id is rejected",
+          "duration": 9.906099999999924,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract client-idempotency: concurrent duplicate client ids have one database winner",
+          "status": "passed",
+          "title": "client-idempotency: concurrent duplicate client ids have one database winner",
+          "duration": 11.299999999999955,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract client-idempotency: null ids can repeat and non-null ids are scoped to one record",
+          "status": "passed",
+          "title": "client-idempotency: null ids can repeat and non-null ids are scoped to one record",
+          "duration": 19.726,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract client-idempotency: concurrent equal payload retries replay the persisted message",
+          "status": "passed",
+          "title": "client-idempotency: concurrent equal payload retries replay the persisted message",
+          "duration": 20.611800000000017,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract client-idempotency: retries ignore new scheduling sequence while preserving id and timestamp",
+          "status": "passed",
+          "title": "client-idempotency: retries ignore new scheduling sequence while preserving id and timestamp",
+          "duration": 14.422599999999989,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract client-idempotency: payload mismatches conflict without extra messages or record updates",
+          "status": "passed",
+          "title": "client-idempotency: payload mismatches conflict without extra messages or record updates",
+          "duration": 35.4239,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract client-idempotency: repositories preserve null semantics and allow the same key on another record",
+          "status": "passed",
+          "title": "client-idempotency: repositories preserve null semantics and allow the same key on another record",
+          "duration": 39.89970000000005,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract client-idempotency: structured or unvalidated JSON input fails closed before a replay or write",
+          "status": "passed",
+          "title": "client-idempotency: structured or unvalidated JSON input fails closed before a replay or write",
+          "duration": 9.465199999999982,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract client-idempotency: a unique failure rolls back prior work and stops following writes",
+          "status": "passed",
+          "title": "client-idempotency: a unique failure rolls back prior work and stops following writes",
+          "duration": 20.338199999999915,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract reply-relation: missing reply targets fail the actual self foreign key",
+          "status": "passed",
+          "title": "reply-relation: missing reply targets fail the actual self foreign key",
+          "duration": 8.680200000000013,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract reply-relation: valid same-record replies are readable from both relation directions",
+          "status": "passed",
+          "title": "reply-relation: valid same-record replies are readable from both relation directions",
+          "duration": 21.54129999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract reply-relation: repository rejects missing and cross-record targets with no later writes",
+          "status": "passed",
+          "title": "reply-relation: repository rejects missing and cross-record targets with no later writes",
+          "duration": 25.737700000000018,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract reply-relation: the record lock rechecks current ownership before appending a reply",
+          "status": "passed",
+          "title": "reply-relation: the record lock rechecks current ownership before appending a reply",
+          "duration": 30.416500000000042,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract delete-policy: User Restrict record Cascade and reply SetNull are exact foreign-key policies",
+          "status": "passed",
+          "title": "delete-policy: User Restrict record Cascade and reply SetNull are exact foreign-key policies",
+          "duration": 3.1126999999999043,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract delete-policy: deleting an owning user is restricted and preserves its travel history",
+          "status": "passed",
+          "title": "delete-policy: deleting an owning user is restricted and preserves its travel history",
+          "duration": 21.555499999999938,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract delete-policy: exact fixture record purge cascades only that record's messages",
+          "status": "passed",
+          "title": "delete-policy: exact fixture record purge cascades only that record's messages",
+          "duration": 18.2192,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract delete-policy: deleting a reply target sets its reply links to null without deleting replies",
+          "status": "passed",
+          "title": "delete-policy: deleting a reply target sets its reply links to null without deleting replies",
+          "duration": 14.494599999999991,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract delete-policy: business repository exposes no individual deletion or sequence allocator",
+          "status": "passed",
+          "title": "delete-policy: business repository exposes no individual deletion or sequence allocator",
+          "duration": 0.20640000000003056,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage real PostgreSQL contract"
+          ],
+          "fullName": "ChatMessage real PostgreSQL contract delete-policy: concurrent fixtures clean only their recorded IDs and preserve every other fixture",
+          "status": "passed",
+          "title": "delete-policy: concurrent fixtures clean only their recorded IDs and preserve every other fixture",
+          "duration": 36.724100000000135,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789092578028,
+      "endTime": 1789092578661.724,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract ownership: anonymous and authenticated owners each persist exactly one owner",
+          "status": "passed",
+          "title": "ownership: anonymous and authenticated owners each persist exactly one owner",
+          "duration": 34.84249999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract ownership: ownerless rows are rejected",
+          "status": "passed",
+          "title": "ownership: ownerless rows are rejected",
+          "duration": 8.108499999999935,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract ownership: dual-owned rows are rejected",
+          "status": "passed",
+          "title": "ownership: dual-owned rows are rejected",
+          "duration": 8.520800000000008,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract ownership: owner CHECK and foreign key also reject invalid updates",
+          "status": "passed",
+          "title": "ownership: owner CHECK and foreign key also reject invalid updates",
+          "duration": 22.73040000000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract ownership: wrong and missing owners cannot read a known record",
+          "status": "passed",
+          "title": "ownership: wrong and missing owners cannot read a known record",
+          "duration": 14.663599999999974,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract ownership: transfer atomically replaces the anonymous owner and preserves history",
+          "status": "passed",
+          "title": "ownership: transfer atomically replaces the anonymous owner and preserves history",
+          "duration": 31.923700000000053,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract ownership: failed transfer leaves the original owner and messages unchanged",
+          "status": "passed",
+          "title": "ownership: failed transfer leaves the original owner and messages unchanged",
+          "duration": 30.473600000000033,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract ownership: concurrent transfers have only one authenticated owner",
+          "status": "passed",
+          "title": "ownership: concurrent transfers have only one authenticated owner",
+          "duration": 34.44079999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: the two baseline migrations and one additive migration are applied",
+          "status": "passed",
+          "title": "lifecycle-version: the two baseline migrations and one additive migration are applied",
+          "duration": 2.9466999999999643,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: model inventory and generated fields contain only current producers",
+          "status": "passed",
+          "title": "lifecycle-version: model inventory and generated fields contain only current producers",
+          "duration": 4.155599999999936,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: TravelRecord SQL types nullability defaults and timestamps are exact",
+          "status": "passed",
+          "title": "lifecycle-version: TravelRecord SQL types nullability defaults and timestamps are exact",
+          "duration": 11.884599999999978,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: all three new enum inventories match their exact contracts",
+          "status": "passed",
+          "title": "lifecycle-version: all three new enum inventories match their exact contracts",
+          "duration": 3.259400000000028,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: owner and status query indexes and CHECK constraints exist",
+          "status": "passed",
+          "title": "lifecycle-version: owner and status query indexes and CHECK constraints exist",
+          "duration": 6.800700000000006,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: status DRAFT round-trips without implying transition rules",
+          "status": "passed",
+          "title": "lifecycle-version: status DRAFT round-trips without implying transition rules",
+          "duration": 5.5978000000000065,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: status NEEDS_INFO round-trips without implying transition rules",
+          "status": "passed",
+          "title": "lifecycle-version: status NEEDS_INFO round-trips without implying transition rules",
+          "duration": 4.073700000000031,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: status PLANNED round-trips without implying transition rules",
+          "status": "passed",
+          "title": "lifecycle-version: status PLANNED round-trips without implying transition rules",
+          "duration": 4.874400000000037,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: status MODIFIED round-trips without implying transition rules",
+          "status": "passed",
+          "title": "lifecycle-version: status MODIFIED round-trips without implying transition rules",
+          "duration": 5.36869999999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: status FINALIZED round-trips without implying transition rules",
+          "status": "passed",
+          "title": "lifecycle-version: status FINALIZED round-trips without implying transition rules",
+          "duration": 5.062099999999987,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: status NEEDS_REVALIDATION round-trips without implying transition rules",
+          "status": "passed",
+          "title": "lifecycle-version: status NEEDS_REVALIDATION round-trips without implying transition rules",
+          "duration": 5.45010000000002,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: status ARCHIVED round-trips without implying transition rules",
+          "status": "passed",
+          "title": "lifecycle-version: status ARCHIVED round-trips without implying transition rules",
+          "duration": 5.455100000000016,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: a fresh record starts at DRAFT version zero with no requirement",
+          "status": "passed",
+          "title": "lifecycle-version: a fresh record starts at DRAFT version zero with no requirement",
+          "duration": 3.4510999999999967,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: updating a title advances updatedAt without incrementing version",
+          "status": "passed",
+          "title": "lifecycle-version: updating a title advances updatedAt without incrementing version",
+          "duration": 7.796600000000012,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: the repository persists a cleaned display title without adding identity fields",
+          "status": "passed",
+          "title": "lifecycle-version: the repository persists a cleaned display title without adding identity fields",
+          "duration": 3.5430000000000064,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: negative versions fail INSERT and UPDATE with no partial write",
+          "status": "passed",
+          "title": "lifecycle-version: negative versions fail INSERT and UPDATE with no partial write",
+          "duration": 10.235699999999952,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: required title rejects SQL NULL",
+          "status": "passed",
+          "title": "lifecycle-version: required title rejects SQL NULL",
+          "duration": 2.5670000000000073,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: required status rejects SQL NULL",
+          "status": "passed",
+          "title": "lifecycle-version: required status rejects SQL NULL",
+          "duration": 2.9676000000000613,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: required version rejects SQL NULL",
+          "status": "passed",
+          "title": "lifecycle-version: required version rejects SQL NULL",
+          "duration": 2.8452000000000908,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: nullable JSON schema storage is separate from unavailable product validation",
+          "status": "passed",
+          "title": "lifecycle-version: nullable JSON schema storage is separate from unavailable product validation",
+          "duration": 7.892999999999915,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract lifecycle-version: unavailable JSON schema fails closed without creating a record",
+          "status": "passed",
+          "title": "lifecycle-version: unavailable JSON schema fails closed without creating a record",
+          "duration": 4.90949999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract hash: malformed hash values fail the real database format CHECK",
+          "status": "passed",
+          "title": "hash: malformed hash values fail the real database format CHECK",
+          "duration": 17.08549999999991,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract hash: the fixed-width column rejects oversized input rather than silently truncating it",
+          "status": "passed",
+          "title": "hash: the fixed-width column rejects oversized input rather than silently truncating it",
+          "duration": 2.4501000000000204,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord real PostgreSQL contract"
+          ],
+          "fullName": "TravelRecord real PostgreSQL contract ownership: a failed CHECK rolls back earlier writes and stops later writes",
+          "status": "passed",
+          "title": "ownership: a failed CHECK rolls back earlier writes and stops later writes",
+          "duration": 13.73759999999993,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789092578027,
+      "endTime": 1789092578357.7375,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "ChatMessage repository boundary"
+          ],
+          "fullName": "ChatMessage repository boundary ordered-messages: cursor round-trips the record sequence and message identity",
+          "status": "passed",
+          "title": "ordered-messages: cursor round-trips the record sequence and message identity",
+          "duration": 4.022700000000043,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage repository boundary"
+          ],
+          "fullName": "ChatMessage repository boundary ordered-messages: malformed noncanonical and ambiguous cursor payloads are rejected",
+          "status": "passed",
+          "title": "ordered-messages: malformed noncanonical and ambiguous cursor payloads are rejected",
+          "duration": 1.591600000000028,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage repository boundary"
+          ],
+          "fullName": "ChatMessage repository boundary ordered-messages: cursor encoder rejects missing extra and invalid anchor fields",
+          "status": "passed",
+          "title": "ordered-messages: cursor encoder rejects missing extra and invalid anchor fields",
+          "duration": 0.5129999999999768,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage repository boundary"
+          ],
+          "fullName": "ChatMessage repository boundary ownership: reading and appending require exactly one owner before SQL",
+          "status": "passed",
+          "title": "ownership: reading and appending require exactly one owner before SQL",
+          "duration": 4.49169999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage repository boundary"
+          ],
+          "fullName": "ChatMessage repository boundary ordered-messages: missing nonintegral and out-of-range sequences fail before SQL",
+          "status": "passed",
+          "title": "ordered-messages: missing nonintegral and out-of-range sequences fail before SQL",
+          "duration": 1.5427000000000248,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage repository boundary"
+          ],
+          "fullName": "ChatMessage repository boundary ordered-messages: invalid role kind content and record identities fail before SQL",
+          "status": "passed",
+          "title": "ordered-messages: invalid role kind content and record identities fail before SQL",
+          "duration": 1.4326000000000363,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage repository boundary"
+          ],
+          "fullName": "ChatMessage repository boundary ordered-messages: bad page sizes and foreign or malformed cursors fail before SQL",
+          "status": "passed",
+          "title": "ordered-messages: bad page sizes and foreign or malformed cursors fail before SQL",
+          "duration": 1.2439999999999714,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage repository boundary"
+          ],
+          "fullName": "ChatMessage repository boundary client-idempotency: absent structured validation rejects all non-null JSON before SQL",
+          "status": "passed",
+          "title": "client-idempotency: absent structured validation rejects all non-null JSON before SQL",
+          "duration": 1.1194999999999595,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage repository boundary"
+          ],
+          "fullName": "ChatMessage repository boundary client-idempotency: invalid client and reply identifiers fail before SQL",
+          "status": "passed",
+          "title": "client-idempotency: invalid client and reply identifiers fail before SQL",
+          "duration": 1.621499999999969,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage repository boundary"
+          ],
+          "fullName": "ChatMessage repository boundary ordered-messages: database faults remain redacted errors and never become empty pages",
+          "status": "passed",
+          "title": "ordered-messages: database faults remain redacted errors and never become empty pages",
+          "duration": 1.7065000000000055,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "ChatMessage repository boundary"
+          ],
+          "fullName": "ChatMessage repository boundary delete-policy: ordinary repository exports no message deletion or sequence allocation",
+          "status": "passed",
+          "title": "delete-policy: ordinary repository exports no message deletion or sequence allocation",
+          "duration": 0.21959999999995716,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789092577981,
+      "endTime": 1789092578000.2195,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/chat-message.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary hash: canonical 256-bit Cookie material hashes its exact UTF-8 bytes deterministically",
+          "status": "passed",
+          "title": "hash: canonical 256-bit Cookie material hashes its exact UTF-8 bytes deterministically",
+          "duration": 3.873700000000042,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary hash: wrong lengths encodings and non-string values fail with a redacted error",
+          "status": "passed",
+          "title": "hash: wrong lengths encodings and non-string values fail with a redacted error",
+          "duration": 9.397400000000005,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary ownership: owner parser accepts exactly one trusted scalar owner",
+          "status": "passed",
+          "title": "ownership: owner parser accepts exactly one trusted scalar owner",
+          "duration": 1.2013000000000034,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary ownership: owner parser rejects missing ambiguous inherited and alternate identity fields",
+          "status": "passed",
+          "title": "ownership: owner parser rejects missing ambiguous inherited and alternate identity fields",
+          "duration": 3.278700000000015,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary ownership: owner parser rejects accessors and hidden or symbol keys without invoking getters",
+          "status": "passed",
+          "title": "ownership: owner parser rejects accessors and hidden or symbol keys without invoking getters",
+          "duration": 0.5024999999999977,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary hash: request token alternatives and malformed persisted hashes are not valid owner inputs",
+          "status": "passed",
+          "title": "hash: request token alternatives and malformed persisted hashes are not valid owner inputs",
+          "duration": 0.9302999999999884,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary ownership: all repositories reject invalid owners before touching SQL",
+          "status": "passed",
+          "title": "ownership: all repositories reject invalid owners before touching SQL",
+          "duration": 2.156499999999994,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary lifecycle-version: JSON schema absence fails closed before starting SQL",
+          "status": "passed",
+          "title": "lifecycle-version: JSON schema absence fails closed before starting SQL",
+          "duration": 2.983000000000004,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary ownership: transfer requires an anonymous owner and a nonempty destination user",
+          "status": "passed",
+          "title": "ownership: transfer requires an anonymous owner and a nonempty destination user",
+          "duration": 1.144299999999987,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary ownership: database failures are safe errors rather than records or missing-record responses",
+          "status": "passed",
+          "title": "ownership: database failures are safe errors rather than records or missing-record responses",
+          "duration": 2.0142999999999915,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary ownership: repository exports only this phase's owned record primitives",
+          "status": "passed",
+          "title": "ownership: repository exports only this phase's owned record primitives",
+          "duration": 0.491800000000012,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "TravelRecord trusted owner and hashing boundary"
+          ],
+          "fullName": "TravelRecord trusted owner and hashing boundary ownership: database fixtures reject non-loopback unknown and unowned targets before connecting",
+          "status": "passed",
+          "title": "ownership: database fixtures reject non-loopback unknown and unowned targets before connecting",
+          "duration": 3.5627000000000066,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789092577980,
+      "endTime": 1789092578011.5627,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/travel-record.test.ts"
+    }
+  ]
+}

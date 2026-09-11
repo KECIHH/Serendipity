@@ -1,0 +1,252 @@
+{
+  "phase": 8,
+  "attemptId": "attempt-2",
+  "planPath": "docs/phase-plans/Phase008.json",
+  "planHash": "b609ac82b48ad0d678e643b7313485e989dd964163c2d02f66df8daf4d6ea4c9",
+  "decision": "FAIL",
+  "implementationContextId": "codex:/root:Phase008:20260911",
+  "contextId": "codex:/root/inspect_phase_runner",
+  "reviewerRunId": "phase008-preliminary-attempt-2-d993c2c4-8b0c-49a4-b3d6-12a00357c5d5",
+  "generatedBy": "Independent Codex reviewer in agent task /root/inspect_phase_runner; read-only preliminary runner/protocol review and creation of this report only.",
+  "runnerIdentity": {
+    "kind": "INDEPENDENT_CODEX_AGENT",
+    "implementationAuthored": false
+  },
+  "reviewCompletion": "PRELIMINARY_RUNNER_PROTOCOL_REVIEW",
+  "generatedAt": "2026-09-11T00:40:10.965Z",
+  "reviewScope": "Frozen Phase008 plan, preparation/setup/runtime/verification/completion scripts, phase008 documentation, migration generation receipt and actual migration binding, prior attempt preservation, and relevant shared evidence/validator protocol. This is not a completed implementation or full acceptance review.",
+  "sourceHashCoverage": "Only the explicitly inspected files below; this preliminary report does not claim full plan.sourcePaths coverage.",
+  "sourceHashes": {
+    "docs/evidence/attempts/Phase008/attempt-1/attempt.json": "a7397583f335ef8ffd4c563ee397c6a1e4aa0c03a160e348646f3aa89a8ca029",
+    "docs/evidence/attempts/Phase008/attempt-1/frozen-plan.json": "ed6448d5c0bc061072a0ec56e98e57650c77e4ae8c21cbf123a9a2995bd6ff2d",
+    "docs/evidence/attempts/Phase008/attempt-2/frozen-plan.json": "b609ac82b48ad0d678e643b7313485e989dd964163c2d02f66df8daf4d6ea4c9",
+    "docs/evidence/attempts/Phase008/setup/migration-generation.json": "7f0263a78a3fb00f42f6ef289bdafcc76c2b86abe88134e56154c8fcda1dac7c",
+    "docs/evidence/attempts/Phase008/setup/preflight.json": "12fe9bd4e319f31414f351eb9bb408527c56a7d4daf1ada047aace9e8a302531",
+    "docs/evidence/attempts/Phase008/setup/travel_record_chat_message.generated.sql": "2a2683b2c0bce0b0436648fb646a7d108ae01e2eb12482f3f5f00b7e17ec7181",
+    "docs/phase-plans/Phase008-inputs.json": "4ff3cac606c6b57cd44a7d602c5e830d637043beed45e0b83c7f8259d3e1bb5d",
+    "docs/phase-plans/Phase008.json": "b609ac82b48ad0d678e643b7313485e989dd964163c2d02f66df8daf4d6ea4c9",
+    "docs/phase-plans/complete-phase008.mjs": "7d9e2e3bd118baa2220bf2fd3338105d95a7eeea6bded9e803f8341c76a28699",
+    "docs/phase-plans/phase008-runtime.mjs": "b3df20dc5a3939ead8c5d1d686ee0c8411ed94b75ad290364aacae5cbf5e244f",
+    "docs/phase-plans/prepare-phase008.mjs": "7e25b50c33c68c463a04f235e9a8e183d50c1637d0200849d4540c05717b6150",
+    "docs/phase-plans/setup-phase008.mjs": "116be176ec6ecb5f282caa69624211a6eaa4ff0e7bee0cad764dbfe8e374fc7e",
+    "docs/phase-plans/verify-phase008.mjs": "35cf81efd968e32090c5ae0062e56b2fd1f906378b37a7722a4bcff81dbca21d",
+    "docs/phase008.md": "6707cb0b787ab010f93e3a78d015746148a6defa6c0a1134d6f617996b444baf",
+    "prisma/migrations/20260911002217_travel_record_chat_message/migration.sql": "761979289b28f413d47c09290f43e9d01ffc22421918103a51d6c67b638bb48f",
+    "scripts/phase-evidence.mjs": "5847d1bcbc1b5ae4917828d2e1bacc6c13c0637994d9a1f46fc2137e361fd6c0",
+    "scripts/validate-phase.mjs": "06bcd9955531054ace725393d8504f037256a428b80f5fe883b95587c31062d1",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319"
+  },
+  "probeOutputs": [
+    {
+      "id": "PHASE008-PRELIMINARY-PROBE-001",
+      "method": "Execute the exact relevant current validator function/statements against mutated in-memory copies of the actual correct receipt. No file or database mutation.",
+      "command": "node --eval <probeSource>",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "{\"probe\":\"generated-migration-command-validation\",\"actualReceiptAccepted\":true,\"filesModified\":false,\"databaseAccessed\":false,\"results\":[{\"name\":\"echoed-create-only-is-accepted\",\"suppliedRecord\":{\"command\":\"echo --create-only\",\"exitCode\":0,\"timedOut\":false},\"actual\":\"ACCEPT\",\"required\":\"REJECT\"},{\"name\":\"missing-timeout-and-streams-is-accepted\",\"suppliedRecord\":{\"command\":\"npm run db:migrate -- --name travel_record_chat_message --create-only\",\"exitCode\":0},\"actual\":\"ACCEPT\",\"required\":\"REJECT\"}]}\n",
+      "stderr": "",
+      "result": {
+        "probe": "generated-migration-command-validation",
+        "actualReceiptAccepted": true,
+        "filesModified": false,
+        "databaseAccessed": false,
+        "results": [
+          {
+            "name": "echoed-create-only-is-accepted",
+            "suppliedRecord": {
+              "command": "echo --create-only",
+              "exitCode": 0,
+              "timedOut": false
+            },
+            "actual": "ACCEPT",
+            "required": "REJECT"
+          },
+          {
+            "name": "missing-timeout-and-streams-is-accepted",
+            "suppliedRecord": {
+              "command": "npm run db:migrate -- --name travel_record_chat_message --create-only",
+              "exitCode": 0
+            },
+            "actual": "ACCEPT",
+            "required": "REJECT"
+          }
+        ]
+      },
+      "probeSource": "\nconst fs = require('node:fs');\nconst assert = require('node:assert/strict');\nconst crypto = require('node:crypto');\nconst read = (file) => fs.readFileSync(file);\nconst json = (file) => JSON.parse(read(file));\nconst hash = (file) => crypto.createHash('sha256').update(read(file)).digest('hex');\nconst generationPath = 'docs/evidence/attempts/Phase008/setup/migration-generation.json';\nconst receiptPath = 'docs/phase-plans/Phase008-inputs.json';\nconst sourceSchemaPath = 'prisma/schema.prisma';\nconst original = json(generationPath);\nconst migrationPath = original.generatedMigrationPath;\nconst source = read('docs/phase-plans/verify-phase008.mjs').toString();\nconst extracted = source.slice(source.indexOf('function verifyMigrationBinding()'), source.indexOf('function scanScope()'));\nassert(extracted.startsWith('function verifyMigrationBinding()'));\nconst make = new Function('assert', 'json', 'generationPath', 'migrationPath', 'receiptPath', 'hash', 'read', 'sourceSchemaPath', extracted + '\\nreturn verifyMigrationBinding;');\nmake(assert, json, generationPath, migrationPath, receiptPath, hash, read, sourceSchemaPath)();\nconst results = [];\nfor (const [name, record] of [\n ['echoed-create-only-is-accepted', {command:'echo --create-only',exitCode:0,timedOut:false}],\n ['missing-timeout-and-streams-is-accepted', {command:'npm run db:migrate -- --name travel_record_chat_message --create-only',exitCode:0}]\n]) {\n const generation = structuredClone(original);\n generation.records = [record];\n make(assert, (file) => file === generationPath ? generation : json(file), generationPath, migrationPath, receiptPath, hash, read, sourceSchemaPath)();\n results.push({name, suppliedRecord:record, actual:'ACCEPT', required:'REJECT'});\n}\nconsole.log(JSON.stringify({probe:'generated-migration-command-validation', actualReceiptAccepted:true, filesModified:false, databaseAccessed:false, results}));\n"
+    },
+    {
+      "id": "PHASE008-PRELIMINARY-PROBE-002",
+      "method": "Execute the exact relevant current validator function/statements against mutated in-memory copies of the actual correct receipt. No file or database mutation.",
+      "command": "node --eval <probeSource>",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "exitCode": 0,
+      "signal": null,
+      "stdout": "{\"probe\":\"dual-shell-admission-identity\",\"actualReceiptAccepted\":true,\"actualShells\":[\"PowerShell7\",\"WindowsPowerShell51\"],\"suppliedShells\":[\"PowerShell7\",\"PowerShell7\"],\"actual\":\"ACCEPT\",\"required\":\"REJECT\",\"filesModified\":false,\"databaseAccessed\":false}\n",
+      "stderr": "",
+      "result": {
+        "probe": "dual-shell-admission-identity",
+        "actualReceiptAccepted": true,
+        "actualShells": [
+          "PowerShell7",
+          "WindowsPowerShell51"
+        ],
+        "suppliedShells": [
+          "PowerShell7",
+          "PowerShell7"
+        ],
+        "actual": "ACCEPT",
+        "required": "REJECT",
+        "filesModified": false,
+        "databaseAccessed": false
+      },
+      "probeSource": "\nconst fs = require('node:fs');\nconst assert = require('node:assert/strict');\nconst source = fs.readFileSync('docs/phase-plans/prepare-phase008.mjs', 'utf8');\nconst extracted = source.slice(source.indexOf('assert.equal(preflight.shells.length, 2);'), source.indexOf('assert.equal(git(\"config\"'));\nassert(extracted.startsWith('assert.equal(preflight.shells.length, 2);'));\nconst check = new Function('assert', 'preflight', extracted);\nconst preflight = JSON.parse(fs.readFileSync('docs/evidence/attempts/Phase008/setup/preflight.json', 'utf8'));\ncheck(assert, preflight);\nconst actualShells = preflight.shells.map((entry) => entry.shell);\npreflight.shells[1] = structuredClone(preflight.shells[0]);\ncheck(assert, preflight);\nconsole.log(JSON.stringify({probe:'dual-shell-admission-identity', actualReceiptAccepted:true, actualShells, suppliedShells:preflight.shells.map((entry) => entry.shell), actual:'ACCEPT', required:'REJECT', filesModified:false, databaseAccessed:false}));\n"
+    }
+  ],
+  "issues": [
+    {
+      "id": "PHASE008-REVIEW-001",
+      "priority": "P1",
+      "status": "OPEN",
+      "title": "Final audit does not reject newly added untested files",
+      "verification": "STATIC_CONTROL_FLOW_ANALYSIS",
+      "references": [
+        {
+          "path": "docs/phase-plans/complete-phase008.mjs",
+          "line": 12
+        },
+        {
+          "path": "docs/phase-plans/complete-phase008.mjs",
+          "line": 113
+        },
+        {
+          "path": "docs/phase-plans/verify-phase008.mjs",
+          "line": 280
+        }
+      ],
+      "finding": "The final audit recomputes hashes only for previously listed plan.sourcePaths. The working inventory and modification-scope scan run during quality only. Adding a new unlisted source/API file or an extra migration after quality and committing it with the artifact can leave every audited source hash unchanged; metadata then labels the new full artifact tree as testedTree.",
+      "requiredChange": "At final audit, validate all changed and untracked files against the phase-start baseline and modificationScope; recompute and compare the complete implementation/test/tool inventory, allowing the actual dynamically bound migration explicitly. Require exactly the two prerequisite migrations plus this one migration. Reject any unbound new file before artifact sealing."
+    },
+    {
+      "id": "PHASE008-REVIEW-002",
+      "priority": "P2",
+      "status": "OPEN",
+      "title": "Setup failures are not automatically recorded as immutable attempts",
+      "verification": "STATIC_CONTROL_FLOW_ANALYSIS_AND_EXISTING_FAILURE_RECEIPT_INSPECTION",
+      "references": [
+        {
+          "path": "docs/phase-plans/setup-phase008.mjs",
+          "line": 8
+        },
+        {
+          "path": "docs/phase-plans/setup-phase008.mjs",
+          "line": 63
+        }
+      ],
+      "finding": "The setup catch prints the error and sets exitCode but writes no attempt.json and preserves no partial command record. Attempt 1 was retained by the root agent separately. A later setup failure could otherwise be absent from the phase history; the existing-config success branch also returns without requiring the successful PostgreSQL setup receipt.",
+      "requiredChange": "Persist each setup failure once in the current attempt with command, reason, plan binding and safe partial observations. Do not overwrite prior failure evidence. Validate or safely complete the task-owned successful setup receipt when reusing an existing configuration."
+    },
+    {
+      "id": "PHASE008-REVIEW-003",
+      "priority": "P2",
+      "status": "OPEN",
+      "title": "Previous failure receipts can disappear without blocking final audit",
+      "verification": "STATIC_CONTROL_FLOW_ANALYSIS",
+      "references": [
+        {
+          "path": "docs/phase-plans/complete-phase008.mjs",
+          "line": 28
+        },
+        {
+          "path": "docs/phase-plans/complete-phase008.mjs",
+          "line": 94
+        }
+      ],
+      "finding": "Retry and audit bind only each previous frozen-plan file and its hash, not the corresponding failure attempt.json. Removing a prior failure receipt while retaining its frozen plan would still satisfy these checks; metadata inventories only the evidence files that remain.",
+      "requiredChange": "Bind prior failure receipt path and SHA-256 when freezing the retry, and require every previous receipt to exist with matching phase, attempt, non-PASS status and frozen plan hash. Include the verified immutable failure receipt in the final evidence input set."
+    },
+    {
+      "id": "PHASE008-REVIEW-004",
+      "priority": "P2",
+      "status": "OPEN",
+      "title": "Migration generation accepts echoed or incomplete command records",
+      "verification": "REPRODUCED_BY_READ_ONLY_IN_MEMORY_PROBE",
+      "probeIds": [
+        "PHASE008-PRELIMINARY-PROBE-001"
+      ],
+      "references": [
+        {
+          "path": "docs/phase-plans/verify-phase008.mjs",
+          "line": 148
+        },
+        {
+          "path": "docs/phase-plans/complete-phase008.mjs",
+          "line": 44
+        }
+      ],
+      "finding": "The predicate only looks for a command containing --create-only, exitCode 0 and a falsy timedOut. Both an echo command and a record missing timeout/stdout/stderr were accepted by the extracted real function. The actual existing generation receipt is correct; the issue is its validator.",
+      "requiredChange": "Require the exact permitted Phase008 Prisma migration command, timedOut === false, string stdout/stderr and complete successful command observations. Reuse the strict generation binding validation in the finalizer and add rejection probes for echoed/wrong-phase commands and missing execution fields."
+    },
+    {
+      "id": "PHASE008-REVIEW-005",
+      "priority": "P2",
+      "status": "OPEN",
+      "title": "Two records from the same shell satisfy dual-shell admission",
+      "verification": "REPRODUCED_BY_READ_ONLY_IN_MEMORY_PROBE",
+      "probeIds": [
+        "PHASE008-PRELIMINARY-PROBE-002"
+      ],
+      "references": [
+        {
+          "path": "docs/phase-plans/prepare-phase008.mjs",
+          "line": 37
+        }
+      ],
+      "finding": "The admission checks require two successful entries but do not bind their distinct shell identities. Replacing the second entry with a clone of PowerShell7 was accepted. The actual current preflight contains both required shells and is correct.",
+      "requiredChange": "Require exactly PowerShell7 and WindowsPowerShell51, appropriate actual command identities, ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL scope and protocolFixture === false along with the existing phase/commit/PASS bindings."
+    }
+  ],
+  "dispositions": [],
+  "actualEvidenceFindings": {
+    "actualPreflightHasRequiredDistinctShells": true,
+    "actualGenerationReceiptContainsSuccessfulRealCreateOnlyCommand": true,
+    "rawAndFinalMigrationHashesMatchReceipt": true,
+    "generationReceiptTransitivelyBindsActualMigration": true,
+    "fixedRequiredCases": [
+      "Phase008:ownership",
+      "Phase008:lifecycle-version",
+      "Phase008:hash",
+      "Phase008:ordered-messages",
+      "Phase008:client-idempotency",
+      "Phase008:reply-relation",
+      "Phase008:delete-policy",
+      "Phase008:mutation"
+    ],
+    "originalThreshold": 8,
+    "automatedThreshold": 8,
+    "waived": false
+  },
+  "validationSummary": {
+    "openBlockingIssues": 5,
+    "staticFindings": 3,
+    "reproducedProbeFamilies": 2,
+    "probeProcessesExitedZero": 2,
+    "formalPhaseAcceptance": "NOT_RUN_BY_THIS_PRELIMINARY_REVIEW"
+  },
+  "notPerformed": [
+    "No implementation, runner, test, schema, plan, migration or previous evidence file was modified by this reviewer.",
+    "No database access, real migration, full Vitest/build run, artifact/metadata commit, seal or push was performed by this reviewer.",
+    "Implementation and tests were being authored in parallel during the initial inspection; full final-source review remains pending."
+  ],
+  "writeScope": {
+    "versioned": [
+      "docs/evidence/attempts/Phase008/attempt-2/preliminary-review.json"
+    ],
+    "temporary": [],
+    "implementationFilesModified": false,
+    "testsModified": false,
+    "runnerModified": false,
+    "gitIndexModified": false,
+    "priorEvidenceModified": false
+  }
+}

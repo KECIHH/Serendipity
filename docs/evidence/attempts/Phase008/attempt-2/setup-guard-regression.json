@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "phase": 8,
+  "attemptId": "attempt-2",
+  "evidenceKind": "SUPPORTING_TOOL_REGRESSION",
+  "verificationMode": "IN_MEMORY_FAULT_INJECTION",
+  "status": "PASS",
+  "realDatabaseGate": false,
+  "requiredGateCase": false,
+  "productionTraffic": false,
+  "databaseCommandsExecuted": 0,
+  "probeFilesystemWrites": 0,
+  "denominator": 14,
+  "numerator": 14,
+  "cases": [
+    {
+      "id": "setup-reuse-keeps-receipt",
+      "assertion": "Valid existing environment is reused without rewriting its immutable receipt.",
+      "status": "PASS"
+    },
+    {
+      "id": "setup-missing-receipt",
+      "assertion": "A configured environment without the setup receipt fails and persists all observed commands.",
+      "status": "PASS"
+    },
+    {
+      "id": "setup-receipt-run-mismatch",
+      "assertion": "A receipt with a different runId is rejected.",
+      "status": "PASS"
+    },
+    {
+      "id": "setup-receipt-container-mismatch",
+      "assertion": "A receipt with a different containerId is rejected.",
+      "status": "PASS"
+    },
+    {
+      "id": "setup-receipt-database-mismatch",
+      "assertion": "A receipt with a different database is rejected.",
+      "status": "PASS"
+    },
+    {
+      "id": "setup-actual-marker-mismatch",
+      "assertion": "A mismatching observed database marker is rejected.",
+      "status": "PASS"
+    },
+    {
+      "id": "setup-non-postgresql17",
+      "assertion": "An observed PostgreSQL 16 version is rejected.",
+      "status": "PASS"
+    },
+    {
+      "id": "setup-preserves-previous-failure",
+      "assertion": "An existing attempt failure survives a later identity-guard failure unchanged.",
+      "status": "PASS"
+    },
+    {
+      "id": "setup-new-environment-failure-redaction",
+      "assertion": "A failure before the generated config is written retains command observations without generated password or environment values.",
+      "status": "PASS"
+    },
+    {
+      "id": "setup-new-environment-receipt",
+      "assertion": "Successful simulated creation writes the expected receipt and records each nested command once.",
+      "status": "PASS"
+    },
+    {
+      "id": "setup-missing-argument",
+      "assertion": "Missing --database produces a failure record with zero database commands.",
+      "status": "PASS"
+    },
+    {
+      "id": "runtime-observer-success",
+      "assertion": "A successful command notifies its observer exactly once.",
+      "status": "PASS"
+    },
+    {
+      "id": "runtime-observer-nonzero",
+      "assertion": "A nonzero command notifies before throwing and retains the same error.observation.",
+      "status": "PASS"
+    },
+    {
+      "id": "runtime-observer-launch-failure",
+      "assertion": "A simulated unstarted child records exitCode null and processStarted false before throwing.",
+      "status": "PASS"
+    }
+  ],
+  "originalExecution": {
+    "command": "node --input-type=module -",
+    "invocation": "PowerShell literal here-string piped to Node stdin",
+    "source": "Observed exec_command tool result 322296",
+    "exitCode": 0,
+    "stdout": "{\"status\":\"PASS\",\"setupCases\":11,\"runtimeCases\":3,\"databaseCommandsExecuted\":0,\"filesWritten\":0}\n",
+    "stderr": "",
+    "toolWallTimeSeconds": 0.3833069,
+    "executionTimestamp": null,
+    "timestampStatus": "NOT_CAPTURED_BY_ORIGINAL_PROBE"
+  },
+  "archivedReplay": {
+    "command": "node docs/evidence/attempts/Phase008/attempt-2/setup-guard-probe.mjs",
+    "executable": "C:\\Program Files\\nodejs\\node.exe",
+    "arguments": [
+      "docs/evidence/attempts/Phase008/attempt-2/setup-guard-probe.mjs"
+    ],
+    "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+    "exitCode": 0,
+    "signal": null,
+    "error": null,
+    "stdout": "{\"status\":\"PASS\",\"setupCases\":11,\"runtimeCases\":3,\"databaseCommandsExecuted\":0,\"filesWritten\":0}\n",
+    "stderr": "",
+    "startedAt": "2026-09-11T01:00:08.326Z",
+    "completedAt": "2026-09-11T01:00:08.463Z",
+    "durationMs": 133,
+    "nodeVersion": "v24.19.0",
+    "platform": "win32",
+    "architecture": "x64",
+    "sourceHashesBefore": {
+      "docs/phase-plans/setup-phase008.mjs": "42a76197af0634bc5f0f14a57db82aab41e7c4fc98a1b48d714e46b809ea0e6d",
+      "docs/phase-plans/phase008-runtime.mjs": "952ca850f7ab183815383ebfd7400b2b1e20ffaa1b73454e4e19a66a0b3410bd"
+    },
+    "sourceHashesAfter": {
+      "docs/phase-plans/setup-phase008.mjs": "42a76197af0634bc5f0f14a57db82aab41e7c4fc98a1b48d714e46b809ea0e6d",
+      "docs/phase-plans/phase008-runtime.mjs": "952ca850f7ab183815383ebfd7400b2b1e20ffaa1b73454e4e19a66a0b3410bd"
+    },
+    "sourcesUnchanged": true
+  },
+  "probe": {
+    "path": "docs/evidence/attempts/Phase008/attempt-2/setup-guard-probe.mjs",
+    "sha256": "24b3985769d3088b4e9ae796d1516c24e760111762dde1f54073b0fbc6055151"
+  },
+  "toolSourceHashes": {
+    "docs/phase-plans/setup-phase008.mjs": "42a76197af0634bc5f0f14a57db82aab41e7c4fc98a1b48d714e46b809ea0e6d",
+    "docs/phase-plans/phase008-runtime.mjs": "952ca850f7ab183815383ebfd7400b2b1e20ffaa1b73454e4e19a66a0b3410bd"
+  },
+  "limits": [
+    "The 14 cases execute the real setup/runtime JavaScript bodies with injected in-memory filesystem, database identity, Docker, SQL and process doubles.",
+    "The setup observer registration and teardown, exclusive failure persistence, receipt checks and command observer notification paths are exercised; PostgreSQL, Docker and migration behavior are not exercised.",
+    "The original stdin run emitted aggregate completion only. The archived replay binds the saved probe and both tool source hashes before and after its actual execution.",
+    "This supporting report is separate from every real PostgreSQL Phase008 Gate case and does not increase the eight-case Gate numerator."
+  ],
+  "recordedAt": "2026-09-11T01:00:08.464Z"
+}

@@ -24,7 +24,11 @@ const databaseUrl = process.env.PHASE007_DATABASE_URL;
 const fixtures = new Map<string, ConfigFixture>();
 let database: PrismaClient | undefined;
 
-function readDisposableTarget(value: string | undefined): { target: URL; runId: string } {
+function readDisposableTarget(value: string | undefined): {
+  target: URL;
+  runId: string;
+  phase: string;
+} {
   let target: URL;
   try {
     if (value === undefined) throw new Error();
@@ -32,7 +36,7 @@ function readDisposableTarget(value: string | undefined): { target: URL; runId: 
   } catch {
     throw new Error("PHASE007_DATABASE_URL must identify this run's disposable database");
   }
-  const name = /^\/phase007_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(target.pathname);
+  const name = /^\/phase00([78])_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(target.pathname);
   const allowedOptions = new Set(["schema", "connect_timeout", "pool_timeout", "connection_limit"]);
   if (
     !["postgresql:", "postgres:"].includes(target.protocol) ||
@@ -44,7 +48,7 @@ function readDisposableTarget(value: string | undefined): { target: URL; runId: 
   ) {
     throw new Error("Phase007 database guard rejected an unowned target");
   }
-  return { target, runId: name[1] };
+  return { target, runId: name[2], phase: `00${name[1]}` };
 }
 
 function getDatabase(): PrismaClient {
@@ -60,7 +64,7 @@ function getFixture(context: TestContext): ConfigFixture {
 
 describe.skipIf(databaseUrl === undefined)("SystemConfig real PostgreSQL contract", () => {
   beforeAll(async () => {
-    const { target, runId } = readDisposableTarget(databaseUrl);
+    const { target, runId, phase } = readDisposableTarget(databaseUrl);
     process.env.DATABASE_URL = target.toString();
     const { connectDb, db } = await import("@/server/db");
     database = db;
@@ -74,7 +78,7 @@ describe.skipIf(databaseUrl === undefined)("SystemConfig real PostgreSQL contrac
     `;
     expect(identity.name).toBe(target.pathname.slice(1));
     expect(identity.version).toMatch(/^17\./);
-    expect(identity.marker).toBe(`serendipity-phase007-disposable:${runId}`);
+    expect(identity.marker).toBe(`serendipity-phase${phase}-disposable:${runId}`);
   }, 30_000);
 
   beforeEach((context) => {
@@ -93,7 +97,7 @@ describe.skipIf(databaseUrl === undefined)("SystemConfig real PostgreSQL contrac
     await database?.$disconnect();
   }, 30_000);
 
-  it("migration: User baseline and one SystemConfig migration are fully applied", async () => {
+  it("migration: User and SystemConfig baseline migrations remain applied as current models evolve", async () => {
     const migrations = await getDatabase().$queryRaw<
       Array<{ name: string; finished: Date | null; rolledBack: Date | null; steps: number }>
     >`
@@ -101,9 +105,14 @@ describe.skipIf(databaseUrl === undefined)("SystemConfig real PostgreSQL contrac
              applied_steps_count AS steps
       FROM "_prisma_migrations" ORDER BY migration_name
     `;
-    expect(migrations).toHaveLength(2);
+    const includesTravelLayer = Prisma.dmmf.datamodel.models.some(
+      ({ name }) => name === "TravelRecord",
+    );
+    expect(migrations).toHaveLength(includesTravelLayer ? 3 : 2);
     expect(migrations[0].name).toBe("20260910000000_init_user");
-    expect(migrations[1].name).toMatch(/^\d{14}_system_config$/);
+    expect(migrations[1].name).toBe("20260910172735_system_config");
+    if (includesTravelLayer)
+      expect(migrations[2].name).toMatch(/^\d{14}_travel_record_chat_message$/);
     for (const migration of migrations) {
       expect(migration.finished).toBeInstanceOf(Date);
       expect(migration.rolledBack).toBeNull();
@@ -114,7 +123,10 @@ describe.skipIf(databaseUrl === undefined)("SystemConfig real PostgreSQL contrac
   it("schema: model and database inventories contain only the frozen fields and tables", async () => {
     const db = getDatabase();
     const models = Prisma.dmmf.datamodel.models;
-    expect(models.map(({ name }) => name).sort()).toEqual(["SystemConfig", "User"]);
+    const expectedModels = models.some(({ name }) => name === "TravelRecord")
+      ? ["ChatMessage", "SystemConfig", "TravelRecord", "User"]
+      : ["SystemConfig", "User"];
+    expect(models.map(({ name }) => name).sort()).toEqual(expectedModels);
     const model = models.find(({ name }) => name === "SystemConfig");
     const fieldNames = [
       "id",
@@ -139,7 +151,7 @@ describe.skipIf(databaseUrl === undefined)("SystemConfig real PostgreSQL contrac
     const tables = await db.$queryRaw<Array<{ name: string }>>`
       SELECT tablename AS name FROM pg_tables WHERE schemaname = 'public' ORDER BY tablename
     `;
-    expect(tables.map(({ name }) => name)).toEqual(["SystemConfig", "User", "_prisma_migrations"]);
+    expect(tables.map(({ name }) => name)).toEqual([...expectedModels, "_prisma_migrations"]);
     const columns = await db.$queryRaw<
       Array<{
         name: string;

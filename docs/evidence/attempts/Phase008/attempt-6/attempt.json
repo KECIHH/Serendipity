@@ -1,0 +1,27 @@
+{
+  "phase": 8,
+  "attemptId": "attempt-6",
+  "status": "FAIL",
+  "artifactCommit": null,
+  "command": "git diff --cached --check",
+  "planHash": "1a37b9a23d46a49ddabd4b68913ec791cf93f05b1ca93b7d31da9b4a3b4d2de1",
+  "reason": "Product, database and quality checks passed, but staged whitespace validation rejected the final blank line in immutable raw evidence from attempt-2. Preserve all original bytes and hashes; add a path-specific blank-at-eof attribute following existing repository evidence policy, then bind and rerun the complete verification in a new attempt.",
+  "observation": {
+    "command": "git diff --cached --check",
+    "executable": "git",
+    "arguments": [
+      "diff",
+      "--cached",
+      "--check"
+    ],
+    "exitCode": 2,
+    "timedOut": false,
+    "stdout": "docs/evidence/attempts/Phase008/attempt-2/setup-guard-probe.mjs:208: new blank line at EOF.\n",
+    "stderr": ""
+  },
+  "preservedEvidence": {
+    "path": "docs/evidence/attempts/Phase008/attempt-2/setup-guard-probe.mjs",
+    "sha256": "24b3985769d3088b4e9ae796d1516c24e760111762dde1f54073b0fbc6055151"
+  },
+  "recordedAt": "2026-09-11T02:06:07.515Z"
+}

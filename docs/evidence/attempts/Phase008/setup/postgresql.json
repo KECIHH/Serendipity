@@ -1,0 +1,265 @@
+{
+  "records": [
+    {
+      "command": "docker image inspect --format {{json .RepoDigests}} postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0",
+      "executable": "docker.exe",
+      "arguments": [
+        "image",
+        "inspect",
+        "--format",
+        "{{json .RepoDigests}}",
+        "postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "[\"postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0\"]\n",
+      "stderr": "",
+      "durationMs": 222
+    },
+    {
+      "command": "docker network create --opt com.docker.network.bridge.enable_ip_masquerade=false --label serendipity.run=739d80ea4b87 serendipity-phase008-739d80ea4b87",
+      "executable": "docker.exe",
+      "arguments": [
+        "network",
+        "create",
+        "--opt",
+        "com.docker.network.bridge.enable_ip_masquerade=false",
+        "--label",
+        "serendipity.run=739d80ea4b87",
+        "serendipity-phase008-739d80ea4b87"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "a94083edf28ab369e25de0670672464c58bd433dfde61ceddf329c72afa16568\n",
+      "stderr": "",
+      "durationMs": 215
+    },
+    {
+      "command": "docker run --detach --name serendipity-phase008-739d80ea4b87 --label serendipity.phase=008 --label serendipity.run=739d80ea4b87 --network serendipity-phase008-739d80ea4b87 --publish 127.0.0.1::5432 --tmpfs /var/lib/postgresql/data:rw,size=536870912 --env POSTGRES_USER --env POSTGRES_PASSWORD --env POSTGRES_DB postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0",
+      "executable": "docker.exe",
+      "arguments": [
+        "run",
+        "--detach",
+        "--name",
+        "serendipity-phase008-739d80ea4b87",
+        "--label",
+        "serendipity.phase=008",
+        "--label",
+        "serendipity.run=739d80ea4b87",
+        "--network",
+        "serendipity-phase008-739d80ea4b87",
+        "--publish",
+        "127.0.0.1::5432",
+        "--tmpfs",
+        "/var/lib/postgresql/data:rw,size=536870912",
+        "--env",
+        "POSTGRES_USER",
+        "--env",
+        "POSTGRES_PASSWORD",
+        "--env",
+        "POSTGRES_DB",
+        "postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "bd834f27bcf5e90c18db9788fd42b24ca8b2b504703be356a6f16c0404686a98\n",
+      "stderr": "",
+      "durationMs": 443
+    },
+    {
+      "command": "docker port bd834f27bcf5e90c18db9788fd42b24ca8b2b504703be356a6f16c0404686a98 5432/tcp",
+      "executable": "docker.exe",
+      "arguments": [
+        "port",
+        "bd834f27bcf5e90c18db9788fd42b24ca8b2b504703be356a6f16c0404686a98",
+        "5432/tcp"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "127.0.0.1:54755\n",
+      "stderr": "",
+      "durationMs": 183
+    },
+    {
+      "command": "docker exec bd834f27bcf5e90c18db9788fd42b24ca8b2b504703be356a6f16c0404686a98 pg_isready -U phase008_runner -d phase008_disposable_739d80ea4b87",
+      "executable": "docker.exe",
+      "arguments": [
+        "exec",
+        "bd834f27bcf5e90c18db9788fd42b24ca8b2b504703be356a6f16c0404686a98",
+        "pg_isready",
+        "-U",
+        "phase008_runner",
+        "-d",
+        "phase008_disposable_739d80ea4b87"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 2,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "/var/run/postgresql:5432 - no response\n",
+      "stderr": "",
+      "durationMs": 265
+    },
+    {
+      "command": "docker exec bd834f27bcf5e90c18db9788fd42b24ca8b2b504703be356a6f16c0404686a98 pg_isready -U phase008_runner -d phase008_disposable_739d80ea4b87",
+      "executable": "docker.exe",
+      "arguments": [
+        "exec",
+        "bd834f27bcf5e90c18db9788fd42b24ca8b2b504703be356a6f16c0404686a98",
+        "pg_isready",
+        "-U",
+        "phase008_runner",
+        "-d",
+        "phase008_disposable_739d80ea4b87"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "/var/run/postgresql:5432 - accepting connections\n",
+      "stderr": "",
+      "durationMs": 245
+    },
+    {
+      "command": "docker exec -i bd834f27bcf5e90c18db9788fd42b24ca8b2b504703be356a6f16c0404686a98 psql -X -v ON_ERROR_STOP=1 -U phase008_runner -d postgres -At",
+      "executable": "docker.exe",
+      "arguments": [
+        "exec",
+        "-i",
+        "bd834f27bcf5e90c18db9788fd42b24ca8b2b504703be356a6f16c0404686a98",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "phase008_runner",
+        "-d",
+        "postgres",
+        "-At"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "COMMENT\n",
+      "stderr": "",
+      "durationMs": 257
+    },
+    {
+      "command": "docker exec -i bd834f27bcf5e90c18db9788fd42b24ca8b2b504703be356a6f16c0404686a98 psql -X -v ON_ERROR_STOP=1 -U phase008_runner -d phase008_disposable_739d80ea4b87 -At",
+      "executable": "docker.exe",
+      "arguments": [
+        "exec",
+        "-i",
+        "bd834f27bcf5e90c18db9788fd42b24ca8b2b504703be356a6f16c0404686a98",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "phase008_runner",
+        "-d",
+        "phase008_disposable_739d80ea4b87",
+        "-At"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "serendipity-phase008-disposable:739d80ea4b87\n",
+      "stderr": "",
+      "durationMs": 263
+    },
+    {
+      "command": "docker exec -i bd834f27bcf5e90c18db9788fd42b24ca8b2b504703be356a6f16c0404686a98 psql -X -v ON_ERROR_STOP=1 -U phase008_runner -d phase008_disposable_739d80ea4b87 -At",
+      "executable": "docker.exe",
+      "arguments": [
+        "exec",
+        "-i",
+        "bd834f27bcf5e90c18db9788fd42b24ca8b2b504703be356a6f16c0404686a98",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "phase008_runner",
+        "-d",
+        "phase008_disposable_739d80ea4b87",
+        "-At"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "17.11 (Debian 17.11-1.pgdg12+2)\n",
+      "stderr": "",
+      "durationMs": 256
+    }
+  ],
+  "target": {
+    "database": "phase008_disposable_739d80ea4b87",
+    "host": "127.0.0.1",
+    "port": 54755,
+    "containerId": "bd834f27bcf5e90c18db9788fd42b24ca8b2b504703be356a6f16c0404686a98",
+    "image": "postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0",
+    "runId": "739d80ea4b87",
+    "marker": "serendipity-phase008-disposable:739d80ea4b87",
+    "networkMasquerading": false,
+    "loopbackOnly": true,
+    "dataStorage": "TASK_OWNED_TMPFS",
+    "credentials": "SYNTHETIC_REDACTED",
+    "observations": [
+      {
+        "command": "docker inspect --format {{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}} bd834f27bcf5e90c18db9788fd42b24ca8b2b504703be356a6f16c0404686a98",
+        "executable": "docker.exe",
+        "arguments": [
+          "inspect",
+          "--format",
+          "{{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}}",
+          "bd834f27bcf5e90c18db9788fd42b24ca8b2b504703be356a6f16c0404686a98"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false,
+        "stdout": "{\"serendipity.phase\":\"008\",\"serendipity.run\":\"739d80ea4b87\"}|{\"5432/tcp\":[{\"HostIp\":\"127.0.0.1\",\"HostPort\":\"54755\"}]}|postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0|true|{\"serendipity-phase008-739d80ea4b87\":{\"IPAMConfig\":null,\"Links\":null,\"Aliases\":null,\"DriverOpts\":null,\"GwPriority\":0,\"NetworkID\":\"a94083edf28ab369e25de0670672464c58bd433dfde61ceddf329c72afa16568\",\"EndpointID\":\"84b8cdc9b89cca5ad13eb2b638194008a0d22116a0eca4ed3af4e75aa836e469\",\"Gateway\":\"172.19.0.1\",\"IPAddress\":\"172.19.0.2\",\"MacAddress\":\"c6:d7:6e:62:60:6a\",\"IPPrefixLen\":16,\"IPv6Gateway\":\"\",\"GlobalIPv6Address\":\"\",\"GlobalIPv6PrefixLen\":0,\"DNSNames\":[\"serendipity-phase008-739d80ea4b87\",\"bd834f27bcf5\"]}}|{\"/var/lib/postgresql/data\":\"rw,size=536870912\"}\n",
+        "stderr": "",
+        "durationMs": 170
+      },
+      {
+        "command": "docker network inspect --format {{json .Options}}|{{json .Labels}} serendipity-phase008-739d80ea4b87",
+        "executable": "docker.exe",
+        "arguments": [
+          "network",
+          "inspect",
+          "--format",
+          "{{json .Options}}|{{json .Labels}}",
+          "serendipity-phase008-739d80ea4b87"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false,
+        "stdout": "{\"com.docker.network.bridge.enable_ip_masquerade\":\"false\",\"com.docker.network.enable_ipv4\":\"true\",\"com.docker.network.enable_ipv6\":\"false\"}|{\"serendipity.run\":\"739d80ea4b87\"}\n",
+        "stderr": "",
+        "durationMs": 170
+      }
+    ]
+  },
+  "version": "17.11 (Debian 17.11-1.pgdg12+2)",
+  "marker": "serendipity-phase008-disposable:739d80ea4b87",
+  "syntheticUsers": true,
+  "productionTraffic": false,
+  "image": "postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0",
+  "dataStorage": "TASK_OWNED_TMPFS",
+  "loopbackOnly": true,
+  "networkMasquerading": false
+}

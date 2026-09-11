@@ -17,6 +17,27 @@ enum UserStatus {
   DISABLED
 }
 
+enum TravelStatus {
+  DRAFT
+  NEEDS_INFO
+  PLANNED
+  MODIFIED
+  FINALIZED
+  NEEDS_REVALIDATION
+  ARCHIVED
+}
+
+enum MessageRole {
+  USER
+  ASSISTANT
+  SYSTEM
+}
+
+enum ChatMessageKind {
+  TEXT
+  STRUCTURED
+}
+
 model User {
   id                   String         @id @default(cuid())
   email                String         @unique
@@ -32,6 +53,7 @@ model User {
   createdAt            DateTime       @default(now()) @db.Timestamptz(3)
   updatedAt            DateTime       @updatedAt @db.Timestamptz(3)
   updatedSystemConfigs SystemConfig[]
+  travelRecords        TravelRecord[]
 
   @@index([status])
 }
@@ -51,4 +73,42 @@ model SystemConfig {
 
   @@index([group, key])
   @@index([updatedBy])
+}
+
+model TravelRecord {
+  id              String        @id @default(cuid())
+  userId          String?
+  anonTokenHash   String?       @db.Char(64)
+  title           String
+  status          TravelStatus  @default(DRAFT)
+  version         Int           @default(0)
+  requirementJson Json?
+  createdAt       DateTime      @default(now()) @db.Timestamptz(3)
+  updatedAt       DateTime      @updatedAt @db.Timestamptz(3)
+  user            User?         @relation(fields: [userId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  messages        ChatMessage[]
+
+  @@index([userId, createdAt, id])
+  @@index([anonTokenHash, createdAt, id])
+  @@index([status, updatedAt, id])
+}
+
+model ChatMessage {
+  id               String          @id @default(cuid())
+  travelRecordId   String
+  role             MessageRole
+  kind             ChatMessageKind
+  content          String          @db.Text
+  contentJson      Json?
+  sequence         Int
+  clientMessageId  String?
+  replyToMessageId String?
+  createdAt        DateTime        @default(now()) @db.Timestamptz(3)
+  travelRecord     TravelRecord    @relation(fields: [travelRecordId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  replyTo          ChatMessage?    @relation("ChatMessageReplies", fields: [replyToMessageId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  replies          ChatMessage[]   @relation("ChatMessageReplies")
+
+  @@unique([travelRecordId, sequence])
+  @@unique([travelRecordId, clientMessageId])
+  @@index([replyToMessageId])
 }

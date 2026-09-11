@@ -1,0 +1,278 @@
+{
+  "phase": 8,
+  "scope": "PHASE008_EVIDENCE_GUARD_REGRESSION",
+  "status": "PASS",
+  "databaseAccess": false,
+  "mutations": "MEMORY_ONLY",
+  "count": 42,
+  "passed": 42,
+  "failed": 0,
+  "cases": [
+    {
+      "name": "preflight accepts the actual two-shell seal",
+      "expected": "ACCEPT",
+      "observed": "ACCEPT",
+      "status": "PASS"
+    },
+    {
+      "name": "preflight rejects duplicate PowerShell7 is not a second shell",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "preflight rejects a protocol fixture is not an actual seal",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "preflight rejects an unrelated seal scope is rejected",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "preflight rejects a failing shell exit is rejected",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "preflight rejects a failing seal result is rejected",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "preflight rejects a missing second shell is rejected",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "preflight rejects the prior completed phase cannot change",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "preflight rejects the admitted current phase cannot change",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "generation accepts the actual migration receipt and file hashes",
+      "expected": "ACCEPT",
+      "observed": "ACCEPT",
+      "status": "PASS"
+    },
+    {
+      "name": "generation rejects echo --create-only is not Prisma migration generation",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "generation rejects a failed generation command",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "generation rejects a timed-out generation command",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "generation rejects a missing timedOut field",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "generation rejects missing standard output",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "generation rejects missing standard error",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "generation rejects altered rawMigrationHash",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "generation rejects altered migrationHash",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "generation rejects changed SQL bytes at docs/evidence/attempts/Phase008/setup/travel_record_chat_message.generated.sql",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "generation rejects changed SQL bytes at prisma/migrations/20260911002217_travel_record_chat_message/migration.sql",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "failure chain accepts a checksum-bound prior FAIL",
+      "expected": "ACCEPT",
+      "observed": "ACCEPT",
+      "status": "PASS"
+    },
+    {
+      "name": "failure chain accepts a checksum-bound prior BLOCKED",
+      "expected": "ACCEPT",
+      "observed": "ACCEPT",
+      "status": "PASS"
+    },
+    {
+      "name": "failure chain rejects a missing failure receipt path",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "failure chain rejects a missing failure receipt hash",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "failure chain rejects a missing receipt file",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "failure chain rejects a failure receipt hash drift",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "failure chain rejects a frozen plan hash drift",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "failure chain rejects a receipt for a different attempt",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "failure chain rejects a successful receipt substituted for a failed attempt",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "failure chain rejects a receipt from another phase",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "failure chain rejects a receipt bound to the wrong plan",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "failure chain rejects a failure claiming an artifact commit",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "failure chain rejects a frozen plan for a different attempt even with matching checksums",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS"
+    },
+    {
+      "name": "implementation binding accepts identical actual source snapshots",
+      "expected": "ACCEPT",
+      "observed": "ACCEPT",
+      "status": "PASS"
+    },
+    {
+      "name": "implementation binding accepts identical nullable entries",
+      "expected": "ACCEPT",
+      "observed": "ACCEPT",
+      "status": "PASS"
+    },
+    {
+      "name": "implementation binding rejects an added file src/server/__phase008_untested_fixture.ts",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS",
+      "requiredErrorPrefix": "IMPLEMENTATION_CHANGED",
+      "matchingError": true
+    },
+    {
+      "name": "implementation binding rejects an added file src/app/api/__phase008_untested_fixture/route.ts",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS",
+      "requiredErrorPrefix": "IMPLEMENTATION_CHANGED",
+      "matchingError": true
+    },
+    {
+      "name": "implementation binding rejects an added file prisma/migrations/99999999999999_untested_fixture/migration.sql",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS",
+      "requiredErrorPrefix": "IMPLEMENTATION_CHANGED",
+      "matchingError": true
+    },
+    {
+      "name": "implementation binding rejects a deleted source entry",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS",
+      "requiredErrorPrefix": "IMPLEMENTATION_CHANGED",
+      "matchingError": true
+    },
+    {
+      "name": "implementation binding rejects a source file replaced by null",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS",
+      "requiredErrorPrefix": "IMPLEMENTATION_CHANGED",
+      "matchingError": true
+    },
+    {
+      "name": "implementation binding rejects a changed source hash",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS",
+      "requiredErrorPrefix": "IMPLEMENTATION_CHANGED",
+      "matchingError": true
+    },
+    {
+      "name": "implementation binding rejects an added nullable path",
+      "expected": "REJECT",
+      "observed": "REJECT",
+      "status": "PASS",
+      "requiredErrorPrefix": "IMPLEMENTATION_CHANGED",
+      "matchingError": true
+    }
+  ]
+}
