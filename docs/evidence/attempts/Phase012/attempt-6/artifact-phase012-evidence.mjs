@@ -1,7 +1,6 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
-import { createHash } from "node:crypto";
 
 const prefix = "PHASE012_EVIDENCE";
 const sha256 = /^[0-9a-f]{64}$/;
@@ -102,7 +101,7 @@ export function requirePhase012Generation(generation, { receipt, hashFile, readT
   }
 }
 
-export function requirePhase012FailureChain(plan, { readJson, hashFile, git }) {
+export function requirePhase012FailureChain(plan, { readJson, hashFile }) {
   assert.equal(plan.phase, 12);
   assert(Array.isArray(plan.previousAttempts));
   assert.match(plan.attemptId, /^attempt-[1-9][0-9]*$/);
@@ -132,64 +131,12 @@ export function requirePhase012FailureChain(plan, { readJson, hashFile, git }) {
     assert.equal(failure.attemptId, previous.attemptId);
     assert(["FAIL", "BLOCKED"].includes(failure.status), `${prefix}: prior attempt must be a failure`);
     assert.equal(failure.planHash, previous.planHash);
-    if (failure.artifactCommit === null) {
-      assert.notEqual(failure.stage, "METADATA_GENERATION", `${prefix}: metadata failure must identify its artifact`);
-      continue;
-    }
-    // Metadata generation can fail after a valid artifact commit. Preserve and
-    // authenticate that unsealed commit instead of pretending it never existed.
-    assert.equal(failure.kind, "SOURCE_REPAIR");
-    assert.equal(failure.stage, "METADATA_GENERATION");
-    assert.match(failure.artifactCommit, objectId);
-    assert.equal(failure.metadataCommit, null);
-    assert.equal(failure.gateCreated, false);
-    assert.equal(failure.command, "node docs/phase-plans/complete-phase012.mjs --metadata");
-    assert.equal(failure.exitCode, 1);
-    assert.equal(typeof git, "function", `${prefix}: post-artifact recovery requires actual Git objects`);
-    assert.equal(failure.diagnosticPath, `docs/evidence/attempts/Phase012/${previous.attemptId}/metadata-diagnostic.json`);
-    assert.equal(hashFile(failure.diagnosticPath), failure.diagnosticHash);
-    const diagnostic = readJson(failure.diagnosticPath);
-    for (const field of ["phase", "attemptId", "status", "stage", "artifactCommit", "planHash", "gateCreated", "command", "exitCode"]) assert.deepEqual(diagnostic[field], failure[field]);
-    assert.equal(diagnostic.workingTreeBefore, "");
-    assert.equal(diagnostic.workingTreeAfter, "");
-    assert.equal(diagnostic.observation.command, failure.command);
-    assert.equal(diagnostic.observation.exitCode, 1);
-    assert.equal(diagnostic.observation.timedOut, false);
-    const commit = failure.artifactCommit;
-    assert.equal(git(["show", "-s", "--format=%s", commit]).trim(), "phase(012): artifact");
-    assert.equal(git(["rev-parse", `${commit}^{tree}`]).trim(), diagnostic.artifactTree);
-    assert.match(diagnostic.phaseStartCommit, objectId);
-    assert.notEqual(commit, diagnostic.phaseStartCommit);
-    git(["merge-base", "--is-ancestor", diagnostic.phaseStartCommit, commit]);
-    git(["merge-base", "--is-ancestor", commit, "HEAD"]);
-    assert.equal(git(["ls-tree", "--name-only", commit, "--", "docs/evidence/Phase012-gate.json"]).trim(), "");
-    const blobHash = (file) => createHash("sha256").update(git(["show", `${commit}:${file}`], null)).digest("hex");
-    assert.equal(blobHash("docs/phase-plans/Phase012.json"), previous.planHash);
-    const inputReceipt = JSON.parse(git(["show", `${commit}:docs/phase-plans/Phase012-inputs.json`]));
-    assert.equal(inputReceipt.phaseStartCommit, diagnostic.phaseStartCommit);
-    for (const name of ["quality", "review"]) {
-      const file = `docs/evidence/attempts/Phase012/${previous.attemptId}/${name}.json`;
-      assert.equal(diagnostic[`${name}ReportPath`], file);
-      assert.equal(hashFile(file), diagnostic[`${name}ReportHash`]);
-      assert.equal(blobHash(file), diagnostic[`${name}ReportHash`]);
-    }
-    const originalAttemptFiles = git(["ls-tree", "-r", "--name-only", "-z", commit, "--", `docs/evidence/attempts/Phase012/${previous.attemptId}/`]).split("\0").filter(Boolean);
-    assert(originalAttemptFiles.includes(previous.planPath));
-    for (const item of old.cases) assert(originalAttemptFiles.includes(item.outputPath));
-    for (const file of originalAttemptFiles) assert.equal(hashFile(file), blobHash(file), `${prefix}: committed attempt evidence changed: ${file}`);
-    assert(Array.isArray(diagnostic.archivedSources) && diagnostic.archivedSources.length > 0);
-    assert.equal(new Set(diagnostic.archivedSources.map((entry) => entry.sourcePath)).size, diagnostic.archivedSources.length);
-    for (const entry of diagnostic.archivedSources) {
-      assert(old.sourcePaths.includes(entry.sourcePath));
-      assert.equal(entry.path, `docs/evidence/attempts/Phase012/${previous.attemptId}/artifact-${path.posix.basename(entry.sourcePath)}`);
-      assert.equal(hashFile(entry.path), entry.sha256);
-      assert.equal(blobHash(entry.sourcePath), entry.sha256);
-    }
+    assert.equal(failure.artifactCommit, null, `${prefix}: failure receipt precedes artifact commit`);
   }
 }
 
-export function createPhase012RetryPlan(plan, { readJson, hashFile, git }) {
-  requirePhase012FailureChain(plan, { readJson, hashFile, git });
+export function createPhase012RetryPlan(plan, { readJson, hashFile }) {
+  requirePhase012FailureChain(plan, { readJson, hashFile });
   const planPath = `docs/evidence/attempts/Phase012/${plan.attemptId}/frozen-plan.json`;
   const failurePath = `docs/evidence/attempts/Phase012/${plan.attemptId}/attempt.json`;
   assert.deepEqual(readJson(planPath), plan, `${prefix}: current frozen plan changed`);
@@ -197,7 +144,7 @@ export function createPhase012RetryPlan(plan, { readJson, hashFile, git }) {
   next.attemptId = `attempt-${Number(plan.attemptId.slice("attempt-".length)) + 1}`;
   next.previousAttempts.push({ attemptId: plan.attemptId, planPath, planHash: hashFile(planPath), failurePath, failureHash: hashFile(failurePath) });
   for (const item of next.cases) item.outputPath = item.outputPath.replace(`/${plan.attemptId}/`, `/${next.attemptId}/`);
-  requirePhase012FailureChain(next, { readJson, hashFile, git });
+  requirePhase012FailureChain(next, { readJson, hashFile });
   return next;
 }
 
@@ -215,7 +162,7 @@ export function getPhase012ImplementationSnapshot({ root, plan, receipt, git, ha
     assert(plannedSources.has(file), `IMPLEMENTATION_CHANGED: unregistered product or test file ${file}`);
   }
   const changed = [...new Set([
-    ...git(["diff", "--no-renames", "--name-only", "-z", receipt.phaseStartCommit]).split("\0"),
+    ...git(["diff", "--name-only", "-z", receipt.phaseStartCommit]).split("\0"),
     ...git(["ls-files", "--others", "--exclude-standard", "-z"]).split("\0"),
   ].filter(Boolean))].sort();
   for (const file of changed) assert(plan.modificationScope.some((scope) => scope.endsWith("/") ? file.startsWith(scope) : scope === file), `IMPLEMENTATION_CHANGED: out-of-scope path ${file}`);

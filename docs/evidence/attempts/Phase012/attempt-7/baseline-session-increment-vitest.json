@@ -1,0 +1,247 @@
+{
+  "numTotalTestSuites": 8,
+  "numPassedTestSuites": 8,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 17,
+  "numPassedTests": 3,
+  "numFailedTests": 0,
+  "numPendingTests": 14,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1789183657292,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "list"
+          ],
+          "fullName": "admin/users real PostgreSQL list uses the exact projection and stable filtered keyset pages, and rejects invalid cursors and bounds",
+          "status": "skipped",
+          "title": "uses the exact projection and stable filtered keyset pages, and rejects invalid cursors and bounds",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "role-status"
+          ],
+          "fullName": "admin/users real PostgreSQL role-status edits the revision from real GET, serializes competing updates, checks CAS before no-op and ignores login timestamps",
+          "status": "passed",
+          "title": "edits the revision from real GET, serializes competing updates, checks CAS before no-op and ignores login timestamps",
+          "duration": 3296.4027,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "role-status"
+          ],
+          "fullName": "admin/users real PostgreSQL role-status rejects all unknown enums, duplicate body identifiers, wrong CAS types and unbounded reasons without writes",
+          "status": "passed",
+          "title": "rejects all unknown enums, duplicate body identifiers, wrong CAS types and unbounded reasons without writes",
+          "duration": 2454.1400999999996,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "role-status"
+          ],
+          "fullName": "admin/users real PostgreSQL role-status rolls back the user, revocations and receipt if the transactional audit insert fails",
+          "status": "passed",
+          "title": "rolls back the user, revocations and receipt if the transactional audit insert fails",
+          "duration": 2495.7435000000005,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "self-protection"
+          ],
+          "fullName": "admin/users real PostgreSQL self-protection rejects every actual self role/status change with zero row changes and permits a versioned no-op",
+          "status": "skipped",
+          "title": "rejects every actual self role/status change with zero row changes and permits a versioned no-op",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "last-admin"
+          ],
+          "fullName": "admin/users real PostgreSQL last-admin enforces the real locked invariant for the sole active administrator independently of the self guard",
+          "status": "skipped",
+          "title": "enforces the real locked invariant for the sole active administrator independently of the self guard",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "last-admin"
+          ],
+          "fullName": "admin/users real PostgreSQL last-admin keeps one active administrator when two authorized processes concurrently disable each other",
+          "status": "skipped",
+          "title": "keeps one active administrator when two authorized processes concurrently disable each other",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "session"
+          ],
+          "fullName": "admin/users real PostgreSQL session increments the revocation version and rejects old tokens even when their database rows are active",
+          "status": "skipped",
+          "title": "increments the revocation version and rejects old tokens even when their database rows are active",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "session"
+          ],
+          "fullName": "admin/users real PostgreSQL session rejects expired and revoked principals and preserves both terminal row states",
+          "status": "skipped",
+          "title": "rejects expired and revoked principals and preserves both terminal row states",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "session"
+          ],
+          "fullName": "admin/users real PostgreSQL session rechecks the actor after a real advisory-lock wait and rolls back when logout wins",
+          "status": "skipped",
+          "title": "rechecks the actor after a real advisory-lock wait and rolls back when logout wins",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "authorization-idempotency"
+          ],
+          "fullName": "admin/users real PostgreSQL authorization-idempotency authorizes before target queries and rejects absent, ordinary, disabled, old-version or non-CSRF identities without changes",
+          "status": "skipped",
+          "title": "authorizes before target queries and rejects absent, ordinary, disabled, old-version or non-CSRF identities without changes",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "authorization-idempotency"
+          ],
+          "fullName": "admin/users real PostgreSQL authorization-idempotency distinguishes a successful empty result from a real database read failure",
+          "status": "skipped",
+          "title": "distinguishes a successful empty result from a real database read failure",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "authorization-idempotency"
+          ],
+          "fullName": "admin/users real PostgreSQL authorization-idempotency replays the original response after process restart and later updates, rejects changed payloads and freezes terminal receipts",
+          "status": "skipped",
+          "title": "replays the original response after process restart and later updates, rejects changed payloads and freezes terminal receipts",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "authorization-idempotency"
+          ],
+          "fullName": "admin/users real PostgreSQL authorization-idempotency converges simultaneous same-key requests to one immutable effect and separates owner/resource domains",
+          "status": "skipped",
+          "title": "converges simultaneous same-key requests to one immutable effect and separates owner/resource domains",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "authorization-idempotency"
+          ],
+          "fullName": "admin/users real PostgreSQL authorization-idempotency rolls back the mutation and audit if the terminal receipt write fails",
+          "status": "skipped",
+          "title": "rolls back the mutation and audit if the terminal receipt write fails",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "authorization-idempotency"
+          ],
+          "fullName": "admin/users real PostgreSQL authorization-idempotency requires a live claim for every state update and bases retention on real completion rather than backfilled creation time",
+          "status": "skipped",
+          "title": "requires a live claim for every state update and bases retention on real completion rather than backfilled creation time",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "authorization-idempotency"
+          ],
+          "fullName": "admin/users real PostgreSQL authorization-idempotency persists preparation before testing, atomically rolls back partial candidates and fences resumed checkpoints with retained audit references",
+          "status": "skipped",
+          "title": "persists preparation before testing, atomically rolls back partial candidates and fences resumed checkpoints with retained audit references",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789183657955,
+      "endTime": 1789183666201.7434,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users.integration.test.ts"
+    }
+  ]
+}

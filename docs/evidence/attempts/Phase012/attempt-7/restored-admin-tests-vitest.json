@@ -1,0 +1,495 @@
+{
+  "numTotalTestSuites": 12,
+  "numPassedTestSuites": 12,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 35,
+  "numPassedTests": 35,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1789183690507,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "admin/layout navigation and route boundaries"
+          ],
+          "fullName": "admin/layout navigation and route boundaries checks every configured href against a real page and has exactly one production shell and navigation source",
+          "status": "passed",
+          "title": "checks every configured href against a real page and has exactly one production shell and navigation source",
+          "duration": 14.730399999999918,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/layout navigation and route boundaries"
+          ],
+          "fullName": "admin/layout navigation and route boundaries selects the longest match only at a path-segment boundary",
+          "status": "passed",
+          "title": "selects the longest match only at a path-segment boundary",
+          "duration": 0.5733999999999924,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/layout navigation and route boundaries"
+          ],
+          "fullName": "admin/layout navigation and route boundaries keeps public login and neutral root free of the protected shell",
+          "status": "passed",
+          "title": "keeps public login and neutral root free of the protected shell",
+          "duration": 109.85670000000005,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/layout navigation and route boundaries"
+          ],
+          "fullName": "admin/layout navigation and route boundaries authorizes the protected layout and exposes only the safe current administrator identity",
+          "status": "passed",
+          "title": "authorizes the protected layout and exposes only the safe current administrator identity",
+          "duration": 32.576500000000124,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/layout navigation and route boundaries"
+          ],
+          "fullName": "admin/layout navigation and route boundaries redirects the protected index to users and guards the users page independently",
+          "status": "passed",
+          "title": "redirects the protected index to users and guards the users page independently",
+          "duration": 1.8658000000000357,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/layout navigation and route boundaries"
+          ],
+          "fullName": "admin/layout navigation and route boundaries rejects 401 before rendering any shell or users content",
+          "status": "passed",
+          "title": "rejects 401 before rendering any shell or users content",
+          "duration": 0.8574000000000979,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/layout navigation and route boundaries"
+          ],
+          "fullName": "admin/layout navigation and route boundaries rejects 403 before rendering any shell or users content",
+          "status": "passed",
+          "title": "rejects 403 before rendering any shell or users content",
+          "duration": 0.52800000000002,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/layout navigation and route boundaries"
+          ],
+          "fullName": "admin/layout navigation and route boundaries does not disguise an unavailable authorization database as a successful empty page",
+          "status": "passed",
+          "title": "does not disguise an unavailable authorization database as a successful empty page",
+          "duration": 0.3711000000000695,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/layout navigation and route boundaries"
+          ],
+          "fullName": "admin/layout navigation and route boundaries supports visible current navigation, arrow focus, Escape collapse and focus return",
+          "status": "passed",
+          "title": "supports visible current navigation, arrow focus, Escape collapse and focus return",
+          "duration": 45.46250000000009,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789183739534,
+      "endTime": 1789183739741.4624,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/layout.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "admin/users client"
+          ],
+          "fullName": "admin/users client loads the exact management page, keeps self controls absent and separates a failed list from an empty list",
+          "status": "passed",
+          "title": "loads the exact management page, keeps self controls absent and separates a failed list from an empty list",
+          "duration": 232.25379999999996,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users client"
+          ],
+          "fullName": "admin/users client uses opaque next/previous cursors and clears pagination when applying role/status/page-size filters",
+          "status": "passed",
+          "title": "uses opaque next/previous cursors and clears pagination when applying role/status/page-size filters",
+          "duration": 126.38779999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users client"
+          ],
+          "fullName": "admin/users client retains the real GET revision in PATCH, sends CSRF and a command key, and focuses the trigger after success",
+          "status": "passed",
+          "title": "retains the real GET revision in PATCH, sends CSRF and a command key, and focuses the trigger after success",
+          "duration": 97.35030000000006,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users client"
+          ],
+          "fullName": "admin/users client blocks duplicate in-flight submissions and reuses the same key and payload on a safe retry",
+          "status": "passed",
+          "title": "blocks duplicate in-flight submissions and reuses the same key and payload on a safe retry",
+          "duration": 199.38779999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users client"
+          ],
+          "fullName": "admin/users client shows the latest safe 409 summary and requires a newly selected operation and key",
+          "status": "passed",
+          "title": "shows the latest safe 409 summary and requires a newly selected operation and key",
+          "duration": 142.0930999999996,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users client"
+          ],
+          "fullName": "admin/users client reports a same-value response truthfully without claiming session revocation",
+          "status": "passed",
+          "title": "reports a same-value response truthfully without claiming session revocation",
+          "duration": 79.30759999999964,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users client"
+          ],
+          "fullName": "admin/users client requires a meaningful reason and returns focus when the user cancels editing",
+          "status": "passed",
+          "title": "requires a meaningful reason and returns focus when the user cancels editing",
+          "duration": 82.38920000000007,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users client"
+          ],
+          "fullName": "admin/users client rejects an unexpected sensitive response field instead of rendering any partial unsafe DTO",
+          "status": "passed",
+          "title": "rejects an unexpected sensitive response field instead of rendering any partial unsafe DTO",
+          "duration": 27.937799999999697,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users client"
+          ],
+          "fullName": "admin/users client offers reauthentication after authorization expires without echoing the server diagnostic",
+          "status": "passed",
+          "title": "offers reauthentication after authorization expires without echoing the server diagnostic",
+          "duration": 34.63299999999981,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789183736924,
+      "endTime": 1789183737945.633,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users-client.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "list"
+          ],
+          "fullName": "admin/users real PostgreSQL list uses the exact projection and stable filtered keyset pages, and rejects invalid cursors and bounds",
+          "status": "passed",
+          "title": "uses the exact projection and stable filtered keyset pages, and rejects invalid cursors and bounds",
+          "duration": 2680.2646999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "role-status"
+          ],
+          "fullName": "admin/users real PostgreSQL role-status edits the revision from real GET, serializes competing updates, checks CAS before no-op and ignores login timestamps",
+          "status": "passed",
+          "title": "edits the revision from real GET, serializes competing updates, checks CAS before no-op and ignores login timestamps",
+          "duration": 3267.0498000000002,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "role-status"
+          ],
+          "fullName": "admin/users real PostgreSQL role-status rejects all unknown enums, duplicate body identifiers, wrong CAS types and unbounded reasons without writes",
+          "status": "passed",
+          "title": "rejects all unknown enums, duplicate body identifiers, wrong CAS types and unbounded reasons without writes",
+          "duration": 2461.5442000000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "role-status"
+          ],
+          "fullName": "admin/users real PostgreSQL role-status rolls back the user, revocations and receipt if the transactional audit insert fails",
+          "status": "passed",
+          "title": "rolls back the user, revocations and receipt if the transactional audit insert fails",
+          "duration": 2512.2376000000004,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "self-protection"
+          ],
+          "fullName": "admin/users real PostgreSQL self-protection rejects every actual self role/status change with zero row changes and permits a versioned no-op",
+          "status": "passed",
+          "title": "rejects every actual self role/status change with zero row changes and permits a versioned no-op",
+          "duration": 2568.869199999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "last-admin"
+          ],
+          "fullName": "admin/users real PostgreSQL last-admin enforces the real locked invariant for the sole active administrator independently of the self guard",
+          "status": "passed",
+          "title": "enforces the real locked invariant for the sole active administrator independently of the self guard",
+          "duration": 1819.5054,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "last-admin"
+          ],
+          "fullName": "admin/users real PostgreSQL last-admin keeps one active administrator when two authorized processes concurrently disable each other",
+          "status": "passed",
+          "title": "keeps one active administrator when two authorized processes concurrently disable each other",
+          "duration": 3160.2333,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "session"
+          ],
+          "fullName": "admin/users real PostgreSQL session increments the revocation version and rejects old tokens even when their database rows are active",
+          "status": "passed",
+          "title": "increments the revocation version and rejects old tokens even when their database rows are active",
+          "duration": 2657.4604999999974,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "session"
+          ],
+          "fullName": "admin/users real PostgreSQL session rejects expired and revoked principals and preserves both terminal row states",
+          "status": "passed",
+          "title": "rejects expired and revoked principals and preserves both terminal row states",
+          "duration": 2453.9988999999987,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "session"
+          ],
+          "fullName": "admin/users real PostgreSQL session rechecks the actor after a real advisory-lock wait and rolls back when logout wins",
+          "status": "passed",
+          "title": "rechecks the actor after a real advisory-lock wait and rolls back when logout wins",
+          "duration": 2656.4326,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "authorization-idempotency"
+          ],
+          "fullName": "admin/users real PostgreSQL authorization-idempotency authorizes before target queries and rejects absent, ordinary, disabled, old-version or non-CSRF identities without changes",
+          "status": "passed",
+          "title": "authorizes before target queries and rejects absent, ordinary, disabled, old-version or non-CSRF identities without changes",
+          "duration": 2519.109800000002,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "authorization-idempotency"
+          ],
+          "fullName": "admin/users real PostgreSQL authorization-idempotency distinguishes a successful empty result from a real database read failure",
+          "status": "passed",
+          "title": "distinguishes a successful empty result from a real database read failure",
+          "duration": 2460.8518000000004,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "authorization-idempotency"
+          ],
+          "fullName": "admin/users real PostgreSQL authorization-idempotency replays the original response after process restart and later updates, rejects changed payloads and freezes terminal receipts",
+          "status": "passed",
+          "title": "replays the original response after process restart and later updates, rejects changed payloads and freezes terminal receipts",
+          "duration": 3218.9797999999973,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "authorization-idempotency"
+          ],
+          "fullName": "admin/users real PostgreSQL authorization-idempotency converges simultaneous same-key requests to one immutable effect and separates owner/resource domains",
+          "status": "passed",
+          "title": "converges simultaneous same-key requests to one immutable effect and separates owner/resource domains",
+          "duration": 3198.3061000000016,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "authorization-idempotency"
+          ],
+          "fullName": "admin/users real PostgreSQL authorization-idempotency rolls back the mutation and audit if the terminal receipt write fails",
+          "status": "passed",
+          "title": "rolls back the mutation and audit if the terminal receipt write fails",
+          "duration": 2485.9418000000005,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "authorization-idempotency"
+          ],
+          "fullName": "admin/users real PostgreSQL authorization-idempotency requires a live claim for every state update and bases retention on real completion rather than backfilled creation time",
+          "status": "passed",
+          "title": "requires a live claim for every state update and bases retention on real completion rather than backfilled creation time",
+          "duration": 1911.8510000000024,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/users real PostgreSQL",
+            "authorization-idempotency"
+          ],
+          "fullName": "admin/users real PostgreSQL authorization-idempotency persists preparation before testing, atomically rolls back partial candidates and fences resumed checkpoints with retained audit references",
+          "status": "passed",
+          "title": "persists preparation before testing, atomically rolls back partial candidates and fences resumed checkpoints with retained audit references",
+          "duration": 2021.1555000000008,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789183691163,
+      "endTime": 1789183735220.1555,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users.integration.test.ts"
+    }
+  ]
+}

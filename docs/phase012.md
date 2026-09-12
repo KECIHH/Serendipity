@@ -92,3 +92,5 @@ node docs/phase-plans/verify-phase012.mjs --quality
 quality 汇总相关单元/集成测试、旧阶段受影响回归、lint/typecheck/format/build、目录、迁移、API 生成区与证据校验。反向验证在隔离副本临时移除最后管理员复核或 sessionVersion 递增，原断言必须失败，恢复后重新通过；冗余 guard 不能遮蔽应检测的缺陷。测试命令是待执行或可复验的入口，本说明不预先声明其结果。
 
 失败保留原始 attempt 与诊断，使用 `node docs/phase-plans/complete-phase012.mjs --retry` 创建本卡下一尝试，不覆盖历史记录或提前移动 run state。完整七组、补充质量检查及独立 agent 复核一致后，由主 agent 审核差异并提交 artifact；再以 `--metadata` 生成对应 Gate/run state/完成记录并提交直接子 metadata。最后在 PowerShell5.1 和 PowerShell7 执行 `scripts/validate-phase.ps1 -CompletedThrough 12 -Strict -Json`，确认工作树干净、推送成功且远端包含 metadata 提交。仅完成本卡，不自动执行 Phase013。
+
+实现快照以阶段起点为基准，显式使用 `git diff --no-renames`，同时记录移动前路径的删除和移动后路径的内容，保证未暂存、已暂存与已提交时的绑定一致。若 artifact 后生成 metadata 失败，失败收据保留真实 artifactCommit、原命令与原脚本字节；恢复校验核对实际 Git 对象、旧计划、质量与复核报告，不回写既有报告。该未封口提交进入最终 Gate 的 recoveryCommits，修复后重新验收并创建新的 artifact→metadata 直接父子提交。

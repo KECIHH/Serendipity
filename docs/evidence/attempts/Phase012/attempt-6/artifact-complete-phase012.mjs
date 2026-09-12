@@ -24,7 +24,7 @@ function audit(requireReview = true) {
   requirePhase012Preflight(receipt.preflight);
   assert.equal(hash(receipt.preflight.reportPath), receipt.preflight.reportHash, "PREFLIGHT_HASH: original admission report changed");
   for (const [field, value] of Object.entries(json(receipt.preflight.reportPath))) assert.deepEqual(receipt.preflight[field], value, `PREFLIGHT_BINDING: ${field}`);
-  requirePhase012FailureChain(plan, { readJson: json, hashFile: hash, git });
+  requirePhase012FailureChain(plan, { readJson: json, hashFile: hash });
   assert.equal(receipt.phase, 12);
   assert.equal(receipt.requestedThrough, 12);
   for (const input of receipt.pinnedInputs) assert.equal(hash(input.path), input.sha256);
@@ -103,7 +103,7 @@ function retry() {
   if (!fs.existsSync(path.join(root, frozen))) write(frozen, read(planPath));
   assert.equal(hash(frozen), hash(planPath));
   assert.match(plan.attemptId, /^attempt-\d+$/);
-  const next = createPhase012RetryPlan(plan, { readJson: json, hashFile: hash, git });
+  const next = createPhase012RetryPlan(plan, { readJson: json, hashFile: hash });
   const failure = json(`${directory}/attempt.json`);
   if (failure.preparedReceiptPath) {
     assert.equal(failure.kind, "SOURCE_REPAIR");

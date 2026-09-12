@@ -406,7 +406,7 @@ try {
   requirePhase012Preflight(receipt.preflight);
   assert.equal(hash(receipt.preflight.reportPath), receipt.preflight.reportHash, "PREFLIGHT_HASH: original admission report changed");
   for (const [field, value] of Object.entries(json(receipt.preflight.reportPath))) assert.deepEqual(receipt.preflight[field], value, `PREFLIGHT_BINDING: ${field}`);
-  requirePhase012FailureChain(plan, { readJson: json, hashFile: hash, git });
+  requirePhase012FailureChain(plan, { readJson: json, hashFile: hash });
   for (const input of receipt.pinnedInputs) assert.equal(hash(input.path), input.sha256);
   for (const previous of plan.previousAttempts) requirePriorCaseBinding(plan, json(previous.planPath), { readJson: json, hashFile: hash });
   verifyMigrationBinding();

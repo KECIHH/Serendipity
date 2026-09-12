@@ -1,0 +1,412 @@
+{
+  "numTotalTestSuites": 2,
+  "numPassedTestSuites": 2,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 31,
+  "numPassedTests": 31,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1789184185876,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract schema: User retains its required enum/index/field inventory as later models are added",
+          "status": "passed",
+          "title": "schema: User retains its required enum/index/field inventory as later models are added",
+          "duration": 13.915800000000047,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract revision: defaults to zero independently of sessions and role",
+          "status": "passed",
+          "title": "revision: defaults to zero independently of sessions and role",
+          "duration": 9.853400000000022,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract revision: timestamps do not silently increment the management revision",
+          "status": "passed",
+          "title": "revision: timestamps do not silently increment the management revision",
+          "duration": 10.217800000000011,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract revision: database rejects negative revision and sessionVersion",
+          "status": "passed",
+          "title": "revision: database rejects negative revision and sessionVersion",
+          "duration": 20.701099999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-unique: equivalent casing and IDNA inputs cannot create two rows",
+          "status": "passed",
+          "title": "email-unique: equivalent casing and IDNA inputs cannot create two rows",
+          "duration": 7.031000000000006,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-unique: concurrent canonical registrations have one database winner",
+          "status": "passed",
+          "title": "email-unique: concurrent canonical registrations have one database winner",
+          "duration": 22.31479999999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"User@example.invalid\"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \"User@example.invalid\"",
+          "duration": 4.477900000000034,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \" user@example.invalid\"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \" user@example.invalid\"",
+          "duration": 2.7718999999999596,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"user@example.invalid \"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \"user@example.invalid \"",
+          "duration": 3.382499999999993,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"user@EXAMPLE.INVALID\"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \"user@EXAMPLE.INVALID\"",
+          "duration": 3.2746999999999957,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"user@例え.テスト\"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \"user@例え.テスト\"",
+          "duration": 2.849200000000053,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"用户@example.invalid\"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \"用户@example.invalid\"",
+          "duration": 2.5020999999999844,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \".a@example.invalid\"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \".a@example.invalid\"",
+          "duration": 2.5575000000000045,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a.@example.invalid\"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \"a.@example.invalid\"",
+          "duration": 2.633199999999988,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a..b@example.invalid\"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \"a..b@example.invalid\"",
+          "duration": 2.4791999999999916,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a b@example.invalid\"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \"a b@example.invalid\"",
+          "duration": 2.5936999999999557,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a@example.invalid\\n\"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \"a@example.invalid\\n\"",
+          "duration": 2.5938999999999623,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a@-label.invalid\"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \"a@-label.invalid\"",
+          "duration": 2.581800000000044,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a@label-.invalid\"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \"a@label-.invalid\"",
+          "duration": 2.2524999999999977,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a@label..invalid\"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \"a@label..invalid\"",
+          "duration": 2.5879999999999654,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a@example.invalid.\"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \"a@example.invalid.\"",
+          "duration": 2.399099999999976,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a@bad_label.invalid\"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \"a@bad_label.invalid\"",
+          "duration": 2.440499999999986,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a@@example.invalid\"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \"a@@example.invalid\"",
+          "duration": 2.5908999999999764,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a@example.invalid/path\"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \"a@example.invalid/path\"",
+          "duration": 2.4196000000000026,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a@\"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \"a@\"",
+          "duration": 2.387200000000007,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"@example.invalid\"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \"@example.invalid\"",
+          "duration": 2.477700000000027,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.invalid\"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.invalid\"",
+          "duration": 2.5774999999999864,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"a@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.invalid\"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \"a@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.invalid\"",
+          "duration": 2.6444999999999936,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: rejects noncanonical direct database value \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\"",
+          "status": "passed",
+          "title": "email-check: rejects noncanonical direct database value \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\"",
+          "duration": 2.442299999999989,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract email-check: accepts maximum canonical lengths and all allowed local atoms",
+          "status": "passed",
+          "title": "email-check: accepts maximum canonical lengths and all allowed local atoms",
+          "duration": 7.298000000000002,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "real PostgreSQL User contract"
+          ],
+          "fullName": "real PostgreSQL User contract failure: a real refused connection crosses only the redacted boundary",
+          "status": "passed",
+          "title": "failure: a real refused connection crosses only the redacted boundary",
+          "duration": 2029.7647000000002,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789184186240,
+      "endTime": 1789184188422.7646,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/phase006/database.integration.ts"
+    }
+  ]
+}

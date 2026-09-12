@@ -1,0 +1,100 @@
+{
+  "phase": 12,
+  "attemptId": "attempt-6",
+  "status": "FAIL",
+  "kind": "SOURCE_REPAIR",
+  "stage": "METADATA_GENERATION",
+  "artifactCommit": "4120d457d1807815f09a8f0919d0007b191d1f9b",
+  "metadataCommit": null,
+  "gateCreated": false,
+  "command": "node docs/phase-plans/complete-phase012.mjs --metadata",
+  "exitCode": 1,
+  "planHash": "bbe6200c56e2ee92c2d3a104682d996491850e786bba5aa02e8f19a6484de001",
+  "reason": "Git rename detection omits the deleted login source from name-only output after artifact commit; --no-renames includes both the deletion and addition without changing product bytes.",
+  "diagnosticPath": "docs/evidence/attempts/Phase012/attempt-6/metadata-diagnostic.json",
+  "diagnosticHash": "860be0b6fa95ecb942b09fb2d83bd2ba9e6a4ef96b53efe379f76d8e81a6b2af",
+  "observation": {
+    "command": "node docs/phase-plans/complete-phase012.mjs --metadata",
+    "executable": "C:\\Program Files\\nodejs\\node.exe",
+    "arguments": [
+      "docs/phase-plans/complete-phase012.mjs",
+      "--metadata"
+    ],
+    "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+    "exitCode": 1,
+    "signal": null,
+    "timedOut": false,
+    "stdout": "",
+    "stderr": "AssertionError [ERR_ASSERTION]: IMPLEMENTATION_CHANGED: implementation files were added, removed or changed after verification\n+ actual - expected\n... Skipped lines\n\n  {\n    'README.md': '1ef8c8052b9abfc1c4c834db107589646daebb730e167fb91c6e23f57f2b91a2',\n    'docs/admin.md': 'f2386d82a68be5f96780ca711f9d58cf3cad4f0f524fec541e31c8844a179910',\n    'docs/api.md': '5da989bf2d3f480401dac0c37ff9c84a717b6d79cf8d060f62ab08edd4a83010',\n    'docs/auth.md': '61d4a77d2e776f1a1f712d15fbe9d132db22da3f2a0eb30a12340b1250430c39',\n...\n    'src/app/admin/(public)/login/page.tsx': 'e4d2826c6d3cc7535c2f25bdaedf82bfb282f1cdd05f5090a9e51f990348132a',\n-   'src/app/admin/login/page.tsx': null,\n    'src/app/admin/page.tsx': null,\n    'src/app/api/admin/users/[id]/route.ts': '196b4b13a820ce41804c30fdf8e766a43f5db23bcb834f16bd90dae15221d7bd',\n    'src/app/api/admin/users/route.ts': '53d73d045da3c1cd0ef8b95d212ed0e4254995ba796bdff03d4f963db44877d9',\n    'src/app/layout.test.ts': '90bb2c1a05f0af75615e3c344f1156ec55e252dad08760eb8aa65ef93933c4a8',\n    'src/components/admin/admin-nav.ts': '0e12f6e2282b42b25645fe0ea06251930ad8c6af88fb94f0d4102167480c5d1e',\n\n    at requirePhase012ImplementationBinding (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/phase012-evidence.mjs:154:10)\n    at audit (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/complete-phase012.mjs:54:3)\n    at metadata (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/complete-phase012.mjs:131:57)\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/complete-phase012.mjs:199:49\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n",
+    "durationMs": 628
+  },
+  "artifacts": [
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/metadata-diagnostic.json",
+      "sha256": "860be0b6fa95ecb942b09fb2d83bd2ba9e6a4ef96b53efe379f76d8e81a6b2af"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/artifact-phase012-evidence.mjs",
+      "sha256": "f87d7d848e9438f3bd7afb723b541078ba85479c7058b032c157a6bee301cbc1"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/artifact-complete-phase012.mjs",
+      "sha256": "681527a7900b37700bfad9dbac2efe3ab05d7e72fd3b8501a82de673ff1626ab"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/artifact-verify-phase012.mjs",
+      "sha256": "870d47e14566c52b3cb996e45a2ddcdac4b6686c412f6682907d31892dbba32c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/artifact-evidence-guards.mjs",
+      "sha256": "affc515bbbc811134926d2afd6e93f48ce964bb635ff5ce1563dec751054d92b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/quality.json",
+      "sha256": "0cc123d5a7e792b363d39e1cf41b60a7a673e3ef522147e2f4a03d2346b16d6c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/review.json",
+      "sha256": "088f24e1e1d1c86ea4354f94a52b03501470f731ee4f206acdd4761c273f9a79"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/list.json",
+      "sha256": "8ad13e01c9a232843fd1d3be369257a8015fd898454082303454e4f0ccbd1d52"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/role-status.json",
+      "sha256": "9a70a42e3bbc4fc3a197c0d1708e44a3d7b15fabf57066158f41c7c39601eed4"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/self-protection.json",
+      "sha256": "254a184d0739654af8b5a677d92187f9834d900a458e6808e296012afba82509"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/last-admin.json",
+      "sha256": "f6c7c01dc21f1087117b69d680cbf6e442ee18ee24df1fc6fd4fc837565d02b5"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/session.json",
+      "sha256": "be1e8e77964b55cfc4b05798bb84fc58b259edeb3620917857f1b2f02695f5b9"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/authorization-idempotency.json",
+      "sha256": "0038ca2c110cc9503d25d9134b2b29d731954e754e49de66068d7d4610075b0a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/navigation.json",
+      "sha256": "38bcda60c047937d04a7a8b95e59ac1bf893e599760dbf9f139c2160f75749a8"
+    }
+  ],
+  "sourceAdditions": [
+    "docs/evidence/attempts/Phase012/attempt-6/artifact-complete-phase012.mjs",
+    "docs/evidence/attempts/Phase012/attempt-6/artifact-evidence-guards.mjs",
+    "docs/evidence/attempts/Phase012/attempt-6/artifact-phase012-evidence.mjs",
+    "docs/evidence/attempts/Phase012/attempt-6/artifact-verify-phase012.mjs",
+    "docs/evidence/attempts/Phase012/attempt-6/attempt.json",
+    "docs/evidence/attempts/Phase012/attempt-6/metadata-diagnostic.json"
+  ],
+  "remediation": "Canonicalize implementation snapshots with --no-renames, preserve authenticated post-artifact failure history, and add real Git staging/commit and rejection regressions before a fresh full attempt.",
+  "startedAt": "2026-09-12T03:08:29.853Z",
+  "recordedAt": "2026-09-12T03:12:35.817Z"
+}

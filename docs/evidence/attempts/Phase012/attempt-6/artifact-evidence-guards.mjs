@@ -2,7 +2,6 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import { createHash } from "node:crypto";
-import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import {
   requirePhase012Preflight,
@@ -10,7 +9,6 @@ import {
   requirePhase012FailureChain,
   createPhase012RetryPlan,
   requirePhase012ImplementationBinding,
-  getPhase012ImplementationSnapshot,
 } from "../../docs/phase-plans/phase012-evidence.mjs";
 import {
   requireHashCoverage,
@@ -19,7 +17,6 @@ import {
 } from "../../scripts/phase-evidence.mjs";
 import {
   command,
-  git,
   scanSensitiveText,
   safeDiagnostics,
 } from "../../docs/phase-plans/phase012-runtime.mjs";
@@ -185,126 +182,8 @@ check("migration protection cannot be replaced by another source", () => {
 });
 
 check("actual previous failure chain is complete and immutable", () =>
-  requirePhase012FailureChain(plan, { readJson, hashFile, git }),
+  requirePhase012FailureChain(plan, { readJson, hashFile }),
 );
-
-const metadataFailureIndex = plan.previousAttempts.findLastIndex(
-  (entry) => readJson(entry.failurePath).stage === "METADATA_GENERATION",
-);
-assert(metadataFailureIndex >= 0, "metadata rejection probes require a real failed artifact");
-
-function metadataFailureFixture() {
-  const previousAttempts = structuredClone(
-    plan.previousAttempts.slice(0, metadataFailureIndex + 1),
-  );
-  const previous = previousAttempts.at(-1);
-  const failure = readJson(previous.failurePath);
-  const diagnostic = readJson(failure.diagnosticPath);
-  const files = new Map();
-  const readers = {
-    readJson: (file) => (files.has(file) ? JSON.parse(files.get(file)) : readJson(file)),
-    hashFile: (file) => (files.has(file) ? digest(files.get(file)) : hashFile(file)),
-    git,
-  };
-  return {
-    plan: {
-      ...structuredClone(plan),
-      attemptId: `attempt-${metadataFailureIndex + 2}`,
-      previousAttempts,
-    },
-    failure,
-    diagnostic,
-    files,
-    readers,
-    bind() {
-      files.set(failure.diagnosticPath, JSON.stringify(diagnostic));
-      failure.diagnosticHash = readers.hashFile(failure.diagnosticPath);
-      files.set(previous.failurePath, JSON.stringify(failure));
-      previous.failureHash = readers.hashFile(previous.failurePath);
-    },
-  };
-}
-
-check("in-memory metadata failure fixture authenticates the real artifact and its blobs", () => {
-  const fixture = metadataFailureFixture();
-  fixture.bind();
-  requirePhase012FailureChain(fixture.plan, fixture.readers);
-});
-for (const [name, change] of [
-  [
-    "missing-git",
-    (fixture) => {
-      delete fixture.readers.git;
-    },
-  ],
-  [
-    "missing-artifact",
-    (fixture) => {
-      fixture.failure.artifactCommit = null;
-    },
-  ],
-  [
-    "wrong-stage",
-    (fixture) => {
-      fixture.failure.stage = "QUALITY";
-      fixture.diagnostic.stage = "QUALITY";
-    },
-  ],
-  [
-    "another-real-git-commit",
-    (fixture) => {
-      fixture.failure.artifactCommit = fixture.diagnostic.phaseStartCommit;
-      fixture.diagnostic.artifactCommit = fixture.failure.artifactCommit;
-    },
-  ],
-  ...["quality", "review"].map((name) => [
-    `rehashed-${name}-bytes-differ-from-artifact`,
-    (fixture) => {
-      const file = fixture.diagnostic[`${name}ReportPath`];
-      fixture.files.set(file, readText(file) + "\n");
-      fixture.diagnostic[`${name}ReportHash`] = fixture.readers.hashFile(file);
-    },
-  ]),
-  [
-    "original-case-report-bytes-differ-from-artifact",
-    (fixture) => {
-      const frozenPlan = readJson(plan.previousAttempts[metadataFailureIndex].planPath);
-      const file = frozenPlan.cases[0].outputPath;
-      assert.notEqual(file, fixture.diagnostic.qualityReportPath);
-      assert.notEqual(file, fixture.diagnostic.reviewReportPath);
-      fixture.files.set(file, readText(file) + "\n");
-    },
-  ],
-  [
-    "rehashed-archive-bytes-differ-from-artifact",
-    (fixture) => {
-      const archive = fixture.diagnostic.archivedSources[0];
-      fixture.files.set(archive.path, readText(archive.path) + "\n");
-      archive.sha256 = fixture.readers.hashFile(archive.path);
-    },
-  ],
-]) {
-  check(`reject metadata failure ${name}`, () => {
-    const fixture = metadataFailureFixture();
-    change(fixture);
-    fixture.bind();
-    assert.throws(() => requirePhase012FailureChain(fixture.plan, fixture.readers), {
-      code: "ERR_ASSERTION",
-    });
-  });
-}
-check("reject metadata diagnostic bytes that no longer match their bound hash", () => {
-  const fixture = metadataFailureFixture();
-  fixture.bind();
-  fixture.files.set(
-    fixture.failure.diagnosticPath,
-    fixture.files.get(fixture.failure.diagnosticPath) + "\n",
-  );
-  assert.throws(() => requirePhase012FailureChain(fixture.plan, fixture.readers), {
-    code: "ERR_ASSERTION",
-  });
-});
-
 check("retry freezes each failed attempt without replacing its plan or failure", () => {
   const first = { ...structuredClone(plan), attemptId: "attempt-1", previousAttempts: [] };
   const frozenPath = "docs/evidence/attempts/Phase012/attempt-1/frozen-plan.json";
@@ -493,141 +372,6 @@ check(
     );
   },
 );
-
-check("real Git snapshots preserve moved paths across staging, commits and rename settings", () => {
-  const scratchPath = path.join(root, ".scaffold", "phase012");
-  fs.mkdirSync(scratchPath, { recursive: true });
-  const scratchRoot = fs.realpathSync(scratchPath);
-  const repositoryRoot = fs.mkdtempSync(path.join(scratchRoot, "implementation-snapshot-"));
-  // Every command uses this disposable repository, with inherited Git overrides removed.
-  const fixtureEnvironment = Object.fromEntries(
-    Object.entries(process.env).filter(([name]) => !/^GIT_/i.test(name)),
-  );
-  fixtureEnvironment.GIT_CONFIG_NOSYSTEM = "1";
-  fixtureEnvironment.GIT_CONFIG_GLOBAL = process.platform === "win32" ? "NUL" : "/dev/null";
-  fixtureEnvironment.GIT_TERMINAL_PROMPT = "0";
-  const temporaryGit = (args) => {
-    const result = spawnSync("git", ["-c", "core.quotepath=false", ...args], {
-      cwd: repositoryRoot,
-      env: fixtureEnvironment,
-      encoding: "utf8",
-      windowsHide: true,
-      timeout: 20000,
-    });
-    assert.equal(result.status, 0, result.error?.message ?? result.stderr);
-    return result.stdout;
-  };
-  const write = (file, bytes) => {
-    const target = path.join(repositoryRoot, file);
-    fs.mkdirSync(path.dirname(target), { recursive: true });
-    fs.writeFileSync(target, bytes);
-  };
-  const inventory = (directory) => {
-    const absolute = path.join(repositoryRoot, directory);
-    if (!fs.existsSync(absolute)) return [];
-    return fs.readdirSync(absolute, { withFileTypes: true }).flatMap((entry) => {
-      const file = path.posix.join(directory, entry.name);
-      return entry.isDirectory() ? inventory(file) : [file];
-    });
-  };
-  const fixtureHash = (file) => digest(fs.readFileSync(path.join(repositoryRoot, file)));
-  const oldPage = "src/app/admin/login/page.tsx";
-  const movedPage = "src/app/admin/(public)/login/page.tsx";
-  const addedSource = "src/lib/after-verification.ts";
-  const previousMigration = "prisma/migrations/20260101000000_previous/migration.sql";
-  const migrationPath = "prisma/migrations/20260102000000_current/migration.sql";
-  const pageBytes = "export default function LoginPage() {\n  return 'login';\n}\n";
-  try {
-    temporaryGit(["init", "--quiet", "--initial-branch=main"]);
-    assert.equal(
-      fs.realpathSync(path.resolve(temporaryGit(["rev-parse", "--show-toplevel"]).trim())),
-      fs.realpathSync(repositoryRoot),
-    );
-    temporaryGit(["config", "--local", "user.name", "Phase012 fixture"]);
-    temporaryGit(["config", "--local", "user.email", "phase012@example.invalid"]);
-    temporaryGit(["config", "--local", "core.autocrlf", "false"]);
-    write(oldPage, pageBytes);
-    write(previousMigration, "-- Synthetic previous migration\nSELECT 1;\n");
-    temporaryGit(["add", "--", oldPage, previousMigration]);
-    temporaryGit(["commit", "--quiet", "-m", "test: seed implementation snapshot fixture"]);
-    const fixtureReceipt = {
-      phaseStartCommit: temporaryGit(["rev-parse", "HEAD"]).trim(),
-      prerequisites: { migrations: [{ path: previousMigration }] },
-    };
-    const fixturePlan = {
-      sourcePaths: [oldPage, movedPage, addedSource, previousMigration],
-      modificationScope: ["src/", "tests/", "prisma/"],
-    };
-    const snapshot = () =>
-      getPhase012ImplementationSnapshot({
-        root: repositoryRoot,
-        plan: fixturePlan,
-        receipt: fixtureReceipt,
-        git: temporaryGit,
-        hashFile: fixtureHash,
-        inventory,
-        migrationPath,
-      });
-    fs.mkdirSync(path.dirname(path.join(repositoryRoot, movedPage)), { recursive: true });
-    fs.renameSync(path.join(repositoryRoot, oldPage), path.join(repositoryRoot, movedPage));
-    write(migrationPath, "-- Synthetic current migration\nSELECT 2;\n");
-    const verifiedSnapshot = snapshot();
-    for (const state of ["unstaged", "staged", "committed"]) {
-      if (state === "staged") temporaryGit(["add", "--", oldPage, movedPage, migrationPath]);
-      if (state === "committed") {
-        temporaryGit(["commit", "--quiet", "-m", "test: move login fixture"]);
-      }
-      for (const renameSetting of ["false", "true", "copies"]) {
-        temporaryGit(["config", "--local", "diff.renames", renameSetting]);
-        const actual = snapshot();
-        assert.equal(actual[oldPage], null, `${state}/${renameSetting}: deleted path is required`);
-        assert.equal(actual[movedPage], digest(pageBytes));
-        assert.equal(actual[migrationPath], fixtureHash(migrationPath));
-        requirePhase012ImplementationBinding(verifiedSnapshot, actual);
-        if (state !== "unstaged" && renameSetting === "true") {
-          assert.match(
-            temporaryGit([
-              "diff",
-              "--name-status",
-              fixtureReceipt.phaseStartCommit,
-              "--",
-              oldPage,
-              movedPage,
-            ]),
-            /^R100\t/m,
-            "the real Git fixture must exercise automatic rename detection",
-          );
-        }
-      }
-    }
-    const requireChanged = () =>
-      assert.throws(
-        () => requirePhase012ImplementationBinding(verifiedSnapshot, snapshot()),
-        /IMPLEMENTATION_CHANGED/,
-      );
-    write(movedPage, pageBytes.replace("login", "changed"));
-    requireChanged();
-    write(movedPage, pageBytes);
-    write(addedSource, "export const added = true;\n");
-    requireChanged();
-    fs.unlinkSync(path.join(repositoryRoot, addedSource));
-    fs.unlinkSync(path.join(repositoryRoot, movedPage));
-    requireChanged();
-    write(movedPage, pageBytes);
-    const unregisteredSource = "src/unregistered.ts";
-    write(unregisteredSource, "export const unregistered = true;\n");
-    assert.throws(snapshot, /IMPLEMENTATION_CHANGED: unregistered product or test file/);
-    fs.unlinkSync(path.join(repositoryRoot, unregisteredSource));
-    const outsideScope = "outside-scope.txt";
-    write(outsideScope, "synthetic out-of-scope file\n");
-    assert.throws(snapshot, /IMPLEMENTATION_CHANGED: out-of-scope path outside-scope\.txt/);
-    fs.unlinkSync(path.join(repositoryRoot, outsideScope));
-    requirePhase012ImplementationBinding(verifiedSnapshot, snapshot());
-  } finally {
-    assert.equal(path.dirname(fs.realpathSync(repositoryRoot)), scratchRoot);
-    fs.rmSync(repositoryRoot, { recursive: true, force: true });
-  }
-});
 
 check("safe output retains a positive scan-before-redaction receipt", () => {
   assert.deepEqual(scanSensitiveText("safe synthetic summary"), {
