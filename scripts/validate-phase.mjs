@@ -1458,7 +1458,7 @@ export function validatePhase({
       history[previousMetadataIndex].id,
       checkpointMaintenance.baseMetadataCommit,
       "MAINTENANCE_ANCHOR",
-      "Maintenance admission must preserve the final Phase012 metadata checkpoint",
+      "Maintenance admission must preserve the final sealed metadata checkpoint",
     );
   } else {
     ensure(
@@ -1530,7 +1530,7 @@ export function validatePhase({
       : history[previousMetadataIndex].id,
     ...(checkpointMaintenance
       ? {
-          maintenanceHead: checkpointMaintenance.commit,
+          maintenanceHead: checkpointMaintenance.maintenanceHead,
           admissionOnly: maintenanceAdmission,
           checkpointMaintenance: {
             path: checkpointMaintenance.path,
@@ -1538,6 +1538,9 @@ export function validatePhase({
             commit: checkpointMaintenance.commit,
             policy: checkpointMaintenance.policy,
           },
+          ...(checkpointMaintenance.executionMaintenance
+            ? { executionMaintenance: checkpointMaintenance.executionMaintenance }
+            : {}),
         }
       : {}),
     historicalPhase: 0,

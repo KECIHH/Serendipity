@@ -23,8 +23,57 @@ export const maintenanceAllowedPaths = Object.freeze(
     maintenanceReceiptPath,
   ].sort(),
 );
-const contentPaths = maintenanceAllowedPaths.filter((file) => file !== maintenanceReceiptPath);
-const guidePaths = ["Serendipity · 际遇/AGENTS.md", "Serendipity · 际遇/README.md"];
+export const executionMaintenanceId = "execution-policy-20260912";
+export const executionMaintenanceReceiptPath =
+  "docs/checkpoint-migrations/execution-policy-20260912.json";
+export const executionPolicyPath = "docs/development-execution-policy.md";
+export const executionBaseMetadata = "7fd6285a2d9cf91b2e2b8f3e725c3b99da9253e2";
+export const executionBaseArtifact = "1ddff2e0d3c89492cb50268ffcc5cb4673a69a31";
+export const executionMaintenanceSubject =
+  "docs: bound reviews and streamline subsequent phase closeout";
+export const executionAllowedPaths = Object.freeze(
+  [
+    "AGENTS.md",
+    "docs/agent-execution-contract.md",
+    "docs/git-workflow.md",
+    executionPolicyPath,
+    "scripts/checkpoint-maintenance.mjs",
+    "scripts/test-checkpoint-maintenance.mjs",
+    "scripts/validate-phase.mjs",
+    executionMaintenanceReceiptPath,
+  ].sort(),
+);
+// Only these two fixed maintenance boundaries are admitted; receipts cannot extend scope.
+const definitions = [
+  {
+    id: "testing-policy-20260912",
+    afterPhase: 12,
+    receiptPath: maintenanceReceiptPath,
+    policyPath: maintenancePolicyPath,
+    baseMetadata: maintenanceBaseMetadata,
+    baseArtifact: maintenanceBaseArtifact,
+    subject: maintenanceSubject,
+    policyVersion: maintenancePolicyVersion,
+    allowedPaths: maintenanceAllowedPaths,
+    guidePaths: ["Serendipity · 际遇/AGENTS.md", "Serendipity · 际遇/README.md"],
+    bindingField: "checkpointMaintenance",
+    policyField: "validationPolicy",
+  },
+  {
+    id: executionMaintenanceId,
+    afterPhase: 13,
+    receiptPath: executionMaintenanceReceiptPath,
+    policyPath: executionPolicyPath,
+    baseMetadata: executionBaseMetadata,
+    baseArtifact: executionBaseArtifact,
+    subject: executionMaintenanceSubject,
+    policyVersion: "phase-execution-v2",
+    allowedPaths: executionAllowedPaths,
+    guidePaths: [],
+    bindingField: "executionMaintenance",
+    policyField: "executionPolicy",
+  },
+];
 const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const parseJson = (bytes) => JSON.parse(bytes.toString("utf8").replace(/^\uFEFF/, ""));
 const check = (condition, code, message) => assert(condition, `${code}: ${message}`);
@@ -64,7 +113,21 @@ function commandGit(root, args) {
 }
 
 // This only reads the fixed base and current files. The receipt never hashes itself.
-export function createMaintenanceReceipt(repositoryRoot) {
+export function createMaintenanceReceipt(repositoryRoot, id = "testing-policy-20260912") {
+  const definition = definitions.find((entry) => entry.id === id);
+  check(definition, "MAINTENANCE_ID", "Unknown maintenance boundary");
+  const {
+    afterPhase,
+    receiptPath: maintenanceReceiptPath,
+    policyPath: maintenancePolicyPath,
+    baseMetadata: maintenanceBaseMetadata,
+    baseArtifact: maintenanceBaseArtifact,
+    subject: maintenanceSubject,
+    policyVersion: maintenancePolicyVersion,
+    allowedPaths: maintenanceAllowedPaths,
+    guidePaths,
+  } = definition;
+  const contentPaths = maintenanceAllowedPaths.filter((file) => file !== maintenanceReceiptPath);
   const root = fs.realpathSync(path.resolve(repositoryRoot));
   const changes = contentPaths.map((file) => {
     const exists =
@@ -78,10 +141,10 @@ export function createMaintenanceReceipt(repositoryRoot) {
   });
   return {
     schemaVersion: "phase-checkpoint-maintenance-v1",
-    id: "testing-policy-20260912",
+    id,
     scope: "DOCS_AND_PHASE_VALIDATOR_ONLY",
-    afterPhase: 12,
-    nextPhase: 13,
+    afterPhase,
+    nextPhase: afterPhase + 1,
     baseMetadataCommit: maintenanceBaseMetadata,
     baseArtifactCommit: maintenanceBaseArtifact,
     subject: maintenanceSubject,
@@ -96,10 +159,25 @@ export function createMaintenanceReceipt(repositoryRoot) {
   };
 }
 
-export function validateCheckpointMaintenance({ root, state, head, history, git, blob }) {
+function validateMaintenanceDefinition({ root, state, head, history, git, blob }, definition) {
+  const {
+    id,
+    afterPhase,
+    receiptPath: maintenanceReceiptPath,
+    policyPath: maintenancePolicyPath,
+    baseMetadata: maintenanceBaseMetadata,
+    baseArtifact: maintenanceBaseArtifact,
+    subject: maintenanceSubject,
+    policyVersion: maintenancePolicyVersion,
+    allowedPaths: maintenanceAllowedPaths,
+    guidePaths,
+    bindingField,
+    policyField,
+  } = definition;
+  const contentPaths = maintenanceAllowedPaths.filter((file) => file !== maintenanceReceiptPath);
   const exists = fs.existsSync(path.join(root, maintenanceReceiptPath));
-  if (state.completedThrough < 12) {
-    check(!exists, "MAINTENANCE_PHASE", "Maintenance is only admitted after Phase012");
+  if (state.completedThrough < afterPhase) {
+    check(!exists, "MAINTENANCE_PHASE", `${id} is only admitted after phase ${afterPhase}`);
     return null;
   }
   const gitText = (args) => git(args).toString("utf8").trim();
@@ -115,9 +193,9 @@ export function validateCheckpointMaintenance({ root, state, head, history, git,
   if (!exists) {
     same(receiptCommits, [], "MAINTENANCE_RECEIPT_IMMUTABLE");
     check(
-      state.completedThrough === 12,
+      state.completedThrough === afterPhase,
       "MAINTENANCE_REQUIRED",
-      "Phase013 and later require the maintenance receipt",
+      `Phase ${afterPhase + 1} and later require ${id}`,
     );
     return null;
   }
@@ -144,10 +222,10 @@ export function validateCheckpointMaintenance({ root, state, head, history, git,
   );
   for (const [key, expected] of Object.entries({
     schemaVersion: "phase-checkpoint-maintenance-v1",
-    id: "testing-policy-20260912",
+    id,
     scope: "DOCS_AND_PHASE_VALIDATOR_ONLY",
-    afterPhase: 12,
-    nextPhase: 13,
+    afterPhase,
+    nextPhase: afterPhase + 1,
     baseMetadataCommit: maintenanceBaseMetadata,
     baseArtifactCommit: maintenanceBaseArtifact,
     subject: maintenanceSubject,
@@ -175,9 +253,13 @@ export function validateCheckpointMaintenance({ root, state, head, history, git,
     );
   }
   const baseIndex = history.findIndex((entry) => entry.id === maintenanceBaseMetadata);
-  check(baseIndex >= 0, "MAINTENANCE_ANCHOR", "Phase012 metadata must be in the current history");
+  check(baseIndex >= 0, "MAINTENANCE_ANCHOR", "Fixed metadata must be in the current history");
   same(history[baseIndex].parents, [maintenanceBaseArtifact], "MAINTENANCE_ANCHOR");
-  same(state.checkpoints[11]?.artifactCommit, maintenanceBaseArtifact, "MAINTENANCE_ANCHOR");
+  same(
+    state.checkpoints[afterPhase - 1]?.artifactCommit,
+    maintenanceBaseArtifact,
+    "MAINTENANCE_ANCHOR",
+  );
   const index = baseIndex + 1;
   const entry = history[index];
   check(
@@ -255,46 +337,35 @@ export function validateCheckpointMaintenance({ root, state, head, history, git,
     check(hash(guide.sha256), "MAINTENANCE_LOCAL_GUIDES", "Invalid guide hash");
     same(sha256(localBytes(root, guide.path)), guide.sha256, "MAINTENANCE_LOCAL_GUIDES");
   }
-  same(
-    gitText(["ls-tree", "--name-only", head, "--", ...guidePaths]),
-    "",
-    "MAINTENANCE_LOCAL_GUIDES",
-  );
-  same(
-    git(["check-ignore", "--no-index", "-z", "--stdin"], `${guidePaths.join("\0")}\0`)
-      .toString("utf8")
-      .split("\0")
-      .filter(Boolean),
-    guidePaths,
-    "MAINTENANCE_LOCAL_GUIDES",
-  );
-  if (state.completedThrough === 12) same(head, entry.id, "MAINTENANCE_TAIL");
+  if (guidePaths.length) {
+    same(
+      gitText(["ls-tree", "--name-only", head, "--", ...guidePaths]),
+      "",
+      "MAINTENANCE_LOCAL_GUIDES",
+    );
+    same(
+      git(["check-ignore", "--no-index", "-z", "--stdin"], `${guidePaths.join("\0")}\0`)
+        .toString("utf8")
+        .split("\0")
+        .filter(Boolean),
+      guidePaths,
+      "MAINTENANCE_LOCAL_GUIDES",
+    );
+  }
+  if (state.completedThrough === afterPhase) same(head, entry.id, "MAINTENANCE_TAIL");
   const binding = { path: maintenanceReceiptPath, sha256: receiptHash, commit: entry.id };
   return {
     ...binding,
     index,
+    baseIndex,
+    nextPhase: afterPhase + 1,
     baseMetadataCommit: maintenanceBaseMetadata,
     policy: { ...receipt.policy },
-    admissionOnly: state.completedThrough === 12,
-    phaseStartIndex(phase, previousMetadataIndex) {
-      if (phase !== 13) return previousMetadataIndex + 1;
-      same(previousMetadataIndex, baseIndex, "MAINTENANCE_POSITION");
-      return index + 1;
-    },
-    validatePhaseInputs({ phase, receipt: inputs, plan, evidence, previousMetadataCommit }) {
-      if (phase < 13) return;
-      same(inputs.checkpointMaintenance, binding, "MAINTENANCE_INPUT_BINDING");
-      same(inputs.validationPolicy, receipt.policy, "MAINTENANCE_POLICY_BINDING");
-      if (phase === 13) same(inputs.phaseStartCommit, entry.id, "MAINTENANCE_PHASE_START");
-      else {
-        check(
-          typeof previousMetadataCommit === "string" &&
-            /^[0-9a-f]{40,64}$/.test(previousMetadataCommit),
-          "MAINTENANCE_PHASE_START",
-          "The previous sealed metadata commit is required",
-        );
-        same(inputs.phaseStartCommit, previousMetadataCommit, "MAINTENANCE_PHASE_START");
-      }
+    admissionOnly: state.completedThrough === afterPhase,
+    validatePhaseInputs({ phase, receipt: inputs, plan, evidence }) {
+      if (phase <= afterPhase) return;
+      same(inputs[bindingField], binding, "MAINTENANCE_INPUT_BINDING");
+      same(inputs[policyField], receipt.policy, "MAINTENANCE_POLICY_BINDING");
       check(
         plan.sourcePaths?.includes(maintenancePolicyPath),
         "MAINTENANCE_POLICY_SOURCE",
@@ -307,6 +378,49 @@ export function validateCheckpointMaintenance({ root, state, head, history, git,
         "MAINTENANCE_POLICY_INPUT",
         "The Gate must bind the adopted policy bytes",
       );
+    },
+  };
+}
+
+export function validateCheckpointMaintenance(context) {
+  const entries = definitions
+    .map((definition) => validateMaintenanceDefinition(context, definition))
+    .filter(Boolean);
+  const latest = entries.at(-1);
+  if (!latest) return null;
+  const original = entries[0];
+  return {
+    ...original,
+    maintenanceHead: latest.commit,
+    baseMetadataCommit: latest.baseMetadataCommit,
+    admissionOnly: latest.admissionOnly,
+    ...(entries.length > 1
+      ? {
+          executionMaintenance: {
+            path: latest.path,
+            sha256: latest.sha256,
+            commit: latest.commit,
+            policy: latest.policy,
+          },
+        }
+      : {}),
+    phaseStartIndex(phase, previousMetadataIndex) {
+      const boundary = entries.find((entry) => entry.nextPhase === phase);
+      if (!boundary) return previousMetadataIndex + 1;
+      same(previousMetadataIndex, boundary.baseIndex, "MAINTENANCE_POSITION");
+      return boundary.index + 1;
+    },
+    validatePhaseInputs(args) {
+      for (const entry of entries) entry.validatePhaseInputs(args);
+      if (args.phase < original.nextPhase) return;
+      const boundary = entries.find((entry) => entry.nextPhase === args.phase);
+      const expectedStart = boundary?.commit ?? args.previousMetadataCommit;
+      check(
+        typeof expectedStart === "string" && /^[0-9a-f]{40,64}$/.test(expectedStart),
+        "MAINTENANCE_PHASE_START",
+        "The previous sealed metadata commit is required",
+      );
+      same(args.receipt.phaseStartCommit, expectedStart, "MAINTENANCE_PHASE_START");
     },
   };
 }

@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "phase-checkpoint-maintenance-v1",
+  "id": "execution-policy-20260912",
+  "scope": "DOCS_AND_PHASE_VALIDATOR_ONLY",
+  "afterPhase": 13,
+  "nextPhase": 14,
+  "baseMetadataCommit": "7fd6285a2d9cf91b2e2b8f3e725c3b99da9253e2",
+  "baseArtifactCommit": "1ddff2e0d3c89492cb50268ffcc5cb4673a69a31",
+  "subject": "docs: bound reviews and streamline subsequent phase closeout",
+  "allowedExactPaths": [
+    "AGENTS.md",
+    "docs/agent-execution-contract.md",
+    "docs/checkpoint-migrations/execution-policy-20260912.json",
+    "docs/development-execution-policy.md",
+    "docs/git-workflow.md",
+    "scripts/checkpoint-maintenance.mjs",
+    "scripts/test-checkpoint-maintenance.mjs",
+    "scripts/validate-phase.mjs"
+  ],
+  "policy": {
+    "path": "docs/development-execution-policy.md",
+    "version": "phase-execution-v2",
+    "sha256": "58b4eaef7fda2a45c69e41feb766d04893d44a7092117410d7e707bc5e7b9320"
+  },
+  "changes": [
+    {
+      "path": "AGENTS.md",
+      "beforeSha256": "06f85a83d539ede834e356fe4afba80f9535c23c214b4f0dc8470923d88eeab8",
+      "afterSha256": "15f13a3f5a19147ba3f9254cdddc1ecd6b44fc087e88810b0532c71215e171b4"
+    },
+    {
+      "path": "docs/agent-execution-contract.md",
+      "beforeSha256": "ba2c8eb6452d0f63f4d3f27879479c18209d592540f93978d54435c4357c9275",
+      "afterSha256": "8692435b6b71dd7275a3f8f4c418a02168da845c332545c174dad28a47da1364"
+    },
+    {
+      "path": "docs/development-execution-policy.md",
+      "beforeSha256": null,
+      "afterSha256": "58b4eaef7fda2a45c69e41feb766d04893d44a7092117410d7e707bc5e7b9320"
+    },
+    {
+      "path": "docs/git-workflow.md",
+      "beforeSha256": "978de65f6bae3e936fa3898d144cc973b253b17f44004d0c011f5884e6239789",
+      "afterSha256": "ddf33176a55ff215b8d48d95e315819a7113be57f8cd0ef6506341a6a9c94a2b"
+    },
+    {
+      "path": "scripts/checkpoint-maintenance.mjs",
+      "beforeSha256": "c1b63315d078b35a330f8a01e89e1b612ffb463b0c0b9d2114be27a1cbed00e3",
+      "afterSha256": "7399e1fa743c1e14223434a22a0bc0f27b089dda3ba69b3a0cb711bc60ff643a"
+    },
+    {
+      "path": "scripts/test-checkpoint-maintenance.mjs",
+      "beforeSha256": "a86dffc037bae7f4a8e44fc22e3793d8c984ebb68b7b010972862d2f1bd33822",
+      "afterSha256": "69ce62d465b2996b9a80b8b68898351e8e3259d93daeaaacfe0df7d832005f58"
+    },
+    {
+      "path": "scripts/validate-phase.mjs",
+      "beforeSha256": "6b6f6b3b56f0590d014fca0e523a5ed69324f43958edc722cf28fd06c1c4cea2",
+      "afterSha256": "4a1c1f44b75ffc61d863a6b95de0fb0bd17e9bce5b6d586bb73867d8121b3392"
+    }
+  ],
+  "localGuides": []
+}

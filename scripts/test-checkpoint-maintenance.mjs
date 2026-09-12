@@ -15,6 +15,13 @@ import {
   maintenancePolicyPath,
   maintenanceReceiptPath,
   maintenanceSubject,
+  executionMaintenanceId,
+  executionMaintenanceReceiptPath,
+  executionPolicyPath,
+  executionBaseMetadata,
+  executionBaseArtifact,
+  executionMaintenanceSubject,
+  executionAllowedPaths,
 } from "./checkpoint-maintenance.mjs";
 
 const sourceRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -43,7 +50,7 @@ const started = performance.now();
 const sourceReceipt = json(sourceRoot, "docs/phase-plans/Phase012-inputs.json");
 const sourceManifest = json(sourceRoot, "Serendipity · 际遇/docs/roadmap-execution-manifest.json");
 const inputPaths = new Set();
-for (let phase = 1; phase <= 12; phase += 1) {
+for (let phase = 1; phase <= 13; phase += 1) {
   const receipt = json(
     sourceRoot,
     `docs/phase-plans/Phase${String(phase).padStart(3, "0")}-inputs.json`,
@@ -52,11 +59,6 @@ for (let phase = 1; phase <= 12; phase += 1) {
 }
 inputPaths.add("Serendipity · 际遇/Phase013.md");
 const localGuides = ["Serendipity · 际遇/AGENTS.md", "Serendipity · 际遇/README.md"];
-const sourceFiles = new Map(
-  maintenanceAllowedPaths
-    .filter((file) => file !== maintenanceReceiptPath)
-    .map((file) => [file, read(sourceRoot, file)]),
-);
 
 function command(root, executable, args, expectedZero = true, input) {
   const env = { ...sourceEnvironment };
@@ -101,7 +103,7 @@ function commit(root, subject) {
   git(root, ["commit", "-m", subject]);
   return gitText(root, ["rev-parse", "HEAD"]);
 }
-function newFixture(name, full = false) {
+function newFixture(name, full = false, base = maintenanceBaseMetadata) {
   const root = path.join(temporaryRoot, name);
   command(temporaryRoot, "git", [
     "clone",
@@ -111,16 +113,30 @@ function newFixture(name, full = false) {
     sourceRoot,
     root,
   ]);
-  git(root, ["checkout", "-B", "main", maintenanceBaseMetadata]);
   for (const [key, value] of [
     ["user.name", "Serendipity Maintenance Fixture"],
     ["user.email", "fixture@serendipity.invalid"],
     ["commit.gpgsign", "false"],
     ["core.autocrlf", "false"],
     ["core.safecrlf", "false"],
+    ["core.longpaths", "true"],
     ["core.hooksPath", ".git/hooks"],
   ])
     git(root, ["config", "--local", key, value]);
+  git(root, ["checkout", "-B", "main", base]);
+  // Preserve the four existing raw-evidence exceptions, without disabling whitespace checks.
+  write(
+    root,
+    ".git/info/attributes",
+    [
+      "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/overlays/archived-failure-source/docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/prior-evidence-sources/phase013-evidence.mjs",
+      "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/overlays/original-evidence-raw/docs/evidence/attempts/Phase013/attempt-5/all-tests-vitest.json",
+      "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/overlays/original-migration-diagnostic/docs/evidence/attempts/Phase013/attempt-1/migration-diagnostic.json",
+      "docs/evidence/attempts/Phase013/setup/schema-diff.sql",
+    ]
+      .map((file) => `/${file} whitespace=-blank-at-eof\n`)
+      .join(""),
+  );
   git(root, ["remote", "set-url", "origin", sourceManifest.gitPolicy.remoteUrl]);
   for (const file of localGuides) write(root, file, read(sourceRoot, file));
   if (full) {
@@ -135,8 +151,12 @@ function addMaintenance(
   mutateReceipt = () => {},
   mutateFiles = () => {},
   subject = maintenanceSubject,
+  execution = false,
 ) {
-  for (const [file, sourceBytes] of sourceFiles) {
+  const receiptPath = execution ? executionMaintenanceReceiptPath : maintenanceReceiptPath;
+  const paths = execution ? executionAllowedPaths : maintenanceAllowedPaths;
+  for (const file of paths.filter((entry) => entry !== receiptPath)) {
+    const sourceBytes = read(sourceRoot, file);
     const bytes =
       fs.existsSync(path.join(root, file)) && read(root, file).equals(sourceBytes)
         ? Buffer.concat([
@@ -150,12 +170,14 @@ function addMaintenance(
         : sourceBytes;
     write(root, file, bytes);
   }
-  const receipt = createMaintenanceReceipt(root);
+  const receipt = createMaintenanceReceipt(root, execution ? executionMaintenanceId : undefined);
   mutateReceipt(receipt);
-  writeJson(root, maintenanceReceiptPath, receipt);
+  writeJson(root, receiptPath, receipt);
   mutateFiles(root);
   return commit(root, subject);
 }
+const addExecutionMaintenance = (root, mutateReceipt, mutateFiles) =>
+  addMaintenance(root, mutateReceipt, mutateFiles, executionMaintenanceSubject, true);
 function inspect(root) {
   const head = gitText(root, ["rev-parse", "HEAD"]);
   const history = gitText(root, [
@@ -255,57 +277,69 @@ function mutationCase(name, diagnostic, mutateReceipt, mutateFiles, subject) {
     assert.throws(() => inspect(root), new RegExp(diagnostic));
   });
 }
-function addPhase13(root, maintenance, interpose = false) {
-  const planPath = "docs/phase-plans/Phase013.json";
-  const inputsPath = "docs/phase-plans/Phase013-inputs.json";
-  const gatePath = "docs/evidence/Phase013-gate.json";
-  const folder = "docs/evidence/attempts/Phase013/maintenance-fixture";
+function addPhase(root, maintenance, { phase = 13, interpose = false } = {}) {
+  const name = `Phase${String(phase).padStart(3, "0")}`;
+  const subject = `phase(${String(phase).padStart(3, "0")})`;
+  const planPath = `docs/phase-plans/${name}.json`;
+  const inputsPath = `docs/phase-plans/${name}-inputs.json`;
+  const gatePath = `docs/evidence/${name}-gate.json`;
+  const folder = `docs/evidence/attempts/${name}/maintenance-fixture`;
+  const policyPaths = [maintenancePolicyPath, ...(phase >= 14 ? [executionPolicyPath] : [])];
   const inputPath = `${folder}/input.bin`;
   const outputPath = `${folder}/git-version.json`;
   const reviewPath = `${folder}/review.json`;
-  const caseId = "Phase013:maintenance-protocol-fixture";
+  const caseId = `${name}:maintenance-protocol-fixture`;
   const contractPaths = sourceManifest.projectContracts
-    .filter((entry) => entry.required && entry.producerPhase === 13)
+    .filter((entry) => entry.required && entry.producerPhase === phase)
     .map((entry) => entry.path);
   write(
     root,
     `${folder}/recovery.txt`,
-    "Synthetic Phase013 recovery; the maintenance commit is a separate admission change.\n",
+    `Synthetic ${name} recovery; the maintenance commit is a separate admission change.\n`,
   );
-  const recovery = commit(root, "phase(013): recovery");
+  const recovery = commit(root, `${subject}: recovery`);
   const inputs = structuredClone(sourceReceipt);
   Object.assign(inputs, {
-    phase: 13,
-    phaseStartCommit: maintenance.commit,
-    requestedThrough: 13,
+    phase,
+    phaseStartCommit: phase === 14 ? maintenance.executionMaintenance.commit : maintenance.commit,
+    requestedThrough: phase,
     checkpointMaintenance: {
       path: maintenance.path,
       sha256: maintenance.sha256,
       commit: maintenance.commit,
     },
     validationPolicy: maintenance.policy,
+    ...(phase >= 14
+      ? {
+          executionMaintenance: {
+            path: maintenance.executionMaintenance.path,
+            sha256: maintenance.executionMaintenance.sha256,
+            commit: maintenance.executionMaintenance.commit,
+          },
+          executionPolicy: maintenance.executionMaintenance.policy,
+        }
+      : {}),
   });
-  const phaseCard = "Serendipity · 际遇/Phase013.md";
+  const phaseCard = `Serendipity · 际遇/${name}.md`;
   if (!inputs.pinnedInputs.some((entry) => entry.path === phaseCard))
     inputs.pinnedInputs.push({
-      id: "Phase013",
+      id: name,
       path: phaseCard,
       sha256: hashFile(root, phaseCard),
     });
   writeJson(root, inputsPath, inputs);
   for (const file of contractPaths)
-    write(root, file, "# Synthetic protocol contract fixture; not Phase013 product acceptance.\n");
+    write(root, file, `# Synthetic protocol contract fixture; not ${name} product acceptance.\n`);
   write(root, inputPath, Buffer.from([0, 255, 13, 10, 1]));
   const plan = {
-    phase: 13,
+    phase,
     attemptId: "maintenance-fixture",
     producer: "Isolated maintenance protocol regression",
-    consumers: [14],
-    scope:
-      "Synthetic Git protocol fixture only; no Phase013 implementation or independent acceptance is claimed",
+    consumers: [phase + 1],
+    scope: `Synthetic Git protocol fixture only; no ${name} implementation or independent acceptance is claimed`,
     modificationScope: [planPath, inputsPath, `${folder}/`, ...contractPaths],
     implementationContextId: "synthetic-maintenance-implementation",
-    sourcePaths: [planPath, inputPath, maintenancePolicyPath, ...contractPaths],
+    sourcePaths: [planPath, inputPath, ...policyPaths, ...contractPaths],
     requiredCaseIds: [caseId],
     cases: [
       {
@@ -340,7 +374,7 @@ function addPhase13(root, maintenance, interpose = false) {
     details: { stdout: version.stdout.toString("utf8") },
   });
   writeJson(root, reviewPath, {
-    phase: 13,
+    phase,
     attemptId: plan.attemptId,
     reviewerRunId: "synthetic-maintenance-protocol-review",
     contextId: "synthetic-maintenance-review-context",
@@ -359,11 +393,11 @@ function addPhase13(root, maintenance, interpose = false) {
     sourceHashes,
     reportHashes: { [outputPath]: hashFile(root, outputPath) },
   });
-  const artifact = commit(root, "phase(013): artifact");
+  const artifact = commit(root, `${subject}: artifact`);
   const testedTree = gitText(root, ["rev-parse", "HEAD^{tree}"]);
   const evidence = {
     schemaVersion: "agent-gate-v1",
-    phase: 13,
+    phase,
     attemptId: plan.attemptId,
     status: "PASS",
     simulation: true,
@@ -390,7 +424,7 @@ function addPhase13(root, maintenance, interpose = false) {
       },
     ],
     commands: [{ command: "git --version", exitCode: 0 }],
-    inputs: [planPath, inputsPath, inputPath, maintenancePolicyPath].map((file) => ({
+    inputs: [planPath, inputsPath, inputPath, ...policyPaths].map((file) => ({
       path: file,
       sha256: hashFile(root, file),
     })),
@@ -407,7 +441,7 @@ function addPhase13(root, maintenance, interpose = false) {
       originalThreshold: 1,
       automatedThreshold: 1,
       waived: false,
-      scope: "Synthetic protocol fixture only; not Phase013 acceptance",
+      scope: `Synthetic protocol fixture only; not ${name} acceptance`,
     },
   };
   if (interpose) {
@@ -421,14 +455,14 @@ function addPhase13(root, maintenance, interpose = false) {
   writeJson(root, gatePath, evidence);
   const state = json(root, "docs/roadmap-run.json");
   const checkpoint = {
-    phase: 13,
+    phase,
     artifactCommit: artifact,
     evidencePath: gatePath,
     evidenceHash: hashFile(root, gatePath),
   };
   Object.assign(state, {
-    completedThrough: 13,
-    currentPhase: 14,
+    completedThrough: phase,
+    currentPhase: phase + 1,
     lastArtifactCommit: artifact,
     currentLayoutPhaseSeal: checkpoint,
     checkpoints: [...state.checkpoints, checkpoint],
@@ -437,9 +471,9 @@ function addPhase13(root, maintenance, interpose = false) {
   write(
     root,
     "docs/phase-completion-log.md",
-    `${read(root, "docs/phase-completion-log.md").toString("utf8").trimEnd()}\n\nPhase013: isolated synthetic maintenance protocol fixture only.\n`,
+    `${read(root, "docs/phase-completion-log.md").toString("utf8").trimEnd()}\n\n${name}: isolated synthetic maintenance protocol fixture only.\n`,
   );
-  const metadata = commit(root, "phase(013): metadata");
+  const metadata = commit(root, `${subject}: metadata`);
   return { inputs, plan, evidence, artifact, metadata, recovery };
 }
 
@@ -537,7 +571,7 @@ try {
     const root = newFixture("phase14-start-binding", true);
     addMaintenance(root);
     const maintenance = inspect(root);
-    const next = addPhase13(root, maintenance);
+    const next = addPhase(root, maintenance);
     const resumed = inspect(root);
     const inputs = { ...next.inputs, phase: 14, phaseStartCommit: next.metadata };
     const args = {
@@ -578,7 +612,7 @@ try {
     const root = newFixture("phase13-continuation", true);
     addMaintenance(root);
     const maintenance = inspect(root);
-    const next = addPhase13(root, maintenance);
+    const next = addPhase(root, maintenance);
     const resumed = inspect(root);
     assert.equal(resumed.admissionOnly, false);
     assert.equal(resumed.phaseStartIndex(13, 0), 2);
@@ -651,8 +685,186 @@ try {
   runCase("artifact-metadata-interposition", () => {
     const root = newFixture("artifact-metadata-interposition", true);
     addMaintenance(root);
-    addPhase13(root, inspect(root), true);
+    addPhase(root, inspect(root), { interpose: true });
     validate(root, 13, { fixture: true, diagnostic: "COMMIT_SUBJECT" });
+  });
+  runCase("phase13-seal-before-execution-maintenance", () => {
+    const root = newFixture(
+      "phase13-seal-before-execution-maintenance",
+      true,
+      executionBaseMetadata,
+    );
+    assert.equal(inspect(root).admissionOnly, false);
+    validate(root, 13, { metadataCommit: executionBaseMetadata, admissionOnly: false });
+  });
+  runCase("execution-maintenance-admission", () => {
+    const root = newFixture("execution-maintenance-admission", true, executionBaseMetadata);
+    const id = addExecutionMaintenance(root);
+    const maintenance = inspect(root);
+    assert.equal(maintenance.maintenanceHead, id);
+    assert.equal(maintenance.executionMaintenance.commit, id);
+    assert.equal(maintenance.baseMetadataCommit, executionBaseMetadata);
+    assert.deepEqual(json(root, executionMaintenanceReceiptPath).localGuides, []);
+    assert.equal(
+      gitText(root, [
+        "diff",
+        "--name-only",
+        executionBaseMetadata,
+        id,
+        "--",
+        "docs/evidence/",
+        "docs/phase-plans/",
+        "docs/roadmap-run.json",
+        maintenanceReceiptPath,
+        maintenancePolicyPath,
+      ]),
+      "",
+    );
+    validate(root, 13, { metadataCommit: executionBaseMetadata, admissionOnly: true });
+  });
+  runCase("execution-maintenance-wrong-anchor", () => {
+    const root = newFixture("execution-maintenance-wrong-anchor", false, executionBaseMetadata);
+    addExecutionMaintenance(root, (receipt) => {
+      receipt.baseMetadataCommit = executionBaseArtifact;
+    });
+    assert.throws(() => inspect(root), /MAINTENANCE_ANCHOR/);
+  });
+  runCase("execution-maintenance-forbidden-files", () => {
+    for (const [index, file] of [
+      "src/forbidden-maintenance.ts",
+      "docs/evidence/Phase013-gate.json",
+      maintenancePolicyPath,
+      maintenanceReceiptPath,
+    ].entries()) {
+      const root = newFixture(
+        `execution-maintenance-forbidden-${index}`,
+        false,
+        executionBaseMetadata,
+      );
+      addExecutionMaintenance(root, undefined, () => {
+        if (file.endsWith(".json"))
+          write(root, file, `${JSON.stringify(json(root, file), null, 4)}\n`);
+        else {
+          const original = fs.existsSync(path.join(root, file))
+            ? read(root, file).toString("utf8")
+            : "";
+          write(root, file, `${original.trimEnd()}\n/* Invalid maintenance fixture change. */\n`);
+        }
+      });
+      assert.throws(() => inspect(root), /MAINTENANCE_(SCOPE|POLICY_IMMUTABLE|RECEIPT_IMMUTABLE)/);
+    }
+  });
+  runCase("execution-maintenance-receipt-digests", () => {
+    for (const field of ["beforeSha256", "afterSha256"]) {
+      const root = newFixture(`execution-maintenance-${field}`, false, executionBaseMetadata);
+      addExecutionMaintenance(root, (receipt) => {
+        receipt.changes[0][field] = "0".repeat(64);
+      });
+      assert.throws(() => inspect(root), /MAINTENANCE_(BEFORE|AFTER)_HASH/);
+    }
+  });
+  runCase("execution-maintenance-policy-rewritten", () => {
+    const root = newFixture("execution-maintenance-policy-rewritten", false, executionBaseMetadata);
+    addExecutionMaintenance(root);
+    write(
+      root,
+      executionPolicyPath,
+      Buffer.concat([
+        read(root, executionPolicyPath),
+        Buffer.from("\n<!-- Invalid policy rewrite fixture. -->\n"),
+      ]),
+    );
+    commit(root, "docs: invalid policy rewrite fixture");
+    assert.throws(() => inspect(root), /MAINTENANCE_POLICY_IMMUTABLE/);
+  });
+  runCase("execution-maintenance-tail-rejected", () => {
+    const root = newFixture("execution-maintenance-tail-rejected", false, executionBaseMetadata);
+    addExecutionMaintenance(root);
+    write(root, "docs/unlisted-tail.md", "Unauthorized fixture tail.\n");
+    commit(root, "docs: unlisted follow-up fixture");
+    assert.throws(() => inspect(root), /MAINTENANCE_TAIL/);
+  });
+  runCase("execution-maintenance-phase14-continuation", () => {
+    const root = newFixture(
+      "execution-maintenance-phase14-continuation",
+      true,
+      executionBaseMetadata,
+    );
+    const maintenanceCommit = addExecutionMaintenance(root);
+    const next = addPhase(root, inspect(root), { phase: 14 });
+    const maintenance = inspect(root);
+    const args = {
+      phase: 14,
+      receipt: next.inputs,
+      plan: next.plan,
+      evidence: next.evidence,
+      previousMetadataCommit: executionBaseMetadata,
+    };
+    maintenance.validatePhaseInputs(args);
+    const history = gitText(root, [
+      "rev-list",
+      "--reverse",
+      `${maintenanceBaseArtifact}..HEAD`,
+    ]).split("\n");
+    assert.equal(
+      maintenance.phaseStartIndex(14, history.indexOf(executionBaseMetadata)),
+      history.indexOf(maintenanceCommit) + 1,
+    );
+    assert.equal(
+      maintenance.phaseStartIndex(15, history.indexOf(next.metadata)),
+      history.indexOf(next.metadata) + 1,
+    );
+    for (const mutate of [
+      (value) => {
+        delete value.receipt.executionMaintenance;
+      },
+      (value) => {
+        value.receipt.executionMaintenance.sha256 = "0".repeat(64);
+      },
+      (value) => {
+        value.receipt.executionPolicy.sha256 = "0".repeat(64);
+      },
+      (value) => {
+        value.receipt.phaseStartCommit = executionBaseMetadata;
+      },
+      (value) => {
+        value.receipt.phaseStartCommit = maintenance.commit;
+      },
+      (value) => {
+        value.plan.sourcePaths = value.plan.sourcePaths.filter(
+          (file) => file !== executionPolicyPath,
+        );
+      },
+      (value) => {
+        value.evidence.inputs = value.evidence.inputs.filter(
+          (input) => input.path !== executionPolicyPath,
+        );
+      },
+    ]) {
+      const changed = structuredClone(args);
+      mutate(changed);
+      assert.throws(
+        () => maintenance.validatePhaseInputs(changed),
+        /MAINTENANCE_(INPUT_BINDING|POLICY_BINDING|PHASE_START|POLICY_SOURCE|POLICY_INPUT)/,
+      );
+    }
+    const future = {
+      ...args,
+      phase: 15,
+      previousMetadataCommit: next.metadata,
+      receipt: { ...next.inputs, phaseStartCommit: next.metadata },
+    };
+    maintenance.validatePhaseInputs(future);
+    assert.throws(
+      () =>
+        maintenance.validatePhaseInputs({
+          ...future,
+          receipt: { ...future.receipt, phaseStartCommit: maintenanceCommit },
+        }),
+      /MAINTENANCE_PHASE_START/,
+    );
+    validate(root, 14, { fixture: true, metadataCommit: next.metadata, admissionOnly: false });
+    validate(root, 14, { diagnostic: "REVIEW_IDENTITY" });
   });
   assert(cases.length > 0, "No regression case matched");
   if (options.cases)
@@ -663,11 +875,12 @@ try {
     );
   report = {
     status: "PASS",
-    scope: "ISOLATED_PHASE012_MAINTENANCE_PROTOCOL_REGRESSION",
+    scope: "ISOLATED_PHASE012_PHASE013_MAINTENANCE_PROTOCOL_REGRESSION",
     sourceRepositoryIndexMutated: false,
     network: "LOCAL_FILESYSTEM_ONLY",
     independentReviewPerformed: false,
     syntheticPhase13IsProductAcceptance: false,
+    syntheticPhase14IsProductAcceptance: false,
     sourceHashes: Object.fromEntries(
       [
         "scripts/checkpoint-maintenance.mjs",

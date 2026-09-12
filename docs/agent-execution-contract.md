@@ -7,7 +7,7 @@
 - 用户授权完整路线时，同一任务自动串行推进 Phase000 -> Phase137，每次只执行当前 Phase，不等待逐卡人工提示。用户指定阶段范围时，只推进至该范围的最后一张卡；下一阶段准入状态不等于下一阶段已执行。
 - 每卡完整读取当前任务卡及明确要求的冻结输入；其余资料按直接依赖读取。允许只读未来消费契约以校对接口，禁止提前执行未来任务、使用尚未生产的产物和批量创建占位目录。
 - Phase N 开始前核对 `currentPhase=N`、`completedThrough=N-1`、上一卡 PASS、artifact -> metadata 直接父子关系、evidenceHash、双 shell seal、整个 repositoryRoot 工作树干净及 origin/main 已包含上一卡 metadata。迁移后的 Phase001 先按下述“目录迁移与恢复”核验历史 Phase000 并建立新布局执行入口，不用旧路径重建项目或重跑任务000。
-- Phase013 前允许下述已核验的文档维护提交紧随 Phase012 metadata。此时同步并绑定的是维护 HEAD，上一卡 metadata 仍为原提交；后续继续固定每卡 `phaseStartCommit`，不重置 `baselineCommit` 或 `executionBaselineCommit`。
+- Phase013、Phase014 前分别允许下述已登记的文档维护提交紧随上一卡 metadata。此时同步并绑定的是对应维护 HEAD，上一卡 metadata 仍为原提交；后续继续固定每卡 `phaseStartCommit`，不重置 `baselineCommit` 或 `executionBaselineCommit`。
 - 实现前冻结 `docs/phase-plans/PhaseNNN.json` 的 phase、attemptId、requiredCaseIds、cases、生产者、消费者与修改范围。每个 case 包含 testCaseId、command、denominator、inputPath、outputPath 和预期结果，之后运行全部原定断言。
 - 本次 Phase000 只创建项目规范、启动收据、文档验证与检查点证据，不初始化 npm、不安装项目依赖、不创建业务代码、Prisma Schema、迁移或应用配置。
 
@@ -106,7 +106,7 @@
 - 数据库使用真实 PostgreSQL 隔离库并按测试清理；Provider 只经受控 HTTP、mock 和 record-replay 边界。不得用业务服务 mock、人工观察和未执行命令代替 Gate。
 - 反向测试与故障注入只在临时副本执行，明确破坏点、预期变红原因及恢复动作；负例观察成功的 wrapper 退出0，底层被测失败必须有实际非零结果。不得污染正常产品树。
 - 结果记录 command、exitCode、numerator、denominator、inputHash、outputHash 与路径。当前 testCaseId 精确覆盖冻结计划且无重复，分子等于正分母；全部通过后由 runner 生成 Gate，不能手写 PASS。最终证据 `simulation=true`、隔离合成环境、`productionTraffic=false`，原阈值与自动阈值相等，`waived=false`。
-- 确定性 evaluator 完成后，由独立 Agent 复核实现、断言和视觉证据，持久保存 reviewerRunId、contextId、planHash、结论与意见处置。不同随机种子不能代替独立 reviewer。
+- 确定性 evaluator 完成后，由独立 Agent 复核实现、断言和视觉证据，持久保存 reviewerRunId、contextId、planHash、结论与意见处置。Phase014 起按 [后续开发执行指南](development-execution-policy.md) 安排提前介入、差异复核和有时限的交接；不新增默认审查轮次。不同随机种子不能代替独立 reviewer。
 - 外部审批使用固定机器 rubric 对隔离配置自动准入，标记 `AUTOMATED_TEST_ADMISSION`，不声称真人批准或生产批准。自动无障碍验收标记 `AUTOMATED_BROWSER_A11Y`，真人读屏体验为 `NOT_EVALUATED`。
 - Phase000 使用文件结构、文档内容、Git、schema/hash 和隔离反向验证，无产品单元/集成测试。Phase001–012 按各自冻结计划验收。Phase013 起依 [测试执行政策](testing-execution-policy.md) 决定通用 lint、typecheck、test、build 的执行范围与时机，并完整满足本卡专用命令；未生产命令记录不适用，不能假填成功。
 
@@ -119,9 +119,15 @@
 - `full` / `affected` 选择按政策固定在计划中；缺少可证明的影响映射或选择器校验时使用 `full`。跨 attempt 复用在来源链与失效校验实现前关闭，不能通过改写旧报告的 planHash/sourceHashes 获取通过。
 - 没有修改受测 artifact、仅重建其 metadata 或重试 seal/推送时，先验证原报告、Git tree 和父子关系，再执行所需的封口校验。修改实现、测试或执行脚本后产生新 artifact 的情形，按政策重新判定验证范围，不假定旧结果仍有效。
 
-本次文档维护使用常规 `docs:` 提交，收据为 `docs/checkpoint-migrations/testing-policy-20260912.json`。校验器完整验证 Phase012 的原 Gate 与历史，再核对唯一维护提交的真实父提交、精确变更路径、文件摘要和本地导航摘要。该提交不生成 Gate、不推进 run state、不进入 Phase013 的 recoveryCommits；普通未登记提交仍被拒绝。准入报告分别返回原 `metadataCommit` 与维护 HEAD，不把文档提交标成阶段 metadata。
+Phase012 后的首次文档维护使用常规 `docs:` 提交，收据为 `docs/checkpoint-migrations/testing-policy-20260912.json`。校验器完整验证 Phase012 的原 Gate 与历史，再核对该维护提交的真实父提交、精确变更路径、文件摘要和本地导航摘要。该提交不生成 Gate、不推进 run state、不进入 Phase013 的 recoveryCommits；普通未登记提交仍被拒绝。准入报告分别返回原 `metadataCommit` 与维护 HEAD，不把文档提交标成阶段 metadata。
 
-Phase013 及以后的 `docs/phase-plans/PhaseNNN-inputs.json` 须增加政策规定的 `checkpointMaintenance` 和 `validationPolicy` 字段，绑定维护收据 path/hash/commit 与政策 path/hash/version；政策文件同时进入 `plan.sourcePaths` 和 Gate.inputs。它们是仓库内的补充输入，不加入仅容纳本地忽略文档的 `pinnedInputs`。旧 manifestHash、八份 contractHashes、Phase000–012 卡片与证据保持原值；不通过刷新旧 hash 消除冲突。本次不执行 Phase013，也不宣称结果缓存或选择器已经实现。
+Phase013 及以后的 `docs/phase-plans/PhaseNNN-inputs.json` 须保留政策规定的 `checkpointMaintenance` 和 `validationPolicy` 字段，绑定维护收据 path/hash/commit 与政策 path/hash/version；政策文件同时进入 `plan.sourcePaths` 和 Gate.inputs。它们是仓库内的补充输入，不加入仅容纳本地忽略文档的 `pinnedInputs`。旧 manifestHash、八份 contractHashes、卡片与历史证据保持原值；不通过刷新旧 hash 消除冲突。自动选择与跨 attempt 缓存仍须先实现，再按政策启用。
+
+### Phase014 起的复核与收尾补充
+
+[后续开发执行指南](development-execution-policy.md)（`phase-execution-v2`）根据 Phase013 的实际耗时补充复核范围、进程预算、失败交接和提交前检查。完整审查后可引用已绑定的未变审查范围，当前全部摘要、验收结果和未关闭意见仍独立核对；这不改变产品测试结果的来源要求。默认由同一独立 reviewer 提前介入并完成终审，按卡规定的多位业务 reviewer 另行满足。完整复核 45 分钟、差异复核 20 分钟，进程失败或无进展按指南接续，不无限重开相同审查。
+
+此次文档维护紧随 Phase013 metadata，以 `docs/checkpoint-migrations/execution-policy-20260912.json` 登记精确路径和摘要，复用既有维护校验，不生成 Gate、不改变 Phase013 或 run state。Phase014 开工绑定已同步的本次维护提交；Phase015 及以后继续绑定上一卡 metadata。Phase014 起输入收据额外加入 `executionMaintenance` 与 `executionPolicy`，并将新指南加入 `plan.sourcePaths` 和 Gate.inputs；原 `checkpointMaintenance` / `validationPolicy` 继续保留。字段含义见新指南。两份旧维护输入、本地导航及全部已封口证据保持原字节，本次维护不执行 Phase014。
 
 ## 里程碑闸门规则
 
