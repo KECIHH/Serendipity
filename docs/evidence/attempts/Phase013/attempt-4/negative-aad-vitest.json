@@ -1,0 +1,128 @@
+{
+  "numTotalTestSuites": 2,
+  "numPassedTestSuites": 0,
+  "numFailedTestSuites": 2,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 7,
+  "numPassedTests": 5,
+  "numFailedTests": 2,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1789199667573,
+  "success": false,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "[crypto-redaction] secret-envelope service"
+          ],
+          "fullName": "[crypto-redaction] secret-envelope service round-trip preserves normalized UTF-8 boundary bytes and exact schema",
+          "status": "passed",
+          "title": "round-trip preserves normalized UTF-8 boundary bytes and exact schema",
+          "duration": 10.290399999999977,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "[crypto-redaction] secret-envelope service"
+          ],
+          "fullName": "[crypto-redaction] secret-envelope service fingerprint normalization preserves case and interior bytes",
+          "status": "passed",
+          "title": "fingerprint normalization preserves case and interior bytes",
+          "duration": 1.5878000000000156,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "[crypto-redaction] secret-envelope service"
+          ],
+          "fullName": "[crypto-redaction] secret-envelope service random IVs keep ciphertext distinct and fingerprints stable",
+          "status": "passed",
+          "title": "random IVs keep ciphertext distinct and fingerprints stable",
+          "duration": 26.418999999999983,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "[crypto-redaction] secret-envelope service"
+          ],
+          "fullName": "[crypto-redaction] secret-envelope service key resolver validates environment keys and rejects unknown ids",
+          "status": "passed",
+          "title": "key resolver validates environment keys and rejects unknown ids",
+          "duration": 2.7577,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "[crypto-redaction] secret-envelope service"
+          ],
+          "fullName": "[crypto-redaction] secret-envelope service decryption rejects every malformed envelope and column mismatch",
+          "status": "passed",
+          "title": "decryption rejects every malformed envelope and column mismatch",
+          "duration": 4.852100000000007,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "[crypto-redaction] secret-envelope service"
+          ],
+          "fullName": "[crypto-redaction] secret-envelope service AAD and authentication bind record provider version IV tag and ciphertext",
+          "status": "failed",
+          "title": "AAD and authentication bind record provider version IV tag and ciphertext",
+          "duration": 7.26260000000002,
+          "failureMessages": [
+            "AssertionError: expected false to be true // Object.is equality\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase013/fixtures/mutation-aad-JMBhA8/tests/lib/secret-envelope.test.ts:214:94\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2305:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2272:10)\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2956:64"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "[crypto-redaction] secret-envelope service"
+          ],
+          "fullName": "[crypto-redaction] secret-envelope service decryption failures contain only the fixed safe classification",
+          "status": "failed",
+          "title": "decryption failures contain only the fixed safe classification",
+          "duration": 3.129000000000019,
+          "failureMessages": [
+            "AssertionError: expected false to be true // Object.is equality\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase013/fixtures/mutation-aad-JMBhA8/tests/lib/secret-envelope.test.ts:277:20\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2305:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2272:10)\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:2956:64"
+          ],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789199668046,
+      "endTime": 1789199668102.129,
+      "status": "failed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase013/fixtures/mutation-aad-JMBhA8/tests/lib/secret-envelope.test.ts"
+    }
+  ]
+}

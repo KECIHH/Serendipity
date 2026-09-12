@@ -1,0 +1,154 @@
+{
+  "phase": 13,
+  "attemptId": "attempt-6",
+  "status": "FAIL",
+  "kind": "EVIDENCE_GUARD_REPAIR",
+  "stage": "FINAL_REVIEW_REQUIRES_CURSOR_AND_EVIDENCE_REPAIR",
+  "artifactCommit": null,
+  "planHash": "a2ff894f57572d374a4f2fc6bd50e5499642b0a8dcbaf600889c81a447c3ed33",
+  "command": "Phase013 actual historical evidence rejection regression",
+  "exitCode": 1,
+  "reason": "The completed automated run passed, but the actual final independent review found that the API key cursor did not bind the normalized page size and that the shared failure-chain validator omitted recorded historical evidence hashes. A separate isolated rejection probe accepted changed bytes for an original raw report, an archived former source and a migration diagnostic; all three must-reject assertions failed. Real historical files and original green reports are unchanged. A new attempt must repair both findings and re-run the full required acceptance set.",
+  "issueIds": [
+    "Phase013-FINAL-001",
+    "Phase013-FINAL-002"
+  ],
+  "diagnosticPath": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/result.json",
+  "diagnosticHash": "8e2ecacb4e5999ba405304594334d8a3f8129671c906bf775adaa3d68f5c26d7",
+  "commandReceiptPath": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/command.json",
+  "commandReceiptHash": "d1538ad32db7b3de40b5014d9f5623c5c6d7a5f8dbf934953ee2f80d54229b67",
+  "reviewPath": "docs/evidence/attempts/Phase013/attempt-6/independent-review-assessment-final-attempt-6.json",
+  "reviewHash": "2e07e540c731358d2610490012289850f1a6d5b85285eb946ab6510716b3d689",
+  "reviewerRunPath": "docs/evidence/attempts/Phase013/attempt-6/independent-review-run-final-attempt-6.json",
+  "reviewerRunHash": "aecc08f1e5fea6ac245b8c2c8ea8ce4ef5a8e1fb0820f4dfe3c4f4dd869fd54d",
+  "completedVerification": {
+    "command": "node docs/phase-plans/verify-phase013.mjs --all",
+    "exitCode": 0,
+    "qualityPath": "docs/evidence/attempts/Phase013/attempt-6/quality.json",
+    "qualityHash": "f3655b84a788153f05afd0aa06164d08f0e28c9ce27121c1d41e4b39e030731e",
+    "status": "PASS_WITH_OPEN_EVIDENCE_REJECTION_DEFECT",
+    "testCount": 525
+  },
+  "originalEvidenceHashes": {
+    "docs/evidence/attempts/Phase013/attempt-6/all-tests-vitest.json": "1a356b5cedc448198faf12879666177850d6a157624edb59d6fe2d4335632379",
+    "docs/evidence/attempts/Phase013/attempt-6/api-keys-1280-axe.json": "fad9c7a4c2ff4788130210c7895b2094bb7a5e30c271fdae4b07539d92936cab",
+    "docs/evidence/attempts/Phase013/attempt-6/api-keys-1280.html": "b321c7dd0ef3b4ed4b7c1a92b77a412e6fa7d9fa221ab0babac9c1eda550d647",
+    "docs/evidence/attempts/Phase013/attempt-6/api-keys-1280.png": "d2a0f267b91593e98190cffc66e7ddd9b84f39d9227742af9d995f0591053a55",
+    "docs/evidence/attempts/Phase013/attempt-6/api-keys-375-axe.json": "821199ef80168afa66f3bb36bc33b22c968c890daa9b7334f504876f6f3f721c",
+    "docs/evidence/attempts/Phase013/attempt-6/api-keys-375.html": "b49ea9323db16e0d8af587fbf4ef332923f846b319ee5ee0719396977a058cdf",
+    "docs/evidence/attempts/Phase013/attempt-6/api-keys-375.png": "5e8e6fb5039af29d697aae177dbff6bb0108df844f108ba3ac245b91b76ea4f4",
+    "docs/evidence/attempts/Phase013/attempt-6/api-keys-empty.html": "d379b79f381dce013522bc7d63517092f191f49663b6ccb9e67b2c03224f6b6c",
+    "docs/evidence/attempts/Phase013/attempt-6/api-keys-empty.png": "e01f70dd728c6cd4c9d954eaa32eb4b8cdecbca5fc0dc4c87e39653bfc91a927",
+    "docs/evidence/attempts/Phase013/attempt-6/audit-logs-1280-axe.json": "798b472db0dd6207c0830b3a33ffcb5b280f58b729861e26b1a280e7d6e395ee",
+    "docs/evidence/attempts/Phase013/attempt-6/audit-logs-1280.html": "e25307af86c2309c5f3225d5af0b89293f939df1c8736ba68b3e3fa8c1c92024",
+    "docs/evidence/attempts/Phase013/attempt-6/audit-logs-1280.png": "05b7639a4d8a5e06be0db7eabf1a029c3dc5d3bd5cc5a0df7b93aaa986835ec5",
+    "docs/evidence/attempts/Phase013/attempt-6/audit-logs-375-axe.json": "2ac5eb409d65722e59212e7314536243709b887a51e336a24699cc727b22c417",
+    "docs/evidence/attempts/Phase013/attempt-6/audit-logs-375.html": "8d8d435561f683a171e7a8970e6a2752a6f5722d4c14b9cfe033654ff826730c",
+    "docs/evidence/attempts/Phase013/attempt-6/audit-logs-375.png": "ecbc713951d367eceabbde4ebabd5ac572013b17c208378057d4a1a4577a1f8e",
+    "docs/evidence/attempts/Phase013/attempt-6/audit-logs-unavailable.html": "6afccb690da408694569b75ae3a797d2c7529a67e99f2ad642869704d4df7f44",
+    "docs/evidence/attempts/Phase013/attempt-6/audit-logs-unavailable.png": "a985024617121f738694d16d28d91df5b97c5e406a68f74c3d9eb0ce2f81309e",
+    "docs/evidence/attempts/Phase013/attempt-6/authorization.json": "b89390aca9bf401e85f17f10027db9df1103e32045934f4cb42d8cf9b18c77ac",
+    "docs/evidence/attempts/Phase013/attempt-6/baseline-aad-vitest.json": "98e7b9719e1d5478e8767ffe66fea5e32823a59158f7b4b9f780d98e0e9f3fab",
+    "docs/evidence/attempts/Phase013/attempt-6/baseline-dto-whitelist-vitest.json": "5537e84124fc012d9433b0c55f7dd6159bbb2f245b89f53b0c38b831e8236c64",
+    "docs/evidence/attempts/Phase013/attempt-6/baseline-require-admin-vitest.json": "01d5f52b41809bf4929373f0a5978ff82e59002be0ec1772e8a9974a7e7c3769",
+    "docs/evidence/attempts/Phase013/attempt-6/baseline-terminal-state-vitest.json": "b09afc8ad99d672b9376fb1da3e90e454f0c71a794f3589ac2a171e0f656a4f4",
+    "docs/evidence/attempts/Phase013/attempt-6/browser.json": "5947ad22500e5cdda3f130481b367776d985ddf35dc4e3fefd5ec5bb996a2d93",
+    "docs/evidence/attempts/Phase013/attempt-6/business-observations.json": "63a7f8067d1334e1dd1972844bddc41135dcf2086a0be7dcf50caa67228471a4",
+    "docs/evidence/attempts/Phase013/attempt-6/card-command.json": "fd66298b86ced9253420471292cbb5b5d4f37daa80343258f1cb8b22405eec9c",
+    "docs/evidence/attempts/Phase013/attempt-6/card-vitest.json": "40e846c2404c3e0d659dfcc333dcb703fa3c9f0466609a2a294d56ac039a35ac",
+    "docs/evidence/attempts/Phase013/attempt-6/case-assertion-mapping.json": "2ec9fc415657f01a7d8a24352dc9efc957f85956bb1b2d133c7a66fc6e56d1df",
+    "docs/evidence/attempts/Phase013/attempt-6/cli-network.json": "c09c9c38fa22ec2a462cd3e34788094094f4f7e7d47289e9fb5b34204d4e5aba",
+    "docs/evidence/attempts/Phase013/attempt-6/create-read.json": "a2764a853fe7a85d4c812f326f0ad045903d201fa38b611c5741c005e48f2802",
+    "docs/evidence/attempts/Phase013/attempt-6/crypto-redaction.json": "3fa8a092aae0e3fc2aebdbae5f6176a936b82052931a2f64cba79cfbc7292cd8",
+    "docs/evidence/attempts/Phase013/attempt-6/disable-enable.json": "bb434f2f6a9d359c872a2d1a4eaeecd695008d2a3bed605b8fcbe8082ee75581",
+    "docs/evidence/attempts/Phase013/attempt-6/evidence-guards.json": "f612ff27535f920bc6cc9d94b698497eb30055555c32bf3aa9da0e65088b1edc",
+    "docs/evidence/attempts/Phase013/attempt-6/failure-atomicity.json": "4217fc2a52f94c4579a66a5438498fd90b9ec3d77bb01ddd445c46b0ab0f712f",
+    "docs/evidence/attempts/Phase013/attempt-6/frozen-plan.json": "a2ff894f57572d374a4f2fc6bd50e5499642b0a8dcbaf600889c81a447c3ed33",
+    "docs/evidence/attempts/Phase013/attempt-6/independent-review-assessment-final-attempt-6.json": "2e07e540c731358d2610490012289850f1a6d5b85285eb946ab6510716b3d689",
+    "docs/evidence/attempts/Phase013/attempt-6/independent-review-basis-final-attempt-6.json": "f9c4f3a405b9daf919329eb8327d0541d846c75ee71debfc84db08131df2cb82",
+    "docs/evidence/attempts/Phase013/attempt-6/independent-review-run-final-attempt-6.json": "aecc08f1e5fea6ac245b8c2c8ea8ce4ef5a8e1fb0820f4dfe3c4f4dd869fd54d",
+    "docs/evidence/attempts/Phase013/attempt-6/mutations/aad.json": "5863dbee0cc191a5805b66366bc1e12f61a02e71c082adf7b05f27ae6cf05fad",
+    "docs/evidence/attempts/Phase013/attempt-6/mutations/dto-whitelist.json": "f230715dc585f64a2631412621244aa7709e944dd98b4d46bc5c51fa115083e0",
+    "docs/evidence/attempts/Phase013/attempt-6/mutations/require-admin.json": "b96da8a379a02f7feb3ef51da6fc6139c485d6153b02bcfbdc81cf465175408b",
+    "docs/evidence/attempts/Phase013/attempt-6/mutations/terminal-state.json": "1437e1673a30a38d50fb76b1d45d93f3582b28a5f8fcdba2f6f3a7f915e5d959",
+    "docs/evidence/attempts/Phase013/attempt-6/negative-aad-vitest.json": "44f44207d0a4d9b3d3ad360e0024890bdebd178d9d3fc6666ea376f663356de9",
+    "docs/evidence/attempts/Phase013/attempt-6/negative-dto-whitelist-vitest.json": "f91ba54763568d5acbc512723534c2635cff18878b774424bbe0a820fec6ccbc",
+    "docs/evidence/attempts/Phase013/attempt-6/negative-require-admin-vitest.json": "c2f048981574b96921c2e8551e8f0584de445ab1dc6014369fcc8b4f6c6f1fde",
+    "docs/evidence/attempts/Phase013/attempt-6/negative-terminal-state-vitest.json": "570d5f04946f436abdc5ad8638630b39cbf2af0153f6df534544fcf0c29845b0",
+    "docs/evidence/attempts/Phase013/attempt-6/phase006-user-regression-vitest.json": "7ce34d0739f7963c2688ca2ff1879c97fe7dbf065bcab6eb2aa560888dcca71d",
+    "docs/evidence/attempts/Phase013/attempt-6/quality.json": "f3655b84a788153f05afd0aa06164d08f0e28c9ce27121c1d41e4b39e030731e",
+    "docs/evidence/attempts/Phase013/attempt-6/repository-test-coverage.json": "acb500420ede6d6320dcae7f72d1436069f610132ca59bfe5e6332f22f68230c",
+    "docs/evidence/attempts/Phase013/attempt-6/restored-card-vitest.json": "76fd4205b4fef16cbe2ecf5c0f625ad543d7c804ec867e1d346e02f6905aa7db",
+    "docs/evidence/attempts/Phase013/attempt-6/rotate-revoke.json": "4d24649f7c99027fe5ae9096d31f269991cd90c4f09121e8a640d5fdb5e022ab",
+    "docs/evidence/attempts/Phase013/attempt-6/test-discovery.json": "16fd8ea5c2ade06ac8b6810ed047f1746d7096d4de03f9ee7a03af85276181b7",
+    "docs/evidence/attempts/Phase013/attempt-6/validator-regression.json": "817501fdc9e0a2f32c7e012c20d86f618b393f2e728510f25fb4b0cfaeb7027c"
+  },
+  "archivedFiles": [
+    {
+      "sourcePath": ".scaffold/phase013/diagnostics/failure-chain-repro-6/command.json",
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/command.json",
+      "sha256": "d1538ad32db7b3de40b5014d9f5623c5c6d7a5f8dbf934953ee2f80d54229b67"
+    },
+    {
+      "sourcePath": ".scaffold/phase013/diagnostics/failure-chain-repro-6/overlays/archived-failure-source/docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/prior-evidence-sources/phase013-evidence.mjs",
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/overlays/archived-failure-source/docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/prior-evidence-sources/phase013-evidence.mjs",
+      "sha256": "83f6361cf70a3919cdbac746d02e39f357238264be953ae48b71ed35ecbc7ad0"
+    },
+    {
+      "sourcePath": ".scaffold/phase013/diagnostics/failure-chain-repro-6/overlays/original-evidence-raw/docs/evidence/attempts/Phase013/attempt-5/all-tests-vitest.json",
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/overlays/original-evidence-raw/docs/evidence/attempts/Phase013/attempt-5/all-tests-vitest.json",
+      "sha256": "d35733f8a76f8d2f9900ca293f1ad5c797323119d780396f9b519dd7aa582f2d"
+    },
+    {
+      "sourcePath": ".scaffold/phase013/diagnostics/failure-chain-repro-6/overlays/original-migration-diagnostic/docs/evidence/attempts/Phase013/attempt-1/migration-diagnostic.json",
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/overlays/original-migration-diagnostic/docs/evidence/attempts/Phase013/attempt-1/migration-diagnostic.json",
+      "sha256": "6981f244ed6a37b349e00cc9ff953f22c87b9a6a772f906ffbf188fb9a446276"
+    },
+    {
+      "sourcePath": ".scaffold/phase013/diagnostics/failure-chain-repro-6/result.json",
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/result.json",
+      "sha256": "8e2ecacb4e5999ba405304594334d8a3f8129671c906bf775adaa3d68f5c26d7"
+    },
+    {
+      "sourcePath": ".scaffold/phase013/diagnostics/failure-chain-repro-6.mjs",
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/probe-source.mjs",
+      "sha256": "379e15a43d1003fb4e325b971c13e2ea81b28fedac67ab050b54194ec6ef54a6"
+    },
+    {
+      "sourcePath": "docs/phase-plans/phase013-evidence.mjs",
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/prior-evidence-sources/phase013-evidence.mjs",
+      "sha256": "8da8b7667fe9e273bbbbc6a038d72f99d60ec8b27ef9d363965fee120a36d595"
+    },
+    {
+      "sourcePath": "docs/phase-plans/verify-phase013.mjs",
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/prior-evidence-sources/verify-phase013.mjs",
+      "sha256": "ee0929109f0204c67c0f2b5b9bc1051581ecbcaca7ea11ad08a16aeb21550159"
+    },
+    {
+      "sourcePath": "docs/phase-plans/complete-phase013.mjs",
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/prior-evidence-sources/complete-phase013.mjs",
+      "sha256": "214a99d910fa853abeeeffbd1db5746e0cf5910be5d35b074ce098afd69f681c"
+    },
+    {
+      "sourcePath": "tests/phase013/evidence-guards.mjs",
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/prior-evidence-sources/evidence-guards.mjs",
+      "sha256": "ea6aff05563ac647f1f5ad07560642d3294d37c8867bab914fa51771c86cb98b"
+    },
+    {
+      "sourcePath": "src/server/admin/api-key-cursor.ts",
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/prior-cursor-sources/src/server/admin/api-key-cursor.ts.txt",
+      "sha256": "f8c189dbaed5f378e8562432c485fe385182e84c49fc0d9fedb32fe62eefe0e2"
+    },
+    {
+      "sourcePath": "src/server/admin/api-keys.ts",
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/prior-cursor-sources/src/server/admin/api-keys.ts.txt",
+      "sha256": "ccdcc83f936076705015e705d2ad45a5d806626bdc7588591bd54469cff14436"
+    },
+    {
+      "sourcePath": "tests/admin/api-keys.integration.test.ts",
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/prior-cursor-sources/tests/admin/api-keys.integration.test.ts.txt",
+      "sha256": "da0d047142f467f6e083e2ca3e5ea4f82cb4552881b51809c3acf27f66ffbc52"
+    }
+  ],
+  "recordedAt": "2026-09-12T11:40:05.761Z"
+}

@@ -1,0 +1,610 @@
+{
+  "testCaseId": "Phase013:rotate-revoke",
+  "command": "node docs/phase-plans/verify-phase013.mjs --all",
+  "status": "PASS",
+  "exitCode": 0,
+  "numerator": 1,
+  "denominator": 1,
+  "inputPath": "tests/admin/api-keys.integration.test.ts",
+  "inputHash": "da0d047142f467f6e083e2ca3e5ea4f82cb4552881b51809c3acf27f66ffbc52",
+  "planHash": "4038619311cc6fdd19b1fd6a64071e7d8bff15e6ed89bf8f1ddd53cca2a00eac",
+  "sourceHashes": {
+    ".env.example": "8d1e5b830a44ea6746a7436b8a17be766deba0b789fc3d767dcf3363228fa4f3",
+    ".gitattributes": "5f52d486cab522fa6daa07235ca6c5ff8131ba803fb675bb2db588a7a1f1f7e4",
+    ".gitignore": "eb3d88b97ff365a767b5b3488f3f5e889fd13f4ee1036b99e974ee7c3a17531b",
+    "README.md": "d396343320ce1ab7f5be483c883ccc9c8062002755a3507fc60806e550f7f10a",
+    "docs/admin.md": "cfe3738b049e222ab0d1b4f2eccd800fffcacbb0c7e33dcae87864bc663a9806",
+    "docs/agent-execution-contract.md": "ba2c8eb6452d0f63f4d3f27879479c18209d592540f93978d54435c4357c9275",
+    "docs/api.md": "db956de07d9a46b224dbc7f213e5721a6d2734c86906993e7b028e4b40378bc6",
+    "docs/auth.md": "61d4a77d2e776f1a1f712d15fbe9d132db22da3f2a0eb30a12340b1250430c39",
+    "docs/checkpoint-migrations/testing-policy-20260912.json": "abdd84536d1a33a2f838019d18051fed4af944f4c99d2286065698cbbf52d68f",
+    "docs/crypto.md": "0565b76370509829fe3df67b6947f0d9b862757817684f94a6d5f85bfece735c",
+    "docs/database.md": "0364935bfc5d70c79050fc1394c1288bab4f2052f8ac135d587bbd703fffcecc",
+    "docs/env-registry.json": "c77464fe2c071dbeb8f3f5212a99928b47dc713a522450d9860746ca950c6a48",
+    "docs/evidence/attempts/Phase013/attempt-2/migration-preparation.json": "c57638b9481ec47ecd8a3f8cefa3ad864331695511a74acdda4be01795019579",
+    "docs/evidence/attempts/Phase013/attempt-3/scope-repair.json": "e25ff795d7c179f30f096718f695204b9b024f15923c9db35d7b33af1dfcbf0b",
+    "docs/evidence/attempts/Phase013/setup/migration-generation.json": "f8cea03f81bb4dbc041a8df528ce799ecd42e94dde717e7a865a22dca2ab57a7",
+    "docs/phase-plans/Phase013-inputs.json": "5a5219c113a679e88cddabbfaec09d7e50385b742ccb1423a85a725d9e908383",
+    "docs/phase-plans/Phase013.json": "4038619311cc6fdd19b1fd6a64071e7d8bff15e6ed89bf8f1ddd53cca2a00eac",
+    "docs/phase-plans/complete-phase013.mjs": "214a99d910fa853abeeeffbd1db5746e0cf5910be5d35b074ce098afd69f681c",
+    "docs/phase-plans/key-rotation-protection.sql": "21eccfad37e0bf03d758a98f1bc5ef5b6b2bd6bf15d96490f9e923ba3b4eed4f",
+    "docs/phase-plans/phase013-evidence.mjs": "c6e2ec1280a3a8c3fad9acb5437f72e83c52e6c3a0c148f6a8678e994f78d8e6",
+    "docs/phase-plans/phase013-runtime.mjs": "03fd70c2b53876509c5dcfab160e2d034eaec8066f40266c5cdc4e547fd04bb8",
+    "docs/phase-plans/prepare-phase013.mjs": "50fe0de8fa619ae4cfc4b73bea86bcdd335548ae2b33779b8220f3eb403c1c56",
+    "docs/phase-plans/setup-phase013.mjs": "5fcaa6c1d9914538550407e340dcc5d32b46c6759490a30a5fd0f4c48c9f4096",
+    "docs/phase-plans/verify-phase013.mjs": "ee0929109f0204c67c0f2b5b9bc1051581ecbcaca7ea11ad08a16aeb21550159",
+    "docs/phase013.md": "b1167d86b4f7c05a7920be987afbbc4810bb2dfff9c72447229bfff7c6829aaf",
+    "docs/privacy-and-user-data.md": "8d8353a8ce4a35db37a3800d46256e49273e12d41446c677b4434d5c8050ccfa",
+    "docs/project-layout.json": "7efe30a30fe009a8e1226563cae53d39ed2a2193be78bc0f0a776f57f67710ba",
+    "docs/runtime-baseline.json": "4676117c22c618491cd41192866f8c221f274cf61ee9fcc480d2326a860018de",
+    "docs/testing-execution-policy.md": "a1f2666b2a757bf7dccb016e997a60f33a0f91f7612add8d40411e30735f8532",
+    "eslint.config.mjs": "f45d4d5b4e4808481617530c717d97108af6488b39e008e49b4161aefd818708",
+    "package-lock.json": "e1253d4a0e5aba2d25e397b0774abc10100629c2af247e282a5ec0ace8330b1d",
+    "package.json": "b676ac97cba16076b4119e8f3dae2cd9bbeca9e407d5f4521e5086ec1031e1e1",
+    "prisma/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "prisma/migrations/20260910000000_init_user/migration.sql": "b65593d8d8a7a1821a2f65415616e5c083a0e38785bcac2a46ea362d126de3a3",
+    "prisma/migrations/20260910172735_system_config/migration.sql": "25f5d0d35a216ee085fad468f5d69d740610369ff91fcdd0ebe4a188deef45cc",
+    "prisma/migrations/20260911002217_travel_record_chat_message/migration.sql": "761979289b28f413d47c09290f43e9d01ffc22421918103a51d6c67b638bb48f",
+    "prisma/migrations/20260911042258_audit_log/migration.sql": "9707b78108c51f9a10ebfa86fa816d7caf353bcd1f09a0cce2eefcac6b392373",
+    "prisma/migrations/20260911104017_api_key_config/migration.sql": "9bc311e50f3dccc7dc7885a901285fd1f359beb0e3b808bdc1e4c16ab4ce79d1",
+    "prisma/migrations/20260911151715_auth_session_login_attempt/migration.sql": "e4913a97a5ff09d9ee71efaebd58163b8b5f5db9f0fe7747bd07783aed66c08f",
+    "prisma/migrations/20260912013806_admin_commands/migration.sql": "26eac34ab5c30b48adb680a3a770d4454503e3550b3009b4e59cc0dc43e2392d",
+    "prisma/migrations/migration_lock.toml": "99836963713b4f5b269ad49af0ed3d7b0b2e336115c2f92dc9ac683d139d0900",
+    "prisma/schema.prisma": "deddd268b5df678f6db1ad5a7972179b64b2a24dca2068069d3de5de733503f7",
+    "prisma/seed.ts": "dea4fc6ad30555657a06cdc1fad50af5968e45ad35884ec65df6f244035a07fa",
+    "scripts/auth-server.mjs": "bad8d4aa1e8469aa7d1f7bafe9b96ca1a2e904916b0faba37c13a87033212458",
+    "scripts/check-project-layout.mjs": "d19f27109ff142516a7b0454e7f9b9a03629fd11923e7f6b88c7ee9323eb1d35",
+    "scripts/checkpoint-history.mjs": "673a4f5ff409ce0a4fcb7b1754c2d977199fc502a8732cda01082b9a0eababa1",
+    "scripts/checkpoint-maintenance.mjs": "c1b63315d078b35a330f8a01e89e1b612ffb463b0c0b9d2114be27a1cbed00e3",
+    "scripts/eslint-env.mjs": "f2ded148de31d4d35ede46a162116f81b48b459b869ade8411a5e25c9f5f21ce",
+    "scripts/generate-api-contract.mjs": "6dad8aa0bbd68630b9149babed05e1bdc0c315d262ce16665cbe3fc133dd6009",
+    "scripts/phase-evidence.mjs": "454f1911b53a21aed6f014d8cb6b36d748a6f9ec8b8e7547187d45cd20ce96c9",
+    "scripts/phase003-evidence.mjs": "5a6660faa40d3710df19b9881f203be6dcb3e459c5b9c4fcf6169548890abbb4",
+    "scripts/test-checkpoint-maintenance.mjs": "a86dffc037bae7f4a8e44fc22e3793d8c984ebb68b7b010972862d2f1bd33822",
+    "scripts/test-phase-input-paths.mjs": "ce18f4dbde62c19eba879e3354af7a6d92d2ee71a191ba89bf6dd10dbddce1c5",
+    "scripts/test-validate-phase.mjs": "796a7b93fe3feec9029f2bf3fdcab1c93ce9c3a37640b4e5d4bb403b359ca52b",
+    "scripts/validate-phase.mjs": "6b6f6b3b56f0590d014fca0e523a5ed69324f43958edc722cf28fd06c1c4cea2",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319",
+    "scripts/verify-phase003.mjs": "f3b77a187709cab823dcd7a6fc84b1644dacdf3f0c5a728b4202aca357510955",
+    "src/app/(site)/layout.tsx": "dbf6397819844277acac383530a3a616f29e1068b9b5ba2d08f2886b3cca5207",
+    "src/app/(site)/login/page.tsx": "f249db17070503c398e3797298b3e7dcfe479822a68dbbf8cc948713098318f0",
+    "src/app/(site)/page.tsx": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e",
+    "src/app/admin/(protected)/api-keys/page.tsx": "065703ec8311f286cb8253b652075892e38e2b7a959826328a806762c58b9e68",
+    "src/app/admin/(protected)/layout.tsx": "e70caf93524b74b78acd5b0ddd786ba5b01720066c4f1069c4dac09e674ff523",
+    "src/app/admin/(protected)/logs/page.tsx": "4371da51e366ae66a32f40e5f70579cfb161c673ba4b6aa29858aa0d6a0f34df",
+    "src/app/admin/(protected)/page.tsx": "6f42e95c88002bf713ded714518342462a83747034a33b8336ab50653f634f5c",
+    "src/app/admin/(protected)/users/page.tsx": "a8a3eeae5128722cbf0d07cfd438562a76d2b2169efa5528c73c9ba3aa55d481",
+    "src/app/admin/(public)/login/page.tsx": "e4d2826c6d3cc7535c2f25bdaedf82bfb282f1cdd05f5090a9e51f990348132a",
+    "src/app/admin/layout.tsx": "8b4bbf2a89ea590d1a686b332736450d8a0864c866027d367c825a17b3ace374",
+    "src/app/api/admin/api-keys/[id]/rotate/route.ts": "4db590e820079d426930fd1ff98e574591a5e66a57d27bc5bb7867817890180f",
+    "src/app/api/admin/api-keys/[id]/route.ts": "da3fa5fa4d27067e85ac32c8490a186f200740f4784dbfbf053e3738a59338ac",
+    "src/app/api/admin/api-keys/route.ts": "ebb249c1bd39a6cbcc5fa93350895795f604992314a48963d86832362a3f0f73",
+    "src/app/api/admin/logs/route.ts": "8990638f69a3b52dd3c16555d165fe1f1b1228c87d28810833b0eb6288f181e1",
+    "src/app/api/admin/users/[id]/route.ts": "196b4b13a820ce41804c30fdf8e766a43f5db23bcb834f16bd90dae15221d7bd",
+    "src/app/api/admin/users/route.ts": "53d73d045da3c1cd0ef8b95d212ed0e4254995ba796bdff03d4f963db44877d9",
+    "src/app/api/auth/[...nextauth]/route.ts": "dd450e1faa1e87afceb14785dfb22559a24edff039e355d64c01dc1d9f060fa7",
+    "src/app/error.tsx": "bcb13e2af0bcbd83249ca252fe810d7d40cb2004b4bd1cf9f97b3517badbf8b4",
+    "src/app/favicon.ico": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932",
+    "src/app/globals.css": "f88153c2b0c26a4f65e48626ab5a05e68c8d962952be88ead2032c8a90b10a1f",
+    "src/app/layout.test.ts": "bc1a20b6ff3227cbab2fb3d7168f0aaccecb6b1bd1b31805b6c7166fea00c1f0",
+    "src/app/layout.tsx": "a9de0b5ba9380f5a058487639bd6be0d13c5a1293f720d38965d1b3dec793a6f",
+    "src/app/not-found.tsx": "f863ee0d441b75afc4ef144b45d72222583a78c5b1b404a4ab2f59dc9809c98a",
+    "src/components/admin/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/admin/admin-nav.ts": "7c928eb87d05c391b30c1cb15dcfe81a37d0062bf7d4520fe2f28d9a25b281c6",
+    "src/components/admin/api-keys-client.tsx": "ff427c9976cede2555c1b1d8679a0652fb279d520391ebc885e0b9d12598e5d2",
+    "src/components/admin/logs-client.tsx": "629dc576232d937f5f46c7dc6974977af2a40210dcde864559b18c789d11c607",
+    "src/components/admin/users-client.tsx": "d83b91a25c8c8ac80b7517fef26cb55cf8e998a309e82ef13a6d99fce22eef18",
+    "src/components/auth/login-form.tsx": "5166c864dd671f361efe75d334cb8b7a8a6724a484af2b0b5368893fad9ae7e2",
+    "src/components/auth/logout-button.tsx": "9c41908cbf849d013720de1ef39000d173440fff2c4a5cf371454eeca1684035",
+    "src/components/chat/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/common/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/common/common-components.test.tsx": "a237fee60449db440830ffe3f3ca8909469a7249ca5d45598d09bb6075544e7a",
+    "src/components/common/empty-state.tsx": "a5b1a914935eace3193451be25c9cf8178010345ef76963e0ecb12713e284795",
+    "src/components/common/error-state.tsx": "4ef42505cda6c3a5d4c35180022eedab13ce9f33ac9e412e924dd5b9bb9d808d",
+    "src/components/common/loading-state.tsx": "0a010951d56d20dc1860ed8bd78a5c95671bd1323014330c00b4519aafe1c37f",
+    "src/components/common/page-header.tsx": "c403ac7802dbb0ecf5f83aa57ed043bf598fd3e1806c7250751cdfd9f361b4da",
+    "src/components/layout/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/layout/admin-shell.tsx": "75d9817f25dc0361b704b75e34ba7ee3e6ec1959a408bf428e5bce146cbe28f1",
+    "src/components/layout/site-header.tsx": "f4fdc237b4a3d76ac8280ff80390966ec3a1fe95d67bba7f2e5abb475ed98295",
+    "src/components/travel/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/ui/button.tsx": "abd7a62c5b38d8836c88906285ea0df0a40d3dd55f7d404a07672f749e37f43f",
+    "src/components/ui/sonner.tsx": "f28cba0be08c0873d121f6f35107c9e0b209ef649b0d0625c32e46cf0b2ed9a2",
+    "src/instrumentation.ts": "4ff6be1caa61426f26540f107f1b609bda7ad79e40b72d5c2b563d7fbb3c4821",
+    "src/lib/admin-api-keys.ts": "6ec4d776b3f0aabfc83b84d66bc461deaf04a53f7bdae4ad6438e8fd2661f8dd",
+    "src/lib/admin-logs.ts": "a8b5fb9fae681f0b9357940268ec6ae3593086462b314f209d5e6d90141c2fc8",
+    "src/lib/admin-users.ts": "6076e7f5a6a4257bdf36f717ea32a38ace7a161eb9292d42fa1d883414c338f2",
+    "src/lib/ai/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/lib/api-response.test.ts": "4660ad9249e90641f09cbfd7dd914504fa4d1cea7fd180c6c407eb70f2a6cd1d",
+    "src/lib/api-response.ts": "235635f476f988af2f7d2bdb867acc85bd3d4d777a99c8c7da555206b9a65a6a",
+    "src/lib/env-cli.ts": "1090373f099810914b9fb8405226c095e9101463608922f163e4b399a416937f",
+    "src/lib/env-schema.ts": "8bd4d436a81d38c32de28b805c6b6ddb179b4da9b9f0bb6f3f6e9d30d89d6722",
+    "src/lib/env.test.ts": "6b522cdacb683da40687fde494f78d75c81ac2d956523e6d5823dae858cc6e38",
+    "src/lib/env.ts": "51a3612afe39103e04f214185192f0e39e8bc5cb43d27b21922fdd1748096658",
+    "src/lib/format.test.ts": "bfbf9788fbc9506c299acdafe03debe5ee8ce6bc4baff11092d08d935d2cfdbe",
+    "src/lib/format.ts": "0834ccea0511ed8b0374db59527702e3707a251f44d367e70bf748e27dbe37a0",
+    "src/lib/json.test.ts": "2e17c72f917730c5adabd17ed3f434ab9d50d0215651f768938bff3e9fb50a60",
+    "src/lib/json.ts": "b482e4f8309135800ce6526b771b809aff8ea219d4fc89060c3b4ba057b3ed11",
+    "src/lib/schemas/system-config.ts": "84cab5c3e15856c75595c6f165417356ab17756bc4cbee6fc98625d54d696c43",
+    "src/lib/utils.ts": "55bbdc94cef3e0c8a8bba386e94f97228dd2c967fe61466fc565378890550c08",
+    "src/middleware.test.ts": "20c52096c0a600447be63fc93ab922d1254c543e3982c5da5ea14944eb9c86c0",
+    "src/middleware.ts": "d243eec2e62a52fb2d661c2b4386a5f22f28229831644735769a27332c488322",
+    "src/server/admin/api-key-cursor.ts": "f8c189dbaed5f378e8562432c485fe385182e84c49fc0d9fedb32fe62eefe0e2",
+    "src/server/admin/api-keys.ts": "ccdcc83f936076705015e705d2ad45a5d806626bdc7588591bd54469cff14436",
+    "src/server/admin/command-receipt.ts": "d2181ff7cf1639da940e086ecf66647f19e56c9f1e5b00329cf8e698f84c287c",
+    "src/server/admin/key-candidate-client.ts": "ff3fb084e3005e0284e9bbbe7d59cb76477798a1c68236fbbc3f9c29436596f9",
+    "src/server/admin/key-reference.ts": "9fcb9b38af3ccdb0d07d8e877b009f4d76f5aa5b464851419e58e4c2f73a64d0",
+    "src/server/admin/key-rotation.ts": "4c658945467da1b567ceef1ab312f94154b538cf780c7cfda96d1a59416c7d57",
+    "src/server/admin/log-cursor.ts": "66811cc88f584c08ddecf70db33f644ea1d95a16bb2675bb6d8e8bfb1a6a84b5",
+    "src/server/admin/logs.ts": "3c9234fa78c441da9ffa183ec0c0952bf511f8f288e28a0718e8198b69fc9c77",
+    "src/server/admin/user-cursor.ts": "e6451f52c6b17aeb88a6ea2c37a2f0281b2c20394b4d00668b55ee918e807ac3",
+    "src/server/admin/users.ts": "f7d838ff621d6e4110eaa2a61f48d986aa9771aaf0b059edf8d5d6ff8bfa8d2e",
+    "src/server/anonymous-owner.ts": "7250641a004fe8994a7eae0ce06ed9a5330b7260e5ad4da7e8c87bf2c082c0ea",
+    "src/server/api-key-envelope.ts": "814dad96afc484b82aea53c8e8fdceb2787bae58b9417ce9ad45a005d3bdebc4",
+    "src/server/audit-log.ts": "35c3968a231c838ee44a11f9b863c705970594726b84784aaf8f18fd180e58b8",
+    "src/server/auth.ts": "af08f9c7a2b08672e5c516d38beb71fd4edd0566f0d5e98b669417d28cbec4fe",
+    "src/server/auth/auth-config.ts": "12bfc18d7104851f9969a5fdae3c6546bfd72df0be92000ca72e87684f3129b1",
+    "src/server/auth/auth-handler.ts": "f9478cc627dbad5fd4cff7ffa5c56d4afcf8541632b31a5e4651d49f109916fe",
+    "src/server/auth/clock.ts": "1dd54d5679fb14a38cb4d2a7a28fde5a479155267812a2bca36e6c323e33b68e",
+    "src/server/auth/cookie.ts": "2b8b16cd9c1a5abdb1de86020e530378b46e7ec99dff2190c3d58909927dcd15",
+    "src/server/auth/credentials-service.ts": "0f12e60c5c1cf24ec324984a74b120619745078427d37226ecceab84dae50f09",
+    "src/server/auth/errors.ts": "ee3dbd777a25889c877cbc9954466b3033ec2850eb306394bdcdc3aeee777f3b",
+    "src/server/auth/guards.ts": "850c4b508d35265967d6432e386b6209a7875df24253f64228a5a709628dc9e2",
+    "src/server/auth/login-throttle.ts": "4d78d969fbfa4b152b968a3214c3083710b7450f7854b78d63bc8dbb47aa3e3a",
+    "src/server/auth/require-admin.ts": "5463258472cc77adb6c88af93ff28d01db235d218a877029a73d7ae7185f204e",
+    "src/server/auth/session-service.ts": "867697b3d9679dc0d33524a8ba6f96a13784764601781f069078dd543ca7bdab",
+    "src/server/auth/trusted-client.ts": "2efb55c8197a40d006ead049a0de720c90dc2c0a04789b9e5f605a85bdc0fc84",
+    "src/server/auth/types.ts": "88e0a3508f077cf5f99199133a8ba9a581f799e105500b50443996ed360c9d5a",
+    "src/server/db.ts": "d2f6bec02e8dc7eb25eb782def2f24d018a1c27358cd62dfd5aeb22030457db7",
+    "src/server/ingress.ts": "b03b16891cdc66e760c2dd6fb8779e979eb1a43a8fbc244c87e5b7ab085975ad",
+    "src/server/projections/admin-api-key.ts": "887a7c6c709c6d94f2e5e6713a6e8176ff22351ab991ca1e757abbf9bae262a4",
+    "src/server/projections/admin-user.ts": "396c25dc8b29d3a865f2490192f3665071c87112055c4ddc5ecfc9cfc72c1de3",
+    "src/server/projections/public-user.ts": "de8e550fe63c9c2bbf0e8f33ba39b518227dd7358680ec9eb77449be4c96a680",
+    "src/server/repositories/chat-message.ts": "707d2e77b7534a1e0cdd16a1d05c8b472372a1349036d4ca76dd2d81ddfecad4",
+    "src/server/repositories/data-layer-error.ts": "c62080e20792a91c18bed5c9e39c1c8d58f13c383601a46c86b25478a27d9ad1",
+    "src/server/repositories/travel-record.ts": "334a0ebd7118a8584089482713196c786ceee7956fd884f72d6f3ec980b3907f",
+    "src/server/security/secret-envelope.ts": "17f9ccfc8acfe65ac287db299fc36c16f49274b1c7da40598dd48c3a62ba1c6b",
+    "src/server/seed-input.ts": "ca76b7628f8fd60230062cd0692e05130461bb7f4dadea7458fab2c7b7de252a",
+    "src/server/services/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/server/services/audit-log-service.ts": "c1fc076e07576591a1e266e371df5b25a26b1e3acb4924d3d7d676b91e0d1d68",
+    "src/server/services/seed-service.ts": "ca76e7aa52fb62e009c38d0472eb399d1bb6b60814a316d9d00d6383c6911c35",
+    "src/types/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/admin/api-keys-client.test.tsx": "55c956045986f15608f7f796fcdb4b6c0b09b4e5bf3888ed3603a90c67f1aa92",
+    "tests/admin/api-keys.integration.test.ts": "da0d047142f467f6e083e2ca3e5ea4f82cb4552881b51809c3acf27f66ffbc52",
+    "tests/admin/layout.test.tsx": "c59bd18964fa091792238e1362c7b2aacf8a68e90caecf0bacc089884e74f138",
+    "tests/admin/logs-client.test.tsx": "11360059512f7b93ca8bd2597130b911c608490f56873a79b2f36be38de927eb",
+    "tests/admin/logs.test.ts": "b2763f927803e0d31e05b308fe49d2c2aecff90a88ac347ee542fa915119de0d",
+    "tests/admin/users-client.test.tsx": "7b215369349270d63f992ff01cde135daeac7db38144e2b5683f24592431e712",
+    "tests/admin/users.integration.test.ts": "f78d15266738d67564b899a25ec570b196d6411ac80de43f349ab3ca759ff93d",
+    "tests/integration/admin-login.test.ts": "b8ca4708285893de01c424bb1daec081107a4a0e0df212fdff234535626f1319",
+    "tests/integration/api-key-schema.test.ts": "cd5037f9367497188bb484f3a0fb1de1b763c624f4e7b4dda8f7e32a0dbf2079",
+    "tests/integration/audit-log.test.ts": "cb02a1bc595da40bf520cc50ff8a93096f06af08329b55d8effe45c9c38a1dbf",
+    "tests/integration/chat-message.test.ts": "23dcf6dc0107e54c00aeace6352e1bce0921cabff3ceb9101674d90794c80b0b",
+    "tests/integration/config-models.test.ts": "90fa8e7208c52a37b428055b4c6d52dae2ec0fba8f919002937647c136fe6093",
+    "tests/integration/secret-envelope.test.ts": "154ff5b9830911ca75a103ed418c28fc21187084f185069f8814bcfd6e7002ef",
+    "tests/integration/seed.test.ts": "b1c3171398c7fe0495b770b509c577a556d85ec9a717a49de0437edc45651bde",
+    "tests/integration/travel-record.test.ts": "f162175de1747745424cf191a0f62146fa7e5781e341435fa2071fc648b02d79",
+    "tests/lib/admin-api-keys.test.ts": "ee9e5e9198c7d69ec560302eaa96caafc572c87f40eec8787cad67be7328d8d0",
+    "tests/lib/admin-login-ui.test.tsx": "3dded57571706f75968024bca5664e55005d0ca6fc49789e76420435762e9eaa",
+    "tests/lib/api-key-schema.test.ts": "cb3ebdfe084e7068ba8aed3d7edec09e32ea7d9da39e606533e38f3baa421111",
+    "tests/lib/audit-log.test.ts": "895e63c1af000a98706b32e56263fe32b0565dad35e431a9e8633fc3a8d4e16e",
+    "tests/lib/auth-guards.test.ts": "75d103d1ff2fa78be51df4d874b4dced4321fb4369be244003256e1ae73aeb21",
+    "tests/lib/auth-http.test.ts": "624284e59d7ccd6a88dbed9aa54e1bdbdb41814492feced3195f111865fab34d",
+    "tests/lib/auth-ingress.test.ts": "0ec1077654776a812812fe05eecf9d445076baf560f769f585861ce60d52bf0d",
+    "tests/lib/auth-services.test.ts": "435c4113d321659851ab8bda56264e46735bab0c5fa2de30780cc8712a0e14c1",
+    "tests/lib/auth.test.ts": "fb8bb3b519253cd9d931ec208a6c78954fe94d11aa3b8cd65297ce55ee8a418c",
+    "tests/lib/chat-message.test.ts": "d2d380b64f03dc2c2ffbaaa6176c6d5b565f3ba91d90c5a15871efc00c12fffb",
+    "tests/lib/db.test.ts": "e638b23182053c44a3937c2d63f1baa6e3cb7c8735588ac50002ba85ccfcb136",
+    "tests/lib/public-user.test.ts": "86f5828629f9998528bb65748271b33991b682cd6dc720866160d51243547ad2",
+    "tests/lib/secret-envelope.test.ts": "0fc5f807552befc65150d73a054a2d2e7b76a88ade72dcc7bd0d126787ed87ec",
+    "tests/lib/seed.test.ts": "63373fc0ac7f10f632f982580bd0594d9fa2da927adc6c4248fb04808da55154",
+    "tests/lib/travel-record.test.ts": "b657b5c2e59ac83917ddda4fc5a8ad3fcca44ac9783d6570750f2aba7ffd265c",
+    "tests/phase005/browser.mjs": "65cee15ce4171423bde4c82689466d1b1c45a64cb1a847ec6200661465676881",
+    "tests/phase005/components-fixture.tsx": "c1ca905c69634b0f2066888e4c83cb913b6c66182830439337656157ece27e05",
+    "tests/phase005/fixtures/phase003-home.tsx": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e",
+    "tests/phase006/cli-network-guard.cjs": "da1e1020f2d0f5f171f1a721dfa2c3412a2901d858eee176ed730f45f0ad2ab7",
+    "tests/phase006/cli-network.mjs": "21664e3f9f0467ab5e92fdc60b84f2df27c106bb1267ec8a734cfe128f7bbd72",
+    "tests/phase006/database.integration.ts": "471c30ee775ab085a57998e42500f9d7da7816c129c0ce00eb1767c3ae2979da",
+    "tests/phase006/studio.mjs": "04816f53f00927939193655814e966819ac4aa477eb9042f5b5b2f1b5fbc9916",
+    "tests/phase006/user-types.ts": "3ab183310d3add2e18415f83f732cf913f883f18bbdd06a71dc9de0ce76d47c5",
+    "tests/phase006/vitest.database.config.mjs": "b0d0de6cebdd51e1418960674b8b977d64072787cc123d19bd05a0595d58b267",
+    "tests/phase007/cli-network.mjs": "e7a842985395ccb9111d165f7e1aeb56de02fa509ecf6a449dffc4a69c00e312",
+    "tests/phase007/config-fixture.ts": "a47ad51c9dae3a4224ce3971e8051e7e17240bc6dac1dd47ab8b2e4fcaf8d1e5",
+    "tests/phase007/config-types.ts": "ce6093ffc4aa4929631b2e25c2819d2ee16bc7ad5346a0b1db06e89055931709",
+    "tests/phase008/cli-network.mjs": "ff64f0299c5ed5ab62509d3b9bd26c7a17fcc657a1b2186e493584df67b7b7f7",
+    "tests/phase008/data-fixture.ts": "7498fdd1f7813e32a23cbd34803a183530e681d37f097a1fd1e0b473229a8661",
+    "tests/phase008/data-types.ts": "c854d2e0e84b57ff593a7ff82dab2a7f68488659a854d6e5e06527f5af14166e",
+    "tests/phase008/evidence-guards.mjs": "086c5341e065310597f14bc09432eca2f6a6ef7129eea9d9732fa505a7eae683",
+    "tests/phase009/audit-fixture.ts": "cc4cb787f4a7b1590892cbc582a47e99a88c266f8959924bf7b77200daca6ba2",
+    "tests/phase009/audit-types.ts": "ad6e2865de09a24facaff29ef15ad266694515420bf86e2066ae5de43ba4274e",
+    "tests/phase009/cli-network.mjs": "10218552478835c1d2338bc50515ca66140dbcc478073e7d138fe4e68a5954ae",
+    "tests/phase009/evidence-guards.mjs": "ad68ea652122a0eb28fc73497710772942b43f14c4a71f854f822cbef0a76be6",
+    "tests/phase010/api-key-fixture.ts": "d542ba5e7e0973dae9a5dedcb7f02efe13fea791d29d2ed1a8992fa28be200ad",
+    "tests/phase010/api-key-types.ts": "96ad6dc0927901c526ddc4532deb47fb2edc24009ca7397cc8646a6bd7347973",
+    "tests/phase010/cli-network.mjs": "2d4a5f37b631ab222ff5ca822d061d7e7c16eb1841c02e767700a69dd0a4623a",
+    "tests/phase010/evidence-guards.mjs": "fbf173e4f7a43a571069c0d5423dfb9cc73f8c2de2156052aa6c76730017e0db",
+    "tests/phase010/seed-fixture.ts": "8ae8a76a00f75bd82f0038ad14c26f5261ee0c7f0bf5bb529e594ddb4a54be4f",
+    "tests/phase011/auth-fixture.ts": "b6cc9675a52d3806ea647814e61d88f7d52f3a433ccb66df4eefb4f99dd5785a",
+    "tests/phase011/auth-types.ts": "0693390b60b2cadf9a29c2111f952c895f82ca641ae703619ff24912bc53e5b3",
+    "tests/phase011/auth-worker.ts": "3b0c86786f97db34b721d09a17392c7057a2a5302c51645d2e245e34d49276e5",
+    "tests/phase011/browser.mjs": "d1719873ab0a27386f6a492c81cfd31e3c56f6a9395a436878f3b8d801968f60",
+    "tests/phase011/cli-network.mjs": "698e7c1d72d4f3c2b05e44b86e84912ea6d1e248d5e9774630e81f31bc158af1",
+    "tests/phase011/evidence-guards.mjs": "fca1e525c57bccd66c26005c985c81fad359e306e8b9ba6f8c259d5bdf767b35",
+    "tests/phase012/admin-fixture.ts": "bee248edffa0130290cbdcef7a6648c3314e1b50df3915f9e9029bd8b0db09e9",
+    "tests/phase012/admin-worker.ts": "4f398afd47df9f73b97c59035298b351c24576462914e173962a4395d42297bc",
+    "tests/phase012/browser.mjs": "b7023632666f44558a064370d6a9d0d65e75b8a4858299fccde33707d5b63e3f",
+    "tests/phase012/cli-network.mjs": "1f09ce2c8dfba19cdd7cc6791f90b066514c76a0de24d5fa69ec73fe2b561433",
+    "tests/phase012/evidence-guards.mjs": "7312dffacbf64a77b1f8fa7969b70aebfdbb1176ef0c201cb97431163742d25e",
+    "tests/phase013/api-key-fixture.ts": "1809e6562d56745db72679592d5e2542062df222872065d3ab29c0a8a6715548",
+    "tests/phase013/api-key-worker.ts": "7b5a315a5138176b07139bd4aeb9ca22710b04591fa9e44eb8b1c418236e4d0b",
+    "tests/phase013/browser.mjs": "228cd515f5f462a1331bbc2900e7ea6d957e3dc991292dd8c23b62922bc52324",
+    "tests/phase013/cli-network.mjs": "1f4a2296263683a0057d35e441ef217a3e63f57de14c328fd77077a199aabb75",
+    "tests/phase013/evidence-guards.mjs": "d6f693752c773b3573ff789ee1d6a163a6571ced5d017595c46671ea98d4c596",
+    "tests/phase013/logs-fixture.ts": "87c79d2e7f47a6da21841736965f8710c53377c8b22408cb6116f4be734f1dcd",
+    "tsconfig.json": "21a23eb2fa0b1ffcb9c6d591fdec866566c2a2d7562c4ec5beb0d6b8c007c65a",
+    "vitest.config.ts": "95e128668d32ac732a57a4e82bb68b78017b5db9e738116549b252e2d75a72a0",
+    "vitest.setup.ts": "e512871a40d72cd44e0c0d96189a3f105ab192d021a3016e9f3d014aa8937035",
+    "vitest/stubs/server-only.ts": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+  },
+  "simulation": true,
+  "productionTraffic": false,
+  "details": {
+    "target": {
+      "database": "phase013_disposable_dd57ebf7b2df",
+      "host": "127.0.0.1",
+      "port": 61286,
+      "containerId": "758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948",
+      "image": "postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0",
+      "runId": "dd57ebf7b2df",
+      "marker": "serendipity-phase013-disposable:dd57ebf7b2df",
+      "networkMasquerading": false,
+      "loopbackOnly": true,
+      "dataStorage": "TASK_OWNED_TMPFS",
+      "credentials": "SYNTHETIC_REDACTED",
+      "observations": [
+        {
+          "command": "docker inspect --format {{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}} 758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948",
+          "executable": "docker.exe",
+          "arguments": [
+            "inspect",
+            "--format",
+            "{{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}}",
+            "758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948"
+          ],
+          "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+          "exitCode": 0,
+          "signal": null,
+          "timedOut": false,
+          "stdout": "{\"serendipity.phase\":\"013\",\"serendipity.run\":\"dd57ebf7b2df\"}|{\"5432/tcp\":[{\"HostIp\":\"127.0.0.1\",\"HostPort\":\"61286\"}]}|postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0|true|{\"serendipity-phase013-dd57ebf7b2df\":{\"IPAMConfig\":null,\"Links\":null,\"Aliases\":null,\"DriverOpts\":null,\"GwPriority\":0,\"NetworkID\":\"080e8a121feffcb4f6f463a434948c97903405dbf5c5835e6f36d3ed57b0a1fb\",\"EndpointID\":\"d81875a3fbab1e475a7ae91934257d66527058b9139fc5d6a7b592e6467b21a5\",\"Gateway\":\"172.24.0.1\",\"IPAddress\":\"172.24.0.2\",\"MacAddress\":\"9e:0b:f2:87:8c:7f\",\"IPPrefixLen\":16,\"IPv6Gateway\":\"\",\"GlobalIPv6Address\":\"\",\"GlobalIPv6PrefixLen\":0,\"DNSNames\":[\"serendipity-phase013-dd57ebf7b2df\",\"758a445b66a0\"]}}|{\"/var/lib/postgresql/data\":\"rw,size=536870912\"}\n",
+          "stderr": "",
+          "durationMs": 262
+        },
+        {
+          "command": "docker network inspect --format {{json .Options}}|{{json .Labels}} serendipity-phase013-dd57ebf7b2df",
+          "executable": "docker.exe",
+          "arguments": [
+            "network",
+            "inspect",
+            "--format",
+            "{{json .Options}}|{{json .Labels}}",
+            "serendipity-phase013-dd57ebf7b2df"
+          ],
+          "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+          "exitCode": 0,
+          "signal": null,
+          "timedOut": false,
+          "stdout": "{\"com.docker.network.bridge.enable_ip_masquerade\":\"false\",\"com.docker.network.enable_ipv4\":\"true\",\"com.docker.network.enable_ipv6\":\"false\"}|{\"serendipity.run\":\"dd57ebf7b2df\"}\n",
+          "stderr": "",
+          "durationMs": 244
+        }
+      ],
+      "version": "17.11 (Debian 17.11-1.pgdg12+2)"
+    },
+    "sourceReportPath": "docs/evidence/attempts/Phase013/attempt-5/card-vitest.json",
+    "sourceReportHash": "dd3de4b8afbf8348ca0f23c17d296ce15026cf9d061404a2b5f4362b5b16dee1",
+    "assertionMapping": [
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] rejects changed HTTP versions, redirects and oversized bodies while retaining one disabled candidate"
+      },
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] switches two persisted reference versions atomically after real version-bound HTTP tests"
+      },
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] retains a failed disabled candidate and reuses it across a fresh service without enabling it through PATCH"
+      },
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] allows exactly one winner when two administrators concurrently rotate the same key"
+      },
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] lets emergency revocation interrupt new calls while an ordinary rotation is awaiting HTTP"
+      },
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] rotates through the same coordinator with an empty real reference registry"
+      }
+    ],
+    "mappingPath": "docs/evidence/attempts/Phase013/attempt-5/case-assertion-mapping.json",
+    "mappingHash": "82ab9aa1d9d048b8e88f6a09e33a43a029f3aab0d73eeedb653b0289718daff7",
+    "businessObservationPath": "docs/evidence/attempts/Phase013/attempt-5/business-observations.json",
+    "businessObservationHash": "3752943f4ecb2d39e51b7a21fdaa51b9269b60f8d4800cde7e302b2641f70308",
+    "businessObservations": [
+      {
+        "phase": 13,
+        "group": "rotate-revoke",
+        "database": "REAL_POSTGRESQL17",
+        "versionMismatchRejected": true,
+        "redirectsFollowed": 0,
+        "oversizedBodyRejected": true,
+        "candidatesPrepared": 1,
+        "httpCalls": 5
+      },
+      {
+        "phase": 13,
+        "group": "rotate-revoke",
+        "database": "REAL_POSTGRESQL17",
+        "referenceCount": 2,
+        "switchedReferences": 2,
+        "httpCalls": 2,
+        "networkInsideTransaction": 0,
+        "oldRevoked": true,
+        "newActive": true,
+        "matchingStateAudits": 2,
+        "extraReplayCandidates": 0
+      },
+      {
+        "phase": 13,
+        "group": "rotate-revoke",
+        "database": "REAL_POSTGRESQL17",
+        "failedCandidates": 1,
+        "oldReferencesPreserved": 2,
+        "disabledCandidateEnableRejected": true,
+        "candidateReuse": 1,
+        "claims": 2,
+        "fences": 2,
+        "httpCalls": 4
+      },
+      {
+        "phase": 13,
+        "group": "rotate-revoke",
+        "database": "REAL_POSTGRESQL17",
+        "contenders": 2,
+        "winners": 1,
+        "switchedReferences": 2,
+        "disabledLoserCandidates": 1,
+        "orphanActiveKeys": 0
+      },
+      {
+        "phase": 13,
+        "group": "rotate-revoke",
+        "database": "REAL_POSTGRESQL17",
+        "emergencyRevokeBeforeNetworkCompletion": true,
+        "activeNormalCallsBeforeRevoke": 1,
+        "forgedTargetCalls": 0,
+        "newCallsAfterRevoke": 0,
+        "ordinaryRotationConflict": 409,
+        "partialSwitches": 0
+      },
+      {
+        "phase": 13,
+        "group": "rotate-revoke",
+        "database": "REAL_POSTGRESQL17",
+        "realReferenceCount": 0,
+        "providerTableQueries": 0,
+        "externalCalls": 0,
+        "coordinatorActivated": true
+      }
+    ],
+    "fixtureHash": "123a385440e74c91d6282b08c48999d2e9fd43e55f7c95766a4c3e8eb0cbc0f9",
+    "fixtureHashScope": "TRACKED_SYNTHETIC_FIXTURE_IMPLEMENTATION_PRIVATE_CREDENTIALS_NOT_ARCHIVED",
+    "fixtureHashes": {
+      "tests/phase005/browser.mjs": "65cee15ce4171423bde4c82689466d1b1c45a64cb1a847ec6200661465676881",
+      "tests/phase005/components-fixture.tsx": "c1ca905c69634b0f2066888e4c83cb913b6c66182830439337656157ece27e05",
+      "tests/phase005/fixtures/phase003-home.tsx": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e",
+      "tests/phase007/config-fixture.ts": "a47ad51c9dae3a4224ce3971e8051e7e17240bc6dac1dd47ab8b2e4fcaf8d1e5",
+      "tests/phase008/data-fixture.ts": "7498fdd1f7813e32a23cbd34803a183530e681d37f097a1fd1e0b473229a8661",
+      "tests/phase009/audit-fixture.ts": "cc4cb787f4a7b1590892cbc582a47e99a88c266f8959924bf7b77200daca6ba2",
+      "tests/phase010/api-key-fixture.ts": "d542ba5e7e0973dae9a5dedcb7f02efe13fea791d29d2ed1a8992fa28be200ad",
+      "tests/phase010/seed-fixture.ts": "8ae8a76a00f75bd82f0038ad14c26f5261ee0c7f0bf5bb529e594ddb4a54be4f",
+      "tests/phase011/auth-fixture.ts": "b6cc9675a52d3806ea647814e61d88f7d52f3a433ccb66df4eefb4f99dd5785a",
+      "tests/phase011/auth-worker.ts": "3b0c86786f97db34b721d09a17392c7057a2a5302c51645d2e245e34d49276e5",
+      "tests/phase011/browser.mjs": "d1719873ab0a27386f6a492c81cfd31e3c56f6a9395a436878f3b8d801968f60",
+      "tests/phase012/admin-fixture.ts": "bee248edffa0130290cbdcef7a6648c3314e1b50df3915f9e9029bd8b0db09e9",
+      "tests/phase012/admin-worker.ts": "4f398afd47df9f73b97c59035298b351c24576462914e173962a4395d42297bc",
+      "tests/phase012/browser.mjs": "b7023632666f44558a064370d6a9d0d65e75b8a4858299fccde33707d5b63e3f",
+      "tests/phase013/api-key-fixture.ts": "1809e6562d56745db72679592d5e2542062df222872065d3ab29c0a8a6715548",
+      "tests/phase013/api-key-worker.ts": "7b5a315a5138176b07139bd4aeb9ca22710b04591fa9e44eb8b1c418236e4d0b",
+      "tests/phase013/browser.mjs": "228cd515f5f462a1331bbc2900e7ea6d957e3dc991292dd8c23b62922bc52324",
+      "tests/phase013/logs-fixture.ts": "87c79d2e7f47a6da21841736965f8710c53377c8b22408cb6116f4be734f1dcd"
+    },
+    "actualCommand": "npm run test -- admin/api-keys admin/logs secret-envelope --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase013\\attempt-5-card-vitest.json",
+    "negativeControlReportPath": "docs/evidence/attempts/Phase013/attempt-5/restored-card-vitest.json",
+    "browserReportPath": "docs/evidence/attempts/Phase013/attempt-5/browser.json",
+    "browserReportHash": "a5809dedee2f148641ea0898c2aa179b611363503d744c83e7544b94d14fb529",
+    "scan": {
+      "previousMigrationsPreserved": 7,
+      "modelCount": 10,
+      "generatedSecretHits": 0,
+      "sensitiveEvidenceHits": 0,
+      "scannedBeforeRedaction": true,
+      "filesScanned": 163
+    },
+    "artifacts": [
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/test-discovery.json",
+        "sha256": "74275ed7500497531d36530e8f18f6ad54583ac093db04e492cf6ddf54640819"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/evidence-guards.json",
+        "sha256": "dbfcf8f8472135cebb5119c7727c13b3b681bb0f4dca862525e2f65947b8870f"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/validator-regression.json",
+        "sha256": "643a83f00d7ec371f50d655e8b27eb9805b84241d1755d0792bac724d61bb7b8"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/cli-network.json",
+        "sha256": "9eebdddd2b608508aa932a04bc1298b5b2171aa021c9be1ca23a6232a1c2617a"
+      },
+      {
+        "path": "prisma/migrations/20260912061403_key_rotation_contract/migration.sql",
+        "sha256": "21eccfad37e0bf03d758a98f1bc5ef5b6b2bd6bf15d96490f9e923ba3b4eed4f"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-2/migration-preparation.json",
+        "sha256": "c57638b9481ec47ecd8a3f8cefa3ad864331695511a74acdda4be01795019579"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/card-vitest.json",
+        "sha256": "dd3de4b8afbf8348ca0f23c17d296ce15026cf9d061404a2b5f4362b5b16dee1"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/case-assertion-mapping.json",
+        "sha256": "82ab9aa1d9d048b8e88f6a09e33a43a029f3aab0d73eeedb653b0289718daff7"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/card-command.json",
+        "sha256": "be7a4a2e3b1a837d4b9180be93dd87d716531f95067fdfb764c43406b94e0cf5"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/business-observations.json",
+        "sha256": "3752943f4ecb2d39e51b7a21fdaa51b9269b60f8d4800cde7e302b2641f70308"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/baseline-require-admin-vitest.json",
+        "sha256": "7536e5648c84fefcf5110b9a8711839e6eaf2fdd9cc08ae454854eb046260daf"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/mutations/require-admin.json",
+        "sha256": "b96da8a379a02f7feb3ef51da6fc6139c485d6153b02bcfbdc81cf465175408b"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/negative-require-admin-vitest.json",
+        "sha256": "912370e379051d073cc2f6fe8b2982d8a5f52928d62d04a4d11b761e67b9b4e8"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/baseline-aad-vitest.json",
+        "sha256": "922331f905c80723e71b4f82f328c56760f0568a9512a46d833b4016b7a158ab"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/mutations/aad.json",
+        "sha256": "5863dbee0cc191a5805b66366bc1e12f61a02e71c082adf7b05f27ae6cf05fad"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/negative-aad-vitest.json",
+        "sha256": "f476f124c9bdc2b25ccd7801f253fc3fea4272eb31e88fa4662b3f74517070cd"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/baseline-terminal-state-vitest.json",
+        "sha256": "c9dc18238e315378c7f5cc367b345af02a64e1936ad287bc8160f7ffc2a0ae00"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/mutations/terminal-state.json",
+        "sha256": "1437e1673a30a38d50fb76b1d45d93f3582b28a5f8fcdba2f6f3a7f915e5d959"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/negative-terminal-state-vitest.json",
+        "sha256": "5b49a7f265c9ab1f5f2681079a2fc82803ea936345ce477827fca00850909f33"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/baseline-dto-whitelist-vitest.json",
+        "sha256": "a96d7a80dcca456844bc11cbf488cae0eb191dcfee0490d3a37da45cf0dc9ae2"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/mutations/dto-whitelist.json",
+        "sha256": "f230715dc585f64a2631412621244aa7709e944dd98b4d46bc5c51fa115083e0"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/negative-dto-whitelist-vitest.json",
+        "sha256": "f3527a354de2bcf9d56794efd82a5319ee36e041091357ab3b268ce431811b1b"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/restored-card-vitest.json",
+        "sha256": "5e43f9a2a8327696dba589d1048561d9286db227407a8b732a4d77bbbcdc7022"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/all-tests-vitest.json",
+        "sha256": "0e6fd6a7cc8730c456e1cd983cf83f8926a7213ef1d1f01c3a31b7533373d220"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/repository-test-coverage.json",
+        "sha256": "3ab8d7d5c7eb2771551a26787dd7abe62bdeac5f69f17b7de0001f0797b1f405"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/phase006-user-regression-vitest.json",
+        "sha256": "0a64ccf24f2a33ad35f1a083d80512f86f202c8b98cebb32ffebda1b6ee446e0"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/browser.json",
+        "sha256": "a5809dedee2f148641ea0898c2aa179b611363503d744c83e7544b94d14fb529"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/api-keys-empty.png",
+        "sha256": "e01f70dd728c6cd4c9d954eaa32eb4b8cdecbca5fc0dc4c87e39653bfc91a927"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/api-keys-empty.html",
+        "sha256": "b4aa39dd33f29d04a90b2adb4793dff97e632eb9ad92235867d2be0fda227953"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/api-keys-375-axe.json",
+        "sha256": "1123e4cdd103cd80ae6d551672a4592c8563f38946f08d4cd74d6a93f46fa398"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/api-keys-375.png",
+        "sha256": "74cace4ddb186a5186d07046ce20eaf281b67e6a70ae86883f410ea2ff568a8e"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/api-keys-375.html",
+        "sha256": "72d20e81c4ba99256c0fb8910cb9b9184e0851756579f6d252ebdadf46dc2547"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/api-keys-1280-axe.json",
+        "sha256": "f3d34252028f123a9dd1a034eae1b7bba11026b3bbd392742817decf035e5fb4"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/api-keys-1280.png",
+        "sha256": "8caa3e3ad22c6c1f0e5a41854b504b902a0369ec8cb951a260dee231c8599116"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/api-keys-1280.html",
+        "sha256": "7e00ba568b8946f07a2c38b01fd7da56310c44942d2ee8fc83e885891cc7765a"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/audit-logs-375-axe.json",
+        "sha256": "ff58e71eff5253d55d123b4d7631017efb96f88453fccf2e61d01a24812a87b8"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/audit-logs-375.png",
+        "sha256": "682e156e5d3d28470703c51fa1ee37291ca98130db380e77a08195a3853e82e3"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/audit-logs-375.html",
+        "sha256": "12ae7b73466e397abbd90d478647eb5acd08644238da904775c9356331d9ef23"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/audit-logs-1280-axe.json",
+        "sha256": "22841056f8856f231e6632495b45b454bd333a124b3e4af7d7daa20487384a7d"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/audit-logs-1280.png",
+        "sha256": "8569d94a5a7dda6ff37a71bd7bb0fa1bdfa823c67ecaed64f034a15bc92e5a52"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/audit-logs-1280.html",
+        "sha256": "c017b0209116de45d9d377d0c98ffe6ae6d355f278f9dae183a86a4e9b614445"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/audit-logs-unavailable.png",
+        "sha256": "a985024617121f738694d16d28d91df5b97c5e406a68f74c3d9eb0ce2f81309e"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase013/attempt-5/audit-logs-unavailable.html",
+        "sha256": "c3cf427f70b4e948d4798266d20c19329555055cb422b1317a8ce94c6b1b5d74"
+      }
+    ]
+  }
+}

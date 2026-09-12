@@ -1,0 +1,1068 @@
+// @vitest-environment node
+import { createHash, randomBytes, randomUUID } from "node:crypto";
+import { describe, expect, it } from "vitest";
+import {
+  assertApiKeyTransition,
+  parseApiKeyDto,
+  type ApiKeyDto,
+  type ApiKeyPage,
+  type KeyRotationReceipt,
+} from "@/lib/admin-api-keys";
+import { createAdminApiKeysService } from "@/server/admin/api-keys";
+import { verifyActiveKeyConnection } from "@/server/admin/key-candidate-client";
+import { KeyLifecycleError, parseReferenceCandidates } from "@/server/admin/key-reference";
+import { decryptSecret } from "@/server/security/secret-envelope";
+import {
+  createReferenceFixture,
+  createSubject,
+  issueSession,
+  makeApiKeyRequest,
+  registerCanary,
+  startApiKeyWorker,
+  withApiKeyDatabase,
+  type ApiKeyFixture,
+  type ApiKeyWorker,
+  type FixtureSession,
+  type WorkerResponse,
+} from "../phase013/api-key-fixture";
+
+const enabled = Boolean(process.env.PHASE013_FIXTURE_CONFIG);
+function syntheticSecret() {
+  const value = `fixture-phase013-only.${randomBytes(24).toString("hex")}`;
+  registerCanary({ plainKey: value });
+  return value;
+}
+function idem() {
+  const value = randomUUID();
+  registerCanary({ idempotencyKey: value });
+  return value;
+}
+function data<T>(response: WorkerResponse, status = 200): T {
+  expect(response.status).toBe(status);
+  const body = response.body as { success: boolean; data: T };
+  expect(body.success).toBe(true);
+  return body.data;
+}
+function failure(response: WorkerResponse, status: number, code?: string) {
+  expect(response.status).toBe(status);
+  const body = response.body as { success: boolean; error: { code: string } };
+  expect(body.success).toBe(false);
+  if (code) expect(body.error.code).toBe(code);
+}
+function safe(key: ApiKeyDto) {
+  expect(() => parseApiKeyDto(key)).not.toThrow();
+  expect(Object.keys(key)).toHaveLength(10);
+}
+function observe(group: string, fields: Record<string, unknown>) {
+  console.warn(JSON.stringify({ phase: 13, group, database: "REAL_POSTGRESQL17", ...fields }));
+}
+async function digest(fixture: ApiKeyFixture) {
+  const rows = await fixture.admin.$queryRaw<Array<{ relation: string; digest: string }>>`
+    SELECT 'ApiKeyConfig' AS relation,encode(sha256(convert_to(row_to_json(t)::text,'UTF8')),'hex') AS digest FROM "ApiKeyConfig" t
+    UNION ALL SELECT 'AdminCommandReceipt',encode(sha256(convert_to(row_to_json(t)::text,'UTF8')),'hex') FROM "AdminCommandReceipt" t
+    UNION ALL SELECT 'KeyRotationRun',encode(sha256(convert_to(row_to_json(t)::text,'UTF8')),'hex') FROM "KeyRotationRun" t
+    UNION ALL SELECT 'AuditLog',encode(sha256(convert_to(row_to_json(t)::text,'UTF8')),'hex') FROM "AuditLog" t ORDER BY 1,2
+  `;
+  return createHash("sha256").update(JSON.stringify(rows)).digest("hex");
+}
+async function withTransport(
+  operation: (fixture: ApiKeyFixture, worker: ApiKeyWorker, actor: FixtureSession) => Promise<void>,
+) {
+  await withApiKeyDatabase(async (fixture) => {
+    const actor = await issueSession(fixture, fixture.seed.userId),
+      worker = await startApiKeyWorker(fixture);
+    try {
+      await operation(fixture, worker, actor);
+    } finally {
+      await worker.close();
+    }
+  });
+}
+async function create(
+  worker: ApiKeyWorker,
+  actor: FixtureSession,
+  plainKey = syntheticSecret(),
+  name = "隔离测试密钥",
+  idempotencyKey = idem(),
+) {
+  return data<ApiKeyDto>(
+    await worker.request({
+      method: "POST",
+      session: actor,
+      idempotencyKey,
+      body: { name, provider: "fixture-provider", plainKey },
+    }),
+    201,
+  );
+}
+async function patch(
+  worker: ApiKeyWorker,
+  actor: FixtureSession,
+  key: ApiKeyDto,
+  status: string,
+  expectedVersion = key.revision,
+) {
+  return worker.request({
+    method: "PATCH",
+    path: `/api/admin/api-keys/${key.id}`,
+    session: actor,
+    idempotencyKey: idem(),
+    body: { status, expectedVersion },
+  });
+}
+async function directCreate(
+  fixture: ApiKeyFixture,
+  actor: FixtureSession,
+  plainKey = syntheticSecret(),
+) {
+  const service = createAdminApiKeysService({
+    databaseUrl: fixture.url,
+    resolver: fixture.resolver,
+  });
+  try {
+    return (
+      await service.create(
+        await makeApiKeyRequest({
+          method: "POST",
+          session: actor,
+          idempotencyKey: idem(),
+          body: { name: "轮换原始密钥", provider: "fixture-provider", plainKey },
+        }),
+      )
+    ).key;
+  } finally {
+    await service.disconnect();
+  }
+}
+function rotationInput(
+  actor: FixtureSession,
+  old: ApiKeyDto,
+  plainKey: string,
+  idempotencyKey = idem(),
+) {
+  return {
+    method: "POST" as const,
+    path: `/api/admin/api-keys/${old.id}/rotate`,
+    session: actor,
+    idempotencyKey,
+    body: { name: "轮换候选密钥", provider: old.provider, plainKey, expectedVersion: old.revision },
+  };
+}
+async function waitUntil(predicate: () => boolean, timeoutMs = 10_000) {
+  const start = Date.now();
+  while (!predicate()) {
+    if (Date.now() - start > timeoutMs) throw new Error("Synthetic schedule timed out");
+    await new Promise((resolve) => setTimeout(resolve, 10));
+  }
+}
+
+describe.skipIf(!enabled)("admin/api-keys real PostgreSQL", () => {
+  describe("[create-read]", () => {
+    it("creates an encrypted key and replays its original safe response after a process restart", async () => {
+      await withApiKeyDatabase(async (fixture) => {
+        const actor = await issueSession(fixture, fixture.seed.userId),
+          plainKey = syntheticSecret(),
+          idempotencyKey = idem();
+        let worker = await startApiKeyWorker(fixture);
+        try {
+          const input = {
+            method: "POST" as const,
+            session: actor,
+            idempotencyKey,
+            body: { name: "初始密钥", provider: "fixture-provider", plainKey },
+          };
+          const created = data<ApiKeyDto>(await worker.request(input), 201);
+          safe(created);
+          const row = await fixture.admin.apiKeyConfig.findUniqueOrThrow({
+            where: { id: created.id },
+          });
+          registerCanary({
+            encryptedKey: row.encryptedKey,
+            keyFingerprint: row.keyFingerprint,
+            encryptionKeyId: row.encryptionKeyId,
+          });
+          expect(decryptSecret(row, fixture.resolver) === plainKey).toBe(true);
+          expect(created.keyFingerprintDisplay === `${row.keyFingerprint.slice(0, 12)}…`).toBe(
+            true,
+          );
+          const disabled = data<ApiKeyDto>(await patch(worker, actor, created, "DISABLED"));
+          expect(disabled.revision).toBe(1);
+          await worker.close();
+          worker = await startApiKeyWorker(fixture);
+          const replay = await worker.request(input),
+            original = data<ApiKeyDto>(replay, 201);
+          expect(JSON.stringify(original) === JSON.stringify(created)).toBe(true);
+          expect(replay.headers["idempotency-replayed"]).toBe("true");
+          const before = await digest(fixture);
+          for (const body of [
+            { ...input.body, name: "不同名称" },
+            { ...input.body, provider: "another-provider" },
+            { ...input.body, plainKey: syntheticSecret() },
+          ])
+            failure(await worker.request({ ...input, body }), 409, "IDEMPOTENCY_KEY_REUSED");
+          expect(await digest(fixture)).toBe(before);
+          failure(
+            await worker.request({ ...input, idempotencyKey: idem() }),
+            409,
+            "VERSION_CONFLICT",
+          );
+          const page = data<ApiKeyPage>(await worker.request({ method: "GET", session: actor }));
+          expect(page.items).toHaveLength(1);
+          safe(page.items[0]);
+          const publicText = JSON.stringify([created, page, replay.body]);
+          expect(
+            [plainKey, row.encryptedKey, row.keyFingerprint, row.encryptionKeyId].some((value) =>
+              publicText.includes(value),
+            ),
+          ).toBe(false);
+          expect(await fixture.app.apiKeyConfig.count()).toBe(1);
+          observe("create-read", {
+            createdRows: 1,
+            auditChanges: 2,
+            processRestarts: 1,
+            originalResponseReplays: 1,
+            payloadConflicts: 3,
+            duplicatePlaintextRows: 0,
+            secretHits: 0,
+          });
+        } finally {
+          await worker.close();
+        }
+      });
+    }, 120_000);
+    it("uses bounded filtered keyset pages and rejects cursor tampering and invalid input before writes", async () => {
+      await withTransport(async (fixture, worker, actor) => {
+        const keys = [];
+        for (let i = 0; i < 3; i++) keys.push(await create(worker, actor));
+        const first = data<ApiKeyPage>(
+          await worker.request({
+            method: "GET",
+            session: actor,
+            path: "/api/admin/api-keys?limit=2&provider=fixture-provider",
+          }),
+        );
+        expect(first.items).toHaveLength(2);
+        expect(first.nextCursor !== null).toBe(true);
+        let cursorLimitRejections = 0;
+        for (const limit of ["&limit=100", "&limit=20", ""]) {
+          const rejected = await worker.request({
+            method: "GET",
+            session: actor,
+            mode: "observed-list",
+            path: `/api/admin/api-keys?provider=fixture-provider${limit}&cursor=${first.nextCursor}`,
+          });
+          failure(rejected, 400, "VALIDATION_ERROR");
+          expect(rejected.queries?.filter((query) => query.includes('"ApiKeyConfig"'))).toEqual([]);
+          cursorLimitRejections += 1;
+        }
+        const secondResponse = await worker.request({
+            method: "GET",
+            session: actor,
+            mode: "observed-list",
+            path: `/api/admin/api-keys?limit=2&provider=fixture-provider&cursor=${first.nextCursor}`,
+          }),
+          second = data<ApiKeyPage>(secondResponse);
+        expect(second.items).toHaveLength(1);
+        expect(second.nextCursor).toBeNull();
+        expect(secondResponse.queries?.some((query) => query.includes('"ApiKeyConfig"'))).toBe(
+          true,
+        );
+        expect(new Set([...first.items, ...second.items].map((key) => key.id)).size).toBe(3);
+        for (const query of [
+          "limit=101",
+          "limit=0",
+          "limit=2&limit=3",
+          "provider=" + "x".repeat(129),
+          `limit=2&provider=fixture-provider&cursor=${first.nextCursor}x`,
+          `limit=2&provider=fixture-provider&cursor=${first.nextCursor}&status=DISABLED`,
+        ])
+          failure(
+            await worker.request({
+              method: "GET",
+              session: actor,
+              path: `/api/admin/api-keys?${query}`,
+            }),
+            400,
+          );
+        while (keys.length < 21) keys.push(await create(worker, actor));
+        for (const [firstLimit, nextLimit] of [
+          ["", "&limit=20"],
+          ["&limit=20", ""],
+        ]) {
+          const defaultFirst = data<ApiKeyPage>(
+            await worker.request({
+              method: "GET",
+              session: actor,
+              path: `/api/admin/api-keys?provider=fixture-provider${firstLimit}`,
+            }),
+          );
+          expect(defaultFirst.items).toHaveLength(20);
+          expect(defaultFirst.nextCursor !== null).toBe(true);
+          const defaultNextResponse = await worker.request({
+              method: "GET",
+              session: actor,
+              mode: "observed-list",
+              path: `/api/admin/api-keys?provider=fixture-provider${nextLimit}&cursor=${defaultFirst.nextCursor}`,
+            }),
+            defaultNext = data<ApiKeyPage>(defaultNextResponse);
+          expect(defaultNext.items).toHaveLength(1);
+          expect(defaultNext.nextCursor).toBeNull();
+          expect(
+            defaultNextResponse.queries?.some((query) => query.includes('"ApiKeyConfig"')),
+          ).toBe(true);
+          expect([...defaultFirst.items, ...defaultNext.items].map((key) => key.id).sort()).toEqual(
+            keys.map((key) => key.id).sort(),
+          );
+        }
+        const before = await digest(fixture),
+          secret = syntheticSecret();
+        for (const body of [
+          { name: secret, provider: "fixture-provider", plainKey: secret },
+          { name: "safe", provider: "fixture-provider", plainKey: secret, replacesId: keys[0].id },
+          { name: "safe", provider: "fixture-provider", plainKey: " " },
+        ])
+          failure(
+            await worker.request({ method: "POST", session: actor, idempotencyKey: idem(), body }),
+            400,
+          );
+        expect(await digest(fixture)).toBe(before);
+        observe("create-read", {
+          pageSizes: [2, 1],
+          uniqueRows: 3,
+          boundaryRejections: 9 + cursorLimitRejections,
+          cursorLimitRejections,
+          cursorRejectionKeyQueries: 0,
+          defaultPageSizes: [20, 1],
+          defaultLimitRoundTrips: 2,
+        });
+      });
+    }, 120_000);
+  });
+
+  describe("[disable-enable]", () => {
+    it("rejects revoked restoration before any write", async () => {
+      expect(() => assertApiKeyTransition("REVOKED", "ACTIVE")).toThrow();
+      expect(() => assertApiKeyTransition("REVOKED", "DISABLED")).toThrow();
+      await withTransport(async (fixture, worker, actor) => {
+        let key = await create(worker, actor);
+        key = data<ApiKeyDto>(await patch(worker, actor, key, "DISABLED"));
+        expect(key.revision).toBe(1);
+        key = data<ApiKeyDto>(await patch(worker, actor, key, "ACTIVE"));
+        expect(key.revision).toBe(2);
+        const beforeStale = await digest(fixture);
+        failure(await patch(worker, actor, key, "ACTIVE", 1), 409);
+        expect(await digest(fixture)).toBe(beforeStale);
+        const auditBefore = await fixture.app.auditLog.count({ where: { targetId: key.id } });
+        const noop = data<ApiKeyDto>(await patch(worker, actor, key, "ACTIVE"));
+        expect(noop.revision).toBe(2);
+        expect(await fixture.app.auditLog.count({ where: { targetId: key.id } })).toBe(auditBefore);
+        key = data<ApiKeyDto>(await patch(worker, actor, key, "REVOKED"));
+        expect(key.revision).toBe(3);
+        expect(key.revokedAt !== null).toBe(true);
+        const before = await digest(fixture);
+        for (const state of ["ACTIVE", "DISABLED"])
+          failure(await patch(worker, actor, key, state), 409, "VERSION_CONFLICT");
+        expect(await digest(fixture)).toBe(before);
+        expect(await fixture.app.auditLog.count({ where: { targetId: key.id } })).toBe(4);
+        observe("disable-enable", {
+          legalStateChanges: 3,
+          matchingStateAudits: 3,
+          creationAudits: 1,
+          revokedRestorations: 0,
+          noopAudits: 0,
+          staleWrites: 0,
+        });
+      });
+    }, 120_000);
+  });
+
+  describe("[rotate-revoke]", () => {
+    it("rejects changed HTTP versions, redirects and oversized bodies while retaining one disabled candidate", async () => {
+      await withApiKeyDatabase(async (fixture) => {
+        const actor = await issueSession(fixture, fixture.seed.userId);
+        const old = await directCreate(fixture, actor),
+          secret = syntheticSecret();
+        const refs = await createReferenceFixture(fixture, old.id);
+        refs.acceptSecret(secret);
+        const service = createAdminApiKeysService({
+          databaseUrl: fixture.url,
+          resolver: fixture.resolver,
+          referenceAdapters: [refs.adapter],
+          candidateClient: refs.client,
+        });
+        try {
+          const input = rotationInput(actor, old, secret);
+          let candidateId: string | undefined;
+          for (const mode of ["tamper", "redirect", "oversize"] as const) {
+            refs.controls[mode] = true;
+            const result = await service.rotate(await makeApiKeyRequest(input), old.id);
+            expect(result.stage).toBe("TESTING");
+            expect(result.errorCode).toBe(
+              mode === "redirect" ? "PROVIDER_UNAVAILABLE" : "CONFIG_ERROR",
+            );
+            expect(result.key.status).toBe("DISABLED");
+            if (candidateId) expect(result.key.id).toBe(candidateId);
+            candidateId = result.key.id;
+            expect(
+              (await refs.active()).every((row) => row.secretRef === old.id && row.revision === 0),
+            ).toBe(true);
+            delete refs.controls[mode];
+          }
+          const result = await service.rotate(await makeApiKeyRequest(input), old.id);
+          expect(result.stage).toBe("ACTIVATED");
+          expect(result.key.id).toBe(candidateId);
+          expect(await fixture.app.apiKeyConfig.count()).toBe(2);
+          expect(refs.requests).toHaveLength(5);
+          expect(refs.requests.every((request) => !request.transactionOpen)).toBe(true);
+          observe("rotate-revoke", {
+            versionMismatchRejected: true,
+            redirectsFollowed: 0,
+            oversizedBodyRejected: true,
+            candidatesPrepared: 1,
+            httpCalls: 5,
+          });
+        } finally {
+          await service.disconnect();
+          await refs.close();
+        }
+      });
+    }, 120_000);
+
+    it("switches two persisted reference versions atomically after real version-bound HTTP tests", async () => {
+      await withApiKeyDatabase(async (fixture) => {
+        const actor = await issueSession(fixture, fixture.seed.userId),
+          old = await directCreate(fixture, actor),
+          secret = syntheticSecret();
+        const refs = await createReferenceFixture(fixture, old.id);
+        refs.acceptSecret(secret);
+        const service = createAdminApiKeysService({
+          databaseUrl: fixture.url,
+          resolver: fixture.resolver,
+          referenceAdapters: [refs.adapter],
+          candidateClient: refs.client,
+        });
+        try {
+          const input = rotationInput(actor, old, secret),
+            result = await service.rotate(await makeApiKeyRequest(input), old.id);
+          expect(result.stage).toBe("ACTIVATED");
+          expect(result.affectedConfigCount).toBe(2);
+          safe(result.key);
+          expect(result.key.status).toBe("ACTIVE");
+          const previous = await fixture.app.apiKeyConfig.findUniqueOrThrow({
+            where: { id: old.id },
+            select: { status: true, revision: true, revokedAt: true },
+          });
+          expect(previous.status).toBe("REVOKED");
+          expect(previous.revision).toBe(1);
+          expect(previous.revokedAt !== null).toBe(true);
+          expect(
+            (await refs.active()).every(
+              (ref) => ref.secretRef === result.key.id && ref.revision === 1,
+            ),
+          ).toBe(true);
+          expect(refs.requests).toHaveLength(2);
+          expect(
+            refs.requests.every(
+              (request) => request.credentialAccepted && !request.transactionOpen,
+            ),
+          ).toBe(true);
+          const replay = await service.rotate(await makeApiKeyRequest(input), old.id);
+          expect(replay.replayed).toBe(true);
+          expect(replay.key.id).toBe(result.key.id);
+          expect(refs.requests).toHaveLength(2);
+          expect(await fixture.app.keyRotationRun.count()).toBe(1);
+          expect(await fixture.app.apiKeyConfig.count()).toBe(2);
+          expect(
+            await fixture.app.auditLog.count({
+              where: { action: { in: ["API_KEY_UPDATE", "API_KEY_ROTATE"] } },
+            }),
+          ).toBe(2);
+          observe("rotate-revoke", {
+            referenceCount: 2,
+            switchedReferences: 2,
+            httpCalls: 2,
+            networkInsideTransaction: 0,
+            oldRevoked: true,
+            newActive: true,
+            matchingStateAudits: 2,
+            extraReplayCandidates: 0,
+          });
+        } finally {
+          await service.disconnect();
+          await refs.close();
+        }
+      });
+    }, 120_000);
+    it("retains a failed disabled candidate and reuses it across a fresh service without enabling it through PATCH", async () => {
+      await withApiKeyDatabase(async (fixture) => {
+        const actor = await issueSession(fixture, fixture.seed.userId),
+          old = await directCreate(fixture, actor),
+          secret = syntheticSecret();
+        const refs = await createReferenceFixture(fixture, old.id);
+        refs.acceptSecret(secret);
+        refs.controls.failReference = "reference-b";
+        let service = createAdminApiKeysService({
+          databaseUrl: fixture.url,
+          resolver: fixture.resolver,
+          referenceAdapters: [refs.adapter],
+          candidateClient: refs.client,
+        });
+        try {
+          const input = rotationInput(actor, old, secret),
+            failed = await service.rotate(await makeApiKeyRequest(input), old.id);
+          expect(failed.stage).toBe("TESTING");
+          expect(failed.errorCode).toBe("PROVIDER_UNAVAILABLE");
+          expect(failed.key.status).toBe("DISABLED");
+          expect(
+            (await refs.active()).every((ref) => ref.secretRef === old.id && ref.revision === 0),
+          ).toBe(true);
+          const oldRow = await fixture.app.apiKeyConfig.findUniqueOrThrow({
+            where: { id: old.id },
+            select: { status: true, revision: true },
+          });
+          expect(oldRow).toEqual({ status: "ACTIVE", revision: 0 });
+          await expect(
+            service.update(
+              await makeApiKeyRequest({
+                method: "PATCH",
+                session: actor,
+                idempotencyKey: idem(),
+                body: { status: "ACTIVE", expectedVersion: 0 },
+              }),
+              failed.key.id,
+            ),
+          ).rejects.toMatchObject({ status: 409, publicCode: "VERSION_CONFLICT" });
+          const run = await fixture.app.keyRotationRun.findFirstOrThrow();
+          expect(run.newKeyId).toBe(failed.key.id);
+          expect(parseReferenceCandidates(run.candidateIdsJson)).toHaveLength(2);
+          await service.disconnect();
+          delete refs.controls.failReference;
+          service = createAdminApiKeysService({
+            databaseUrl: fixture.url,
+            resolver: fixture.resolver,
+            referenceAdapters: [refs.adapter],
+            candidateClient: refs.client,
+          });
+          const success = await service.rotate(await makeApiKeyRequest(input), old.id);
+          expect(success.stage).toBe("ACTIVATED");
+          expect(success.key.id).toBe(failed.key.id);
+          expect(await fixture.app.apiKeyConfig.count()).toBe(2);
+          expect(await fixture.app.keyRotationRun.count()).toBe(1);
+          const receipt = await fixture.app.adminCommandReceipt.findUniqueOrThrow({
+            where: { id: run.receiptId },
+          });
+          expect(receipt.attemptCount).toBe(2);
+          expect(receipt.fencingToken).toBe(2);
+          observe("rotate-revoke", {
+            failedCandidates: 1,
+            oldReferencesPreserved: 2,
+            disabledCandidateEnableRejected: true,
+            candidateReuse: 1,
+            claims: 2,
+            fences: 2,
+            httpCalls: 4,
+          });
+        } finally {
+          await service.disconnect();
+          await refs.close();
+        }
+      });
+    }, 120_000);
+    it("allows exactly one winner when two administrators concurrently rotate the same key", async () => {
+      await withApiKeyDatabase(async (fixture) => {
+        const actor = await issueSession(fixture, fixture.seed.userId),
+          other = await createSubject(fixture, { role: "ADMIN" }),
+          otherActor = await issueSession(fixture, other.id);
+        const old = await directCreate(fixture, actor),
+          one = syntheticSecret(),
+          two = syntheticSecret(),
+          refs = await createReferenceFixture(fixture, old.id);
+        refs.acceptSecret(one);
+        refs.acceptSecret(two);
+        let release!: () => void;
+        const gate = new Promise<void>((resolve) => (release = resolve));
+        refs.controls.beforeResponse = () => gate;
+        const service = createAdminApiKeysService({
+          databaseUrl: fixture.url,
+          resolver: fixture.resolver,
+          referenceAdapters: [refs.adapter],
+          candidateClient: refs.client,
+        });
+        try {
+          const settle = async (input: ReturnType<typeof rotationInput>) => {
+            try {
+              return await service.rotate(await makeApiKeyRequest(input), old.id);
+            } catch (error) {
+              if (error instanceof KeyLifecycleError) return error;
+              throw error;
+            }
+          };
+          const pending = [
+            settle(rotationInput(actor, old, one)),
+            settle(rotationInput(otherActor, old, two)),
+          ];
+          await waitUntil(() => refs.requests.length >= 2);
+          release();
+          const results = await Promise.all(pending),
+            wins = results.filter(
+              (result): result is KeyRotationReceipt => !(result instanceof KeyLifecycleError),
+            );
+          expect(wins).toHaveLength(1);
+          expect(
+            results.filter(
+              (result) => result instanceof KeyLifecycleError && result.status === 409,
+            ),
+          ).toHaveLength(1);
+          expect(
+            (await refs.active()).every(
+              (ref) => ref.secretRef === wins[0].key.id && ref.revision === 1,
+            ),
+          ).toBe(true);
+          const runs = await fixture.app.keyRotationRun.findMany();
+          expect(runs.filter((run) => run.stage === "ACTIVATED")).toHaveLength(1);
+          expect(runs.filter((run) => run.stage === "ABORTED")).toHaveLength(1);
+          expect(await fixture.app.apiKeyConfig.count({ where: { status: "ACTIVE" } })).toBe(1);
+          expect(await fixture.app.apiKeyConfig.count({ where: { status: "DISABLED" } })).toBe(1);
+          observe("rotate-revoke", {
+            contenders: 2,
+            winners: 1,
+            switchedReferences: 2,
+            disabledLoserCandidates: 1,
+            orphanActiveKeys: 0,
+          });
+        } finally {
+          release();
+          await service.disconnect();
+          await refs.close();
+        }
+      });
+    }, 120_000);
+    it("lets emergency revocation interrupt new calls while an ordinary rotation is awaiting HTTP", async () => {
+      await withApiKeyDatabase(async (fixture) => {
+        const actor = await issueSession(fixture, fixture.seed.userId),
+          initialSecret = syntheticSecret(),
+          old = await directCreate(fixture, actor, initialSecret),
+          secret = syntheticSecret(),
+          refs = await createReferenceFixture(fixture, old.id);
+        refs.acceptSecret(secret);
+        refs.acceptSecret(initialSecret);
+        const target = (await refs.activeTargets())[0];
+        await expect(
+          verifyActiveKeyConnection(
+            fixture.app,
+            old.id,
+            { ...target, url: `${refs.origin}/candidate/forged-target` },
+            refs.client,
+            fixture.resolver,
+            refs.adapter,
+          ),
+        ).rejects.toMatchObject({ publicCode: "CONFIG_ERROR" });
+        expect(refs.requests).toHaveLength(0);
+        await verifyActiveKeyConnection(
+          fixture.app,
+          old.id,
+          target,
+          refs.client,
+          fixture.resolver,
+          refs.adapter,
+        );
+        expect(refs.requests).toHaveLength(1);
+        let release!: () => void;
+        const gate = new Promise<void>((resolve) => (release = resolve));
+        refs.controls.beforeResponse = () => gate;
+        const service = createAdminApiKeysService({
+          databaseUrl: fixture.url,
+          resolver: fixture.resolver,
+          referenceAdapters: [refs.adapter],
+          candidateClient: refs.client,
+        });
+        try {
+          const pending = makeApiKeyRequest(rotationInput(actor, old, secret))
+            .then((request) => service.rotate(request, old.id))
+            .then(
+              (value) => value,
+              (error) => error as unknown,
+            );
+          await waitUntil(() => refs.requests.length === 2);
+          await service.update(
+            await makeApiKeyRequest({
+              method: "PATCH",
+              session: actor,
+              idempotencyKey: idem(),
+              body: { status: "REVOKED", expectedVersion: 0 },
+            }),
+            old.id,
+          );
+          const before = refs.requests.length;
+          await expect(
+            verifyActiveKeyConnection(
+              fixture.app,
+              old.id,
+              target,
+              refs.client,
+              fixture.resolver,
+              refs.adapter,
+            ),
+          ).rejects.toMatchObject({ publicCode: "CONFIG_ERROR" });
+          expect(refs.requests).toHaveLength(before);
+          release();
+          expect(await pending).toMatchObject({ status: 409, publicCode: "VERSION_CONFLICT" });
+          expect(
+            (await refs.active()).every((ref) => ref.secretRef === old.id && ref.revision === 0),
+          ).toBe(true);
+          expect(await fixture.app.apiKeyConfig.count({ where: { status: "ACTIVE" } })).toBe(0);
+          expect(await fixture.app.apiKeyConfig.count({ where: { status: "DISABLED" } })).toBe(1);
+          observe("rotate-revoke", {
+            emergencyRevokeBeforeNetworkCompletion: true,
+            activeNormalCallsBeforeRevoke: 1,
+            forgedTargetCalls: 0,
+            newCallsAfterRevoke: 0,
+            ordinaryRotationConflict: 409,
+            partialSwitches: 0,
+          });
+        } finally {
+          release();
+          await service.disconnect();
+          await refs.close();
+        }
+      });
+    }, 120_000);
+    it("rotates through the same coordinator with an empty real reference registry", async () => {
+      await withTransport(async (fixture, worker, actor) => {
+        const old = await create(worker, actor),
+          input = rotationInput(actor, old, syntheticSecret());
+        const result = data<KeyRotationReceipt>(await worker.request(input), 202);
+        expect(result.stage).toBe("ACTIVATED");
+        expect(result.affectedConfigCount).toBe(0);
+        const tables = await fixture.admin.$queryRaw<
+          Array<{ table_name: string }>
+        >`SELECT table_name FROM information_schema.tables WHERE table_schema='public'`;
+        expect(tables.some((row) => /Provider|AiModel|PromptConfig/.test(row.table_name))).toBe(
+          false,
+        );
+        observe("rotate-revoke", {
+          realReferenceCount: 0,
+          providerTableQueries: 0,
+          externalCalls: 0,
+          coordinatorActivated: true,
+        });
+      });
+    }, 120_000);
+  });
+
+  describe("[authorization]", () => {
+    it("rejects every unauthenticated or stale principal and CSRF failure with zero protected reads or writes", async () => {
+      await withTransport(async (fixture, worker, actor) => {
+        const old = await create(worker, actor),
+          user = await createSubject(fixture),
+          disabled = await createSubject(fixture, { role: "ADMIN", status: "DISABLED" }),
+          stale = await createSubject(fixture, { role: "ADMIN" });
+        const userSession = await issueSession(fixture, user.id, "USER"),
+          disabledSession = await issueSession(fixture, disabled.id),
+          staleSession = await issueSession(fixture, stale.id, "ADMIN", 0);
+        await fixture.admin.user.update({
+          where: { id: stale.id },
+          data: { sessionVersion: { increment: 1 } },
+        });
+        const principals = [undefined, userSession, disabledSession, staleSession];
+        for (const session of principals) {
+          const before = await digest(fixture),
+            list = await worker.request({ method: "GET", session, mode: "observed-list" });
+          expect([401, 403]).toContain(list.status);
+          expect(list.queries?.some((query) => query.includes('"ApiKeyConfig"'))).toBe(false);
+          for (const path of [`/api/admin/api-keys/${old.id}`, "/api/admin/api-keys/missing-key"]) {
+            const response = await worker.request({
+              method: "PATCH",
+              path,
+              session,
+              idempotencyKey: idem(),
+              body: { status: "REVOKED", expectedVersion: 0 },
+            });
+            expect([401, 403]).toContain(response.status);
+          }
+          expect([401, 403]).toContain(
+            (
+              await worker.request({
+                method: "POST",
+                session,
+                idempotencyKey: idem(),
+                body: {
+                  name: "拒绝操作",
+                  provider: "fixture-provider",
+                  plainKey: syntheticSecret(),
+                },
+              })
+            ).status,
+          );
+          expect([401, 403]).toContain(
+            (await worker.request({ ...rotationInput(actor, old, syntheticSecret()), session }))
+              .status,
+          );
+          expect(await digest(fixture)).toBe(before);
+        }
+        for (const csrf of ["missing", "mismatch"] as const) {
+          const before = await digest(fixture);
+          failure(
+            await worker.request({ ...rotationInput(actor, old, syntheticSecret()), csrf }),
+            403,
+          );
+          expect(await digest(fixture)).toBe(before);
+        }
+        const before = await digest(fixture);
+        failure(
+          await worker.request({
+            ...rotationInput(actor, old, syntheticSecret()),
+            origin: "https://foreign.invalid",
+          }),
+          403,
+        );
+        expect(await digest(fixture)).toBe(before);
+        observe("authorization", {
+          rejectedPrincipals: 4,
+          csrfFailures: 2,
+          crossOriginFailures: 1,
+          unauthorizedBusinessReads: 0,
+          unauthorizedBusinessWrites: 0,
+        });
+      });
+    }, 120_000);
+  });
+
+  describe("[crypto-redaction]", () => {
+    it("rejects secret fields at the retained result whitelist", async () => {
+      await withTransport(async (fixture, worker, actor) => {
+        const secret = syntheticSecret(),
+          key = await create(worker, actor, secret),
+          row = await fixture.admin.apiKeyConfig.findUniqueOrThrow({ where: { id: key.id } });
+        registerCanary({
+          encryptedKey: row.encryptedKey,
+          keyFingerprint: row.keyFingerprint,
+          encryptionKeyId: row.encryptionKeyId,
+        });
+        for (const [field, value] of Object.entries({
+          plainKey: secret,
+          encryptedKey: row.encryptedKey,
+          keyFingerprint: row.keyFingerprint,
+          encryptionKeyId: row.encryptionKeyId,
+          envelope: JSON.parse(row.encryptedKey),
+        }))
+          expect(() => parseApiKeyDto({ ...key, [field]: value })).toThrow();
+        const result = await worker.request({
+            method: "GET",
+            session: actor,
+            mode: "observed-list",
+          }),
+          responseText = JSON.stringify(result.body);
+        expect(
+          [secret, row.encryptedKey, row.keyFingerprint, row.encryptionKeyId].some((value) =>
+            responseText.includes(value),
+          ),
+        ).toBe(false);
+        const projections =
+          result.queries?.filter((query) => query.includes('FROM "ApiKeyConfig"')) ?? [];
+        expect(projections.length).toBeGreaterThan(0);
+        expect(
+          projections.every(
+            (query) =>
+              query.includes('left("keyFingerprint"::text,12)') &&
+              !query.includes('"encryptedKey"'),
+          ),
+        ).toBe(true);
+        const audits = await fixture.app.auditLog.findMany({
+          where: { targetId: key.id },
+          select: { detailJson: true },
+        });
+        expect(
+          [secret, row.encryptedKey, row.keyFingerprint, row.encryptionKeyId].some((value) =>
+            JSON.stringify(audits).includes(value),
+          ),
+        ).toBe(false);
+        observe("crypto-redaction", {
+          dtoRejectedSecretFields: 5,
+          dbSafeProjection: true,
+          httpBodyHits: 0,
+          auditHits: 0,
+          fullFingerprintHits: 0,
+        });
+      });
+    }, 120_000);
+  });
+
+  describe("[failure-atomicity]", () => {
+    it("rolls back encrypted creation and status changes when the mandatory audit fails", async () => {
+      await withTransport(async (fixture, worker, actor) => {
+        const old = await create(worker, actor);
+        await fixture.admin.$executeRawUnsafe(
+          "CREATE FUNCTION public.phase013_reject_key_audit() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN IF NEW.action LIKE 'API_KEY_%' THEN RAISE EXCEPTION 'Synthetic audit failure'; END IF; RETURN NEW; END; $$",
+        );
+        await fixture.admin.$executeRawUnsafe(
+          'CREATE TRIGGER phase013_reject_key_audit BEFORE INSERT ON "AuditLog" FOR EACH ROW EXECUTE FUNCTION public.phase013_reject_key_audit()',
+        );
+        const before = await digest(fixture);
+        failure(
+          await worker.request({
+            method: "POST",
+            session: actor,
+            idempotencyKey: idem(),
+            body: { name: "必须回滚", provider: "fixture-provider", plainKey: syntheticSecret() },
+          }),
+          503,
+        );
+        failure(await patch(worker, actor, old, "DISABLED"), 503);
+        expect(await digest(fixture)).toBe(before);
+        observe("failure-atomicity", {
+          auditFaults: 2,
+          encryptedRowsChanged: 0,
+          statusRowsChanged: 0,
+          receiptsChanged: 0,
+          auditChanges: 0,
+        });
+      });
+    }, 120_000);
+    it("rolls back both activations and key states when the final audit or receipt fails, then retries the same candidate", async () => {
+      for (const fault of ["audit", "receipt"] as const)
+        await withApiKeyDatabase(async (fixture) => {
+          const actor = await issueSession(fixture, fixture.seed.userId),
+            old = await directCreate(fixture, actor),
+            secret = syntheticSecret(),
+            refs = await createReferenceFixture(fixture, old.id);
+          refs.acceptSecret(secret);
+          const table = fault === "audit" ? "AuditLog" : "AdminCommandReceipt",
+            condition =
+              fault === "audit"
+                ? "NEW.action='API_KEY_ROTATE'"
+                : "NEW.status='SUCCEEDED' AND NEW.\"operationId\"='post.admin.api-keys.id.rotate'";
+          await fixture.admin.$executeRawUnsafe(
+            `CREATE FUNCTION public.phase013_reject_final() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN IF ${condition} THEN RAISE EXCEPTION 'Synthetic final failure'; END IF; RETURN NEW; END; $$`,
+          );
+          await fixture.admin.$executeRawUnsafe(
+            `CREATE TRIGGER phase013_reject_final BEFORE ${fault === "audit" ? "INSERT" : "UPDATE"} ON "${table}" FOR EACH ROW EXECUTE FUNCTION public.phase013_reject_final()`,
+          );
+          const service = createAdminApiKeysService({
+            databaseUrl: fixture.url,
+            resolver: fixture.resolver,
+            referenceAdapters: [refs.adapter],
+            candidateClient: refs.client,
+          });
+          try {
+            const input = rotationInput(actor, old, secret);
+            await expect(
+              service.rotate(await makeApiKeyRequest(input), old.id),
+            ).rejects.toMatchObject({ status: 503 });
+            const run = await fixture.app.keyRotationRun.findFirstOrThrow();
+            expect(run.stage).toBe("READY");
+            expect(
+              (await refs.active()).every((ref) => ref.secretRef === old.id && ref.revision === 0),
+            ).toBe(true);
+            expect(await fixture.app.apiKeyConfig.count({ where: { status: "ACTIVE" } })).toBe(1);
+            expect(await fixture.app.apiKeyConfig.count({ where: { status: "DISABLED" } })).toBe(1);
+            expect(await fixture.app.auditLog.count({ where: { action: "API_KEY_ROTATE" } })).toBe(
+              0,
+            );
+            await fixture.admin.$executeRawUnsafe(
+              `DROP TRIGGER phase013_reject_final ON "${table}"`,
+            );
+            const result = await service.rotate(await makeApiKeyRequest(input), old.id);
+            expect(result.key.id).toBe(run.newKeyId);
+            expect(result.stage).toBe("ACTIVATED");
+            expect(await fixture.app.apiKeyConfig.count()).toBe(2);
+            observe("failure-atomicity", {
+              fault,
+              partialSwitches: 0,
+              failedKeyStateChanges: 0,
+              failedActivationAudits: 0,
+              retainedDisabledCandidates: 1,
+              retryReusedCandidate: true,
+            });
+          } finally {
+            await service.disconnect();
+            await refs.close();
+          }
+        });
+    }, 180_000);
+    it("detects reference-set additions and activation revisions after candidate HTTP validation", async () => {
+      for (const fault of ["set-addition", "revision"] as const)
+        await withApiKeyDatabase(async (fixture) => {
+          const actor = await issueSession(fixture, fixture.seed.userId),
+            old = await directCreate(fixture, actor),
+            secret = syntheticSecret(),
+            refs = await createReferenceFixture(fixture, old.id);
+          refs.acceptSecret(secret);
+          let changed = false;
+          refs.controls.beforeResponse = async () => {
+            if (changed) return;
+            changed = true;
+            if (fault === "set-addition") await refs.addReference("reference-c");
+            else
+              await fixture.admin
+                .$executeRaw`UPDATE phase013_fixture.activations SET revision=revision+1 WHERE id='reference-b'`;
+          };
+          const service = createAdminApiKeysService({
+            databaseUrl: fixture.url,
+            resolver: fixture.resolver,
+            referenceAdapters: [refs.adapter],
+            candidateClient: refs.client,
+          });
+          try {
+            await expect(
+              service.rotate(await makeApiKeyRequest(rotationInput(actor, old, secret)), old.id),
+            ).rejects.toMatchObject({ status: 409, publicCode: "VERSION_CONFLICT" });
+            expect((await refs.active()).every((ref) => ref.secretRef === old.id)).toBe(true);
+            expect(await fixture.app.apiKeyConfig.count({ where: { status: "ACTIVE" } })).toBe(1);
+            expect(await fixture.app.apiKeyConfig.count({ where: { status: "DISABLED" } })).toBe(1);
+            expect((await fixture.app.keyRotationRun.findFirstOrThrow()).stage).toBe("ABORTED");
+            observe("failure-atomicity", {
+              fault,
+              casStatus: 409,
+              partialSwitches: 0,
+              oldKeyAvailable: true,
+              candidateDisabled: true,
+            });
+          } finally {
+            await service.disconnect();
+            await refs.close();
+          }
+        });
+    }, 180_000);
+    it("rolls back the first activation when a database fault rejects switching the second reference", async () => {
+      await withApiKeyDatabase(async (fixture) => {
+        const actor = await issueSession(fixture, fixture.seed.userId),
+          old = await directCreate(fixture, actor),
+          secret = syntheticSecret(),
+          refs = await createReferenceFixture(fixture, old.id);
+        refs.acceptSecret(secret);
+        await fixture.admin.$executeRawUnsafe(
+          "CREATE FUNCTION phase013_fixture.reject_second() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN IF NEW.id='reference-b' THEN RAISE EXCEPTION 'Synthetic second activation failure'; END IF; RETURN NEW; END; $$",
+        );
+        await fixture.admin.$executeRawUnsafe(
+          "CREATE TRIGGER reject_second BEFORE UPDATE ON phase013_fixture.activations FOR EACH ROW EXECUTE FUNCTION phase013_fixture.reject_second()",
+        );
+        const service = createAdminApiKeysService({
+          databaseUrl: fixture.url,
+          resolver: fixture.resolver,
+          referenceAdapters: [refs.adapter],
+          candidateClient: refs.client,
+        });
+        try {
+          await expect(
+            service.rotate(await makeApiKeyRequest(rotationInput(actor, old, secret)), old.id),
+          ).rejects.toMatchObject({ status: 503 });
+          expect(
+            (await refs.active()).every((ref) => ref.secretRef === old.id && ref.revision === 0),
+          ).toBe(true);
+          expect(await fixture.app.apiKeyConfig.count({ where: { status: "ACTIVE" } })).toBe(1);
+          expect(await fixture.app.apiKeyConfig.count({ where: { status: "DISABLED" } })).toBe(1);
+          observe("failure-atomicity", {
+            secondActivationFault: true,
+            partialSwitches: 0,
+            oldKeyAvailable: true,
+            candidateDisabled: true,
+          });
+        } finally {
+          await service.disconnect();
+          await refs.close();
+        }
+      });
+    }, 120_000);
+  });
+});

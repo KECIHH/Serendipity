@@ -1,0 +1,2058 @@
+[
+  {
+    "name": "requireAdmin server authorization > queries the database on every invocation, with only the cookie token and ADMIN audience",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-guards.test.ts"
+  },
+  {
+    "name": "requireAdmin server authorization > rejects missing, fabricated and preview cookies before any database or resource query",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-guards.test.ts"
+  },
+  {
+    "name": "requireAdmin server authorization > propagates typed revocation, role and database failures instead of trusting an old JWE",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-guards.test.ts"
+  },
+  {
+    "name": "management page, Route Handler and Server Action guard ordering > runs the real protected layout guard and redirects unauthenticated requests to public login",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-guards.test.ts"
+  },
+  {
+    "name": "management page, Route Handler and Server Action guard ordering > executes zero API resource queries or writes for missing and USER principals",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-guards.test.ts"
+  },
+  {
+    "name": "management page, Route Handler and Server Action guard ordering > runs API resource work only after authentication and CSRF/Origin validation",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-guards.test.ts"
+  },
+  {
+    "name": "management page, Route Handler and Server Action guard ordering > fails closed with a safe API error when the database is unavailable",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-guards.test.ts"
+  },
+  {
+    "name": "management page, Route Handler and Server Action guard ordering > executes zero Server Action work for unauthenticated or unauthorized requests",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-guards.test.ts"
+  },
+  {
+    "name": "management page, Route Handler and Server Action guard ordering > authorizes a Server Action from the original Cookie header despite mutable cookie serialization",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-guards.test.ts"
+  },
+  {
+    "name": "management page, Route Handler and Server Action guard ordering > rejects duplicate incoming Cookie names before Server Action database or resource work",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-guards.test.ts"
+  },
+  {
+    "name": "management page, Route Handler and Server Action guard ordering > ignores client identity claims and verifies CSRF before invoking Server Action work",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-guards.test.ts"
+  },
+  {
+    "name": "[crypto-redaction] secret-envelope service > round-trip preserves normalized UTF-8 boundary bytes and exact schema",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/secret-envelope.test.ts"
+  },
+  {
+    "name": "[crypto-redaction] secret-envelope service > fingerprint normalization preserves case and interior bytes",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/secret-envelope.test.ts"
+  },
+  {
+    "name": "[crypto-redaction] secret-envelope service > random IVs keep ciphertext distinct and fingerprints stable",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/secret-envelope.test.ts"
+  },
+  {
+    "name": "[crypto-redaction] secret-envelope service > key resolver validates environment keys and rejects unknown ids",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/secret-envelope.test.ts"
+  },
+  {
+    "name": "[crypto-redaction] secret-envelope service > decryption rejects every malformed envelope and column mismatch",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/secret-envelope.test.ts"
+  },
+  {
+    "name": "[crypto-redaction] secret-envelope service > AAD and authentication bind record provider version IV tag and ciphertext",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/secret-envelope.test.ts"
+  },
+  {
+    "name": "[crypto-redaction] secret-envelope service > decryption failures contain only the fixed safe classification",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/secret-envelope.test.ts"
+  },
+  {
+    "name": "admin-login real PostgreSQL security > valid-login: real seeded administrator creates one fixed-lifetime session and transactional audit",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/admin-login.test.ts"
+  },
+  {
+    "name": "admin-login real PostgreSQL security > valid-login: schema and application privileges prohibit history edits, weak deadlines and raw identities",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/admin-login.test.ts"
+  },
+  {
+    "name": "admin-login real PostgreSQL security > uniform-failure: four valid-format failures all perform one real cost12 comparison with indistinguishable result and timing",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/admin-login.test.ts"
+  },
+  {
+    "name": "admin-login real PostgreSQL security > uniform-failure: bounds prevent bcrypt truncation and client role or session claims cannot authorize a USER",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/admin-login.test.ts"
+  },
+  {
+    "name": "admin-login real PostgreSQL security > dual-throttle: sixth account and twenty-first IP attempts deny independently; success preserves attack history",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/admin-login.test.ts"
+  },
+  {
+    "name": "admin-login real PostgreSQL security > dual-throttle: advisory locks enforce both budgets under parallel independent real connections",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/admin-login.test.ts"
+  },
+  {
+    "name": "admin-login real PostgreSQL security > dual-throttle: reservation convergence is idempotent and a crashed reservation releases only after its database TTL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/admin-login.test.ts"
+  },
+  {
+    "name": "admin-login real PostgreSQL security > persistence-proxy: reconnect and independent process retain buckets; forged forwarding cannot select another identity",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/admin-login.test.ts"
+  },
+  {
+    "name": "admin-login real PostgreSQL security > session-revocation: version change invalidates the old token on the next database check",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/admin-login.test.ts"
+  },
+  {
+    "name": "admin-login real PostgreSQL security > session-revocation: role change invalidates the old token on the next database check",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/admin-login.test.ts"
+  },
+  {
+    "name": "admin-login real PostgreSQL security > session-revocation: status change invalidates the old token on the next database check",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/admin-login.test.ts"
+  },
+  {
+    "name": "admin-login real PostgreSQL security > session-revocation: expiry change invalidates the old token on the next database check",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/admin-login.test.ts"
+  },
+  {
+    "name": "admin-login real PostgreSQL security > session-revocation: logout change invalidates the old token on the next database check",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/admin-login.test.ts"
+  },
+  {
+    "name": "admin-login real PostgreSQL security > session-revocation: a concurrent passwordHash change between comparison and issuance cannot inherit the prior credential check",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/admin-login.test.ts"
+  },
+  {
+    "name": "admin-login real PostgreSQL security > session-revocation: a concurrent sessionVersion change between comparison and issuance cannot inherit the prior credential check",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/admin-login.test.ts"
+  },
+  {
+    "name": "admin-login real PostgreSQL security > session-revocation: a concurrent role change between comparison and issuance cannot inherit the prior credential check",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/admin-login.test.ts"
+  },
+  {
+    "name": "admin-login real PostgreSQL security > session-revocation: a concurrent status change between comparison and issuance cannot inherit the prior credential check",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/admin-login.test.ts"
+  },
+  {
+    "name": "admin-login real PostgreSQL security > guards: real Next request stores and database-backed Route/Action guards precede all resource queries and writes",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/admin-login.test.ts"
+  },
+  {
+    "name": "admin-login real PostgreSQL security > guards: database, throttle and audit failures fail closed and rollback every session/user success effect",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/admin-login.test.ts"
+  },
+  {
+    "name": "admin-login real PostgreSQL security > routing-logout: USER and ADMIN share one service while logout revokes only its current row",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/admin-login.test.ts"
+  },
+  {
+    "name": "seed real CLI > secret-privilege: successful nested CLI cannot disclose sensitive bytes through stdout",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > secret-privilege: successful nested CLI cannot disclose sensitive bytes through stderr",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > first-seed: creates one verified admin, three internal defaults and four transactional audits",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > repeated-seed: identical input preserves every business/audit byte and creates no rows",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > repeated-seed: detects changed persisted administrator fingerprint without resetting it",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > repeated-seed: a previously valid seed rejects isolated SOURCE_MARKER corruption",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > repeated-seed: a previously valid seed rejects isolated SEED_RUN_ID corruption",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > repeated-seed: a previously valid seed rejects isolated FINGERPRINT corruption",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > repeated-seed: a previously valid seed rejects isolated ROLE corruption",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > repeated-seed: a previously valid seed rejects isolated STATUS corruption",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > repeated-seed: conflicting existing config value never overwrites the seed",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > repeated-seed: conflicting existing config group never overwrites the seed",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > repeated-seed: conflicting existing config public never overwrites the seed",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > concurrent-seed: independent processes resolve an actual conflict into one consistent seed",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > concurrent-seed: only three retries then read-only reconciliation; exhausted conflicts leave no rows",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > secret-privilege: create-only pre-existing USER remains untouched",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > secret-privilege: create-only pre-existing DISABLED remains untouched",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > secret-privilege: create-only pre-existing UNPROVEN_ADMIN remains untouched",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > secret-privilege: create-only pre-existing OTHER_MARKER remains untouched",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > secret-privilege: create-only pre-existing CONFLICTING_CONFIG remains untouched",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > secret-privilege: production guard rejects even a valid disposable fixture without writes",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > first-seed: audit failure rolls back the administrator and all configuration writes",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > first-seed: rejects MIGRATION_DRIFT before business writes",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > first-seed: rejects MARKER before business writes",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > first-seed: rejects OWNER before business writes",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "seed real CLI > secret-privilege: missing/weak/invalid command inputs exit nonzero with no credential output",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/seed.test.ts"
+  },
+  {
+    "name": "admin/users real PostgreSQL > list > uses the exact projection and stable filtered keyset pages, and rejects invalid cursors and bounds",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users.integration.test.ts"
+  },
+  {
+    "name": "admin/users real PostgreSQL > role-status > edits the revision from real GET, serializes competing updates, checks CAS before no-op and ignores login timestamps",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users.integration.test.ts"
+  },
+  {
+    "name": "admin/users real PostgreSQL > role-status > rejects all unknown enums, duplicate body identifiers, wrong CAS types and unbounded reasons without writes",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users.integration.test.ts"
+  },
+  {
+    "name": "admin/users real PostgreSQL > role-status > rolls back the user, revocations and receipt if the transactional audit insert fails",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users.integration.test.ts"
+  },
+  {
+    "name": "admin/users real PostgreSQL > self-protection > rejects every actual self role/status change with zero row changes and permits a versioned no-op",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users.integration.test.ts"
+  },
+  {
+    "name": "admin/users real PostgreSQL > last-admin > enforces the real locked invariant for the sole active administrator independently of the self guard",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users.integration.test.ts"
+  },
+  {
+    "name": "admin/users real PostgreSQL > last-admin > keeps one active administrator when two authorized processes concurrently disable each other",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users.integration.test.ts"
+  },
+  {
+    "name": "admin/users real PostgreSQL > session > increments the revocation version and rejects old tokens even when their database rows are active",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users.integration.test.ts"
+  },
+  {
+    "name": "admin/users real PostgreSQL > session > rejects expired and revoked principals and preserves both terminal row states",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users.integration.test.ts"
+  },
+  {
+    "name": "admin/users real PostgreSQL > session > rechecks the actor after a real advisory-lock wait and rolls back when logout wins",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users.integration.test.ts"
+  },
+  {
+    "name": "admin/users real PostgreSQL > authorization-idempotency > authorizes before target queries and rejects absent, ordinary, disabled, old-version or non-CSRF identities without changes",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users.integration.test.ts"
+  },
+  {
+    "name": "admin/users real PostgreSQL > authorization-idempotency > distinguishes a successful empty result from a real database read failure",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users.integration.test.ts"
+  },
+  {
+    "name": "admin/users real PostgreSQL > authorization-idempotency > replays the original response after process restart and later updates, rejects changed payloads and freezes terminal receipts",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users.integration.test.ts"
+  },
+  {
+    "name": "admin/users real PostgreSQL > authorization-idempotency > converges simultaneous same-key requests to one immutable effect and separates owner/resource domains",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users.integration.test.ts"
+  },
+  {
+    "name": "admin/users real PostgreSQL > authorization-idempotency > rolls back the mutation and audit if the terminal receipt write fails",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users.integration.test.ts"
+  },
+  {
+    "name": "admin/users real PostgreSQL > authorization-idempotency > requires a live claim for every state update and bases retention on real completion rather than backfilled creation time",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users.integration.test.ts"
+  },
+  {
+    "name": "admin/users real PostgreSQL > authorization-idempotency > persists preparation before testing, atomically rolls back partial candidates and fences resumed checkpoints with retained audit references",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users.integration.test.ts"
+  },
+  {
+    "name": "api-key-schema PostgreSQL > migration: exact field, enum, type, check and index inventory",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/api-key-schema.test.ts"
+  },
+  {
+    "name": "api-key-schema PostgreSQL > migration: SQL rejects the full malformed envelope matrix and column mismatches",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/api-key-schema.test.ts"
+  },
+  {
+    "name": "api-key-schema PostgreSQL > migration: fingerprint is globally unique and immutable content cannot be overwritten",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/api-key-schema.test.ts"
+  },
+  {
+    "name": "api-key-schema PostgreSQL > migration: real changes increment revision once and REVOKED cannot recover",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/api-key-schema.test.ts"
+  },
+  {
+    "name": "api-key-schema PostgreSQL > governance-absence: only produced models exist and migrations create no key rows",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/api-key-schema.test.ts"
+  },
+  {
+    "name": "[crypto-redaction] secret-envelope PostgreSQL > service envelopes round-trip through PostgreSQL exact schema",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/secret-envelope.test.ts"
+  },
+  {
+    "name": "[crypto-redaction] secret-envelope PostgreSQL > database fingerprint uniqueness preserves the original secret row",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/secret-envelope.test.ts"
+  },
+  {
+    "name": "[crypto-redaction] secret-envelope PostgreSQL > database lifecycle updates cannot replace encrypted bytes",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/secret-envelope.test.ts"
+  },
+  {
+    "name": "admin/logs PostgreSQL and guarded handlers > [crypto-redaction] reads exact safe DTOs and re-sanitizes nested legacy secrets without writes",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/logs.test.ts"
+  },
+  {
+    "name": "admin/logs PostgreSQL and guarded handlers > [crypto-redaction] distinguishes immutable administrator user and system audit kinds",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/logs.test.ts"
+  },
+  {
+    "name": "admin/logs PostgreSQL and guarded handlers > [failure-atomicity] enforces default and maximum page size with stable tied-timestamp keysets",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/logs.test.ts"
+  },
+  {
+    "name": "admin/logs PostgreSQL and guarded handlers > [failure-atomicity] filters by actor action target and inclusive time while retaining the first-page watermark",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/logs.test.ts"
+  },
+  {
+    "name": "admin/logs PostgreSQL and guarded handlers > [failure-atomicity] rejects malformed bounded queries before issuing protected reads",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/logs.test.ts"
+  },
+  {
+    "name": "admin/logs PostgreSQL and guarded handlers > [authorization] binds opaque cursors to signature administrator filters and page size",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/logs.test.ts"
+  },
+  {
+    "name": "admin/logs PostgreSQL and guarded handlers > [authorization] denies anonymous ordinary disabled stale and revoked identities with zero business queries",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/logs.test.ts"
+  },
+  {
+    "name": "admin/logs PostgreSQL and guarded handlers > [authorization] rechecks the database session after the audit query before releasing rows",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/logs.test.ts"
+  },
+  {
+    "name": "admin/logs PostgreSQL and guarded handlers > [failure-atomicity] reports real database and malformed legacy failures without unsafe partial responses",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/logs.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > transaction: global delegate wrappers and cloned clients cannot escape rollback",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > transaction: catching invalid clients after an earlier audit rolls back both business writes",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > transaction: failure poisoning stays within its own concurrent async scope",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > transaction: nested audited transactions cannot commit a separate inner write",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > transaction: caught audit failures and missing audits still prevent a business commit",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > transaction: an enrolled transaction cannot be reused after its callback ends",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > recursive-redaction: private text in a key name rejects the whole audited write",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > schema: exact fields, five indexes, optional FK and database column limits match",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > schema: database rejects malformed metadata even through raw delegate writes",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > append-only: runtime role has INSERT/SELECT without ownership, mutation or DDL privilege",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > append-only: trigger rejects UPDATE even after accidental DML grants",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > append-only: trigger rejects DELETE even after accidental DML grants",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > append-only: trigger rejects TRUNCATE even after accidental DML grants",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > append-only: actual User deletion nulls only its FK while retaining the snapshot",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > system-actor: USER and every closed SYSTEM actor support safe references and nullable targets",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > system-actor: ambiguous identities and spoofed registry/context values insert nothing",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > transaction: successful business writes and audits are paired under concurrency",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > transaction: audit FK failure rolls back the business write and leaks no driver details",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > transaction: business failure after audit and sanitizer failure after business both roll back",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > recursive-redaction: persistence contains only recursively sanitized summaries and network hashes",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > bounded-metadata: excess detail fails atomically and normalized Unicode UA fits the database",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > bounded-metadata: malformed write fields are rejected before the database delegate",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > lookup: exact request trace target actor queries and EXPLAIN use all five indexes",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log real PostgreSQL contract > lookup: empty reads differ from an actual unavailable database",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/audit-log.test.ts"
+  },
+  {
+    "name": "admin/api-keys real PostgreSQL > [create-read] > creates an encrypted key and replays its original safe response after a process restart",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys.integration.test.ts"
+  },
+  {
+    "name": "admin/api-keys real PostgreSQL > [create-read] > uses bounded filtered keyset pages and rejects cursor tampering and invalid input before writes",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys.integration.test.ts"
+  },
+  {
+    "name": "admin/api-keys real PostgreSQL > [disable-enable] > rejects revoked restoration before any write",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys.integration.test.ts"
+  },
+  {
+    "name": "admin/api-keys real PostgreSQL > [rotate-revoke] > rejects changed HTTP versions, redirects and oversized bodies while retaining one disabled candidate",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys.integration.test.ts"
+  },
+  {
+    "name": "admin/api-keys real PostgreSQL > [rotate-revoke] > switches two persisted reference versions atomically after real version-bound HTTP tests",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys.integration.test.ts"
+  },
+  {
+    "name": "admin/api-keys real PostgreSQL > [rotate-revoke] > retains a failed disabled candidate and reuses it across a fresh service without enabling it through PATCH",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys.integration.test.ts"
+  },
+  {
+    "name": "admin/api-keys real PostgreSQL > [rotate-revoke] > allows exactly one winner when two administrators concurrently rotate the same key",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys.integration.test.ts"
+  },
+  {
+    "name": "admin/api-keys real PostgreSQL > [rotate-revoke] > lets emergency revocation interrupt new calls while an ordinary rotation is awaiting HTTP",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys.integration.test.ts"
+  },
+  {
+    "name": "admin/api-keys real PostgreSQL > [rotate-revoke] > rotates through the same coordinator with an empty real reference registry",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys.integration.test.ts"
+  },
+  {
+    "name": "admin/api-keys real PostgreSQL > [authorization] > rejects every unauthenticated or stale principal and CSRF failure with zero protected reads or writes",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys.integration.test.ts"
+  },
+  {
+    "name": "admin/api-keys real PostgreSQL > [crypto-redaction] > rejects secret fields at the retained result whitelist",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys.integration.test.ts"
+  },
+  {
+    "name": "admin/api-keys real PostgreSQL > [failure-atomicity] > rolls back encrypted creation and status changes when the mandatory audit fails",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys.integration.test.ts"
+  },
+  {
+    "name": "admin/api-keys real PostgreSQL > [failure-atomicity] > rolls back both activations and key states when the final audit or receipt fails, then retries the same candidate",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys.integration.test.ts"
+  },
+  {
+    "name": "admin/api-keys real PostgreSQL > [failure-atomicity] > detects reference-set additions and activation revisions after candidate HTTP validation",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys.integration.test.ts"
+  },
+  {
+    "name": "admin/api-keys real PostgreSQL > [failure-atomicity] > rolls back the first activation when a database fault rejects switching the second reference",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys.integration.test.ts"
+  },
+  {
+    "name": "admin/users client > loads the exact management page, keeps self controls absent and separates a failed list from an empty list",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users-client.test.tsx"
+  },
+  {
+    "name": "admin/users client > uses opaque next/previous cursors and clears pagination when applying role/status/page-size filters",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users-client.test.tsx"
+  },
+  {
+    "name": "admin/users client > retains the real GET revision in PATCH, sends CSRF and a command key, and focuses the trigger after success",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users-client.test.tsx"
+  },
+  {
+    "name": "admin/users client > blocks duplicate in-flight submissions and reuses the same key and payload on a safe retry",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users-client.test.tsx"
+  },
+  {
+    "name": "admin/users client > shows the latest safe 409 summary and requires a newly selected operation and key",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users-client.test.tsx"
+  },
+  {
+    "name": "admin/users client > reports a same-value response truthfully without claiming session revocation",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users-client.test.tsx"
+  },
+  {
+    "name": "admin/users client > requires a meaningful reason and returns focus when the user cancels editing",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users-client.test.tsx"
+  },
+  {
+    "name": "admin/users client > rejects an unexpected sensitive response field instead of rendering any partial unsafe DTO",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users-client.test.tsx"
+  },
+  {
+    "name": "admin/users client > offers reauthentication after authorization expires without echoing the server diagnostic",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/users-client.test.tsx"
+  },
+  {
+    "name": "admin/api-keys safe interface > [create-read] shows loading, empty and exact safe key pages",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys-client.test.tsx"
+  },
+  {
+    "name": "admin/api-keys safe interface > [crypto-redaction] submits an uncontrolled one-time secret and never reflects it in HTML or browser storage",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys-client.test.tsx"
+  },
+  {
+    "name": "admin/api-keys safe interface > [failure-atomicity] reentry after a lost response reuses the same request identity without retaining the secret",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys-client.test.tsx"
+  },
+  {
+    "name": "admin/api-keys safe interface > [disable-enable] requires reselection after stale CAS and never enables a revoked key",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys-client.test.tsx"
+  },
+  {
+    "name": "admin/api-keys safe interface > [rotate-revoke] displays pending validation honestly and only reports activation from its receipt",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys-client.test.tsx"
+  },
+  {
+    "name": "admin/api-keys safe interface > [authorization] uses fixed authorization errors and rejects extra secret fields from the server",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys-client.test.tsx"
+  },
+  {
+    "name": "admin/api-keys safe interface > [create-read] binds pagination to current filters",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys-client.test.tsx"
+  },
+  {
+    "name": "admin/api-keys safe interface > [crypto-redaction] renders safe error/not-found pages without exception data",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys-client.test.tsx"
+  },
+  {
+    "name": "admin/logs client > [failure-atomicity] separates loading empty and service-error states with safe retries",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/logs-client.test.tsx"
+  },
+  {
+    "name": "admin/logs client > [failure-atomicity] uses opaque next and previous cursors then resets them for new filters",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/logs-client.test.tsx"
+  },
+  {
+    "name": "admin/logs client > [crypto-redaction] renders audit summaries as text and never writes browser storage",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/logs-client.test.tsx"
+  },
+  {
+    "name": "admin/logs client > [crypto-redaction] rejects unexpected fields and incomplete audit DTOs without partial rendering",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/logs-client.test.tsx"
+  },
+  {
+    "name": "admin/logs client > [authorization] requests reauthentication for denied reads and never trusts server error text",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/logs-client.test.tsx"
+  },
+  {
+    "name": "admin/logs client > [failure-atomicity] ignores stale responses after a filter request replaces them",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/logs-client.test.tsx"
+  },
+  {
+    "name": "admin/logs client > [failure-atomicity] error and not-found views omit framework messages stacks and request data",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/logs-client.test.tsx"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > ordered-messages: ChatMessage fields SQL nullability timestamps and indexes are exact",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > ordered-messages: duplicate sequence is rejected",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > ordered-messages: concurrent equal sequences have one database winner",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > ordered-messages: sequence is required positive and unique only within its record",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > ordered-messages: same-millisecond messages paginate by sequence without skips or duplicates",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > ordered-messages: cursor verifies its record and persisted sequence-id anchor",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > ordered-messages: an authorized empty history is empty while missing or foreign records are errors",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > ordered-messages: PostgreSQL text accepts a long message without truncation",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > ordered-messages: required role rejects SQL NULL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > ordered-messages: required kind rejects SQL NULL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > ordered-messages: required content rejects SQL NULL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > ordered-messages: a missing parent record fails the real foreign key",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > client-idempotency: duplicate client id is rejected",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > client-idempotency: concurrent duplicate client ids have one database winner",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > client-idempotency: null ids can repeat and non-null ids are scoped to one record",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > client-idempotency: concurrent equal payload retries replay the persisted message",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > client-idempotency: retries ignore new scheduling sequence while preserving id and timestamp",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > client-idempotency: payload mismatches conflict without extra messages or record updates",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > client-idempotency: repositories preserve null semantics and allow the same key on another record",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > client-idempotency: structured or unvalidated JSON input fails closed before a replay or write",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > client-idempotency: a unique failure rolls back prior work and stops following writes",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > reply-relation: missing reply targets fail the actual self foreign key",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > reply-relation: valid same-record replies are readable from both relation directions",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > reply-relation: repository rejects missing and cross-record targets with no later writes",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > reply-relation: the record lock rechecks current ownership before appending a reply",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > delete-policy: User Restrict record Cascade and reply SetNull are exact foreign-key policies",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > delete-policy: deleting an owning user is restricted and preserves its travel history",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > delete-policy: exact fixture record purge cascades only that record's messages",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > delete-policy: deleting a reply target sets its reply links to null without deleting replies",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > delete-policy: business repository exposes no individual deletion or sequence allocator",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage real PostgreSQL contract > delete-policy: concurrent fixtures clean only their recorded IDs and preserve every other fixture",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/chat-message.test.ts"
+  },
+  {
+    "name": "administrator routing prefilter > matches /admin and descendants without matching /adminx",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/middleware.test.ts"
+  },
+  {
+    "name": "administrator routing prefilter > keeps the public login/framework route /admin/login reachable",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/middleware.test.ts"
+  },
+  {
+    "name": "administrator routing prefilter > keeps the public login/framework route /admin/login/ reachable",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/middleware.test.ts"
+  },
+  {
+    "name": "administrator routing prefilter > keeps the public login/framework route /api/auth/callback/credentials reachable",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/middleware.test.ts"
+  },
+  {
+    "name": "administrator routing prefilter > keeps the public login/framework route /login reachable",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/middleware.test.ts"
+  },
+  {
+    "name": "administrator routing prefilter > redirects an unauthenticated /admin to login",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/middleware.test.ts"
+  },
+  {
+    "name": "administrator routing prefilter > redirects an unauthenticated /admin/settings to login",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/middleware.test.ts"
+  },
+  {
+    "name": "administrator routing prefilter > does not derive an external redirect from a supplied host",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/middleware.test.ts"
+  },
+  {
+    "name": "administrator routing prefilter > preserves the configured origin through the real Next middleware adapter",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/middleware.test.ts"
+  },
+  {
+    "name": "administrator routing prefilter > has no preview environment, query or cookie bypass in development",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/middleware.test.ts"
+  },
+  {
+    "name": "administrator routing prefilter > has no preview environment, query or cookie bypass in test",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/middleware.test.ts"
+  },
+  {
+    "name": "administrator routing prefilter > has no preview environment, query or cookie bypass in production",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/middleware.test.ts"
+  },
+  {
+    "name": "administrator routing prefilter > only prefilters cookie presence and leaves database authorization to the server guard",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/middleware.test.ts"
+  },
+  {
+    "name": "administrator routing prefilter > keeps the exact route matcher and excludes database or server auth code from Edge",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/middleware.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > ownership: anonymous and authenticated owners each persist exactly one owner",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > ownership: ownerless rows are rejected",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > ownership: dual-owned rows are rejected",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > ownership: owner CHECK and foreign key also reject invalid updates",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > ownership: wrong and missing owners cannot read a known record",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > ownership: transfer atomically replaces the anonymous owner and preserves history",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > ownership: failed transfer leaves the original owner and messages unchanged",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > ownership: concurrent transfers have only one authenticated owner",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > lifecycle-version: baseline travel migrations remain applied as current models evolve",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > lifecycle-version: model inventory and generated fields contain only current producers",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > lifecycle-version: TravelRecord SQL types nullability defaults and timestamps are exact",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > lifecycle-version: all three new enum inventories match their exact contracts",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > lifecycle-version: owner and status query indexes and CHECK constraints exist",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > lifecycle-version: status DRAFT round-trips without implying transition rules",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > lifecycle-version: status NEEDS_INFO round-trips without implying transition rules",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > lifecycle-version: status PLANNED round-trips without implying transition rules",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > lifecycle-version: status MODIFIED round-trips without implying transition rules",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > lifecycle-version: status FINALIZED round-trips without implying transition rules",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > lifecycle-version: status NEEDS_REVALIDATION round-trips without implying transition rules",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > lifecycle-version: status ARCHIVED round-trips without implying transition rules",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > lifecycle-version: a fresh record starts at DRAFT version zero with no requirement",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > lifecycle-version: updating a title advances updatedAt without incrementing version",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > lifecycle-version: the repository persists a cleaned display title without adding identity fields",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > lifecycle-version: negative versions fail INSERT and UPDATE with no partial write",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > lifecycle-version: required title rejects SQL NULL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > lifecycle-version: required status rejects SQL NULL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > lifecycle-version: required version rejects SQL NULL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > lifecycle-version: nullable JSON schema storage is separate from unavailable product validation",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > lifecycle-version: unavailable JSON schema fails closed without creating a record",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > hash: malformed hash values fail the real database format CHECK",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > hash: the fixed-width column rejects oversized input rather than silently truncating it",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord real PostgreSQL contract > ownership: a failed CHECK rolls back earlier writes and stops later writes",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/travel-record.test.ts"
+  },
+  {
+    "name": "shared administrator and user login form > labels inputs, masks the password and posts only to the single Auth.js provider",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/admin-login-ui.test.tsx"
+  },
+  {
+    "name": "shared administrator and user login form > shows a safe accessible error on status 401 without navigating",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/admin-login-ui.test.tsx"
+  },
+  {
+    "name": "shared administrator and user login form > shows a safe accessible error on status 429 without navigating",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/admin-login-ui.test.tsx"
+  },
+  {
+    "name": "shared administrator and user login form > shows a safe accessible error on status 503 without navigating",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/admin-login-ui.test.tsx"
+  },
+  {
+    "name": "shared administrator and user login form > shares the handler for USER login and returns to the site",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/admin-login-ui.test.tsx"
+  },
+  {
+    "name": "shared administrator and user login form > does not submit credentials when CSRF bootstrap is unavailable",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/admin-login-ui.test.tsx"
+  },
+  {
+    "name": "administrator logout > uses Auth.js signout and navigates only after confirmed success",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/admin-login-ui.test.tsx"
+  },
+  {
+    "name": "administrator logout > does not claim server logout success after the handler clears its cookie on database failure",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/admin-login-ui.test.tsx"
+  },
+  {
+    "name": "administrator logout > allows retry without claiming cookie cleanup when a service failure has no cleanup receipt",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/admin-login-ui.test.tsx"
+  },
+  {
+    "name": "admin/layout navigation and route boundaries > checks every configured href against a real page and has exactly one production shell and navigation source",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/layout.test.tsx"
+  },
+  {
+    "name": "admin/layout navigation and route boundaries > selects the longest match only at a path-segment boundary",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/layout.test.tsx"
+  },
+  {
+    "name": "admin/layout navigation and route boundaries > keeps public login and neutral root free of the protected shell",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/layout.test.tsx"
+  },
+  {
+    "name": "admin/layout navigation and route boundaries > authorizes the protected layout and exposes only the safe current administrator identity",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/layout.test.tsx"
+  },
+  {
+    "name": "admin/layout navigation and route boundaries > redirects the protected index to users and guards the users page independently",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/layout.test.tsx"
+  },
+  {
+    "name": "admin/layout navigation and route boundaries > rejects 401 before rendering any shell or users content",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/layout.test.tsx"
+  },
+  {
+    "name": "admin/layout navigation and route boundaries > rejects 403 before rendering any shell or users content",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/layout.test.tsx"
+  },
+  {
+    "name": "admin/layout navigation and route boundaries > does not disguise an unavailable authorization database as a successful empty page",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/layout.test.tsx"
+  },
+  {
+    "name": "admin/layout navigation and route boundaries > supports visible current navigation, arrow focus, Escape collapse and focus return",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/layout.test.tsx"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > migration: User and SystemConfig baseline migrations remain applied as current models evolve",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > schema: model and database inventories contain only the frozen fields and tables",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > schema: group listing, actor lookup, uniqueness and CHECK constraints are indexed",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > schema: required key rejects SQL NULL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > schema: required valueJson rejects SQL NULL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > schema: required description rejects SQL NULL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > schema: required group rejects SQL NULL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > schema: required revision rejects SQL NULL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > schema: JSON round-trips and timestamps do not advance revision implicitly",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > default-private: omitted visibility reads back false with revision zero and no actor",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > key-uniqueness: a duplicate key is rejected across groups with P2002",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > key-uniqueness: concurrent insertion records only the one successful owner ID",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > group-validation: the parser and database accept AI",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > group-validation: the parser and database accept UI",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > group-validation: the parser and database accept EXPORT",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > group-validation: the parser and database accept SECURITY",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > group-validation: the parser and database accept GENERAL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > group-validation: unknown values fail the parser and direct SQL INSERT/UPDATE CHECK",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > user-fk: unknown actors fail Prisma and direct SQL foreign-key validation",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > user-fk: deleting the actor sets updatedBy to null and preserves the configuration",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > user-fk: updating an actor ID cascades and the generated inverse relation is exact",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > projection: real Prisma selects return exactly public eight and admin nine safe fields",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > cleanup ownership isolation > cleanup: parallel first test removes only its successful IDs and preserves the fixture",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "SystemConfig real PostgreSQL contract > cleanup ownership isolation > cleanup: parallel second test removes only its successful IDs and preserves the fixture",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/config-models.test.ts"
+  },
+  {
+    "name": "LoadingState > announces a polite, busy status with a visible default label",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/components/common/common-components.test.tsx"
+  },
+  {
+    "name": "LoadingState > renders a custom loading label",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/components/common/common-components.test.tsx"
+  },
+  {
+    "name": "EmptyState > renders its title without adding an empty description paragraph",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/components/common/common-components.test.tsx"
+  },
+  {
+    "name": "EmptyState > renders an optional description",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/components/common/common-components.test.tsx"
+  },
+  {
+    "name": "EmptyState > renders the action slot",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/components/common/common-components.test.tsx"
+  },
+  {
+    "name": "ErrorState > announces the error message as an alert",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/components/common/common-components.test.tsx"
+  },
+  {
+    "name": "ErrorState > invokes the retry handler once when the retry button is clicked",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/components/common/common-components.test.tsx"
+  },
+  {
+    "name": "ErrorState > omits the retry button when there is no retry handler",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/components/common/common-components.test.tsx"
+  },
+  {
+    "name": "PageHeader > renders the page title as the level-one heading",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/components/common/common-components.test.tsx"
+  },
+  {
+    "name": "PageHeader > renders the actions slot",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/components/common/common-components.test.tsx"
+  },
+  {
+    "name": "layout shells > links the site name to home and keeps the navigation static",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/components/common/common-components.test.tsx"
+  },
+  {
+    "name": "layout shells > renders reachable user management and logout while preserving its children",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/components/common/common-components.test.tsx"
+  },
+  {
+    "name": "Auth.js HTTP authentication boundary > keeps the real CSRF and single Credentials provider handlers available",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-http.test.ts"
+  },
+  {
+    "name": "Auth.js HTTP authentication boundary > gives all four credential failure categories byte-identical status, body and headers",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-http.test.ts"
+  },
+  {
+    "name": "Auth.js HTTP authentication boundary > returns real 429 and safe Retry-After instead of Auth.js's error redirect",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-http.test.ts"
+  },
+  {
+    "name": "Auth.js HTTP authentication boundary > blocks missing/invalid CSRF, cross-site metadata and a foreign Origin before credentials",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-http.test.ts"
+  },
+  {
+    "name": "Auth.js HTTP authentication boundary > bounds raw bodies and rejects an invalid audience without creating a login attempt",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-http.test.ts"
+  },
+  {
+    "name": "Auth.js HTTP authentication boundary > fails closed when the request has no trusted client-address attestation",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-http.test.ts"
+  },
+  {
+    "name": "Auth.js HTTP authentication boundary > delivers only an encrypted opaque token with a fixed 12-hour Cookie",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-http.test.ts"
+  },
+  {
+    "name": "Auth.js HTTP authentication boundary > does not slide the JWT, public session expiry or Cookie expiry on refresh",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-http.test.ts"
+  },
+  {
+    "name": "Auth.js HTTP authentication boundary > returns 503 and clears the local cookie when session validation is unavailable",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-http.test.ts"
+  },
+  {
+    "name": "Auth.js HTTP authentication boundary > does not claim logout succeeded when database revocation fails",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-http.test.ts"
+  },
+  {
+    "name": "Auth.js HTTP authentication boundary > revokes the database session and rejects its old cookie despite unrelated prefix cookies ",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-http.test.ts"
+  },
+  {
+    "name": "Auth.js HTTP authentication boundary > revokes the database session and rejects its old cookie despite unrelated prefix cookies ; authjs.session-token-foreign=untrusted-suffix",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-http.test.ts"
+  },
+  {
+    "name": "Auth.js HTTP authentication boundary > does not report successful server logout for an ambiguous base and chunk cookie",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-http.test.ts"
+  },
+  {
+    "name": "Auth.js HTTP authentication boundary > rejects cross-site logout before revocation or clearing the local session",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-http.test.ts"
+  },
+  {
+    "name": "Auth.js HTTP authentication boundary > shares the provider with the USER audience and never follows client redirect destinations",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-http.test.ts"
+  },
+  {
+    "name": "Auth.js HTTP authentication boundary > accepts neither a fabricated cookie, a bearer token nor an expired opaque envelope",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-http.test.ts"
+  },
+  {
+    "name": "application layout boundaries > mounts a single Toaster inside the root layout body",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/app/layout.test.ts"
+  },
+  {
+    "name": "application layout boundaries > keeps only the route-group homepage after migration",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/app/layout.test.ts"
+  },
+  {
+    "name": "application layout boundaries > keeps public login separate from the protected redirect and user administration",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/app/layout.test.ts"
+  },
+  {
+    "name": "auth trusted transport > canonicalizes IPv6 and mapped IPv4 without hostnames or zone identifiers",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-ingress.test.ts"
+  },
+  {
+    "name": "auth trusted transport > ignores even malformed forwarding headers from an untrusted direct peer",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-ingress.test.ts"
+  },
+  {
+    "name": "auth trusted transport > walks trusted proxy chains from the socket toward the first untrusted hop",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-ingress.test.ts"
+  },
+  {
+    "name": "auth trusted transport > uses a real socket and rejects missing, altered, wrong-key, wrong-path and wrong-method proofs",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-ingress.test.ts"
+  },
+  {
+    "name": "auth trusted transport > keeps concurrent asynchronous request proofs isolated and single-use",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-ingress.test.ts"
+  },
+  {
+    "name": "audit-log pure boundary > recursive-redaction: dynamic sensitive field names cannot carry private canaries",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log pure boundary > bounded-metadata: excessive own-key counts fail before descriptor copying",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log pure boundary > recursive-redaction: nested objects, arrays, separator and case variants never retain canaries",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log pure boundary > recursive-redaction: safe summaries are preserved and arbitrary private text fails closed",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log pure boundary > recursive-redaction: network addresses use canonical domain-separated HMAC",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log pure boundary > bounded-metadata: depth and node limits include redacted subtrees",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log pure boundary > bounded-metadata: exact UTF-8 byte budgets fail instead of truncating detail",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log pure boundary > bounded-metadata: malformed JSON, accessors and prototype tricks cannot execute",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log pure boundary > bounded-metadata: 257-character UA normalizes, Unicode stays intact, huge input fails",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log pure boundary > lookup: server contexts are immutable, bounded, unique and unforgeable by copying",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/audit-log.test.ts"
+  },
+  {
+    "name": "audit-log pure boundary > transaction: a real global Prisma client cannot be passed to the helper",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/audit-log.test.ts"
+  },
+  {
+    "name": "TravelRecord trusted owner and hashing boundary > hash: canonical 256-bit Cookie material hashes its exact UTF-8 bytes deterministically",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord trusted owner and hashing boundary > hash: wrong lengths encodings and non-string values fail with a redacted error",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord trusted owner and hashing boundary > ownership: owner parser accepts exactly one trusted scalar owner",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord trusted owner and hashing boundary > ownership: owner parser rejects missing ambiguous inherited and alternate identity fields",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord trusted owner and hashing boundary > ownership: owner parser rejects accessors and hidden or symbol keys without invoking getters",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord trusted owner and hashing boundary > hash: request token alternatives and malformed persisted hashes are not valid owner inputs",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord trusted owner and hashing boundary > ownership: all repositories reject invalid owners before touching SQL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord trusted owner and hashing boundary > lifecycle-version: JSON schema absence fails closed before starting SQL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord trusted owner and hashing boundary > ownership: transfer requires an anonymous owner and a nonempty destination user",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord trusted owner and hashing boundary > ownership: database failures are safe errors rather than records or missing-record responses",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord trusted owner and hashing boundary > ownership: repository exports only this phase's owned record primitives",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/travel-record.test.ts"
+  },
+  {
+    "name": "TravelRecord trusted owner and hashing boundary > ownership: database fixtures reject non-loopback unknown and unowned targets before connecting",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/travel-record.test.ts"
+  },
+  {
+    "name": "ChatMessage repository boundary > ordered-messages: cursor round-trips the record sequence and message identity",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage repository boundary > ordered-messages: malformed noncanonical and ambiguous cursor payloads are rejected",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage repository boundary > ordered-messages: cursor encoder rejects missing extra and invalid anchor fields",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage repository boundary > ownership: reading and appending require exactly one owner before SQL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage repository boundary > ordered-messages: missing nonintegral and out-of-range sequences fail before SQL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage repository boundary > ordered-messages: invalid role kind content and record identities fail before SQL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage repository boundary > ordered-messages: bad page sizes and foreign or malformed cursors fail before SQL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage repository boundary > client-idempotency: absent structured validation rejects all non-null JSON before SQL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage repository boundary > client-idempotency: invalid client and reply identifiers fail before SQL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage repository boundary > ordered-messages: database faults remain redacted errors and never become empty pages",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/chat-message.test.ts"
+  },
+  {
+    "name": "ChatMessage repository boundary > delete-policy: ordinary repository exports no message deletion or sequence allocation",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/chat-message.test.ts"
+  },
+  {
+    "name": "admin/api-keys request boundaries > normalizes reserved IPv6 CIDRs and rejects every unsafe DNS result before HTTPS transport",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/admin-api-keys.test.ts"
+  },
+  {
+    "name": "admin/api-keys request boundaries > normalizes only the secret boundary and keeps exact create, patch and rotate fields",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/admin-api-keys.test.ts"
+  },
+  {
+    "name": "admin/api-keys request boundaries > hashes every validated nonsecret field in each registered write operation",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/admin-api-keys.test.ts"
+  },
+  {
+    "name": "admin/api-keys request boundaries > rejects duplicate filters and enforces the stable cursor and page bounds",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/admin-api-keys.test.ts"
+  },
+  {
+    "name": "admin/api-keys request boundaries > fails closed for production loopback, unbound targets and unsafe credential headers without any request",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/admin-api-keys.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > normalizes   Alice.Smith+TAG@EXAMPLE.COM\t without URL host rewriting",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > normalizes USER@例え.テスト without URL host rewriting",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > normalizes USER@XN--R8JZ45G.XN--ZCKZAH without URL host rewriting",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > normalizes USER@faß.de without URL host rewriting",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > normalizes USER@ＦＯＯ。example without URL host rewriting",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > normalizes USER@σόλος.example without URL host rewriting",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > normalizes USER@127.1 without URL host rewriting",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > normalizes USER@2130706433 without URL host rewriting",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > normalizes USER@localhost without URL host rewriting",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > normalizes !#$%&'*+/=?^_`{|}~-@example.com without URL host rewriting",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"user\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"user@@example.com\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"@example.com\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a@\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \".a@example.com\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a.@example.com\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a..b@example.com\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"用户@example.com\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"ü@example.com\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a b@example.com\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"\\\"a\\\"@example.com\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a\\u0000@example.com\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a@-example.com\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a@example-.com\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a@a..com\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a@example.com.\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a@example_.com\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a@[127.0.0.1]\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a@example.com/path\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a@example.com\\\\path\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a@example.com:443\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a@example.com?x\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a@example.com#x\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a@exa\\tmple.com\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a@exa\\nmple.com\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a@%65xample.com\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a@xn--a.example\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a@ab--cd.example\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a@a‌b.example\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.com\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"a@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.com\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects invalid identity \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > accepts the exact 64-byte local and 254-byte total boundaries",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "normalizeEmailV1 > rejects runtime non-string input without exposing it",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth.test.ts"
+  },
+  {
+    "name": "auth services input and security primitives > normalizes the account through V1 while retaining exact password bytes",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-services.test.ts"
+  },
+  {
+    "name": "auth services input and security primitives > rejects oversized and malformed UTF-8 before bcrypt can silently truncate",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-services.test.ts"
+  },
+  {
+    "name": "auth services input and security primitives > uses keyed domain-separated hashes and one canonical address identity",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-services.test.ts"
+  },
+  {
+    "name": "auth services input and security primitives > requires both advisory bucket keys in a deterministic order",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-services.test.ts"
+  },
+  {
+    "name": "auth services input and security primitives > waits until both buckets admit, retaining failures when reservations expire",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-services.test.ts"
+  },
+  {
+    "name": "auth services input and security primitives > requires enough rows to leave the window when a bucket already exceeds its limit",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-services.test.ts"
+  },
+  {
+    "name": "auth services input and security primitives > accepts only canonical 256-bit opaque tokens and persists only their digest",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/auth-services.test.ts"
+  },
+  {
+    "name": "Prisma client lifecycle > cache: repeated resolutions and module imports reuse one client",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/db.test.ts"
+  },
+  {
+    "name": "Prisma client lifecycle > errors: initialization and connection failures are classified and redacted",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/db.test.ts"
+  },
+  {
+    "name": "Prisma client lifecycle > modes: production leaves globals untouched; development and test reuse cache",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/db.test.ts"
+  },
+  {
+    "name": "readEnv > valid configuration accepts registered required values and coerces typed values",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/env.test.ts"
+  },
+  {
+    "name": "readEnv > reports a missing DATABASE_URL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/env.test.ts"
+  },
+  {
+    "name": "readEnv > reports two missing values in one error",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/env.test.ts"
+  },
+  {
+    "name": "readEnv > rejects a mysql database URL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/env.test.ts"
+  },
+  {
+    "name": "readEnv > rejects an AUTH_SECRET shorter than 32 characters",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/env.test.ts"
+  },
+  {
+    "name": "readEnv > rejects a 31-byte ENCRYPTION_KEY",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/env.test.ts"
+  },
+  {
+    "name": "readEnv > accepts a 32-byte ENCRYPTION_KEY",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/env.test.ts"
+  },
+  {
+    "name": "readEnv > rejects TRUE for AI_MOCK",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/env.test.ts"
+  },
+  {
+    "name": "readEnv > API key required when AI_MOCK is false",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/env.test.ts"
+  },
+  {
+    "name": "readEnv > mock optional allows an empty AI_API_KEY",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/env.test.ts"
+  },
+  {
+    "name": "readEnv > rejects http for AI_BASE_URL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/env.test.ts"
+  },
+  {
+    "name": "readEnv > rejects invalid and too-small timeout values",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/env.test.ts"
+  },
+  {
+    "name": "readEnv > requires a positive cost limit",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/env.test.ts"
+  },
+  {
+    "name": "readEnv > matches .env.example to the active documented server registry",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/env.test.ts"
+  },
+  {
+    "name": "readEnv > registers future CLI inputs without activating them for the Web parser",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/env.test.ts"
+  },
+  {
+    "name": "readEnv > auth origin is fixed, credential-free, and requires HTTPS outside exact loopback hosts",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/env.test.ts"
+  },
+  {
+    "name": "formatDateRange > formats fixed local dates without applying an offset or locale",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatDateRange > displays one date for equal endpoints and preserves four-digit early years",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatDateRange > rejects a reversed range",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatDateRange > rejects the nonexistent Gregorian date 2025-02-29 at either endpoint",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatDateRange > rejects the nonexistent Gregorian date 1900-02-29 at either endpoint",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatDateRange > rejects the nonexistent Gregorian date 2024-02-30 at either endpoint",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatDateRange > rejects the nonexistent Gregorian date 2026-13-01 at either endpoint",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatDateRange > rejects the nonexistent Gregorian date 2026-00-01 at either endpoint",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatDateRange > rejects the nonexistent Gregorian date 0000-01-01 at either endpoint",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatDateRange > rejects timestamps, missing padding and non-string input",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatDuration > formats 0 minutes as 0分钟",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatDuration > formats 45 minutes as 45分钟",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatDuration > formats 90 minutes as 1小时30分钟",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatDuration > formats 120 minutes as 2小时",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatDuration > rejects negative duration values",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatDuration > rejects fractions, nonfinite values, unsafe integers and coerced input",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatMoney > formats CNY and USD with fixed symbols, grouping and two decimal places",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatMoney > keeps all decimal digits beyond Number.MAX_SAFE_INTEGER",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatMoney > uses half-even rounding for ties, preserving a later nonzero digit",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatMoney > rejects malformed decimals without coercion",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatMoney > rejects unknown or incorrectly cased currencies",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatCostEstimate > displays the amount with an explicit estimate label",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatCostEstimate > distinguishes a verified estimate from a final price",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatCostEstimate > displays unknown costs without a zero amount",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatCostEstimate > displays free only for an evidenced explicit zero",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatCostEstimate > keeps stale evidence visible without consulting the current time",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatCostEstimate > rejects incomplete canonical shapes and invalid confidence",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatCostEstimate > requires source evidence and real timestamps for known costs",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "formatCostEstimate > does not change source amounts or freshness metadata",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "truncate > keeps strings that fit and includes the ellipsis in the limit",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "truncate > counts Unicode code points without splitting a surrogate pair",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "truncate > rejects negative, fractional, nonfinite and unsafe limits",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/format.test.ts"
+  },
+  {
+    "name": "safeJsonParse > returns a discriminated success result with the parsed value",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/json.test.ts"
+  },
+  {
+    "name": "safeJsonParse > returns a nonempty error for invalid JSON",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/json.test.ts"
+  },
+  {
+    "name": "safeJsonParse > distinguishes valid JSON null from a parse failure",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/json.test.ts"
+  },
+  {
+    "name": "stableStringify > serializes object keys in a stable order regardless of insertion order",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/json.test.ts"
+  },
+  {
+    "name": "stableStringify > sorts nested objects while preserving array order",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/json.test.ts"
+  },
+  {
+    "name": "stableStringify > uses ordinal UTF-16 ordering for numeric, accented and surrogate keys",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/json.test.ts"
+  },
+  {
+    "name": "stableStringify > never invokes a locale comparator",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/json.test.ts"
+  },
+  {
+    "name": "stableStringify > supports JSON primitives and escapes strings with JSON syntax",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/json.test.ts"
+  },
+  {
+    "name": "stableStringify > allows shared references that do not form a cycle",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/json.test.ts"
+  },
+  {
+    "name": "stableStringify > rejects direct and indirect cycles",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/json.test.ts"
+  },
+  {
+    "name": "stableStringify > rejects undefined, BigInt, functions, symbols and nonfinite values at every depth",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/json.test.ts"
+  },
+  {
+    "name": "stableStringify > rejects nonplain objects instead of applying toJSON or silently emitting an empty object",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/json.test.ts"
+  },
+  {
+    "name": "stableStringify > rejects sparse arrays and array properties that JSON would silently lose",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/json.test.ts"
+  },
+  {
+    "name": "stableStringify > rejects symbol keys and nonenumerable data",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/json.test.ts"
+  },
+  {
+    "name": "stableStringify > rejects accessors without evaluating them",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/json.test.ts"
+  },
+  {
+    "name": "stableStringify > handles null-prototype objects and prototype-looking keys as ordinary data",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/json.test.ts"
+  },
+  {
+    "name": "stableStringify > does not reorder or change input data",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/json.test.ts"
+  },
+  {
+    "name": "seed input guard > reads only command-scoped inputs without requiring Web secrets",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/seed.test.ts"
+  },
+  {
+    "name": "seed input guard > production guard: refuses production and absent or unrecognized environment before connecting",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/seed.test.ts"
+  },
+  {
+    "name": "seed input guard > refuses ambiguous URLs, shared targets, role options and duplicate/invalid query controls",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/seed.test.ts"
+  },
+  {
+    "name": "seed input guard > refuses invalid identity, weak, malformed or over-72-byte passwords without echo",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/seed.test.ts"
+  },
+  {
+    "name": "seed input guard > freezes exactly three internal defaults and three bounded retries",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/seed.test.ts"
+  },
+  {
+    "name": "public-user projection contract > projection: public fields are exactly the eight authorized account fields",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/public-user.test.ts"
+  },
+  {
+    "name": "public-user projection contract > projection: admin fields add only the management revision",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/public-user.test.ts"
+  },
+  {
+    "name": "public-user projection contract > projection: immutable Prisma selects contain only their exact whitelist",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/public-user.test.ts"
+  },
+  {
+    "name": "public-user projection contract > projection: both runtime projection modules retain the server-only boundary",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/public-user.test.ts"
+  },
+  {
+    "name": "SystemConfig group schema > group-validation: the closed group registry contains exactly five values",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/public-user.test.ts"
+  },
+  {
+    "name": "SystemConfig group schema > group-validation: parses the registered group AI",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/public-user.test.ts"
+  },
+  {
+    "name": "SystemConfig group schema > group-validation: parses the registered group UI",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/public-user.test.ts"
+  },
+  {
+    "name": "SystemConfig group schema > group-validation: parses the registered group EXPORT",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/public-user.test.ts"
+  },
+  {
+    "name": "SystemConfig group schema > group-validation: parses the registered group SECURITY",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/public-user.test.ts"
+  },
+  {
+    "name": "SystemConfig group schema > group-validation: parses the registered group GENERAL",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/public-user.test.ts"
+  },
+  {
+    "name": "SystemConfig group schema > group-validation: rejects unregistered runtime input \"UNKNOWN\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/public-user.test.ts"
+  },
+  {
+    "name": "SystemConfig group schema > group-validation: rejects unregistered runtime input \"general\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/public-user.test.ts"
+  },
+  {
+    "name": "SystemConfig group schema > group-validation: rejects unregistered runtime input \" GENERAL \"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/public-user.test.ts"
+  },
+  {
+    "name": "SystemConfig group schema > group-validation: rejects unregistered runtime input \"\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/public-user.test.ts"
+  },
+  {
+    "name": "SystemConfig group schema > group-validation: rejects unregistered runtime input null",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/public-user.test.ts"
+  },
+  {
+    "name": "SystemConfig group schema > group-validation: rejects unregistered runtime input undefined",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/public-user.test.ts"
+  },
+  {
+    "name": "SystemConfig group schema > group-validation: rejects unregistered runtime input 7",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/public-user.test.ts"
+  },
+  {
+    "name": "SystemConfig group schema > group-validation: rejects unregistered runtime input {}",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/public-user.test.ts"
+  },
+  {
+    "name": "SystemConfig group schema > group-validation: rejects unregistered runtime input undefined",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/public-user.test.ts"
+  },
+  {
+    "name": "SystemConfig group schema > group-validation: rejects unregistered runtime input \"GENERAL\"",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/public-user.test.ts"
+  },
+  {
+    "name": "API response constructors > creates the exact success envelope and preserves data and caller requestId",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/api-response.test.ts"
+  },
+  {
+    "name": "API response constructors > creates the exact error envelope without a data field",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/api-response.test.ts"
+  },
+  {
+    "name": "API response constructors > preserves explicitly supplied safe details by reference",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/api-response.test.ts"
+  },
+  {
+    "name": "API response constructors > omits undefined details and rejects an undefined success payload",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/api-response.test.ts"
+  },
+  {
+    "name": "API response constructors > requires caller-provided requestIds without generating a fallback",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/api-response.test.ts"
+  },
+  {
+    "name": "API response constructors > allows success and failure values to narrow by the success discriminant",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/api-response.test.ts"
+  },
+  {
+    "name": "isApiError > recognizes the error produced by fail",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/api-response.test.ts"
+  },
+  {
+    "name": "isApiError > accepts every public error code declared by the single API contract",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/api-response.test.ts"
+  },
+  {
+    "name": "isApiError > rejects missing or mistyped fields, arrays, inherited fields and extra keys",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/api-response.test.ts"
+  },
+  {
+    "name": "isApiError > rejects unknown codes and internal diagnostics at the public boundary",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/src/lib/api-response.test.ts"
+  },
+  {
+    "name": "api-key-schema pure boundary > accepts exact canonical envelopes across minimum and maximum ciphertext sizes",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/api-key-schema.test.ts"
+  },
+  {
+    "name": "api-key-schema pure boundary > rejects every malformed encoding/schema/canonical serialization without echoing input",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/api-key-schema.test.ts"
+  },
+  {
+    "name": "api-key-schema pure boundary > fingerprints trimmed original UTF-8 bytes, preserves case and rejects invalid lengths",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/api-key-schema.test.ts"
+  },
+  {
+    "name": "api-key-schema pure boundary > binds AAD to record, provider and envelope version using JCS",
+    "file": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/api-key-schema.test.ts"
+  }
+]

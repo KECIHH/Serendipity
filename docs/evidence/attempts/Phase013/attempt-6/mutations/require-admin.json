@@ -1,0 +1,53 @@
+{
+  "sourcePath": "src/server/auth/guards.ts",
+  "changedSources": [
+    {
+      "sourcePath": "src/server/auth/guards.ts",
+      "originalHash": "850c4b508d35265967d6432e386b6209a7875df24253f64228a5a709628dc9e2",
+      "mutatedHash": "976f497cbbe8818d8645078f97109c28f40b079493da84f9c97db1418a72d529"
+    },
+    {
+      "sourcePath": "src/server/admin/api-keys.ts",
+      "originalHash": "ccdcc83f936076705015e705d2ad45a5d806626bdc7588591bd54469cff14436",
+      "mutatedHash": "ca6877ce149da12a72f0c2bcd8828653f2a34fd39678832bcbbc461c673ebe6a"
+    }
+  ],
+  "testFiles": [
+    "tests/lib/auth-guards.test.ts",
+    "tests/admin/api-keys.integration.test.ts"
+  ],
+  "testPattern": "\\[authorization\\]|requireAdmin server authorization|management page, Route Handler and Server Action guard ordering",
+  "originalCase": "authorization",
+  "failureContract": {
+    "version": "phase013-exact-security-assertion-v1",
+    "controlId": "require-admin",
+    "testSourceHashes": {
+      "tests/lib/auth-guards.test.ts": "75d103d1ff2fa78be51df4d874b4dced4321fb4369be244003256e1ae73aeb21",
+      "tests/admin/api-keys.integration.test.ts": "da0d047142f467f6e083e2ca3e5ea4f82cb4552881b51809c3acf27f66ffbc52"
+    },
+    "requiredFailures": [
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [authorization] rejects every unauthenticated or stale principal and CSRF failure with zero protected reads or writes",
+        "anchor": "expect(list.queries?.some((query) => query.includes('\"ApiKeyConfig\"'))).toBe(false);",
+        "matcher": "toBe",
+        "failureHeader": "AssertionError: expected true to be false // Object.is equality",
+        "sourceHash": "da0d047142f467f6e083e2ca3e5ea4f82cb4552881b51809c3acf27f66ffbc52",
+        "anchorHash": "1fda5a97d7e7bae75e94e65b24ad0a06e5d60a5d2693b3789f323da44d688826",
+        "location": {
+          "file": "tests/admin/api-keys.integration.test.ts",
+          "line": 718,
+          "column": 83
+        },
+        "signal": {
+          "error": "AssertionError",
+          "matcher": "toBe",
+          "actual": true,
+          "expected": false
+        }
+      }
+    ]
+  },
+  "simulation": true,
+  "productionTraffic": false
+}

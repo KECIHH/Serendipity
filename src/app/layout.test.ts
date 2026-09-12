@@ -86,6 +86,8 @@ describe("application layout boundaries", () => {
     expect(
       adminPages.map((filePath) => relative(repositoryRoot, filePath).replaceAll("\\", "/")).sort(),
     ).toEqual([
+      "src/app/admin/(protected)/api-keys/page.tsx",
+      "src/app/admin/(protected)/logs/page.tsx",
       "src/app/admin/(protected)/page.tsx",
       "src/app/admin/(protected)/users/page.tsx",
       "src/app/admin/(public)/login/page.tsx",

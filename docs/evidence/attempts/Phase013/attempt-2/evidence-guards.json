@@ -1,0 +1,211 @@
+{
+  "phase": 13,
+  "status": "PASS",
+  "scope": "ISOLATED_EVIDENCE_HELPER_SELF_TEST_NOT_PRODUCT_ACCEPTANCE",
+  "planHash": "9c1c63a7d57d757115b6b13d12e5f1b18f53040dd42b144a2ea9580016fe6870",
+  "caseCount": 48,
+  "results": [
+    {
+      "name": "actual admission binds both shells, original metadata and synchronized maintenance",
+      "status": "PASS"
+    },
+    {
+      "name": "reject admission missing-shell",
+      "status": "PASS"
+    },
+    {
+      "name": "reject admission duplicate-shell",
+      "status": "PASS"
+    },
+    {
+      "name": "reject admission failed-shell",
+      "status": "PASS"
+    },
+    {
+      "name": "reject admission dirty-admission",
+      "status": "PASS"
+    },
+    {
+      "name": "reject admission wrong-phase",
+      "status": "PASS"
+    },
+    {
+      "name": "reject admission wrong-original-metadata",
+      "status": "PASS"
+    },
+    {
+      "name": "reject admission wrong-maintenance-head",
+      "status": "PASS"
+    },
+    {
+      "name": "reject admission unsynchronized-remote",
+      "status": "PASS"
+    },
+    {
+      "name": "actual input receipt binds immutable maintenance and policy bytes",
+      "status": "PASS"
+    },
+    {
+      "name": "reject input missing-maintenance",
+      "status": "PASS"
+    },
+    {
+      "name": "reject input wrong-maintenance-commit",
+      "status": "PASS"
+    },
+    {
+      "name": "reject input wrong-policy-hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject input wrong-policy-version",
+      "status": "PASS"
+    },
+    {
+      "name": "reject input old-phase-start",
+      "status": "PASS"
+    },
+    {
+      "name": "reject input changed-frozen-input",
+      "status": "PASS"
+    },
+    {
+      "name": "reject input preflight-report-hash",
+      "status": "PASS"
+    },
+    {
+      "name": "actual custom migration binds previous seven migrations, reviewed repair and failed SQL history",
+      "status": "PASS"
+    },
+    {
+      "name": "reject migration changed-migration",
+      "status": "PASS"
+    },
+    {
+      "name": "reject migration changed-protection",
+      "status": "PASS"
+    },
+    {
+      "name": "reject migration omitted-baseline",
+      "status": "PASS"
+    },
+    {
+      "name": "reject migration false-table-creation",
+      "status": "PASS"
+    },
+    {
+      "name": "reject migration false-generation-mode",
+      "status": "PASS"
+    },
+    {
+      "name": "reject migration missing-actual-commands",
+      "status": "PASS"
+    },
+    {
+      "name": "reject migration failed-actual-command",
+      "status": "PASS"
+    },
+    {
+      "name": "actual failure history remains complete and immutable",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing prior attempt",
+      "status": "PASS"
+    },
+    {
+      "name": "reject changed prior hash",
+      "status": "PASS"
+    },
+    {
+      "name": "previous required cases cannot be removed or reduced",
+      "status": "PASS"
+    },
+    {
+      "name": "implementation snapshot rejects edit deletion and newly added sources",
+      "status": "PASS"
+    },
+    {
+      "name": "same-execution mapping requires exact business file tags and all supplemental files",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted business group Phase013:create-read",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted business group Phase013:disable-enable",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted business group Phase013:rotate-revoke",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted business group Phase013:authorization",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted business group Phase013:crypto-redaction",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted business group Phase013:failure-atomicity",
+      "status": "PASS"
+    },
+    {
+      "name": "reject failed mapped assertion and missing supplemental browser component",
+      "status": "PASS"
+    },
+    {
+      "name": "full discovery binds every exact assertion and rejects omitted renamed or extra tests",
+      "status": "PASS"
+    },
+    {
+      "name": "raw Vitest requires actual assertions and rejects empty skip runtime/import error and false green",
+      "status": "PASS"
+    },
+    {
+      "name": "results must bind exact plan command denominator hash and source inventory",
+      "status": "PASS"
+    },
+    {
+      "name": "raw secret scan rejects the real generated master key before archival",
+      "status": "PASS"
+    },
+    {
+      "name": "business metrics are parsed from the actual command stream across both output channels",
+      "status": "PASS"
+    },
+    {
+      "name": "business metrics reject absent groups false green state-audit mismatch partial switches and unauthorized access",
+      "status": "PASS"
+    },
+    {
+      "name": "fixture hash covers the real registered synthetic fixtures and rejects missing current-card inputs",
+      "status": "PASS"
+    },
+    {
+      "name": "browser evidence requires eight cases real scans privacy counters network isolation and observed response hashes",
+      "status": "PASS"
+    },
+    {
+      "name": "retry requires the frozen plan and cannot fabricate a missing failure",
+      "status": "PASS"
+    },
+    {
+      "name": "negative wrapper preserves an actual nonzero subprocess result",
+      "status": "PASS",
+      "underlyingExitCode": 7
+    }
+  ],
+  "testedSourceHashes": {
+    "docs/phase-plans/phase013-evidence.mjs": "8dd27d58a20d048d237f0c10e718a7689ca1bb7819c4efb48ecefdcbcda62253",
+    "docs/phase-plans/phase013-runtime.mjs": "03fd70c2b53876509c5dcfab160e2d034eaec8066f40266c5cdc4e547fd04bb8",
+    "scripts/phase-evidence.mjs": "454f1911b53a21aed6f014d8cb6b36d748a6f9ec8b8e7547187d45cd20ce96c9",
+    "tests/phase013/evidence-guards.mjs": "5ced89308e91ef46f45c6b567954456d3c95ce59b155e8425a44cf84679bc5c5"
+  },
+  "simulation": true,
+  "productionTraffic": false,
+  "generatedAt": "2026-09-12T07:15:57.295Z"
+}

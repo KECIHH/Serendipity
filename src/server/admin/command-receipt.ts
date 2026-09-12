@@ -12,6 +12,16 @@ import {
 import { stableStringify } from "@/lib/json";
 import { AuditLogError } from "@/server/audit-log";
 import { readAuthClock } from "@/server/auth/clock";
+import {
+  parseApiKeyDto,
+  parseApiKeyId,
+  parseApiKeyPatch,
+  parseKeyRotationReceipt,
+  type ApiKeyDto,
+  type ApiKeyPatch,
+  type KeyRotationReceipt,
+} from "@/lib/admin-api-keys";
+import { parseReferenceCandidates, type KeyReferenceCandidate } from "@/server/admin/key-reference";
 
 export const ADMIN_RECEIPT_MIN_RETENTION_MS = 86_400_000;
 export const ADMIN_USER_OPERATION = "patch.admin.users.id";
@@ -36,6 +46,49 @@ export interface AdminCommandIdentity {
 interface FingerprintPayload {
   expectedVersion: number;
   keyFingerprint: string;
+}
+
+export type AdminKeyCommandPayload =
+  | ApiKeyPatch
+  | {
+      name: string;
+      provider: string;
+      keyFingerprint: string;
+      expectedVersion?: number;
+    };
+
+function keyPayload(value: unknown, rotating: boolean) {
+  if (!value || typeof value !== "object" || Array.isArray(value))
+    throw new AdminCommandError("VALIDATION_ERROR");
+  const row = value as Record<string, unknown>;
+  const fields = rotating
+    ? ["expectedVersion", "keyFingerprint", "name", "provider"]
+    : ["keyFingerprint", "name", "provider"];
+  if (
+    Object.keys(row).sort().join(",") !== fields.sort().join(",") ||
+    typeof row.name !== "string" ||
+    row.name.trim() !== row.name ||
+    [...row.name].length < 1 ||
+    [...row.name].length > 200 ||
+    !row.name.isWellFormed() ||
+    /[\u0000-\u001f\u007f]/u.test(row.name) ||
+    typeof row.keyFingerprint !== "string" ||
+    !/^[a-f0-9]{64}$/.test(row.keyFingerprint)
+  )
+    throw new AdminCommandError("VALIDATION_ERROR");
+  const normalized = {
+    name: row.name,
+    provider: parseApiKeyId(row.provider),
+    keyFingerprint: row.keyFingerprint,
+  };
+  if (!rotating) return normalized;
+  return {
+    ...normalized,
+    expectedVersion: fingerprintPayload({
+      expectedVersion: row.expectedVersion,
+      keyFingerprint: row.keyFingerprint,
+    }).expectedVersion,
+  };
 }
 
 function safeDomain(value: unknown): string {
@@ -72,7 +125,7 @@ export function makeAdminCommandIdentity(input: {
   operationId: string;
   resourceId: string;
   idempotencyKey: string;
-  payload: AdminUserPatch | FingerprintPayload;
+  payload: AdminUserPatch | FingerprintPayload | AdminKeyCommandPayload;
 }): AdminCommandIdentity {
   try {
     if (
@@ -85,7 +138,13 @@ export function makeAdminCommandIdentity(input: {
     const payload =
       operationId === ADMIN_USER_OPERATION
         ? parseAdminUserPatch(input.payload)
-        : fingerprintPayload(input.payload);
+        : operationId === "post.admin.api-keys"
+          ? keyPayload(input.payload, false)
+          : operationId === "post.admin.api-keys.id.rotate"
+            ? keyPayload(input.payload, true)
+            : operationId === "patch.admin.api-keys.id"
+              ? parseApiKeyPatch(input.payload)
+              : fingerprintPayload(input.payload);
     return Object.freeze({
       ownerUserId: parseAdminUserId(input.ownerUserId),
       operationId,
@@ -261,7 +320,10 @@ export async function claimAdminCommand(
   return Object.freeze({ receiptId, leaseOwner, fencingToken: row.fencingToken, leaseUntil });
 }
 
-async function assertClaim(tx: Prisma.TransactionClient, claim: AdminCommandClaim) {
+export async function assertAdminCommandClaim(
+  tx: Prisma.TransactionClient,
+  claim: AdminCommandClaim,
+) {
   parseAdminUserId(claim.receiptId);
   parseAdminUserId(claim.leaseOwner);
   if (
@@ -318,15 +380,17 @@ export async function prepareKeyRotationRun(
     newKeyId?: string | null;
     referenceSetHash: string;
     baseRevisionsJson: Record<string, number>;
+    candidateIdsJson?: readonly KeyReferenceCandidate[];
   },
 ) {
-  const { receipt, now } = await assertClaim(tx, input.claim);
+  const { receipt, now } = await assertAdminCommandClaim(tx, input.claim);
   const oldKeyId = parseAdminUserId(input.oldKeyId);
   const newKeyId =
     input.newKeyId === undefined || input.newKeyId === null
       ? null
       : parseAdminUserId(input.newKeyId);
   const baseRevisionsJson = revisions(input.baseRevisionsJson, oldKeyId);
+  const candidateIdsJson = parseReferenceCandidates(input.candidateIdsJson ?? []);
   if (
     receipt.resourceId !== oldKeyId ||
     newKeyId === oldKeyId ||
@@ -339,6 +403,7 @@ export async function prepareKeyRotationRun(
       previous.oldKeyId !== oldKeyId ||
       previous.newKeyId !== newKeyId ||
       previous.referenceSetHash !== input.referenceSetHash ||
+      stableStringify(previous.candidateIdsJson) !== stableStringify(candidateIdsJson) ||
       stableStringify(previous.baseRevisionsJson) !== stableStringify(baseRevisionsJson)
     )
       throw new AdminCommandError("IDEMPOTENCY_KEY_REUSED");
@@ -368,7 +433,7 @@ export async function prepareKeyRotationRun(
       receiptId: receipt.id,
       oldKeyId,
       newKeyId,
-      candidateIdsJson: [],
+      candidateIdsJson: candidateIdsJson.map((candidate) => ({ ...candidate })),
       referenceSetHash: input.referenceSetHash,
       baseRevisionsJson,
       stage: "PREPARING",
@@ -383,6 +448,7 @@ const checkpointSteps = {
   PREPARING: "PREPARED",
   TESTING: "TESTING",
   READY: "VERIFIED",
+  ACTIVATED: "ACTIVATED",
   ABORTED: "ABORTED",
 } as const;
 
@@ -394,13 +460,27 @@ export async function saveKeyRotationCheckpoint(
     runId: string;
     stage: keyof typeof checkpointSteps;
     step: (typeof checkpointSteps)[keyof typeof checkpointSteps];
+    errorCode?: string;
+    verificationHash?: string;
   },
 ) {
-  const { receipt, now } = await assertClaim(tx, input.claim);
+  const { receipt, now } = await assertAdminCommandClaim(tx, input.claim);
   const runId = parseAdminUserId(input.runId);
   if (!Object.hasOwn(checkpointSteps, input.stage) || input.step !== checkpointSteps[input.stage]) {
     throw new AdminCommandError("VALIDATION_ERROR");
   }
+  if (
+    (input.errorCode !== undefined &&
+      ![
+        "CONFIG_ERROR",
+        "PROVIDER_UNAVAILABLE",
+        "PROVIDER_TIMEOUT",
+        "VERSION_CONFLICT",
+        "INTERNAL_ERROR",
+      ].includes(input.errorCode)) ||
+    (input.verificationHash !== undefined && !/^[a-f0-9]{64}$/.test(input.verificationHash))
+  )
+    throw new AdminCommandError("VALIDATION_ERROR");
   const row = await tx.keyRotationRun.findUnique({ where: { id: runId } });
   if (
     !row ||
@@ -414,7 +494,15 @@ export async function saveKeyRotationCheckpoint(
     where: { id: runId },
     data: {
       stage: input.stage,
-      checkpointJson: { version: 1, fencingToken: input.claim.fencingToken, step: input.step },
+      checkpointJson: {
+        version: 1,
+        fencingToken: input.claim.fencingToken,
+        step: input.step,
+        ...(input.errorCode === undefined ? {} : { errorCode: input.errorCode }),
+        ...(input.verificationHash === undefined
+          ? {}
+          : { verificationHash: input.verificationHash }),
+      },
       updatedAt: now,
     },
   });
@@ -425,4 +513,86 @@ export function isAdminCommandValidation(error: unknown): boolean {
     error instanceof AdminUserInputError ||
     (error instanceof AdminCommandError && error.kind === "VALIDATION_ERROR")
   );
+}
+
+export async function writeSucceededKeyReceipt(
+  tx: Prisma.TransactionClient,
+  identity: AdminCommandIdentity,
+  response: ApiKeyDto,
+): Promise<void> {
+  const safe = parseApiKeyDto(response),
+    now = await readAuthClock(tx);
+  await tx.adminCommandReceipt.create({
+    data: {
+      ...identity,
+      status: "SUCCEEDED",
+      responseJson: { ...safe },
+      createdAt: now,
+      availableAt: now,
+      completedAt: now,
+      expiresAt: new Date(now.getTime() + ADMIN_RECEIPT_MIN_RETENTION_MS),
+    },
+    select: { id: true },
+  });
+}
+
+export function readSucceededKeyReceipt(receipt: AdminCommandReceipt): ApiKeyDto {
+  if (receipt.status !== "SUCCEEDED") throw new AdminCommandError("INVALID_STATE");
+  try {
+    return parseApiKeyDto(receipt.responseJson);
+  } catch {
+    throw new AdminCommandError("INVALID_STATE");
+  }
+}
+
+export function readTerminalRotationReceipt(receipt: AdminCommandReceipt): KeyRotationReceipt {
+  if (receipt.status !== "SUCCEEDED" && receipt.status !== "FAILED")
+    throw new AdminCommandError("INVALID_STATE");
+  try {
+    return { ...parseKeyRotationReceipt(receipt.responseJson), replayed: true };
+  } catch {
+    throw new AdminCommandError("INVALID_STATE");
+  }
+}
+
+export async function finishKeyRotationCommand(
+  tx: Prisma.TransactionClient,
+  claim: AdminCommandClaim,
+  response: KeyRotationReceipt,
+  failureCode?: string,
+): Promise<void> {
+  const { now, receipt } = await assertAdminCommandClaim(tx, claim);
+  const safe = parseKeyRotationReceipt(response);
+  if (
+    failureCode !== undefined &&
+    !["CONFIG_ERROR", "VERSION_CONFLICT", "INTERNAL_ERROR"].includes(failureCode)
+  )
+    throw new AdminCommandError("VALIDATION_ERROR");
+  await tx.adminCommandReceipt.update({
+    where: { id: claim.receiptId, fencingToken: claim.fencingToken },
+    data: {
+      status: failureCode === undefined ? "SUCCEEDED" : "FAILED",
+      responseJson: { ...safe, key: { ...safe.key } },
+      errorCode: failureCode ?? null,
+      completedAt: now,
+      expiresAt: new Date(
+        Math.max(receipt.expiresAt.getTime(), now.getTime() + ADMIN_RECEIPT_MIN_RETENTION_MS),
+      ),
+      leaseOwner: null,
+      leaseUntil: null,
+    },
+    select: { id: true },
+  });
+}
+
+export async function releaseKeyRotationCommand(
+  tx: Prisma.TransactionClient,
+  claim: AdminCommandClaim,
+): Promise<void> {
+  const { now } = await assertAdminCommandClaim(tx, claim);
+  await tx.adminCommandReceipt.update({
+    where: { id: claim.receiptId, fencingToken: claim.fencingToken },
+    data: { status: "RETRY_WAIT", availableAt: now, leaseOwner: null, leaseUntil: null },
+    select: { id: true },
+  });
 }

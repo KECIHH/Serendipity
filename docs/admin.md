@@ -6,7 +6,7 @@ Owner: 管理治理；producerPhase: 2；实现消费者: Phase012–015、Phase
 
 每个管理 Route Handler/Server Action 在任何资源查询前调用 requireAdmin，复核活动数据库会话、ACTIVE ADMIN 与 sessionVersion。写入继续校验 CSRF、Schema、幂等和 CAS。未登录为 AUTH_REQUIRED，非管理员为 FORBIDDEN；不向未授权请求泄露对象是否存在。后台权限不能代替私人行程 owner、分享 token、文件 purpose/usage 或隐私水位授权。
 
-Phase012 的 `src/app/admin/(protected)/layout.tsx` 复用唯一 `src/components/layout/admin-shell.tsx`；根 admin layout 保持中性，`src/app/admin/(public)/login/page.tsx` 不带后台 shell。唯一菜单数组为 `src/components/admin/admin-nav.ts`，当前只含 `/admin/users` 与退出动作。受保护 `/admin` 确定性重定向用户管理，Phase014 首产 Dashboard 后才切换。当前高亮采用完整路径或 `href + '/'` 前缀的最长匹配；导航支持折叠、方向键、Home/End、Escape 回到开关，以及跳到主要内容。
+Phase012 的 `src/app/admin/(protected)/layout.tsx` 复用唯一 `src/components/layout/admin-shell.tsx`；根 admin layout 保持中性，`src/app/admin/(public)/login/page.tsx` 不带后台 shell。唯一菜单数组为 `src/components/admin/admin-nav.ts`，Phase013 增加 `/admin/api-keys` 与 `/admin/logs`，保留 `/admin/users` 与退出动作。受保护 `/admin` 确定性重定向用户管理，Phase014 首产 Dashboard 后才切换。当前高亮采用完整路径或 `href + '/'` 前缀的最长匹配；导航支持折叠、方向键、Home/End、Escape 回到开关，以及跳到主要内容。
 
 ## 用户与配置 CAS
 
@@ -26,13 +26,17 @@ Phase012 首次生产 AdminCommandReceipt、KeyRotationRun，Phase013 复用；P
 
 用户更新的 operationId 固定为 `patch.admin.users.id`。首次调用先校验 CAS；终态重放在当前授权之后、原 CAS 之前读取原九字段结果，以响应头 `Idempotency-Replayed: true` 标识，首次成功为 `false`，不扩充 DTO。同步用户命令可直接在业务事务内插入 SUCCEEDED；其他已存在的活动收据只有当前未过期 RUNNING claim 可收敛，leaseOwner/fencingToken 必须匹配。终结时间使用数据库 `auth_now()`，保留截止不得早于该时刻加24小时，终态响应不可改写。
 
-Phase012 只实现 reserve/claim/prepare/checkpoint 持久化基础。prepare 与相应收据在同一事务中保存，失败整笔回滚；后续执行者先重取有效 claim 再续接已保存进度，旧 fence 不能推进。当前 candidateIdsJson 固定 `[]`，尚无 Phase015 adapter；旧密钥与可选新密钥使用现存 ApiKeyConfig FK。KeyRotationRun 当前拒绝 DELETE/TRUNCATE，关联收据也不能被 TTL 删除；专用密钥审计到期清理协议交付前保留整条引用链。以下轮换、紧急撤销和审计查询规则由后续卡消费，不代表本卡已提供这些页面、API、外部连接测试或密钥切换。
+Phase012 首产 reserve/claim/prepare/checkpoint 持久化基础。prepare 与相应收据在同一事务中保存，失败整笔回滚；执行者先重取有效 claim 再续接已保存进度，旧 fence 不能推进。Phase013 以追加迁移修复 candidateIdsJson 固定 `[]` 的占位限制，允许强类型 adapter 的安全候选标识；旧密钥与新密钥继续使用现存 ApiKeyConfig FK。KeyRotationRun 拒绝 DELETE/TRUNCATE，关联收据也不能被 TTL 删除；专用密钥审计到期清理协议交付前保留整条引用链。
 
 常规轮换先持久化一个 DISABLED 候选与候选配置，记录 stage 和候选 ID；受控连接测试在事务外执行，失败保持旧 key/activation 可用。通过后在 Serializable 事务内复核旧 key revision、完整引用集合和各 activation revision，再启用新 key、切换全部引用、撤销旧 key、完成收据和审计。引用增减、旧 key 被紧急撤销、CAS 或审计失败均拒绝部分切换。Phase013 没有 Provider 表时真实引用集合为空，Phase015 创建模型时同步注册真实 KeyReferenceAdapter；禁止用空集合绕过届时已存在的引用。
 
 紧急 REVOKED 是独立受审命令，立即阻止新调用，不等待常规轮换；REVOKED 永不可恢复。KeyRotationRun 的 PREPARING/TESTING/READY/ACTIVATED/ABORTED 仅为轮换阶段，不复用 ApiKeyStatus。密文、版本正文与已完成收据保持不可变。
 
+Phase013 已实现上述协调器、密钥页面和 API。候选验证失败保留 DISABLED 与安全错误，收据进入 RETRY_WAIT；同键重试复用已有候选。普通 PATCH 不允许启用未完成轮换的候选。候选连接走有界、inventory 与版本绑定的安全 client；网络等待在数据库事务之外。最终激活事务逐一复核全部引用并与新密钥启用、旧密钥撤销、审计及收据同时提交。默认真实引用集合为空，双引用 fixture 仅存在于隔离测试 schema；不能据此声称已实现 Phase015 Provider 配置。
+
 AuditLog append-only，关键变更与审计同一数据库事务提交，失败不能 best-effort 成功。记录受控 actor/target/action/requestId/traceId/time/result/reason 与安全版本差异；日志、trace 和查询响应递归移除秘密及私人原文。审计查询使用固定白名单 filter、opaque cursor、唯一 tie-breaker 和最大 100 条；不得把审计查询作为登录限流计数。擦除使用专用角色按隐私契约去标识，不授应用角色任意修改历史的能力。
+
+Phase013 审计读取在查询前后复核会话，数据库 select 排除邮箱快照、IP 与 UA。详情复用 Phase009 sanitizer，并额外隐藏 seed、账号与网络关联摘要；页面只显示十字段安全摘要，空详情不推断为成功。非法筛选、篡改 cursor 或数据库故障安全失败；error/not-found 页面不显示 stack、正文或内部诊断。
 
 ## 可执行规则与验证
 
@@ -53,4 +57,4 @@ AuditLog append-only，关键变更与审计同一数据库事务提交，失败
 
 `Phase002:api` 解释这些规则，覆盖自己/最后管理员、版本过期/同值、审计失败、引用集合变化与撤销终态；临时删除守卫规则必须非零。文档 fixture 不替代 Phase012/013 的真实事务并发与权限测试。
 
-Phase012 的实际验收入口、七组固定场景、真实 PostgreSQL/浏览器与反向验证要求见 [阶段说明](phase012.md)。本文件描述实现和消费契约，是否完成以对应 attempt、Gate、双提交和 seal 为准。
+Phase012 的七组固定场景见 [用户管理阶段说明](phase012.md)；Phase013 的六组安全场景、真实 PostgreSQL/HTTP/浏览器与反向验证见 [密钥与审计阶段说明](phase013.md)。本文件描述实现和消费契约，是否完成以对应 attempt、Gate、双提交和 seal 为准。

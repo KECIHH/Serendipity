@@ -1,6 +1,6 @@
 # Serendipity · 际遇
 
-中文旅行规划工具的开发仓库。本目录就是项目根目录。当前提供 Next.js App Router 基础首页、数据库基础、管理员认证和受保护的用户管理，后续阶段接入旅行规划功能。
+中文旅行规划工具的开发仓库。本目录就是项目根目录。当前提供 Next.js App Router 基础首页、数据库基础、管理员认证、受保护的用户与密钥管理，以及脱敏审计查询，后续阶段接入旅行规划功能。
 
 ## 本地启动
 
@@ -84,7 +84,7 @@ Next.js 与 eslint-config-next 固定为 **15.5.24**，shadcn CLI 固定为 **3.
 | `src/components/common/` | 可复用的加载、空态、错误态与页头组件              |
 | `src/components/travel/` | 后续旅行展示组件                                  |
 | `src/components/chat/`   | 后续对话界面组件                                  |
-| `src/components/admin/`  | 后台用户管理与唯一导航配置                        |
+| `src/components/admin/`  | 后台用户、密钥、审计界面与唯一导航配置            |
 | `src/lib/ai/`            | 后续 AI 纯接口与共享 Schema；实际网络调用归服务端 |
 | `src/server/services/`   | 后续服务端业务规则与编排                          |
 | `src/types/`             | 后续从共享 Schema 推导的公共类型；当前只保留目录  |
@@ -109,11 +109,13 @@ Next.js 与 eslint-config-next 固定为 **15.5.24**，shadcn CLI 固定为 **3.
 
 ## 后台访问闸门
 
-`/admin/login` 提供不带后台导航的管理员登录，登录后 `/admin` 重定向到 `/admin/users`。用户管理支持角色/状态筛选、游标分页和权限编辑；后台导航只提供用户管理与退出。`/login` 使用相同凭据服务供 ACTIVE USER/ADMIN 登录；注册留待其生产阶段。未知账户、密码错误、普通用户进入管理入口以及停用账户均显示“邮箱或密码错误”。
+`/admin/login` 提供不带后台导航的管理员登录，登录后 `/admin` 重定向到 `/admin/users`。用户管理支持角色/状态筛选、游标分页和权限编辑；后台导航提供用户管理、密钥管理、审计日志与退出。`/login` 使用相同凭据服务供 ACTIVE USER/ADMIN 登录；注册留待其生产阶段。未知账户、密码错误、普通用户进入管理入口以及停用账户均显示“邮箱或密码错误”。
 
 `dev`/`start` 使用 Node 入口 `scripts/auth-server.mjs`，从真实连接取得限流地址；请通过 npm 脚本启动。会话最多12小时，每次服务端请求复核数据库中的会话、角色、状态与 sessionVersion。登录失败按账户5次/IP20次的15分钟窗口持久限流，退出先撤销数据库会话。没有预览变量、查询参数或 Cookie 后门。配置与验证细节见 [Phase011说明](docs/phase011.md)。
 
 管理员不能改变自己的角色或状态，提交后必须保留至少一位启用的管理员。修改通过 `revision` 检查并发版本；成功变化在同一事务内撤销目标全部活动会话、保存幂等收据并追加审计。版本冲突显示最新摘要并要求重新选择操作；同一请求重试复用幂等键。接口、账本和七组验收命令见 [Phase012说明](docs/phase012.md)，阶段完成状态以 Gate、双 shell seal 和远端提交为准。
+
+`/admin/api-keys` 提供不可读回的密钥录入、改名、停用/启用、轮换与紧急撤销；页面只显示12位短指纹。密钥以带记录 AAD 的 AES-256-GCM 保存，敏感写与审计、幂等收据一起提交，已撤销密钥不能恢复。`/admin/logs` 提供有界筛选与游标分页，详情经统一脱敏后以文本展示。当前 Provider 引用集合为空；两引用轮换通过隔离数据库和本地 HTTP 验证。安全边界、重试方式和验收入口见 [Phase013说明](docs/phase013.md)。
 
 完整任务005验收由 `node docs/phase-plans/verify-phase005.mjs --all` 执行，覆盖六个测试文件、质量命令、真实 HTTP、浏览器与临时副本中的反向测试。报告按 attempt 保存，已存在报告不覆盖；失败后使用 `node docs/phase-plans/complete-phase005.mjs --retry` 保存旧计划并开始同阶段的新 attempt。最终 Gate 在 artifact 提交后由 `--metadata` 生成。
 

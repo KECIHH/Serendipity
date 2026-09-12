@@ -1,0 +1,389 @@
+{
+  "schemaVersion": 1,
+  "phase": 13,
+  "status": "PASS",
+  "simulation": true,
+  "productionTraffic": false,
+  "notGate": false,
+  "verificationScope": "AUTOMATED_BROWSER_A11Y",
+  "humanScreenReaderExperience": "NOT_EVALUATED",
+  "caseCount": 8,
+  "results": [
+    {
+      "id": "unauthorized-reads-and-login",
+      "status": "PASS",
+      "observations": {
+        "unauthorizedStatuses": [
+          401,
+          401
+        ],
+        "pageRedirect": 307,
+        "realLogin": true,
+        "initialKeys": 0
+      }
+    },
+    {
+      "id": "create-read",
+      "status": "PASS",
+      "observations": {
+        "createStatus": 201,
+        "duplicateStatus": 409,
+        "rows": 1,
+        "safeDtoFields": 10,
+        "roundTrip": true
+      }
+    },
+    {
+      "id": "disable-enable",
+      "status": "PASS",
+      "observations": {
+        "transitions": [
+          "ACTIVE",
+          "DISABLED",
+          "ACTIVE"
+        ],
+        "revision": 2,
+        "auditedChanges": 3
+      }
+    },
+    {
+      "id": "rotate-revoke",
+      "status": "PASS",
+      "observations": {
+        "rotateStatus": 202,
+        "stage": "ACTIVATED",
+        "actualProviderReferences": 0,
+        "oldKeyRevoked": true,
+        "emergencyRevoked": true,
+        "restoreStatus": 409
+      }
+    },
+    {
+      "id": "audit-filters-pagination",
+      "status": "PASS",
+      "observations": {
+        "firstPage": 20,
+        "secondPageNonempty": true,
+        "targetFilterMatched": true,
+        "readOnly": true
+      }
+    },
+    {
+      "id": "responsive-keyboard",
+      "status": "PASS",
+      "observations": {
+        "observations": [
+          {
+            "route": "/admin/api-keys",
+            "width": 375,
+            "documentScrollWidth": 375,
+            "accessibility": {
+              "violations": 0,
+              "passes": 29,
+              "incomplete": 0,
+              "version": "4.13.0"
+            }
+          },
+          {
+            "route": "/admin/api-keys",
+            "width": 1280,
+            "documentScrollWidth": 1280,
+            "accessibility": {
+              "violations": 0,
+              "passes": 28,
+              "incomplete": 0,
+              "version": "4.13.0"
+            }
+          },
+          {
+            "route": "/admin/logs",
+            "width": 375,
+            "documentScrollWidth": 375,
+            "accessibility": {
+              "violations": 0,
+              "passes": 29,
+              "incomplete": 0,
+              "version": "4.13.0"
+            }
+          },
+          {
+            "route": "/admin/logs",
+            "width": 1280,
+            "documentScrollWidth": 1280,
+            "accessibility": {
+              "violations": 0,
+              "passes": 28,
+              "incomplete": 0,
+              "version": "4.13.0"
+            }
+          }
+        ],
+        "keyboard": [
+          "ArrowDown",
+          "End",
+          "Escape",
+          "Enter"
+        ],
+        "focusReturn": true,
+        "skipLink": true
+      }
+    },
+    {
+      "id": "failed-read-retry",
+      "status": "PASS",
+      "observations": {
+        "databasePermissionFault": 503,
+        "recovered": 200,
+        "failureNotEmpty": true
+      }
+    },
+    {
+      "id": "logout-and-safe-pages",
+      "status": "PASS",
+      "observations": {
+        "storageHits": 0,
+        "protectedResponses": [
+          401,
+          401
+        ],
+        "notFound": 404,
+        "safeErrorComponent": "covered by the tagged Vitest assertion"
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/api-keys-empty.png",
+      "sha256": "e01f70dd728c6cd4c9d954eaa32eb4b8cdecbca5fc0dc4c87e39653bfc91a927"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/api-keys-empty.html",
+      "sha256": "df9e1625b08cc81b13b2083438c098d7c04add5abea9d8c436ebbb9c0227a4d0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/api-keys-375-axe.json",
+      "sha256": "1eab39197ea01bb49d9d2d771e257a2be1964053a5e2d77c0e9cfe432fa1637a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/api-keys-375.png",
+      "sha256": "3f040b854e48834e37f5acd322c31426bb2430c4c0299d9c30be37fd8ee09eaa"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/api-keys-375.html",
+      "sha256": "2f6a54ab5ff919fdade8e06e2464c5d6af82f9f7f0ec6586970cd63842c7d4f0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/api-keys-1280-axe.json",
+      "sha256": "421c7e24430af3113c6ff4759616f3caea387242c7402d38a934a545b4537fb8"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/api-keys-1280.png",
+      "sha256": "2945ac2367ee846c37055ecaf0e5eeda4f5ac479869fffa8853a6b743ef5195c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/api-keys-1280.html",
+      "sha256": "4f2c1c0b08eab957d16ca81698e988f2d3b8a45710e0002437bcaf0c15d400cf"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/audit-logs-375-axe.json",
+      "sha256": "e6deff617bf5f207d7b994196f5866b5cc89e1cb62f1023ae47342435630b54a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/audit-logs-375.png",
+      "sha256": "3b40e4f3a1267ad4cd8ee38dea9465d3349b0d0b36405adfa3f4731cc7d9fbfc"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/audit-logs-375.html",
+      "sha256": "dd4f88d0b258fb6fecf9c2f5194bea3096e451d8a487b165fbad074c9a519f07"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/audit-logs-1280-axe.json",
+      "sha256": "8972471f04e576897fbdf3605447e3fabc4f6adc2177766e9930a48df1a032c5"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/audit-logs-1280.png",
+      "sha256": "1b293033ef6b08d134b6505101cd5599d9c9ac852e44fdcff70699e03e314729"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/audit-logs-1280.html",
+      "sha256": "5dda412fb5781be927548e72ed7d5f006a7f092d2e313dc3b34554980e1c9ecb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/audit-logs-unavailable.png",
+      "sha256": "a985024617121f738694d16d28d91df5b97c5e406a68f74c3d9eb0ce2f81309e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/audit-logs-unavailable.html",
+      "sha256": "aa4bc1c27a9a5b818adc4024017ab25c1c50a7b48d416a73de95cb58d5822f0d"
+    }
+  ],
+  "commands": [
+    {
+      "command": "npm run start (isolated browser)",
+      "ready": true,
+      "stoppedByFixture": true,
+      "stdout": "\n> serendipity@0.1.0 start\n> node --import tsx scripts/auth-server.mjs --hostname 127.0.0.1 --port 61130\n\nSerendipity listening on 127.0.0.1:61130\n",
+      "stderr": "",
+      "durationMs": 15581,
+      "nodeNetworkGuard": {
+        "sourcePath": "tests/phase006/cli-network-guard.cjs",
+        "sourceHash": "da1e1020f2d0f5f171f1a721dfa2c3412a2901d858eee176ed730f45f0ad2ab7",
+        "preparedHash": "c4629a8fd1139c847b56f57036417f6fd704a66c9327184be7e19af8b41a1d77",
+        "requests": 0,
+        "publicRequests": 0
+      }
+    }
+  ],
+  "browserVersion": "140.0.7339.186",
+  "serverOrigin": "http://127.0.0.1:61130",
+  "externalRequestCount": 0,
+  "localRequestCount": 104,
+  "privacyFailures": 0,
+  "secretScans": {
+    "httpBodies": 48,
+    "html": 11,
+    "browserStorage": 1,
+    "logs": 5,
+    "audit": 2,
+    "dbSafeProjection": 28,
+    "trace": 1,
+    "evidence": 1,
+    "hits": 0
+  },
+  "responseEvidence": [
+    {
+      "route": "/api/admin/api-keys",
+      "method": "GET",
+      "status": 200,
+      "bytes": 105,
+      "sha256": "cb7da9447137e4cb2711c36eaec03435d6f601dd4b3e8c753e83e33421668abc"
+    },
+    {
+      "route": "/api/admin/api-keys",
+      "method": "POST",
+      "status": 201,
+      "bytes": 362,
+      "sha256": "8ccd579d085980c4bd756a0cc2bcba05e7e869f10f7e25e8d5a106e879718813"
+    },
+    {
+      "route": "/api/admin/api-keys",
+      "method": "GET",
+      "status": 200,
+      "bytes": 392,
+      "sha256": "4947761d9171cc21c994e1c24e486367cd7020bb0c740bf89d324b3051d3ff9c"
+    },
+    {
+      "route": "/api/admin/api-keys/{id}",
+      "method": "PATCH",
+      "status": 200,
+      "bytes": 364,
+      "sha256": "efb0f17dd3cdd527dee4b5bb87a666a0959e47b60405043be475cd9333d35c7c"
+    },
+    {
+      "route": "/api/admin/api-keys",
+      "method": "GET",
+      "status": 200,
+      "bytes": 394,
+      "sha256": "0b3b4af54a229f13d0cac842bf4a631273e2540582527ca896c782a6a8aeb158"
+    },
+    {
+      "route": "/api/admin/api-keys/{id}",
+      "method": "PATCH",
+      "status": 200,
+      "bytes": 362,
+      "sha256": "9994a18edf9f7edf5e69ae9a277817d9f6895a172d01b54bce5a02c81a3f2b83"
+    },
+    {
+      "route": "/api/admin/api-keys",
+      "method": "GET",
+      "status": 200,
+      "bytes": 392,
+      "sha256": "72db425c77ed9da8bdc6a9eb44d8b609adc600836dda7c7ae644d6e9b668f4cc"
+    },
+    {
+      "route": "/api/admin/api-keys/{id}/rotate",
+      "method": "POST",
+      "status": 202,
+      "bytes": 454,
+      "sha256": "adce382aea18c3fd2a51cfcc7f2a59f36ee6a27f1c0cea8ce3a7cabf9703b107"
+    },
+    {
+      "route": "/api/admin/api-keys",
+      "method": "GET",
+      "status": 200,
+      "bytes": 709,
+      "sha256": "5b594f3316330b8efeb0e3034ea3c0fe803e0423bbc297c233097503111aedae"
+    },
+    {
+      "route": "/api/admin/api-keys/{id}",
+      "method": "PATCH",
+      "status": 200,
+      "bytes": 391,
+      "sha256": "8aa0d865dfedd6fb90048bfd9b48e95a105ab371968e267bf16014c64b80c175"
+    },
+    {
+      "route": "/api/admin/api-keys",
+      "method": "GET",
+      "status": 200,
+      "bytes": 732,
+      "sha256": "05145e277d73f6b1745c46f729498e7e4ff6324ed2ee0b7cce99370491e38c36"
+    },
+    {
+      "route": "/api/admin/logs",
+      "method": "GET",
+      "status": 200,
+      "bytes": 9037,
+      "sha256": "e85b3b20f451209907939514684f081b6036666e4b4dfef8922b4ae34c88f96d"
+    },
+    {
+      "route": "/api/admin/logs",
+      "method": "GET",
+      "status": 200,
+      "bytes": 6711,
+      "sha256": "21f09e1c20aea3bfbd811ffd80d9037af7f63533f992be9859a567868412dfc1"
+    },
+    {
+      "route": "/api/admin/logs",
+      "method": "GET",
+      "status": 200,
+      "bytes": 1490,
+      "sha256": "2ebc9459632c5dbbb274a75aaa3a2bb6801243367c192f800c33f22446733c5d"
+    },
+    {
+      "route": "/api/admin/logs",
+      "method": "GET",
+      "status": 200,
+      "bytes": 9037,
+      "sha256": "4adf990dca8588286e729fe05e92a39de8c9700b1fcaa41ed1def7e51a68a401"
+    },
+    {
+      "route": "/api/admin/api-keys",
+      "method": "GET",
+      "status": 200,
+      "bytes": 6337,
+      "sha256": "9633bd4be723e0bf3c3dc23dbecd9d4fd0ac7440fc8b633cc3670f7a70286373"
+    },
+    {
+      "route": "/api/admin/logs",
+      "method": "GET",
+      "status": 200,
+      "bytes": 9037,
+      "sha256": "cb725310628544c5e1c1079adb02571c2a4b368e3486d7c0aab9586ef77d52e3"
+    },
+    {
+      "route": "/api/admin/logs",
+      "method": "GET",
+      "status": 503,
+      "bytes": 142,
+      "sha256": "9476e8965390634969ba1710b76ad8132a07efffe2083e1fcf8f5e3b30f7b595"
+    },
+    {
+      "route": "/api/admin/logs",
+      "method": "GET",
+      "status": 200,
+      "bytes": 9037,
+      "sha256": "066c1571e1829a048dcb6a7e983f52a426511a2bb54a3c1afceda6bb8a3d8cfc"
+    }
+  ],
+  "credentials": "SYNTHETIC_NOT_ARCHIVED"
+}

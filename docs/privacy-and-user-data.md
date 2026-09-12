@@ -81,9 +81,17 @@ Phase010 基础 seed 只创建本次隔离 run 的合成管理员与三项内部
 
 用户提交的 reason 先校验、trim，规范化内容只参与非秘密 requestHash；AdminCommandReceipt 不保存该正文。USER_UPDATE 的 detailJson 只留下 before/after 的角色、状态、revision、`sessionVersionIncremented` 布尔及受控结果/原因码，reason 全文通过既有脱敏器替换为 `***`，不能将自由文案借审计落库。可信 actorEmailSnapshot 仍遵循下述独立审计追溯边界，不复制到 detailJson、普通日志或阶段证据。
 
-AdminCommandReceipt 仅持久化幂等键 hash、请求 hash、当前领域安全结果和受控执行元数据。重放必须重新授权，历史结果不让被降权/停用或已撤销会话继续读取。活跃记录不按 TTL 删除；终态以数据库完成时刻至少保留24小时，不可倒填时间缩短期限。KeyRotationRun 只存既有 key ID、受控 revision/hash/checkpoint，当前 candidateIdsJson 为 `[]`；不存明文 key、envelope、任意候选正文或外部原始响应。密钥审计到期清理协议尚未生产，当前轮换 run 禁止删除并以 Restrict FK 保留相关收据与密钥引用，不能因终态24小时已过拆除引用链。
+AdminCommandReceipt 仅持久化幂等键 hash、请求 hash、当前领域安全结果和受控执行元数据。重放必须重新授权，历史结果不让被降权/停用或已撤销会话继续读取。活跃记录不按 TTL 删除；终态以数据库完成时刻至少保留24小时，不可倒填时间缩短期限。KeyRotationRun 只存既有 key ID、受控 revision/hash/checkpoint；Phase012 首产 candidateIdsJson=`[]`，Phase013 扩展为 adapter 控制的精确候选标识数组。不存明文 key、envelope、任意候选正文或外部原始响应。密钥审计到期清理协议尚未生产，当前轮换 run 禁止删除并以 Restrict FK 保留相关收据与密钥引用，不能因终态24小时已过拆除引用链。
 
 Phase012 验收使用任务专属的隔离 PostgreSQL 与合成身份，随机凭据和 canary 仅存被忽略的本地准备区。归档 stdout/stderr、浏览器 DOM/截图和报告前扫描秘密；证据只保留安全计数、版本差异、状态、命令退出码与文件 hash。界面展示的合成示例邮箱不代表真实用户。上述新增持久化边界不声明已实现个人 ERASE、生产保留清理或 Phase016 worker。
+
+### Phase013 密钥输入与审计读取
+
+密钥输入仅在一次受控请求、加密或已授权候选测试调用中短暂持有。页面使用提交后清空的 password 控件，重试仅保留正文摘要和幂等键，重新输入相同正文取得原结果；不声称 JavaScript string 已内存清零。管理列表 SQL 直接派生12位短 fingerprint，普通结果与持久化重放均使用 exact DTO 白名单。完整 fingerprint、ciphertext/envelope、主密钥标识和明文不进入 HTTP 响应、HTML、storage、日志、trace 或 evidence。
+
+审计读取在 SQL select 中排除邮箱快照、IP 和 UA，详情复用 Phase009 sanitizer，再隐藏 seedFingerprint/seedRunId/ipHash/accountHash。摘要作为文本显示，不渲染任意 HTML；无详情返回中性说明。游标不代替权限，查询前后验证当前会话；最大100条、筛选总长最多4096，篡改或跨身份复用拒绝。密钥变化与审计、幂等收据同事务，故障不能留下无审计成功。
+
+本阶段只使用自动生成的合成密钥、隔离 PostgreSQL 与 loopback HTTP。测试在归档前扫描数据库安全投影、HTTP、日志、审计、trace、浏览器 HTML/storage 和 Gate evidence，并保存类别计数与退出码；带秘密的请求正文不归档。两引用 fixture 不构成真实 Provider 调用或生产流量，具体范围见 [Phase013说明](phase013.md)。
 
 ## 删除、归档与恢复
 

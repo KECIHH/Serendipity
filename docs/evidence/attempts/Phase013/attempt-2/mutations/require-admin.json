@@ -1,0 +1,23 @@
+{
+  "sourcePath": "src/server/auth/guards.ts",
+  "changedSources": [
+    {
+      "sourcePath": "src/server/auth/guards.ts",
+      "originalHash": "850c4b508d35265967d6432e386b6209a7875df24253f64228a5a709628dc9e2",
+      "mutatedHash": "976f497cbbe8818d8645078f97109c28f40b079493da84f9c97db1418a72d529"
+    },
+    {
+      "sourcePath": "src/server/admin/api-keys.ts",
+      "originalHash": "ccdcc83f936076705015e705d2ad45a5d806626bdc7588591bd54469cff14436",
+      "mutatedHash": "ca6877ce149da12a72f0c2bcd8828653f2a34fd39678832bcbbc461c673ebe6a"
+    }
+  ],
+  "testFiles": [
+    "tests/lib/auth-guards.test.ts",
+    "tests/admin/api-keys.integration.test.ts"
+  ],
+  "testPattern": "\\[authorization\\]|requireAdmin server authorization|management page, Route Handler and Server Action guard ordering",
+  "originalCase": "authorization",
+  "simulation": true,
+  "productionTraffic": false
+}

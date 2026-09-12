@@ -21,6 +21,8 @@ import AdminLayout from "@/app/admin/layout";
 import ProtectedAdminLayout from "@/app/admin/(protected)/layout";
 import AdminPage from "@/app/admin/(protected)/page";
 import AdminUsersPage from "@/app/admin/(protected)/users/page";
+import AdminApiKeysPage from "@/app/admin/(protected)/api-keys/page";
+import AdminLogsPage from "@/app/admin/(protected)/logs/page";
 import AdminLoginPage from "@/app/admin/(public)/login/page";
 import { activeAdminHref, ADMIN_NAV } from "@/components/admin/admin-nav";
 import { AdminShell } from "@/components/layout/admin-shell";
@@ -59,7 +61,11 @@ describe("admin/layout navigation and route boundaries", () => {
         return `/${segments.join("/")}`;
       });
     const links = ADMIN_NAV.filter((item) => item.kind === "link");
-    expect(links.map((item) => item.href)).toEqual(["/admin/users"]);
+    expect(links.map((item) => item.href)).toEqual([
+      "/admin/users",
+      "/admin/api-keys",
+      "/admin/logs",
+    ]);
     for (const item of links) expect(routes, `Missing page for ${item.href}`).toContain(item.href);
     expect(ADMIN_NAV.filter((item) => item.kind === "action")).toEqual([
       { kind: "action", action: "logout", label: "退出登录" },
@@ -77,7 +83,9 @@ describe("admin/layout navigation and route boundaries", () => {
     ).toEqual([path.resolve("src/components/admin/admin-nav.ts")]);
     expect(routes.filter((href) => href.startsWith("/admin")).sort()).toEqual([
       "/admin",
+      "/admin/api-keys",
       "/admin/login",
+      "/admin/logs",
       "/admin/users",
     ]);
   });
@@ -128,6 +136,9 @@ describe("admin/layout navigation and route boundaries", () => {
     const page = await AdminUsersPage();
     expect(page.props).toEqual({ currentUserId: currentUser.id });
     expect(boundary.guard).toHaveBeenCalledTimes(2);
+    await AdminApiKeysPage();
+    await AdminLogsPage();
+    expect(boundary.guard).toHaveBeenCalledTimes(4);
   });
 
   it.each([401, 403] as const)(
@@ -143,7 +154,9 @@ describe("admin/layout navigation and route boundaries", () => {
       );
       await expect(AdminUsersPage()).rejects.toThrow("redirect:/admin/login");
       await expect(AdminPage()).rejects.toThrow("redirect:/admin/login");
-      expect(boundary.redirect).toHaveBeenCalledTimes(3);
+      await expect(AdminApiKeysPage()).rejects.toThrow("redirect:/admin/login");
+      await expect(AdminLogsPage()).rejects.toThrow("redirect:/admin/login");
+      expect(boundary.redirect).toHaveBeenCalledTimes(5);
     },
   );
 
@@ -152,6 +165,8 @@ describe("admin/layout navigation and route boundaries", () => {
     boundary.guard.mockRejectedValue(error);
     await expect(ProtectedAdminLayout({ children: null })).rejects.toBe(error);
     await expect(AdminUsersPage()).rejects.toBe(error);
+    await expect(AdminApiKeysPage()).rejects.toBe(error);
+    await expect(AdminLogsPage()).rejects.toBe(error);
     expect(boundary.redirect).not.toHaveBeenCalled();
   });
 
@@ -166,7 +181,7 @@ describe("admin/layout navigation and route boundaries", () => {
     const logout = within(navigation).getByRole("button", { name: "退出登录" });
     users.focus();
     fireEvent.keyDown(users, { key: "ArrowDown" });
-    expect(logout).toHaveFocus();
+    expect(within(navigation).getByRole("link", { name: "密钥管理" })).toHaveFocus();
     fireEvent.keyDown(logout, { key: "Home" });
     expect(users).toHaveFocus();
     fireEvent.keyDown(users, { key: "End" });

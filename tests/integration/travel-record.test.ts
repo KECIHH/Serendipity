@@ -1,4 +1,5 @@
 // @vitest-environment node
+import { readdirSync } from "node:fs";
 import { randomBytes, randomUUID } from "node:crypto";
 import { Prisma, type PrismaClient } from "@prisma/client";
 import {
@@ -248,9 +249,15 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
     const includesAdminCommands = Prisma.dmmf.datamodel.models.some(
       ({ name }) => name === "AdminCommandReceipt",
     );
-    expect(migrations).toHaveLength(
-      includesAdminCommands ? 7 : includesAuth ? 6 : includesApiKey ? 5 : includesAudit ? 4 : 3,
+    const includesRotationContract = readdirSync("prisma/migrations").some((name) =>
+      /^\d{14}_key_rotation_contract$/.test(name),
     );
+    expect(migrations).toHaveLength(
+      (includesAdminCommands ? 7 : includesAuth ? 6 : includesApiKey ? 5 : includesAudit ? 4 : 3) +
+        Number(includesRotationContract),
+    );
+    if (includesRotationContract)
+      expect(migrations[7].name).toMatch(/^\d{14}_key_rotation_contract$/);
     if (includesAdminCommands) expect(migrations[6].name).toMatch(/^\d{14}_admin_commands$/);
     if (includesAuth) expect(migrations[5].name).toMatch(/^\d{14}_auth_session_login_attempt$/);
     if (includesApiKey) expect(migrations[4].name).toMatch(/^\d{14}_api_key_config$/);

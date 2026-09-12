@@ -1,0 +1,88 @@
+{
+  "phase": 13,
+  "kind": "EXACT_RECORDED_TEST_SCOPE_ADDITION",
+  "fromAttemptId": "attempt-2",
+  "toAttemptId": "attempt-3",
+  "planPath": "docs/evidence/attempts/Phase013/attempt-2/frozen-plan.json",
+  "planHash": "9c1c63a7d57d757115b6b13d12e5f1b18f53040dd42b144a2ea9580016fe6870",
+  "failurePath": "docs/evidence/attempts/Phase013/attempt-2/attempt.json",
+  "failureHash": "346fc9151b4f33e28beccaf1e4cb76205d79120b1823ad2d9471b0616b28d37c",
+  "sourceReportPath": "docs/evidence/attempts/Phase013/attempt-2/all-tests-vitest.json",
+  "sourceReportHash": "f06707e5be53f7a496486fdb942b788f3127d91def6f4360bc875387b8dd467d",
+  "failedCommand": "npm run test -- --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase013\\attempt-2-all-tests-vitest.json",
+  "failedAssertions": [
+    {
+      "file": "src/app/layout.test.ts",
+      "fullName": "application layout boundaries keeps public login separate from the protected redirect and user administration"
+    },
+    {
+      "file": "tests/admin/users.integration.test.ts",
+      "fullName": "admin/users real PostgreSQL authorization-idempotency distinguishes a successful empty result from a real database read failure"
+    },
+    {
+      "file": "src/components/common/common-components.test.tsx",
+      "fullName": "layout shells renders reachable user management and logout while preserving its children"
+    }
+  ],
+  "duplicateAssertionIdentities": [
+    {
+      "file": "tests/lib/public-user.test.ts",
+      "fullName": "SystemConfig group schema group-validation: rejects unregistered runtime input undefined",
+      "count": 2
+    }
+  ],
+  "scopeAdditions": [
+    "src/app/layout.test.ts",
+    "src/components/common/common-components.test.tsx",
+    "tests/lib/public-user.test.ts"
+  ],
+  "originalTestSources": [
+    {
+      "sourcePath": "src/app/layout.test.ts",
+      "path": "docs/evidence/attempts/Phase013/attempt-3/prior-test-sources/src/app/layout.test.ts",
+      "sha256": "90bb2c1a05f0af75615e3c344f1156ec55e252dad08760eb8aa65ef93933c4a8"
+    },
+    {
+      "sourcePath": "src/components/common/common-components.test.tsx",
+      "path": "docs/evidence/attempts/Phase013/attempt-3/prior-test-sources/src/components/common/common-components.test.tsx",
+      "sha256": "28f41b8fd7a67530f2b4bbf59f71a5615282b6de9d9567d283eed724fec6c7ba"
+    },
+    {
+      "sourcePath": "tests/lib/public-user.test.ts",
+      "path": "docs/evidence/attempts/Phase013/attempt-3/prior-test-sources/tests/lib/public-user.test.ts",
+      "sha256": "fadb0b242ed03b69654ab0e7aeb1f0761190a109f126a7a3b25f1d216dc20555"
+    }
+  ],
+  "preservedEvidenceHashes": {
+    "docs/evidence/attempts/Phase013/attempt-2/all-tests-vitest.json": "f06707e5be53f7a496486fdb942b788f3127d91def6f4360bc875387b8dd467d",
+    "docs/evidence/attempts/Phase013/attempt-2/attempt.json": "346fc9151b4f33e28beccaf1e4cb76205d79120b1823ad2d9471b0616b28d37c",
+    "docs/evidence/attempts/Phase013/attempt-2/baseline-aad-vitest.json": "622fe8921ffebed3aef79b300a4246e11b941a82a97ea900cfcdf523a6739bc2",
+    "docs/evidence/attempts/Phase013/attempt-2/baseline-dto-whitelist-vitest.json": "fb281837464981548bb7c270b4e5682d2c98daf59d2deda6c0fc6d0c62ef8186",
+    "docs/evidence/attempts/Phase013/attempt-2/baseline-require-admin-vitest.json": "591ac96dfea2585bcb203ea55595ae439a404dba41eb75b1955d34ac9d42b5d7",
+    "docs/evidence/attempts/Phase013/attempt-2/baseline-terminal-state-vitest.json": "291a213d256ecc5c8c56060d0aecccfdd14dc970e34d8645cf955bdf2bd6671b",
+    "docs/evidence/attempts/Phase013/attempt-2/business-observations.json": "b3174cea38ddc03565ba7ff61d6860b1beee74c8c47bdcff1797865fff46d2b8",
+    "docs/evidence/attempts/Phase013/attempt-2/card-command.json": "e489800dadddb04f00522bea68edab1b7d0904ea0afaa5c7f3159a10102e2c2e",
+    "docs/evidence/attempts/Phase013/attempt-2/card-vitest.json": "edb931022b33c696ce395492aee75608831d4b6952c3b6dbcc4bb71b0ae87457",
+    "docs/evidence/attempts/Phase013/attempt-2/case-assertion-mapping.json": "2bab14c33eadd45018bf067536d201418f08b0ae44d8ddde1f854332d099ce3e",
+    "docs/evidence/attempts/Phase013/attempt-2/cli-network.json": "de102f7f4dbc166769cf87ea2d9d1d3b81f01a5212e060930d4e97c2444c8237",
+    "docs/evidence/attempts/Phase013/attempt-2/evidence-guards.json": "4f41460267c267959a458422a28767b83dd4758b489ae36d1102f7e07215ffbe",
+    "docs/evidence/attempts/Phase013/attempt-2/frozen-plan.json": "9c1c63a7d57d757115b6b13d12e5f1b18f53040dd42b144a2ea9580016fe6870",
+    "docs/evidence/attempts/Phase013/attempt-2/migration-preparation.json": "c57638b9481ec47ecd8a3f8cefa3ad864331695511a74acdda4be01795019579",
+    "docs/evidence/attempts/Phase013/attempt-2/mutations/aad.json": "67d204415e6d65aa3d3c2ba97a08fc5e66279367346acff4971dd85d374e5461",
+    "docs/evidence/attempts/Phase013/attempt-2/mutations/dto-whitelist.json": "87944cca59e23c965c952443f055a88a918389f2e5887d893e6264496a51461c",
+    "docs/evidence/attempts/Phase013/attempt-2/mutations/require-admin.json": "b4ba01ab2a7ec33479a3fc459239a6c38c84d9551ca0ea3b7667e8ac4face571",
+    "docs/evidence/attempts/Phase013/attempt-2/mutations/terminal-state.json": "8201518e6eb52dcd6f6449ae508bbb893ebeef2f60d0d4021925448aad5376e2",
+    "docs/evidence/attempts/Phase013/attempt-2/negative-aad-vitest.json": "19ea0a6a381cc23f4241b968465e9edde6f8b2ba5a2c8e184cc97998702a467e",
+    "docs/evidence/attempts/Phase013/attempt-2/negative-dto-whitelist-vitest.json": "5d0dc3eb524d246c47b13ce62a80eb9e87c43e05a11c6ad6abe8a5cf70a42b22",
+    "docs/evidence/attempts/Phase013/attempt-2/negative-require-admin-vitest.json": "5632832cfbe0cfbaf76641f5d57c5487c2ff90f509f71264d697a66fe55bd13c",
+    "docs/evidence/attempts/Phase013/attempt-2/negative-terminal-state-vitest.json": "3e6925db2969f78aabff37ca361731a6cf6c6727694f174e887b54d006701e4e",
+    "docs/evidence/attempts/Phase013/attempt-2/restored-card-vitest.json": "9b80389fe050e17c88cd3b991584adda7ba0380535ef7b81a1cc20ded33ef59f",
+    "docs/evidence/attempts/Phase013/attempt-2/test-discovery.json": "c89d47d6d012f2d2546dcd9c3133f2410af9527f2937f85c48b65ac48cd2dbc3",
+    "docs/evidence/attempts/Phase013/attempt-2/validator-regression.json": "5f9265de8823a07c7628558c4ee45ad690fd76a8a02108fbb04ffc43acb62614"
+  },
+  "testMode": "full",
+  "crossAttemptReuse": "disabled",
+  "rationale": "The actual full-repository run found two legacy navigation test expectations outside the modification scope plus an already-scoped Phase012 role fixture. The same raw report has two parameterized assertions with an identical test identity. Add only the two failed navigation test paths and the existing parameterized test path; give each existing parameterized case a stable ordinal without changing assertion bodies or counts. Preserve all six business cases, expected text, commands, denominators and historical evidence. The next attempt reruns the complete acceptance without reuse.",
+  "existingScopedRepair": "tests/admin/users.integration.test.ts",
+  "recordedAt": "2026-09-12T07:37:32.537Z"
+}

@@ -1,0 +1,32 @@
+{
+  "phase": 13,
+  "attemptId": "attempt-1",
+  "status": "FAIL",
+  "kind": "SOURCE_REPAIR",
+  "artifactCommit": null,
+  "planHash": "965a3381a40a2c30d42b8341b9682c0de93aa0a39e78e245e04f9e8b8ea2f3bb",
+  "command": "Phase013 isolated migration contract diagnostic",
+  "exitCode": 1,
+  "reason": "Real PostgreSQL deployed the custom SQL, but key_rotation_candidates_valid([]) returned false. Frozen plan scope also needs explicit existing audit-role and travel-migration inventory paths; negative control source locations must bind actual isolated mutation files.",
+  "diagnosticPath": "docs/evidence/attempts/Phase013/attempt-1/migration-diagnostic.json",
+  "diagnosticHash": "0e0355c6822eb3c0e635a00d60cba295bb11c81455dc83387af277039fd56ae2",
+  "failedProtectionPath": "docs/evidence/attempts/Phase013/attempt-1/failed-protection.sql",
+  "failedProtectionHash": "7680d519304cd0ee88b6adade119a9c06a4ac849434b47fc61abe8a0a0395c91",
+  "failedMigrationPath": "docs/evidence/attempts/Phase013/attempt-1/failed-migration.sql",
+  "failedMigrationHash": "7680d519304cd0ee88b6adade119a9c06a4ac849434b47fc61abe8a0a0395c91",
+  "originalReceiptPath": "docs/evidence/attempts/Phase013/setup/migration-generation.json",
+  "originalReceiptHash": "f8cea03f81bb4dbc041a8df528ce799ecd42e94dde717e7a865a22dca2ab57a7",
+  "preparedReceiptPath": "docs/evidence/attempts/Phase013/attempt-2/migration-preparation.json",
+  "sourceAdditions": [
+    "docs/evidence/attempts/Phase013/attempt-2/migration-preparation.json"
+  ],
+  "scopeAdditions": [
+    "tests/integration/audit-log.test.ts",
+    "tests/integration/travel-record.test.ts"
+  ],
+  "negativeControlSourceCorrections": {
+    "require-admin": "src/server/auth/guards.ts",
+    "terminal-state": "src/lib/admin-api-keys.ts"
+  },
+  "recordedAt": "2026-09-12T06:17:09.384Z"
+}

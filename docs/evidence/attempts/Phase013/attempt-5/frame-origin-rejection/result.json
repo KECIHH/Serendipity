@@ -1,0 +1,34 @@
+{
+  "phase": 13,
+  "attemptId": "attempt-5",
+  "scope": "ISOLATED_REJECTION_REPRODUCTION_NOT_PRODUCT_ACCEPTANCE",
+  "status": "FAIL",
+  "testCount": 2,
+  "sourceHashes": {
+    "docs/phase-plans/Phase013.json": "4038619311cc6fdd19b1fd6a64071e7d8bff15e6ed89bf8f1ddd53cca2a00eac",
+    "docs/evidence/attempts/Phase013/attempt-5/quality.json": "17340d715a71909cbfe6f1ef3835864bdf6cd0a6aa7d4cbbe1b547c2924ffee1",
+    "docs/evidence/attempts/Phase013/attempt-5/baseline-require-admin-vitest.json": "7536e5648c84fefcf5110b9a8711839e6eaf2fdd9cc08ae454854eb046260daf",
+    "docs/evidence/attempts/Phase013/attempt-5/negative-require-admin-vitest.json": "912370e379051d073cc2f6fe8b2982d8a5f52928d62d04a4d11b761e67b9b4e8",
+    "docs/phase-plans/phase013-evidence.mjs": "c6e2ec1280a3a8c3fad9acb5437f72e83c52e6c3a0c148f6a8678e994f78d8e6",
+    "docs/phase-plans/verify-phase013.mjs": "ee0929109f0204c67c0f2b5b9bc1051581ecbcaca7ea11ad08a16aeb21550159",
+    "docs/phase-plans/complete-phase013.mjs": "214a99d910fa853abeeeffbd1db5746e0cf5910be5d35b074ce098afd69f681c",
+    "tests/phase013/evidence-guards.mjs": "d6f693752c773b3573ff789ee1d6a163a6571ced5d017595c46671ea98d4c596"
+  },
+  "results": [
+    {
+      "id": "relative-project-frame",
+      "expected": "REJECT",
+      "observed": "ACCEPT",
+      "status": "FAIL",
+      "diagnostic": null
+    },
+    {
+      "id": "project-frame-missing-column",
+      "expected": "REJECT",
+      "observed": "ACCEPT",
+      "status": "FAIL",
+      "diagnostic": null
+    }
+  ],
+  "implementationFilesModified": false
+}

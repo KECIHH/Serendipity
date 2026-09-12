@@ -1,0 +1,66 @@
+{
+  "sourcePath": "src/server/security/secret-envelope.ts",
+  "changedSources": [
+    {
+      "sourcePath": "src/server/security/secret-envelope.ts",
+      "originalHash": "17f9ccfc8acfe65ac287db299fc36c16f49274b1c7da40598dd48c3a62ba1c6b",
+      "mutatedHash": "fa2006c4ffe1adb6a2724df3b610679c352cbd413c783cc60a94e5568e3a2f7d"
+    }
+  ],
+  "testFiles": [
+    "tests/lib/secret-envelope.test.ts"
+  ],
+  "testPattern": null,
+  "originalCase": "crypto-redaction",
+  "failureContract": {
+    "version": "phase013-exact-security-assertion-v1",
+    "controlId": "aad",
+    "testSourceHashes": {
+      "tests/lib/secret-envelope.test.ts": "0fc5f807552befc65150d73a054a2d2e7b76a88ade72dcc7bd0d126787ed87ec"
+    },
+    "requiredFailures": [
+      {
+        "file": "tests/lib/secret-envelope.test.ts",
+        "fullName": "[crypto-redaction] secret-envelope service AAD and authentication bind record provider version IV tag and ciphertext",
+        "anchor": "      { provider: \"another-synthetic-provider\" },\n      { envelopeVersion: 2 },\n      { id: \"\\ud800\" },\n    ])\n      expect(rejectsSafely(() => decryptSecret({ ...value.row, ...patch }, value.resolver))).toBe(\n        true,\n      );",
+        "matcher": "toBe",
+        "failureHeader": "AssertionError: expected false to be true // Object.is equality",
+        "sourceHash": "0fc5f807552befc65150d73a054a2d2e7b76a88ade72dcc7bd0d126787ed87ec",
+        "anchorHash": "c73e709d852f4949e43df3ba4a38077c79fffe88a6cb07933f6e080197ca018a",
+        "location": {
+          "file": "tests/lib/secret-envelope.test.ts",
+          "line": 214,
+          "column": 94
+        },
+        "signal": {
+          "error": "AssertionError",
+          "matcher": "toBe",
+          "actual": false,
+          "expected": true
+        }
+      },
+      {
+        "file": "tests/lib/secret-envelope.test.ts",
+        "fullName": "[crypto-redaction] secret-envelope service decryption failures contain only the fixed safe classification",
+        "anchor": "expect(safe).toBe(true);",
+        "matcher": "toBe",
+        "failureHeader": "AssertionError: expected false to be true // Object.is equality",
+        "sourceHash": "0fc5f807552befc65150d73a054a2d2e7b76a88ade72dcc7bd0d126787ed87ec",
+        "anchorHash": "d66fc9d65e91a6afe54bd9aa308ec4dc99c4e20e4a6416a9a055728ce5639566",
+        "location": {
+          "file": "tests/lib/secret-envelope.test.ts",
+          "line": 277,
+          "column": 20
+        },
+        "signal": {
+          "error": "AssertionError",
+          "matcher": "toBe",
+          "actual": false,
+          "expected": true
+        }
+      }
+    ]
+  },
+  "simulation": true,
+  "productionTraffic": false
+}

@@ -1,0 +1,784 @@
+{
+  "numTotalTestSuites": 19,
+  "numPassedTestSuites": 19,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 57,
+  "numPassedTests": 57,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1789203810844,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "admin/api-keys safe interface"
+          ],
+          "fullName": "admin/api-keys safe interface [create-read] shows loading, empty and exact safe key pages",
+          "status": "passed",
+          "title": "[create-read] shows loading, empty and exact safe key pages",
+          "duration": 208.6315999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys safe interface"
+          ],
+          "fullName": "admin/api-keys safe interface [crypto-redaction] submits an uncontrolled one-time secret and never reflects it in HTML or browser storage",
+          "status": "passed",
+          "title": "[crypto-redaction] submits an uncontrolled one-time secret and never reflects it in HTML or browser storage",
+          "duration": 76.5917000000004,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys safe interface"
+          ],
+          "fullName": "admin/api-keys safe interface [failure-atomicity] reentry after a lost response reuses the same request identity without retaining the secret",
+          "status": "passed",
+          "title": "[failure-atomicity] reentry after a lost response reuses the same request identity without retaining the secret",
+          "duration": 92.7482,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys safe interface"
+          ],
+          "fullName": "admin/api-keys safe interface [disable-enable] requires reselection after stale CAS and never enables a revoked key",
+          "status": "passed",
+          "title": "[disable-enable] requires reselection after stale CAS and never enables a revoked key",
+          "duration": 135.38099999999986,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys safe interface"
+          ],
+          "fullName": "admin/api-keys safe interface [rotate-revoke] displays pending validation honestly and only reports activation from its receipt",
+          "status": "passed",
+          "title": "[rotate-revoke] displays pending validation honestly and only reports activation from its receipt",
+          "duration": 82.3436999999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys safe interface"
+          ],
+          "fullName": "admin/api-keys safe interface [crypto-redaction] rejects a non-string rotation 'stage array' with a safe error",
+          "status": "passed",
+          "title": "[crypto-redaction] rejects a non-string rotation 'stage array' with a safe error",
+          "duration": 66.4952000000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys safe interface"
+          ],
+          "fullName": "admin/api-keys safe interface [crypto-redaction] rejects a non-string rotation 'nested stage array' with a safe error",
+          "status": "passed",
+          "title": "[crypto-redaction] rejects a non-string rotation 'nested stage array' with a safe error",
+          "duration": 66.4671000000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys safe interface"
+          ],
+          "fullName": "admin/api-keys safe interface [crypto-redaction] rejects a non-string rotation 'error code array' with a safe error",
+          "status": "passed",
+          "title": "[crypto-redaction] rejects a non-string rotation 'error code array' with a safe error",
+          "duration": 72.91390000000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys safe interface"
+          ],
+          "fullName": "admin/api-keys safe interface [crypto-redaction] rejects a non-string rotation 'nested error code array' with a safe error",
+          "status": "passed",
+          "title": "[crypto-redaction] rejects a non-string rotation 'nested error code array' with a safe error",
+          "duration": 77.3456000000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys safe interface"
+          ],
+          "fullName": "admin/api-keys safe interface [authorization] uses fixed authorization errors and rejects extra secret fields from the server",
+          "status": "passed",
+          "title": "[authorization] uses fixed authorization errors and rejects extra secret fields from the server",
+          "duration": 46.56829999999991,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys safe interface"
+          ],
+          "fullName": "admin/api-keys safe interface [create-read] binds pagination to current filters",
+          "status": "passed",
+          "title": "[create-read] binds pagination to current filters",
+          "duration": 69.24060000000009,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys safe interface"
+          ],
+          "fullName": "admin/api-keys safe interface [crypto-redaction] renders safe error/not-found pages without exception data",
+          "status": "passed",
+          "title": "[crypto-redaction] renders safe error/not-found pages without exception data",
+          "duration": 11.007700000000114,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789203893875,
+      "endTime": 1789203894881.0078,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys-client.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[create-read]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [create-read] creates an encrypted key and replays its original safe response after a process restart",
+          "status": "passed",
+          "title": "creates an encrypted key and replays its original safe response after a process restart",
+          "duration": 3716.7487,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[create-read]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [create-read] uses bounded filtered keyset pages and rejects cursor tampering and invalid input before writes",
+          "status": "passed",
+          "title": "uses bounded filtered keyset pages and rejects cursor tampering and invalid input before writes",
+          "duration": 2991.3787999999995,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[disable-enable]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [disable-enable] rejects revoked restoration before any write",
+          "status": "passed",
+          "title": "rejects revoked restoration before any write",
+          "duration": 3043.2557000000006,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[rotate-revoke]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] rejects changed HTTP versions, redirects and oversized bodies while retaining one disabled candidate",
+          "status": "passed",
+          "title": "rejects changed HTTP versions, redirects and oversized bodies while retaining one disabled candidate",
+          "duration": 3135.3567999999996,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[rotate-revoke]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] switches two persisted reference versions atomically after real version-bound HTTP tests",
+          "status": "passed",
+          "title": "switches two persisted reference versions atomically after real version-bound HTTP tests",
+          "duration": 2470.8912999999993,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[rotate-revoke]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] retains a failed disabled candidate and reuses it across a fresh service without enabling it through PATCH",
+          "status": "passed",
+          "title": "retains a failed disabled candidate and reuses it across a fresh service without enabling it through PATCH",
+          "duration": 2639.979800000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[rotate-revoke]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] allows exactly one winner when two administrators concurrently rotate the same key",
+          "status": "passed",
+          "title": "allows exactly one winner when two administrators concurrently rotate the same key",
+          "duration": 2695.616900000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[rotate-revoke]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] lets emergency revocation interrupt new calls while an ordinary rotation is awaiting HTTP",
+          "status": "passed",
+          "title": "lets emergency revocation interrupt new calls while an ordinary rotation is awaiting HTTP",
+          "duration": 2512.4519,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[rotate-revoke]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] rotates through the same coordinator with an empty real reference registry",
+          "status": "passed",
+          "title": "rotates through the same coordinator with an empty real reference registry",
+          "duration": 3017.404699999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[authorization]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [authorization] rejects every unauthenticated or stale principal and CSRF failure with zero protected reads or writes",
+          "status": "passed",
+          "title": "rejects every unauthenticated or stale principal and CSRF failure with zero protected reads or writes",
+          "duration": 3038.0036,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[crypto-redaction]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [crypto-redaction] rejects secret fields at the retained result whitelist",
+          "status": "passed",
+          "title": "rejects secret fields at the retained result whitelist",
+          "duration": 2916.8941000000013,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[failure-atomicity]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [failure-atomicity] rolls back encrypted creation and status changes when the mandatory audit fails",
+          "status": "passed",
+          "title": "rolls back encrypted creation and status changes when the mandatory audit fails",
+          "duration": 2910.601400000007,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[failure-atomicity]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [failure-atomicity] rolls back both activations and key states when the final audit or receipt fails, then retries the same candidate",
+          "status": "passed",
+          "title": "rolls back both activations and key states when the final audit or receipt fails, then retries the same candidate",
+          "duration": 5219.365400000002,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[failure-atomicity]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [failure-atomicity] detects reference-set additions and activation revisions after candidate HTTP validation",
+          "status": "passed",
+          "title": "detects reference-set additions and activation revisions after candidate HTTP validation",
+          "duration": 4947.9499,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[failure-atomicity]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [failure-atomicity] rolls back the first activation when a database fault rejects switching the second reference",
+          "status": "passed",
+          "title": "rolls back the first activation when a database fault rejects switching the second reference",
+          "duration": 2599.2181000000055,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789203811704,
+      "endTime": 1789203859562.218,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/api-keys.integration.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "admin/logs client"
+          ],
+          "fullName": "admin/logs client [failure-atomicity] separates loading empty and service-error states with safe retries",
+          "status": "passed",
+          "title": "[failure-atomicity] separates loading empty and service-error states with safe retries",
+          "duration": 237.24950000000013,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/logs client"
+          ],
+          "fullName": "admin/logs client [failure-atomicity] uses opaque next and previous cursors then resets them for new filters",
+          "status": "passed",
+          "title": "[failure-atomicity] uses opaque next and previous cursors then resets them for new filters",
+          "duration": 228.31709999999975,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/logs client"
+          ],
+          "fullName": "admin/logs client [crypto-redaction] renders audit summaries as text and never writes browser storage",
+          "status": "passed",
+          "title": "[crypto-redaction] renders audit summaries as text and never writes browser storage",
+          "duration": 60.54600000000028,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/logs client"
+          ],
+          "fullName": "admin/logs client [crypto-redaction] rejects unexpected fields and incomplete audit DTOs without partial rendering",
+          "status": "passed",
+          "title": "[crypto-redaction] rejects unexpected fields and incomplete audit DTOs without partial rendering",
+          "duration": 184.32459999999992,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/logs client"
+          ],
+          "fullName": "admin/logs client [authorization] requests reauthentication for denied reads and never trusts server error text",
+          "status": "passed",
+          "title": "[authorization] requests reauthentication for denied reads and never trusts server error text",
+          "duration": 92.81800000000021,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/logs client"
+          ],
+          "fullName": "admin/logs client [failure-atomicity] ignores stale responses after a filter request replaces them",
+          "status": "passed",
+          "title": "[failure-atomicity] ignores stale responses after a filter request replaces them",
+          "duration": 34.254199999999855,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/logs client"
+          ],
+          "fullName": "admin/logs client [failure-atomicity] error and not-found views omit framework messages stacks and request data",
+          "status": "passed",
+          "title": "[failure-atomicity] error and not-found views omit framework messages stacks and request data",
+          "duration": 15.48869999999988,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789203896883,
+      "endTime": 1789203897735.4888,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/logs-client.test.tsx"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "admin/logs DTO parser boundaries"
+          ],
+          "fullName": "admin/logs DTO parser boundaries accepts only the exact string actor kinds",
+          "status": "passed",
+          "title": "accepts only the exact string actor kinds",
+          "duration": 4.314399999999978,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/logs DTO parser boundaries"
+          ],
+          "fullName": "admin/logs DTO parser boundaries rejects non-string actorType values for USER without calling coercion hooks",
+          "status": "passed",
+          "title": "rejects non-string actorType values for USER without calling coercion hooks",
+          "duration": 1.3353999999999928,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/logs DTO parser boundaries"
+          ],
+          "fullName": "admin/logs DTO parser boundaries rejects non-string actorType values for ADMIN without calling coercion hooks",
+          "status": "passed",
+          "title": "rejects non-string actorType values for ADMIN without calling coercion hooks",
+          "duration": 0.5333999999999719,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/logs DTO parser boundaries"
+          ],
+          "fullName": "admin/logs DTO parser boundaries rejects non-string actorType values for SYSTEM without calling coercion hooks",
+          "status": "passed",
+          "title": "rejects non-string actorType values for SYSTEM without calling coercion hooks",
+          "duration": 0.36939999999998463,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/logs PostgreSQL and guarded handlers"
+          ],
+          "fullName": "admin/logs PostgreSQL and guarded handlers [crypto-redaction] reads exact safe DTOs and re-sanitizes nested legacy secrets without writes",
+          "status": "passed",
+          "title": "[crypto-redaction] reads exact safe DTOs and re-sanitizes nested legacy secrets without writes",
+          "duration": 2892.8404,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/logs PostgreSQL and guarded handlers"
+          ],
+          "fullName": "admin/logs PostgreSQL and guarded handlers [crypto-redaction] distinguishes immutable administrator user and system audit kinds",
+          "status": "passed",
+          "title": "[crypto-redaction] distinguishes immutable administrator user and system audit kinds",
+          "duration": 2843.2355999999995,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/logs PostgreSQL and guarded handlers"
+          ],
+          "fullName": "admin/logs PostgreSQL and guarded handlers [failure-atomicity] enforces default and maximum page size with stable tied-timestamp keysets",
+          "status": "passed",
+          "title": "[failure-atomicity] enforces default and maximum page size with stable tied-timestamp keysets",
+          "duration": 3094.6721,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/logs PostgreSQL and guarded handlers"
+          ],
+          "fullName": "admin/logs PostgreSQL and guarded handlers [failure-atomicity] filters by actor action target and inclusive time while retaining the first-page watermark",
+          "status": "passed",
+          "title": "[failure-atomicity] filters by actor action target and inclusive time while retaining the first-page watermark",
+          "duration": 2881.3222000000005,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/logs PostgreSQL and guarded handlers"
+          ],
+          "fullName": "admin/logs PostgreSQL and guarded handlers [failure-atomicity] rejects malformed bounded queries before issuing protected reads",
+          "status": "passed",
+          "title": "[failure-atomicity] rejects malformed bounded queries before issuing protected reads",
+          "duration": 3244.4305999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/logs PostgreSQL and guarded handlers"
+          ],
+          "fullName": "admin/logs PostgreSQL and guarded handlers [authorization] binds opaque cursors to signature administrator filters and page size",
+          "status": "passed",
+          "title": "[authorization] binds opaque cursors to signature administrator filters and page size",
+          "duration": 2840.188100000001,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/logs PostgreSQL and guarded handlers"
+          ],
+          "fullName": "admin/logs PostgreSQL and guarded handlers [authorization] denies anonymous ordinary disabled stale and revoked identities with zero business queries",
+          "status": "passed",
+          "title": "[authorization] denies anonymous ordinary disabled stale and revoked identities with zero business queries",
+          "duration": 3031.148299999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/logs PostgreSQL and guarded handlers"
+          ],
+          "fullName": "admin/logs PostgreSQL and guarded handlers [authorization] rechecks the database session after the audit query before releasing rows",
+          "status": "passed",
+          "title": "[authorization] rechecks the database session after the audit query before releasing rows",
+          "duration": 2960.4701999999997,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/logs PostgreSQL and guarded handlers"
+          ],
+          "fullName": "admin/logs PostgreSQL and guarded handlers [failure-atomicity] reports real database and malformed legacy failures without unsafe partial responses",
+          "status": "passed",
+          "title": "[failure-atomicity] reports real database and malformed legacy failures without unsafe partial responses",
+          "duration": 2848.786900000003,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789203860484,
+      "endTime": 1789203887129.7869,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/admin/logs.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "[crypto-redaction] secret-envelope PostgreSQL"
+          ],
+          "fullName": "[crypto-redaction] secret-envelope PostgreSQL service envelopes round-trip through PostgreSQL exact schema",
+          "status": "passed",
+          "title": "service envelopes round-trip through PostgreSQL exact schema",
+          "duration": 1461.047,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "[crypto-redaction] secret-envelope PostgreSQL"
+          ],
+          "fullName": "[crypto-redaction] secret-envelope PostgreSQL database fingerprint uniqueness preserves the original secret row",
+          "status": "passed",
+          "title": "database fingerprint uniqueness preserves the original secret row",
+          "duration": 1490.5847,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "[crypto-redaction] secret-envelope PostgreSQL"
+          ],
+          "fullName": "[crypto-redaction] secret-envelope PostgreSQL database lifecycle updates cannot replace encrypted bytes",
+          "status": "passed",
+          "title": "database lifecycle updates cannot replace encrypted bytes",
+          "duration": 1467.4993,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789203887504,
+      "endTime": 1789203891923.4993,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/integration/secret-envelope.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "[crypto-redaction] secret-envelope service"
+          ],
+          "fullName": "[crypto-redaction] secret-envelope service round-trip preserves normalized UTF-8 boundary bytes and exact schema",
+          "status": "passed",
+          "title": "round-trip preserves normalized UTF-8 boundary bytes and exact schema",
+          "duration": 9.114700000000028,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "[crypto-redaction] secret-envelope service"
+          ],
+          "fullName": "[crypto-redaction] secret-envelope service fingerprint normalization preserves case and interior bytes",
+          "status": "passed",
+          "title": "fingerprint normalization preserves case and interior bytes",
+          "duration": 1.6975999999999658,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "[crypto-redaction] secret-envelope service"
+          ],
+          "fullName": "[crypto-redaction] secret-envelope service random IVs keep ciphertext distinct and fingerprints stable",
+          "status": "passed",
+          "title": "random IVs keep ciphertext distinct and fingerprints stable",
+          "duration": 22.69029999999998,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "[crypto-redaction] secret-envelope service"
+          ],
+          "fullName": "[crypto-redaction] secret-envelope service key resolver validates environment keys and rejects unknown ids",
+          "status": "passed",
+          "title": "key resolver validates environment keys and rejects unknown ids",
+          "duration": 2.5348000000000184,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "[crypto-redaction] secret-envelope service"
+          ],
+          "fullName": "[crypto-redaction] secret-envelope service decryption rejects every malformed envelope and column mismatch",
+          "status": "passed",
+          "title": "decryption rejects every malformed envelope and column mismatch",
+          "duration": 3.629700000000014,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "[crypto-redaction] secret-envelope service"
+          ],
+          "fullName": "[crypto-redaction] secret-envelope service AAD and authentication bind record provider version IV tag and ciphertext",
+          "status": "passed",
+          "title": "AAD and authentication bind record provider version IV tag and ciphertext",
+          "duration": 3.314399999999978,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "[crypto-redaction] secret-envelope service"
+          ],
+          "fullName": "[crypto-redaction] secret-envelope service decryption failures contain only the fixed safe classification",
+          "status": "passed",
+          "title": "decryption failures contain only the fixed safe classification",
+          "duration": 1.9592000000000098,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789203859916,
+      "endTime": 1789203859960.9592,
+      "status": "passed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/tests/lib/secret-envelope.test.ts"
+    }
+  ]
+}

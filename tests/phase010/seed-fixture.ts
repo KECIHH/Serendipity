@@ -7,7 +7,7 @@ import { pathToFileURL } from "node:url";
 import { Prisma, PrismaClient } from "@prisma/client";
 
 interface Config {
-  phase: "010" | "011" | "012";
+  phase: "010" | "011" | "012" | "013";
   runId: string;
   database: string;
   url: string;
@@ -23,8 +23,11 @@ export function fixtureConfig(): Config {
   assert(file, "Phase010 requires its task-owned database configuration");
   const config = JSON.parse(fs.readFileSync(file, "utf8")) as Omit<Config, "phase">;
   assert.match(config.runId, /^[a-f0-9]{12}$/);
-  const match = /^phase(010|011|012)_disposable_([a-f0-9]{12})$/.exec(config.database);
-  assert(match, "Seed regression requires an owned Phase010, Phase011 or Phase012 database");
+  const match = /^phase(010|011|012|013)_disposable_([a-f0-9]{12})$/.exec(config.database);
+  assert(
+    match,
+    "Seed regression requires an owned Phase010, Phase011, Phase012 or Phase013 database",
+  );
   const phase = match[1] as Config["phase"];
   assert.equal(config.database, `phase${phase}_disposable_${config.runId}`);
   assert.equal(config.user, `phase${phase}_runner`);
@@ -156,7 +159,7 @@ export async function withSeedDatabase<T>(
   const config = fixtureConfig();
   const database = `${config.database}_t${randomBytes(5).toString("hex")}`;
   assert(database.length <= 63);
-  assert.match(database, /^phase(?:010|011|012)_disposable_[a-f0-9]{12}_t[a-f0-9]{10}$/);
+  assert.match(database, /^phase(?:010|011|012|013)_disposable_[a-f0-9]{12}_t[a-f0-9]{10}$/);
   const control = new PrismaClient({ datasourceUrl: config.url, log: [] });
   const [identity] = await control.$queryRaw<
     Array<{ name: string; role: string; marker: string | null; version: string }>

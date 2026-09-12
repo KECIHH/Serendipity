@@ -1,0 +1,45 @@
+{
+  "sourcePath": "src/lib/admin-api-keys.ts",
+  "changedSources": [
+    {
+      "sourcePath": "src/lib/admin-api-keys.ts",
+      "originalHash": "6ec4d776b3f0aabfc83b84d66bc461deaf04a53f7bdae4ad6438e8fd2661f8dd",
+      "mutatedHash": "ddc33c69e7185e00ccf66c646d09554c1be8ea0e51612d73d7559e9f689c5710"
+    }
+  ],
+  "testFiles": [
+    "tests/admin/api-keys.integration.test.ts"
+  ],
+  "testPattern": "\\[disable-enable\\]",
+  "originalCase": "disable-enable",
+  "failureContract": {
+    "version": "phase013-exact-security-assertion-v1",
+    "controlId": "terminal-state",
+    "testSourceHashes": {
+      "tests/admin/api-keys.integration.test.ts": "433fac7ba99add896fbc274d34a093a62d8f5405b782d5b3cb3e9b201a512b75"
+    },
+    "requiredFailures": [
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [disable-enable] rejects revoked restoration before any write",
+        "anchor": "expect(() => assertApiKeyTransition(\"REVOKED\", \"ACTIVE\")).toThrow();",
+        "matcher": "toThrow",
+        "failureHeader": "AssertionError: expected [Function] to throw an error",
+        "sourceHash": "433fac7ba99add896fbc274d34a093a62d8f5405b782d5b3cb3e9b201a512b75",
+        "anchorHash": "e60d2b59cceaaccab15372a8cfb5918ea66e43d7bede550d8554e832907306dc",
+        "location": {
+          "file": "tests/admin/api-keys.integration.test.ts",
+          "line": 344,
+          "column": 65
+        },
+        "signal": {
+          "error": "AssertionError",
+          "matcher": "toThrow",
+          "signal": "MISSING_EXPECTED_THROW"
+        }
+      }
+    ]
+  },
+  "simulation": true,
+  "productionTraffic": false
+}

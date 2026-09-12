@@ -63,7 +63,7 @@ describe("SystemConfig group schema", () => {
   );
 
   it.each(["UNKNOWN", "general", " GENERAL ", "", null, undefined, 7, {}, [], ["GENERAL"]])(
-    "group-validation: rejects unregistered runtime input %j",
+    "group-validation: rejects unregistered runtime input case %# (%j)",
     (input) => {
       expect(() => parseSystemConfigGroup(input)).toThrow(TypeError);
       expect(() => parseSystemConfigGroup(input)).toThrow("System configuration group is invalid");

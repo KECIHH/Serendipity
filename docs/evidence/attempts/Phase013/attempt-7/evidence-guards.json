@@ -1,0 +1,1495 @@
+{
+  "phase": 13,
+  "status": "PASS",
+  "scope": "ISOLATED_EVIDENCE_HELPER_SELF_TEST_NOT_PRODUCT_ACCEPTANCE",
+  "planHash": "360a64d6918c3d0693b752b70e5c93c8da035fd862c03360faa2b8a33b4c6e44",
+  "caseCount": 369,
+  "results": [
+    {
+      "name": "actual admission binds both shells, original metadata and synchronized maintenance",
+      "status": "PASS"
+    },
+    {
+      "name": "reject admission missing-shell",
+      "status": "PASS"
+    },
+    {
+      "name": "reject admission duplicate-shell",
+      "status": "PASS"
+    },
+    {
+      "name": "reject admission failed-shell",
+      "status": "PASS"
+    },
+    {
+      "name": "reject admission dirty-admission",
+      "status": "PASS"
+    },
+    {
+      "name": "reject admission wrong-phase",
+      "status": "PASS"
+    },
+    {
+      "name": "reject admission wrong-original-metadata",
+      "status": "PASS"
+    },
+    {
+      "name": "reject admission wrong-maintenance-head",
+      "status": "PASS"
+    },
+    {
+      "name": "reject admission unsynchronized-remote",
+      "status": "PASS"
+    },
+    {
+      "name": "actual input receipt binds immutable maintenance and policy bytes",
+      "status": "PASS"
+    },
+    {
+      "name": "reject input missing-maintenance",
+      "status": "PASS"
+    },
+    {
+      "name": "reject input wrong-maintenance-commit",
+      "status": "PASS"
+    },
+    {
+      "name": "reject input wrong-policy-hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject input wrong-policy-version",
+      "status": "PASS"
+    },
+    {
+      "name": "reject input old-phase-start",
+      "status": "PASS"
+    },
+    {
+      "name": "reject input changed-frozen-input",
+      "status": "PASS"
+    },
+    {
+      "name": "reject input preflight-report-hash",
+      "status": "PASS"
+    },
+    {
+      "name": "actual custom migration binds previous seven migrations, reviewed repair and failed SQL history",
+      "status": "PASS"
+    },
+    {
+      "name": "reject migration changed-migration",
+      "status": "PASS"
+    },
+    {
+      "name": "reject migration changed-protection",
+      "status": "PASS"
+    },
+    {
+      "name": "reject migration omitted-baseline",
+      "status": "PASS"
+    },
+    {
+      "name": "reject migration false-table-creation",
+      "status": "PASS"
+    },
+    {
+      "name": "reject migration false-generation-mode",
+      "status": "PASS"
+    },
+    {
+      "name": "reject migration missing-actual-commands",
+      "status": "PASS"
+    },
+    {
+      "name": "reject migration failed-actual-command",
+      "status": "PASS"
+    },
+    {
+      "name": "actual failure history remains complete and immutable",
+      "status": "PASS"
+    },
+    {
+      "name": "all actual historical receipt kinds pass without accessing Git",
+      "status": "PASS"
+    },
+    {
+      "name": "reject changed historical bytes at docs/evidence/attempts/Phase013/attempt-1/migration-diagnostic.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing historical bytes at docs/evidence/attempts/Phase013/attempt-1/migration-diagnostic.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject changed historical bytes at docs/evidence/attempts/Phase013/attempt-1/failed-migration.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing historical bytes at docs/evidence/attempts/Phase013/attempt-1/failed-migration.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "reject changed historical bytes at docs/evidence/attempts/Phase013/attempt-1/failed-protection.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing historical bytes at docs/evidence/attempts/Phase013/attempt-1/failed-protection.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "reject changed historical bytes at docs/evidence/attempts/Phase013/setup/migration-generation.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing historical bytes at docs/evidence/attempts/Phase013/setup/migration-generation.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject changed historical bytes at docs/evidence/attempts/Phase013/attempt-4/early-independent-review.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing historical bytes at docs/evidence/attempts/Phase013/attempt-4/early-independent-review.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject changed historical bytes at docs/evidence/attempts/Phase013/attempt-4/early-independent-review-run.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing historical bytes at docs/evidence/attempts/Phase013/attempt-4/early-independent-review-run.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject changed historical bytes at docs/evidence/attempts/Phase013/attempt-4/all-tests-vitest.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing historical bytes at docs/evidence/attempts/Phase013/attempt-4/all-tests-vitest.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject changed historical bytes at docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/result.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing historical bytes at docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/result.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject changed historical bytes at docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/command.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing historical bytes at docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/command.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject changed historical bytes at docs/evidence/attempts/Phase013/attempt-5/all-tests-vitest.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing historical bytes at docs/evidence/attempts/Phase013/attempt-5/all-tests-vitest.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject changed historical bytes at docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/prior-evidence-sources/phase013-evidence.mjs",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing historical bytes at docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/prior-evidence-sources/phase013-evidence.mjs",
+      "status": "PASS"
+    },
+    {
+      "name": "reject changed historical bytes at docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/result.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing historical bytes at docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/result.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject changed historical bytes at docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/command.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing historical bytes at docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/command.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject changed historical bytes at docs/evidence/attempts/Phase013/attempt-6/independent-review-assessment-final-attempt-6.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing historical bytes at docs/evidence/attempts/Phase013/attempt-6/independent-review-assessment-final-attempt-6.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject changed historical bytes at docs/evidence/attempts/Phase013/attempt-6/independent-review-run-final-attempt-6.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing historical bytes at docs/evidence/attempts/Phase013/attempt-6/independent-review-run-final-attempt-6.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject changed historical bytes at docs/evidence/attempts/Phase013/attempt-6/all-tests-vitest.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing historical bytes at docs/evidence/attempts/Phase013/attempt-6/all-tests-vitest.json",
+      "status": "PASS"
+    },
+    {
+      "name": "reject changed historical bytes at docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/prior-evidence-sources/phase013-evidence.mjs",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing historical bytes at docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/prior-evidence-sources/phase013-evidence.mjs",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt missing original map",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt missing completed verification",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt both original containers omitted",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt empty original map",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt omitted raw map entry",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt omitted frozen-plan map entry",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt omitted case map entry",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt omitted quality map entry",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt missing archive container",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt empty archive container",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt missing required diagnostic archive",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt duplicate archive path",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt duplicate artifact path",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt conflicting cross-container hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt conflicting pair and map hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt missing archive path",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt missing archive hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt missing archive source identity",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt unknown archive source identity",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt missing artifact commit marker",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt wrong artifact commit marker",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt original path case alias",
+      "status": "PASS"
+    },
+    {
+      "name": "reject rebound historical receipt archive path case alias",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical originalEvidenceHashes container null",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical originalEvidenceHashes container false",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical originalEvidenceHashes container 7",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical originalEvidenceHashes container \"invalid\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical originalEvidenceHashes container []",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical completedVerification container null",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical completedVerification container false",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical completedVerification container 7",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical completedVerification container \"invalid\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical completedVerification container []",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical archivedFiles container null",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical archivedFiles container false",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical archivedFiles container 7",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical archivedFiles container \"invalid\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical archivedFiles container {}",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical artifacts container null",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical artifacts container false",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical artifacts container 7",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical artifacts container \"invalid\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical artifacts container {}",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical archivedFiles entry null",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical archivedFiles entry false",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical archivedFiles entry 7",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical archivedFiles entry \"invalid\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical archivedFiles entry []",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical artifacts entry null",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical artifacts entry false",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical artifacts entry 7",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical artifacts entry \"invalid\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed historical artifacts entry []",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed original hash null",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed original hash 1",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed original hash {}",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed original hash \"invalid\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject malformed original hash \"000000000000000000000000000000000000000000000000000000000000000\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical guard diagnostic Path",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical guard diagnostic Hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical guard diagnostic Path and Hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical guard command Path",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical guard command Hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical guard command Path and Hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical review Path",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical review Hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical review Path and Hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical reviewer run Path",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical reviewer run Hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical reviewer run Path and Hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical migration diagnostic Path",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical migration diagnostic Hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical migration diagnostic Path and Hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical migration failedMigration Path",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical migration failedMigration Hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical migration failedMigration Path and Hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical migration failedProtection Path",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical migration failedProtection Hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical migration failedProtection Path and Hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical migration originalReceipt Path",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical migration originalReceipt Hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical migration originalReceipt Path and Hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical quality Path",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical quality Hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted historical quality Path and Hash",
+      "status": "PASS"
+    },
+    {
+      "name": "reject historical path before file access \"../outside.json\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject historical path before file access \"/outside.json\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject historical path before file access \"C:/outside.json\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject historical path before file access \"C:outside.json\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject historical path before file access \"\\\\\\\\host\\\\share\\\\outside.json\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject historical path before file access \"//host/share/outside.json\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject historical path before file access \"https://example.invalid/evidence.json\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject historical path before file access \"docs/evidence/attempts/Phase013/attempt-6/../attempt-999/outside.json\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject historical path before file access \"docs/evidence/attempts/Phase013/attempt-6/./alias.json\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject historical path before file access \"docs/evidence/attempts/Phase013/attempt-6/folder//alias.json\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject historical path before file access \"docs/evidence/attempts/Phase013/attempt-6/folder\\\\alias.json\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject historical path before file access \"docs/evidence/attempts/Phase013/attempt-6/trailing.json.\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject historical path before file access \"docs/evidence/attempts/Phase013/attempt-6/trailing.json \"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject historical path before file access \"docs/evidence/attempts/Phase013/attempt-6/bad:stream\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject historical path before file access \"docs/evidence/attempts/Phase013/attempt-6/control\\u0000.json\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject historical path before file access \"docs/evidence/attempts/Phase013/attempt-6/decomposed-é.json\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject historical path before file access \"docs/evidence/attempts/Phase013/attempt-999/outside.json\"",
+      "status": "PASS"
+    },
+    {
+      "name": "reject historical path before file access \"docs/evidence/attempts/phase013/attempt-6/alias.json\"",
+      "status": "PASS"
+    },
+    {
+      "name": "the same historical path and hash may be bound by several containers",
+      "status": "PASS"
+    },
+    {
+      "name": "historical source archives are verified independently of repaired live sources",
+      "status": "PASS"
+    },
+    {
+      "name": "rehashing an archive cannot replace the source recorded by historical quality",
+      "status": "PASS"
+    },
+    {
+      "name": "recorded migration repair retains the old SQL rather than comparing it with current SQL",
+      "status": "PASS"
+    },
+    {
+      "name": "a post-artifact failure still requires the metadata recovery contract",
+      "status": "PASS"
+    },
+    {
+      "name": "synthetic metadata recovery still checks the artifact tree reports archives and ancestry",
+      "status": "PASS"
+    },
+    {
+      "name": "reject synthetic metadata recovery missing Git",
+      "status": "PASS"
+    },
+    {
+      "name": "reject synthetic metadata recovery omitted artifact commit",
+      "status": "PASS"
+    },
+    {
+      "name": "reject synthetic metadata recovery wrong artifact tree",
+      "status": "PASS"
+    },
+    {
+      "name": "reject synthetic metadata recovery dirty diagnostic",
+      "status": "PASS"
+    },
+    {
+      "name": "reject synthetic metadata recovery missing original case",
+      "status": "PASS"
+    },
+    {
+      "name": "reject synthetic metadata recovery rehash quality unlike committed blob",
+      "status": "PASS"
+    },
+    {
+      "name": "reject synthetic metadata recovery rehash source archive unlike committed blob",
+      "status": "PASS"
+    },
+    {
+      "name": "append-only scope repair binds actual failures duplicates and all original evidence bytes",
+      "status": "PASS"
+    },
+    {
+      "name": "scope repair rejects forged failed identities changed historical bytes and unrelated scope widening",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing prior attempt",
+      "status": "PASS"
+    },
+    {
+      "name": "reject changed prior hash",
+      "status": "PASS"
+    },
+    {
+      "name": "previous required cases cannot be removed or reduced",
+      "status": "PASS"
+    },
+    {
+      "name": "implementation snapshot rejects edit deletion and newly added sources",
+      "status": "PASS"
+    },
+    {
+      "name": "same-execution mapping requires exact business file tags and all supplemental files",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted business group Phase013:create-read",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted business group Phase013:disable-enable",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted business group Phase013:rotate-revoke",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted business group Phase013:authorization",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted business group Phase013:crypto-redaction",
+      "status": "PASS"
+    },
+    {
+      "name": "reject omitted business group Phase013:failure-atomicity",
+      "status": "PASS"
+    },
+    {
+      "name": "reject failed mapped assertion and missing supplemental browser component",
+      "status": "PASS"
+    },
+    {
+      "name": "full discovery binds every exact assertion and rejects omitted renamed or extra tests",
+      "status": "PASS"
+    },
+    {
+      "name": "raw Vitest requires actual assertions and rejects empty skip runtime/import error and false green",
+      "status": "PASS"
+    },
+    {
+      "name": "exact negative security assertion is required for require-admin",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects same file/fullName with PrismaClientInitializationError: P1001: Cannot reach database server",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects same file/fullName with Error: connect ECONNREFUSED 127.0.0.1:5432",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects same file/fullName with Error: Test timed out in 5000ms.",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects same file/fullName with Error: Hook timed out in 10000ms.",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects same file/fullName with Error: beforeAll hook timed out in 10000ms.",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects same file/fullName with Error: afterEach hook timed out in 10000ms.",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects same file/fullName with AssertionError: expected 503 to be 201 // Object.is equality",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects relative project path before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects Windows drive-relative project path before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects project frame without column before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects project frame with zero column before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects project frame with zero line before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects project frame with negative line before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects project frame with fractional line before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects project frame with nonnumeric column before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects project frame with unsafe integer column before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects target wrapper missing closing parenthesis before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects target wrapper with extra closing parenthesis before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects unknown anonymous wrapper before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects wrong matcher line",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects wrong matcher column",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects target frame exists only after an earlier project assertion",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects same relative path in a different mutation root",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects missing stack",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects ambiguous multiple failure messages",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects missing original assertion",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects only an upstream or unrelated assertion failed",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects baseline original assertion was skipped",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects same renamed assertion in both executions",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects duplicate original assertion",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects inconsistent failed count",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects inconsistent total count",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects primary safety failure accompanied by database infrastructure failure",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects timeout process flag",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects terminated process",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects successful mutation process",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects stale or forged assertion source hash",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects forged matcher position",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin accepts exact Windows and encoded file URL frames",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin permits only explicit native frames before the original assertion",
+      "status": "PASS"
+    },
+    {
+      "name": "require-admin rejects changed or nonunique source anchors without editing tests",
+      "status": "PASS"
+    },
+    {
+      "name": "exact negative security assertion is required for aad",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects same file/fullName with PrismaClientInitializationError: P1001: Cannot reach database server",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects same file/fullName with Error: connect ECONNREFUSED 127.0.0.1:5432",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects same file/fullName with Error: Test timed out in 5000ms.",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects same file/fullName with Error: Hook timed out in 10000ms.",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects same file/fullName with Error: beforeAll hook timed out in 10000ms.",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects same file/fullName with Error: afterEach hook timed out in 10000ms.",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects same file/fullName with AssertionError: expected 503 to be 201 // Object.is equality",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects relative project path before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects Windows drive-relative project path before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects project frame without column before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects project frame with zero column before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects project frame with zero line before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects project frame with negative line before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects project frame with fractional line before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects project frame with nonnumeric column before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects project frame with unsafe integer column before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects target wrapper missing closing parenthesis before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects target wrapper with extra closing parenthesis before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects unknown anonymous wrapper before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects wrong matcher line",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects wrong matcher column",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects target frame exists only after an earlier project assertion",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects same relative path in a different mutation root",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects missing stack",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects ambiguous multiple failure messages",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects missing original assertion",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects only an upstream or unrelated assertion failed",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects baseline original assertion was skipped",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects same renamed assertion in both executions",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects duplicate original assertion",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects inconsistent failed count",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects inconsistent total count",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects primary safety failure accompanied by database infrastructure failure",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects timeout process flag",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects terminated process",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects successful mutation process",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects stale or forged assertion source hash",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects forged matcher position",
+      "status": "PASS"
+    },
+    {
+      "name": "aad accepts exact Windows and encoded file URL frames",
+      "status": "PASS"
+    },
+    {
+      "name": "aad permits only explicit native frames before the original assertion",
+      "status": "PASS"
+    },
+    {
+      "name": "aad rejects changed or nonunique source anchors without editing tests",
+      "status": "PASS"
+    },
+    {
+      "name": "exact negative security assertion is required for terminal-state",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects same file/fullName with PrismaClientInitializationError: P1001: Cannot reach database server",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects same file/fullName with Error: connect ECONNREFUSED 127.0.0.1:5432",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects same file/fullName with Error: Test timed out in 5000ms.",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects same file/fullName with Error: Hook timed out in 10000ms.",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects same file/fullName with Error: beforeAll hook timed out in 10000ms.",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects same file/fullName with Error: afterEach hook timed out in 10000ms.",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects same file/fullName with AssertionError: expected 503 to be 201 // Object.is equality",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects relative project path before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects Windows drive-relative project path before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects project frame without column before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects project frame with zero column before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects project frame with zero line before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects project frame with negative line before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects project frame with fractional line before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects project frame with nonnumeric column before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects project frame with unsafe integer column before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects target wrapper missing closing parenthesis before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects target wrapper with extra closing parenthesis before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects unknown anonymous wrapper before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects wrong matcher line",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects wrong matcher column",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects target frame exists only after an earlier project assertion",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects same relative path in a different mutation root",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects missing stack",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects ambiguous multiple failure messages",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects missing original assertion",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects only an upstream or unrelated assertion failed",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects baseline original assertion was skipped",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects same renamed assertion in both executions",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects duplicate original assertion",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects inconsistent failed count",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects inconsistent total count",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects primary safety failure accompanied by database infrastructure failure",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects timeout process flag",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects terminated process",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects successful mutation process",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects stale or forged assertion source hash",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects forged matcher position",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state accepts exact Windows and encoded file URL frames",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state permits only explicit native frames before the original assertion",
+      "status": "PASS"
+    },
+    {
+      "name": "terminal-state rejects changed or nonunique source anchors without editing tests",
+      "status": "PASS"
+    },
+    {
+      "name": "exact negative security assertion is required for dto-whitelist",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects same file/fullName with PrismaClientInitializationError: P1001: Cannot reach database server",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects same file/fullName with Error: connect ECONNREFUSED 127.0.0.1:5432",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects same file/fullName with Error: Test timed out in 5000ms.",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects same file/fullName with Error: Hook timed out in 10000ms.",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects same file/fullName with Error: beforeAll hook timed out in 10000ms.",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects same file/fullName with Error: afterEach hook timed out in 10000ms.",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects same file/fullName with AssertionError: expected 503 to be 201 // Object.is equality",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects relative project path before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects Windows drive-relative project path before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects project frame without column before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects project frame with zero column before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects project frame with zero line before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects project frame with negative line before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects project frame with fractional line before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects project frame with nonnumeric column before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects project frame with unsafe integer column before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects target wrapper missing closing parenthesis before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects target wrapper with extra closing parenthesis before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects unknown anonymous wrapper before a later exact target",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects wrong matcher line",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects wrong matcher column",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects target frame exists only after an earlier project assertion",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects same relative path in a different mutation root",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects missing stack",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects ambiguous multiple failure messages",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects missing original assertion",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects only an upstream or unrelated assertion failed",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects baseline original assertion was skipped",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects same renamed assertion in both executions",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects duplicate original assertion",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects inconsistent failed count",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects inconsistent total count",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects primary safety failure accompanied by database infrastructure failure",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects timeout process flag",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects terminated process",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects successful mutation process",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects stale or forged assertion source hash",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects forged matcher position",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist accepts exact Windows and encoded file URL frames",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist permits only explicit native frames before the original assertion",
+      "status": "PASS"
+    },
+    {
+      "name": "dto-whitelist rejects changed or nonunique source anchors without editing tests",
+      "status": "PASS"
+    },
+    {
+      "name": "results must bind exact plan command denominator hash and source inventory",
+      "status": "PASS"
+    },
+    {
+      "name": "raw secret scan rejects the real generated master key before archival",
+      "status": "PASS"
+    },
+    {
+      "name": "business metrics are parsed from the actual command stream across both output channels",
+      "status": "PASS"
+    },
+    {
+      "name": "business metrics reject absent groups false green state-audit mismatch partial switches and unauthorized access",
+      "status": "PASS"
+    },
+    {
+      "name": "fixture hash covers the real registered synthetic fixtures and rejects missing current-card inputs",
+      "status": "PASS"
+    },
+    {
+      "name": "browser evidence requires eight cases real scans privacy counters network isolation and observed response hashes",
+      "status": "PASS"
+    },
+    {
+      "name": "retry requires the frozen plan and cannot fabricate a missing failure",
+      "status": "PASS"
+    },
+    {
+      "name": "negative wrapper preserves an actual nonzero subprocess result",
+      "status": "PASS",
+      "underlyingExitCode": 7
+    }
+  ],
+  "testedSourceHashes": {
+    "docs/phase-plans/phase013-evidence.mjs": "25cf8d15d27ef0f2e141aa094d8465d0ffda2adb625e7c5fc3153368400aaaef",
+    "docs/phase-plans/phase013-runtime.mjs": "03fd70c2b53876509c5dcfab160e2d034eaec8066f40266c5cdc4e547fd04bb8",
+    "scripts/phase-evidence.mjs": "454f1911b53a21aed6f014d8cb6b36d748a6f9ec8b8e7547187d45cd20ce96c9",
+    "tests/phase013/evidence-guards.mjs": "f23462dde36dc1db2b2ffccae329758029dd837e612315809ab79517bdd16d1d"
+  },
+  "simulation": true,
+  "productionTraffic": false,
+  "generatedAt": "2026-09-12T12:19:47.186Z"
+}

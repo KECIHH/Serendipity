@@ -1,0 +1,218 @@
+{
+  "planHash": "9c1c63a7d57d757115b6b13d12e5f1b18f53040dd42b144a2ea9580016fe6870",
+  "sourceReportPath": "docs/evidence/attempts/Phase013/attempt-2/card-vitest.json",
+  "sourceReportHash": "edb931022b33c696ce395492aee75608831d4b6952c3b6dbcc4bb71b0ae87457",
+  "actualCommand": "npm run test -- admin/api-keys admin/logs secret-envelope --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase013\\attempt-2-card-vitest.json",
+  "mappings": {
+    "Phase013:create-read": [
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [create-read] creates an encrypted key and replays its original safe response after a process restart"
+      },
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [create-read] uses bounded filtered keyset pages and rejects cursor tampering and invalid input before writes"
+      }
+    ],
+    "Phase013:disable-enable": [
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [disable-enable] rejects revoked restoration before any write"
+      }
+    ],
+    "Phase013:rotate-revoke": [
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] rejects changed HTTP versions, redirects and oversized bodies while retaining one disabled candidate"
+      },
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] switches two persisted reference versions atomically after real version-bound HTTP tests"
+      },
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] retains a failed disabled candidate and reuses it across a fresh service without enabling it through PATCH"
+      },
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] allows exactly one winner when two administrators concurrently rotate the same key"
+      },
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] lets emergency revocation interrupt new calls while an ordinary rotation is awaiting HTTP"
+      },
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] rotates through the same coordinator with an empty real reference registry"
+      }
+    ],
+    "Phase013:authorization": [
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [authorization] rejects every unauthenticated or stale principal and CSRF failure with zero protected reads or writes"
+      },
+      {
+        "file": "tests/admin/logs.test.ts",
+        "fullName": "admin/logs PostgreSQL and guarded handlers [authorization] binds opaque cursors to signature administrator filters and page size"
+      },
+      {
+        "file": "tests/admin/logs.test.ts",
+        "fullName": "admin/logs PostgreSQL and guarded handlers [authorization] denies anonymous ordinary disabled stale and revoked identities with zero business queries"
+      },
+      {
+        "file": "tests/admin/logs.test.ts",
+        "fullName": "admin/logs PostgreSQL and guarded handlers [authorization] rechecks the database session after the audit query before releasing rows"
+      }
+    ],
+    "Phase013:crypto-redaction": [
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [crypto-redaction] rejects secret fields at the retained result whitelist"
+      },
+      {
+        "file": "tests/lib/secret-envelope.test.ts",
+        "fullName": "[crypto-redaction] secret-envelope service round-trip preserves normalized UTF-8 boundary bytes and exact schema"
+      },
+      {
+        "file": "tests/lib/secret-envelope.test.ts",
+        "fullName": "[crypto-redaction] secret-envelope service fingerprint normalization preserves case and interior bytes"
+      },
+      {
+        "file": "tests/lib/secret-envelope.test.ts",
+        "fullName": "[crypto-redaction] secret-envelope service random IVs keep ciphertext distinct and fingerprints stable"
+      },
+      {
+        "file": "tests/lib/secret-envelope.test.ts",
+        "fullName": "[crypto-redaction] secret-envelope service key resolver validates environment keys and rejects unknown ids"
+      },
+      {
+        "file": "tests/lib/secret-envelope.test.ts",
+        "fullName": "[crypto-redaction] secret-envelope service decryption rejects every malformed envelope and column mismatch"
+      },
+      {
+        "file": "tests/lib/secret-envelope.test.ts",
+        "fullName": "[crypto-redaction] secret-envelope service AAD and authentication bind record provider version IV tag and ciphertext"
+      },
+      {
+        "file": "tests/lib/secret-envelope.test.ts",
+        "fullName": "[crypto-redaction] secret-envelope service decryption failures contain only the fixed safe classification"
+      },
+      {
+        "file": "tests/integration/secret-envelope.test.ts",
+        "fullName": "[crypto-redaction] secret-envelope PostgreSQL service envelopes round-trip through PostgreSQL exact schema"
+      },
+      {
+        "file": "tests/integration/secret-envelope.test.ts",
+        "fullName": "[crypto-redaction] secret-envelope PostgreSQL database fingerprint uniqueness preserves the original secret row"
+      },
+      {
+        "file": "tests/integration/secret-envelope.test.ts",
+        "fullName": "[crypto-redaction] secret-envelope PostgreSQL database lifecycle updates cannot replace encrypted bytes"
+      },
+      {
+        "file": "tests/admin/logs.test.ts",
+        "fullName": "admin/logs PostgreSQL and guarded handlers [crypto-redaction] reads exact safe DTOs and re-sanitizes nested legacy secrets without writes"
+      },
+      {
+        "file": "tests/admin/logs.test.ts",
+        "fullName": "admin/logs PostgreSQL and guarded handlers [crypto-redaction] distinguishes immutable administrator user and system audit kinds"
+      }
+    ],
+    "Phase013:failure-atomicity": [
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [failure-atomicity] rolls back encrypted creation and status changes when the mandatory audit fails"
+      },
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [failure-atomicity] rolls back both activations and key states when the final audit or receipt fails, then retries the same candidate"
+      },
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [failure-atomicity] detects reference-set additions and activation revisions after candidate HTTP validation"
+      },
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [failure-atomicity] rolls back the first activation when a database fault rejects switching the second reference"
+      },
+      {
+        "file": "tests/admin/logs.test.ts",
+        "fullName": "admin/logs PostgreSQL and guarded handlers [failure-atomicity] enforces default and maximum page size with stable tied-timestamp keysets"
+      },
+      {
+        "file": "tests/admin/logs.test.ts",
+        "fullName": "admin/logs PostgreSQL and guarded handlers [failure-atomicity] filters by actor action target and inclusive time while retaining the first-page watermark"
+      },
+      {
+        "file": "tests/admin/logs.test.ts",
+        "fullName": "admin/logs PostgreSQL and guarded handlers [failure-atomicity] rejects malformed bounded queries before issuing protected reads"
+      },
+      {
+        "file": "tests/admin/logs.test.ts",
+        "fullName": "admin/logs PostgreSQL and guarded handlers [failure-atomicity] reports real database and malformed legacy failures without unsafe partial responses"
+      },
+      {
+        "file": "tests/admin/api-keys-client.test.tsx",
+        "fullName": "admin/api-keys safe interface [create-read] shows loading, empty and exact safe key pages"
+      },
+      {
+        "file": "tests/admin/api-keys-client.test.tsx",
+        "fullName": "admin/api-keys safe interface [crypto-redaction] submits an uncontrolled one-time secret and never reflects it in HTML or browser storage"
+      },
+      {
+        "file": "tests/admin/api-keys-client.test.tsx",
+        "fullName": "admin/api-keys safe interface [failure-atomicity] reentry after a lost response reuses the same request identity without retaining the secret"
+      },
+      {
+        "file": "tests/admin/api-keys-client.test.tsx",
+        "fullName": "admin/api-keys safe interface [disable-enable] requires reselection after stale CAS and never enables a revoked key"
+      },
+      {
+        "file": "tests/admin/api-keys-client.test.tsx",
+        "fullName": "admin/api-keys safe interface [rotate-revoke] displays pending validation honestly and only reports activation from its receipt"
+      },
+      {
+        "file": "tests/admin/api-keys-client.test.tsx",
+        "fullName": "admin/api-keys safe interface [authorization] uses fixed authorization errors and rejects extra secret fields from the server"
+      },
+      {
+        "file": "tests/admin/api-keys-client.test.tsx",
+        "fullName": "admin/api-keys safe interface [create-read] binds pagination to current filters"
+      },
+      {
+        "file": "tests/admin/api-keys-client.test.tsx",
+        "fullName": "admin/api-keys safe interface [crypto-redaction] renders safe error/not-found pages without exception data"
+      },
+      {
+        "file": "tests/admin/logs-client.test.tsx",
+        "fullName": "admin/logs client [failure-atomicity] separates loading empty and service-error states with safe retries"
+      },
+      {
+        "file": "tests/admin/logs-client.test.tsx",
+        "fullName": "admin/logs client [failure-atomicity] uses opaque next and previous cursors then resets them for new filters"
+      },
+      {
+        "file": "tests/admin/logs-client.test.tsx",
+        "fullName": "admin/logs client [crypto-redaction] renders audit summaries as text and never writes browser storage"
+      },
+      {
+        "file": "tests/admin/logs-client.test.tsx",
+        "fullName": "admin/logs client [crypto-redaction] rejects unexpected fields and incomplete audit DTOs without partial rendering"
+      },
+      {
+        "file": "tests/admin/logs-client.test.tsx",
+        "fullName": "admin/logs client [authorization] requests reauthentication for denied reads and never trusts server error text"
+      },
+      {
+        "file": "tests/admin/logs-client.test.tsx",
+        "fullName": "admin/logs client [failure-atomicity] ignores stale responses after a filter request replaces them"
+      },
+      {
+        "file": "tests/admin/logs-client.test.tsx",
+        "fullName": "admin/logs client [failure-atomicity] error and not-found views omit framework messages stacks and request data"
+      }
+    ]
+  },
+  "uniqueBusinessScenarioCount": 6,
+  "actualReportExecutionCount": 1
+}

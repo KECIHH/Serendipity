@@ -1,0 +1,223 @@
+{
+  "numTotalTestSuites": 8,
+  "numPassedTestSuites": 5,
+  "numFailedTestSuites": 3,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 15,
+  "numPassedTests": 0,
+  "numFailedTests": 1,
+  "numPendingTests": 14,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1789201810842,
+  "success": false,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[create-read]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [create-read] creates an encrypted key and replays its original safe response after a process restart",
+          "status": "skipped",
+          "title": "creates an encrypted key and replays its original safe response after a process restart",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[create-read]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [create-read] uses bounded filtered keyset pages and rejects cursor tampering and invalid input before writes",
+          "status": "skipped",
+          "title": "uses bounded filtered keyset pages and rejects cursor tampering and invalid input before writes",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[disable-enable]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [disable-enable] rejects revoked restoration before any write",
+          "status": "skipped",
+          "title": "rejects revoked restoration before any write",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[rotate-revoke]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] rejects changed HTTP versions, redirects and oversized bodies while retaining one disabled candidate",
+          "status": "skipped",
+          "title": "rejects changed HTTP versions, redirects and oversized bodies while retaining one disabled candidate",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[rotate-revoke]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] switches two persisted reference versions atomically after real version-bound HTTP tests",
+          "status": "skipped",
+          "title": "switches two persisted reference versions atomically after real version-bound HTTP tests",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[rotate-revoke]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] retains a failed disabled candidate and reuses it across a fresh service without enabling it through PATCH",
+          "status": "skipped",
+          "title": "retains a failed disabled candidate and reuses it across a fresh service without enabling it through PATCH",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[rotate-revoke]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] allows exactly one winner when two administrators concurrently rotate the same key",
+          "status": "skipped",
+          "title": "allows exactly one winner when two administrators concurrently rotate the same key",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[rotate-revoke]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] lets emergency revocation interrupt new calls while an ordinary rotation is awaiting HTTP",
+          "status": "skipped",
+          "title": "lets emergency revocation interrupt new calls while an ordinary rotation is awaiting HTTP",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[rotate-revoke]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [rotate-revoke] rotates through the same coordinator with an empty real reference registry",
+          "status": "skipped",
+          "title": "rotates through the same coordinator with an empty real reference registry",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[authorization]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [authorization] rejects every unauthenticated or stale principal and CSRF failure with zero protected reads or writes",
+          "status": "skipped",
+          "title": "rejects every unauthenticated or stale principal and CSRF failure with zero protected reads or writes",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[crypto-redaction]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [crypto-redaction] rejects secret fields at the retained result whitelist",
+          "status": "failed",
+          "title": "rejects secret fields at the retained result whitelist",
+          "duration": 3436.7934999999998,
+          "failureMessages": [
+            "AssertionError: expected false to be true // Object.is equality\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase013/fixtures/mutation-dto-whitelist-SEBxeV/tests/admin/api-keys.integration.test.ts:816:11\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase013/fixtures/mutation-dto-whitelist-SEBxeV/tests/admin/api-keys.integration.test.ts:75:7\n    at withApiKeyDatabase (C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase013/fixtures/mutation-dto-whitelist-SEBxeV/tests/phase013/api-key-fixture.ts:241:12)\n    at withTransport (C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase013/fixtures/mutation-dto-whitelist-SEBxeV/tests/admin/api-keys.integration.test.ts:71:3)\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase013/fixtures/mutation-dto-whitelist-SEBxeV/tests/admin/api-keys.integration.test.ts:779:7\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          ],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[failure-atomicity]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [failure-atomicity] rolls back encrypted creation and status changes when the mandatory audit fails",
+          "status": "skipped",
+          "title": "rolls back encrypted creation and status changes when the mandatory audit fails",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[failure-atomicity]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [failure-atomicity] rolls back both activations and key states when the final audit or receipt fails, then retries the same candidate",
+          "status": "skipped",
+          "title": "rolls back both activations and key states when the final audit or receipt fails, then retries the same candidate",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[failure-atomicity]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [failure-atomicity] detects reference-set additions and activation revisions after candidate HTTP validation",
+          "status": "skipped",
+          "title": "detects reference-set additions and activation revisions after candidate HTTP validation",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "admin/api-keys real PostgreSQL",
+            "[failure-atomicity]"
+          ],
+          "fullName": "admin/api-keys real PostgreSQL [failure-atomicity] rolls back the first activation when a database fault rejects switching the second reference",
+          "status": "skipped",
+          "title": "rolls back the first activation when a database fault rejects switching the second reference",
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1789201811725,
+      "endTime": 1789201815161.7935,
+      "status": "failed",
+      "message": "",
+      "name": "C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase013/fixtures/mutation-dto-whitelist-SEBxeV/tests/admin/api-keys.integration.test.ts"
+    }
+  ]
+}

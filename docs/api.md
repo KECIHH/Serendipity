@@ -76,7 +76,21 @@ expectedVersion 是 GET 返回的非负 Int revision，不接受字符串、expe
 
 版本冲突返回409 VERSION_CONFLICT，details 为 `{currentVersion,action:"RELOAD",current:AdminUser}`；current 同样只有九字段。客户端展示 current 并要求重新选择操作，不自动重试覆盖。自改 role/status 或移除最后一位 ACTIVE ADMIN 返回403 FORBIDDEN；目标不存在仅对已授权请求返回404 NOT_FOUND。缺失/过期/撤销会话、无 ADMIN 权限或 CSRF 失败分别按认证规则拒绝；数据库暂不可用返回503 INTERNAL_ERROR 与安全模板，不能冒充空列表。
 
-实际 role/status 变化将 revision/sessionVersion 各加一，撤销全部目标 ACTIVE AuthSession，并同事务写一条 USER_UPDATE 和成功收据；任何失败全部回滚。同值且 CAS 匹配时仅保存安全收据，不改用户、会话或审计。具体锁、账本期限与持久化轮换基础见 [管理](admin.md)、[数据库](database.md) 和 [Phase012说明](phase012.md)。本节不修改下面的生成目录，也不声明已提供 Phase013 密钥接口。
+实际 role/status 变化将 revision/sessionVersion 各加一，撤销全部目标 ACTIVE AuthSession，并同事务写一条 USER_UPDATE 和成功收据；任何失败全部回滚。同值且 CAS 匹配时仅保存安全收据，不改用户、会话或审计。具体锁、账本期限与持久化轮换基础见 [管理](admin.md)、[数据库](database.md) 和 [Phase012说明](phase012.md)。
+
+## Phase013 密钥与审计实现
+
+本阶段实现 registry 中的 `get.admin.api-keys`、`post.admin.api-keys`、`patch.admin.api-keys.id`、`post.admin.api-keys.id.rotate` 和 `get.admin.logs`。现有生成目录及公开错误码保持一致。所有端点先 requireAdmin，返回前或敏感写事务内复核当前会话；写请求还要求当前 Cookie 的 X-CSRF-Token、允许的 Origin 和 Idempotency-Key。响应统一 no-store，错误只带固定安全模板。
+
+GET `/api/admin/api-keys` 接受 provider、status、cursor、limit，默认20条且上限100；未知/重复参数拒绝。安全密钥 DTO 对应既有 MaskedKey，精确十字段 `id/name/provider/keyFingerprintDisplay/status/revision/lastUsedAt/revokedAt/createdAt/updatedAt`。display 仅前12位 fingerprint 加 `…`，lastUsedAt/revokedAt 可为 null，REVOKED 必须有 revokedAt。列表 data 为 `{items,nextCursor}`；签名游标绑定管理员、筛选、页大小、排序和首屏时间水位，不能跨身份或条件重用。
+
+POST `/api/admin/api-keys` 的正文仅有 name/provider/plainKey，成功201。PATCH 的正文仅有 expectedVersion 及至少一个 name/status，成功200；URL 是目标身份唯一来源。rotate 正文为 name/provider/plainKey/expectedVersion，成功接受返回202。写正文最多131072 bytes；plainKey 只 trim 两端，规范化后1–16384 UTF-8 bytes，不持久化原文。name 为1–200 Unicode码点的非空白名称，provider 为1–128位安全标识。同 fingerprint 不新建第二行，返回409 VERSION_CONFLICT。REVOKED 不能恢复，未完成轮换的禁用候选不能用 PATCH 启用。
+
+创建、修改与轮换共用持久幂等账本；相同当前 owner/operation/resource/key/hash 重放原安全结果，异正文409 IDEMPOTENCY_KEY_REUSED。请求 hash 只消费规范化非秘密字段与去重所需 fingerprint。响应头 `Idempotency-Replayed` 表示首次或重放。普通密钥版本冲突的 details 仅含 currentVersion、`action:"RELOAD"` 和安全 current，客户端须刷新并重新选择操作。
+
+轮换 receipt 精确为 `{key,stage,affectedConfigCount,errorCode,replayed}`；只有 stage=ACTIVATED 表示已完成全部切换。候选失败会保留禁用候选和安全阶段/错误，同键重试复用候选。旧密钥、引用集合或 activation revision 冲突为409，审计与收据失败为503且不部分切换。公开解密失败只映射 CONFIG_ERROR。真实引用目前为空，Phase015 注册实际 Provider adapter 后沿用同一协调器。
+
+GET `/api/admin/logs` 接受 action、actorId、targetType、targetId、from、to、cursor、limit，未知/重复参数或总长超过4096拒绝；limit 默认20、上限100。from/to 必须是真实 RFC3339 时刻且顺序合法，action/targetType 来自闭合审计 registry。固定 `(createdAt DESC,id DESC)`，游标签名绑定当前管理员、所有筛选、limit 和首屏水位；data 为 `{items,nextCursor}`。每项精确为 `id/actorType/actorId/targetType/targetId/action/requestId/traceId/createdAt/safeSummary`。safeSummary 复用既有 sanitizer 并再次裁剪敏感关联字段，以纯文本显示，最多4000字符；空详情不推断成功。数据库读取故障503，不能当作空数据。具体实现与验收见 [Phase013说明](phase013.md)。
 
 ## 唯一端点目录
 

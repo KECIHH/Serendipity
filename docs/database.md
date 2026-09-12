@@ -515,12 +515,12 @@ Phase012 首次迁移 `20260912013806_admin_commands` 创建管理命令收据�
 | ------------------ | ------------------------------- | ------------------------------------------------------- |
 | id                 | String，cuid()                  | 主键，安全 ID                                           |
 | ownerUserId        | String                          | User.id FK，删除/更新 Restrict；由当前管理员身份取得    |
-| operationId        | String，VarChar(128)            | 用户修改固定 `patch.admin.users.id`                     |
+| operationId        | String，VarChar(128)            | 已登记的管理操作；用户修改固定 `patch.admin.users.id`   |
 | resourceId         | String，VarChar(128)            | URL 目标 ID，与 operationId 一起定义幂等域              |
 | idempotencyKeyHash | String，Char(64)                | Idempotency-Key 的 SHA-256 小写 hex；不存头原文         |
 | requestHash        | String，Char(64)                | 已校验、规范化的非秘密 payload 的 JCS SHA-256           |
 | status             | AdminCommandStatus，PENDING     | PENDING/RUNNING/RETRY_WAIT/SUCCEEDED/FAILED             |
-| responseJson       | Json?                           | 仅终态安全结果；用户命令为九字段管理摘要；对象最大32KiB |
+| responseJson       | Json?                           | 仅终态安全结果；按操作使用用户、密钥或轮换 DTO；对象最大32KiB |
 | errorCode          | String?，VarChar(64)            | FAILED 必需的受控大写错误码；SUCCEEDED 为 null          |
 | attemptCount       | Int，0                          | 非负；每次成功领取恰加一                                |
 | availableAt        | DateTime，now()，Timestamptz(3) | 不早于 createdAt；未到期不能领取                        |
@@ -545,17 +545,21 @@ DELETE 只可能针对已到 expiresAt 的终态且没有 KeyRotationRun 引用�
 | receiptId         | String，unique                       | AdminCommandReceipt.id FK，一份收据至多一条轮换记录                                      |
 | oldKeyId          | String                               | ApiKeyConfig.id FK；必须与收据 resourceId 一致                                           |
 | newKeyId          | String?                              | ApiKeyConfig.id FK；非空时不得等于 oldKeyId                                              |
-| candidateIdsJson  | Json，[]                             | 当前 CHECK 固定为空数组；Phase015 才扩展为 adapter 控制的 tagged JSON                    |
+| candidateIdsJson  | Json，[]                             | Phase013 扩展为 exact 六字段候选标识数组，最多127项/64KiB；空引用仍为 []                |
 | referenceSetHash  | String，Char(64)                     | 完整引用集合的64位小写 SHA-256，创建后不可变                                             |
 | baseRevisionsJson | Json                                 | 安全 ID 到非负 Int revision 的对象；helper 要求包含 oldKeyId，最多128项；数据库限制16KiB |
 | stage             | KeyRotationStage，PREPARING          | PREPARING/TESTING/READY/ACTIVATED/ABORTED                                                |
-| checkpointJson    | Json                                 | exact `{version:1,fencingToken,step}`；token 绑定当前领取，step 与 stage 对应            |
+| checkpointJson    | Json                                 | 必需 `{version:1,fencingToken,step}`，Phase013 只增加可选 errorCode/verificationHash；token 与 stage 均绑定 |
 | createdAt         | DateTime，now()，Timestamptz(3)      | 创建后不可变，不得晚于数据库当前时间                                                     |
 | updatedAt         | DateTime，@updatedAt，Timestamptz(3) | 单调且不晚于数据库当前时间                                                               |
 
 三个 FK 均为 onDelete/onUpdate Restrict；receiptId unique 已覆盖其 FK，oldKeyId/newKeyId 分别建索引，`(stage,updatedAt,id)` 支持进度读取。run 身份、候选集合、引用 hash 和基线 revision 不可改；newKeyId 只允许在 PREPARING 时从 null 绑定一次。插入必须 PREPARING，然后只向 TESTING→READY→ACTIVATED 前进，非终态可以中止至 ABORTED；同阶段更新只续接 checkpoint。ACTIVATED/ABORTED 终态不可改，DELETE/TRUNCATE 均被拒绝。
 
-`prepareKeyRotationRun` 先验证 live claim，再检查旧 key 为 ACTIVE 且 revision 匹配；可选新 key 必须是同 provider 的既存 DISABLED 行。helper 只持久化准备结果，不创建、启用、撤销或切换 key。首次准备与收据在调用方同一事务内执行，部分准备失败一起回滚；后续测试和推进必须消费已持久化的 checkpoint，旧 lease/fence 无法写入。当前 `saveKeyRotationCheckpoint` 只提供 PREPARING/TESTING/READY/ABORTED 进度更新，没有 ACTIVATED 业务接口、外呼或 Phase016 worker。密钥管理 API/页面与引用切换由 Phase013/015 分别生产。
+`prepareKeyRotationRun` 先验证 live claim，再检查旧 key 为 ACTIVE 且 revision 匹配；可选新 key 必须是同 provider 的既存 DISABLED 行。helper 只持久化准备结果，不创建、启用、撤销或切换 key。首次准备与收据在调用方同一事务内执行，部分准备失败一起回滚；后续测试和推进必须消费已持久化的 checkpoint，旧 lease/fence 无法写入。Phase012 的准备基础由 Phase013 协调器消费，Phase016 共享 worker 尚未生产。
+
+Phase013 追加 `20260912061403_key_rotation_contract`，只修复现有表的 SQL 约束和 trigger，保留原七份迁移及 Prisma schema。candidateIdsJson 每项精确为 `adapterId/referenceId/candidateId/configVersion/referenceRevision/contentHash`，adapterId/referenceId 唯一；版本为非负 Int，contentHash 为64位小写 hex。候选集合、引用 hash 与基线版本创建后不可变，未来 Provider 表不能通过本次迁移提前出现。
+
+checkpoint 的可选 errorCode 只取 CONFIG_ERROR/PROVIDER_UNAVAILABLE/PROVIDER_TIMEOUT/VERSION_CONFLICT/INTERNAL_ERROR，限 TESTING/READY/ABORTED；verificationHash 是64位小写摘要，仅 READY/ACTIVATED 可有。ACTIVATED 必须已经验证、无错误、新密钥 ACTIVE 且旧密钥 REVOKED。服务在同一 Serializable 事务中完成所有 activation CAS、密钥状态、checkpoint、收据与逐次审计；测试失败留禁用候选及 RETRY_WAIT 收据，同键重试复用。实际 Provider 引用为空，两引用仅由隔离测试 schema 验证；模型与真实 adapter 于 Phase015 同时生产。
 
 ## 治理版本与激活字段
 

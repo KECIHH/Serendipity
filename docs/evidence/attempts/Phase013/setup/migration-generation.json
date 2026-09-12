@@ -1,0 +1,221 @@
+{
+  "generatedMigrationPath": "prisma/migrations/20260912061403_key_rotation_contract/migration.sql",
+  "migrationHash": "7680d519304cd0ee88b6adade119a9c06a4ac849434b47fc61abe8a0a0395c91",
+  "schemaPath": "prisma/schema.prisma",
+  "schemaHash": "deddd268b5df678f6db1ad5a7972179b64b2a24dca2068069d3de5de733503f7",
+  "previousSchemaHash": "deddd268b5df678f6db1ad5a7972179b64b2a24dca2068069d3de5de733503f7",
+  "previousMigrations": [
+    {
+      "path": "prisma/migrations/20260910000000_init_user/migration.sql",
+      "sha256": "b65593d8d8a7a1821a2f65415616e5c083a0e38785bcac2a46ea362d126de3a3"
+    },
+    {
+      "path": "prisma/migrations/20260910172735_system_config/migration.sql",
+      "sha256": "25f5d0d35a216ee085fad468f5d69d740610369ff91fcdd0ebe4a188deef45cc"
+    },
+    {
+      "path": "prisma/migrations/20260911002217_travel_record_chat_message/migration.sql",
+      "sha256": "761979289b28f413d47c09290f43e9d01ffc22421918103a51d6c67b638bb48f"
+    },
+    {
+      "path": "prisma/migrations/20260911042258_audit_log/migration.sql",
+      "sha256": "9707b78108c51f9a10ebfa86fa816d7caf353bcd1f09a0cce2eefcac6b392373"
+    },
+    {
+      "path": "prisma/migrations/20260911104017_api_key_config/migration.sql",
+      "sha256": "9bc311e50f3dccc7dc7885a901285fd1f359beb0e3b808bdc1e4c16ab4ce79d1"
+    },
+    {
+      "path": "prisma/migrations/20260911151715_auth_session_login_attempt/migration.sql",
+      "sha256": "e4913a97a5ff09d9ee71efaebd58163b8b5f5db9f0fe7747bd07783aed66c08f"
+    },
+    {
+      "path": "prisma/migrations/20260912013806_admin_commands/migration.sql",
+      "sha256": "26eac34ab5c30b48adb680a3a770d4454503e3550b3009b4e59cc0dc43e2392d"
+    }
+  ],
+  "target": {
+    "database": "phase013_disposable_dd57ebf7b2df",
+    "host": "127.0.0.1",
+    "port": 61286,
+    "containerId": "758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948",
+    "image": "postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0",
+    "runId": "dd57ebf7b2df",
+    "marker": "serendipity-phase013-disposable:dd57ebf7b2df",
+    "networkMasquerading": false,
+    "loopbackOnly": true,
+    "dataStorage": "TASK_OWNED_TMPFS",
+    "credentials": "SYNTHETIC_REDACTED",
+    "observations": [
+      {
+        "command": "docker inspect --format {{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}} 758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948",
+        "executable": "docker.exe",
+        "arguments": [
+          "inspect",
+          "--format",
+          "{{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}}",
+          "758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false,
+        "stdout": "{\"serendipity.phase\":\"013\",\"serendipity.run\":\"dd57ebf7b2df\"}|{\"5432/tcp\":[{\"HostIp\":\"127.0.0.1\",\"HostPort\":\"61286\"}]}|postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0|true|{\"serendipity-phase013-dd57ebf7b2df\":{\"IPAMConfig\":null,\"Links\":null,\"Aliases\":null,\"DriverOpts\":null,\"GwPriority\":0,\"NetworkID\":\"080e8a121feffcb4f6f463a434948c97903405dbf5c5835e6f36d3ed57b0a1fb\",\"EndpointID\":\"d81875a3fbab1e475a7ae91934257d66527058b9139fc5d6a7b592e6467b21a5\",\"Gateway\":\"172.24.0.1\",\"IPAddress\":\"172.24.0.2\",\"MacAddress\":\"9e:0b:f2:87:8c:7f\",\"IPPrefixLen\":16,\"IPv6Gateway\":\"\",\"GlobalIPv6Address\":\"\",\"GlobalIPv6PrefixLen\":0,\"DNSNames\":[\"serendipity-phase013-dd57ebf7b2df\",\"758a445b66a0\"]}}|{\"/var/lib/postgresql/data\":\"rw,size=536870912\"}\n",
+        "stderr": "",
+        "durationMs": 202
+      },
+      {
+        "command": "docker network inspect --format {{json .Options}}|{{json .Labels}} serendipity-phase013-dd57ebf7b2df",
+        "executable": "docker.exe",
+        "arguments": [
+          "network",
+          "inspect",
+          "--format",
+          "{{json .Options}}|{{json .Labels}}",
+          "serendipity-phase013-dd57ebf7b2df"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false,
+        "stdout": "{\"com.docker.network.bridge.enable_ip_masquerade\":\"false\",\"com.docker.network.enable_ipv4\":\"true\",\"com.docker.network.enable_ipv6\":\"false\"}|{\"serendipity.run\":\"dd57ebf7b2df\"}\n",
+        "stderr": "",
+        "durationMs": 202
+      }
+    ]
+  },
+  "records": [
+    {
+      "command": "npm exec -- prisma migrate deploy",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase013\\fixtures\\prepare-contract-qAgyU7",
+      "stdout": "Prisma schema loaded from prisma\\schema.prisma\nDatasource \"db\": PostgreSQL database \"phase013_disposable_dd57ebf7b2df\", schema \"public\" at \"127.0.0.1:61286\"\n\n7 migrations found in prisma/migrations\n\nApplying migration `20260910000000_init_user`\nApplying migration `20260910172735_system_config`\nApplying migration `20260911002217_travel_record_chat_message`\nApplying migration `20260911042258_audit_log`\nApplying migration `20260911104017_api_key_config`\nApplying migration `20260911151715_auth_session_login_attempt`\nApplying migration `20260912013806_admin_commands`\n\nThe following migration(s) have been applied:\n\nmigrations/\n  └─ 20260910000000_init_user/\n    └─ migration.sql\n  └─ 20260910172735_system_config/\n    └─ migration.sql\n  └─ 20260911002217_travel_record_chat_message/\n    └─ migration.sql\n  └─ 20260911042258_audit_log/\n    └─ migration.sql\n  └─ 20260911104017_api_key_config/\n    └─ migration.sql\n  └─ 20260911151715_auth_session_login_attempt/\n    └─ migration.sql\n  └─ 20260912013806_admin_commands/\n    └─ migration.sql\n      \nAll migrations have been successfully applied.\n",
+      "stderr": "",
+      "signal": null,
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "exec",
+        "--",
+        "prisma",
+        "migrate",
+        "deploy"
+      ],
+      "exitCode": 0,
+      "durationMs": 2235,
+      "timedOut": false
+    },
+    {
+      "command": "npm exec -- prisma migrate status",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase013\\fixtures\\prepare-contract-qAgyU7",
+      "stdout": "Prisma schema loaded from prisma\\schema.prisma\nDatasource \"db\": PostgreSQL database \"phase013_disposable_dd57ebf7b2df\", schema \"public\" at \"127.0.0.1:61286\"\n\n7 migrations found in prisma/migrations\n\nDatabase schema is up to date!\n",
+      "stderr": "",
+      "signal": null,
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "exec",
+        "--",
+        "prisma",
+        "migrate",
+        "status"
+      ],
+      "exitCode": 0,
+      "durationMs": 1940,
+      "timedOut": false
+    },
+    {
+      "command": "docker inspect --format {{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}} 758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948",
+      "executable": "docker.exe",
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "stdout": "{\"serendipity.phase\":\"013\",\"serendipity.run\":\"dd57ebf7b2df\"}|{\"5432/tcp\":[{\"HostIp\":\"127.0.0.1\",\"HostPort\":\"61286\"}]}|postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0|true|{\"serendipity-phase013-dd57ebf7b2df\":{\"IPAMConfig\":null,\"Links\":null,\"Aliases\":null,\"DriverOpts\":null,\"GwPriority\":0,\"NetworkID\":\"080e8a121feffcb4f6f463a434948c97903405dbf5c5835e6f36d3ed57b0a1fb\",\"EndpointID\":\"d81875a3fbab1e475a7ae91934257d66527058b9139fc5d6a7b592e6467b21a5\",\"Gateway\":\"172.24.0.1\",\"IPAddress\":\"172.24.0.2\",\"MacAddress\":\"9e:0b:f2:87:8c:7f\",\"IPPrefixLen\":16,\"IPv6Gateway\":\"\",\"GlobalIPv6Address\":\"\",\"GlobalIPv6PrefixLen\":0,\"DNSNames\":[\"serendipity-phase013-dd57ebf7b2df\",\"758a445b66a0\"]}}|{\"/var/lib/postgresql/data\":\"rw,size=536870912\"}\n",
+      "stderr": "",
+      "signal": null,
+      "arguments": [
+        "inspect",
+        "--format",
+        "{{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}}",
+        "758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948"
+      ],
+      "exitCode": 0,
+      "durationMs": 234,
+      "timedOut": false
+    },
+    {
+      "command": "docker network inspect --format {{json .Options}}|{{json .Labels}} serendipity-phase013-dd57ebf7b2df",
+      "executable": "docker.exe",
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "stdout": "{\"com.docker.network.bridge.enable_ip_masquerade\":\"false\",\"com.docker.network.enable_ipv4\":\"true\",\"com.docker.network.enable_ipv6\":\"false\"}|{\"serendipity.run\":\"dd57ebf7b2df\"}\n",
+      "stderr": "",
+      "signal": null,
+      "arguments": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .Options}}|{{json .Labels}}",
+        "serendipity-phase013-dd57ebf7b2df"
+      ],
+      "exitCode": 0,
+      "durationMs": 202,
+      "timedOut": false
+    },
+    {
+      "command": "docker exec -i 758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948 psql -X -v ON_ERROR_STOP=1 -U phase013_runner -d phase013_disposable_dd57ebf7b2df -At",
+      "executable": "docker.exe",
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "stdout": "AdminCommandReceipt\nApiKeyConfig\nAuditLog\nAuthLoginAttempt\nAuthSession\nChatMessage\nKeyRotationRun\nSystemConfig\nTravelRecord\nUser\n_prisma_migrations\n",
+      "stderr": "",
+      "signal": null,
+      "arguments": [
+        "exec",
+        "-i",
+        "758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "phase013_runner",
+        "-d",
+        "phase013_disposable_dd57ebf7b2df",
+        "-At"
+      ],
+      "exitCode": 0,
+      "durationMs": 279,
+      "timedOut": false
+    },
+    {
+      "command": "npm exec -- prisma migrate diff --from-schema-datamodel C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase013\\fixtures\\prepare-contract-qAgyU7\\prisma\\schema.prisma --to-schema-datamodel C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\prisma\\schema.prisma --script",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "stdout": "-- This is an empty migration.\n\n",
+      "stderr": "",
+      "signal": null,
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "exec",
+        "--",
+        "prisma",
+        "migrate",
+        "diff",
+        "--from-schema-datamodel",
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase013\\fixtures\\prepare-contract-qAgyU7\\prisma\\schema.prisma",
+        "--to-schema-datamodel",
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\prisma\\schema.prisma",
+        "--script"
+      ],
+      "exitCode": 0,
+      "durationMs": 1728,
+      "timedOut": false
+    }
+  ],
+  "simulation": true,
+  "productionTraffic": false,
+  "newTables": 0,
+  "protectionPath": "docs/phase-plans/key-rotation-protection.sql",
+  "protectionHash": "7680d519304cd0ee88b6adade119a9c06a4ac849434b47fc61abe8a0a0395c91",
+  "schemaDiffPath": "docs/evidence/attempts/Phase013/setup/schema-diff.sql",
+  "schemaDiffHash": "e69c9f21be2b53770b13ea52bf6c4f304a9fc86b41f1e932729ec2de45574341",
+  "mode": "EXISTING_TABLE_SQL_CONTRACT_REPAIR",
+  "timestampSource": "CURRENT_UTC_AT_PREPARATION",
+  "reason": "Phase012's empty candidateIdsJson constraint and limited non-user request hash cannot represent Phase013's required two-reference fixture and immutable candidate/retry identity. Repair only the existing contract; do not manufacture Prisma schema-generation claims for custom trigger SQL."
+}

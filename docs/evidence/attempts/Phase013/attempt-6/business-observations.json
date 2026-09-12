@@ -1,0 +1,190 @@
+{
+  "planHash": "a2ff894f57572d374a4f2fc6bd50e5499642b0a8dcbaf600889c81a447c3ed33",
+  "command": "npm run test -- admin/api-keys admin/logs secret-envelope --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase013\\attempt-6-card-vitest.json",
+  "sourceCommandPath": "docs/evidence/attempts/Phase013/attempt-6/card-command.json",
+  "sourceCommandHash": "fd66298b86ced9253420471292cbb5b5d4f37daa80343258f1cb8b22405eec9c",
+  "sourceReportPath": "docs/evidence/attempts/Phase013/attempt-6/card-vitest.json",
+  "sourceReportHash": "40e846c2404c3e0d659dfcc333dcb703fa3c9f0466609a2a294d56ac039a35ac",
+  "rows": [
+    {
+      "phase": 13,
+      "group": "create-read",
+      "database": "REAL_POSTGRESQL17",
+      "createdRows": 1,
+      "auditChanges": 2,
+      "processRestarts": 1,
+      "originalResponseReplays": 1,
+      "payloadConflicts": 3,
+      "duplicatePlaintextRows": 0,
+      "secretHits": 0
+    },
+    {
+      "phase": 13,
+      "group": "create-read",
+      "database": "REAL_POSTGRESQL17",
+      "pageSizes": [
+        2,
+        1
+      ],
+      "uniqueRows": 3,
+      "boundaryRejections": 9
+    },
+    {
+      "phase": 13,
+      "group": "disable-enable",
+      "database": "REAL_POSTGRESQL17",
+      "legalStateChanges": 3,
+      "matchingStateAudits": 3,
+      "creationAudits": 1,
+      "revokedRestorations": 0,
+      "noopAudits": 0,
+      "staleWrites": 0
+    },
+    {
+      "phase": 13,
+      "group": "rotate-revoke",
+      "database": "REAL_POSTGRESQL17",
+      "versionMismatchRejected": true,
+      "redirectsFollowed": 0,
+      "oversizedBodyRejected": true,
+      "candidatesPrepared": 1,
+      "httpCalls": 5
+    },
+    {
+      "phase": 13,
+      "group": "rotate-revoke",
+      "database": "REAL_POSTGRESQL17",
+      "referenceCount": 2,
+      "switchedReferences": 2,
+      "httpCalls": 2,
+      "networkInsideTransaction": 0,
+      "oldRevoked": true,
+      "newActive": true,
+      "matchingStateAudits": 2,
+      "extraReplayCandidates": 0
+    },
+    {
+      "phase": 13,
+      "group": "rotate-revoke",
+      "database": "REAL_POSTGRESQL17",
+      "failedCandidates": 1,
+      "oldReferencesPreserved": 2,
+      "disabledCandidateEnableRejected": true,
+      "candidateReuse": 1,
+      "claims": 2,
+      "fences": 2,
+      "httpCalls": 4
+    },
+    {
+      "phase": 13,
+      "group": "rotate-revoke",
+      "database": "REAL_POSTGRESQL17",
+      "contenders": 2,
+      "winners": 1,
+      "switchedReferences": 2,
+      "disabledLoserCandidates": 1,
+      "orphanActiveKeys": 0
+    },
+    {
+      "phase": 13,
+      "group": "rotate-revoke",
+      "database": "REAL_POSTGRESQL17",
+      "emergencyRevokeBeforeNetworkCompletion": true,
+      "activeNormalCallsBeforeRevoke": 1,
+      "forgedTargetCalls": 0,
+      "newCallsAfterRevoke": 0,
+      "ordinaryRotationConflict": 409,
+      "partialSwitches": 0
+    },
+    {
+      "phase": 13,
+      "group": "rotate-revoke",
+      "database": "REAL_POSTGRESQL17",
+      "realReferenceCount": 0,
+      "providerTableQueries": 0,
+      "externalCalls": 0,
+      "coordinatorActivated": true
+    },
+    {
+      "phase": 13,
+      "group": "authorization",
+      "database": "REAL_POSTGRESQL17",
+      "rejectedPrincipals": 4,
+      "csrfFailures": 2,
+      "crossOriginFailures": 1,
+      "unauthorizedBusinessReads": 0,
+      "unauthorizedBusinessWrites": 0
+    },
+    {
+      "phase": 13,
+      "group": "crypto-redaction",
+      "database": "REAL_POSTGRESQL17",
+      "dtoRejectedSecretFields": 5,
+      "dbSafeProjection": true,
+      "httpBodyHits": 0,
+      "auditHits": 0,
+      "fullFingerprintHits": 0
+    },
+    {
+      "phase": 13,
+      "group": "failure-atomicity",
+      "database": "REAL_POSTGRESQL17",
+      "auditFaults": 2,
+      "encryptedRowsChanged": 0,
+      "statusRowsChanged": 0,
+      "receiptsChanged": 0,
+      "auditChanges": 0
+    },
+    {
+      "phase": 13,
+      "group": "failure-atomicity",
+      "database": "REAL_POSTGRESQL17",
+      "fault": "audit",
+      "partialSwitches": 0,
+      "failedKeyStateChanges": 0,
+      "failedActivationAudits": 0,
+      "retainedDisabledCandidates": 1,
+      "retryReusedCandidate": true
+    },
+    {
+      "phase": 13,
+      "group": "failure-atomicity",
+      "database": "REAL_POSTGRESQL17",
+      "fault": "receipt",
+      "partialSwitches": 0,
+      "failedKeyStateChanges": 0,
+      "failedActivationAudits": 0,
+      "retainedDisabledCandidates": 1,
+      "retryReusedCandidate": true
+    },
+    {
+      "phase": 13,
+      "group": "failure-atomicity",
+      "database": "REAL_POSTGRESQL17",
+      "fault": "set-addition",
+      "casStatus": 409,
+      "partialSwitches": 0,
+      "oldKeyAvailable": true,
+      "candidateDisabled": true
+    },
+    {
+      "phase": 13,
+      "group": "failure-atomicity",
+      "database": "REAL_POSTGRESQL17",
+      "fault": "revision",
+      "casStatus": 409,
+      "partialSwitches": 0,
+      "oldKeyAvailable": true,
+      "candidateDisabled": true
+    },
+    {
+      "phase": 13,
+      "group": "failure-atomicity",
+      "database": "REAL_POSTGRESQL17",
+      "secondActivationFault": true,
+      "partialSwitches": 0,
+      "oldKeyAvailable": true,
+      "candidateDisabled": true
+    }
+  ]
+}

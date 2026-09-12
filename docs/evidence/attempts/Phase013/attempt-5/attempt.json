@@ -1,0 +1,126 @@
+{
+  "phase": 13,
+  "attemptId": "attempt-5",
+  "status": "FAIL",
+  "kind": "EVIDENCE_GUARD_REPAIR",
+  "stage": "FIRST_PROJECT_FRAME_REJECTION",
+  "artifactCommit": null,
+  "planHash": "4038619311cc6fdd19b1fd6a64071e7d8bff15e6ed89bf8f1ddd53cca2a00eac",
+  "command": "Phase013 actual first-project-frame rejection regression",
+  "exitCode": 1,
+  "reason": "The completed automated run passed, but a subsequent actual rejection probe demonstrated that a relative or malformed first project stack frame could be skipped in favor of a later target assertion frame. Both must-reject assertions failed. This attempt cannot seal; the original raw reports remain unchanged, and a new attempt must verify the fail-closed parser and all required acceptance checks.",
+  "issueIds": [
+    "Phase013-EARLY-002:first-project-frame"
+  ],
+  "diagnosticPath": "docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/result.json",
+  "diagnosticHash": "edb40c8c95a139382ffaac4f494fbd905f5b1a3b37f8f05722edab5b3944ad31",
+  "commandReceiptPath": "docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/command.json",
+  "commandReceiptHash": "5acc01f80f4f43437ec9376270b02d2702aadd4f7bd8df99972a3e7c33f4218a",
+  "completedVerification": {
+    "command": "node docs/phase-plans/verify-phase013.mjs --all",
+    "exitCode": 0,
+    "qualityPath": "docs/evidence/attempts/Phase013/attempt-5/quality.json",
+    "qualityHash": "17340d715a71909cbfe6f1ef3835864bdf6cd0a6aa7d4cbbe1b547c2924ffee1",
+    "status": "PASS_WITHOUT_FINAL_REVIEW",
+    "testCount": 525
+  },
+  "originalEvidenceHashes": {
+    "docs/evidence/attempts/Phase013/attempt-5/all-tests-vitest.json": "0e6fd6a7cc8730c456e1cd983cf83f8926a7213ef1d1f01c3a31b7533373d220",
+    "docs/evidence/attempts/Phase013/attempt-5/api-keys-1280-axe.json": "f3d34252028f123a9dd1a034eae1b7bba11026b3bbd392742817decf035e5fb4",
+    "docs/evidence/attempts/Phase013/attempt-5/api-keys-1280.html": "7e00ba568b8946f07a2c38b01fd7da56310c44942d2ee8fc83e885891cc7765a",
+    "docs/evidence/attempts/Phase013/attempt-5/api-keys-1280.png": "8caa3e3ad22c6c1f0e5a41854b504b902a0369ec8cb951a260dee231c8599116",
+    "docs/evidence/attempts/Phase013/attempt-5/api-keys-375-axe.json": "1123e4cdd103cd80ae6d551672a4592c8563f38946f08d4cd74d6a93f46fa398",
+    "docs/evidence/attempts/Phase013/attempt-5/api-keys-375.html": "72d20e81c4ba99256c0fb8910cb9b9184e0851756579f6d252ebdadf46dc2547",
+    "docs/evidence/attempts/Phase013/attempt-5/api-keys-375.png": "74cace4ddb186a5186d07046ce20eaf281b67e6a70ae86883f410ea2ff568a8e",
+    "docs/evidence/attempts/Phase013/attempt-5/api-keys-empty.html": "b4aa39dd33f29d04a90b2adb4793dff97e632eb9ad92235867d2be0fda227953",
+    "docs/evidence/attempts/Phase013/attempt-5/api-keys-empty.png": "e01f70dd728c6cd4c9d954eaa32eb4b8cdecbca5fc0dc4c87e39653bfc91a927",
+    "docs/evidence/attempts/Phase013/attempt-5/audit-logs-1280-axe.json": "22841056f8856f231e6632495b45b454bd333a124b3e4af7d7daa20487384a7d",
+    "docs/evidence/attempts/Phase013/attempt-5/audit-logs-1280.html": "c017b0209116de45d9d377d0c98ffe6ae6d355f278f9dae183a86a4e9b614445",
+    "docs/evidence/attempts/Phase013/attempt-5/audit-logs-1280.png": "8569d94a5a7dda6ff37a71bd7bb0fa1bdfa823c67ecaed64f034a15bc92e5a52",
+    "docs/evidence/attempts/Phase013/attempt-5/audit-logs-375-axe.json": "ff58e71eff5253d55d123b4d7631017efb96f88453fccf2e61d01a24812a87b8",
+    "docs/evidence/attempts/Phase013/attempt-5/audit-logs-375.html": "12ae7b73466e397abbd90d478647eb5acd08644238da904775c9356331d9ef23",
+    "docs/evidence/attempts/Phase013/attempt-5/audit-logs-375.png": "682e156e5d3d28470703c51fa1ee37291ca98130db380e77a08195a3853e82e3",
+    "docs/evidence/attempts/Phase013/attempt-5/audit-logs-unavailable.html": "c3cf427f70b4e948d4798266d20c19329555055cb422b1317a8ce94c6b1b5d74",
+    "docs/evidence/attempts/Phase013/attempt-5/audit-logs-unavailable.png": "a985024617121f738694d16d28d91df5b97c5e406a68f74c3d9eb0ce2f81309e",
+    "docs/evidence/attempts/Phase013/attempt-5/authorization.json": "f80beed8fe70cb6bd0c1b018c30573df8cb0e9336537d2afbdd6d15e190be12e",
+    "docs/evidence/attempts/Phase013/attempt-5/baseline-aad-vitest.json": "922331f905c80723e71b4f82f328c56760f0568a9512a46d833b4016b7a158ab",
+    "docs/evidence/attempts/Phase013/attempt-5/baseline-dto-whitelist-vitest.json": "a96d7a80dcca456844bc11cbf488cae0eb191dcfee0490d3a37da45cf0dc9ae2",
+    "docs/evidence/attempts/Phase013/attempt-5/baseline-require-admin-vitest.json": "7536e5648c84fefcf5110b9a8711839e6eaf2fdd9cc08ae454854eb046260daf",
+    "docs/evidence/attempts/Phase013/attempt-5/baseline-terminal-state-vitest.json": "c9dc18238e315378c7f5cc367b345af02a64e1936ad287bc8160f7ffc2a0ae00",
+    "docs/evidence/attempts/Phase013/attempt-5/browser.json": "a5809dedee2f148641ea0898c2aa179b611363503d744c83e7544b94d14fb529",
+    "docs/evidence/attempts/Phase013/attempt-5/business-observations.json": "3752943f4ecb2d39e51b7a21fdaa51b9269b60f8d4800cde7e302b2641f70308",
+    "docs/evidence/attempts/Phase013/attempt-5/card-command.json": "be7a4a2e3b1a837d4b9180be93dd87d716531f95067fdfb764c43406b94e0cf5",
+    "docs/evidence/attempts/Phase013/attempt-5/card-vitest.json": "dd3de4b8afbf8348ca0f23c17d296ce15026cf9d061404a2b5f4362b5b16dee1",
+    "docs/evidence/attempts/Phase013/attempt-5/case-assertion-mapping.json": "82ab9aa1d9d048b8e88f6a09e33a43a029f3aab0d73eeedb653b0289718daff7",
+    "docs/evidence/attempts/Phase013/attempt-5/cli-network.json": "9eebdddd2b608508aa932a04bc1298b5b2171aa021c9be1ca23a6232a1c2617a",
+    "docs/evidence/attempts/Phase013/attempt-5/create-read.json": "878d6ae23e13af62303abb6f44df02f4959be8628a0cbaa154ecaa8b4ddafd2b",
+    "docs/evidence/attempts/Phase013/attempt-5/crypto-redaction.json": "4c0d0593e87d39c7610b3c0a7f9106e84fa8a9c1c197abac2b47c94228c09d26",
+    "docs/evidence/attempts/Phase013/attempt-5/disable-enable.json": "54ebf6a1d72cd2a388c244cabbc1cc71145396147357525d05e5feaff69725bc",
+    "docs/evidence/attempts/Phase013/attempt-5/evidence-guards.json": "dbfcf8f8472135cebb5119c7727c13b3b681bb0f4dca862525e2f65947b8870f",
+    "docs/evidence/attempts/Phase013/attempt-5/failure-atomicity.json": "a15240ff4505b7b1fd2522c4996a8afe5f57ba39d7aae5ad7cfdca332a59838b",
+    "docs/evidence/attempts/Phase013/attempt-5/frozen-plan.json": "4038619311cc6fdd19b1fd6a64071e7d8bff15e6ed89bf8f1ddd53cca2a00eac",
+    "docs/evidence/attempts/Phase013/attempt-5/mutations/aad.json": "5863dbee0cc191a5805b66366bc1e12f61a02e71c082adf7b05f27ae6cf05fad",
+    "docs/evidence/attempts/Phase013/attempt-5/mutations/dto-whitelist.json": "f230715dc585f64a2631412621244aa7709e944dd98b4d46bc5c51fa115083e0",
+    "docs/evidence/attempts/Phase013/attempt-5/mutations/require-admin.json": "b96da8a379a02f7feb3ef51da6fc6139c485d6153b02bcfbdc81cf465175408b",
+    "docs/evidence/attempts/Phase013/attempt-5/mutations/terminal-state.json": "1437e1673a30a38d50fb76b1d45d93f3582b28a5f8fcdba2f6f3a7f915e5d959",
+    "docs/evidence/attempts/Phase013/attempt-5/negative-aad-vitest.json": "f476f124c9bdc2b25ccd7801f253fc3fea4272eb31e88fa4662b3f74517070cd",
+    "docs/evidence/attempts/Phase013/attempt-5/negative-dto-whitelist-vitest.json": "f3527a354de2bcf9d56794efd82a5319ee36e041091357ab3b268ce431811b1b",
+    "docs/evidence/attempts/Phase013/attempt-5/negative-require-admin-vitest.json": "912370e379051d073cc2f6fe8b2982d8a5f52928d62d04a4d11b761e67b9b4e8",
+    "docs/evidence/attempts/Phase013/attempt-5/negative-terminal-state-vitest.json": "5b49a7f265c9ab1f5f2681079a2fc82803ea936345ce477827fca00850909f33",
+    "docs/evidence/attempts/Phase013/attempt-5/phase006-user-regression-vitest.json": "0a64ccf24f2a33ad35f1a083d80512f86f202c8b98cebb32ffebda1b6ee446e0",
+    "docs/evidence/attempts/Phase013/attempt-5/quality.json": "17340d715a71909cbfe6f1ef3835864bdf6cd0a6aa7d4cbbe1b547c2924ffee1",
+    "docs/evidence/attempts/Phase013/attempt-5/repository-test-coverage.json": "3ab8d7d5c7eb2771551a26787dd7abe62bdeac5f69f17b7de0001f0797b1f405",
+    "docs/evidence/attempts/Phase013/attempt-5/restored-card-vitest.json": "5e43f9a2a8327696dba589d1048561d9286db227407a8b732a4d77bbbcdc7022",
+    "docs/evidence/attempts/Phase013/attempt-5/rotate-revoke.json": "410a720b1b9917d130e85fcfd85f3446b13990751a008e3211f064708fd9553d",
+    "docs/evidence/attempts/Phase013/attempt-5/test-discovery.json": "74275ed7500497531d36530e8f18f6ad54583ac093db04e492cf6ddf54640819",
+    "docs/evidence/attempts/Phase013/attempt-5/validator-regression.json": "643a83f00d7ec371f50d655e8b27eb9805b84241d1755d0792bac724d61bb7b8"
+  },
+  "archivedFiles": [
+    {
+      "sourcePath": ".scaffold/phase013/diagnostics/frame-origin-repro-5/command.json",
+      "path": "docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/command.json",
+      "sha256": "5acc01f80f4f43437ec9376270b02d2702aadd4f7bd8df99972a3e7c33f4218a"
+    },
+    {
+      "sourcePath": ".scaffold/phase013/diagnostics/frame-origin-repro-5/project-frame-missing-column-synthetic-raw.json",
+      "path": "docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/project-frame-missing-column-synthetic-raw.json",
+      "sha256": "791ebc662a7aeb08c24b13a96eb700894c58dddf0a8d6d68468c7d4b6bd14e60"
+    },
+    {
+      "sourcePath": ".scaffold/phase013/diagnostics/frame-origin-repro-5/relative-project-frame-synthetic-raw.json",
+      "path": "docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/relative-project-frame-synthetic-raw.json",
+      "sha256": "fa62e85b4591447a379cfac651a991c499063f6085e3ddee463e97bef4b796ae"
+    },
+    {
+      "sourcePath": ".scaffold/phase013/diagnostics/frame-origin-repro-5/result.json",
+      "path": "docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/result.json",
+      "sha256": "edb40c8c95a139382ffaac4f494fbd905f5b1a3b37f8f05722edab5b3944ad31"
+    },
+    {
+      "sourcePath": ".scaffold/phase013/diagnostics/frame-origin-repro-5.mjs",
+      "path": "docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/probe-source.mjs",
+      "sha256": "da48213a5b3a92d38eed0458cc829e1d77848f78f6606fce1813eb02d72fb0dd"
+    },
+    {
+      "sourcePath": "docs/phase-plans/phase013-evidence.mjs",
+      "path": "docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/prior-evidence-sources/phase013-evidence.mjs",
+      "sha256": "c6e2ec1280a3a8c3fad9acb5437f72e83c52e6c3a0c148f6a8678e994f78d8e6"
+    },
+    {
+      "sourcePath": "docs/phase-plans/verify-phase013.mjs",
+      "path": "docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/prior-evidence-sources/verify-phase013.mjs",
+      "sha256": "ee0929109f0204c67c0f2b5b9bc1051581ecbcaca7ea11ad08a16aeb21550159"
+    },
+    {
+      "sourcePath": "docs/phase-plans/complete-phase013.mjs",
+      "path": "docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/prior-evidence-sources/complete-phase013.mjs",
+      "sha256": "214a99d910fa853abeeeffbd1db5746e0cf5910be5d35b074ce098afd69f681c"
+    },
+    {
+      "sourcePath": "tests/phase013/evidence-guards.mjs",
+      "path": "docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/prior-evidence-sources/evidence-guards.mjs",
+      "sha256": "d6f693752c773b3573ff789ee1d6a163a6571ced5d017595c46671ea98d4c596"
+    }
+  ],
+  "recordedAt": "2026-09-12T08:44:55.170Z"
+}

@@ -1,4 +1,5 @@
 // @vitest-environment node
+import { readdirSync } from "node:fs";
 import { randomUUID } from "node:crypto";
 import { Prisma, type PrismaClient } from "@prisma/client";
 import {
@@ -36,7 +37,7 @@ function readDisposableTarget(value: string | undefined): {
   } catch {
     throw new Error("PHASE007_DATABASE_URL must identify this run's disposable database");
   }
-  const name = /^\/phase(00[789]|01[012])_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(
+  const name = /^\/phase(00[789]|01[0123])_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(
     target.pathname,
   );
   const allowedOptions = new Set(["schema", "connect_timeout", "pool_timeout", "connection_limit"]);
@@ -116,8 +117,11 @@ describe.skipIf(databaseUrl === undefined)("SystemConfig real PostgreSQL contrac
     const includesAdminCommands = Prisma.dmmf.datamodel.models.some(
       ({ name }) => name === "AdminCommandReceipt",
     );
+    const includesRotationContract = readdirSync("prisma/migrations").some((name) =>
+      /^\d{14}_key_rotation_contract$/.test(name),
+    );
     expect(migrations).toHaveLength(
-      includesAdminCommands
+      (includesAdminCommands
         ? 7
         : includesAuth
           ? 6
@@ -127,8 +131,10 @@ describe.skipIf(databaseUrl === undefined)("SystemConfig real PostgreSQL contrac
               ? 4
               : includesTravelLayer
                 ? 3
-                : 2,
+                : 2) + Number(includesRotationContract),
     );
+    if (includesRotationContract)
+      expect(migrations[7].name).toMatch(/^\d{14}_key_rotation_contract$/);
     if (includesAdminCommands) expect(migrations[6].name).toMatch(/^\d{14}_admin_commands$/);
     if (includesAuth) expect(migrations[5].name).toMatch(/^\d{14}_auth_session_login_attempt$/);
     if (includesApiKey) expect(migrations[4].name).toMatch(/^\d{14}_api_key_config$/);

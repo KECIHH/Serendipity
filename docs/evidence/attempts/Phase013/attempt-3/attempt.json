@@ -1,0 +1,142 @@
+{
+  "phase": 13,
+  "attemptId": "attempt-3",
+  "status": "FAIL",
+  "artifactCommit": null,
+  "planHash": "da52cb401db00bdfebccdc5831cc56257087fb36375e26ad70cb10a6be59b63b",
+  "command": "node docs/phase-plans/verify-phase013.mjs --all",
+  "exitCode": 1,
+  "reason": "Error: npm run typecheck failed: \n> serendipity@0.1.0 typecheck\n> tsc --noEmit\n\ndocs/evidence/attempts/Phase013/attempt-3/prior-test-sources/tests/lib/public-user.test.ts(10,8): error TS2307: Cannot find module '../phase007/config-fixture' or its corresponding type declarations.\r\n\n\n    at command (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/phase013-runtime.mjs:304:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async all (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase013.mjs:566:5)\n    at async file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase013.mjs:846:3",
+  "observations": [
+    {
+      "command": "node --version",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "--version"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "v24.19.0\r\n",
+      "stderr": "",
+      "durationMs": 136
+    },
+    {
+      "command": "npm --version",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "--version"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "11.7.0\n",
+      "stderr": "",
+      "durationMs": 248
+    },
+    {
+      "command": "npm run format:check",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "format:check"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "\n> serendipity@0.1.0 format:check\n> prettier --check \"src/**/*.{ts,tsx,css}\" \"scripts/**/*.{js,mjs,cjs,ts}\" \"*.{js,mjs,cjs,ts,json}\"\n\nChecking formatting...\nAll matched files use Prettier code style!\n",
+      "stderr": "",
+      "durationMs": 2183
+    },
+    {
+      "command": "npm exec -- prettier --check --ignore-path .gitignore tests/admin/layout.test.tsx tests/admin/users.integration.test.ts tests/integration/audit-log.test.ts tests/integration/config-models.test.ts tests/integration/travel-record.test.ts tests/lib/audit-log.test.ts tests/lib/public-user.test.ts tests/phase006/database.integration.ts tests/phase008/data-fixture.ts tests/phase009/audit-fixture.ts tests/phase010/seed-fixture.ts tests/phase011/auth-fixture.ts tests/phase012/admin-fixture.ts tests/phase013/api-key-fixture.ts tests/phase013/api-key-worker.ts tests/phase013/browser.mjs tests/phase013/cli-network.mjs tests/phase013/evidence-guards.mjs tests/phase013/logs-fixture.ts tests/admin/api-keys-client.test.tsx tests/admin/api-keys.integration.test.ts tests/admin/logs-client.test.tsx tests/admin/logs.test.ts tests/admin/users-client.test.tsx docs/phase-plans/complete-phase013.mjs docs/phase-plans/phase013-evidence.mjs docs/phase-plans/phase013-runtime.mjs docs/phase-plans/prepare-phase013.mjs docs/phase-plans/setup-phase013.mjs docs/phase-plans/verify-phase013.mjs",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "exec",
+        "--",
+        "prettier",
+        "--check",
+        "--ignore-path",
+        ".gitignore",
+        "tests/admin/layout.test.tsx",
+        "tests/admin/users.integration.test.ts",
+        "tests/integration/audit-log.test.ts",
+        "tests/integration/config-models.test.ts",
+        "tests/integration/travel-record.test.ts",
+        "tests/lib/audit-log.test.ts",
+        "tests/lib/public-user.test.ts",
+        "tests/phase006/database.integration.ts",
+        "tests/phase008/data-fixture.ts",
+        "tests/phase009/audit-fixture.ts",
+        "tests/phase010/seed-fixture.ts",
+        "tests/phase011/auth-fixture.ts",
+        "tests/phase012/admin-fixture.ts",
+        "tests/phase013/api-key-fixture.ts",
+        "tests/phase013/api-key-worker.ts",
+        "tests/phase013/browser.mjs",
+        "tests/phase013/cli-network.mjs",
+        "tests/phase013/evidence-guards.mjs",
+        "tests/phase013/logs-fixture.ts",
+        "tests/admin/api-keys-client.test.tsx",
+        "tests/admin/api-keys.integration.test.ts",
+        "tests/admin/logs-client.test.tsx",
+        "tests/admin/logs.test.ts",
+        "tests/admin/users-client.test.tsx",
+        "docs/phase-plans/complete-phase013.mjs",
+        "docs/phase-plans/phase013-evidence.mjs",
+        "docs/phase-plans/phase013-runtime.mjs",
+        "docs/phase-plans/prepare-phase013.mjs",
+        "docs/phase-plans/setup-phase013.mjs",
+        "docs/phase-plans/verify-phase013.mjs"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "Checking formatting...\nAll matched files use Prettier code style!\n",
+      "stderr": "",
+      "durationMs": 2264
+    },
+    {
+      "command": "npm run lint",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "lint"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "\n> serendipity@0.1.0 lint\n> eslint . --max-warnings 0\n\n",
+      "stderr": "",
+      "durationMs": 6111
+    },
+    {
+      "command": "npm run typecheck",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "typecheck"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 2,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "\n> serendipity@0.1.0 typecheck\n> tsc --noEmit\n\ndocs/evidence/attempts/Phase013/attempt-3/prior-test-sources/tests/lib/public-user.test.ts(10,8): error TS2307: Cannot find module '../phase007/config-fixture' or its corresponding type declarations.\r\n",
+      "stderr": "",
+      "durationMs": 3588
+    }
+  ],
+  "artifacts": [],
+  "startedAt": "2026-09-12T07:43:09.898Z",
+  "recordedAt": "2026-09-12T07:43:25.564Z"
+}

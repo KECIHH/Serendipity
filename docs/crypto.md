@@ -32,6 +32,14 @@ encryptedKey 永不原地更新。常规轮换按管理契约创建 DISABLED 新
 
 本阶段实现的是存储格式、指纹/AAD 字节与数据库生命周期约束。parser 不解密，也不能证明 tag 来自正确主密钥；AES-GCM 加解密、随机 IV、KeyResolver、受保护候选测试、轮换服务及 API 安全投影须在 Phase013 实现并验收。Phase015 的 `secretRef` 直接引用现有 `ApiKeyConfig.id`；不另造 secret store。`credentialRequirement=NONE` 不解密且不发凭据，REQUIRED 的普通调用只解析 ACTIVE 行；这些治理模型与调用行为不由 Phase010 提前生产。验收范围见 [Phase010](phase010.md)。
 
+## Phase013 加解密与生命周期实现
+
+`src/server/security/secret-envelope.ts` 实现 server-only 的 `createKeyResolver`、`encryptSecret`、`decryptSecret` 和 `generateFingerprint`，复用既有 `api-key-envelope.ts` 的逐字段 schema、JCS AAD 与规范化规则。未知 keyId、错误主密钥、版本/算法/编码/长度/列绑定或认证标签统一抛出 `SecretDecryptError`；服务端映射为公开 CONFIG_ERROR，不暴露具体失败原因。新 ID 在加密前由服务端生成，IV 每次 CSPRNG 生成；数据库行与服务实际加解密均参与 round-trip 验证。
+
+创建与轮换只保存 envelope 和去重所需 fingerprint。列表 SQL 直接派生短 display，安全 DTO 和持久化收据均拒绝额外秘密字段。React 不持有可复用的明文 state，提交后清空输入；响应丢失时重新输入同一正文并复用原幂等键。常规调用每次复核 ACTIVE；DISABLED 候选只允许归属本次已授权轮换的受控验证，未激活候选也不能通过普通 PATCH 启用。轮换保留历史密文，紧急撤销阻止后续新调用。
+
+真实 Provider adapter 由 Phase015 首产并注册。当前默认零引用轮换仍验证候选 envelope；两引用合同使用隔离 PostgreSQL schema 与受保护 loopback HTTP，包含响应版本/hash、超时、重定向与失败原子性。实现和实际验收入口见 [Phase013](phase013.md)。
+
 ## 可执行规则与验证
 
 <!-- contract:crypto-policy -->

@@ -1,0 +1,46 @@
+{
+  "sourcePath": "src/server/projections/admin-api-key.ts",
+  "changedSources": [
+    {
+      "sourcePath": "src/server/projections/admin-api-key.ts",
+      "originalHash": "887a7c6c709c6d94f2e5e6713a6e8176ff22351ab991ca1e757abbf9bae262a4",
+      "mutatedHash": "40408d7eb65c9ddecd6e44497b22ad0538b846585a3ed39927f06fcd26c292cf"
+    }
+  ],
+  "testFiles": [
+    "tests/admin/api-keys.integration.test.ts"
+  ],
+  "testPattern": "\\[crypto-redaction\\]",
+  "originalCase": "crypto-redaction",
+  "failureContract": {
+    "version": "phase013-exact-security-assertion-v1",
+    "controlId": "dto-whitelist",
+    "testSourceHashes": {
+      "tests/admin/api-keys.integration.test.ts": "da0d047142f467f6e083e2ca3e5ea4f82cb4552881b51809c3acf27f66ffbc52"
+    },
+    "requiredFailures": [
+      {
+        "file": "tests/admin/api-keys.integration.test.ts",
+        "fullName": "admin/api-keys real PostgreSQL [crypto-redaction] rejects secret fields at the retained result whitelist",
+        "anchor": "expect(\n          projections.every(\n            (query) =>\n              query.includes('left(\"keyFingerprint\"::text,12)') &&\n              !query.includes('\"encryptedKey\"'),\n          ),\n        ).toBe(true);",
+        "matcher": "toBe",
+        "failureHeader": "AssertionError: expected false to be true // Object.is equality",
+        "sourceHash": "da0d047142f467f6e083e2ca3e5ea4f82cb4552881b51809c3acf27f66ffbc52",
+        "anchorHash": "592ae83dd4f2b4996e2fa18fa30e762726f439a68bef72e352c24cf01f516df3",
+        "location": {
+          "file": "tests/admin/api-keys.integration.test.ts",
+          "line": 816,
+          "column": 11
+        },
+        "signal": {
+          "error": "AssertionError",
+          "matcher": "toBe",
+          "actual": false,
+          "expected": true
+        }
+      }
+    ]
+  },
+  "simulation": true,
+  "productionTraffic": false
+}

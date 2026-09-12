@@ -115,8 +115,16 @@ describe("layout shells", () => {
       "href",
       "/admin/users",
     );
+    expect(within(navigation).getByRole("link", { name: "密钥管理" })).toHaveAttribute(
+      "href",
+      "/admin/api-keys",
+    );
+    expect(within(navigation).getByRole("link", { name: "审计日志" })).toHaveAttribute(
+      "href",
+      "/admin/logs",
+    );
     expect(within(navigation).getByRole("button", { name: "退出登录" })).toBeEnabled();
-    expect(within(navigation).getAllByRole("link")).toHaveLength(1);
+    expect(within(navigation).getAllByRole("link")).toHaveLength(3);
     expect(within(navigation).queryByText("AI 配置")).not.toBeInTheDocument();
     expect(within(screen.getByRole("main")).getByRole("heading", { level: 1 })).toHaveTextContent(
       "后台内容",
