@@ -66,3 +66,6 @@ Phase011 计划：docs/phase-plans/Phase011.json；唯一 Gate：docs/evidence/P
 | Phase012 | 受保护后台与并发安全用户管理 | 唯一AdminShell/真实导航、用户列表与角色状态编辑、AdminCommandReceipt/KeyRotationRun迁移、会话撤销、原子审计、实库/浏览器/变异测试；完整路径及hash见Gate | 固定7/7；真实PostgreSQL17与Auth.js、分页/CAS/自保护/最后管理员/幂等重放；隔离变异红→恢复绿；Vitest 460/460；上游回归与lint/typecheck/format/build/layout/validator退出0；独立Agent复核；artifactCommit=171025ef44f194b6417e9bf091c0d635d9741e2b；attemptId=attempt-7 | 未使用真实身份/生产流量/外部Provider；真人读屏NOT_EVALUATED；未执行Phase013 | metadata后执行双shell seal、clean和GitHub同步；用户授权止于012 |
 
 Phase012 计划：docs/phase-plans/Phase012.json；唯一 Gate：docs/evidence/Phase012-gate.json；恢复、原始命令、数据库、测试与独立复核：docs/evidence/attempts/Phase012/。旧检查点保持原字节。
+| Phase013 | 管理员密钥生命周期与脱敏审计读取 | AES-GCM/AAD与安全DTO、录入/停用/启用/轮换/紧急撤销、幂等原子审计、两引用adapter合同、日志keyset分页、真实UI与隔离测试；完整文件/hash见Gate | 固定6/6；PostgreSQL17；真实受控HTTP候选测试；反向红与恢复绿；Vitest 525/525；testMode=full；lint/typecheck/format/build/layout/validator通过；独立Agent复核；artifactCommit=1ddff2e0d3c89492cb50268ffcc5cb4673a69a31；attemptId=attempt-7 | 无生产流量、真实密钥或Provider外呼；真人读屏NOT_EVALUATED；未执行Phase014 | metadata后执行双shell seal、clean和GitHub同步；授权止于013 |
+
+Phase013 计划：docs/phase-plans/Phase013.json；唯一 Gate：docs/evidence/Phase013-gate.json；恢复、原始命令、数据库、测试与独立复核：docs/evidence/attempts/Phase013/。旧检查点保持原字节。

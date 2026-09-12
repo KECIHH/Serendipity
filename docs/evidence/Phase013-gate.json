@@ -1,0 +1,2764 @@
+{
+  "schemaVersion": "agent-gate-v1",
+  "phase": 13,
+  "attemptId": "attempt-7",
+  "status": "PASS",
+  "simulation": true,
+  "operatorMode": "AGENT_ONLY_AUTOMATED_NEW_BUILD",
+  "environment": {
+    "isolated": true,
+    "syntheticUsers": true,
+    "providerMode": "local-adapter",
+    "productionTraffic": false
+  },
+  "artifactCommit": "1ddff2e0d3c89492cb50268ffcc5cb4673a69a31",
+  "requiredCaseIds": [
+    "Phase013:create-read",
+    "Phase013:disable-enable",
+    "Phase013:rotate-revoke",
+    "Phase013:authorization",
+    "Phase013:crypto-redaction",
+    "Phase013:failure-atomicity"
+  ],
+  "results": [
+    {
+      "testCaseId": "Phase013:create-read",
+      "command": "node docs/phase-plans/verify-phase013.mjs --all",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:433fac7ba99add896fbc274d34a093a62d8f5405b782d5b3cb3e9b201a512b75",
+      "outputHash": "sha256:afcc334f8463a415c04f86e11d0e2ce160f251d39cd060a6dc36d9eb719a184b",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/admin/api-keys.integration.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase013/attempt-7/create-read.json",
+        "expected": "ADMIN creates a generated synthetic key through the real guarded handler and PostgreSQL transaction. The exact v1 envelope decrypts with matching id/provider AAD; GET and POST contain only the ten-field safe DTO with first12 fingerprint characters plus ellipsis. Duplicate normalized plaintext conflicts without a second row; same Idempotency-Key/payload replays its original safe DTO after a fresh service/process, while changed payload returns409 and zero business writes. Plaintext is never cached, stored in React state, or returned; no decrypt/export/reveal endpoint."
+      }
+    },
+    {
+      "testCaseId": "Phase013:disable-enable",
+      "command": "node docs/phase-plans/verify-phase013.mjs --all",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:433fac7ba99add896fbc274d34a093a62d8f5405b782d5b3cb3e9b201a512b75",
+      "outputHash": "sha256:ee7fe1f1401093d7e37f9311c0d07421663c54759fd86d21e4547c765d4c014d",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/admin/api-keys.integration.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase013/attempt-7/disable-enable.json",
+        "expected": "ACTIVE transitions only to DISABLED or REVOKED, DISABLED only to ACTIVE or REVOKED, and REVOKED is terminal. Every real state/name change checks expectedVersion and increments revision with one matching audit in the same transaction; revokedAt is set on revoke. Stale CAS and revoked recovery produce a safe failure with zero business writes. History ciphertext is not replaced or deleted. Ordinary resolution accepts only ACTIVE, so emergency revoke immediately prevents new calls. An isolated removal of the terminal-state guard must turn the original state assertion red."
+      }
+    },
+    {
+      "testCaseId": "Phase013:rotate-revoke",
+      "command": "node docs/phase-plans/verify-phase013.mjs --all",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:433fac7ba99add896fbc274d34a093a62d8f5405b782d5b3cb3e9b201a512b75",
+      "outputHash": "sha256:4c940afa3be1b7d63000b7686654e7e5153ebd155bcc35e0931a28e15c57d053",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/admin/api-keys.integration.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase013/attempt-7/rotate-revoke.json",
+        "expected": "Reuse AdminCommandReceipt and KeyRotationRun. The production adapter registry has zero Provider references and reads no future table. The contract adapter fixture covers exactly two active references and immutable candidate configs. One idempotency identity prepares one DISABLED key plus discoverable candidates; candidate HTTP tests use the actual bounded safe client with exact version binding, outside database transactions. Failure preserves old key and both activations and reuses the same candidates on retry. A single Serializable transaction rechecks old revision, complete reference set and every activation revision, then enables new key, switches all references, revokes old key, completes receipt and appends audit. Concurrent rotate has one winner, losers never create orphan ACTIVE keys. Reference set/CAS changes and emergency revoke cause409 without restoration. The existing-table-only migration fixes the Phase012 empty-candidate limitation without adding a second ledger or Provider/model/Prompt tables."
+      }
+    },
+    {
+      "testCaseId": "Phase013:authorization",
+      "command": "node docs/phase-plans/verify-phase013.mjs --all",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:433fac7ba99add896fbc274d34a093a62d8f5405b782d5b3cb3e9b201a512b75",
+      "outputHash": "sha256:9bad127788b8176483c076ffd195dcaa2c822428ec77ba12967041acc1d67f66",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/admin/api-keys.integration.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase013/attempt-7/authorization.json",
+        "expected": "Every page/API handler first calls requireAdmin and revalidates the current database ADMIN role, ACTIVE status, sessionVersion and session state. Anonymous, USER, DISABLED ADMIN, stale/revoked sessions and missing/invalid CSRF are denied before protected business reads/writes. Nonexistent and unauthorized resource requests do not leak differences. Writes validate exact schema, expectedVersion, Idempotency-Key and normalized payload hash. Isolated removal of requireAdmin must make original authorization assertions fail with a real nonzero test exit."
+      }
+    },
+    {
+      "testCaseId": "Phase013:crypto-redaction",
+      "command": "node docs/phase-plans/verify-phase013.mjs --all",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:433fac7ba99add896fbc274d34a093a62d8f5405b782d5b3cb3e9b201a512b75",
+      "outputHash": "sha256:533ea834d52c3f87ca8172e8c2eafcb46096fcf0726cb13e9f4954fc6fb5dac6",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/admin/api-keys.integration.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase013/attempt-7/crypto-redaction.json",
+        "expected": "AES-256-GCM uses a fresh random96-bit IV,128-bit tag and JCS UTF8 AAD {recordId,provider,envelopeVersion}; KeyResolver matches SHA256(decoded32byte ENCRYPTION_KEY). Reuse the Phase010 exact envelope schema and normalized plaintext fingerprint. Cross-schema/service/database round-trip, same-key/different-IV and malformed version/algorithm/keyId/noncanonical base64/length/AAD/tag all have explicit assertions. Internal SECRET_DECRYPT_FAILED maps only to public CONFIG_ERROR. API, pages, DB safe projection, audit, logs, trace, browser HTML/storage and final evidence expose no plaintext, ciphertext, master key or full fingerprint. Audit queries reuse the Phase009 sanitizer, redact nested secrets to*** and render text safely. Isolated AAD and DTO-whitelist removals each must turn original assertions red."
+      }
+    },
+    {
+      "testCaseId": "Phase013:failure-atomicity",
+      "command": "node docs/phase-plans/verify-phase013.mjs --all",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:433fac7ba99add896fbc274d34a093a62d8f5405b782d5b3cb3e9b201a512b75",
+      "outputHash": "sha256:d8394f6e4db7a4892ec658076587499ca1cef75f3fb237ab17a0291b0136a222",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/admin/api-keys.integration.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase013/attempt-7/failure-atomicity.json",
+        "expected": "Audit and receipt failure roll back every business change; rotation CAS/audit failures never partially switch either of two activation references and retain identifiable DISABLED candidates. A bounded read-only AuditLog API filters action/target/actor/time and uses an opaque authenticated keyset cursor with default size and maximum100. Tampered cursor, cross-filter cursor, limit>100, oversized filters and database faults fail safely. Error/not-found pages never render arbitrary HTML, stack, request bodies, internal paths or secrets. Real browser checks exercise key create, disable/enable, rotate/revoke, redacted audit navigation, responsive layout and keyboard/focus with zero sensitive output or storage hits. Normal execution is restored and the complete six-scenario collection passes after all isolated mutations."
+      }
+    }
+  ],
+  "commands": [
+    {
+      "command": "node docs/phase-plans/verify-phase013.mjs --all",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase013.mjs --all",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase013.mjs --all",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase013.mjs --all",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase013.mjs --all",
+      "exitCode": 0
+    },
+    {
+      "command": "node docs/phase-plans/verify-phase013.mjs --all",
+      "exitCode": 0
+    }
+  ],
+  "inputs": [
+    {
+      "path": ".env.example",
+      "sha256": "8d1e5b830a44ea6746a7436b8a17be766deba0b789fc3d767dcf3363228fa4f3"
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "5f52d486cab522fa6daa07235ca6c5ff8131ba803fb675bb2db588a7a1f1f7e4"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "eb3d88b97ff365a767b5b3488f3f5e889fd13f4ee1036b99e974ee7c3a17531b"
+    },
+    {
+      "path": "README.md",
+      "sha256": "d396343320ce1ab7f5be483c883ccc9c8062002755a3507fc60806e550f7f10a"
+    },
+    {
+      "path": "docs/admin.md",
+      "sha256": "cfe3738b049e222ab0d1b4f2eccd800fffcacbb0c7e33dcae87864bc663a9806"
+    },
+    {
+      "path": "docs/agent-execution-contract.md",
+      "sha256": "ba2c8eb6452d0f63f4d3f27879479c18209d592540f93978d54435c4357c9275"
+    },
+    {
+      "path": "docs/api.md",
+      "sha256": "db956de07d9a46b224dbc7f213e5721a6d2734c86906993e7b028e4b40378bc6"
+    },
+    {
+      "path": "docs/auth.md",
+      "sha256": "61d4a77d2e776f1a1f712d15fbe9d132db22da3f2a0eb30a12340b1250430c39"
+    },
+    {
+      "path": "docs/checkpoint-migrations/testing-policy-20260912.json",
+      "sha256": "abdd84536d1a33a2f838019d18051fed4af944f4c99d2286065698cbbf52d68f"
+    },
+    {
+      "path": "docs/crypto.md",
+      "sha256": "0565b76370509829fe3df67b6947f0d9b862757817684f94a6d5f85bfece735c"
+    },
+    {
+      "path": "docs/database.md",
+      "sha256": "0364935bfc5d70c79050fc1394c1288bab4f2052f8ac135d587bbd703fffcecc"
+    },
+    {
+      "path": "docs/env-registry.json",
+      "sha256": "c77464fe2c071dbeb8f3f5212a99928b47dc713a522450d9860746ca950c6a48"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-1/attempt.json",
+      "sha256": "fa9ddf034147c507f0b8c7461aca30afb83218c99fab220f37667fe8d18b60c1"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-1/failed-migration.sql",
+      "sha256": "7680d519304cd0ee88b6adade119a9c06a4ac849434b47fc61abe8a0a0395c91"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-1/failed-protection.sql",
+      "sha256": "7680d519304cd0ee88b6adade119a9c06a4ac849434b47fc61abe8a0a0395c91"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-1/frozen-plan.json",
+      "sha256": "965a3381a40a2c30d42b8341b9682c0de93aa0a39e78e245e04f9e8b8ea2f3bb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-1/migration-diagnostic.json",
+      "sha256": "0e0355c6822eb3c0e635a00d60cba295bb11c81455dc83387af277039fd56ae2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/all-tests-vitest.json",
+      "sha256": "f06707e5be53f7a496486fdb942b788f3127d91def6f4360bc875387b8dd467d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/attempt.json",
+      "sha256": "346fc9151b4f33e28beccaf1e4cb76205d79120b1823ad2d9471b0616b28d37c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/baseline-aad-vitest.json",
+      "sha256": "622fe8921ffebed3aef79b300a4246e11b941a82a97ea900cfcdf523a6739bc2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/baseline-dto-whitelist-vitest.json",
+      "sha256": "fb281837464981548bb7c270b4e5682d2c98daf59d2deda6c0fc6d0c62ef8186"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/baseline-require-admin-vitest.json",
+      "sha256": "591ac96dfea2585bcb203ea55595ae439a404dba41eb75b1955d34ac9d42b5d7"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/baseline-terminal-state-vitest.json",
+      "sha256": "291a213d256ecc5c8c56060d0aecccfdd14dc970e34d8645cf955bdf2bd6671b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/business-observations.json",
+      "sha256": "b3174cea38ddc03565ba7ff61d6860b1beee74c8c47bdcff1797865fff46d2b8"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/card-command.json",
+      "sha256": "e489800dadddb04f00522bea68edab1b7d0904ea0afaa5c7f3159a10102e2c2e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/card-vitest.json",
+      "sha256": "edb931022b33c696ce395492aee75608831d4b6952c3b6dbcc4bb71b0ae87457"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/case-assertion-mapping.json",
+      "sha256": "2bab14c33eadd45018bf067536d201418f08b0ae44d8ddde1f854332d099ce3e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/cli-network.json",
+      "sha256": "de102f7f4dbc166769cf87ea2d9d1d3b81f01a5212e060930d4e97c2444c8237"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/evidence-guards.json",
+      "sha256": "4f41460267c267959a458422a28767b83dd4758b489ae36d1102f7e07215ffbe"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/frozen-plan.json",
+      "sha256": "9c1c63a7d57d757115b6b13d12e5f1b18f53040dd42b144a2ea9580016fe6870"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/migration-preparation.json",
+      "sha256": "c57638b9481ec47ecd8a3f8cefa3ad864331695511a74acdda4be01795019579"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/mutations/aad.json",
+      "sha256": "67d204415e6d65aa3d3c2ba97a08fc5e66279367346acff4971dd85d374e5461"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/mutations/dto-whitelist.json",
+      "sha256": "87944cca59e23c965c952443f055a88a918389f2e5887d893e6264496a51461c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/mutations/require-admin.json",
+      "sha256": "b4ba01ab2a7ec33479a3fc459239a6c38c84d9551ca0ea3b7667e8ac4face571"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/mutations/terminal-state.json",
+      "sha256": "8201518e6eb52dcd6f6449ae508bbb893ebeef2f60d0d4021925448aad5376e2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/negative-aad-vitest.json",
+      "sha256": "19ea0a6a381cc23f4241b968465e9edde6f8b2ba5a2c8e184cc97998702a467e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/negative-dto-whitelist-vitest.json",
+      "sha256": "5d0dc3eb524d246c47b13ce62a80eb9e87c43e05a11c6ad6abe8a5cf70a42b22"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/negative-require-admin-vitest.json",
+      "sha256": "5632832cfbe0cfbaf76641f5d57c5487c2ff90f509f71264d697a66fe55bd13c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/negative-terminal-state-vitest.json",
+      "sha256": "3e6925db2969f78aabff37ca361731a6cf6c6727694f174e887b54d006701e4e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/restored-card-vitest.json",
+      "sha256": "9b80389fe050e17c88cd3b991584adda7ba0380535ef7b81a1cc20ded33ef59f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/test-discovery.json",
+      "sha256": "c89d47d6d012f2d2546dcd9c3133f2410af9527f2937f85c48b65ac48cd2dbc3"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-2/validator-regression.json",
+      "sha256": "5f9265de8823a07c7628558c4ee45ad690fd76a8a02108fbb04ffc43acb62614"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-3/attempt.json",
+      "sha256": "0182f6b848f9d28b4249811e00102539d4cd58ab5d6a39b0fac4c7c92a4a921c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-3/frozen-plan.json",
+      "sha256": "da52cb401db00bdfebccdc5831cc56257087fb36375e26ad70cb10a6be59b63b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-3/prior-test-sources/src/app/layout.test.ts",
+      "sha256": "90bb2c1a05f0af75615e3c344f1156ec55e252dad08760eb8aa65ef93933c4a8"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-3/prior-test-sources/src/components/common/common-components.test.tsx",
+      "sha256": "28f41b8fd7a67530f2b4bbf59f71a5615282b6de9d9567d283eed724fec6c7ba"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-3/prior-test-sources/tests/lib/public-user.test.ts",
+      "sha256": "fadb0b242ed03b69654ab0e7aeb1f0761190a109f126a7a3b25f1d216dc20555"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-3/scope-repair.json",
+      "sha256": "e25ff795d7c179f30f096718f695204b9b024f15923c9db35d7b33af1dfcbf0b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/all-tests-vitest.json",
+      "sha256": "539c69deecaf9b58798868ce86c5545c5a95d72eb67e95a0160e12090818ff7d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/api-keys-1280-axe.json",
+      "sha256": "421c7e24430af3113c6ff4759616f3caea387242c7402d38a934a545b4537fb8"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/api-keys-1280.html",
+      "sha256": "4f2c1c0b08eab957d16ca81698e988f2d3b8a45710e0002437bcaf0c15d400cf"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/api-keys-1280.png",
+      "sha256": "2945ac2367ee846c37055ecaf0e5eeda4f5ac479869fffa8853a6b743ef5195c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/api-keys-375-axe.json",
+      "sha256": "1eab39197ea01bb49d9d2d771e257a2be1964053a5e2d77c0e9cfe432fa1637a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/api-keys-375.html",
+      "sha256": "2f6a54ab5ff919fdade8e06e2464c5d6af82f9f7f0ec6586970cd63842c7d4f0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/api-keys-375.png",
+      "sha256": "3f040b854e48834e37f5acd322c31426bb2430c4c0299d9c30be37fd8ee09eaa"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/api-keys-empty.html",
+      "sha256": "df9e1625b08cc81b13b2083438c098d7c04add5abea9d8c436ebbb9c0227a4d0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/api-keys-empty.png",
+      "sha256": "e01f70dd728c6cd4c9d954eaa32eb4b8cdecbca5fc0dc4c87e39653bfc91a927"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/attempt.json",
+      "sha256": "9d1adb18b0324d6c6ff2f6ef36089c944c8f0f7a0b55e8cebaa0f2b65342e91c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/audit-logs-1280-axe.json",
+      "sha256": "8972471f04e576897fbdf3605447e3fabc4f6adc2177766e9930a48df1a032c5"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/audit-logs-1280.html",
+      "sha256": "5dda412fb5781be927548e72ed7d5f006a7f092d2e313dc3b34554980e1c9ecb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/audit-logs-1280.png",
+      "sha256": "1b293033ef6b08d134b6505101cd5599d9c9ac852e44fdcff70699e03e314729"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/audit-logs-375-axe.json",
+      "sha256": "e6deff617bf5f207d7b994196f5866b5cc89e1cb62f1023ae47342435630b54a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/audit-logs-375.html",
+      "sha256": "dd4f88d0b258fb6fecf9c2f5194bea3096e451d8a487b165fbad074c9a519f07"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/audit-logs-375.png",
+      "sha256": "3b40e4f3a1267ad4cd8ee38dea9465d3349b0d0b36405adfa3f4731cc7d9fbfc"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/audit-logs-unavailable.html",
+      "sha256": "aa4bc1c27a9a5b818adc4024017ab25c1c50a7b48d416a73de95cb58d5822f0d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/audit-logs-unavailable.png",
+      "sha256": "a985024617121f738694d16d28d91df5b97c5e406a68f74c3d9eb0ce2f81309e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/authorization.json",
+      "sha256": "e9ec226054ede89345c5204290c5e85c56193647f15ef8b8c390cf58d9dbf275"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/baseline-aad-vitest.json",
+      "sha256": "2aed414a82af636698bf6a591ec223529f09b709a9b2b5350d6ccee9ff0cb915"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/baseline-dto-whitelist-vitest.json",
+      "sha256": "ea89163dec2fba137ede51aaeac014fb0cc71cbd615d28ecd1ed6981ea75e9b8"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/baseline-require-admin-vitest.json",
+      "sha256": "cb375ab3a0250f57b86f10472d91385043ded87d71dba9d5d6f62a6ef22d443c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/baseline-terminal-state-vitest.json",
+      "sha256": "c4535d0e6851e9f950bde88d743eb463f8f6774ccf1be59fb4777acdaff94c29"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/browser.json",
+      "sha256": "2b9ee85f2739fab9eb8a7eeb3b8e08745384ded4430234818f7ba45523bcd128"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/business-observations.json",
+      "sha256": "12ff2253847ecc3ab35d11f409c143b870cc88083cfd3ced5ed896a8b77ec9f6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/card-command.json",
+      "sha256": "f935c83d10465fe803e6076fdfe25faafb2433f51ac86baf4b637c5ae895ac41"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/card-vitest.json",
+      "sha256": "db8abf9868bf0d72ea5c313b54432bd0ab4e097b4cfae58b81f565a5bd96a29e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/case-assertion-mapping.json",
+      "sha256": "eda3c119da4284a409c4b7c1f3b27207002f95de2357a1b2428b45a270c374c1"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/cli-network.json",
+      "sha256": "dbf6a3eed282b306cf7d992331e6b0ca0c6bbf50abc4ead2b4703b7b423e0b84"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/create-read.json",
+      "sha256": "466267d126232d55bd5c1d148177114f3b07ce13dcdab919fbc212c35f4d69c3"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/crypto-redaction.json",
+      "sha256": "b045250d585d80e917319f62a2195a2facbf46b3c6d59f43ded1021c1c942359"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/disable-enable.json",
+      "sha256": "0644ee3f85828b179f64072721ff3f70ad2a0cec6dc8a791a31897df1994906a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/early-independent-review-run.json",
+      "sha256": "a2ec23905eb362c6da9d185b6fa5d94d9204c86158ee880e24047ac1c29b67f7"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/early-independent-review.json",
+      "sha256": "f465c97064965f643f0b1492ef90fc824d6306c90f711e371175e76f211be6ac"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/evidence-guards.json",
+      "sha256": "f5948a9b4d4a0c0781011f4d70581c4d431a1121cf79918c85dfb9a0d4ee782c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/failure-atomicity.json",
+      "sha256": "95475d68e88b9c459a151ad5161178ac69e1d9ff61ceec48b378a138aa9eb15b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/frozen-plan.json",
+      "sha256": "b499d784f21152d8533baaebe93e678a72b569f5a4da9954eb065f954e1b43dc"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/mutations/aad.json",
+      "sha256": "67d204415e6d65aa3d3c2ba97a08fc5e66279367346acff4971dd85d374e5461"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/mutations/dto-whitelist.json",
+      "sha256": "87944cca59e23c965c952443f055a88a918389f2e5887d893e6264496a51461c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/mutations/require-admin.json",
+      "sha256": "b4ba01ab2a7ec33479a3fc459239a6c38c84d9551ca0ea3b7667e8ac4face571"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/mutations/terminal-state.json",
+      "sha256": "8201518e6eb52dcd6f6449ae508bbb893ebeef2f60d0d4021925448aad5376e2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/negative-aad-vitest.json",
+      "sha256": "79363a786ab3cd5d9809f2af3f3279862cbaa53498e3412c2bb349dd7546052a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/negative-dto-whitelist-vitest.json",
+      "sha256": "0e8dbf732da60e7e4cdd7b7940cfa58cb2380405117aefe3241e42c6a6a1cdf1"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/negative-require-admin-vitest.json",
+      "sha256": "e46e180150e1a3a55792fe249a597f626d69084956cf18669f6c1848c8e9b049"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/negative-terminal-state-vitest.json",
+      "sha256": "71d3a2aace8ce2fc84c298b24f9f681d0ed8824d2e9afb172f20927083a2c9b7"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/phase006-user-regression-vitest.json",
+      "sha256": "c736ba17b982879e3756f0dcaab5baaeb127736a9a7a2d5fff9d5814706d92af"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/quality.json",
+      "sha256": "7b3ab733c0cbc3879f84d730fdad5e7e3999c81e8dcb978d72bb2d33bc0d6a98"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/repository-test-coverage.json",
+      "sha256": "97d7e9ae4a9feb9b6c299d43488193b8b9aaa55e308490f2b9ffa464055d2f3f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/restored-card-vitest.json",
+      "sha256": "9b1dc04679fe6a04c8a055280cea36717c726c627a3c9f3ba7cb1c29e98294a6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/rotate-revoke.json",
+      "sha256": "1db2b358ca4ae88639f28ffb417381900d37c3b4cb55958cccf066801db0f387"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/test-discovery.json",
+      "sha256": "c31f9efb7395729c1dec9697c2aae5a991738d9d1f67aff4d23c09b3efaea1ff"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-4/validator-regression.json",
+      "sha256": "e24f20e8e1262e4b634763f385a5e8f05321638783f944a9aaa3b3ac24c6d19f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/all-tests-vitest.json",
+      "sha256": "0e6fd6a7cc8730c456e1cd983cf83f8926a7213ef1d1f01c3a31b7533373d220"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/api-keys-1280-axe.json",
+      "sha256": "f3d34252028f123a9dd1a034eae1b7bba11026b3bbd392742817decf035e5fb4"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/api-keys-1280.html",
+      "sha256": "7e00ba568b8946f07a2c38b01fd7da56310c44942d2ee8fc83e885891cc7765a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/api-keys-1280.png",
+      "sha256": "8caa3e3ad22c6c1f0e5a41854b504b902a0369ec8cb951a260dee231c8599116"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/api-keys-375-axe.json",
+      "sha256": "1123e4cdd103cd80ae6d551672a4592c8563f38946f08d4cd74d6a93f46fa398"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/api-keys-375.html",
+      "sha256": "72d20e81c4ba99256c0fb8910cb9b9184e0851756579f6d252ebdadf46dc2547"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/api-keys-375.png",
+      "sha256": "74cace4ddb186a5186d07046ce20eaf281b67e6a70ae86883f410ea2ff568a8e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/api-keys-empty.html",
+      "sha256": "b4aa39dd33f29d04a90b2adb4793dff97e632eb9ad92235867d2be0fda227953"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/api-keys-empty.png",
+      "sha256": "e01f70dd728c6cd4c9d954eaa32eb4b8cdecbca5fc0dc4c87e39653bfc91a927"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/attempt.json",
+      "sha256": "62e27eda76b947edeb45e63b873b02b5c77ff1d736b2baf0c7aabf3e37bf75c6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/audit-logs-1280-axe.json",
+      "sha256": "22841056f8856f231e6632495b45b454bd333a124b3e4af7d7daa20487384a7d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/audit-logs-1280.html",
+      "sha256": "c017b0209116de45d9d377d0c98ffe6ae6d355f278f9dae183a86a4e9b614445"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/audit-logs-1280.png",
+      "sha256": "8569d94a5a7dda6ff37a71bd7bb0fa1bdfa823c67ecaed64f034a15bc92e5a52"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/audit-logs-375-axe.json",
+      "sha256": "ff58e71eff5253d55d123b4d7631017efb96f88453fccf2e61d01a24812a87b8"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/audit-logs-375.html",
+      "sha256": "12ae7b73466e397abbd90d478647eb5acd08644238da904775c9356331d9ef23"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/audit-logs-375.png",
+      "sha256": "682e156e5d3d28470703c51fa1ee37291ca98130db380e77a08195a3853e82e3"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/audit-logs-unavailable.html",
+      "sha256": "c3cf427f70b4e948d4798266d20c19329555055cb422b1317a8ce94c6b1b5d74"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/audit-logs-unavailable.png",
+      "sha256": "a985024617121f738694d16d28d91df5b97c5e406a68f74c3d9eb0ce2f81309e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/authorization.json",
+      "sha256": "f80beed8fe70cb6bd0c1b018c30573df8cb0e9336537d2afbdd6d15e190be12e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/baseline-aad-vitest.json",
+      "sha256": "922331f905c80723e71b4f82f328c56760f0568a9512a46d833b4016b7a158ab"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/baseline-dto-whitelist-vitest.json",
+      "sha256": "a96d7a80dcca456844bc11cbf488cae0eb191dcfee0490d3a37da45cf0dc9ae2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/baseline-require-admin-vitest.json",
+      "sha256": "7536e5648c84fefcf5110b9a8711839e6eaf2fdd9cc08ae454854eb046260daf"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/baseline-terminal-state-vitest.json",
+      "sha256": "c9dc18238e315378c7f5cc367b345af02a64e1936ad287bc8160f7ffc2a0ae00"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/browser.json",
+      "sha256": "a5809dedee2f148641ea0898c2aa179b611363503d744c83e7544b94d14fb529"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/business-observations.json",
+      "sha256": "3752943f4ecb2d39e51b7a21fdaa51b9269b60f8d4800cde7e302b2641f70308"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/card-command.json",
+      "sha256": "be7a4a2e3b1a837d4b9180be93dd87d716531f95067fdfb764c43406b94e0cf5"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/card-vitest.json",
+      "sha256": "dd3de4b8afbf8348ca0f23c17d296ce15026cf9d061404a2b5f4362b5b16dee1"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/case-assertion-mapping.json",
+      "sha256": "82ab9aa1d9d048b8e88f6a09e33a43a029f3aab0d73eeedb653b0289718daff7"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/cli-network.json",
+      "sha256": "9eebdddd2b608508aa932a04bc1298b5b2171aa021c9be1ca23a6232a1c2617a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/create-read.json",
+      "sha256": "878d6ae23e13af62303abb6f44df02f4959be8628a0cbaa154ecaa8b4ddafd2b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/crypto-redaction.json",
+      "sha256": "4c0d0593e87d39c7610b3c0a7f9106e84fa8a9c1c197abac2b47c94228c09d26"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/disable-enable.json",
+      "sha256": "54ebf6a1d72cd2a388c244cabbc1cc71145396147357525d05e5feaff69725bc"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/evidence-guards.json",
+      "sha256": "dbfcf8f8472135cebb5119c7727c13b3b681bb0f4dca862525e2f65947b8870f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/failure-atomicity.json",
+      "sha256": "a15240ff4505b7b1fd2522c4996a8afe5f57ba39d7aae5ad7cfdca332a59838b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/command.json",
+      "sha256": "5acc01f80f4f43437ec9376270b02d2702aadd4f7bd8df99972a3e7c33f4218a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/prior-evidence-sources/complete-phase013.mjs",
+      "sha256": "214a99d910fa853abeeeffbd1db5746e0cf5910be5d35b074ce098afd69f681c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/prior-evidence-sources/evidence-guards.mjs",
+      "sha256": "d6f693752c773b3573ff789ee1d6a163a6571ced5d017595c46671ea98d4c596"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/prior-evidence-sources/phase013-evidence.mjs",
+      "sha256": "c6e2ec1280a3a8c3fad9acb5437f72e83c52e6c3a0c148f6a8678e994f78d8e6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/prior-evidence-sources/verify-phase013.mjs",
+      "sha256": "ee0929109f0204c67c0f2b5b9bc1051581ecbcaca7ea11ad08a16aeb21550159"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/probe-source.mjs",
+      "sha256": "da48213a5b3a92d38eed0458cc829e1d77848f78f6606fce1813eb02d72fb0dd"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/project-frame-missing-column-synthetic-raw.json",
+      "sha256": "791ebc662a7aeb08c24b13a96eb700894c58dddf0a8d6d68468c7d4b6bd14e60"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/relative-project-frame-synthetic-raw.json",
+      "sha256": "fa62e85b4591447a379cfac651a991c499063f6085e3ddee463e97bef4b796ae"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/result.json",
+      "sha256": "edb40c8c95a139382ffaac4f494fbd905f5b1a3b37f8f05722edab5b3944ad31"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/frozen-plan.json",
+      "sha256": "4038619311cc6fdd19b1fd6a64071e7d8bff15e6ed89bf8f1ddd53cca2a00eac"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/mutations/aad.json",
+      "sha256": "5863dbee0cc191a5805b66366bc1e12f61a02e71c082adf7b05f27ae6cf05fad"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/mutations/dto-whitelist.json",
+      "sha256": "f230715dc585f64a2631412621244aa7709e944dd98b4d46bc5c51fa115083e0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/mutations/require-admin.json",
+      "sha256": "b96da8a379a02f7feb3ef51da6fc6139c485d6153b02bcfbdc81cf465175408b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/mutations/terminal-state.json",
+      "sha256": "1437e1673a30a38d50fb76b1d45d93f3582b28a5f8fcdba2f6f3a7f915e5d959"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/negative-aad-vitest.json",
+      "sha256": "f476f124c9bdc2b25ccd7801f253fc3fea4272eb31e88fa4662b3f74517070cd"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/negative-dto-whitelist-vitest.json",
+      "sha256": "f3527a354de2bcf9d56794efd82a5319ee36e041091357ab3b268ce431811b1b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/negative-require-admin-vitest.json",
+      "sha256": "912370e379051d073cc2f6fe8b2982d8a5f52928d62d04a4d11b761e67b9b4e8"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/negative-terminal-state-vitest.json",
+      "sha256": "5b49a7f265c9ab1f5f2681079a2fc82803ea936345ce477827fca00850909f33"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/phase006-user-regression-vitest.json",
+      "sha256": "0a64ccf24f2a33ad35f1a083d80512f86f202c8b98cebb32ffebda1b6ee446e0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/quality.json",
+      "sha256": "17340d715a71909cbfe6f1ef3835864bdf6cd0a6aa7d4cbbe1b547c2924ffee1"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/repository-test-coverage.json",
+      "sha256": "3ab8d7d5c7eb2771551a26787dd7abe62bdeac5f69f17b7de0001f0797b1f405"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/restored-card-vitest.json",
+      "sha256": "5e43f9a2a8327696dba589d1048561d9286db227407a8b732a4d77bbbcdc7022"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/rotate-revoke.json",
+      "sha256": "410a720b1b9917d130e85fcfd85f3446b13990751a008e3211f064708fd9553d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/test-discovery.json",
+      "sha256": "74275ed7500497531d36530e8f18f6ad54583ac093db04e492cf6ddf54640819"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-5/validator-regression.json",
+      "sha256": "643a83f00d7ec371f50d655e8b27eb9805b84241d1755d0792bac724d61bb7b8"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/all-tests-vitest.json",
+      "sha256": "1a356b5cedc448198faf12879666177850d6a157624edb59d6fe2d4335632379"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/api-keys-1280-axe.json",
+      "sha256": "fad9c7a4c2ff4788130210c7895b2094bb7a5e30c271fdae4b07539d92936cab"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/api-keys-1280.html",
+      "sha256": "b321c7dd0ef3b4ed4b7c1a92b77a412e6fa7d9fa221ab0babac9c1eda550d647"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/api-keys-1280.png",
+      "sha256": "d2a0f267b91593e98190cffc66e7ddd9b84f39d9227742af9d995f0591053a55"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/api-keys-375-axe.json",
+      "sha256": "821199ef80168afa66f3bb36bc33b22c968c890daa9b7334f504876f6f3f721c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/api-keys-375.html",
+      "sha256": "b49ea9323db16e0d8af587fbf4ef332923f846b319ee5ee0719396977a058cdf"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/api-keys-375.png",
+      "sha256": "5e8e6fb5039af29d697aae177dbff6bb0108df844f108ba3ac245b91b76ea4f4"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/api-keys-empty.html",
+      "sha256": "d379b79f381dce013522bc7d63517092f191f49663b6ccb9e67b2c03224f6b6c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/api-keys-empty.png",
+      "sha256": "e01f70dd728c6cd4c9d954eaa32eb4b8cdecbca5fc0dc4c87e39653bfc91a927"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/attempt.json",
+      "sha256": "4aa23486cb82532d9892052e8531e8d304c31dd0f4f6898a97e5b43492445592"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/audit-logs-1280-axe.json",
+      "sha256": "798b472db0dd6207c0830b3a33ffcb5b280f58b729861e26b1a280e7d6e395ee"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/audit-logs-1280.html",
+      "sha256": "e25307af86c2309c5f3225d5af0b89293f939df1c8736ba68b3e3fa8c1c92024"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/audit-logs-1280.png",
+      "sha256": "05b7639a4d8a5e06be0db7eabf1a029c3dc5d3bd5cc5a0df7b93aaa986835ec5"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/audit-logs-375-axe.json",
+      "sha256": "2ac5eb409d65722e59212e7314536243709b887a51e336a24699cc727b22c417"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/audit-logs-375.html",
+      "sha256": "8d8d435561f683a171e7a8970e6a2752a6f5722d4c14b9cfe033654ff826730c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/audit-logs-375.png",
+      "sha256": "ecbc713951d367eceabbde4ebabd5ac572013b17c208378057d4a1a4577a1f8e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/audit-logs-unavailable.html",
+      "sha256": "6afccb690da408694569b75ae3a797d2c7529a67e99f2ad642869704d4df7f44"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/audit-logs-unavailable.png",
+      "sha256": "a985024617121f738694d16d28d91df5b97c5e406a68f74c3d9eb0ce2f81309e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/authorization.json",
+      "sha256": "b89390aca9bf401e85f17f10027db9df1103e32045934f4cb42d8cf9b18c77ac"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/baseline-aad-vitest.json",
+      "sha256": "98e7b9719e1d5478e8767ffe66fea5e32823a59158f7b4b9f780d98e0e9f3fab"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/baseline-dto-whitelist-vitest.json",
+      "sha256": "5537e84124fc012d9433b0c55f7dd6159bbb2f245b89f53b0c38b831e8236c64"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/baseline-require-admin-vitest.json",
+      "sha256": "01d5f52b41809bf4929373f0a5978ff82e59002be0ec1772e8a9974a7e7c3769"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/baseline-terminal-state-vitest.json",
+      "sha256": "b09afc8ad99d672b9376fb1da3e90e454f0c71a794f3589ac2a171e0f656a4f4"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/browser.json",
+      "sha256": "5947ad22500e5cdda3f130481b367776d985ddf35dc4e3fefd5ec5bb996a2d93"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/business-observations.json",
+      "sha256": "63a7f8067d1334e1dd1972844bddc41135dcf2086a0be7dcf50caa67228471a4"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/card-command.json",
+      "sha256": "fd66298b86ced9253420471292cbb5b5d4f37daa80343258f1cb8b22405eec9c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/card-vitest.json",
+      "sha256": "40e846c2404c3e0d659dfcc333dcb703fa3c9f0466609a2a294d56ac039a35ac"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/case-assertion-mapping.json",
+      "sha256": "2ec9fc415657f01a7d8a24352dc9efc957f85956bb1b2d133c7a66fc6e56d1df"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/cli-network.json",
+      "sha256": "c09c9c38fa22ec2a462cd3e34788094094f4f7e7d47289e9fb5b34204d4e5aba"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/create-read.json",
+      "sha256": "a2764a853fe7a85d4c812f326f0ad045903d201fa38b611c5741c005e48f2802"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/crypto-redaction.json",
+      "sha256": "3fa8a092aae0e3fc2aebdbae5f6176a936b82052931a2f64cba79cfbc7292cd8"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/disable-enable.json",
+      "sha256": "bb434f2f6a9d359c872a2d1a4eaeecd695008d2a3bed605b8fcbe8082ee75581"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/evidence-guards.json",
+      "sha256": "f612ff27535f920bc6cc9d94b698497eb30055555c32bf3aa9da0e65088b1edc"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/failure-atomicity.json",
+      "sha256": "4217fc2a52f94c4579a66a5438498fd90b9ec3d77bb01ddd445c46b0ab0f712f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/frozen-plan.json",
+      "sha256": "a2ff894f57572d374a4f2fc6bd50e5499642b0a8dcbaf600889c81a447c3ed33"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/command.json",
+      "sha256": "d1538ad32db7b3de40b5014d9f5623c5c6d7a5f8dbf934953ee2f80d54229b67"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/overlays/archived-failure-source/docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/prior-evidence-sources/phase013-evidence.mjs",
+      "sha256": "83f6361cf70a3919cdbac746d02e39f357238264be953ae48b71ed35ecbc7ad0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/overlays/original-evidence-raw/docs/evidence/attempts/Phase013/attempt-5/all-tests-vitest.json",
+      "sha256": "d35733f8a76f8d2f9900ca293f1ad5c797323119d780396f9b519dd7aa582f2d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/overlays/original-migration-diagnostic/docs/evidence/attempts/Phase013/attempt-1/migration-diagnostic.json",
+      "sha256": "6981f244ed6a37b349e00cc9ff953f22c87b9a6a772f906ffbf188fb9a446276"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/prior-cursor-sources/src/server/admin/api-key-cursor.ts.txt",
+      "sha256": "f8c189dbaed5f378e8562432c485fe385182e84c49fc0d9fedb32fe62eefe0e2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/prior-cursor-sources/src/server/admin/api-keys.ts.txt",
+      "sha256": "ccdcc83f936076705015e705d2ad45a5d806626bdc7588591bd54469cff14436"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/prior-cursor-sources/tests/admin/api-keys.integration.test.ts.txt",
+      "sha256": "da0d047142f467f6e083e2ca3e5ea4f82cb4552881b51809c3acf27f66ffbc52"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/prior-evidence-sources/complete-phase013.mjs",
+      "sha256": "214a99d910fa853abeeeffbd1db5746e0cf5910be5d35b074ce098afd69f681c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/prior-evidence-sources/evidence-guards.mjs",
+      "sha256": "ea6aff05563ac647f1f5ad07560642d3294d37c8867bab914fa51771c86cb98b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/prior-evidence-sources/phase013-evidence.mjs",
+      "sha256": "8da8b7667fe9e273bbbbc6a038d72f99d60ec8b27ef9d363965fee120a36d595"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/prior-evidence-sources/verify-phase013.mjs",
+      "sha256": "ee0929109f0204c67c0f2b5b9bc1051581ecbcaca7ea11ad08a16aeb21550159"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/probe-source.mjs",
+      "sha256": "379e15a43d1003fb4e325b971c13e2ea81b28fedac67ab050b54194ec6ef54a6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/result.json",
+      "sha256": "8e2ecacb4e5999ba405304594334d8a3f8129671c906bf775adaa3d68f5c26d7"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/independent-review-assessment-final-attempt-6.json",
+      "sha256": "2e07e540c731358d2610490012289850f1a6d5b85285eb946ab6510716b3d689"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/independent-review-basis-final-attempt-6.json",
+      "sha256": "f9c4f3a405b9daf919329eb8327d0541d846c75ee71debfc84db08131df2cb82"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/independent-review-run-final-attempt-6.json",
+      "sha256": "aecc08f1e5fea6ac245b8c2c8ea8ce4ef5a8e1fb0820f4dfe3c4f4dd869fd54d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/mutations/aad.json",
+      "sha256": "5863dbee0cc191a5805b66366bc1e12f61a02e71c082adf7b05f27ae6cf05fad"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/mutations/dto-whitelist.json",
+      "sha256": "f230715dc585f64a2631412621244aa7709e944dd98b4d46bc5c51fa115083e0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/mutations/require-admin.json",
+      "sha256": "b96da8a379a02f7feb3ef51da6fc6139c485d6153b02bcfbdc81cf465175408b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/mutations/terminal-state.json",
+      "sha256": "1437e1673a30a38d50fb76b1d45d93f3582b28a5f8fcdba2f6f3a7f915e5d959"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/negative-aad-vitest.json",
+      "sha256": "44f44207d0a4d9b3d3ad360e0024890bdebd178d9d3fc6666ea376f663356de9"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/negative-dto-whitelist-vitest.json",
+      "sha256": "f91ba54763568d5acbc512723534c2635cff18878b774424bbe0a820fec6ccbc"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/negative-require-admin-vitest.json",
+      "sha256": "c2f048981574b96921c2e8551e8f0584de445ab1dc6014369fcc8b4f6c6f1fde"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/negative-terminal-state-vitest.json",
+      "sha256": "570d5f04946f436abdc5ad8638630b39cbf2af0153f6df534544fcf0c29845b0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/phase006-user-regression-vitest.json",
+      "sha256": "7ce34d0739f7963c2688ca2ff1879c97fe7dbf065bcab6eb2aa560888dcca71d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/quality.json",
+      "sha256": "f3655b84a788153f05afd0aa06164d08f0e28c9ce27121c1d41e4b39e030731e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/repository-test-coverage.json",
+      "sha256": "acb500420ede6d6320dcae7f72d1436069f610132ca59bfe5e6332f22f68230c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/restored-card-vitest.json",
+      "sha256": "76fd4205b4fef16cbe2ecf5c0f625ad543d7c804ec867e1d346e02f6905aa7db"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/rotate-revoke.json",
+      "sha256": "4d24649f7c99027fe5ae9096d31f269991cd90c4f09121e8a640d5fdb5e022ab"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/test-discovery.json",
+      "sha256": "16fd8ea5c2ade06ac8b6810ed047f1746d7096d4de03f9ee7a03af85276181b7"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-6/validator-regression.json",
+      "sha256": "817501fdc9e0a2f32c7e012c20d86f618b393f2e728510f25fb4b0cfaeb7027c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/all-tests-vitest.json",
+      "sha256": "fd80700ac510fce48d2c055923ee25f2d17e8b9d9c4125d433d77ccf9c9f6f44"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/api-keys-1280-axe.json",
+      "sha256": "5d667b01503f146421d8bd31b8d0ce1b9d9e93b41a57d49595f02d295b62da4b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/api-keys-1280.html",
+      "sha256": "a7af25da983d6ac9f2dd57fe2cf7c2da29c8d017d2f9d2478c3c0c48f68d44ca"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/api-keys-1280.png",
+      "sha256": "6f8074cb697138737bed8928753db4a1e314497bfb40f368acb55ff7b2b597b5"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/api-keys-375-axe.json",
+      "sha256": "e54de1a68e4711f68c098a429b5ef94173d0544945df9def0ebcf81e9ec20c5d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/api-keys-375.html",
+      "sha256": "c213e96fe40e764441a67b252a38ad61d6f55bbea1c14d202a69100aa73a243e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/api-keys-375.png",
+      "sha256": "97e858c9751fb84db623708c631ba4242544c7d3657d1e4e20c762885c2d9158"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/api-keys-empty.html",
+      "sha256": "19ebf3c7c953ae4fdadf295c26c3b4a7cc2f70dd14bfa0891e283354a70c6ca0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/api-keys-empty.png",
+      "sha256": "e01f70dd728c6cd4c9d954eaa32eb4b8cdecbca5fc0dc4c87e39653bfc91a927"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/audit-logs-1280-axe.json",
+      "sha256": "3ee7be499a9192333005918fa3f61147880300f4b988bd468aad2e1bddbeb087"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/audit-logs-1280.html",
+      "sha256": "24f85f99da047ca4c13458d73029c2706d538fd0ec21446f8ef2c593c174fe9a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/audit-logs-1280.png",
+      "sha256": "38271dc796abf0cc281b1d23a2ab597f6bd7614013d61d5f6b5491173549effe"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/audit-logs-375-axe.json",
+      "sha256": "77d39443ae54d72b1279f5924e6efc3ce824bd3c5b9383328168f0f2662ffd58"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/audit-logs-375.html",
+      "sha256": "5fde103c15fb7ab92516c60ae9de8b3e626ec4b6ceba673ee27a9929285a40a6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/audit-logs-375.png",
+      "sha256": "a56df9a70f112abf97c66c4a07ecfb1f1fadf9d6e5e929d0754899b123109f96"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/audit-logs-unavailable.html",
+      "sha256": "4622fa2ce675a75871f39a834214eec8aa103df9f247185d8273a251671e53cc"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/audit-logs-unavailable.png",
+      "sha256": "a985024617121f738694d16d28d91df5b97c5e406a68f74c3d9eb0ce2f81309e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/authorization.json",
+      "sha256": "9bad127788b8176483c076ffd195dcaa2c822428ec77ba12967041acc1d67f66"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/baseline-aad-vitest.json",
+      "sha256": "77b37022dafd0e577b7eaf6b882f01bf4dd301d1a9053dd1fa08a7c3d149dbe0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/baseline-dto-whitelist-vitest.json",
+      "sha256": "a10845a1349cef6dcf681be31890658e20eb9c152a568b659fb7316b541701d6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/baseline-require-admin-vitest.json",
+      "sha256": "d4e491f8246dfccee765b9a7cd07c54875588f92f3fff4c7adb8c945934445bb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/baseline-terminal-state-vitest.json",
+      "sha256": "87200687c67b40ac0468b3d166e56f7d195ae1d89393aba098c99fda52768d4e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/browser.json",
+      "sha256": "efd68aacde42faacbfab3af7d26fef67e2a93ffc6681cdc0224f4ed01b9bad59"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/business-observations.json",
+      "sha256": "fdc00ac8ad1ba5c69be77879903fe810d9b3c7dd038c1a2dcc407a162db75fd2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/card-command.json",
+      "sha256": "7738840ff48a205df0da117eddc80ad3bfb46aaa31ae180fa8740cd6d23c656e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/card-vitest.json",
+      "sha256": "718997b8dcda83ef26238defff16303fac086153f3a5dfc1a430fa4dd32dc5f1"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/case-assertion-mapping.json",
+      "sha256": "8b50402fa88e72dc9f06119bd1ac07a2e893e674c958fc33ea6a0f4a84c9254e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/cli-network.json",
+      "sha256": "eb6cbbc0168ac094308d1c3dfa4705015ba748cd751e17b9a25514c8ed8c7c36"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/create-read.json",
+      "sha256": "afcc334f8463a415c04f86e11d0e2ce160f251d39cd060a6dc36d9eb719a184b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/crypto-redaction.json",
+      "sha256": "533ea834d52c3f87ca8172e8c2eafcb46096fcf0726cb13e9f4954fc6fb5dac6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/disable-enable.json",
+      "sha256": "ee7fe1f1401093d7e37f9311c0d07421663c54759fd86d21e4547c765d4c014d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/evidence-guards.json",
+      "sha256": "263bd6f1d302a6924d0920cc80fca5356fb388b8212ee94b40ed85f54c09566f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/failure-atomicity.json",
+      "sha256": "d8394f6e4db7a4892ec658076587499ca1cef75f3fb237ab17a0291b0136a222"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/frozen-plan.json",
+      "sha256": "360a64d6918c3d0693b752b70e5c93c8da035fd862c03360faa2b8a33b4c6e44"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/independent-review-assessment-closeout-attempt-7.json",
+      "sha256": "3a616f7de8479a95ce569772044eca5fb70726b500c2ba598d427113bfbb0800"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/independent-review-basis-closeout-attempt-7.json",
+      "sha256": "8cad239449f9c814953873baebf2f832c5cba8e55772efaa4299478ecb27f99f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/mutations/aad.json",
+      "sha256": "5863dbee0cc191a5805b66366bc1e12f61a02e71c082adf7b05f27ae6cf05fad"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/mutations/dto-whitelist.json",
+      "sha256": "03e29ec83ffdbfce66b5387c31f7aaaef9b58c8d14dd51a1c55a915399f5108d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/mutations/require-admin.json",
+      "sha256": "27e83baadafc41450e6c3dc09162cde50614cf2f970597e7af4d88ba497a09e9"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/mutations/terminal-state.json",
+      "sha256": "ab62bd1204edfa1ad519f5e4a049f12012be6a3b352c3a874d66b6bec5c65dc8"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/negative-aad-vitest.json",
+      "sha256": "f81aaa9af2863db5e4347d1d0a6d4a2d778fec5c926f9ac8cd0e5b184702c8eb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/negative-dto-whitelist-vitest.json",
+      "sha256": "559320e8b58be7560860d07bb626325dad1f6c9789668ffe30ce1138d8036576"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/negative-require-admin-vitest.json",
+      "sha256": "95c2d03e21fd0dcc003a9f173d46803211b5965df128d6e110d23f16f57e0d52"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/negative-terminal-state-vitest.json",
+      "sha256": "2512dc51cfb1706245465b257fbcda8868a46d6f0da3f9402ee01ac0ab06402e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/phase006-user-regression-vitest.json",
+      "sha256": "3ef046b5dbacdefe03f65d78246e9a6fbcbe3bb761d8815c904ea67ab923652a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/quality.json",
+      "sha256": "5d0c31b74c85dc35d4e510953bf68385b7d599d64940f562fc051275e3a38da0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/repository-test-coverage.json",
+      "sha256": "08ba2249ce4109579bc3f90d66f25a4132b65455829dc0d803b04052d902fc5b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/restored-card-vitest.json",
+      "sha256": "912a428379223d3b1fe636c0c176439c5c2e963e2e25854423462b1372262c40"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/review.json",
+      "sha256": "34543ae17512b8a854be843b9b8ba38116c9b2f738223d58a4c54406c9bc5f90"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/rotate-revoke.json",
+      "sha256": "4c940afa3be1b7d63000b7686654e7e5153ebd155bcc35e0931a28e15c57d053"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/test-discovery.json",
+      "sha256": "fcedc799740370abfc0e44949f4d5301aa846e3cc7057decec3181e1c946cc54"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/attempt-7/validator-regression.json",
+      "sha256": "a06c66ffd3c3d417b2aedf6633388521e224208b436ce4d5e4375d59004ff678"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/setup/migration-generation.json",
+      "sha256": "f8cea03f81bb4dbc041a8df528ce799ecd42e94dde717e7a865a22dca2ab57a7"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/setup/postgresql.json",
+      "sha256": "ddeb89824b90db2aa39b6f200629f3961355f8a2d3c6298881c54ec0eab1432b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/setup/preflight.json",
+      "sha256": "47c329e2ee00ffd8aa21ff10e8e27def55c44757177ef6575b60ab72b7fb06cd"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase013/setup/schema-diff.sql",
+      "sha256": "e69c9f21be2b53770b13ea52bf6c4f304a9fc86b41f1e932729ec2de45574341"
+    },
+    {
+      "path": "docs/phase-plans/Phase013-inputs.json",
+      "sha256": "5a5219c113a679e88cddabbfaec09d7e50385b742ccb1423a85a725d9e908383"
+    },
+    {
+      "path": "docs/phase-plans/Phase013.json",
+      "sha256": "360a64d6918c3d0693b752b70e5c93c8da035fd862c03360faa2b8a33b4c6e44"
+    },
+    {
+      "path": "docs/phase-plans/complete-phase013.mjs",
+      "sha256": "214a99d910fa853abeeeffbd1db5746e0cf5910be5d35b074ce098afd69f681c"
+    },
+    {
+      "path": "docs/phase-plans/key-rotation-protection.sql",
+      "sha256": "21eccfad37e0bf03d758a98f1bc5ef5b6b2bd6bf15d96490f9e923ba3b4eed4f"
+    },
+    {
+      "path": "docs/phase-plans/phase013-evidence.mjs",
+      "sha256": "25cf8d15d27ef0f2e141aa094d8465d0ffda2adb625e7c5fc3153368400aaaef"
+    },
+    {
+      "path": "docs/phase-plans/phase013-runtime.mjs",
+      "sha256": "03fd70c2b53876509c5dcfab160e2d034eaec8066f40266c5cdc4e547fd04bb8"
+    },
+    {
+      "path": "docs/phase-plans/prepare-phase013.mjs",
+      "sha256": "50fe0de8fa619ae4cfc4b73bea86bcdd335548ae2b33779b8220f3eb403c1c56"
+    },
+    {
+      "path": "docs/phase-plans/setup-phase013.mjs",
+      "sha256": "5fcaa6c1d9914538550407e340dcc5d32b46c6759490a30a5fd0f4c48c9f4096"
+    },
+    {
+      "path": "docs/phase-plans/verify-phase013.mjs",
+      "sha256": "ee0929109f0204c67c0f2b5b9bc1051581ecbcaca7ea11ad08a16aeb21550159"
+    },
+    {
+      "path": "docs/phase013.md",
+      "sha256": "b1167d86b4f7c05a7920be987afbbc4810bb2dfff9c72447229bfff7c6829aaf"
+    },
+    {
+      "path": "docs/privacy-and-user-data.md",
+      "sha256": "8d8353a8ce4a35db37a3800d46256e49273e12d41446c677b4434d5c8050ccfa"
+    },
+    {
+      "path": "docs/project-layout.json",
+      "sha256": "7efe30a30fe009a8e1226563cae53d39ed2a2193be78bc0f0a776f57f67710ba"
+    },
+    {
+      "path": "docs/runtime-baseline.json",
+      "sha256": "4676117c22c618491cd41192866f8c221f274cf61ee9fcc480d2326a860018de"
+    },
+    {
+      "path": "docs/testing-execution-policy.md",
+      "sha256": "a1f2666b2a757bf7dccb016e997a60f33a0f91f7612add8d40411e30735f8532"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "sha256": "f45d4d5b4e4808481617530c717d97108af6488b39e008e49b4161aefd818708"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "e1253d4a0e5aba2d25e397b0774abc10100629c2af247e282a5ec0ace8330b1d"
+    },
+    {
+      "path": "package.json",
+      "sha256": "b676ac97cba16076b4119e8f3dae2cd9bbeca9e407d5f4521e5086ec1031e1e1"
+    },
+    {
+      "path": "prisma/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "prisma/migrations/20260910000000_init_user/migration.sql",
+      "sha256": "b65593d8d8a7a1821a2f65415616e5c083a0e38785bcac2a46ea362d126de3a3"
+    },
+    {
+      "path": "prisma/migrations/20260910172735_system_config/migration.sql",
+      "sha256": "25f5d0d35a216ee085fad468f5d69d740610369ff91fcdd0ebe4a188deef45cc"
+    },
+    {
+      "path": "prisma/migrations/20260911002217_travel_record_chat_message/migration.sql",
+      "sha256": "761979289b28f413d47c09290f43e9d01ffc22421918103a51d6c67b638bb48f"
+    },
+    {
+      "path": "prisma/migrations/20260911042258_audit_log/migration.sql",
+      "sha256": "9707b78108c51f9a10ebfa86fa816d7caf353bcd1f09a0cce2eefcac6b392373"
+    },
+    {
+      "path": "prisma/migrations/20260911104017_api_key_config/migration.sql",
+      "sha256": "9bc311e50f3dccc7dc7885a901285fd1f359beb0e3b808bdc1e4c16ab4ce79d1"
+    },
+    {
+      "path": "prisma/migrations/20260911151715_auth_session_login_attempt/migration.sql",
+      "sha256": "e4913a97a5ff09d9ee71efaebd58163b8b5f5db9f0fe7747bd07783aed66c08f"
+    },
+    {
+      "path": "prisma/migrations/20260912013806_admin_commands/migration.sql",
+      "sha256": "26eac34ab5c30b48adb680a3a770d4454503e3550b3009b4e59cc0dc43e2392d"
+    },
+    {
+      "path": "prisma/migrations/20260912061403_key_rotation_contract/migration.sql",
+      "sha256": "21eccfad37e0bf03d758a98f1bc5ef5b6b2bd6bf15d96490f9e923ba3b4eed4f"
+    },
+    {
+      "path": "prisma/migrations/migration_lock.toml",
+      "sha256": "99836963713b4f5b269ad49af0ed3d7b0b2e336115c2f92dc9ac683d139d0900"
+    },
+    {
+      "path": "prisma/schema.prisma",
+      "sha256": "deddd268b5df678f6db1ad5a7972179b64b2a24dca2068069d3de5de733503f7"
+    },
+    {
+      "path": "prisma/seed.ts",
+      "sha256": "dea4fc6ad30555657a06cdc1fad50af5968e45ad35884ec65df6f244035a07fa"
+    },
+    {
+      "path": "scripts/auth-server.mjs",
+      "sha256": "bad8d4aa1e8469aa7d1f7bafe9b96ca1a2e904916b0faba37c13a87033212458"
+    },
+    {
+      "path": "scripts/check-project-layout.mjs",
+      "sha256": "d19f27109ff142516a7b0454e7f9b9a03629fd11923e7f6b88c7ee9323eb1d35"
+    },
+    {
+      "path": "scripts/checkpoint-history.mjs",
+      "sha256": "673a4f5ff409ce0a4fcb7b1754c2d977199fc502a8732cda01082b9a0eababa1"
+    },
+    {
+      "path": "scripts/checkpoint-maintenance.mjs",
+      "sha256": "c1b63315d078b35a330f8a01e89e1b612ffb463b0c0b9d2114be27a1cbed00e3"
+    },
+    {
+      "path": "scripts/eslint-env.mjs",
+      "sha256": "f2ded148de31d4d35ede46a162116f81b48b459b869ade8411a5e25c9f5f21ce"
+    },
+    {
+      "path": "scripts/generate-api-contract.mjs",
+      "sha256": "6dad8aa0bbd68630b9149babed05e1bdc0c315d262ce16665cbe3fc133dd6009"
+    },
+    {
+      "path": "scripts/phase-evidence.mjs",
+      "sha256": "454f1911b53a21aed6f014d8cb6b36d748a6f9ec8b8e7547187d45cd20ce96c9"
+    },
+    {
+      "path": "scripts/phase003-evidence.mjs",
+      "sha256": "5a6660faa40d3710df19b9881f203be6dcb3e459c5b9c4fcf6169548890abbb4"
+    },
+    {
+      "path": "scripts/test-checkpoint-maintenance.mjs",
+      "sha256": "a86dffc037bae7f4a8e44fc22e3793d8c984ebb68b7b010972862d2f1bd33822"
+    },
+    {
+      "path": "scripts/test-phase-input-paths.mjs",
+      "sha256": "ce18f4dbde62c19eba879e3354af7a6d92d2ee71a191ba89bf6dd10dbddce1c5"
+    },
+    {
+      "path": "scripts/test-validate-phase.mjs",
+      "sha256": "796a7b93fe3feec9029f2bf3fdcab1c93ce9c3a37640b4e5d4bb403b359ca52b"
+    },
+    {
+      "path": "scripts/validate-phase.mjs",
+      "sha256": "6b6f6b3b56f0590d014fca0e523a5ed69324f43958edc722cf28fd06c1c4cea2"
+    },
+    {
+      "path": "scripts/validate-phase.ps1",
+      "sha256": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319"
+    },
+    {
+      "path": "scripts/verify-phase003.mjs",
+      "sha256": "f3b77a187709cab823dcd7a6fc84b1644dacdf3f0c5a728b4202aca357510955"
+    },
+    {
+      "path": "src/app/(site)/layout.tsx",
+      "sha256": "dbf6397819844277acac383530a3a616f29e1068b9b5ba2d08f2886b3cca5207"
+    },
+    {
+      "path": "src/app/(site)/login/page.tsx",
+      "sha256": "f249db17070503c398e3797298b3e7dcfe479822a68dbbf8cc948713098318f0"
+    },
+    {
+      "path": "src/app/(site)/page.tsx",
+      "sha256": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e"
+    },
+    {
+      "path": "src/app/admin/(protected)/api-keys/page.tsx",
+      "sha256": "065703ec8311f286cb8253b652075892e38e2b7a959826328a806762c58b9e68"
+    },
+    {
+      "path": "src/app/admin/(protected)/layout.tsx",
+      "sha256": "e70caf93524b74b78acd5b0ddd786ba5b01720066c4f1069c4dac09e674ff523"
+    },
+    {
+      "path": "src/app/admin/(protected)/logs/page.tsx",
+      "sha256": "4371da51e366ae66a32f40e5f70579cfb161c673ba4b6aa29858aa0d6a0f34df"
+    },
+    {
+      "path": "src/app/admin/(protected)/page.tsx",
+      "sha256": "6f42e95c88002bf713ded714518342462a83747034a33b8336ab50653f634f5c"
+    },
+    {
+      "path": "src/app/admin/(protected)/users/page.tsx",
+      "sha256": "a8a3eeae5128722cbf0d07cfd438562a76d2b2169efa5528c73c9ba3aa55d481"
+    },
+    {
+      "path": "src/app/admin/(public)/login/page.tsx",
+      "sha256": "e4d2826c6d3cc7535c2f25bdaedf82bfb282f1cdd05f5090a9e51f990348132a"
+    },
+    {
+      "path": "src/app/admin/layout.tsx",
+      "sha256": "8b4bbf2a89ea590d1a686b332736450d8a0864c866027d367c825a17b3ace374"
+    },
+    {
+      "path": "src/app/api/admin/api-keys/[id]/rotate/route.ts",
+      "sha256": "4db590e820079d426930fd1ff98e574591a5e66a57d27bc5bb7867817890180f"
+    },
+    {
+      "path": "src/app/api/admin/api-keys/[id]/route.ts",
+      "sha256": "da3fa5fa4d27067e85ac32c8490a186f200740f4784dbfbf053e3738a59338ac"
+    },
+    {
+      "path": "src/app/api/admin/api-keys/route.ts",
+      "sha256": "ebb249c1bd39a6cbcc5fa93350895795f604992314a48963d86832362a3f0f73"
+    },
+    {
+      "path": "src/app/api/admin/logs/route.ts",
+      "sha256": "8990638f69a3b52dd3c16555d165fe1f1b1228c87d28810833b0eb6288f181e1"
+    },
+    {
+      "path": "src/app/api/admin/users/[id]/route.ts",
+      "sha256": "196b4b13a820ce41804c30fdf8e766a43f5db23bcb834f16bd90dae15221d7bd"
+    },
+    {
+      "path": "src/app/api/admin/users/route.ts",
+      "sha256": "53d73d045da3c1cd0ef8b95d212ed0e4254995ba796bdff03d4f963db44877d9"
+    },
+    {
+      "path": "src/app/api/auth/[...nextauth]/route.ts",
+      "sha256": "dd450e1faa1e87afceb14785dfb22559a24edff039e355d64c01dc1d9f060fa7"
+    },
+    {
+      "path": "src/app/error.tsx",
+      "sha256": "bcb13e2af0bcbd83249ca252fe810d7d40cb2004b4bd1cf9f97b3517badbf8b4"
+    },
+    {
+      "path": "src/app/favicon.ico",
+      "sha256": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932"
+    },
+    {
+      "path": "src/app/globals.css",
+      "sha256": "f88153c2b0c26a4f65e48626ab5a05e68c8d962952be88ead2032c8a90b10a1f"
+    },
+    {
+      "path": "src/app/layout.test.ts",
+      "sha256": "bc1a20b6ff3227cbab2fb3d7168f0aaccecb6b1bd1b31805b6c7166fea00c1f0"
+    },
+    {
+      "path": "src/app/layout.tsx",
+      "sha256": "a9de0b5ba9380f5a058487639bd6be0d13c5a1293f720d38965d1b3dec793a6f"
+    },
+    {
+      "path": "src/app/not-found.tsx",
+      "sha256": "f863ee0d441b75afc4ef144b45d72222583a78c5b1b404a4ab2f59dc9809c98a"
+    },
+    {
+      "path": "src/components/admin/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/components/admin/admin-nav.ts",
+      "sha256": "7c928eb87d05c391b30c1cb15dcfe81a37d0062bf7d4520fe2f28d9a25b281c6"
+    },
+    {
+      "path": "src/components/admin/api-keys-client.tsx",
+      "sha256": "ff427c9976cede2555c1b1d8679a0652fb279d520391ebc885e0b9d12598e5d2"
+    },
+    {
+      "path": "src/components/admin/logs-client.tsx",
+      "sha256": "629dc576232d937f5f46c7dc6974977af2a40210dcde864559b18c789d11c607"
+    },
+    {
+      "path": "src/components/admin/users-client.tsx",
+      "sha256": "d83b91a25c8c8ac80b7517fef26cb55cf8e998a309e82ef13a6d99fce22eef18"
+    },
+    {
+      "path": "src/components/auth/login-form.tsx",
+      "sha256": "5166c864dd671f361efe75d334cb8b7a8a6724a484af2b0b5368893fad9ae7e2"
+    },
+    {
+      "path": "src/components/auth/logout-button.tsx",
+      "sha256": "9c41908cbf849d013720de1ef39000d173440fff2c4a5cf371454eeca1684035"
+    },
+    {
+      "path": "src/components/chat/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/components/common/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/components/common/common-components.test.tsx",
+      "sha256": "a237fee60449db440830ffe3f3ca8909469a7249ca5d45598d09bb6075544e7a"
+    },
+    {
+      "path": "src/components/common/empty-state.tsx",
+      "sha256": "a5b1a914935eace3193451be25c9cf8178010345ef76963e0ecb12713e284795"
+    },
+    {
+      "path": "src/components/common/error-state.tsx",
+      "sha256": "4ef42505cda6c3a5d4c35180022eedab13ce9f33ac9e412e924dd5b9bb9d808d"
+    },
+    {
+      "path": "src/components/common/loading-state.tsx",
+      "sha256": "0a010951d56d20dc1860ed8bd78a5c95671bd1323014330c00b4519aafe1c37f"
+    },
+    {
+      "path": "src/components/common/page-header.tsx",
+      "sha256": "c403ac7802dbb0ecf5f83aa57ed043bf598fd3e1806c7250751cdfd9f361b4da"
+    },
+    {
+      "path": "src/components/layout/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/components/layout/admin-shell.tsx",
+      "sha256": "75d9817f25dc0361b704b75e34ba7ee3e6ec1959a408bf428e5bce146cbe28f1"
+    },
+    {
+      "path": "src/components/layout/site-header.tsx",
+      "sha256": "f4fdc237b4a3d76ac8280ff80390966ec3a1fe95d67bba7f2e5abb475ed98295"
+    },
+    {
+      "path": "src/components/travel/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "sha256": "abd7a62c5b38d8836c88906285ea0df0a40d3dd55f7d404a07672f749e37f43f"
+    },
+    {
+      "path": "src/components/ui/sonner.tsx",
+      "sha256": "f28cba0be08c0873d121f6f35107c9e0b209ef649b0d0625c32e46cf0b2ed9a2"
+    },
+    {
+      "path": "src/instrumentation.ts",
+      "sha256": "4ff6be1caa61426f26540f107f1b609bda7ad79e40b72d5c2b563d7fbb3c4821"
+    },
+    {
+      "path": "src/lib/admin-api-keys.ts",
+      "sha256": "6ec4d776b3f0aabfc83b84d66bc461deaf04a53f7bdae4ad6438e8fd2661f8dd"
+    },
+    {
+      "path": "src/lib/admin-logs.ts",
+      "sha256": "a8b5fb9fae681f0b9357940268ec6ae3593086462b314f209d5e6d90141c2fc8"
+    },
+    {
+      "path": "src/lib/admin-users.ts",
+      "sha256": "6076e7f5a6a4257bdf36f717ea32a38ace7a161eb9292d42fa1d883414c338f2"
+    },
+    {
+      "path": "src/lib/ai/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/lib/api-response.test.ts",
+      "sha256": "4660ad9249e90641f09cbfd7dd914504fa4d1cea7fd180c6c407eb70f2a6cd1d"
+    },
+    {
+      "path": "src/lib/api-response.ts",
+      "sha256": "235635f476f988af2f7d2bdb867acc85bd3d4d777a99c8c7da555206b9a65a6a"
+    },
+    {
+      "path": "src/lib/env-cli.ts",
+      "sha256": "1090373f099810914b9fb8405226c095e9101463608922f163e4b399a416937f"
+    },
+    {
+      "path": "src/lib/env-schema.ts",
+      "sha256": "8bd4d436a81d38c32de28b805c6b6ddb179b4da9b9f0bb6f3f6e9d30d89d6722"
+    },
+    {
+      "path": "src/lib/env.test.ts",
+      "sha256": "6b522cdacb683da40687fde494f78d75c81ac2d956523e6d5823dae858cc6e38"
+    },
+    {
+      "path": "src/lib/env.ts",
+      "sha256": "51a3612afe39103e04f214185192f0e39e8bc5cb43d27b21922fdd1748096658"
+    },
+    {
+      "path": "src/lib/format.test.ts",
+      "sha256": "bfbf9788fbc9506c299acdafe03debe5ee8ce6bc4baff11092d08d935d2cfdbe"
+    },
+    {
+      "path": "src/lib/format.ts",
+      "sha256": "0834ccea0511ed8b0374db59527702e3707a251f44d367e70bf748e27dbe37a0"
+    },
+    {
+      "path": "src/lib/json.test.ts",
+      "sha256": "2e17c72f917730c5adabd17ed3f434ab9d50d0215651f768938bff3e9fb50a60"
+    },
+    {
+      "path": "src/lib/json.ts",
+      "sha256": "b482e4f8309135800ce6526b771b809aff8ea219d4fc89060c3b4ba057b3ed11"
+    },
+    {
+      "path": "src/lib/schemas/system-config.ts",
+      "sha256": "84cab5c3e15856c75595c6f165417356ab17756bc4cbee6fc98625d54d696c43"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "sha256": "55bbdc94cef3e0c8a8bba386e94f97228dd2c967fe61466fc565378890550c08"
+    },
+    {
+      "path": "src/middleware.test.ts",
+      "sha256": "20c52096c0a600447be63fc93ab922d1254c543e3982c5da5ea14944eb9c86c0"
+    },
+    {
+      "path": "src/middleware.ts",
+      "sha256": "d243eec2e62a52fb2d661c2b4386a5f22f28229831644735769a27332c488322"
+    },
+    {
+      "path": "src/server/admin/api-key-cursor.ts",
+      "sha256": "d90ad06e223a93a2d8943be357c68a65db9849ec2893dec30be851d8fb8e4c3e"
+    },
+    {
+      "path": "src/server/admin/api-keys.ts",
+      "sha256": "ccdcc83f936076705015e705d2ad45a5d806626bdc7588591bd54469cff14436"
+    },
+    {
+      "path": "src/server/admin/command-receipt.ts",
+      "sha256": "d2181ff7cf1639da940e086ecf66647f19e56c9f1e5b00329cf8e698f84c287c"
+    },
+    {
+      "path": "src/server/admin/key-candidate-client.ts",
+      "sha256": "ff3fb084e3005e0284e9bbbe7d59cb76477798a1c68236fbbc3f9c29436596f9"
+    },
+    {
+      "path": "src/server/admin/key-reference.ts",
+      "sha256": "9fcb9b38af3ccdb0d07d8e877b009f4d76f5aa5b464851419e58e4c2f73a64d0"
+    },
+    {
+      "path": "src/server/admin/key-rotation.ts",
+      "sha256": "4c658945467da1b567ceef1ab312f94154b538cf780c7cfda96d1a59416c7d57"
+    },
+    {
+      "path": "src/server/admin/log-cursor.ts",
+      "sha256": "66811cc88f584c08ddecf70db33f644ea1d95a16bb2675bb6d8e8bfb1a6a84b5"
+    },
+    {
+      "path": "src/server/admin/logs.ts",
+      "sha256": "3c9234fa78c441da9ffa183ec0c0952bf511f8f288e28a0718e8198b69fc9c77"
+    },
+    {
+      "path": "src/server/admin/user-cursor.ts",
+      "sha256": "e6451f52c6b17aeb88a6ea2c37a2f0281b2c20394b4d00668b55ee918e807ac3"
+    },
+    {
+      "path": "src/server/admin/users.ts",
+      "sha256": "f7d838ff621d6e4110eaa2a61f48d986aa9771aaf0b059edf8d5d6ff8bfa8d2e"
+    },
+    {
+      "path": "src/server/anonymous-owner.ts",
+      "sha256": "7250641a004fe8994a7eae0ce06ed9a5330b7260e5ad4da7e8c87bf2c082c0ea"
+    },
+    {
+      "path": "src/server/api-key-envelope.ts",
+      "sha256": "814dad96afc484b82aea53c8e8fdceb2787bae58b9417ce9ad45a005d3bdebc4"
+    },
+    {
+      "path": "src/server/audit-log.ts",
+      "sha256": "35c3968a231c838ee44a11f9b863c705970594726b84784aaf8f18fd180e58b8"
+    },
+    {
+      "path": "src/server/auth.ts",
+      "sha256": "af08f9c7a2b08672e5c516d38beb71fd4edd0566f0d5e98b669417d28cbec4fe"
+    },
+    {
+      "path": "src/server/auth/auth-config.ts",
+      "sha256": "12bfc18d7104851f9969a5fdae3c6546bfd72df0be92000ca72e87684f3129b1"
+    },
+    {
+      "path": "src/server/auth/auth-handler.ts",
+      "sha256": "f9478cc627dbad5fd4cff7ffa5c56d4afcf8541632b31a5e4651d49f109916fe"
+    },
+    {
+      "path": "src/server/auth/clock.ts",
+      "sha256": "1dd54d5679fb14a38cb4d2a7a28fde5a479155267812a2bca36e6c323e33b68e"
+    },
+    {
+      "path": "src/server/auth/cookie.ts",
+      "sha256": "2b8b16cd9c1a5abdb1de86020e530378b46e7ec99dff2190c3d58909927dcd15"
+    },
+    {
+      "path": "src/server/auth/credentials-service.ts",
+      "sha256": "0f12e60c5c1cf24ec324984a74b120619745078427d37226ecceab84dae50f09"
+    },
+    {
+      "path": "src/server/auth/errors.ts",
+      "sha256": "ee3dbd777a25889c877cbc9954466b3033ec2850eb306394bdcdc3aeee777f3b"
+    },
+    {
+      "path": "src/server/auth/guards.ts",
+      "sha256": "850c4b508d35265967d6432e386b6209a7875df24253f64228a5a709628dc9e2"
+    },
+    {
+      "path": "src/server/auth/login-throttle.ts",
+      "sha256": "4d78d969fbfa4b152b968a3214c3083710b7450f7854b78d63bc8dbb47aa3e3a"
+    },
+    {
+      "path": "src/server/auth/require-admin.ts",
+      "sha256": "5463258472cc77adb6c88af93ff28d01db235d218a877029a73d7ae7185f204e"
+    },
+    {
+      "path": "src/server/auth/session-service.ts",
+      "sha256": "867697b3d9679dc0d33524a8ba6f96a13784764601781f069078dd543ca7bdab"
+    },
+    {
+      "path": "src/server/auth/trusted-client.ts",
+      "sha256": "2efb55c8197a40d006ead049a0de720c90dc2c0a04789b9e5f605a85bdc0fc84"
+    },
+    {
+      "path": "src/server/auth/types.ts",
+      "sha256": "88e0a3508f077cf5f99199133a8ba9a581f799e105500b50443996ed360c9d5a"
+    },
+    {
+      "path": "src/server/db.ts",
+      "sha256": "d2f6bec02e8dc7eb25eb782def2f24d018a1c27358cd62dfd5aeb22030457db7"
+    },
+    {
+      "path": "src/server/ingress.ts",
+      "sha256": "b03b16891cdc66e760c2dd6fb8779e979eb1a43a8fbc244c87e5b7ab085975ad"
+    },
+    {
+      "path": "src/server/projections/admin-api-key.ts",
+      "sha256": "887a7c6c709c6d94f2e5e6713a6e8176ff22351ab991ca1e757abbf9bae262a4"
+    },
+    {
+      "path": "src/server/projections/admin-user.ts",
+      "sha256": "396c25dc8b29d3a865f2490192f3665071c87112055c4ddc5ecfc9cfc72c1de3"
+    },
+    {
+      "path": "src/server/projections/public-user.ts",
+      "sha256": "de8e550fe63c9c2bbf0e8f33ba39b518227dd7358680ec9eb77449be4c96a680"
+    },
+    {
+      "path": "src/server/repositories/chat-message.ts",
+      "sha256": "707d2e77b7534a1e0cdd16a1d05c8b472372a1349036d4ca76dd2d81ddfecad4"
+    },
+    {
+      "path": "src/server/repositories/data-layer-error.ts",
+      "sha256": "c62080e20792a91c18bed5c9e39c1c8d58f13c383601a46c86b25478a27d9ad1"
+    },
+    {
+      "path": "src/server/repositories/travel-record.ts",
+      "sha256": "334a0ebd7118a8584089482713196c786ceee7956fd884f72d6f3ec980b3907f"
+    },
+    {
+      "path": "src/server/security/secret-envelope.ts",
+      "sha256": "17f9ccfc8acfe65ac287db299fc36c16f49274b1c7da40598dd48c3a62ba1c6b"
+    },
+    {
+      "path": "src/server/seed-input.ts",
+      "sha256": "ca76b7628f8fd60230062cd0692e05130461bb7f4dadea7458fab2c7b7de252a"
+    },
+    {
+      "path": "src/server/services/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/server/services/audit-log-service.ts",
+      "sha256": "c1fc076e07576591a1e266e371df5b25a26b1e3acb4924d3d7d676b91e0d1d68"
+    },
+    {
+      "path": "src/server/services/seed-service.ts",
+      "sha256": "ca76e7aa52fb62e009c38d0472eb399d1bb6b60814a316d9d00d6383c6911c35"
+    },
+    {
+      "path": "src/types/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/admin/api-keys-client.test.tsx",
+      "sha256": "55c956045986f15608f7f796fcdb4b6c0b09b4e5bf3888ed3603a90c67f1aa92"
+    },
+    {
+      "path": "tests/admin/api-keys.integration.test.ts",
+      "sha256": "433fac7ba99add896fbc274d34a093a62d8f5405b782d5b3cb3e9b201a512b75"
+    },
+    {
+      "path": "tests/admin/layout.test.tsx",
+      "sha256": "c59bd18964fa091792238e1362c7b2aacf8a68e90caecf0bacc089884e74f138"
+    },
+    {
+      "path": "tests/admin/logs-client.test.tsx",
+      "sha256": "11360059512f7b93ca8bd2597130b911c608490f56873a79b2f36be38de927eb"
+    },
+    {
+      "path": "tests/admin/logs.test.ts",
+      "sha256": "b2763f927803e0d31e05b308fe49d2c2aecff90a88ac347ee542fa915119de0d"
+    },
+    {
+      "path": "tests/admin/users-client.test.tsx",
+      "sha256": "7b215369349270d63f992ff01cde135daeac7db38144e2b5683f24592431e712"
+    },
+    {
+      "path": "tests/admin/users.integration.test.ts",
+      "sha256": "f78d15266738d67564b899a25ec570b196d6411ac80de43f349ab3ca759ff93d"
+    },
+    {
+      "path": "tests/integration/admin-login.test.ts",
+      "sha256": "b8ca4708285893de01c424bb1daec081107a4a0e0df212fdff234535626f1319"
+    },
+    {
+      "path": "tests/integration/api-key-schema.test.ts",
+      "sha256": "cd5037f9367497188bb484f3a0fb1de1b763c624f4e7b4dda8f7e32a0dbf2079"
+    },
+    {
+      "path": "tests/integration/audit-log.test.ts",
+      "sha256": "cb02a1bc595da40bf520cc50ff8a93096f06af08329b55d8effe45c9c38a1dbf"
+    },
+    {
+      "path": "tests/integration/chat-message.test.ts",
+      "sha256": "23dcf6dc0107e54c00aeace6352e1bce0921cabff3ceb9101674d90794c80b0b"
+    },
+    {
+      "path": "tests/integration/config-models.test.ts",
+      "sha256": "90fa8e7208c52a37b428055b4c6d52dae2ec0fba8f919002937647c136fe6093"
+    },
+    {
+      "path": "tests/integration/secret-envelope.test.ts",
+      "sha256": "154ff5b9830911ca75a103ed418c28fc21187084f185069f8814bcfd6e7002ef"
+    },
+    {
+      "path": "tests/integration/seed.test.ts",
+      "sha256": "b1c3171398c7fe0495b770b509c577a556d85ec9a717a49de0437edc45651bde"
+    },
+    {
+      "path": "tests/integration/travel-record.test.ts",
+      "sha256": "f162175de1747745424cf191a0f62146fa7e5781e341435fa2071fc648b02d79"
+    },
+    {
+      "path": "tests/lib/admin-api-keys.test.ts",
+      "sha256": "ee9e5e9198c7d69ec560302eaa96caafc572c87f40eec8787cad67be7328d8d0"
+    },
+    {
+      "path": "tests/lib/admin-login-ui.test.tsx",
+      "sha256": "3dded57571706f75968024bca5664e55005d0ca6fc49789e76420435762e9eaa"
+    },
+    {
+      "path": "tests/lib/api-key-schema.test.ts",
+      "sha256": "cb3ebdfe084e7068ba8aed3d7edec09e32ea7d9da39e606533e38f3baa421111"
+    },
+    {
+      "path": "tests/lib/audit-log.test.ts",
+      "sha256": "895e63c1af000a98706b32e56263fe32b0565dad35e431a9e8633fc3a8d4e16e"
+    },
+    {
+      "path": "tests/lib/auth-guards.test.ts",
+      "sha256": "75d103d1ff2fa78be51df4d874b4dced4321fb4369be244003256e1ae73aeb21"
+    },
+    {
+      "path": "tests/lib/auth-http.test.ts",
+      "sha256": "624284e59d7ccd6a88dbed9aa54e1bdbdb41814492feced3195f111865fab34d"
+    },
+    {
+      "path": "tests/lib/auth-ingress.test.ts",
+      "sha256": "0ec1077654776a812812fe05eecf9d445076baf560f769f585861ce60d52bf0d"
+    },
+    {
+      "path": "tests/lib/auth-services.test.ts",
+      "sha256": "435c4113d321659851ab8bda56264e46735bab0c5fa2de30780cc8712a0e14c1"
+    },
+    {
+      "path": "tests/lib/auth.test.ts",
+      "sha256": "fb8bb3b519253cd9d931ec208a6c78954fe94d11aa3b8cd65297ce55ee8a418c"
+    },
+    {
+      "path": "tests/lib/chat-message.test.ts",
+      "sha256": "d2d380b64f03dc2c2ffbaaa6176c6d5b565f3ba91d90c5a15871efc00c12fffb"
+    },
+    {
+      "path": "tests/lib/db.test.ts",
+      "sha256": "e638b23182053c44a3937c2d63f1baa6e3cb7c8735588ac50002ba85ccfcb136"
+    },
+    {
+      "path": "tests/lib/public-user.test.ts",
+      "sha256": "86f5828629f9998528bb65748271b33991b682cd6dc720866160d51243547ad2"
+    },
+    {
+      "path": "tests/lib/secret-envelope.test.ts",
+      "sha256": "0fc5f807552befc65150d73a054a2d2e7b76a88ade72dcc7bd0d126787ed87ec"
+    },
+    {
+      "path": "tests/lib/seed.test.ts",
+      "sha256": "63373fc0ac7f10f632f982580bd0594d9fa2da927adc6c4248fb04808da55154"
+    },
+    {
+      "path": "tests/lib/travel-record.test.ts",
+      "sha256": "b657b5c2e59ac83917ddda4fc5a8ad3fcca44ac9783d6570750f2aba7ffd265c"
+    },
+    {
+      "path": "tests/phase005/browser.mjs",
+      "sha256": "65cee15ce4171423bde4c82689466d1b1c45a64cb1a847ec6200661465676881"
+    },
+    {
+      "path": "tests/phase005/components-fixture.tsx",
+      "sha256": "c1ca905c69634b0f2066888e4c83cb913b6c66182830439337656157ece27e05"
+    },
+    {
+      "path": "tests/phase005/fixtures/phase003-home.tsx",
+      "sha256": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e"
+    },
+    {
+      "path": "tests/phase006/cli-network-guard.cjs",
+      "sha256": "da1e1020f2d0f5f171f1a721dfa2c3412a2901d858eee176ed730f45f0ad2ab7"
+    },
+    {
+      "path": "tests/phase006/cli-network.mjs",
+      "sha256": "21664e3f9f0467ab5e92fdc60b84f2df27c106bb1267ec8a734cfe128f7bbd72"
+    },
+    {
+      "path": "tests/phase006/database.integration.ts",
+      "sha256": "471c30ee775ab085a57998e42500f9d7da7816c129c0ce00eb1767c3ae2979da"
+    },
+    {
+      "path": "tests/phase006/studio.mjs",
+      "sha256": "04816f53f00927939193655814e966819ac4aa477eb9042f5b5b2f1b5fbc9916"
+    },
+    {
+      "path": "tests/phase006/user-types.ts",
+      "sha256": "3ab183310d3add2e18415f83f732cf913f883f18bbdd06a71dc9de0ce76d47c5"
+    },
+    {
+      "path": "tests/phase006/vitest.database.config.mjs",
+      "sha256": "b0d0de6cebdd51e1418960674b8b977d64072787cc123d19bd05a0595d58b267"
+    },
+    {
+      "path": "tests/phase007/cli-network.mjs",
+      "sha256": "e7a842985395ccb9111d165f7e1aeb56de02fa509ecf6a449dffc4a69c00e312"
+    },
+    {
+      "path": "tests/phase007/config-fixture.ts",
+      "sha256": "a47ad51c9dae3a4224ce3971e8051e7e17240bc6dac1dd47ab8b2e4fcaf8d1e5"
+    },
+    {
+      "path": "tests/phase007/config-types.ts",
+      "sha256": "ce6093ffc4aa4929631b2e25c2819d2ee16bc7ad5346a0b1db06e89055931709"
+    },
+    {
+      "path": "tests/phase008/cli-network.mjs",
+      "sha256": "ff64f0299c5ed5ab62509d3b9bd26c7a17fcc657a1b2186e493584df67b7b7f7"
+    },
+    {
+      "path": "tests/phase008/data-fixture.ts",
+      "sha256": "7498fdd1f7813e32a23cbd34803a183530e681d37f097a1fd1e0b473229a8661"
+    },
+    {
+      "path": "tests/phase008/data-types.ts",
+      "sha256": "c854d2e0e84b57ff593a7ff82dab2a7f68488659a854d6e5e06527f5af14166e"
+    },
+    {
+      "path": "tests/phase008/evidence-guards.mjs",
+      "sha256": "086c5341e065310597f14bc09432eca2f6a6ef7129eea9d9732fa505a7eae683"
+    },
+    {
+      "path": "tests/phase009/audit-fixture.ts",
+      "sha256": "cc4cb787f4a7b1590892cbc582a47e99a88c266f8959924bf7b77200daca6ba2"
+    },
+    {
+      "path": "tests/phase009/audit-types.ts",
+      "sha256": "ad6e2865de09a24facaff29ef15ad266694515420bf86e2066ae5de43ba4274e"
+    },
+    {
+      "path": "tests/phase009/cli-network.mjs",
+      "sha256": "10218552478835c1d2338bc50515ca66140dbcc478073e7d138fe4e68a5954ae"
+    },
+    {
+      "path": "tests/phase009/evidence-guards.mjs",
+      "sha256": "ad68ea652122a0eb28fc73497710772942b43f14c4a71f854f822cbef0a76be6"
+    },
+    {
+      "path": "tests/phase010/api-key-fixture.ts",
+      "sha256": "d542ba5e7e0973dae9a5dedcb7f02efe13fea791d29d2ed1a8992fa28be200ad"
+    },
+    {
+      "path": "tests/phase010/api-key-types.ts",
+      "sha256": "96ad6dc0927901c526ddc4532deb47fb2edc24009ca7397cc8646a6bd7347973"
+    },
+    {
+      "path": "tests/phase010/cli-network.mjs",
+      "sha256": "2d4a5f37b631ab222ff5ca822d061d7e7c16eb1841c02e767700a69dd0a4623a"
+    },
+    {
+      "path": "tests/phase010/evidence-guards.mjs",
+      "sha256": "fbf173e4f7a43a571069c0d5423dfb9cc73f8c2de2156052aa6c76730017e0db"
+    },
+    {
+      "path": "tests/phase010/seed-fixture.ts",
+      "sha256": "8ae8a76a00f75bd82f0038ad14c26f5261ee0c7f0bf5bb529e594ddb4a54be4f"
+    },
+    {
+      "path": "tests/phase011/auth-fixture.ts",
+      "sha256": "b6cc9675a52d3806ea647814e61d88f7d52f3a433ccb66df4eefb4f99dd5785a"
+    },
+    {
+      "path": "tests/phase011/auth-types.ts",
+      "sha256": "0693390b60b2cadf9a29c2111f952c895f82ca641ae703619ff24912bc53e5b3"
+    },
+    {
+      "path": "tests/phase011/auth-worker.ts",
+      "sha256": "3b0c86786f97db34b721d09a17392c7057a2a5302c51645d2e245e34d49276e5"
+    },
+    {
+      "path": "tests/phase011/browser.mjs",
+      "sha256": "d1719873ab0a27386f6a492c81cfd31e3c56f6a9395a436878f3b8d801968f60"
+    },
+    {
+      "path": "tests/phase011/cli-network.mjs",
+      "sha256": "698e7c1d72d4f3c2b05e44b86e84912ea6d1e248d5e9774630e81f31bc158af1"
+    },
+    {
+      "path": "tests/phase011/evidence-guards.mjs",
+      "sha256": "fca1e525c57bccd66c26005c985c81fad359e306e8b9ba6f8c259d5bdf767b35"
+    },
+    {
+      "path": "tests/phase012/admin-fixture.ts",
+      "sha256": "bee248edffa0130290cbdcef7a6648c3314e1b50df3915f9e9029bd8b0db09e9"
+    },
+    {
+      "path": "tests/phase012/admin-worker.ts",
+      "sha256": "4f398afd47df9f73b97c59035298b351c24576462914e173962a4395d42297bc"
+    },
+    {
+      "path": "tests/phase012/browser.mjs",
+      "sha256": "b7023632666f44558a064370d6a9d0d65e75b8a4858299fccde33707d5b63e3f"
+    },
+    {
+      "path": "tests/phase012/cli-network.mjs",
+      "sha256": "1f09ce2c8dfba19cdd7cc6791f90b066514c76a0de24d5fa69ec73fe2b561433"
+    },
+    {
+      "path": "tests/phase012/evidence-guards.mjs",
+      "sha256": "7312dffacbf64a77b1f8fa7969b70aebfdbb1176ef0c201cb97431163742d25e"
+    },
+    {
+      "path": "tests/phase013/api-key-fixture.ts",
+      "sha256": "1809e6562d56745db72679592d5e2542062df222872065d3ab29c0a8a6715548"
+    },
+    {
+      "path": "tests/phase013/api-key-worker.ts",
+      "sha256": "7b5a315a5138176b07139bd4aeb9ca22710b04591fa9e44eb8b1c418236e4d0b"
+    },
+    {
+      "path": "tests/phase013/browser.mjs",
+      "sha256": "228cd515f5f462a1331bbc2900e7ea6d957e3dc991292dd8c23b62922bc52324"
+    },
+    {
+      "path": "tests/phase013/cli-network.mjs",
+      "sha256": "1f4a2296263683a0057d35e441ef217a3e63f57de14c328fd77077a199aabb75"
+    },
+    {
+      "path": "tests/phase013/evidence-guards.mjs",
+      "sha256": "f23462dde36dc1db2b2ffccae329758029dd837e612315809ab79517bdd16d1d"
+    },
+    {
+      "path": "tests/phase013/logs-fixture.ts",
+      "sha256": "87c79d2e7f47a6da21841736965f8710c53377c8b22408cb6116f4be734f1dcd"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "21a23eb2fa0b1ffcb9c6d591fdec866566c2a2d7562c4ec5beb0d6b8c007c65a"
+    },
+    {
+      "path": "vitest.config.ts",
+      "sha256": "95e128668d32ac732a57a4e82bb68b78017b5db9e738116549b252e2d75a72a0"
+    },
+    {
+      "path": "vitest.setup.ts",
+      "sha256": "e512871a40d72cd44e0c0d96189a3f105ab192d021a3016e9f3d014aa8937035"
+    },
+    {
+      "path": "vitest/stubs/server-only.ts",
+      "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+    }
+  ],
+  "failures": [],
+  "generatedAt": "2026-09-12T14:54:52.859Z",
+  "details": {
+    "planPath": "docs/phase-plans/Phase013.json",
+    "planHash": "360a64d6918c3d0693b752b70e5c93c8da035fd862c03360faa2b8a33b4c6e44",
+    "testedTree": "9ff04bfbeabf29213baf7359bfa6146eb8583f7a",
+    "reviewerRunId": "Phase013-independent-collaboration-phase013_final_closeout-attempt-7",
+    "reviewReportPath": "docs/evidence/attempts/Phase013/attempt-7/review.json",
+    "reviewReportHash": "34543ae17512b8a854be843b9b8ba38116c9b2f738223d58a4c54406c9bc5f90",
+    "recoveryCommits": [],
+    "originalThreshold": 6,
+    "automatedThreshold": 6,
+    "waived": false,
+    "requestedThrough": 13,
+    "nextPhaseExecutionAuthorized": false,
+    "notEvaluated": [
+      "Production credentials/traffic, real Provider calls, public deployment, models/Prompts/Provider governance and Phase014+ are not evaluated. Human screen-reader experience is NOT_EVALUATED; browser accessibility is automated. JavaScript strings are not claimed to be memory-zeroed."
+    ],
+    "qualityReportPath": "docs/evidence/attempts/Phase013/attempt-7/quality.json",
+    "qualityReportHash": "5d0c31b74c85dc35d4e510953bf68385b7d599d64940f562fc051275e3a38da0",
+    "runtimeBaselinePath": "docs/runtime-baseline.json",
+    "runtimeBaselineHash": "4676117c22c618491cd41192866f8c221f274cf61ee9fcc480d2326a860018de",
+    "manifestHash": "497689843e4576c5f8e8a6636d29b04023ac997309a3ffab83cc67d90ea7bf3e",
+    "projectCommit": "1ddff2e0d3c89492cb50268ffcc5cb4673a69a31",
+    "schemaPath": "prisma/schema.prisma",
+    "schemaHash": "deddd268b5df678f6db1ad5a7972179b64b2a24dca2068069d3de5de733503f7",
+    "authContractPath": "docs/auth.md",
+    "authContractHash": "61d4a77d2e776f1a1f712d15fbe9d132db22da3f2a0eb30a12340b1250430c39",
+    "apiContractPath": "docs/api.md",
+    "apiContractHash": "db956de07d9a46b224dbc7f213e5721a6d2734c86906993e7b028e4b40378bc6",
+    "migrationPath": "prisma/migrations/20260912061403_key_rotation_contract/migration.sql",
+    "migrationHash": "21eccfad37e0bf03d758a98f1bc5ef5b6b2bd6bf15d96490f9e923ba3b4eed4f",
+    "databaseRoles": {
+      "migration": "phase013_runner",
+      "runtime": "phase013_app",
+      "runtimeOwner": false,
+      "runtimeSuperuser": false
+    },
+    "databaseFingerprint": {
+      "host": "127.0.0.1",
+      "port": 61286,
+      "database": "phase013_disposable_dd57ebf7b2df",
+      "containerId": "758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948",
+      "image": "postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0",
+      "sha256": "b5ac5c3e3730d977dc51ee267e9970e654c6f308c21868f9097cf3eca79b5c9b",
+      "credentials": "SYNTHETIC_REDACTED"
+    },
+    "testMode": "full",
+    "validationPolicy": {
+      "path": "docs/testing-execution-policy.md",
+      "version": "phase-verification-v1",
+      "sha256": "a1f2666b2a757bf7dccb016e997a60f33a0f91f7612add8d40411e30735f8532"
+    },
+    "checkpointMaintenance": {
+      "path": "docs/checkpoint-migrations/testing-policy-20260912.json",
+      "sha256": "abdd84536d1a33a2f838019d18051fed4af944f4c99d2286065698cbbf52d68f",
+      "commit": "408f6ae5516069efcaa423cc61ea431e528bd040"
+    },
+    "fixtureHash": "123a385440e74c91d6282b08c48999d2e9fd43e55f7c95766a4c3e8eb0cbc0f9",
+    "fixtureHashScope": "TRACKED_SYNTHETIC_FIXTURE_IMPLEMENTATION_PRIVATE_CREDENTIALS_NOT_ARCHIVED",
+    "fixtureHashes": {
+      "tests/phase005/browser.mjs": "65cee15ce4171423bde4c82689466d1b1c45a64cb1a847ec6200661465676881",
+      "tests/phase005/components-fixture.tsx": "c1ca905c69634b0f2066888e4c83cb913b6c66182830439337656157ece27e05",
+      "tests/phase005/fixtures/phase003-home.tsx": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e",
+      "tests/phase007/config-fixture.ts": "a47ad51c9dae3a4224ce3971e8051e7e17240bc6dac1dd47ab8b2e4fcaf8d1e5",
+      "tests/phase008/data-fixture.ts": "7498fdd1f7813e32a23cbd34803a183530e681d37f097a1fd1e0b473229a8661",
+      "tests/phase009/audit-fixture.ts": "cc4cb787f4a7b1590892cbc582a47e99a88c266f8959924bf7b77200daca6ba2",
+      "tests/phase010/api-key-fixture.ts": "d542ba5e7e0973dae9a5dedcb7f02efe13fea791d29d2ed1a8992fa28be200ad",
+      "tests/phase010/seed-fixture.ts": "8ae8a76a00f75bd82f0038ad14c26f5261ee0c7f0bf5bb529e594ddb4a54be4f",
+      "tests/phase011/auth-fixture.ts": "b6cc9675a52d3806ea647814e61d88f7d52f3a433ccb66df4eefb4f99dd5785a",
+      "tests/phase011/auth-worker.ts": "3b0c86786f97db34b721d09a17392c7057a2a5302c51645d2e245e34d49276e5",
+      "tests/phase011/browser.mjs": "d1719873ab0a27386f6a492c81cfd31e3c56f6a9395a436878f3b8d801968f60",
+      "tests/phase012/admin-fixture.ts": "bee248edffa0130290cbdcef7a6648c3314e1b50df3915f9e9029bd8b0db09e9",
+      "tests/phase012/admin-worker.ts": "4f398afd47df9f73b97c59035298b351c24576462914e173962a4395d42297bc",
+      "tests/phase012/browser.mjs": "b7023632666f44558a064370d6a9d0d65e75b8a4858299fccde33707d5b63e3f",
+      "tests/phase013/api-key-fixture.ts": "1809e6562d56745db72679592d5e2542062df222872065d3ab29c0a8a6715548",
+      "tests/phase013/api-key-worker.ts": "7b5a315a5138176b07139bd4aeb9ca22710b04591fa9e44eb8b1c418236e4d0b",
+      "tests/phase013/browser.mjs": "228cd515f5f462a1331bbc2900e7ea6d957e3dc991292dd8c23b62922bc52324",
+      "tests/phase013/logs-fixture.ts": "87c79d2e7f47a6da21841736965f8710c53377c8b22408cb6116f4be734f1dcd"
+    },
+    "businessObservationPath": "docs/evidence/attempts/Phase013/attempt-7/business-observations.json",
+    "businessObservationHash": "fdc00ac8ad1ba5c69be77879903fe810d9b3c7dd038c1a2dcc407a162db75fd2",
+    "stateTransitionAuditCounts": [
+      {
+        "phase": 13,
+        "group": "disable-enable",
+        "database": "REAL_POSTGRESQL17",
+        "legalStateChanges": 3,
+        "matchingStateAudits": 3,
+        "creationAudits": 1,
+        "revokedRestorations": 0,
+        "noopAudits": 0,
+        "staleWrites": 0
+      },
+      {
+        "phase": 13,
+        "group": "rotate-revoke",
+        "database": "REAL_POSTGRESQL17",
+        "referenceCount": 2,
+        "switchedReferences": 2,
+        "httpCalls": 2,
+        "networkInsideTransaction": 0,
+        "oldRevoked": true,
+        "newActive": true,
+        "matchingStateAudits": 2,
+        "extraReplayCandidates": 0
+      }
+    ],
+    "businessObservations": [
+      {
+        "phase": 13,
+        "group": "create-read",
+        "database": "REAL_POSTGRESQL17",
+        "createdRows": 1,
+        "auditChanges": 2,
+        "processRestarts": 1,
+        "originalResponseReplays": 1,
+        "payloadConflicts": 3,
+        "duplicatePlaintextRows": 0,
+        "secretHits": 0
+      },
+      {
+        "phase": 13,
+        "group": "create-read",
+        "database": "REAL_POSTGRESQL17",
+        "pageSizes": [
+          2,
+          1
+        ],
+        "uniqueRows": 3,
+        "boundaryRejections": 12,
+        "cursorLimitRejections": 3,
+        "cursorRejectionKeyQueries": 0,
+        "defaultPageSizes": [
+          20,
+          1
+        ],
+        "defaultLimitRoundTrips": 2
+      },
+      {
+        "phase": 13,
+        "group": "disable-enable",
+        "database": "REAL_POSTGRESQL17",
+        "legalStateChanges": 3,
+        "matchingStateAudits": 3,
+        "creationAudits": 1,
+        "revokedRestorations": 0,
+        "noopAudits": 0,
+        "staleWrites": 0
+      },
+      {
+        "phase": 13,
+        "group": "rotate-revoke",
+        "database": "REAL_POSTGRESQL17",
+        "versionMismatchRejected": true,
+        "redirectsFollowed": 0,
+        "oversizedBodyRejected": true,
+        "candidatesPrepared": 1,
+        "httpCalls": 5
+      },
+      {
+        "phase": 13,
+        "group": "rotate-revoke",
+        "database": "REAL_POSTGRESQL17",
+        "referenceCount": 2,
+        "switchedReferences": 2,
+        "httpCalls": 2,
+        "networkInsideTransaction": 0,
+        "oldRevoked": true,
+        "newActive": true,
+        "matchingStateAudits": 2,
+        "extraReplayCandidates": 0
+      },
+      {
+        "phase": 13,
+        "group": "rotate-revoke",
+        "database": "REAL_POSTGRESQL17",
+        "failedCandidates": 1,
+        "oldReferencesPreserved": 2,
+        "disabledCandidateEnableRejected": true,
+        "candidateReuse": 1,
+        "claims": 2,
+        "fences": 2,
+        "httpCalls": 4
+      },
+      {
+        "phase": 13,
+        "group": "rotate-revoke",
+        "database": "REAL_POSTGRESQL17",
+        "contenders": 2,
+        "winners": 1,
+        "switchedReferences": 2,
+        "disabledLoserCandidates": 1,
+        "orphanActiveKeys": 0
+      },
+      {
+        "phase": 13,
+        "group": "rotate-revoke",
+        "database": "REAL_POSTGRESQL17",
+        "emergencyRevokeBeforeNetworkCompletion": true,
+        "activeNormalCallsBeforeRevoke": 1,
+        "forgedTargetCalls": 0,
+        "newCallsAfterRevoke": 0,
+        "ordinaryRotationConflict": 409,
+        "partialSwitches": 0
+      },
+      {
+        "phase": 13,
+        "group": "rotate-revoke",
+        "database": "REAL_POSTGRESQL17",
+        "realReferenceCount": 0,
+        "providerTableQueries": 0,
+        "externalCalls": 0,
+        "coordinatorActivated": true
+      },
+      {
+        "phase": 13,
+        "group": "authorization",
+        "database": "REAL_POSTGRESQL17",
+        "rejectedPrincipals": 4,
+        "csrfFailures": 2,
+        "crossOriginFailures": 1,
+        "unauthorizedBusinessReads": 0,
+        "unauthorizedBusinessWrites": 0
+      },
+      {
+        "phase": 13,
+        "group": "crypto-redaction",
+        "database": "REAL_POSTGRESQL17",
+        "dtoRejectedSecretFields": 5,
+        "dbSafeProjection": true,
+        "httpBodyHits": 0,
+        "auditHits": 0,
+        "fullFingerprintHits": 0
+      },
+      {
+        "phase": 13,
+        "group": "failure-atomicity",
+        "database": "REAL_POSTGRESQL17",
+        "auditFaults": 2,
+        "encryptedRowsChanged": 0,
+        "statusRowsChanged": 0,
+        "receiptsChanged": 0,
+        "auditChanges": 0
+      },
+      {
+        "phase": 13,
+        "group": "failure-atomicity",
+        "database": "REAL_POSTGRESQL17",
+        "fault": "audit",
+        "partialSwitches": 0,
+        "failedKeyStateChanges": 0,
+        "failedActivationAudits": 0,
+        "retainedDisabledCandidates": 1,
+        "retryReusedCandidate": true
+      },
+      {
+        "phase": 13,
+        "group": "failure-atomicity",
+        "database": "REAL_POSTGRESQL17",
+        "fault": "receipt",
+        "partialSwitches": 0,
+        "failedKeyStateChanges": 0,
+        "failedActivationAudits": 0,
+        "retainedDisabledCandidates": 1,
+        "retryReusedCandidate": true
+      },
+      {
+        "phase": 13,
+        "group": "failure-atomicity",
+        "database": "REAL_POSTGRESQL17",
+        "fault": "set-addition",
+        "casStatus": 409,
+        "partialSwitches": 0,
+        "oldKeyAvailable": true,
+        "candidateDisabled": true
+      },
+      {
+        "phase": 13,
+        "group": "failure-atomicity",
+        "database": "REAL_POSTGRESQL17",
+        "fault": "revision",
+        "casStatus": 409,
+        "partialSwitches": 0,
+        "oldKeyAvailable": true,
+        "candidateDisabled": true
+      },
+      {
+        "phase": 13,
+        "group": "failure-atomicity",
+        "database": "REAL_POSTGRESQL17",
+        "secondActivationFault": true,
+        "partialSwitches": 0,
+        "oldKeyAvailable": true,
+        "candidateDisabled": true
+      }
+    ],
+    "secretScan": {
+      "browserReportPath": "docs/evidence/attempts/Phase013/attempt-7/browser.json",
+      "browserReportHash": "efd68aacde42faacbfab3af7d26fef67e2a93ffc6681cdc0224f4ed01b9bad59",
+      "categories": {
+        "httpBodies": 48,
+        "html": 11,
+        "browserStorage": 1,
+        "logs": 5,
+        "audit": 2,
+        "dbSafeProjection": 28,
+        "trace": 1,
+        "evidence": 1,
+        "hits": 0
+      },
+      "scope": {
+        "previousMigrationsPreserved": 7,
+        "modelCount": 10,
+        "generatedSecretHits": 0,
+        "sensitiveEvidenceHits": 0,
+        "scannedBeforeRedaction": true,
+        "filesScanned": 288
+      },
+      "privacyFailures": 0,
+      "externalRequestCount": 0,
+      "finalGate": {
+        "hits": 0,
+        "scannedBeforeArchive": true
+      }
+    },
+    "actualCommandExitCodes": [
+      {
+        "command": "node --version",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "npm --version",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "npm run format:check",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "npm exec -- prettier --check --ignore-path .gitignore tests/admin/layout.test.tsx tests/admin/users.integration.test.ts tests/integration/audit-log.test.ts tests/integration/config-models.test.ts tests/integration/travel-record.test.ts tests/lib/audit-log.test.ts tests/lib/public-user.test.ts tests/phase006/database.integration.ts tests/phase008/data-fixture.ts tests/phase009/audit-fixture.ts tests/phase010/seed-fixture.ts tests/phase011/auth-fixture.ts tests/phase012/admin-fixture.ts tests/phase013/api-key-fixture.ts tests/phase013/api-key-worker.ts tests/phase013/browser.mjs tests/phase013/cli-network.mjs tests/phase013/evidence-guards.mjs tests/phase013/logs-fixture.ts tests/admin/api-keys-client.test.tsx tests/admin/api-keys.integration.test.ts tests/admin/logs-client.test.tsx tests/admin/logs.test.ts tests/admin/users-client.test.tsx docs/phase-plans/complete-phase013.mjs docs/phase-plans/phase013-evidence.mjs docs/phase-plans/phase013-runtime.mjs docs/phase-plans/prepare-phase013.mjs docs/phase-plans/setup-phase013.mjs docs/phase-plans/verify-phase013.mjs",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "npm run lint",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "npm run typecheck",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "npm exec -- vitest list --no-file-parallelism --json=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase013\\attempt-7-test-discovery.json",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "Phase013 evidence rejection regression",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "Dual-shell validator compatibility regression",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "Prisma CLI and checkpoint network regression",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "docker inspect --format {{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}} 758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "docker network inspect --format {{json .Options}}|{{json .Labels}} serendipity-phase013-dd57ebf7b2df",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "docker inspect --format {{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}} 758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "docker network inspect --format {{json .Options}}|{{json .Labels}} serendipity-phase013-dd57ebf7b2df",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "docker exec -i 758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948 psql -X -v ON_ERROR_STOP=1 -U phase013_runner -d phase013_disposable_dd57ebf7b2df -At",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "npm exec -- prisma migrate deploy",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "npm exec -- prisma migrate status",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "npm run db:generate",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "docker inspect --format {{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}} 758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "docker network inspect --format {{json .Options}}|{{json .Labels}} serendipity-phase013-dd57ebf7b2df",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "docker exec -i 758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948 psql -X -v ON_ERROR_STOP=1 -U phase013_runner -d phase013_disposable_dd57ebf7b2df -At",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "docker inspect --format {{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}} 758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "docker network inspect --format {{json .Options}}|{{json .Labels}} serendipity-phase013-dd57ebf7b2df",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "docker exec -i 758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948 psql -X -v ON_ERROR_STOP=1 -U phase013_runner -d phase013_disposable_dd57ebf7b2df -At",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "docker inspect --format {{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}} 758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "docker network inspect --format {{json .Options}}|{{json .Labels}} serendipity-phase013-dd57ebf7b2df",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "docker exec -i 758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948 psql -X -v ON_ERROR_STOP=1 -U phase013_runner -d phase013_disposable_dd57ebf7b2df -At",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "docker inspect --format {{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}} 758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "docker network inspect --format {{json .Options}}|{{json .Labels}} serendipity-phase013-dd57ebf7b2df",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "docker exec -i 758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948 psql -X -v ON_ERROR_STOP=1 -U phase013_runner -d phase013_disposable_dd57ebf7b2df -At",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "docker inspect --format {{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}} 758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "docker network inspect --format {{json .Options}}|{{json .Labels}} serendipity-phase013-dd57ebf7b2df",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "docker exec -i 758a445b66a06786c8dbf2b7377fc6d0d3583cc3fd19b5b89f747ab50c79d948 psql -X -v ON_ERROR_STOP=1 -U phase013_runner -d phase013_disposable_dd57ebf7b2df -At",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "node scripts/test-phase-input-paths.mjs",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "node scripts/generate-api-contract.mjs --check",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "npm run test -- admin/api-keys admin/logs secret-envelope --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase013\\attempt-7-card-vitest.json",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "npm run test -- tests/lib/auth-guards.test.ts tests/admin/api-keys.integration.test.ts -t \\[authorization\\]|requireAdmin server authorization|management page, Route Handler and Server Action guard ordering --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase013\\attempt-7-baseline-require-admin-vitest.json",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "npm run test -- tests/lib/auth-guards.test.ts tests/admin/api-keys.integration.test.ts -t \\[authorization\\]|requireAdmin server authorization|management page, Route Handler and Server Action guard ordering --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase013\\attempt-7-negative-require-admin-vitest.json",
+        "exitCode": 1,
+        "timedOut": false
+      },
+      {
+        "command": "npm run test -- tests/lib/secret-envelope.test.ts --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase013\\attempt-7-baseline-aad-vitest.json",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "npm run test -- tests/lib/secret-envelope.test.ts --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase013\\attempt-7-negative-aad-vitest.json",
+        "exitCode": 1,
+        "timedOut": false
+      },
+      {
+        "command": "npm run test -- tests/admin/api-keys.integration.test.ts -t \\[disable-enable\\] --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase013\\attempt-7-baseline-terminal-state-vitest.json",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "npm run test -- tests/admin/api-keys.integration.test.ts -t \\[disable-enable\\] --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase013\\attempt-7-negative-terminal-state-vitest.json",
+        "exitCode": 1,
+        "timedOut": false
+      },
+      {
+        "command": "npm run test -- tests/admin/api-keys.integration.test.ts -t \\[crypto-redaction\\] --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase013\\attempt-7-baseline-dto-whitelist-vitest.json",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "npm run test -- tests/admin/api-keys.integration.test.ts -t \\[crypto-redaction\\] --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase013\\attempt-7-negative-dto-whitelist-vitest.json",
+        "exitCode": 1,
+        "timedOut": false
+      },
+      {
+        "command": "npm run test -- admin/api-keys admin/logs secret-envelope --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase013\\attempt-7-restored-card-vitest.json",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "npm run test -- --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase013\\attempt-7-all-tests-vitest.json",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "npm run test -- --config tests/phase006/vitest.database.config.mjs --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase013\\attempt-7-phase006-user-regression-vitest.json",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "npm run build",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "Phase013 real Auth.js HTTP and browser checks",
+        "exitCode": 0,
+        "timedOut": false
+      },
+      {
+        "command": "node scripts/check-project-layout.mjs",
+        "exitCode": 0,
+        "timedOut": false
+      }
+    ],
+    "costAccounting": {
+      "productImplementation": {
+        "durationMs": null,
+        "measurementStatus": "UNMEASURED"
+      },
+      "infrastructure": {
+        "durationMs": null,
+        "measurementStatus": "UNMEASURED"
+      },
+      "verification": "Actual command durations, execution counts and database preparation observations in quality.json",
+      "independentReview": {
+        "durationMs": null,
+        "measurementStatus": "UNMEASURED"
+      },
+      "evidencePreparation": {
+        "durationMs": null,
+        "measurementStatus": "UNMEASURED"
+      },
+      "productionRequests": 0,
+      "realProviderRequests": 0,
+      "actualCommandExecutions": 50,
+      "actualCommandDurationMs": 683314,
+      "dedicatedCardExecutions": 1,
+      "fullRepositoryExecutions": 1,
+      "restoredCardExecutions": 1,
+      "negativeControlExecutions": 4,
+      "negativeBaselineExecutions": 4,
+      "databasePreparation": {
+        "commandDurationMs": 4917,
+        "perTestPreparationDurationMs": null,
+        "perTestMeasurementStatus": "INCLUDED_IN_TEST_PROCESS_DURATION_NOT_SEPARATELY_MEASURED"
+      },
+      "repeatReason": "Separate frozen card/full commands and mandatory baseline/negative/restored security verification; no cross-attempt result reuse."
+    }
+  }
+}
