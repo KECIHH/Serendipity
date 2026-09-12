@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "phase-checkpoint-maintenance-v1",
+  "id": "testing-policy-20260912",
+  "scope": "DOCS_AND_PHASE_VALIDATOR_ONLY",
+  "afterPhase": 12,
+  "nextPhase": 13,
+  "baseMetadataCommit": "3fa20a8dca445859d94db8dfa1232d16f8a6e07f",
+  "baseArtifactCommit": "171025ef44f194b6417e9bf091c0d635d9741e2b",
+  "subject": "docs: optimize subsequent phase verification workflow",
+  "allowedExactPaths": [
+    "AGENTS.md",
+    "docs/agent-execution-contract.md",
+    "docs/checkpoint-migrations/testing-policy-20260912.json",
+    "docs/git-workflow.md",
+    "docs/testing-execution-policy.md",
+    "scripts/checkpoint-maintenance.mjs",
+    "scripts/test-checkpoint-maintenance.mjs",
+    "scripts/test-validate-phase.mjs",
+    "scripts/validate-phase.mjs"
+  ],
+  "policy": {
+    "path": "docs/testing-execution-policy.md",
+    "version": "phase-verification-v1",
+    "sha256": "a1f2666b2a757bf7dccb016e997a60f33a0f91f7612add8d40411e30735f8532"
+  },
+  "changes": [
+    {
+      "path": "AGENTS.md",
+      "beforeSha256": "224f30ead96b0771dc9949e5c33ebe4bf13bb0f76071fb3210d7d153e73b0592",
+      "afterSha256": "06f85a83d539ede834e356fe4afba80f9535c23c214b4f0dc8470923d88eeab8"
+    },
+    {
+      "path": "docs/agent-execution-contract.md",
+      "beforeSha256": "2919a173e60f0ed50fbf4839a5d8c96bc836afd032410cb012186026736688a2",
+      "afterSha256": "ba2c8eb6452d0f63f4d3f27879479c18209d592540f93978d54435c4357c9275"
+    },
+    {
+      "path": "docs/git-workflow.md",
+      "beforeSha256": "8b8289c40de4454996e5fbad71de531bb8d80a6cf3f048dda753e7cf2d120548",
+      "afterSha256": "978de65f6bae3e936fa3898d144cc973b253b17f44004d0c011f5884e6239789"
+    },
+    {
+      "path": "docs/testing-execution-policy.md",
+      "beforeSha256": null,
+      "afterSha256": "a1f2666b2a757bf7dccb016e997a60f33a0f91f7612add8d40411e30735f8532"
+    },
+    {
+      "path": "scripts/checkpoint-maintenance.mjs",
+      "beforeSha256": null,
+      "afterSha256": "c1b63315d078b35a330f8a01e89e1b612ffb463b0c0b9d2114be27a1cbed00e3"
+    },
+    {
+      "path": "scripts/test-checkpoint-maintenance.mjs",
+      "beforeSha256": null,
+      "afterSha256": "a86dffc037bae7f4a8e44fc22e3793d8c984ebb68b7b010972862d2f1bd33822"
+    },
+    {
+      "path": "scripts/test-validate-phase.mjs",
+      "beforeSha256": "b4df52b324137973c12ddc352695f2082177d29aaf9d007ba6ebf1c18a76439c",
+      "afterSha256": "796a7b93fe3feec9029f2bf3fdcab1c93ce9c3a37640b4e5d4bb403b359ca52b"
+    },
+    {
+      "path": "scripts/validate-phase.mjs",
+      "beforeSha256": "06bcd9955531054ace725393d8504f037256a428b80f5fe883b95587c31062d1",
+      "afterSha256": "6b6f6b3b56f0590d014fca0e523a5ed69324f43958edc722cf28fd06c1c4cea2"
+    }
+  ],
+  "localGuides": [
+    {
+      "path": "Serendipity · 际遇/AGENTS.md",
+      "sha256": "c6f7ce62220d286f3f817ab56bf58ccd9007f4cce78e968ada4f47b4f465f734"
+    },
+    {
+      "path": "Serendipity · 际遇/README.md",
+      "sha256": "adf30a94cc6a1b2263439984a2082f9dc8fa8d3bc67bf55efe14aa58417060cb"
+    }
+  ]
+}

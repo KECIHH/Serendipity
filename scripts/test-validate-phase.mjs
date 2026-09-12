@@ -129,6 +129,7 @@ function newFixture(name) {
     "scripts/validate-phase.ps1",
     "scripts/phase-evidence.mjs",
     "scripts/checkpoint-history.mjs",
+    "scripts/checkpoint-maintenance.mjs",
   ])
     write(root, file, read(sourceRoot, file));
   for (const contract of manifest.projectContracts.filter(
@@ -814,6 +815,7 @@ try {
         "scripts/validate-phase.mjs",
         "scripts/validate-phase.ps1",
         "scripts/phase-evidence.mjs",
+        "scripts/checkpoint-maintenance.mjs",
         "scripts/test-validate-phase.mjs",
         receiptPath,
       ].map((file) => [file, hash(sourceRoot, file)]),

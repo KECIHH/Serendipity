@@ -13,6 +13,7 @@ import {
   requirePriorCaseBinding,
 } from "./phase-evidence.mjs";
 import { checkpointHistoryEnvironment, validateCheckpointImport } from "./checkpoint-history.mjs";
+import { validateCheckpointMaintenance } from "./checkpoint-maintenance.mjs";
 
 const defaultRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
@@ -838,8 +839,15 @@ export function validatePhase({
       same(review.attemptId, evidence.attemptId, "REVIEW_BINDING", "Review attempt mismatch");
       same(review.planPath, planPath, "REVIEW_BINDING", "Review planPath mismatch");
       nonempty(review.generatedBy, "REVIEW_IDENTITY", "Review generatedBy is required");
-      requireReviewIdentity(review, plan.implementationContextId, { protocolFixture });
-      const sources = requireEvidenceSources(plan, { protocolFixture });
+      // A temporary fixture may extend genuine sealed history with a synthetic next phase.
+      // Genuine historical reviews still receive the normal identity/source checks.
+      const syntheticFixture =
+        protocolFixture &&
+        review.runnerIdentity?.kind === "SYNTHETIC_PROTOCOL_FIXTURE_NOT_AGENT_REVIEW";
+      requireReviewIdentity(review, plan.implementationContextId, {
+        protocolFixture: syntheticFixture,
+      });
+      const sources = requireEvidenceSources(plan, { protocolFixture: syntheticFixture });
       prefetch(
         artifact,
         sources.map((file) => `${prefix}${relativeFile(file)}`),
@@ -1086,6 +1094,14 @@ export function validatePhase({
     );
     priorCommit = entry.id;
   }
+  const checkpointMaintenance = validateCheckpointMaintenance({
+    root,
+    state,
+    head,
+    history,
+    git,
+    blob,
+  });
   let previousMetadataIndex = -1;
   let firstReceipt;
   for (const checkpoint of state.checkpoints) {
@@ -1119,6 +1135,13 @@ export function validatePhase({
     const { plan, artifactBlob, artifactJson } = validateGate(evidence, checkpoint, schema);
     const receiptPath = `docs/phase-plans/${name}-inputs.json`;
     const receipt = artifactJson(receiptPath);
+    checkpointMaintenance?.validatePhaseInputs({
+      phase: n,
+      receipt,
+      plan,
+      evidence,
+      previousMetadataCommit: history[previousMetadataIndex]?.id,
+    });
     ensure(
       evidence.inputs.some(
         (input) => input.path === receiptPath && input.sha256 === sha256(artifactBlob(receiptPath)),
@@ -1281,16 +1304,16 @@ export function validatePhase({
       "CHECKPOINT_PARENT",
       "Metadata parent must equal current checkpoint artifact",
     );
-    const recovery = history
-      .slice(previousMetadataIndex + 1, artifactIndex)
-      .map((entry) => entry.id);
+    const phaseStartIndex =
+      checkpointMaintenance?.phaseStartIndex(n, previousMetadataIndex) ?? previousMetadataIndex + 1;
+    const recovery = history.slice(phaseStartIndex, artifactIndex).map((entry) => entry.id);
     same(
       evidence.details.recoveryCommits,
       recovery,
       "RECOVERY_COMMITS",
       "recoveryCommits must enumerate every intermediate commit in order",
     );
-    for (const entry of history.slice(previousMetadataIndex + 1, artifactIndex)) {
+    for (const entry of history.slice(phaseStartIndex, artifactIndex)) {
       if (entry.subject !== `phase(${String(n).padStart(3, "0")}): artifact`) continue;
       const priorPlanBytes = blob(entry.id, `docs/phase-plans/${name}.json`);
       const priorPlan = parseJson(priorPlanBytes);
@@ -1313,7 +1336,7 @@ export function validatePhase({
         );
       }
     }
-    for (let index = previousMetadataIndex + 1; index <= metadataIndex; index += 1) {
+    for (let index = phaseStartIndex; index <= metadataIndex; index += 1) {
       const entry = history[index];
       const match = new RegExp(
         `^phase\\(${String(n).padStart(3, "0")}\\): (artifact|metadata|recovery)$`,
@@ -1428,8 +1451,16 @@ export function validatePhase({
   }
   const importedAdmission =
     checkpointImport && completedThrough === checkpointImport.importedThrough;
+  const maintenanceAdmission = checkpointMaintenance?.admissionOnly ?? false;
   if (importedAdmission) checkpointImport.validateAdmissionTail(history, previousMetadataIndex);
-  else {
+  else if (maintenanceAdmission) {
+    same(
+      history[previousMetadataIndex].id,
+      checkpointMaintenance.baseMetadataCommit,
+      "MAINTENANCE_ANCHOR",
+      "Maintenance admission must preserve the final Phase012 metadata checkpoint",
+    );
+  } else {
     ensure(
       previousMetadataIndex === history.length - 1,
       "HEAD_METADATA",
@@ -1482,7 +1513,9 @@ export function validatePhase({
     status: "PASS",
     scope: protocolFixture
       ? "ISOLATED_PROTOCOL_FIXTURE_VALIDATION"
-      : "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+      : maintenanceAdmission
+        ? "ROOT_LAYOUT_PHASE_CHECKPOINT_ADMISSION"
+        : "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
     protocolFixture,
     layoutVersion: 2,
     repositoryRoot: root,
@@ -1492,7 +1525,21 @@ export function validatePhase({
     completedThrough,
     currentPhase: completedThrough + 1,
     artifactCommit: state.lastArtifactCommit,
-    metadataCommit: importedAdmission ? checkpointImport.currentMetadataCommit : head,
+    metadataCommit: importedAdmission
+      ? checkpointImport.currentMetadataCommit
+      : history[previousMetadataIndex].id,
+    ...(checkpointMaintenance
+      ? {
+          maintenanceHead: checkpointMaintenance.commit,
+          admissionOnly: maintenanceAdmission,
+          checkpointMaintenance: {
+            path: checkpointMaintenance.path,
+            sha256: checkpointMaintenance.sha256,
+            commit: checkpointMaintenance.commit,
+            policy: checkpointMaintenance.policy,
+          },
+        }
+      : {}),
     historicalPhase: 0,
     preservedHistoricalFiles: oldFiles.length,
     ...(checkpointImport

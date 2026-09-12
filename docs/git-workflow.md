@@ -12,15 +12,17 @@
 | 阶段元数据 | `phase(NNN): metadata` | 紧随 artifact 的唯一直接子提交，仅修改允许元数据路径 |
 | 未封口恢复 | `phase(NNN): recovery` | 只属于当前阶段的可证明恢复修改，逐提交登记 recoveryCommits |
 
-例如任务001使用 `phase(001): artifact` 与 `phase(001): metadata`。baselineCommit 之后，运行中的修复也纳入当前阶段，不能使用通用 feat/fix/docs 提交绕过阶段归属。未封口的 artifact/metadata 尝试保留在历史中，最终 Gate 的 `details.recoveryCommits` 按历史顺序精确列出基线或上一最终 metadata 与本次最终 artifact 之间的全部中间提交。已封口的 Gate、提交和 hash 不覆盖、不 amend。
+例如任务001使用 `phase(001): artifact` 与 `phase(001): metadata`。baselineCommit 之后，运行中的修复也纳入当前阶段，不能使用通用 feat/fix/docs 提交绕过阶段归属。未封口的 artifact/metadata 尝试保留在历史中，最终 Gate 的 `details.recoveryCommits` 按历史顺序精确列出本阶段的全部中间提交。已封口的 Gate、提交和 hash 不覆盖、不 amend。
+
+2026-09-12 的后续测试文档优化是唯一已登记的阶段外维护例外：`docs: optimize subsequent phase verification workflow` 紧随 Phase012 metadata，按 `docs/checkpoint-migrations/testing-policy-20260912.json` 的固定路径与摘要校验。它不是 Phase013 recovery 或新 checkpoint。校验器只在完整验证维护段后，将它从后续 Phase013 的 recovery 计算中分离；不接受任意额外 docs/chore 提交。维护收据不能自引用本提交 ID，提交身份由实际 Git 父链确定。
 
 ## 分支命名规则
 
-正式路线执行分支固定为 manifest.gitPolicy.initialBranch 的 `main`，Phase 内不切换分支。开工前检查当前分支、Git 顶层、origin 的 fetch/push URL 和整个仓库状态；远端固定为 `https://github.com/KECIHH/Serendipity.git`。先执行 `git fetch origin main`，核对本地与远端同步，再固定新的 executionBaselineCommit。
+正式路线执行分支固定为 manifest.gitPolicy.initialBranch 的 `main`，Phase 内不切换分支。开工前检查当前分支、Git 顶层、origin 的 fetch/push URL 和整个仓库状态；远端固定为 `https://github.com/KECIHH/Serendipity.git`。先执行 `git fetch origin main`，核对本地与远端同步，再将当前 HEAD 固定为本卡 `phaseStartCommit`。现有 run 的 baselineCommit/executionBaselineCommit 保持不变；首次根布局基线的建立属于已完成的历史衔接。
 
 只有用户明确暂停 run 并授权独立实验时，才使用 `codex/feature-<slug>`、`codex/fix-<slug>`、`codex/refactor-<slug>`。实验提交不属于 Phase checkpoint，不能推进 run state。detached HEAD 不满足正式 run 准入，先识别检查点归属并恢复规定分支；不得移动其他工作树使用的分支。
 
-用户授权某一张卡时，只完成该卡。候选 run state 的 currentPhase 指向下一编号表示进度入口，不代表执行下一卡获得授权。当前任务只授权 Phase001，因此完成后保留 `nextPhaseExecutionAuthorized=false`。
+用户授权某一张卡时，只完成该卡。候选 run state 的 currentPhase 指向下一编号表示进度入口，不代表执行下一卡获得授权。文档维护不授权下一阶段，也不推进 `nextPhaseExecutionAuthorized`。
 
 ## 变更保护规则
 
@@ -32,20 +34,20 @@
 
 ## 提交前检查清单
 
-命令在 projectRoot 执行，先确定对应生产阶段已提供脚本。结构化报告记录 command、exitCode、适用环境、分子/分母与输入输出 SHA-256。尚未生产的命令记录 `NOT_CREATED`，不能填 exitCode=0 或计作 PASS。
+命令在 projectRoot 执行，先确定对应生产阶段已提供脚本。Phase013 起先按 [测试执行政策](testing-execution-policy.md) 判定调试、正式阶段验收及全量触发条件，再冻结实际执行集合；已有计划不追溯缩减。结构化报告记录 command、exitCode、适用环境、分子/分母与输入输出 SHA-256。尚未生产的命令记录 `NOT_CREATED`，不能填 exitCode=0 或计作 PASS。
 
 | 命令 | 何时必需 | 成功要求 |
 |---|---|---|
 | `git diff --check` | 每次有文件变更 | 退出码0，无空白错误 |
 | `node scripts/check-project-layout.mjs` | 当前及后续阶段 | 退出码0，根目录与历史44文件字节一致 |
-| `npm run lint` | Phase003 创建 lint 后 | 退出码0，不能以跳过脚本代替 |
-| `npm run typecheck` | Phase003 创建 typecheck 后 | 退出码0，无类型错误 |
-| `npm run test` | Phase004 创建 Vitest 后 | 退出码0，实际收集并通过规定用例 |
-| `npm run build` | Phase003 创建应用后 | 退出码0，使用已锁定依赖与运行时 |
+| `npm run lint` | 已提供命令，且本次涉及代码或其检查配置；本卡明示时必跑 | 退出码0，不能以跳过脚本代替 |
+| `npm run typecheck` | 已提供命令，且涉及 TypeScript/生成类型/依赖配置；本卡明示时必跑 | 退出码0，无类型错误 |
+| `npm run test` 或计划中明确的定向参数 | Phase004 后，按政策选择 `full` 或经验证的 `affected`；能力不足回退全量 | 退出码0，实际收集并通过全部规定用例，不能用空选择通过 |
+| `npm run build` | 构建输入变化，或本卡/里程碑明确要求；纯文档按相称检查验证 | 退出码0，使用已锁定依赖与运行时 |
 | `node docs/phase-plans/verify-phase001.mjs --all` | Phase001 | 退出码0，冻结计划全部结果精确齐全，M0覆盖20/20 |
 | `git diff --cached --check` | 暂存完成后 | 退出码0，复核受测工作文件与暂存 blob 字节/hash相同 |
 
-Phase003 前使用结构化 Markdown、字段、schema/hash、Git 与反向文档检查作为当前 Gate；Phase004 前不声称 Vitest 已运行。页面、API 产出后由 Agent 的浏览器或 HTTP 自动断言验证实际加载、权限及错误状态，不用人工阅读签字代替。必经命令失败时保存当前 attempt，修复后在同阶段新 attempt 完整复验，不绕过检查。
+Phase003 前使用结构化 Markdown、字段、schema/hash、Git 与反向文档检查作为当前 Gate；Phase004 前不声称 Vitest 已运行。页面、API 产出后由 Agent 的浏览器或 HTTP 自动断言验证实际加载、权限及错误状态，不用人工阅读签字代替。必经命令失败时保存当前 attempt；定位修复先跑失败项，正式新 attempt 完整满足冻结集合。结果复用未启用时重新执行所有所需项，不改旧报告或把未运行命令记作成功。Phase001–012 的原计划及检查语义保留。
 
 ## 双提交 checkpoint
 
@@ -76,7 +78,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/validate-phase.ps1
 
 ## 脏工作区处理规则
 
-新 Phase 开始前运行 `git status --porcelain=v1`，整个 repositoryRoot 应为空，且 HEAD 应为已同步的上一 metadata。迁移后首次 Phase001 特例由根执行契约导入历史 Phase000，并固定同步后的当前 HEAD 为新基线。
+新 Phase 开始前运行 `git status --porcelain=v1`，整个 repositoryRoot 应为空，且 HEAD 应为已同步的上一 metadata；Phase013 前允许上述唯一已核验文档维护 HEAD，上一卡 metadata 仍指向原 Phase012 提交。维护 HEAD 必须单独绑定并同步到远端，不只检查远端存在旧 metadata。迁移后首次 Phase001 的历史导入按根执行契约处理；已建立的 run 不因维护重置固定基线。
 
 非空时读取路径、索引状态、冻结计划、启动收据和 Git 对象，识别是否为当前阶段可恢复中断。能够证明归属的同阶段修改按恢复协议重验；无法证明归属则记 `BLOCKED`，不擅自暂存、提交、丢弃或覆盖。只有 artifact 而无 metadata 时，验证受测树和报告再生成元数据；实现字节变化必须重新验收。
 

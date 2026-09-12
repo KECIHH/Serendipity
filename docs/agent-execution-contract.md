@@ -1,12 +1,13 @@
 # Serendipity · 际遇 Agent 执行契约
 
-本项目运行模式固定为 `NEW_BUILD` + `AGENT_ONLY_AUTOMATED_NEW_BUILD`。本文件由 Phase000 从 manifest、PRD、canonical contract、术语表、状态机、测试策略、Gate policy 和 Agent-only 契约派生，产品规则以对应输入为据。用户最新要求优先：外层根目录同时为 repositoryRoot/projectRoot，内层同名目录仅存本地开发文档且不提交。任务000已完成，本次目录整理不启动 Phase001；后续仅按用户明确授权的任务范围执行。
+本项目运行模式固定为 `NEW_BUILD` + `AGENT_ONLY_AUTOMATED_NEW_BUILD`。本文件由 Phase000 从 manifest、PRD、canonical contract、术语表、状态机、测试策略、Gate policy 和 Agent-only 契约派生，产品规则以对应输入为据。用户最新要求优先：外层根目录同时为 repositoryRoot/projectRoot，内层同名目录仅存本地开发文档且不提交。后续仅按用户明确授权的任务范围执行；当前进度读取 `docs/roadmap-run.json`，不依据文档中的历史示例推断授权。
 
 ## 单 Phase 执行规则
 
 - 用户授权完整路线时，同一任务自动串行推进 Phase000 -> Phase137，每次只执行当前 Phase，不等待逐卡人工提示。用户指定阶段范围时，只推进至该范围的最后一张卡；下一阶段准入状态不等于下一阶段已执行。
 - 每卡完整读取当前任务卡及明确要求的冻结输入；其余资料按直接依赖读取。允许只读未来消费契约以校对接口，禁止提前执行未来任务、使用尚未生产的产物和批量创建占位目录。
 - Phase N 开始前核对 `currentPhase=N`、`completedThrough=N-1`、上一卡 PASS、artifact -> metadata 直接父子关系、evidenceHash、双 shell seal、整个 repositoryRoot 工作树干净及 origin/main 已包含上一卡 metadata。迁移后的 Phase001 先按下述“目录迁移与恢复”核验历史 Phase000 并建立新布局执行入口，不用旧路径重建项目或重跑任务000。
+- Phase013 前允许下述已核验的文档维护提交紧随 Phase012 metadata。此时同步并绑定的是维护 HEAD，上一卡 metadata 仍为原提交；后续继续固定每卡 `phaseStartCommit`，不重置 `baselineCommit` 或 `executionBaselineCommit`。
 - 实现前冻结 `docs/phase-plans/PhaseNNN.json` 的 phase、attemptId、requiredCaseIds、cases、生产者、消费者与修改范围。每个 case 包含 testCaseId、command、denominator、inputPath、outputPath 和预期结果，之后运行全部原定断言。
 - 本次 Phase000 只创建项目规范、启动收据、文档验证与检查点证据，不初始化 npm、不安装项目依赖、不创建业务代码、Prisma Schema、迁移或应用配置。
 
@@ -107,7 +108,20 @@
 - 结果记录 command、exitCode、numerator、denominator、inputHash、outputHash 与路径。当前 testCaseId 精确覆盖冻结计划且无重复，分子等于正分母；全部通过后由 runner 生成 Gate，不能手写 PASS。最终证据 `simulation=true`、隔离合成环境、`productionTraffic=false`，原阈值与自动阈值相等，`waived=false`。
 - 确定性 evaluator 完成后，由独立 Agent 复核实现、断言和视觉证据，持久保存 reviewerRunId、contextId、planHash、结论与意见处置。不同随机种子不能代替独立 reviewer。
 - 外部审批使用固定机器 rubric 对隔离配置自动准入，标记 `AUTOMATED_TEST_ADMISSION`，不声称真人批准或生产批准。自动无障碍验收标记 `AUTOMATED_BROWSER_A11Y`，真人读屏体验为 `NOT_EVALUATED`。
-- Phase000 使用文件结构、文档内容、Git、schema/hash 和隔离反向验证，无产品单元/集成测试。后续执行已生产的 lint、typecheck、test、build 和本卡专用命令；未生产命令记录不适用，不能假填成功。
+- Phase000 使用文件结构、文档内容、Git、schema/hash 和隔离反向验证，无产品单元/集成测试。Phase001–012 按各自冻结计划验收。Phase013 起依 [测试执行政策](testing-execution-policy.md) 决定通用 lint、typecheck、test、build 的执行范围与时机，并完整满足本卡专用命令；未生产命令记录不适用，不能假填成功。
+
+### Phase013 起的执行提速与输入衔接
+
+2026-09-12 用户授权优化后续开发文档。[测试执行政策](testing-execution-policy.md)（`phase-verification-v1`）是此后生成阶段计划时的统一调度规则，优先于旧开发文档中“每次修复/提交一律重跑通用全量”的模板表述。它不改变原卡的业务条目、分母、阈值、明确指定的全量测试或完成定义。已有冻结计划与历史证据仍按原规则验证；不能在失败后缩小已冻结集合。
+
+- 实现前冻结需求和验收集合；调试期间先运行失败项及受影响检查，在正式昂贵验收前完成计划、命令、环境、fixture、报告绑定及封口流程预检。独立预审可提前发现返工，但最终独立复核仍绑定正式产物和证据。
+- 一次真实报告可以供多个验收项引用，前提是 runner 验证实际命令、用例身份、fixture 和每项断言覆盖；不能把未运行的定向命令写为已执行。全量报告已覆盖的普通子集不额外重复启动；专用配置、隔离故障和反向恢复要求按其语义执行。
+- `full` / `affected` 选择按政策固定在计划中；缺少可证明的影响映射或选择器校验时使用 `full`。跨 attempt 复用在来源链与失效校验实现前关闭，不能通过改写旧报告的 planHash/sourceHashes 获取通过。
+- 没有修改受测 artifact、仅重建其 metadata 或重试 seal/推送时，先验证原报告、Git tree 和父子关系，再执行所需的封口校验。修改实现、测试或执行脚本后产生新 artifact 的情形，按政策重新判定验证范围，不假定旧结果仍有效。
+
+本次文档维护使用常规 `docs:` 提交，收据为 `docs/checkpoint-migrations/testing-policy-20260912.json`。校验器完整验证 Phase012 的原 Gate 与历史，再核对唯一维护提交的真实父提交、精确变更路径、文件摘要和本地导航摘要。该提交不生成 Gate、不推进 run state、不进入 Phase013 的 recoveryCommits；普通未登记提交仍被拒绝。准入报告分别返回原 `metadataCommit` 与维护 HEAD，不把文档提交标成阶段 metadata。
+
+Phase013 及以后的 `docs/phase-plans/PhaseNNN-inputs.json` 须增加政策规定的 `checkpointMaintenance` 和 `validationPolicy` 字段，绑定维护收据 path/hash/commit 与政策 path/hash/version；政策文件同时进入 `plan.sourcePaths` 和 Gate.inputs。它们是仓库内的补充输入，不加入仅容纳本地忽略文档的 `pinnedInputs`。旧 manifestHash、八份 contractHashes、Phase000–012 卡片与证据保持原值；不通过刷新旧 hash 消除冲突。本次不执行 Phase013，也不宣称结果缓存或选择器已经实现。
 
 ## 里程碑闸门规则
 

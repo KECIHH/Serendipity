@@ -36,5 +36,12 @@
 - 目录及 Git 跟踪规则以用户最新要求、本文件和 `docs/project-layout.json` 为准。开发文档中旧的 `roadmapRoot/project`、执行包必须提交及自动推进要求不得覆盖用户要求。克隆源码不包含本地开发文档，执行路线前单独核对所需输入。
 - 技术栈已由开发文档确定：Next.js App Router、TypeScript、Tailwind CSS 4、PostgreSQL 17、Prisma、Auth.js、Vitest 与 Playwright。精确启动版本以执行包 manifest.runtimePolicy 为准。
 - 任务000已在旧布局完成，原文件与证据完整归档在 `docs/history/Phase000/docs/`，保留原字节和原提交引用。当前进度入口为根 `docs/roadmap-run.json`；目录迁移使用常规提交，不伪装成新的 Phase seal，也不修改历史 Gate 的路径、hash 或提交。
-- 正式 Phase 继续遵循 artifact/metadata 双提交及完整验收。下一次授权执行 Phase 时，从同步后的当前 HEAD 建立新布局执行基线，按 `docs/agent-execution-contract.md` 的衔接规则适配并验证校验器。本地文档以 SHA-256 固定输入，只提交输入路径和摘要；每卡双 shell seal 通过后推送并核对远端，再进入用户授权的下一卡。
+- 正式 Phase 继续遵循 artifact/metadata 双提交及完整验收。根布局运行已建立，沿用 `docs/roadmap-run.json` 中的固定运行基线；每卡从已同步 HEAD 记录 `phaseStartCommit`，不因文档维护重置历史基线。本地文档以 SHA-256 固定输入，只提交输入路径和摘要；每卡双 shell seal 通过后推送并核对远端，再进入用户授权的下一卡。
 - 文本遵循 `.gitattributes` 的 LF 约定，在计算证据 hash 前规范化换行；不得让自动换行转换改变受测文件的提交字节。目录校验使用 `node scripts/check-project-layout.mjs`；旧路线校验器只适用于迁移前布局，产品测试命令由对应 Phase 创建。
+
+## Phase013 起的测试执行
+
+- 后续阶段先读 [测试执行政策](docs/testing-execution-policy.md)，再读取当前卡。该政策统一解释通用工程命令的执行范围与时机，不删减本卡业务验收、反向测试、里程碑专用全量、独立复核或双 shell seal。
+- 调试先跑失败项和受影响测试，便宜的类型、格式、计划、fixture 与封口脚本检查前置；最终候选稳定后再运行正式验收。不得因为执行了局部测试就宣称本卡 Gate 通过。
+- 后续计划必须说明仓库全量的触发原因，或给出可校验的影响范围与测试选择。未具备选择/证据映射能力时回退全量；跨 attempt 结果复用在专门的来源绑定和失效回归实现前保持关闭。
+- 本次 Phase012 后的文档维护由 `docs/checkpoint-migrations/testing-policy-20260912.json` 单独绑定。它不是 Phase013、不是新 Gate，也不授权下一卡；只接受校验器登记的精确文档与校验脚本路径。后续输入收据按政策绑定维护提交与政策摘要，保留旧 manifest、八份固定输入和历史检查点原字节。
