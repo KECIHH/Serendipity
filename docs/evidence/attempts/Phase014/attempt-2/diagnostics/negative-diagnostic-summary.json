@@ -1,0 +1,53 @@
+{
+  "notGate": true,
+  "rows": [
+    {
+      "id": "require-admin",
+      "exitCode": 1,
+      "evidence": {
+        "file": "tests/admin/security.test.ts",
+        "fullName": "admin/security common boundary and M3 inventory [authorization] requireAdmin rejects an anonymous route before its resource callback",
+        "line": 22,
+        "assertionSource": "expect(response.status).toBe(401);",
+        "signal": "expected 200 to be 401"
+      },
+      "sourceUnchanged": true
+    },
+    {
+      "id": "public-allowlist",
+      "exitCode": 1,
+      "evidence": {
+        "file": "tests/admin/settings.test.ts",
+        "fullName": "admin/settings PostgreSQL and actual Route Handlers [public-projection] enforces both visibility gates, strips internal fields and changes ETag only for public projection",
+        "line": 26,
+        "assertionSource": "expect(response.status).toBe(200);",
+        "signal": "expected 503 to be 200"
+      },
+      "sourceUnchanged": true
+    },
+    {
+      "id": "revision-cas",
+      "exitCode": 1,
+      "evidence": {
+        "file": "tests/admin/settings.test.ts",
+        "fullName": "admin/settings PostgreSQL and actual Route Handlers [settings] admits exactly one same-timestamp CAS winner and persists restart-safe idempotent replay",
+        "line": 215,
+        "assertionSource": "expect(results.map((row) => row.status).sort()).toEqual([200, 409]);",
+        "signal": "expected [ 200, 200 ] to deeply equal [ 200, 409 ]"
+      },
+      "sourceUnchanged": true
+    },
+    {
+      "id": "audit-atomicity",
+      "exitCode": 1,
+      "evidence": {
+        "file": "tests/admin/settings.test.ts",
+        "fullName": "admin/settings PostgreSQL and actual Route Handlers [settings] reads exact DTOs and updates every group with paired canonical-hash audits",
+        "line": 26,
+        "assertionSource": "expect(response.status).toBe(200);",
+        "signal": "expected 503 to be 200"
+      },
+      "sourceUnchanged": true
+    }
+  ]
+}

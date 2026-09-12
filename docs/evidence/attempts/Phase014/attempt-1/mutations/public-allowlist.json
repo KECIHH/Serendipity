@@ -1,0 +1,17 @@
+{
+  "id": "public-allowlist",
+  "file": "src/server/config/config-service.ts",
+  "testFile": "tests/admin/settings.test.ts",
+  "pattern": "enforces both visibility gates, strips internal fields and changes ETag only for public projection",
+  "caseId": "Phase014:public-projection",
+  "failure": "expected 503 to be 200",
+  "fixture": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase014\\fixtures\\public-allowlist-qlVXrq",
+  "changes": [
+    {
+      "sourcePath": "src/server/config/config-service.ts",
+      "originalHash": "10be71684de1e5de39c3f13e3c0ae91172c8f6934e2f2a35a331a32559212c8c",
+      "mutatedHash": "eaa4a8e0d8aaa6415093dcec1c0ee09b848068e8d99a2f77f98702f62279a400"
+    }
+  ],
+  "testSourceHash": "96d554c5a46e30e9ef4a0a82018c2de954d25c82f155e384c5878dc8e84d902b"
+}

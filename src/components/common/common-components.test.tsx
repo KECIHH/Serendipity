@@ -103,7 +103,7 @@ describe("layout shells", () => {
     expect(within(navigation).queryByRole("link")).not.toBeInTheDocument();
   });
 
-  it("renders reachable user management and logout while preserving its children", () => {
+  it("renders the five reachable administration pages and logout while preserving its children", () => {
     render(
       <AdminShell currentUser={{ id: "fixture_admin", email: "layout@example.invalid" }}>
         <h1>后台内容</h1>
@@ -111,6 +111,10 @@ describe("layout shells", () => {
     );
 
     const navigation = screen.getByRole("navigation", { name: "后台导航" });
+    expect(within(navigation).getByRole("link", { name: "Dashboard" })).toHaveAttribute(
+      "href",
+      "/admin",
+    );
     expect(within(navigation).getByRole("link", { name: "用户管理" })).toHaveAttribute(
       "href",
       "/admin/users",
@@ -123,8 +127,12 @@ describe("layout shells", () => {
       "href",
       "/admin/logs",
     );
+    expect(within(navigation).getByRole("link", { name: "系统配置" })).toHaveAttribute(
+      "href",
+      "/admin/settings",
+    );
     expect(within(navigation).getByRole("button", { name: "退出登录" })).toBeEnabled();
-    expect(within(navigation).getAllByRole("link")).toHaveLength(3);
+    expect(within(navigation).getAllByRole("link")).toHaveLength(5);
     expect(within(navigation).queryByText("AI 配置")).not.toBeInTheDocument();
     expect(within(screen.getByRole("main")).getByRole("heading", { level: 1 })).toHaveTextContent(
       "后台内容",

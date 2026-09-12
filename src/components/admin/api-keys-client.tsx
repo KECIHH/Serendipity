@@ -2,9 +2,14 @@
 
 import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, KeyRound, Plus, RefreshCw } from "lucide-react";
+import { Plus, RefreshCw } from "lucide-react";
 import { fetchAuthCsrf } from "@/components/auth/login-form";
 import { Button } from "@/components/ui/button";
+import { PageHeader } from "@/components/common/page-header";
+import { DataTable } from "@/components/common/data-table";
+import { EmptyState } from "@/components/common/empty-state";
+import { ErrorState } from "@/components/common/error-state";
+import { AdminPagination } from "@/components/admin/admin-pagination";
 import { LoadingState } from "@/components/common/loading-state";
 import {
   parseApiKeyCreate,
@@ -295,37 +300,39 @@ export function ApiKeysClient() {
 
   return (
     <div className="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 lg:p-8">
-      <header className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight">密钥管理</h1>
-          <p className="mt-2 text-sm text-muted-foreground">
-            管理全局提供方密钥。保存后仅显示短指纹。
-          </p>
-        </div>
-        <div className="flex gap-2">
-          <Button
-            variant="outline"
-            className="min-h-11"
-            disabled={loading || saving}
-            onClick={refresh}
-          >
-            <RefreshCw aria-hidden="true" />
-            刷新列表
-          </Button>
-          <Button className="min-h-11" disabled={saving} onClick={() => select({ kind: "create" })}>
-            <Plus aria-hidden="true" />
-            录入密钥
-          </Button>
-        </div>
-      </header>
+      <PageHeader
+        title="密钥管理"
+        description="管理全局提供方密钥。保存后仅显示短指纹。"
+        actions={
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              className="min-h-11"
+              disabled={loading || saving}
+              onClick={refresh}
+            >
+              <RefreshCw aria-hidden="true" />
+              刷新列表
+            </Button>
+            <Button
+              className="min-h-11"
+              disabled={saving}
+              onClick={() => select({ kind: "create" })}
+            >
+              <Plus aria-hidden="true" />
+              录入密钥
+            </Button>
+          </div>
+        }
+      />
       {notice ? (
         <div role="status" className="rounded-lg border border-border bg-muted/40 p-4 text-sm">
           {notice}
         </div>
       ) : null}
       {error ? (
-        <div role="alert" className="rounded-lg border border-destructive/40 p-4 text-sm">
-          <p>{error}</p>
+        <div className="rounded-lg border border-destructive/40 p-4 text-sm">
+          <ErrorState message={error} />
           {error === "登录已过期，请重新登录。" ? (
             <Link href="/admin/login" className="mt-2 inline-block underline">
               重新登录
@@ -478,10 +485,7 @@ export function ApiKeysClient() {
       {loading ? (
         <LoadingState label="正在加载密钥列表" />
       ) : page?.items.length === 0 ? (
-        <div role="status" className="rounded-xl border border-dashed p-10 text-center">
-          <KeyRound aria-hidden="true" className="mx-auto mb-3 size-7 text-muted-foreground" />
-          <p className="text-muted-foreground">没有符合条件的密钥。</p>
-        </div>
+        <EmptyState title="没有符合条件的密钥。" />
       ) : page ? (
         <div className="overflow-hidden rounded-xl border bg-surface">
           <div
@@ -490,8 +494,10 @@ export function ApiKeysClient() {
             tabIndex={0}
             className="overflow-x-auto outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            <table className="w-full min-w-[900px] text-left text-sm">
-              <caption className="sr-only">全局提供方密钥的安全摘要</caption>
+            <DataTable
+              className="w-full min-w-[900px] text-left text-sm"
+              caption="全局提供方密钥的安全摘要"
+            >
               <thead className="bg-muted/50">
                 <tr>
                   {["名称 / 提供方", "短指纹", "状态", "更新时间", "操作"].map((label) => (
@@ -582,7 +588,7 @@ export function ApiKeysClient() {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </DataTable>
           </div>
         </div>
       ) : (
@@ -590,31 +596,13 @@ export function ApiKeysClient() {
           重试加载
         </Button>
       )}
-      <footer className="flex flex-wrap items-center justify-between gap-3 text-sm text-muted-foreground">
-        <p aria-live="polite">
-          第 {index + 1} 页 · 本页 {page?.items.length ?? 0} 条
-        </p>
-        <div className="flex gap-2 text-foreground">
-          <Button
-            variant="outline"
-            className="min-h-11 motion-reduce:transition-none"
-            disabled={loading || saving || index === 0}
-            onClick={() => changePage(index - 1)}
-          >
-            <ChevronLeft aria-hidden="true" />
-            上一页
-          </Button>
-          <Button
-            variant="outline"
-            className="min-h-11 motion-reduce:transition-none"
-            disabled={loading || saving || !page?.nextCursor}
-            onClick={() => changePage(index + 1)}
-          >
-            下一页
-            <ChevronRight aria-hidden="true" />
-          </Button>
-        </div>
-      </footer>
+      <AdminPagination
+        summary={page ? `第 ${index + 1} 页 · 本页 ${page.items.length} 条` : "尚未加载列表"}
+        previousDisabled={loading || saving || index === 0}
+        nextDisabled={loading || saving || !page?.nextCursor}
+        onPrevious={() => changePage(index - 1)}
+        onNext={() => changePage(index + 1)}
+      />
     </div>
   );
 }

@@ -1,0 +1,27 @@
+{
+  "command": "docker exec -i 46465dca7b530ef6eae2d8af7824f5435f580ee232d6064838cd62bdebbf5403 psql -X -v ON_ERROR_STOP=1 -U phase014_runner -d phase014_disposable_bf0013251532 -At",
+  "executable": "docker.exe",
+  "arguments": [
+    "exec",
+    "-i",
+    "46465dca7b530ef6eae2d8af7824f5435f580ee232d6064838cd62bdebbf5403",
+    "psql",
+    "-X",
+    "-v",
+    "ON_ERROR_STOP=1",
+    "-U",
+    "phase014_runner",
+    "-d",
+    "phase014_disposable_bf0013251532",
+    "-At"
+  ],
+  "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "stdout": "20260910000000_init_user|b65593d8d8a7a1821a2f65415616e5c083a0e38785bcac2a46ea362d126de3a3\n20260910172735_system_config|25f5d0d35a216ee085fad468f5d69d740610369ff91fcdd0ebe4a188deef45cc\n20260911002217_travel_record_chat_message|761979289b28f413d47c09290f43e9d01ffc22421918103a51d6c67b638bb48f\n20260911042258_audit_log|9707b78108c51f9a10ebfa86fa816d7caf353bcd1f09a0cce2eefcac6b392373\n20260911104017_api_key_config|9bc311e50f3dccc7dc7885a901285fd1f359beb0e3b808bdc1e4c16ab4ce79d1\n20260911151715_auth_session_login_attempt|e4913a97a5ff09d9ee71efaebd58163b8b5f5db9f0fe7747bd07783aed66c08f\n20260912013806_admin_commands|26eac34ab5c30b48adb680a3a770d4454503e3550b3009b4e59cc0dc43e2392d\n20260912061403_key_rotation_contract|21eccfad37e0bf03d758a98f1bc5ef5b6b2bd6bf15d96490f9e923ba3b4eed4f\n",
+  "stderr": "",
+  "durationMs": 269,
+  "startedAt": "2026-09-12T19:20:08.432Z",
+  "finishedAt": "2026-09-12T19:20:08.701Z"
+}

@@ -37,7 +37,7 @@ function readDisposableTarget(value: string | undefined): {
   } catch {
     throw new Error("PHASE007_DATABASE_URL must identify this run's disposable database");
   }
-  const name = /^\/phase(00[789]|01[0123])_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(
+  const name = /^\/phase(00[789]|01[01234])_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(
     target.pathname,
   );
   const allowedOptions = new Set(["schema", "connect_timeout", "pool_timeout", "connection_limit"]);

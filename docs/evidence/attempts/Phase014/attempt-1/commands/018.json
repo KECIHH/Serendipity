@@ -1,0 +1,21 @@
+{
+  "command": "npm exec -- prisma migrate deploy",
+  "executable": "C:\\Program Files\\nodejs\\node.exe",
+  "arguments": [
+    "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+    "exec",
+    "--",
+    "prisma",
+    "migrate",
+    "deploy"
+  ],
+  "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "stdout": "Prisma schema loaded from prisma\\schema.prisma\nDatasource \"db\": PostgreSQL database \"phase014_disposable_bf0013251532\", schema \"public\" at \"127.0.0.1:56610\"\n\n8 migrations found in prisma/migrations\n\nApplying migration `20260910000000_init_user`\nApplying migration `20260910172735_system_config`\nApplying migration `20260911002217_travel_record_chat_message`\nApplying migration `20260911042258_audit_log`\nApplying migration `20260911104017_api_key_config`\nApplying migration `20260911151715_auth_session_login_attempt`\nApplying migration `20260912013806_admin_commands`\nApplying migration `20260912061403_key_rotation_contract`\n\nThe following migration(s) have been applied:\n\nmigrations/\n  └─ 20260910000000_init_user/\n    └─ migration.sql\n  └─ 20260910172735_system_config/\n    └─ migration.sql\n  └─ 20260911002217_travel_record_chat_message/\n    └─ migration.sql\n  └─ 20260911042258_audit_log/\n    └─ migration.sql\n  └─ 20260911104017_api_key_config/\n    └─ migration.sql\n  └─ 20260911151715_auth_session_login_attempt/\n    └─ migration.sql\n  └─ 20260912013806_admin_commands/\n    └─ migration.sql\n  └─ 20260912061403_key_rotation_contract/\n    └─ migration.sql\n      \nAll migrations have been successfully applied.\n",
+  "stderr": "",
+  "durationMs": 1909,
+  "startedAt": "2026-09-12T19:03:49.051Z",
+  "finishedAt": "2026-09-12T19:03:50.960Z"
+}

@@ -1,0 +1,141 @@
+{
+  "phase": 14,
+  "status": "PASS",
+  "simulation": true,
+  "verificationScope": "EVIDENCE_COLLECTOR_ISOLATED_SELF_TEST",
+  "productGate": false,
+  "caseCount": 25,
+  "results": [
+    {
+      "id": "valid-current-input-chain",
+      "status": "PASS",
+      "observation": "ACCEPTED"
+    },
+    {
+      "id": "missing-input",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "tampered-input",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "wrong-parent-commit",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "missing-case",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "changed-denominator",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "wrong-source-coverage",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "tampered-report-input",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "wrong-report-case",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "stale-report-source",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "self-review",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "zero-tests",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "unhandled-error",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "counter-forgery",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "skipped-required-test",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "discovery-omission",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "discovery-wrong-file",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "missing-case-assertions",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "missing-mutation-anchor-require-admin",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "missing-mutation-anchor-public-allowlist",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "missing-mutation-anchor-revision-cas",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "missing-mutation-anchor-audit-atomicity",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "infrastructure-is-not-negative-control",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "wrong-negative-signal",
+      "status": "PASS",
+      "observation": "REJECTED"
+    },
+    {
+      "id": "missing-business-measurements",
+      "status": "PASS",
+      "observation": "REJECTED"
+    }
+  ],
+  "testedSourceHashes": {
+    "docs/phase-plans/phase014-evidence.mjs": "ba1f2d315c83769648c030d3848ef6491d570ecd136996ad6a63f1040daea81d",
+    "docs/phase-plans/phase014-runtime.mjs": "cbaa5b48a9cb8bdfdcbe94afd650d48045b8de81bba0981c6415cff3031587fa",
+    "scripts/phase-evidence.mjs": "454f1911b53a21aed6f014d8cb6b36d748a6f9ec8b8e7547187d45cd20ce96c9",
+    "tests/phase014/evidence-guards.mjs": "7318fe19cbbb3c0e8f889e19115cf8a5b483a656df690b74c5f8faabc02c257b"
+  }
+}

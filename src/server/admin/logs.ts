@@ -48,7 +48,7 @@ export function adminLogsFailure(error: unknown, requestId: string): Response {
   });
 }
 
-const AUDIT_READ_SELECT = {
+export const AUDIT_READ_SELECT = {
   id: true,
   actorId: true,
   action: true,
@@ -74,7 +74,7 @@ function outputDetail(value: unknown): unknown {
     ]),
   );
 }
-function dto(row: AuditRead): AuditSummary {
+export function projectAuditSummary(row: AuditRead): AuditSummary {
   if (
     !Object.hasOwn(AUDIT_LOG_ACTIONS, row.action) ||
     AUDIT_ACTION_TARGETS[row.action as keyof typeof AUDIT_ACTION_TARGETS] !== row.targetType
@@ -172,7 +172,7 @@ export function createAdminLogsService(options: AdminLogsServiceOptions = {}) {
         const items = rows.slice(0, query.limit),
           last = items.at(-1);
         return {
-          items: items.map(dto),
+          items: items.map(projectAuditSummary),
           nextCursor:
             rows.length > query.limit && last
               ? encodeAuditCursor(

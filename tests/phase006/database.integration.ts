@@ -13,7 +13,7 @@ let fixturePrefix: string;
 beforeAll(async () => {
   expect(target.hostname).toBe("127.0.0.1");
   expect(target.pathname).toMatch(
-    /^\/phase(?:00[6789]|01[0123])_disposable_[a-f0-9]{12}(?:_[a-z0-9_]+)?$/,
+    /^\/phase(?:00[6789]|01[01234])_disposable_[a-f0-9]{12}(?:_[a-z0-9_]+)?$/,
   );
   await connectDb();
   const [identity] = await db.$queryRaw<
@@ -25,7 +25,7 @@ beforeAll(async () => {
   `;
   expect(identity.name).toBe(target.pathname.slice(1));
   expect(identity.version).toMatch(/^17\./);
-  const markedPhase = /^\/phase(00[789]|01[0123])_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(
+  const markedPhase = /^\/phase(00[789]|01[01234])_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(
     target.pathname,
   );
   if (markedPhase)

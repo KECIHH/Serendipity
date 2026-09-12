@@ -1,0 +1,26 @@
+{
+  "command": "npm run test -- admin/settings admin/dashboard admin/security --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase014\\attempt-1-restored-card.json",
+  "executable": "C:\\Program Files\\nodejs\\node.exe",
+  "arguments": [
+    "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+    "run",
+    "test",
+    "--",
+    "admin/settings",
+    "admin/dashboard",
+    "admin/security",
+    "--no-file-parallelism",
+    "--reporter=default",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase014\\attempt-1-restored-card.json"
+  ],
+  "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "stdout": "\n> serendipity@0.1.0 test\n> vitest run admin/settings admin/dashboard admin/security --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase014\\attempt-1-restored-card.json\n\n\n RUN  v4.1.11 C:/Users/11295/Desktop/Serendipity · 际遇\n\n ✓ tests/admin/settings.test.ts (8 tests) 14349ms\n     ✓ [settings] reads exact DTOs and updates every group with paired canonical-hash audits  2812ms\n     ✓ [settings] admits exactly one same-timestamp CAS winner and persists restart-safe idempotent replay  3474ms\n     ✓ [settings] rolls back configuration and receipts when audit or receipt persistence fails  2721ms\n     ✓ [settings] rejects invalid persisted keys, group drift and schema bypass instead of displaying a healthy empty list  2601ms\n     ✓ [public-projection] enforces both visibility gates, strips internal fields and changes ETag only for public projection  2730ms\n ✓ tests/admin/security.test.ts (4 tests) 5402ms\n     ✓ [authorization] denies anonymous USER disabled-admin stale/revoked sessions and missing CSRF without configuration side effects  2698ms\n     ✓ [authorization] rechecks actor sessionVersion under the write lock after concurrent revocation  2693ms\n ✓ tests/admin/dashboard.test.ts (6 tests) 14049ms\n     ✓ [dashboard] returns four exact aggregates and the newest ten sanitized audit summaries  3025ms\n     ✓ [dashboard] reports true empty tables as successful zeros and empty audit data  2593ms\n     ✓ [dashboard] isolates a real single-query permission failure and preserves three successful widgets  2664ms\n     ✓ [dashboard] refuses every missing prerequisite migration, checksum drift and each missing table  2814ms\n     ✓ [dashboard] returns safe503 during a real database outage and recovers after reconnection  2948ms\n ✓ tests/admin/settings-client.test.tsx (4 tests) 530ms\n ✓ tests/admin/dashboard-client.test.tsx (2 tests) 213ms\n\n Test Files  5 passed (5)\n      Tests  24 passed (24)\n   Start at  03:04:49\n   Duration  39.32s (transform 561ms, setup 442ms, import 1.72s, tests 34.54s, environment 1.59s)\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase014/attempt-1-restored-card.json\n",
+  "stderr": "",
+  "durationMs": 40324,
+  "startedAt": "2026-09-12T19:04:48.484Z",
+  "finishedAt": "2026-09-12T19:05:28.808Z"
+}

@@ -1,0 +1,26 @@
+{
+  "command": "npm run test -- tests/admin/settings.test.ts -t reads exact DTOs and updates every group with paired canonical-hash audits --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase014\\attempt-1-negative-audit-atomicity.json",
+  "executable": "C:\\Program Files\\nodejs\\node.exe",
+  "arguments": [
+    "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+    "run",
+    "test",
+    "--",
+    "tests/admin/settings.test.ts",
+    "-t",
+    "reads exact DTOs and updates every group with paired canonical-hash audits",
+    "--no-file-parallelism",
+    "--reporter=default",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase014\\attempt-1-negative-audit-atomicity.json"
+  ],
+  "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase014\\fixtures\\audit-atomicity-81sqh1",
+  "exitCode": 1,
+  "signal": null,
+  "timedOut": false,
+  "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/admin/settings.test.ts -t reads exact DTOs and updates every group with paired canonical-hash audits --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase014\\attempt-1-negative-audit-atomicity.json\n\n\n RUN  v4.1.11 C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase014/fixtures/audit-atomicity-81sqh1\n\n ❯ tests/admin/settings.test.ts (8 tests | 1 failed | 7 skipped) 3179ms\n     ↓ [settings] covers all five groups and every registered schema, preserving three private seed defaults\n     ↓ [settings] rejects unknown keys/fields, unbounded JSON, coercion hooks, nonfinite values and invalid revisions\n     ↓ [settings] normalizes bounded notice text with explicit empty/null semantics and canonical hashes\n     × [settings] reads exact DTOs and updates every group with paired canonical-hash audits 3178ms\n     ↓ [settings] admits exactly one same-timestamp CAS winner and persists restart-safe idempotent replay\n     ↓ [settings] rolls back configuration and receipts when audit or receipt persistence fails\n     ↓ [settings] rejects invalid persisted keys, group drift and schema bypass instead of displaying a healthy empty list\n     ↓ [public-projection] enforces both visibility gates, strips internal fields and changes ETag only for public projection\n\n Test Files  1 failed (1)\n      Tests  1 failed | 7 skipped (8)\n   Start at  03:04:44\n   Duration  3.86s (transform 243ms, setup 109ms, import 348ms, tests 3.18s, environment 0ms)\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase014/attempt-1-negative-audit-atomicity.json\n",
+  "stderr": "\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  tests/admin/settings.test.ts > admin/settings PostgreSQL and actual Route Handlers > [settings] reads exact DTOs and updates every group with paired canonical-hash audits\nAssertionError: expected 503 to be 200 // Object.is equality\n\n- Expected\n+ Received\n\n- 200\n+ 503\n\n ❯ responseData tests/admin/settings.test.ts:26:27\n     24| const caps = { aiTimeoutMs: 60_000 };\n     25| const responseData = (response: WorkerResponse) => {\n     26|   expect(response.status).toBe(200);\n       |                           ^\n     27|   const envelope = response.body as { success: boolean; data: unknown;…\n     28|   expect(envelope.success).toBe(true);\n ❯ tests/admin/settings.test.ts:154:45\n ❯ tests/phase014/fixture.ts:75:14\n ❯ withApiKeyDatabase tests/phase013/api-key-fixture.ts:241:12\n ❯ tests/admin/settings.test.ts:137:7\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\n\n",
+  "durationMs": 4882,
+  "startedAt": "2026-09-12T19:04:43.415Z",
+  "finishedAt": "2026-09-12T19:04:48.297Z"
+}

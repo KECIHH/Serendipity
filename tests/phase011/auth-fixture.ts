@@ -6,7 +6,7 @@ import { spawn } from "node:child_process";
 import { PrismaClient } from "@prisma/client";
 
 export interface AuthFixtureConfig {
-  phase: "011" | "012" | "013";
+  phase: "011" | "012" | "013" | "014";
   runId: string;
   database: string;
   user: string;
@@ -23,7 +23,7 @@ export function fixtureConfig(): AuthFixtureConfig {
   assert(file, "Phase011 requires its task-owned database configuration");
   const config = JSON.parse(fs.readFileSync(file, "utf8")) as Omit<AuthFixtureConfig, "phase">;
   assert.match(config.runId, /^[a-f0-9]{12}$/);
-  const match = /^phase(011|012|013)_disposable_([a-f0-9]{12})$/.exec(config.database);
+  const match = /^phase(011|012|013|014)_disposable_([a-f0-9]{12})$/.exec(config.database);
   assert(match, "Auth regression requires an owned Phase011, Phase012 or Phase013 database");
   const phase = match[1] as AuthFixtureConfig["phase"];
   assert.equal(config.database, `phase${phase}_disposable_${config.runId}`);
@@ -137,7 +137,7 @@ export async function withAuthDatabase<T>(
 ): Promise<T> {
   const config = fixtureConfig();
   const database = `${config.database}_a${randomBytes(5).toString("hex")}`;
-  assert.match(database, /^phase(?:011|012|013)_disposable_[a-f0-9]{12}_a[a-f0-9]{10}$/);
+  assert.match(database, /^phase(?:011|012|013|014)_disposable_[a-f0-9]{12}_a[a-f0-9]{10}$/);
   const control = new PrismaClient({ datasourceUrl: config.url, log: [] });
   const [identity] = await control.$queryRaw<
     Array<{ name: string; version: string; marker: string }>

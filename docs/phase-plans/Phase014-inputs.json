@@ -1,0 +1,961 @@
+{
+  "layoutVersion": 2,
+  "phase": 14,
+  "repositoryRoot": ".",
+  "projectRoot": ".",
+  "roadmapRoot": "Serendipity · 际遇",
+  "baselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+  "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+  "phaseStartCommit": "baeab8dc0904c10f6df0b6a3bec931d5eb2a07c0",
+  "manifestHash": "497689843e4576c5f8e8a6636d29b04023ac997309a3ffab83cc67d90ea7bf3e",
+  "requestedThrough": 14,
+  "pinnedInputPolicy": "LOCAL_FILES_WITH_RECORDED_SHA256",
+  "checkpointMigration": {
+    "path": "docs/checkpoint-migrations/history-20260909.json",
+    "sha256": "45bc0742f7b12506a007c84a0f3f9808f2f9b9e8d292a60fab345f4966e1d5b4",
+    "continuationBaselineCommit": "8c5eb222b62c304f00d4b26b1c5f192db13491b9",
+    "importedThrough": 2
+  },
+  "pinnedInputs": [
+    {
+      "id": "manifest",
+      "path": "Serendipity · 际遇/docs/roadmap-execution-manifest.json",
+      "sha256": "497689843e4576c5f8e8a6636d29b04023ac997309a3ffab83cc67d90ea7bf3e"
+    },
+    {
+      "id": "product-requirements",
+      "path": "Serendipity · 际遇/docs/product-requirements.md",
+      "sha256": "320583e7baa5c0b3ee15b13ce0bc4f264e8ff1ae531feb94eb71e1102040854b"
+    },
+    {
+      "id": "terminology",
+      "path": "Serendipity · 际遇/docs/术语冻结表.md",
+      "sha256": "403f21a6063aac79a3a93554156b06d9aff9277e6267c8f9ec17109cff4aff9f"
+    },
+    {
+      "id": "state-machines",
+      "path": "Serendipity · 际遇/docs/state-machines.md",
+      "sha256": "3dab632bd549b26908312b09b166947b2a26128a0298749ba1c7efc6d3d6717a"
+    },
+    {
+      "id": "personal-project-waivers",
+      "path": "Serendipity · 际遇/docs/personal-project-gate-waivers.md",
+      "sha256": "d96657b9165dc737a89da1be92e6e15c04b63480ceb6199e3110061d91463644"
+    },
+    {
+      "id": "phase-mapping",
+      "path": "Serendipity · 际遇/docs/phase-mapping.md",
+      "sha256": "beea3c3dae6a84c118a4f4c8bc6fde143d92c2ae5099f10415a3d2a21264a6d9"
+    },
+    {
+      "id": "canonical-contract",
+      "path": "Serendipity · 际遇/docs/roadmap-canonical-contract.md",
+      "sha256": "06d0ccdb218482a5688d78a9f69a88a0183cedc9d5eac5d0553e224b8d6e27e5"
+    },
+    {
+      "id": "testing-strategy",
+      "path": "Serendipity · 际遇/docs/testing-strategy.md",
+      "sha256": "36d90b927e90916a3dcfd0105022884c8f3c64cb04e22996da4cb4299acc93a5"
+    },
+    {
+      "id": "known-issues-template",
+      "path": "Serendipity · 际遇/docs/known-issues.md",
+      "sha256": "5f36c09ae90c48f21cebd2d6f9b19b3a4d5271f5a41267807a089ff37d9ca02c"
+    },
+    {
+      "id": "agent-only-execution",
+      "path": "Serendipity · 际遇/docs/agent-only-execution-contract.md",
+      "sha256": "032bfac53bce2dff89cb7470ae809f0a802ecf1fdf9f2fc266b465a37f838eff"
+    },
+    {
+      "id": "phase-gate-schema",
+      "path": "Serendipity · 际遇/docs/phase-gate.schema.json",
+      "sha256": "e5c42fa3d46e1d6209f471d0bd6b249c2435c3ccf809dc4c73f4ef4b5f962633"
+    },
+    {
+      "id": "Phase000",
+      "path": "Serendipity · 际遇/Phase000.md",
+      "sha256": "d3297c3523fc4d6f0e094242d3580a9526da53714aa34985d7ce75d231219f31"
+    },
+    {
+      "id": "Phase001",
+      "path": "Serendipity · 际遇/Phase001.md",
+      "sha256": "12f9576b1f9feae95ec875dd2765c6d386f91920941f4aaa69fa7c1716d07d6a"
+    },
+    {
+      "id": "Phase003",
+      "path": "Serendipity · 际遇/Phase003.md",
+      "sha256": "9023e1cb69ab1615b2b33b5814573365c5971c19c12c2286fc620267638845ac"
+    },
+    {
+      "id": "Phase004",
+      "path": "Serendipity · 际遇/Phase004.md",
+      "sha256": "79d046314df50c46165bbc526cd6f3298ed656193b8577f815284e7ddb36d0bd"
+    },
+    {
+      "id": "Phase005",
+      "path": "Serendipity · 际遇/Phase005.md",
+      "sha256": "d3d0d46ea162f337ad59ec108966ab03ada41ac4b5404e6b29f82e4001ca987a"
+    },
+    {
+      "id": "Phase006",
+      "path": "Serendipity · 际遇/Phase006.md",
+      "sha256": "abe939e72fdef42800ff022dcfca7480f71a7e4efa0c834cde69c67c4c5920f5"
+    },
+    {
+      "id": "Phase007",
+      "path": "Serendipity · 际遇/Phase007.md",
+      "sha256": "c20a91d1ff8f6149ef0b74d98a35d16b8a6f6abdb820dfd070440356e3951c3b"
+    },
+    {
+      "id": "Phase008",
+      "path": "Serendipity · 际遇/Phase008.md",
+      "sha256": "63426db05da39293037628838e9e876dc1bcfce1e21e6eee61368eb1e93c1480"
+    },
+    {
+      "id": "Phase009",
+      "path": "Serendipity · 际遇/Phase009.md",
+      "sha256": "184081aaf5151f3b171747f2672da408eafabacde65b1dda1096eabf23e041e1"
+    },
+    {
+      "id": "Phase010",
+      "path": "Serendipity · 际遇/Phase010.md",
+      "sha256": "f3762f3d667f510ea73ed6d5f6a56c78ad0b09ff314e9975c3a3344dcdac3ba6"
+    },
+    {
+      "id": "Phase011",
+      "path": "Serendipity · 际遇/Phase011.md",
+      "sha256": "cdf29b7a5656023898a355dd1c70f2f591a462219a3dba7dc5bd6dcb5bb33cad"
+    },
+    {
+      "id": "Phase012",
+      "path": "Serendipity · 际遇/Phase012.md",
+      "sha256": "84041e87d9438a0a0c90901b0d74366f67bcc7e1cebe2e53b0a18961ca163a1c"
+    },
+    {
+      "id": "Phase013",
+      "path": "Serendipity · 际遇/Phase013.md",
+      "sha256": "52ac1df3cb409c13b9e0e0411e03b4a6644c790cfedbab898097031ef315795e"
+    },
+    {
+      "id": "Phase014",
+      "path": "Serendipity · 际遇/Phase014.md",
+      "sha256": "f1d965c5e1f2c2900f45e027eabe59a76fc8b113123a08fa8197e0001ea87263"
+    },
+    {
+      "id": "Phase015",
+      "path": "Serendipity · 际遇/Phase015.md",
+      "sha256": "66f4829b90b2afb1b5bb0c30b6166fddbd59cb87e6fa6a6e6b01ea7c35517065"
+    },
+    {
+      "id": "Phase016",
+      "path": "Serendipity · 际遇/Phase016.md",
+      "sha256": "70cdb2f29081dc1c2538b41faab3e9a388ad3c42ab60f34199e27486c9e52be3"
+    },
+    {
+      "id": "Phase017",
+      "path": "Serendipity · 际遇/Phase017.md",
+      "sha256": "81858fc7b005068c94a5609d9e7bf1ab4ca9b69b845a0e68fa39f89992430386"
+    },
+    {
+      "id": "Phase018",
+      "path": "Serendipity · 际遇/Phase018.md",
+      "sha256": "1e87e35ccc40f533b014c62686da1223b965126fe39b49a22096b182398fbef5"
+    },
+    {
+      "id": "Phase019",
+      "path": "Serendipity · 际遇/Phase019.md",
+      "sha256": "0efe0dde27bf0390c68a2cb2ef8358ce1dae2955c2f13bd8f5f24e2c9c5379ba"
+    },
+    {
+      "id": "Phase020",
+      "path": "Serendipity · 际遇/Phase020.md",
+      "sha256": "f31de93980806ea443956839e230e5c55183ffeabfdae32bece3dfc96318c479"
+    },
+    {
+      "id": "Phase021",
+      "path": "Serendipity · 际遇/Phase021.md",
+      "sha256": "435d52d2a6c577521fd5452b30c9cad123f226e4e23695093dd87c2cef09ff9c"
+    },
+    {
+      "id": "Phase022",
+      "path": "Serendipity · 际遇/Phase022.md",
+      "sha256": "0bab06ed64ea09b0977736347a823cda1f76354d0240337df289332141f0c4d9"
+    },
+    {
+      "id": "Phase023",
+      "path": "Serendipity · 际遇/Phase023.md",
+      "sha256": "610b984cd70a0c35c328f777b9571e325f9f3199463b4a3aefc886d9803ea517"
+    },
+    {
+      "id": "Phase024",
+      "path": "Serendipity · 际遇/Phase024.md",
+      "sha256": "d4d39a2ff59a08db4aa257d78625d5e2b106ba4692e7c85a7fff8ab34ce91358"
+    },
+    {
+      "id": "Phase025",
+      "path": "Serendipity · 际遇/Phase025.md",
+      "sha256": "a3dccdcca6a5cba58acbaa41a2cdeb886c4c02a4cd37c273600b813398cf64a8"
+    },
+    {
+      "id": "Phase026",
+      "path": "Serendipity · 际遇/Phase026.md",
+      "sha256": "d4e6d519526edb9599b59999ae1a0946816c5395f161d22b7cfd7f98a2736122"
+    },
+    {
+      "id": "Phase027",
+      "path": "Serendipity · 际遇/Phase027.md",
+      "sha256": "fc5805a68f1951b211c62acd57fb6a573b5385d64cdde9420136ff1918f2c0fc"
+    },
+    {
+      "id": "Phase028",
+      "path": "Serendipity · 际遇/Phase028.md",
+      "sha256": "8fc942cc64dbbaa11816a81e874c8b09d61068df8a951e9ac797f0700c2ebd9f"
+    },
+    {
+      "id": "Phase029",
+      "path": "Serendipity · 际遇/Phase029.md",
+      "sha256": "e32eb21dc2db2a214fc72937bcd7cb9905ab8ee227ea5c1bf3a73d3b95aea934"
+    },
+    {
+      "id": "Phase030",
+      "path": "Serendipity · 际遇/Phase030.md",
+      "sha256": "a9f1ab2645b3b43dd4b33a815855dad16007e3525ac44c26981eb49b28cedabb"
+    },
+    {
+      "id": "Phase031",
+      "path": "Serendipity · 际遇/Phase031.md",
+      "sha256": "d275178419b7004647537fd8aa51c37a8ae297d070587c84cfa23e57c371bfa5"
+    },
+    {
+      "id": "Phase032",
+      "path": "Serendipity · 际遇/Phase032.md",
+      "sha256": "e9ab8c96d32225334024669a3d4445e589fbfb287ab51984c6a714b3c41045a0"
+    },
+    {
+      "id": "Phase033",
+      "path": "Serendipity · 际遇/Phase033.md",
+      "sha256": "cba2c01b71c60217e721049f4c5d70e008498a7e459cd16480a27b2ac0ff895e"
+    },
+    {
+      "id": "Phase034",
+      "path": "Serendipity · 际遇/Phase034.md",
+      "sha256": "9cf4001e98ee32cc14f3994efa56be278119668d67e669681af982a20315c096"
+    },
+    {
+      "id": "Phase035",
+      "path": "Serendipity · 际遇/Phase035.md",
+      "sha256": "444b2ded29779fcac44e86d205f75c6141967b04f05efbd4a8840e48adb09136"
+    },
+    {
+      "id": "Phase036",
+      "path": "Serendipity · 际遇/Phase036.md",
+      "sha256": "70c04bdaa9a322b9273473857ef63c4e369918c8507303927925bab4cd535489"
+    },
+    {
+      "id": "Phase037",
+      "path": "Serendipity · 际遇/Phase037.md",
+      "sha256": "231321887ea4dfb7e2bde8298a97c65dff4ac2bbc589e3ecca41695a2b39313f"
+    },
+    {
+      "id": "Phase038",
+      "path": "Serendipity · 际遇/Phase038.md",
+      "sha256": "0f7f034bf37d4b9486e82545381070a9964c5100c4600ac0c9204a67b9ddabb4"
+    },
+    {
+      "id": "Phase039",
+      "path": "Serendipity · 际遇/Phase039.md",
+      "sha256": "1924ee9fab83133ece9db80091af30bc97730475d24687c7c893fffa5010d1fb"
+    },
+    {
+      "id": "Phase040",
+      "path": "Serendipity · 际遇/Phase040.md",
+      "sha256": "905dc8d8af52cb5699b6734b1985767bb256854cf9835c553001de496f3e230e"
+    },
+    {
+      "id": "Phase041",
+      "path": "Serendipity · 际遇/Phase041.md",
+      "sha256": "5d25dc6bad48d9297c9eb86557a7c3b2d1e341cec59867d48b46643aa6212614"
+    },
+    {
+      "id": "Phase042",
+      "path": "Serendipity · 际遇/Phase042.md",
+      "sha256": "060de615d5783128bf19b6ce08a77ac3e3a8026d94769d38bb16798889007399"
+    },
+    {
+      "id": "Phase043",
+      "path": "Serendipity · 际遇/Phase043.md",
+      "sha256": "1f8302fadc9c5838c08a4532782dea7da3f98bf3b69ca58db27a84d3f0aaca90"
+    },
+    {
+      "id": "Phase044",
+      "path": "Serendipity · 际遇/Phase044.md",
+      "sha256": "edc9fc088266faf3db52c160c78b15ac1561330d0bc041f7416bd35c3dc0826e"
+    },
+    {
+      "id": "Phase045",
+      "path": "Serendipity · 际遇/Phase045.md",
+      "sha256": "6099692ef1da788f94d779de140a4e0f44cde273f9235c1ebe650ab1eb62c410"
+    },
+    {
+      "id": "Phase046",
+      "path": "Serendipity · 际遇/Phase046.md",
+      "sha256": "aec1030df22b73478278cb52e81b5fb8fc99ddcef7e36c0f677c71f97ec872dc"
+    },
+    {
+      "id": "Phase047",
+      "path": "Serendipity · 际遇/Phase047.md",
+      "sha256": "2ac43ebd14cb210adddfd00155e6f1a43a2666b693f0ec352e7292999f1a801e"
+    },
+    {
+      "id": "Phase048",
+      "path": "Serendipity · 际遇/Phase048.md",
+      "sha256": "578385b1cb554728a152e6ac1a116fa4322e5f51b52dd6020bd4fb6ab8b78eac"
+    },
+    {
+      "id": "Phase049",
+      "path": "Serendipity · 际遇/Phase049.md",
+      "sha256": "a5add7d70ef3f55d6576f90154d7ed0233cee4c9e6df477ca70a3a192de1152b"
+    },
+    {
+      "id": "Phase050",
+      "path": "Serendipity · 际遇/Phase050.md",
+      "sha256": "11dd587721dfb9d7cd9aa643d8dfdc66ee7fe1d323a346fe77eccc4ee189c944"
+    },
+    {
+      "id": "Phase051",
+      "path": "Serendipity · 际遇/Phase051.md",
+      "sha256": "992a0448e5789b8252df91ef67a97e0488307a9374cbc8be9686ef9340a1944b"
+    },
+    {
+      "id": "Phase052",
+      "path": "Serendipity · 际遇/Phase052.md",
+      "sha256": "d126401c46682e01c72fed65fd911d2afd218954e0f1e8bdc663973ba9e401b3"
+    },
+    {
+      "id": "Phase053",
+      "path": "Serendipity · 际遇/Phase053.md",
+      "sha256": "3a01d996430cf4125aadf85c58b6df3e831c4284099af127a1eab8b4dafb6df8"
+    },
+    {
+      "id": "Phase054",
+      "path": "Serendipity · 际遇/Phase054.md",
+      "sha256": "fedbe1480f22e927685d339fb4c1fa4b2b259e0f198714a08c58532e256ce41d"
+    },
+    {
+      "id": "Phase055",
+      "path": "Serendipity · 际遇/Phase055.md",
+      "sha256": "e28c125314759b51cfeeace1b2c08f81e56087e84010affdbfda2229f9a685e5"
+    },
+    {
+      "id": "Phase056",
+      "path": "Serendipity · 际遇/Phase056.md",
+      "sha256": "4c3eab4afc53c4f192e62bd236afb1420eea1bec1c36bf66b58b157a94638903"
+    },
+    {
+      "id": "Phase057",
+      "path": "Serendipity · 际遇/Phase057.md",
+      "sha256": "90495e21a973a44ca8b38262cdb8182e816118a1a23cd199469f2fc4e4e47a6a"
+    },
+    {
+      "id": "Phase058",
+      "path": "Serendipity · 际遇/Phase058.md",
+      "sha256": "c94aff4fe81600de5a5f60a7c8251f4850d01c532d04b60339baf60f02d3b916"
+    },
+    {
+      "id": "Phase059",
+      "path": "Serendipity · 际遇/Phase059.md",
+      "sha256": "bd9d4c0674f8b1da5870518c0d6b58e40ea5a60bdc797018b867b401714dbd37"
+    },
+    {
+      "id": "Phase060",
+      "path": "Serendipity · 际遇/Phase060.md",
+      "sha256": "14b86d0360063db9b618e13e8257f62e81a3c6b6762ced75b389481295c8e914"
+    },
+    {
+      "id": "Phase061",
+      "path": "Serendipity · 际遇/Phase061.md",
+      "sha256": "4669c5f69bb6781551f16626f421fb13137dc8e91baf3f82bd7b0322de7535ef"
+    },
+    {
+      "id": "Phase062",
+      "path": "Serendipity · 际遇/Phase062.md",
+      "sha256": "8200355118c1223edd17801625102b9280a4924608c9ac0c0755db8f711b85a7"
+    },
+    {
+      "id": "Phase063",
+      "path": "Serendipity · 际遇/Phase063.md",
+      "sha256": "7017e8861d7db9ff8f9887928da1ed343f008ffe445cfe712da88694c61f67f0"
+    },
+    {
+      "id": "Phase064",
+      "path": "Serendipity · 际遇/Phase064.md",
+      "sha256": "a874540c8b895f33284fc863e24076a80fdb6667558819ddff691089b8bf7dc6"
+    },
+    {
+      "id": "Phase065",
+      "path": "Serendipity · 际遇/Phase065.md",
+      "sha256": "bd661062ef8bc3f26e53d9bc325d08c8cfb04c1fc3790c418e8251428b98aa0c"
+    },
+    {
+      "id": "Phase066",
+      "path": "Serendipity · 际遇/Phase066.md",
+      "sha256": "7a9e09085c365c632246e815db3b7a6c9fdfd30f0ff9c07da3f1414d070b9ef9"
+    },
+    {
+      "id": "Phase067",
+      "path": "Serendipity · 际遇/Phase067.md",
+      "sha256": "20f284edc65f9150183402cff7159d8b9aef3568fcd3cae19e4bd305829af4c1"
+    },
+    {
+      "id": "Phase068",
+      "path": "Serendipity · 际遇/Phase068.md",
+      "sha256": "bb82f1ee0193ff26436a257f3446f210ffc23669a8ca1cfe443f6aeed78e8b5a"
+    },
+    {
+      "id": "Phase069",
+      "path": "Serendipity · 际遇/Phase069.md",
+      "sha256": "8c90360ad3c1958c7ba2fc3a9a061ac97cccaa60cf0d3f1e6d19d48db03507b4"
+    },
+    {
+      "id": "Phase070",
+      "path": "Serendipity · 际遇/Phase070.md",
+      "sha256": "1fb0272a8aa5341ea8c93cfaac5071c9929ff081bdda60f030f3b963d73cc9db"
+    },
+    {
+      "id": "Phase071",
+      "path": "Serendipity · 际遇/Phase071.md",
+      "sha256": "770dd843c5979ffccfb4ff4f1035c263521cc8f61cbbc41f83f51d7ea98047b4"
+    },
+    {
+      "id": "Phase072",
+      "path": "Serendipity · 际遇/Phase072.md",
+      "sha256": "73d4dec79b3b3ea434e1de5190d5648e788a4c6036db7989472619852fa0d560"
+    },
+    {
+      "id": "Phase073",
+      "path": "Serendipity · 际遇/Phase073.md",
+      "sha256": "6dd26a2b7cc3749dab1b951fe37958c0925005d73e8a09314d79e038b58ee871"
+    },
+    {
+      "id": "Phase074",
+      "path": "Serendipity · 际遇/Phase074.md",
+      "sha256": "663fedd51dd852a36463cd00ee4c901b86f7ac276a6d2c3892c5f84df45ffa0c"
+    },
+    {
+      "id": "Phase075",
+      "path": "Serendipity · 际遇/Phase075.md",
+      "sha256": "f83c8a2abeff5333c5d812c4069c972bd1c2a03edb2a11f31412fd889b7c58ec"
+    },
+    {
+      "id": "Phase076",
+      "path": "Serendipity · 际遇/Phase076.md",
+      "sha256": "c530ff4cf560ee4e5c932aa05202b66dfc0433ae77b389e0bdc3fe8cd943e844"
+    },
+    {
+      "id": "Phase077",
+      "path": "Serendipity · 际遇/Phase077.md",
+      "sha256": "89f99870631961dc31ba9bd4f8fbcedf00a7d8c0a8625a48d002a5f8b3cd7710"
+    },
+    {
+      "id": "Phase078",
+      "path": "Serendipity · 际遇/Phase078.md",
+      "sha256": "caa741c44d2161b0320861683664ec681ce45e9e768ed4c233bd1901b90c1643"
+    },
+    {
+      "id": "Phase079",
+      "path": "Serendipity · 际遇/Phase079.md",
+      "sha256": "c636782d5001223e372d964fb8c211147ddc92da2fe1c1857a333604f923fe08"
+    },
+    {
+      "id": "Phase080",
+      "path": "Serendipity · 际遇/Phase080.md",
+      "sha256": "4779c6f04bf7d9997fd59698b2c065ab8784adcc7e324d0d0d2de700e8037a23"
+    },
+    {
+      "id": "Phase081",
+      "path": "Serendipity · 际遇/Phase081.md",
+      "sha256": "31d369127bd5049e1abe978a2b9bf51a576e1e811b3cdbf5fb87c61ad4f6aff8"
+    },
+    {
+      "id": "Phase082",
+      "path": "Serendipity · 际遇/Phase082.md",
+      "sha256": "6c8ef24101d8e1d02e27a065eb722b6a5b9a8c16bf71aed3ab2bf2765e21ce82"
+    },
+    {
+      "id": "Phase083",
+      "path": "Serendipity · 际遇/Phase083.md",
+      "sha256": "add10870a789381f9263fa4d85b5a11b4fdbde0d7c3a9b8b97874d578c6e5973"
+    },
+    {
+      "id": "Phase084",
+      "path": "Serendipity · 际遇/Phase084.md",
+      "sha256": "48af27082c237dd30ed8bd388ea71e8236acc20107fa9d24f01004367e56e08c"
+    },
+    {
+      "id": "Phase085",
+      "path": "Serendipity · 际遇/Phase085.md",
+      "sha256": "a0b99a94f7e3417484077202acdf9d832eb9fee07d96911ad4f460511ba8263e"
+    },
+    {
+      "id": "Phase086",
+      "path": "Serendipity · 际遇/Phase086.md",
+      "sha256": "a4e3efa6b2005b01dd958d93f774720d025c827960a4ad713e62db48ee3fdf9e"
+    },
+    {
+      "id": "Phase087",
+      "path": "Serendipity · 际遇/Phase087.md",
+      "sha256": "44be80a3a48b473f3b8ab81f8254a5669ce518d945d7bb1dbfa217bcd9e56d54"
+    },
+    {
+      "id": "Phase088",
+      "path": "Serendipity · 际遇/Phase088.md",
+      "sha256": "0b8a7322f254ba613cdb0ca324a5a413eaf34a446f96d020e383e36e2f93afdf"
+    },
+    {
+      "id": "Phase089",
+      "path": "Serendipity · 际遇/Phase089.md",
+      "sha256": "8d67e0687843bf19902425c9c21ddde4f80d809ac624ddcfb27722c490b5415a"
+    },
+    {
+      "id": "Phase090",
+      "path": "Serendipity · 际遇/Phase090.md",
+      "sha256": "50d7f56fe67540c925c73b59ec00ddf234036ebf1f56ccde025df5148390ca5b"
+    },
+    {
+      "id": "Phase091",
+      "path": "Serendipity · 际遇/Phase091.md",
+      "sha256": "956b1e70076a5a67649ed3f06ef6bb13418037ace66405f1725a39ae34959ead"
+    },
+    {
+      "id": "Phase092",
+      "path": "Serendipity · 际遇/Phase092.md",
+      "sha256": "901425bc98988ff18c3b45dda0697a067f9b2843e2b9162e47d8ee1f30d077eb"
+    },
+    {
+      "id": "Phase093",
+      "path": "Serendipity · 际遇/Phase093.md",
+      "sha256": "1215e671ead655373907f155163708f0894c164c8310af0bfe4295c7a768a8f9"
+    },
+    {
+      "id": "Phase094",
+      "path": "Serendipity · 际遇/Phase094.md",
+      "sha256": "6aab0979112b46775ab4e28ecf027ce8f39d22979d467582c34bf1fb26ea105c"
+    },
+    {
+      "id": "Phase095",
+      "path": "Serendipity · 际遇/Phase095.md",
+      "sha256": "22ffd5535ce57c42cd7cce507c74ea813eb521cef7fb5b5d8c2a3a150178aa04"
+    },
+    {
+      "id": "Phase096",
+      "path": "Serendipity · 际遇/Phase096.md",
+      "sha256": "0e79439da9bb34743e8a54e35d25943dc17444998b4fb1523e7cdad539b46629"
+    },
+    {
+      "id": "Phase097",
+      "path": "Serendipity · 际遇/Phase097.md",
+      "sha256": "d1679626a49b0a4c337c5f234a78af608a854e8a57b163c82a7c14d63150a2e1"
+    },
+    {
+      "id": "Phase098",
+      "path": "Serendipity · 际遇/Phase098.md",
+      "sha256": "8e1f8c8f7a5464c77f9a64dd67a0b47c74eafbab4340debdb3cbbf27d2c2cf35"
+    },
+    {
+      "id": "Phase099",
+      "path": "Serendipity · 际遇/Phase099.md",
+      "sha256": "3aadada5aff490c042d1a0d11fb204944b09cee22a21acb6b2984a8e41c6e764"
+    },
+    {
+      "id": "Phase100",
+      "path": "Serendipity · 际遇/Phase100.md",
+      "sha256": "4502559ca9d0fc487a082fcd21dcd6a4da6ac1fb05ddb3f6f1dc1058b99449bd"
+    },
+    {
+      "id": "Phase101",
+      "path": "Serendipity · 际遇/Phase101.md",
+      "sha256": "3cc65d74213b58ee168091b00c6e9d247b3a701bf63c6628a676df92e8dfd47f"
+    },
+    {
+      "id": "Phase102",
+      "path": "Serendipity · 际遇/Phase102.md",
+      "sha256": "2e21122de5dffe2316b03fde60a96a02868ecb300e3b77e11d7654748f9a9d8f"
+    },
+    {
+      "id": "Phase103",
+      "path": "Serendipity · 际遇/Phase103.md",
+      "sha256": "eb1c25cfa28bfd9acde898bb8c2061a036aeaadafbc45eff03b3eb323a0f85e8"
+    },
+    {
+      "id": "Phase104",
+      "path": "Serendipity · 际遇/Phase104.md",
+      "sha256": "1f387c9e08d14bf624fb63200ae78b0a245c5c32863d018882a784503ff16995"
+    },
+    {
+      "id": "Phase105",
+      "path": "Serendipity · 际遇/Phase105.md",
+      "sha256": "91be234854fe407be9a9763f4f0e5b06a7d8171818d51b4f443aea5c0e663bef"
+    },
+    {
+      "id": "Phase106",
+      "path": "Serendipity · 际遇/Phase106.md",
+      "sha256": "75018ff641b6ecce57a64ec07fee06e080af012c17f0ff4e626b40c5211f88a6"
+    },
+    {
+      "id": "Phase107",
+      "path": "Serendipity · 际遇/Phase107.md",
+      "sha256": "691069b060a30d8e2bc22fbb29fea0af320ea96c39358b3e0d1bd47f9c26de70"
+    },
+    {
+      "id": "Phase108",
+      "path": "Serendipity · 际遇/Phase108.md",
+      "sha256": "d06ba9898d30b91a98a45d6544efc51817e851bef751f012a056c47b43a78966"
+    },
+    {
+      "id": "Phase109",
+      "path": "Serendipity · 际遇/Phase109.md",
+      "sha256": "52f0c7bc5f3c7e82f43a26ec34502b6eb4bc0656f98d5e436ca75f629b4fb2d4"
+    },
+    {
+      "id": "Phase110",
+      "path": "Serendipity · 际遇/Phase110.md",
+      "sha256": "5b9541086698281f4c626883f07727ea84a2b1b2fcaa7033890c16d7931df60d"
+    },
+    {
+      "id": "Phase111",
+      "path": "Serendipity · 际遇/Phase111.md",
+      "sha256": "2b5b115701d795a440c3940a52bacf5326ad9aee69b4ba224f26634fbd18a3cf"
+    },
+    {
+      "id": "Phase112",
+      "path": "Serendipity · 际遇/Phase112.md",
+      "sha256": "ecc933a412d6e9bc045fd7d3d3645e5eef819591463c7bcf5f91faa5cdb41b76"
+    },
+    {
+      "id": "Phase113",
+      "path": "Serendipity · 际遇/Phase113.md",
+      "sha256": "9908f60f1613e8a0bd33cceee09aa0e77988a46f7ac7750e993f098d8ead898f"
+    },
+    {
+      "id": "Phase114",
+      "path": "Serendipity · 际遇/Phase114.md",
+      "sha256": "5dc205b3362bae34a9640ca9df15f2979a2a8b1b589e3ece99c86afe3d453434"
+    },
+    {
+      "id": "Phase115",
+      "path": "Serendipity · 际遇/Phase115.md",
+      "sha256": "f0363c7d2d8c644787b36c581d24b95d42521da64ea55863f782632941524f1d"
+    },
+    {
+      "id": "Phase116",
+      "path": "Serendipity · 际遇/Phase116.md",
+      "sha256": "d7c19afac1061159b6eaff40c26252e12fd33b46629654f3c050a19155664f2d"
+    },
+    {
+      "id": "Phase117",
+      "path": "Serendipity · 际遇/Phase117.md",
+      "sha256": "b3b6609cff8c31387bfd439193cb1755de31c16f787a6815eaf662a4c21c7646"
+    },
+    {
+      "id": "Phase118",
+      "path": "Serendipity · 际遇/Phase118.md",
+      "sha256": "f9ac11620847e276df364ea650452780aabdfc60d095cb2ec95b39e15382934e"
+    },
+    {
+      "id": "Phase119",
+      "path": "Serendipity · 际遇/Phase119.md",
+      "sha256": "eddca7618e9447de8f6eb07c081dcedea812f35df7d23e0d14d0c2e33bb17e14"
+    },
+    {
+      "id": "Phase120",
+      "path": "Serendipity · 际遇/Phase120.md",
+      "sha256": "f874fc606850b272199943afc0518be0d32d748ffd000fffdce24ef809817f09"
+    },
+    {
+      "id": "Phase121",
+      "path": "Serendipity · 际遇/Phase121.md",
+      "sha256": "1e54eac59112049ab30913f432a69127920dba738e1bef7f82d5a1deda1a0d97"
+    },
+    {
+      "id": "Phase122",
+      "path": "Serendipity · 际遇/Phase122.md",
+      "sha256": "1160eae81e9a0db02f6e7f54005ebebbec8da14ef4fc40f3358da500b05054a8"
+    },
+    {
+      "id": "Phase123",
+      "path": "Serendipity · 际遇/Phase123.md",
+      "sha256": "242ab8bdbe4092d70ab7e5ea0610240a925e608e7bdaa9bac45a38c372f889aa"
+    },
+    {
+      "id": "Phase124",
+      "path": "Serendipity · 际遇/Phase124.md",
+      "sha256": "6c988e940e7445967e14d6190a531b71bba7ad86980838fd507a28c5b940b06d"
+    },
+    {
+      "id": "Phase125",
+      "path": "Serendipity · 际遇/Phase125.md",
+      "sha256": "f31ac0d79ecb1f4e265af78cc9a7dc3c955543ff9a94370e45bf23df91f47ad2"
+    },
+    {
+      "id": "Phase126",
+      "path": "Serendipity · 际遇/Phase126.md",
+      "sha256": "26e705a020f356b9414d8b5c7e20d52f31c3dba3c7fe7e418f1eba3363499c6d"
+    },
+    {
+      "id": "Phase127",
+      "path": "Serendipity · 际遇/Phase127.md",
+      "sha256": "b8a0298d1affc5ea5893502fef68888364a728d4f0fdf67ca6f4202f0c7fd962"
+    },
+    {
+      "id": "Phase128",
+      "path": "Serendipity · 际遇/Phase128.md",
+      "sha256": "859b01271a0896b42c99dcbcc9cc5676d2ecb0b771d13d42e329bde669a61b59"
+    },
+    {
+      "id": "Phase129",
+      "path": "Serendipity · 际遇/Phase129.md",
+      "sha256": "a5a7889c4554098765bc9efb871e0fb305a03c4dde305cdb05b49b1ae223adc1"
+    },
+    {
+      "id": "Phase130",
+      "path": "Serendipity · 际遇/Phase130.md",
+      "sha256": "4d2b3f6d364eeb42973aecaa664080d3a60d76e83ef769f44d9e073c54c37ad1"
+    },
+    {
+      "id": "Phase131",
+      "path": "Serendipity · 际遇/Phase131.md",
+      "sha256": "62cdf2112367efb1ff1c3f540e3b031e3bf87aaf600f72a7d362c8ff9b5ba400"
+    },
+    {
+      "id": "Phase132",
+      "path": "Serendipity · 际遇/Phase132.md",
+      "sha256": "0a0dc741fbdd199a7a7d2d08586b5b136ba40b53197d356ee018efe6266bc687"
+    },
+    {
+      "id": "Phase133",
+      "path": "Serendipity · 际遇/Phase133.md",
+      "sha256": "516ae79fe630753f2a47f224311f50eca5c29b795948ab7de81b3fc5baa2c273"
+    },
+    {
+      "id": "Phase134",
+      "path": "Serendipity · 际遇/Phase134.md",
+      "sha256": "f1a2b438f9516187607c4e45bb0a52918222e7f06007dc3e12dc0223cb1f0cca"
+    },
+    {
+      "id": "Phase135",
+      "path": "Serendipity · 际遇/Phase135.md",
+      "sha256": "0d4ed0be5f65a9fe186f0dca278e7dbc71a7ca2ee598e315ece32cd6c7173142"
+    },
+    {
+      "id": "Phase136",
+      "path": "Serendipity · 际遇/Phase136.md",
+      "sha256": "830164ec0d4ea48efa7983fde6884f67a71828f7e167fdd222d25e355c80e899"
+    },
+    {
+      "id": "Phase137",
+      "path": "Serendipity · 际遇/Phase137.md",
+      "sha256": "9f669165a0c76f18ed3e10af9d7909fff413846f19ffe841443085c6e321de5a"
+    }
+  ],
+  "checkpointMaintenance": {
+    "path": "docs/checkpoint-migrations/testing-policy-20260912.json",
+    "sha256": "abdd84536d1a33a2f838019d18051fed4af944f4c99d2286065698cbbf52d68f",
+    "commit": "408f6ae5516069efcaa423cc61ea431e528bd040"
+  },
+  "validationPolicy": {
+    "path": "docs/testing-execution-policy.md",
+    "version": "phase-verification-v1",
+    "sha256": "a1f2666b2a757bf7dccb016e997a60f33a0f91f7612add8d40411e30735f8532"
+  },
+  "executionMaintenance": {
+    "path": "docs/checkpoint-migrations/execution-policy-20260912.json",
+    "sha256": "46519e6a4118a5e0e222dc7de1d8fd3148af158824b9e61204ec2dcd43068e9a",
+    "commit": "baeab8dc0904c10f6df0b6a3bec931d5eb2a07c0"
+  },
+  "executionPolicy": {
+    "path": "docs/development-execution-policy.md",
+    "version": "phase-execution-v2",
+    "sha256": "58b4eaef7fda2a45c69e41feb766d04893d44a7092117410d7e707bc5e7b9320"
+  },
+  "prerequisites": {
+    "phase": 13,
+    "artifactCommit": "1ddff2e0d3c89492cb50268ffcc5cb4673a69a31",
+    "evidencePath": "docs/evidence/Phase013-gate.json",
+    "evidenceHash": "0d3518223c710bf6fd9529d2f60cf2dcedffb87d259356066b3bae3c144af238",
+    "metadataCommit": "7fd6285a2d9cf91b2e2b8f3e725c3b99da9253e2",
+    "schemaPath": "prisma/schema.prisma",
+    "schemaHash": "deddd268b5df678f6db1ad5a7972179b64b2a24dca2068069d3de5de733503f7",
+    "migrations": [
+      {
+        "path": "prisma/migrations/20260910000000_init_user/migration.sql",
+        "sha256": "b65593d8d8a7a1821a2f65415616e5c083a0e38785bcac2a46ea362d126de3a3"
+      },
+      {
+        "path": "prisma/migrations/20260910172735_system_config/migration.sql",
+        "sha256": "25f5d0d35a216ee085fad468f5d69d740610369ff91fcdd0ebe4a188deef45cc"
+      },
+      {
+        "path": "prisma/migrations/20260911002217_travel_record_chat_message/migration.sql",
+        "sha256": "761979289b28f413d47c09290f43e9d01ffc22421918103a51d6c67b638bb48f"
+      },
+      {
+        "path": "prisma/migrations/20260911042258_audit_log/migration.sql",
+        "sha256": "9707b78108c51f9a10ebfa86fa816d7caf353bcd1f09a0cce2eefcac6b392373"
+      },
+      {
+        "path": "prisma/migrations/20260911104017_api_key_config/migration.sql",
+        "sha256": "9bc311e50f3dccc7dc7885a901285fd1f359beb0e3b808bdc1e4c16ab4ce79d1"
+      },
+      {
+        "path": "prisma/migrations/20260911151715_auth_session_login_attempt/migration.sql",
+        "sha256": "e4913a97a5ff09d9ee71efaebd58163b8b5f5db9f0fe7747bd07783aed66c08f"
+      },
+      {
+        "path": "prisma/migrations/20260912013806_admin_commands/migration.sql",
+        "sha256": "26eac34ab5c30b48adb680a3a770d4454503e3550b3009b4e59cc0dc43e2392d"
+      },
+      {
+        "path": "prisma/migrations/20260912061403_key_rotation_contract/migration.sql",
+        "sha256": "21eccfad37e0bf03d758a98f1bc5ef5b6b2bd6bf15d96490f9e923ba3b4eed4f"
+      }
+    ]
+  },
+  "preflight": {
+    "phase": 14,
+    "head": "baeab8dc0904c10f6df0b6a3bec931d5eb2a07c0",
+    "remoteHead": "baeab8dc0904c10f6df0b6a3bec931d5eb2a07c0",
+    "originMain": "baeab8dc0904c10f6df0b6a3bec931d5eb2a07c0",
+    "branch": "main",
+    "remote": "https://github.com/KECIHH/Serendipity.git",
+    "workingTree": "",
+    "ahead": 0,
+    "behind": 0,
+    "completedThrough": 13,
+    "currentPhase": 14,
+    "shells": [
+      {
+        "shell": "Windows PowerShell 5.1",
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 13 -Strict -Json",
+        "exitCode": 0,
+        "result": {
+          "status": "PASS",
+          "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_ADMISSION",
+          "protocolFixture": false,
+          "layoutVersion": 2,
+          "repositoryRoot": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+          "projectRoot": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+          "projectGitPrefix": "",
+          "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+          "completedThrough": 13,
+          "currentPhase": 14,
+          "artifactCommit": "1ddff2e0d3c89492cb50268ffcc5cb4673a69a31",
+          "metadataCommit": "7fd6285a2d9cf91b2e2b8f3e725c3b99da9253e2",
+          "maintenanceHead": "baeab8dc0904c10f6df0b6a3bec931d5eb2a07c0",
+          "admissionOnly": true,
+          "checkpointMaintenance": {
+            "path": "docs/checkpoint-migrations/testing-policy-20260912.json",
+            "sha256": "abdd84536d1a33a2f838019d18051fed4af944f4c99d2286065698cbbf52d68f",
+            "commit": "408f6ae5516069efcaa423cc61ea431e528bd040",
+            "policy": {
+              "path": "docs/testing-execution-policy.md",
+              "version": "phase-verification-v1",
+              "sha256": "a1f2666b2a757bf7dccb016e997a60f33a0f91f7612add8d40411e30735f8532"
+            }
+          },
+          "executionMaintenance": {
+            "path": "docs/checkpoint-migrations/execution-policy-20260912.json",
+            "sha256": "46519e6a4118a5e0e222dc7de1d8fd3148af158824b9e61204ec2dcd43068e9a",
+            "commit": "baeab8dc0904c10f6df0b6a3bec931d5eb2a07c0",
+            "policy": {
+              "path": "docs/development-execution-policy.md",
+              "version": "phase-execution-v2",
+              "sha256": "58b4eaef7fda2a45c69e41feb766d04893d44a7092117410d7e707bc5e7b9320"
+            }
+          },
+          "historicalPhase": 0,
+          "preservedHistoricalFiles": 44,
+          "checkpointImport": {
+            "path": "docs/checkpoint-migrations/history-20260909.json",
+            "sha256": "45bc0742f7b12506a007c84a0f3f9808f2f9b9e8d292a60fab345f4966e1d5b4",
+            "importedThrough": 2,
+            "continuationBaselineCommit": "8c5eb222b62c304f00d4b26b1c5f192db13491b9",
+            "currentHead": "baeab8dc0904c10f6df0b6a3bec931d5eb2a07c0",
+            "admissionOnly": false
+          },
+          "localIgnoredInputsVerified": 151,
+          "contractCoverage": {
+            "numerator": 33,
+            "denominator": 33
+          },
+          "networkPushEvaluated": false
+        }
+      },
+      {
+        "shell": "PowerShell 7",
+        "command": "pwsh -NoProfile -File scripts/validate-phase.ps1 -CompletedThrough 13 -Strict -Json",
+        "exitCode": 0,
+        "result": {
+          "status": "PASS",
+          "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_ADMISSION",
+          "protocolFixture": false,
+          "layoutVersion": 2,
+          "repositoryRoot": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+          "projectRoot": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+          "projectGitPrefix": "",
+          "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+          "completedThrough": 13,
+          "currentPhase": 14,
+          "artifactCommit": "1ddff2e0d3c89492cb50268ffcc5cb4673a69a31",
+          "metadataCommit": "7fd6285a2d9cf91b2e2b8f3e725c3b99da9253e2",
+          "maintenanceHead": "baeab8dc0904c10f6df0b6a3bec931d5eb2a07c0",
+          "admissionOnly": true,
+          "checkpointMaintenance": {
+            "path": "docs/checkpoint-migrations/testing-policy-20260912.json",
+            "sha256": "abdd84536d1a33a2f838019d18051fed4af944f4c99d2286065698cbbf52d68f",
+            "commit": "408f6ae5516069efcaa423cc61ea431e528bd040",
+            "policy": {
+              "path": "docs/testing-execution-policy.md",
+              "version": "phase-verification-v1",
+              "sha256": "a1f2666b2a757bf7dccb016e997a60f33a0f91f7612add8d40411e30735f8532"
+            }
+          },
+          "executionMaintenance": {
+            "path": "docs/checkpoint-migrations/execution-policy-20260912.json",
+            "sha256": "46519e6a4118a5e0e222dc7de1d8fd3148af158824b9e61204ec2dcd43068e9a",
+            "commit": "baeab8dc0904c10f6df0b6a3bec931d5eb2a07c0",
+            "policy": {
+              "path": "docs/development-execution-policy.md",
+              "version": "phase-execution-v2",
+              "sha256": "58b4eaef7fda2a45c69e41feb766d04893d44a7092117410d7e707bc5e7b9320"
+            }
+          },
+          "historicalPhase": 0,
+          "preservedHistoricalFiles": 44,
+          "checkpointImport": {
+            "path": "docs/checkpoint-migrations/history-20260909.json",
+            "sha256": "45bc0742f7b12506a007c84a0f3f9808f2f9b9e8d292a60fab345f4966e1d5b4",
+            "importedThrough": 2,
+            "continuationBaselineCommit": "8c5eb222b62c304f00d4b26b1c5f192db13491b9",
+            "currentHead": "baeab8dc0904c10f6df0b6a3bec931d5eb2a07c0",
+            "admissionOnly": false
+          },
+          "localIgnoredInputsVerified": 151,
+          "contractCoverage": {
+            "numerator": 33,
+            "denominator": 33
+          },
+          "networkPushEvaluated": false
+        }
+      }
+    ],
+    "generatedAt": "2026-09-12 16:47:52 UTC",
+    "remoteVerification": {
+      "command": "git ls-remote origin refs/heads/main",
+      "exitCode": 0,
+      "head": "baeab8dc0904c10f6df0b6a3bec931d5eb2a07c0"
+    },
+    "reportPath": "docs/evidence/attempts/Phase014/setup/preflight.json",
+    "reportHash": "b9db7762e99b222c2fac6b27ef19ca02ed1f21f687099f2a4d2c877eedadcbe8"
+  }
+}

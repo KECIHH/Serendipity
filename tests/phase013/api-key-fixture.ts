@@ -19,7 +19,7 @@ import {
 } from "@/server/admin/key-reference";
 
 export interface ApiKeyFixtureConfig {
-  phase: "012" | "013";
+  phase: "012" | "013" | "014";
   runId: string;
   database: string;
   user: string;
@@ -37,7 +37,7 @@ export function fixtureConfig(): ApiKeyFixtureConfig {
   assert(file, "Phase013 requires its task-owned database configuration");
   const config = JSON.parse(fs.readFileSync(file, "utf8")) as ApiKeyFixtureConfig;
   assert.match(config.runId, /^[a-f0-9]{12}$/);
-  const match = /^phase(012|013)_disposable_([a-f0-9]{12})$/.exec(config.database);
+  const match = /^phase(012|013|014)_disposable_([a-f0-9]{12})$/.exec(config.database);
   assert(match, "Admin regression requires an owned Phase013 or Phase013 database");
   const phase = match[1] as ApiKeyFixtureConfig["phase"];
   assert.equal(config.database, `phase${phase}_disposable_${config.runId}`);
@@ -152,7 +152,7 @@ export async function withApiKeyDatabase<T>(
 ): Promise<T> {
   const config = fixtureConfig();
   const database = `${config.database}_u${randomBytes(5).toString("hex")}`;
-  assert.match(database, /^phase(?:012|013)_disposable_[a-f0-9]{12}_u[a-f0-9]{10}$/);
+  assert.match(database, /^phase(?:012|013|014)_disposable_[a-f0-9]{12}_u[a-f0-9]{10}$/);
   const control = new PrismaClient({ datasourceUrl: config.url, log: [] });
   const [identity] = await control.$queryRaw<
     Array<{ name: string; version: string; marker: string }>
@@ -335,6 +335,8 @@ export interface WorkerRequest {
   origin?: string;
   idempotencyKey?: string;
   body?: unknown;
+  rawBody?: string;
+  headers?: Record<string, string>;
 }
 export interface WorkerResponse {
   status: number;
@@ -348,10 +350,15 @@ export interface ApiKeyWorker {
 }
 
 /** Persistent real Route Handler process; it can be stopped/restarted while PG receipts survive. */
-export async function startApiKeyWorker(fixture: ApiKeyFixture): Promise<ApiKeyWorker> {
+export async function startApiKeyWorker(
+  fixture: ApiKeyFixture,
+  workerPath:
+    | "tests/phase013/api-key-worker.ts"
+    | "tests/phase014/worker.ts" = "tests/phase013/api-key-worker.ts",
+): Promise<ApiKeyWorker> {
   const child = spawn(
     process.execPath,
-    ["--conditions=react-server", "--import", "tsx", "tests/phase013/api-key-worker.ts"],
+    ["--conditions=react-server", "--import", "tsx", workerPath],
     {
       cwd: process.cwd(),
       windowsHide: true,
@@ -538,7 +545,7 @@ export async function createReferenceFixture(fixture: ApiKeyFixture, oldKeyId: s
         (request.headers.authorization ?? "").replace(/^Bearer /, ""),
       );
       const [{ count }] = await fixture.admin.$queryRaw<Array<{ count: bigint }>>`
-        SELECT count(*) FROM pg_stat_activity WHERE datname=current_database() AND usename='phase013_app' AND state='idle in transaction'
+        SELECT count(*) FROM pg_stat_activity WHERE datname=current_database() AND usename=${fixture.config.appUser} AND state='idle in transaction'
       `;
       requests.push({ candidateId, credentialAccepted, transactionOpen: count !== BigInt(0) });
       if (controls.beforeResponse) await controls.beforeResponse();
@@ -588,7 +595,7 @@ export async function createReferenceFixture(fixture: ApiKeyFixture, oldKeyId: s
       "GRANT SELECT,INSERT ON phase013_fixture.versions TO phase013_app",
       "GRANT SELECT,INSERT,UPDATE ON phase013_fixture.activations TO phase013_app",
     ])
-      await fixture.admin.$executeRawUnsafe(sql);
+      await fixture.admin.$executeRawUnsafe(sql.replaceAll("phase013_app", fixture.config.appUser));
     const addReference = async (id: string, keyId = oldKeyId) => {
       assert.match(id, /^[A-Za-z0-9_-]{1,128}$/);
       const versionId = `cfg_${randomUUID()}`,

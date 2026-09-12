@@ -1,0 +1,646 @@
+{
+  "phase": 14,
+  "status": "PASS",
+  "simulation": true,
+  "productionTraffic": false,
+  "notGate": true,
+  "verificationScope": "AUTOMATED_BROWSER_A11Y",
+  "humanScreenReaderExperience": "NOT_EVALUATED",
+  "results": [
+    {
+      "id": "login-navigation",
+      "status": "PASS",
+      "observations": {
+        "anonymousApisDenied": 2,
+        "protectedPagesRedirected": 5,
+        "liveMenus": [
+          "/admin",
+          "/admin/users",
+          "/admin/api-keys",
+          "/admin/logs",
+          "/admin/settings"
+        ],
+        "accessibility": {
+          "violations": 0,
+          "passes": 28,
+          "incomplete": 0,
+          "version": "4.13.0"
+        }
+      }
+    },
+    {
+      "id": "settings-edit-conflict",
+      "status": "PASS",
+      "observations": {
+        "validWrites": 2,
+        "revision": 2,
+        "matchingAudits": 2,
+        "staleStatus": 409,
+        "invalidJsonPrevented": true,
+        "focusRestored": [
+          "save",
+          "escape",
+          "cancel"
+        ],
+        "accessibility": {
+          "violations": 0,
+          "passes": 27,
+          "incomplete": 0,
+          "version": "4.13.0"
+        }
+      }
+    },
+    {
+      "id": "dashboard-states",
+      "status": "PASS",
+      "observations": {
+        "realRequestHeldForLoading": true,
+        "trueEmptyTravelRecords": true,
+        "failedWidgets": 1,
+        "preservedWidgets": 3,
+        "databaseOutageStatus": 503,
+        "sameServerRecovered": true
+      }
+    },
+    {
+      "id": "settings-states",
+      "status": "PASS",
+      "observations": {
+        "loading": "REAL_REQUEST_DELAY",
+        "failure": "POSTGRESQL_PERMISSION_DENIED",
+        "empty": "REAL_EMPTY_GROUP",
+        "recovered": true,
+        "postOutageReads": [
+          503,
+          503,
+          200
+        ]
+      }
+    },
+    {
+      "id": "mobile-keyboard",
+      "status": "PASS",
+      "observations": {
+        "widths": [
+          {
+            "path": "/admin",
+            "viewport": 375,
+            "document": 375,
+            "reads": [
+              200
+            ]
+          },
+          {
+            "path": "/admin/users",
+            "viewport": 375,
+            "document": 375,
+            "reads": [
+              503,
+              503,
+              200
+            ]
+          },
+          {
+            "path": "/admin/api-keys",
+            "viewport": 375,
+            "document": 375,
+            "reads": [
+              503,
+              503,
+              200
+            ]
+          },
+          {
+            "path": "/admin/logs",
+            "viewport": 375,
+            "document": 375,
+            "reads": [
+              503,
+              503,
+              200
+            ]
+          },
+          {
+            "path": "/admin/settings",
+            "viewport": 375,
+            "document": 375,
+            "reads": [
+              200
+            ]
+          }
+        ],
+        "keyboardNavigation": [
+          "Enter",
+          "End",
+          "Escape"
+        ],
+        "automatedAxeViolations": 0
+      }
+    },
+    {
+      "id": "authorization-sessions",
+      "status": "PASS",
+      "observations": {
+        "deniedStatuses": [
+          403,
+          403,
+          401,
+          401,
+          403
+        ],
+        "unauthorizedWrites": 0,
+        "userPageRedirected": true,
+        "oldSessionRejected": true,
+        "disabledAdminRejected": true
+      }
+    },
+    {
+      "id": "logout",
+      "status": "PASS",
+      "observations": {
+        "apiStatus": 401,
+        "databaseRevokedSessions": 1
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/dashboard-desktop-axe.json",
+      "sha256": "0af866a19001673feeae4eb6ead4b8886dac65ed57601e67a9aaa6f5d7d974f1"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/dashboard-desktop.png",
+      "sha256": "fbfc92dadece8588144fb23f0b62fffb904832cdbd54a31d8860e1a121c65cb4"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/dashboard-desktop.html",
+      "sha256": "d356d2746d08dc79f044c6e4f372649770cab0c8f5bb54a7b8c4749d3c87ba58"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/settings-desktop-axe.json",
+      "sha256": "e89b74a96a21cb5b38f16f500aaa7e6dec4c183b57a7a1e587b43213d1caebfe"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/settings-desktop.png",
+      "sha256": "394033ee695282c3d95d95425e5f003c54e1606bd9ea8c89e91635de313b9b4b"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/settings-desktop.html",
+      "sha256": "f9aeb6f1aaa50ca587245d663f702fa8501bbb6aec7142482dd0b673dbdcd61f"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/dashboard-loading.png",
+      "sha256": "00cea5224910549f06b8b9b125f7de3664aa3c40d5e0154db706e216fe2c6504"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/dashboard-loading.html",
+      "sha256": "ee2fda404415bfde8cf8d7168e196ac127df8f9c9f9b1577050fc330b8da1bfd"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/dashboard-empty-records.png",
+      "sha256": "8ddd3811f24dbd1bd88ccb27ff41dd5269eb16a560a59bd44b6c437261ae1adb"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/dashboard-empty-records.html",
+      "sha256": "f0155743dfc6f5f9f4dd76659d2f91e7425c1377ad5d8a53aa1196dfab7942cf"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/dashboard-partial-failure.png",
+      "sha256": "6b87b24a43f2607ae94b4c40bf10ac6f51f0f948a4c82a77f111367c79ad16b9"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/dashboard-partial-failure.html",
+      "sha256": "1df650796090817d573d3d9a3487fea8749216c8a3b66263c98990240c9df5eb"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/dashboard-database-failure.png",
+      "sha256": "9a86d401b9bb665930be96c8acaf8482ad1a6b7b52f8b3a83592503c5aa62cdb"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/dashboard-database-failure.html",
+      "sha256": "9940aec1058ba160f9d6ae120268f68508a52a58d666456d0e20111ea22c8021"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/settings-loading.png",
+      "sha256": "c01e021625b5ead057f59b2d8fcd67f673904c4b05efd66743df8c8996d9bf00"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/settings-loading.html",
+      "sha256": "adedd52275b0673f4afd1fd2e4205d9757be85c4ff8b2684a97322324eae0805"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/settings-error.png",
+      "sha256": "e85d340a40b77f40b3d5ca82796379610c23da14ab7b5d6e2f886d3aab462f9f"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/settings-error.html",
+      "sha256": "93d8fe3a8ef347186954dbcfb84044d702fdd35108e243853fb45547c03a13b8"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/settings-empty.png",
+      "sha256": "e26dc5080dc05a9bffe881e4e1482f86572a9125287e34d0b19066ada5ba29eb"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/settings-empty.html",
+      "sha256": "393998c00f24d8383c9cbccbfd71472dd7429e41f4d92a787c3ff4d153b7e388"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/mobile-admin-axe.json",
+      "sha256": "9f1888cd983c69dcb0ca2c974d6ec3bab88d4bc50ba423ea1086d16e70407a71"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/mobile-admin.png",
+      "sha256": "ca1d639ced18f7cbe5734d4c9a5e8c15bead66b6b80554d9cf068e33ee5f3d3c"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/mobile-admin.html",
+      "sha256": "f0155743dfc6f5f9f4dd76659d2f91e7425c1377ad5d8a53aa1196dfab7942cf"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/mobile-users-axe.json",
+      "sha256": "caf6fea3063564e8247112131fe158e50eb201fda0c46f86260882761a046dca"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/mobile-users.png",
+      "sha256": "a8e752c0e00b4c143df4815fb71122bc8df02593acb950565378403f36f92b06"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/mobile-users.html",
+      "sha256": "686bdd34624c56eee9ccdf16e34149813e7f15957100eceeafc7e192a2e730ef"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/mobile-api-keys-axe.json",
+      "sha256": "857398ec5094d8b73232e9eddcbfd037ec29516c371407ec11534aeaffaa299b"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/mobile-api-keys.png",
+      "sha256": "a6e28fb6282943deaaee5cd6ad89b7f0f43f3c7744f20918bd7fb72a65e282a7"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/mobile-api-keys.html",
+      "sha256": "6f877e7e9b99cf9928d9f7c6f179bd6e080c9213ba66ee5ca435a3eb44949d31"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/mobile-logs-axe.json",
+      "sha256": "55aaf4aafed6cf563552fdc13abfc581d785cd3d4c5e4fd5a78cf8c103489b1e"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/mobile-logs.png",
+      "sha256": "1ebd0fbd605b86f63e1edd22dbd93221ada0a3bd9b4a3c0685eb688e61fa0b88"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/mobile-logs.html",
+      "sha256": "7c08a81802703c01c4d00505881dcd9ebb1e879609c05462f1246b7ebdc1010b"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/mobile-settings-axe.json",
+      "sha256": "8bca063512a7bda9927c7f2aaf726595f86994310a3489fbc4d1bd1b7f85f331"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/mobile-settings.png",
+      "sha256": "7ce3b873795f532e69dbd31891684c2d9a88f9669948781ef879b01a7e5294de"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/mobile-settings.html",
+      "sha256": "cdaebaf5799079aeb572efe987d3644b1612b39d7cdcac4aaddec23d10e390b2"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/logged-out.png",
+      "sha256": "e95206bdd357a44e2a38fa5af39e3500df92934977be01e2fefb511c90da075a"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-6-assets/logged-out.html",
+      "sha256": "37bfd53890728f35db2e674d9b2a50ab4a37cc731a999a2061e49e0740c34d61"
+    }
+  ],
+  "commands": [
+    {
+      "command": "npm run start (isolated browser)",
+      "ready": true,
+      "stoppedByFixture": true,
+      "stdout": "\n> serendipity@0.1.0 start\n> node --import tsx scripts/auth-server.mjs --hostname 127.0.0.1 --port 61396\n\nSerendipity listening on 127.0.0.1:61396\n",
+      "stderr": "",
+      "durationMs": 14479,
+      "nodeNetworkGuard": {
+        "sourcePath": "tests/phase006/cli-network-guard.cjs",
+        "sourceHash": "da1e1020f2d0f5f171f1a721dfa2c3412a2901d858eee176ed730f45f0ad2ab7",
+        "preparedHash": "44622266617a206cd2439bebc93f3773e55be324735650bf5345942d6930c9db",
+        "requests": 0,
+        "publicRequests": 0
+      }
+    }
+  ],
+  "responseEvidence": [
+    {
+      "path": "/api/admin/dashboard/stats",
+      "status": 200,
+      "method": "GET",
+      "bytes": 2467,
+      "sha256": "40fb0fbafe183ca2f739ff07a38dcb4e92f092caf63fce321a74211bcbef6c72"
+    },
+    {
+      "path": "/api/admin/users",
+      "status": 200,
+      "method": "GET",
+      "bytes": 343,
+      "sha256": "fbfc46245c333f4ed5c8de782a49a803048b28d7e0f42343288c8cd513c50fd7"
+    },
+    {
+      "path": "/api/admin/api-keys",
+      "status": 200,
+      "method": "GET",
+      "bytes": 105,
+      "sha256": "025c0736600b3a4cfeba1c02c30d1d36948e1a4cd6aba4f6700a7c52cc261567"
+    },
+    {
+      "path": "/api/admin/logs",
+      "status": 200,
+      "method": "GET",
+      "bytes": 2169,
+      "sha256": "ed4f97306835b2283dfb27b3968f1071ecfb3155e23a6f6d12a308a48c6a3f8d"
+    },
+    {
+      "path": "/api/admin/dashboard/stats",
+      "status": 200,
+      "method": "GET",
+      "bytes": 2467,
+      "sha256": "a3c3a93f4f371895c6dc1a4833fad54a4a0f81fd23719045157a00f3e33dc13d"
+    },
+    {
+      "path": "/api/admin/settings",
+      "status": 200,
+      "method": "GET",
+      "bytes": 1393,
+      "sha256": "2705467e352b92e0d11c4fb86a84de412c170c4734869b4ca9ba4e3642c561e3"
+    },
+    {
+      "path": "/api/admin/settings",
+      "status": 200,
+      "method": "GET",
+      "bytes": 1393,
+      "sha256": "5cf421900f37129ee52b7300f6180433cf386ef8be7769a99173d6999435d55a"
+    },
+    {
+      "path": "/api/admin/settings/planner.quick.defaultDurationDays",
+      "status": 200,
+      "method": "PATCH",
+      "bytes": 260,
+      "sha256": "81ac0560a3cf93cc9f1c7a726edfb7ccaa5ef655b63bef5b769c0de63d5525ad"
+    },
+    {
+      "path": "/api/admin/settings/planner.quick.defaultDurationDays",
+      "status": 409,
+      "method": "PATCH",
+      "bytes": 407,
+      "sha256": "c6c6085734fe635171a900b3b0d92c0628bf1c9b438079f237961535bd4f08a6"
+    },
+    {
+      "path": "/api/admin/settings",
+      "status": 200,
+      "method": "GET",
+      "bytes": 1393,
+      "sha256": "286ef8bd7bad363fd9b31a789ed6fafcae652b37ecfa6ccc652bf5fac9dde2fa"
+    },
+    {
+      "path": "/api/admin/dashboard/stats",
+      "status": 200,
+      "method": "GET",
+      "bytes": 3733,
+      "sha256": "0306378bdfc1b9fb5344f07c9fc4f389cc9881033e9373fea3ea3ac38641acd2"
+    },
+    {
+      "path": "/api/admin/dashboard/stats",
+      "status": 200,
+      "method": "GET",
+      "bytes": 3689,
+      "sha256": "b1c73f633eaed67c22c5bf27a48ea5f8df4b1b320157c204184d14fffb4c4b6d"
+    },
+    {
+      "path": "/api/admin/dashboard/stats",
+      "status": 200,
+      "method": "GET",
+      "bytes": 3733,
+      "sha256": "3d149e21b1f11977d3994137fff0591482359dfe70b4e2b703ac096652cb86db"
+    },
+    {
+      "path": "/api/admin/dashboard/stats",
+      "status": 503,
+      "method": "GET",
+      "bytes": 136,
+      "sha256": "c63190dfd18598aeb1bceaaf6bdfab9739c166408d87e7553daf2efe4b6f2024"
+    },
+    {
+      "path": "/api/admin/dashboard/stats",
+      "status": 503,
+      "method": "GET",
+      "bytes": 136,
+      "sha256": "086d64070f8822088873b61262bebf4dd12ad378abb939a15a0124126346c7ef"
+    },
+    {
+      "path": "/api/admin/dashboard/stats",
+      "status": 503,
+      "method": "GET",
+      "bytes": 136,
+      "sha256": "cc9a98cf7600f7259d1811573c159a61b4d54fcfdcc3f1e247f934b0f62e78d9"
+    },
+    {
+      "path": "/api/admin/dashboard/stats",
+      "status": 503,
+      "method": "GET",
+      "bytes": 142,
+      "sha256": "90abbe06b29ae0d1cd1aaf0fb49d070c094132e46230f30dbeb9ab3451124625"
+    },
+    {
+      "path": "/api/admin/dashboard/stats",
+      "status": 503,
+      "method": "GET",
+      "bytes": 140,
+      "sha256": "fe158af7ece9ad3a64afd0dd0ac19468ed61111f08d91af4d88e8c4dfcec2596"
+    },
+    {
+      "path": "/api/admin/dashboard/stats",
+      "status": 200,
+      "method": "GET",
+      "bytes": 3733,
+      "sha256": "e0a84a8337ddd134941e62888f6a4af3a3f40881e5c2dd64c7171beb99545b1e"
+    },
+    {
+      "path": "/api/admin/settings",
+      "status": 503,
+      "method": "GET",
+      "bytes": 142,
+      "sha256": "ff6f25e762e9e12f80a8c4885fe448f6295328f40172627de6ce88b9de1a3511"
+    },
+    {
+      "path": "/api/admin/settings",
+      "status": 503,
+      "method": "GET",
+      "bytes": 140,
+      "sha256": "9202751c0c083a32e493a0b065c6fb57cc9e91b0f28963d9c57100cb1915319a"
+    },
+    {
+      "path": "/api/admin/settings",
+      "status": 200,
+      "method": "GET",
+      "bytes": 1393,
+      "sha256": "913e7d8003e09657e4eb2411137012228ef8f8ee751308f3a8a81f96c241cac7"
+    },
+    {
+      "path": "/api/admin/settings",
+      "status": 503,
+      "method": "GET",
+      "bytes": 142,
+      "sha256": "dd7672468ea0bd6bebd1e3e81cc447a2a1265967c6576d2eb6bd9e208f456ceb"
+    },
+    {
+      "path": "/api/admin/settings",
+      "status": 200,
+      "method": "GET",
+      "bytes": 1393,
+      "sha256": "6127804db5dba82b41d5bce71bc1280c8c0693a2f6d71f490e5965763739d68b"
+    },
+    {
+      "path": "/api/admin/settings",
+      "status": 200,
+      "method": "GET",
+      "bytes": 1146,
+      "sha256": "87e8b00bb936f3af0b543fee7a38c5e2ec8e90de5ccb80894dd2003579154750"
+    },
+    {
+      "path": "/api/admin/settings",
+      "status": 200,
+      "method": "GET",
+      "bytes": 1393,
+      "sha256": "400ade8121e892a4ab33b7fc7fa63bf1d634d588403760df152c340a184e53d0"
+    },
+    {
+      "path": "/api/admin/dashboard/stats",
+      "status": 200,
+      "method": "GET",
+      "bytes": 3733,
+      "sha256": "6ebfdc9dca2a7def209ac73631488bd62f29f9e0b0c18f361f0a0369b8c87964"
+    },
+    {
+      "path": "/api/admin/users",
+      "status": 503,
+      "method": "GET",
+      "bytes": 166,
+      "sha256": "caec662696887b66d3d3472a7c81fe116a9d874ff3afcfa1c05f34cae2cc75dc"
+    },
+    {
+      "path": "/api/admin/users",
+      "status": 503,
+      "method": "GET",
+      "bytes": 166,
+      "sha256": "f961999aff40a1b56150396e4852bbd4c9bb46b4e9dbdbc8145e3666d64de642"
+    },
+    {
+      "path": "/api/admin/users",
+      "status": 200,
+      "method": "GET",
+      "bytes": 343,
+      "sha256": "d7fd97a3ba9378a6dfd44603f421635bd8ce9ac6e4877c0c67b7264766ee78f8"
+    },
+    {
+      "path": "/api/admin/api-keys",
+      "status": 503,
+      "method": "GET",
+      "bytes": 160,
+      "sha256": "dd46607a8e9f8d2414958227247858e2c6944673f2cca6450286b8060c1eb3f0"
+    },
+    {
+      "path": "/api/admin/api-keys",
+      "status": 503,
+      "method": "GET",
+      "bytes": 160,
+      "sha256": "c2f6c7470e25c43a49419141712f469a8b00c5fdfb1e0b19b2a4f2f079134c92"
+    },
+    {
+      "path": "/api/admin/api-keys",
+      "status": 200,
+      "method": "GET",
+      "bytes": 105,
+      "sha256": "c68802df87c705db49d85601ffc0d2fb9fa3036a51ff407ae3f35ba1d50cb70b"
+    },
+    {
+      "path": "/api/admin/logs",
+      "status": 503,
+      "method": "GET",
+      "bytes": 142,
+      "sha256": "0d0469ccc26b4f9388bf9504ec3efffdc5611d3be106128b2a147b06428fd471"
+    },
+    {
+      "path": "/api/admin/logs",
+      "status": 503,
+      "method": "GET",
+      "bytes": 142,
+      "sha256": "45291f8d645202d393b8429d528f30f3bf115f5f3f8036d5cc1dc8b2eee5a5c3"
+    },
+    {
+      "path": "/api/admin/logs",
+      "status": 200,
+      "method": "GET",
+      "bytes": 3435,
+      "sha256": "b64e7fbd0534f88c0b1bc72e9036d584996a387e9259c93639773957c8fc6a38"
+    },
+    {
+      "path": "/api/admin/settings",
+      "status": 200,
+      "method": "GET",
+      "bytes": 1393,
+      "sha256": "f042011d272c94cf4cb9874a0a00d9d5b197f3188109c3bdee7695c13fbc7231"
+    },
+    {
+      "path": "/api/admin/dashboard/stats",
+      "status": 200,
+      "method": "GET",
+      "bytes": 5091,
+      "sha256": "8e719deac43e96739f76735ae3694714bae2394d1650678a1edbf4068eebd569"
+    }
+  ],
+  "loginAttempts": [
+    {
+      "audience": "ADMIN",
+      "statuses": [
+        200
+      ]
+    },
+    {
+      "audience": "USER",
+      "statuses": [
+        503,
+        503,
+        503,
+        200
+      ]
+    },
+    {
+      "audience": "ADMIN",
+      "statuses": [
+        200
+      ]
+    },
+    {
+      "audience": "ADMIN",
+      "statuses": [
+        200
+      ]
+    }
+  ],
+  "browserVersion": "140.0.7339.186",
+  "serverOrigin": "http://127.0.0.1:61396",
+  "externalRequestCount": 0,
+  "localRequestCount": 237,
+  "privacyFailures": 0,
+  "secretScans": {
+    "httpBodies": 39,
+    "html": 22,
+    "browserStorage": 1,
+    "logs": 17,
+    "audit": 0,
+    "trace": 1,
+    "evidence": 1,
+    "hits": 0
+  },
+  "credentials": "SYNTHETIC_NOT_ARCHIVED"
+}

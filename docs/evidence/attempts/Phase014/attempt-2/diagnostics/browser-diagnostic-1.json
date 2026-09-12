@@ -1,0 +1,221 @@
+{
+  "phase": 14,
+  "status": "FAIL",
+  "simulation": true,
+  "productionTraffic": false,
+  "notGate": true,
+  "verificationScope": "AUTOMATED_BROWSER_A11Y",
+  "humanScreenReaderExperience": "NOT_EVALUATED",
+  "results": [
+    {
+      "id": "login-navigation",
+      "status": "PASS",
+      "observations": {
+        "anonymousApisDenied": 2,
+        "protectedPagesRedirected": 5,
+        "liveMenus": [
+          "/admin",
+          "/admin/users",
+          "/admin/api-keys",
+          "/admin/logs",
+          "/admin/settings"
+        ],
+        "accessibility": {
+          "violations": 0,
+          "passes": 28,
+          "incomplete": 0,
+          "version": "4.13.0"
+        }
+      }
+    },
+    {
+      "id": "settings-edit-conflict",
+      "status": "PASS",
+      "observations": {
+        "validWrites": 2,
+        "revision": 2,
+        "matchingAudits": 2,
+        "staleStatus": 409,
+        "invalidJsonPrevented": true,
+        "focusRestored": [
+          "save",
+          "escape",
+          "cancel"
+        ],
+        "accessibility": {
+          "violations": 0,
+          "passes": 27,
+          "incomplete": 0,
+          "version": "4.13.0"
+        }
+      }
+    },
+    {
+      "id": "dashboard-states",
+      "status": "FAIL",
+      "diagnostic": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n2 !== 1\n\n    at <anonymous> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase014\\browser.mjs:513:18)\n    at async caseRun (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase014\\browser.mjs:71:26)\n    at async <anonymous> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase014\\browser.mjs:487:7)\n    at async withApiKeyDatabase (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase013\\api-key-fixture.ts:241:12)\n    at async run (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase014\\browser.mjs:288:3)\n    at async <anonymous> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase014\\browser.mjs:746:3)"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-1-assets/dashboard-desktop-axe.json",
+      "sha256": "dfdc5b20170b5ca95e35bdc17b648f8a8bde8d7849cbc762559b1b1f03c5e730"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-1-assets/dashboard-desktop.png",
+      "sha256": "7e8b345c5127fa0f9ebaeb648840a831d097f3d44221edc5a90db99858713fda"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-1-assets/dashboard-desktop.html",
+      "sha256": "d9d0123ec6c90ba8346c727d9ea37e89ee707599dfebf7ef9b58534f30974b69"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-1-assets/settings-desktop-axe.json",
+      "sha256": "d9178508c67e02079eea1d4aecb474bf1449d6fb79741c177dbf4c56673d25d4"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-1-assets/settings-desktop.png",
+      "sha256": "394033ee695282c3d95d95425e5f003c54e1606bd9ea8c89e91635de313b9b4b"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-1-assets/settings-desktop.html",
+      "sha256": "f9aeb6f1aaa50ca587245d663f702fa8501bbb6aec7142482dd0b673dbdcd61f"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-1-assets/dashboard-loading.png",
+      "sha256": "00cea5224910549f06b8b9b125f7de3664aa3c40d5e0154db706e216fe2c6504"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-1-assets/dashboard-loading.html",
+      "sha256": "ee2fda404415bfde8cf8d7168e196ac127df8f9c9f9b1577050fc330b8da1bfd"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-1-assets/dashboard-empty-records.png",
+      "sha256": "3b605be3e80329c4899b2da2a98c67c1f99f53372b7c58fd9781855c81fea9b9"
+    },
+    {
+      "path": ".scaffold/phase014/browser-diagnostic-1-assets/dashboard-empty-records.html",
+      "sha256": "3bd2408d448ce40fadb3745a45b66f4ee3a9c43335e4c6204a9db9d29c63d126"
+    }
+  ],
+  "commands": [
+    {
+      "command": "npm run start (isolated browser)",
+      "ready": true,
+      "stoppedByFixture": true,
+      "stdout": "\n> serendipity@0.1.0 start\n> node --import tsx scripts/auth-server.mjs --hostname 127.0.0.1 --port 62608\n\nSerendipity listening on 127.0.0.1:62608\n",
+      "stderr": "",
+      "durationMs": 8109,
+      "nodeNetworkGuard": {
+        "sourcePath": "tests/phase006/cli-network-guard.cjs",
+        "sourceHash": "da1e1020f2d0f5f171f1a721dfa2c3412a2901d858eee176ed730f45f0ad2ab7",
+        "preparedHash": "44622266617a206cd2439bebc93f3773e55be324735650bf5345942d6930c9db",
+        "requests": 0,
+        "publicRequests": 0
+      }
+    }
+  ],
+  "responseEvidence": [
+    {
+      "path": "/api/admin/dashboard/stats",
+      "status": 200,
+      "method": "GET",
+      "bytes": 2467,
+      "sha256": "6edf22aa23448551abccb45cf01f324a25963707fb8975aec31129a5282f1298"
+    },
+    {
+      "path": "/api/admin/users",
+      "status": 200,
+      "method": "GET",
+      "bytes": 343,
+      "sha256": "6d9c3b3bc887a6f7339b0f6a9dbf51b639019c640216bd4600e2b7a86c683416"
+    },
+    {
+      "path": "/api/admin/api-keys",
+      "status": 200,
+      "method": "GET",
+      "bytes": 105,
+      "sha256": "d7be581a54a866720dbf746e99c3c21a84d0781aa4847e18b0cc11cca311d0e6"
+    },
+    {
+      "path": "/api/admin/logs",
+      "status": 200,
+      "method": "GET",
+      "bytes": 2169,
+      "sha256": "aaf9f40e49ac766016a6a17d608b0dc1bb3b35d83182409ebc4202ae9faba857"
+    },
+    {
+      "path": "/api/admin/settings",
+      "status": 200,
+      "method": "GET",
+      "bytes": 1393,
+      "sha256": "61e06474e91824d3e5ec717055317f2ab623b6b8435510973ea9563a2e6f7438"
+    },
+    {
+      "path": "/api/admin/dashboard/stats",
+      "status": 200,
+      "method": "GET",
+      "bytes": 2467,
+      "sha256": "5fc2ea86e5f4c2f1cd6dced82594ac8c1a3b70691be6815ceefc401fc099004e"
+    },
+    {
+      "path": "/api/admin/settings",
+      "status": 200,
+      "method": "GET",
+      "bytes": 1393,
+      "sha256": "88ed402c307f44be705bff0d040987c987338caa76e9e8a52e9203b2506005f1"
+    },
+    {
+      "path": "/api/admin/settings/planner.quick.defaultDurationDays",
+      "status": 200,
+      "method": "PATCH",
+      "bytes": 260,
+      "sha256": "83f39a826c46395d89f444373929296795bdcac9b0549eb3b891bb156e038c7d"
+    },
+    {
+      "path": "/api/admin/settings/planner.quick.defaultDurationDays",
+      "status": 409,
+      "method": "PATCH",
+      "bytes": 407,
+      "sha256": "2f14449769f4e5f1062946aa6ab15c023ad41404e31ea4428afcdda3eac74b04"
+    },
+    {
+      "path": "/api/admin/settings",
+      "status": 200,
+      "method": "GET",
+      "bytes": 1393,
+      "sha256": "fc9fa51554e299857f827e7fa4f88c5c4cc2449d5f52f73256d1134ad32f7523"
+    },
+    {
+      "path": "/api/admin/dashboard/stats",
+      "status": 200,
+      "method": "GET",
+      "bytes": 3733,
+      "sha256": "508274824e97d96b365f1260ece25d9c959e3fdd8cdb7bdeb6b9c346e7a7bf8e"
+    },
+    {
+      "path": "/api/admin/dashboard/stats",
+      "status": 200,
+      "method": "GET",
+      "bytes": 3689,
+      "sha256": "ae5c695c50ae26708ecb18442975c740210efbacf318edccac25d36823f9716d"
+    }
+  ],
+  "browserVersion": "140.0.7339.186",
+  "serverOrigin": "http://127.0.0.1:62608",
+  "externalRequestCount": 0,
+  "localRequestCount": 115,
+  "privacyFailures": 0,
+  "secretScans": {
+    "httpBodies": 13,
+    "html": 6,
+    "browserStorage": 0,
+    "logs": 3,
+    "audit": 0,
+    "trace": 1,
+    "evidence": 1,
+    "hits": 0
+  },
+  "credentials": "SYNTHETIC_NOT_ARCHIVED",
+  "diagnostic": "Error: Browser case dashboard-states failed\n    at caseRun (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase014\\browser.mjs:75:11)\n    at async <anonymous> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase014\\browser.mjs:487:7)\n    at async withApiKeyDatabase (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase013\\api-key-fixture.ts:241:12)\n    at async run (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase014\\browser.mjs:288:3)\n    at async <anonymous> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase014\\browser.mjs:746:3)"
+}

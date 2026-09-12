@@ -1,5 +1,7 @@
 import "server-only";
 
+import { parseSettingPatch, type SettingPatch } from "@/lib/admin-settings";
+
 import { createHash } from "node:crypto";
 import { Prisma, type AdminCommandReceipt } from "@prisma/client";
 import {
@@ -125,7 +127,7 @@ export function makeAdminCommandIdentity(input: {
   operationId: string;
   resourceId: string;
   idempotencyKey: string;
-  payload: AdminUserPatch | FingerprintPayload | AdminKeyCommandPayload;
+  payload: AdminUserPatch | FingerprintPayload | AdminKeyCommandPayload | SettingPatch;
 }): AdminCommandIdentity {
   try {
     if (
@@ -136,15 +138,17 @@ export function makeAdminCommandIdentity(input: {
     }
     const operationId = safeDomain(input.operationId);
     const payload =
-      operationId === ADMIN_USER_OPERATION
-        ? parseAdminUserPatch(input.payload)
-        : operationId === "post.admin.api-keys"
-          ? keyPayload(input.payload, false)
-          : operationId === "post.admin.api-keys.id.rotate"
-            ? keyPayload(input.payload, true)
-            : operationId === "patch.admin.api-keys.id"
-              ? parseApiKeyPatch(input.payload)
-              : fingerprintPayload(input.payload);
+      operationId === "patch.admin.settings.key"
+        ? parseSettingPatch(input.payload)
+        : operationId === ADMIN_USER_OPERATION
+          ? parseAdminUserPatch(input.payload)
+          : operationId === "post.admin.api-keys"
+            ? keyPayload(input.payload, false)
+            : operationId === "post.admin.api-keys.id.rotate"
+              ? keyPayload(input.payload, true)
+              : operationId === "patch.admin.api-keys.id"
+                ? parseApiKeyPatch(input.payload)
+                : fingerprintPayload(input.payload);
     return Object.freeze({
       ownerUserId: parseAdminUserId(input.ownerUserId),
       operationId,

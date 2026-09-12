@@ -305,7 +305,7 @@ function validateSummary(value: Json): void {
     } else if (key === "seedRunId") {
       if (typeof item !== "string" || !/^(phase[0-9]{3}|serendipity)_[a-f0-9]{12}$/.test(item))
         invalid();
-    } else if (["seedFingerprint", "ipHash", "accountHash"].includes(key)) {
+    } else if (["seedFingerprint", "ipHash", "accountHash", "valueHash"].includes(key)) {
       if (typeof item !== "string" || !/^[a-f0-9]{64}$/.test(item)) invalid();
     } else if (key === "changedFields") {
       if (

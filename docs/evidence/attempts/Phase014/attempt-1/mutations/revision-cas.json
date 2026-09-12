@@ -1,0 +1,17 @@
+{
+  "id": "revision-cas",
+  "file": "src/server/admin/settings.ts",
+  "testFile": "tests/admin/settings.test.ts",
+  "pattern": "admits exactly one same-timestamp CAS winner and persists restart-safe idempotent replay",
+  "caseId": "Phase014:settings",
+  "failure": "expected [ 200, 200 ] to deeply equal [ 200, 409 ]",
+  "fixture": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase014\\fixtures\\revision-cas-J9depT",
+  "changes": [
+    {
+      "sourcePath": "src/server/admin/settings.ts",
+      "originalHash": "35c0dfa5dab123538742f42b0fc8d0185a78ee26dd3f38cab35d2c99a9a760a0",
+      "mutatedHash": "39c6a6e16e8b47743d38e505bce59b0736e5fe9729ea56eb20da8a9c3385a22a"
+    }
+  ],
+  "testSourceHash": "96d554c5a46e30e9ef4a0a82018c2de954d25c82f155e384c5878dc8e84d902b"
+}

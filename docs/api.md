@@ -557,3 +557,7 @@ assistant.delta的payload固定commandId/deltaIndex/text；只当前连接、以
 机器块中的三条 forbiddenRoutes 是唯一禁止清单：HTTP期望均404，registry producerCount=0；不能添加转发、别名或deprecation handler。`node docs/phase-plans/verify-phase002.mjs --case forbidden-routes` 检查声明、registry与生产目录，临时副本插入旧路由必须非零。本卡无HTTP应用，因此当前证据是静态契约与文件扫描，不声称已发请求得到404；Phase023以后使用真实HTTP存在性反向测试。
 
 API检查逐项验证100/100 operation映射、完整生成区、字段闭合/类型引用、path身份不重复body/query、3.9/3.10关键拒绝fixture、事件/权限/错误/幂等规则与支持文档。hash检查逐项审计全部17处声明（含Replan的3分支），直接读取旅行摘要的requirementHash pattern、数据库Char(64)及固定Phase015/025/043编码来源，拒绝需求/内容摘要与计划前缀格式混用。生成器核对manifest及producer/evolvesAt卡的固定hash，拒绝重复路径（含相同动态路径形状）、错误producer和未登记App Router端点。插入第二张端点表、更改producer或删除DTO必失败；恢复输入后重新运行。公开事件的语义与持久重放序列分别由validateEventEnvelope/validateReplayEvents验证，覆盖合法中段窗口、互斥/重复终态与终态后的消息/进度；debug只在独立ADMIN上下文消费其已注册payload。当前与未来生产者的Schema/集成测试分别承担其实际HTTP、事务、外呼和撤权验收，文档检查不替代后续行为Gate。
+
+## Phase014 实现说明
+
+管理设置 GET/PATCH、Dashboard stats 与公开配置 GET 已实现；端点和 exact DTO 仍以本文件生成区为准。设置更新的 key 仅取 URL，expectedVersion 比较 revision，Idempotency-Replayed 响应头标识原安全结果重放。公开 ETag 只依赖公开投影；管理响应 no-store。Dashboard 逐 widget 返回 ok/error，前置迁移漂移或服务整体故障503。实现边界和新增配置流程见 [管理指南](admin.md) 与 [Phase014](phase014.md)。

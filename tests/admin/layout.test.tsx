@@ -23,6 +23,8 @@ import AdminPage from "@/app/admin/(protected)/page";
 import AdminUsersPage from "@/app/admin/(protected)/users/page";
 import AdminApiKeysPage from "@/app/admin/(protected)/api-keys/page";
 import AdminLogsPage from "@/app/admin/(protected)/logs/page";
+import AdminSettingsPage from "@/app/admin/(protected)/settings/page";
+import { DashboardClient } from "@/components/admin/dashboard-client";
 import AdminLoginPage from "@/app/admin/(public)/login/page";
 import { activeAdminHref, ADMIN_NAV } from "@/components/admin/admin-nav";
 import { AdminShell } from "@/components/layout/admin-shell";
@@ -62,9 +64,11 @@ describe("admin/layout navigation and route boundaries", () => {
       });
     const links = ADMIN_NAV.filter((item) => item.kind === "link");
     expect(links.map((item) => item.href)).toEqual([
+      "/admin",
       "/admin/users",
       "/admin/api-keys",
       "/admin/logs",
+      "/admin/settings",
     ]);
     for (const item of links) expect(routes, `Missing page for ${item.href}`).toContain(item.href);
     expect(ADMIN_NAV.filter((item) => item.kind === "action")).toEqual([
@@ -86,6 +90,7 @@ describe("admin/layout navigation and route boundaries", () => {
       "/admin/api-keys",
       "/admin/login",
       "/admin/logs",
+      "/admin/settings",
       "/admin/users",
     ]);
   });
@@ -130,15 +135,16 @@ describe("admin/layout navigation and route boundaries", () => {
     );
   });
 
-  it("redirects the protected index to users and guards the users page independently", async () => {
-    await expect(AdminPage()).rejects.toThrow("redirect:/admin/users");
+  it("renders the protected dashboard and guards all five pages independently", async () => {
+    expect((await AdminPage()).type).toBe(DashboardClient);
     expect(boundary.guard).toHaveBeenCalledOnce();
     const page = await AdminUsersPage();
     expect(page.props).toEqual({ currentUserId: currentUser.id });
     expect(boundary.guard).toHaveBeenCalledTimes(2);
     await AdminApiKeysPage();
     await AdminLogsPage();
-    expect(boundary.guard).toHaveBeenCalledTimes(4);
+    await AdminSettingsPage();
+    expect(boundary.guard).toHaveBeenCalledTimes(5);
   });
 
   it.each([401, 403] as const)(
@@ -156,7 +162,8 @@ describe("admin/layout navigation and route boundaries", () => {
       await expect(AdminPage()).rejects.toThrow("redirect:/admin/login");
       await expect(AdminApiKeysPage()).rejects.toThrow("redirect:/admin/login");
       await expect(AdminLogsPage()).rejects.toThrow("redirect:/admin/login");
-      expect(boundary.redirect).toHaveBeenCalledTimes(5);
+      await expect(AdminSettingsPage()).rejects.toThrow("redirect:/admin/login");
+      expect(boundary.redirect).toHaveBeenCalledTimes(6);
     },
   );
 
@@ -167,6 +174,8 @@ describe("admin/layout navigation and route boundaries", () => {
     await expect(AdminUsersPage()).rejects.toBe(error);
     await expect(AdminApiKeysPage()).rejects.toBe(error);
     await expect(AdminLogsPage()).rejects.toBe(error);
+    await expect(AdminSettingsPage()).rejects.toBe(error);
+    await expect(AdminPage()).rejects.toBe(error);
     expect(boundary.redirect).not.toHaveBeenCalled();
   });
 
@@ -183,7 +192,7 @@ describe("admin/layout navigation and route boundaries", () => {
     fireEvent.keyDown(users, { key: "ArrowDown" });
     expect(within(navigation).getByRole("link", { name: "密钥管理" })).toHaveFocus();
     fireEvent.keyDown(logout, { key: "Home" });
-    expect(users).toHaveFocus();
+    expect(within(navigation).getByRole("link", { name: "Dashboard" })).toHaveFocus();
     fireEvent.keyDown(users, { key: "End" });
     expect(logout).toHaveFocus();
     fireEvent.keyDown(logout, { key: "Escape" });

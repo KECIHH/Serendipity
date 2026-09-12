@@ -660,3 +660,7 @@ API Key使用版本化AES-256-GCM envelope，当前key来自ENCRYPTION_KEY；enc
 密码不trim/lowercase/Unicode改写，UTF-8长度12-72 bytes后使用bcryptjs cost 12；超过72必须拒绝，不能让bcrypt截断。会话token、匿名token、分享token、反馈/数据请求receipt和Idempotency-Key原文不落库；分别存tokenHash、anonTokenHash及领域hash，IP/account用服务端HMAC减少离线枚举。sessionVersion用于全部session撤销，退出仍单行CAS撤销。
 
 权限、隐私水位和业务状态在读取/发送前重新验证。普通业务删除遵循注册表Restrict/Cascade/SetNull和pin；专用ERASE先独立ledger意图、再禁读/清理/outbox对账，恢复备份先重放水位，不因备份回滚或token轮换复活私人数据。不可变业务版本保留不意味着永久保留已要求删除的个人正文。
+
+## Phase014 配置与 Dashboard 消费
+
+Phase014 复用八个既有迁移、SystemConfig 与 AdminCommandReceipt；schema 和历史迁移字节不变。设置 CAS 使用 revision，更新、CONFIG_UPDATE 审计及安全响应收据在同一 Serializable 事务中完成。审计存 canonical valueHash 与版本差异。Dashboard 读取前核对全部已完成迁移的 checksum 及十个前置表，单查询故障与空表区分。registry 与受审 provisioning 规则见 [管理指南](admin.md)。

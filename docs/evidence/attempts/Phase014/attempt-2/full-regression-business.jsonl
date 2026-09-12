@@ -1,0 +1,9 @@
+{"kind":"group-writes","counts":{"writes":5,"audits":5,"receipts":5}}
+{"kind":"cas-idempotency","counts":{"statuses":[200,409],"winnerRevision":1,"sameTimestamp":true,"auditsAfterReplayAndNextWrite":2}}
+{"kind":"rollback-AuditLog","counts":{"unchanged":true,"audits":0,"receipts":0}}
+{"kind":"rollback-AdminCommandReceipt","counts":{"unchanged":true,"audits":0,"receipts":0}}
+{"kind":"public-projection","counts":{"projectedItems":1,"privateFieldsVisible":false,"emptyItems":0,"conditionalStatus":304}}
+{"kind":"dashboard-partial","counts":{"failedWidgets":1,"successfulWidgets":3,"failedWidgetHasData":false}}
+{"kind":"readiness","counts":{"missingMigrationChecks":8,"missingTableChecks":10,"checksumDriftChecks":1}}
+{"kind":"database-recovery","counts":{"recoveredStatus":200}}
+{"kind":"authorization","counts":{"unchanged":true,"unauthorizedAudits":0,"unauthorizedReceipts":0}}

@@ -2,9 +2,14 @@
 
 import { useCallback, useEffect, useId, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, Pencil, RefreshCw } from "lucide-react";
+import { Pencil, RefreshCw } from "lucide-react";
 
 import { fetchAuthCsrf } from "@/components/auth/login-form";
+import { PageHeader } from "@/components/common/page-header";
+import { DataTable } from "@/components/common/data-table";
+import { EmptyState } from "@/components/common/empty-state";
+import { ErrorState } from "@/components/common/error-state";
+import { AdminPagination } from "@/components/admin/admin-pagination";
 import { LoadingState } from "@/components/common/loading-state";
 import { Button } from "@/components/ui/button";
 import type { AdminUserDto, AdminUserPage } from "@/lib/admin-users";
@@ -313,29 +318,24 @@ export function UsersClient({ currentUserId }: Readonly<{ currentUserId: string 
 
   return (
     <section aria-labelledby={`${id}-title`} className="space-y-4">
-      <div className="flex flex-wrap items-start justify-between gap-3">
-        <div className="space-y-1">
-          <h1
-            id={`${id}-title`}
-            ref={titleRef}
-            tabIndex={-1}
-            className="text-2xl leading-8 font-semibold"
+      <PageHeader
+        title="用户管理"
+        titleId={`${id}-title`}
+        titleRef={titleRef}
+        description="查看账户状态，管理用户的访问权限。"
+        actions={
+          <Button
+            type="button"
+            variant="outline"
+            className="min-h-11 border-input"
+            disabled={browsingDisabled}
+            onClick={() => void loadPage(appliedFilters, cursors)}
           >
-            用户管理
-          </h1>
-          <p className="text-sm text-zinc-600">查看账户状态，管理用户的访问权限。</p>
-        </div>
-        <Button
-          type="button"
-          variant="outline"
-          className="min-h-11 border-input"
-          disabled={browsingDisabled}
-          onClick={() => void loadPage(appliedFilters, cursors)}
-        >
-          <RefreshCw aria-hidden="true" />
-          刷新列表
-        </Button>
-      </div>
+            <RefreshCw aria-hidden="true" />
+            刷新列表
+          </Button>
+        }
+      />
 
       <form
         aria-label="筛选用户"
@@ -425,9 +425,7 @@ export function UsersClient({ currentUserId }: Readonly<{ currentUserId: string 
         </div>
       ) : null}
       {loadError ? (
-        <p role="alert" className="text-sm text-destructive">
-          {loadError}
-        </p>
+        <ErrorState message={loadError} onRetry={() => void loadPage(appliedFilters, cursors)} />
       ) : null}
       {needsLogin ? (
         <Link href="/admin/login" className="inline-flex min-h-11 items-center text-sm underline">
@@ -442,8 +440,10 @@ export function UsersClient({ currentUserId }: Readonly<{ currentUserId: string 
         aria-busy={loading}
         className="max-w-full overflow-x-auto border bg-surface"
       >
-        <table className="w-full min-w-[48rem] border-collapse text-left">
-          <caption className="sr-only">用户账户、权限状态和管理操作</caption>
+        <DataTable
+          className="w-full min-w-[48rem] border-collapse text-left"
+          caption="用户账户、权限状态和管理操作"
+        >
           <thead className="sticky top-0 bg-zinc-50 text-sm">
             <tr>
               <th scope="col" className={cellClass}>
@@ -520,7 +520,7 @@ export function UsersClient({ currentUserId }: Readonly<{ currentUserId: string 
             {page?.items.length === 0 && !loadError ? (
               <tr>
                 <td colSpan={7} className="p-6 text-sm text-zinc-600">
-                  当前筛选下无用户。
+                  <EmptyState title="当前筛选下无用户。" />
                 </td>
               </tr>
             ) : null}
@@ -532,41 +532,23 @@ export function UsersClient({ currentUserId }: Readonly<{ currentUserId: string 
               </tr>
             ) : null}
           </tbody>
-        </table>
+        </DataTable>
       </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="text-sm text-zinc-600" aria-live="polite">
-          {page ? `第 ${cursors.length} 页 · 本页 ${page.items.length} 位用户` : "尚未加载用户"}
-          {loading && page ? " · 正在刷新…" : ""}
-        </p>
-        <div className="flex gap-2">
-          <Button
-            type="button"
-            variant="outline"
-            className="min-h-11 border-input"
-            aria-label="上一页"
-            disabled={browsingDisabled || cursors.length < 2}
-            onClick={() => void loadPage(appliedFilters, cursors.slice(0, -1))}
-          >
-            <ChevronLeft aria-hidden="true" />
-            上一页
-          </Button>
-          <Button
-            type="button"
-            variant="outline"
-            className="min-h-11 border-input"
-            aria-label="下一页"
-            disabled={browsingDisabled || !page?.nextCursor}
-            onClick={() => {
-              if (page?.nextCursor) void loadPage(appliedFilters, [...cursors, page.nextCursor]);
-            }}
-          >
-            下一页
-            <ChevronRight aria-hidden="true" />
-          </Button>
-        </div>
-      </div>
+      <AdminPagination
+        summary={
+          <>
+            {page ? `第 ${cursors.length} 页 · 本页 ${page.items.length} 位用户` : "尚未加载用户"}
+            {loading && page ? " · 正在刷新…" : ""}
+          </>
+        }
+        previousDisabled={browsingDisabled || cursors.length < 2}
+        nextDisabled={browsingDisabled || !page?.nextCursor}
+        onPrevious={() => void loadPage(appliedFilters, cursors.slice(0, -1))}
+        onNext={() => {
+          if (page?.nextCursor) void loadPage(appliedFilters, [...cursors, page.nextCursor]);
+        }}
+      />
 
       {selected ? (
         <form

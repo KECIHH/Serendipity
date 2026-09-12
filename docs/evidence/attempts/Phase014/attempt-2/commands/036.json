@@ -1,0 +1,26 @@
+{
+  "command": "npm run test -- tests/admin/settings.test.ts -t admits exactly one same-timestamp CAS winner and persists restart-safe idempotent replay --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase014\\attempt-2-negative-revision-cas.json",
+  "executable": "C:\\Program Files\\nodejs\\node.exe",
+  "arguments": [
+    "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+    "run",
+    "test",
+    "--",
+    "tests/admin/settings.test.ts",
+    "-t",
+    "admits exactly one same-timestamp CAS winner and persists restart-safe idempotent replay",
+    "--no-file-parallelism",
+    "--reporter=default",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase014\\attempt-2-negative-revision-cas.json"
+  ],
+  "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase014\\fixtures\\revision-cas-BHd1vS",
+  "exitCode": 1,
+  "signal": null,
+  "timedOut": false,
+  "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/admin/settings.test.ts -t admits exactly one same-timestamp CAS winner and persists restart-safe idempotent replay --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase014\\attempt-2-negative-revision-cas.json\n\n\n RUN  v4.1.11 C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase014/fixtures/revision-cas-BHd1vS\n\n ❯ tests/admin/settings.test.ts (8 tests | 1 failed | 7 skipped) 3223ms\n     ↓ [settings] covers all five groups and every registered schema, preserving three private seed defaults\n     ↓ [settings] rejects unknown keys/fields, unbounded JSON, coercion hooks, nonfinite values and invalid revisions\n     ↓ [settings] normalizes bounded notice text with explicit empty/null semantics and canonical hashes\n     ↓ [settings] reads exact DTOs and updates every group with paired canonical-hash audits\n     × [settings] admits exactly one same-timestamp CAS winner and persists restart-safe idempotent replay 3221ms\n     ↓ [settings] rolls back configuration and receipts when audit or receipt persistence fails\n     ↓ [settings] rejects invalid persisted keys, group drift and schema bypass instead of displaying a healthy empty list\n     ↓ [public-projection] enforces both visibility gates, strips internal fields and changes ETag only for public projection\n\n Test Files  1 failed (1)\n      Tests  1 failed | 7 skipped (8)\n   Start at  03:20:51\n   Duration  3.91s (transform 255ms, setup 109ms, import 361ms, tests 3.22s, environment 0ms)\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase014/attempt-2-negative-revision-cas.json\n",
+  "stderr": "\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  tests/admin/settings.test.ts > admin/settings PostgreSQL and actual Route Handlers > [settings] admits exactly one same-timestamp CAS winner and persists restart-safe idempotent replay\nAssertionError: expected [ 200, 200 ] to deeply equal [ 200, 409 ]\n\n- Expected\n+ Received\n\n  [\n    200,\n-   409,\n+   200,\n  ]\n\n ❯ tests/admin/settings.test.ts:215:57\n    213|         const commands = [patch(actor, key, 6), patch(actor, key, 8)];\n    214|         const results = await Promise.all(commands.map((command) => wo…\n    215|         expect(results.map((row) => row.status).sort()).toEqual([200, …\n       |                                                         ^\n    216|         const winnerIndex = results.findIndex((row) => row.status === …\n    217|         const winner = parseAdminSetting(responseData(results[winnerIn…\n ❯ tests/phase014/fixture.ts:75:14\n ❯ withApiKeyDatabase tests/phase013/api-key-fixture.ts:241:12\n ❯ tests/admin/settings.test.ts:207:7\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\n\n",
+  "durationMs": 4960,
+  "startedAt": "2026-09-12T19:20:50.345Z",
+  "finishedAt": "2026-09-12T19:20:55.305Z"
+}

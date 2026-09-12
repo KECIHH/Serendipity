@@ -2,8 +2,13 @@
 
 import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, RefreshCw } from "lucide-react";
+import { RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { PageHeader } from "@/components/common/page-header";
+import { DataTable } from "@/components/common/data-table";
+import { EmptyState } from "@/components/common/empty-state";
+import { ErrorState } from "@/components/common/error-state";
+import { AdminPagination } from "@/components/admin/admin-pagination";
 import { LoadingState } from "@/components/common/loading-state";
 import { isAuditLogPage, type AuditLogPage } from "@/lib/admin-logs";
 
@@ -119,24 +124,22 @@ export function LogsClient() {
 
   return (
     <div className="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 lg:p-8">
-      <header className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight">审计日志</h1>
-          <p className="mt-2 text-sm text-muted-foreground">
-            查看管理操作与安全结果。敏感内容已脱敏。
-          </p>
-        </div>
-        <Button
-          type="button"
-          variant="outline"
-          className="min-h-11"
-          disabled={loading}
-          onClick={() => void load(filters, cursors[index])}
-        >
-          <RefreshCw aria-hidden="true" />
-          刷新日志
-        </Button>
-      </header>
+      <PageHeader
+        title="审计日志"
+        description="查看管理操作与安全结果。敏感内容已脱敏。"
+        actions={
+          <Button
+            type="button"
+            variant="outline"
+            className="min-h-11"
+            disabled={loading}
+            onClick={() => void load(filters, cursors[index])}
+          >
+            <RefreshCw aria-hidden="true" />
+            刷新日志
+          </Button>
+        }
+      />
       <form
         ref={filterForm}
         onSubmit={search}
@@ -204,8 +207,8 @@ export function LogsClient() {
       {loading ? (
         <LoadingState label="正在加载审计日志" />
       ) : error ? (
-        <div role="alert" className="rounded-xl border p-5">
-          <p>{error}</p>
+        <div className="rounded-xl border p-5">
+          <ErrorState message={error} />
           {authRequired ? (
             <Link className="mt-3 inline-block underline" href="/admin/login">
               重新登录
@@ -221,12 +224,7 @@ export function LogsClient() {
           )}
         </div>
       ) : page?.items.length === 0 ? (
-        <div
-          role="status"
-          className="rounded-xl border border-dashed p-10 text-center text-muted-foreground"
-        >
-          没有符合条件的审计日志。
-        </div>
+        <EmptyState title="没有符合条件的审计日志。" />
       ) : (
         <div className="overflow-hidden rounded-xl border bg-surface">
           <div
@@ -235,8 +233,7 @@ export function LogsClient() {
             tabIndex={0}
             className="overflow-x-auto outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            <table className="w-full min-w-[820px] text-left text-sm">
-              <caption className="sr-only">只读审计记录</caption>
+            <DataTable className="w-full min-w-[820px] text-left text-sm" caption="只读审计记录">
               <thead className="bg-muted/50">
                 <tr>
                   {["时间", "操作者", "操作", "目标", "安全摘要"].map((label) => (
@@ -277,35 +274,17 @@ export function LogsClient() {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </DataTable>
           </div>
         </div>
       )}
-      <footer className="flex flex-wrap items-center justify-between gap-3 text-sm text-muted-foreground">
-        <p aria-live="polite">
-          第 {index + 1} 页 · 本页 {page?.items.length ?? 0} 条
-        </p>
-        <div className="flex gap-2 text-foreground">
-          <Button
-            variant="outline"
-            className="min-h-11 motion-reduce:transition-none"
-            disabled={loading || index === 0}
-            onClick={() => changePage(index - 1)}
-          >
-            <ChevronLeft aria-hidden="true" />
-            上一页
-          </Button>
-          <Button
-            variant="outline"
-            className="min-h-11 motion-reduce:transition-none"
-            disabled={loading || !page?.nextCursor}
-            onClick={() => changePage(index + 1)}
-          >
-            下一页
-            <ChevronRight aria-hidden="true" />
-          </Button>
-        </div>
-      </footer>
+      <AdminPagination
+        summary={page ? `第 ${index + 1} 页 · 本页 ${page.items.length} 条` : "尚未加载列表"}
+        previousDisabled={loading || index === 0}
+        nextDisabled={loading || !page?.nextCursor}
+        onPrevious={() => changePage(index - 1)}
+        onNext={() => changePage(index + 1)}
+      />
     </div>
   );
 }

@@ -1,0 +1,26 @@
+{
+  "command": "npm run test -- tests/admin/security.test.ts -t requireAdmin rejects an anonymous route before its resource callback --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase014\\attempt-2-negative-require-admin.json",
+  "executable": "C:\\Program Files\\nodejs\\node.exe",
+  "arguments": [
+    "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+    "run",
+    "test",
+    "--",
+    "tests/admin/security.test.ts",
+    "-t",
+    "requireAdmin rejects an anonymous route before its resource callback",
+    "--no-file-parallelism",
+    "--reporter=default",
+    "--reporter=json",
+    "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase014\\attempt-2-negative-require-admin.json"
+  ],
+  "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase014\\fixtures\\require-admin-jRPClj",
+  "exitCode": 1,
+  "signal": null,
+  "timedOut": false,
+  "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/admin/security.test.ts -t requireAdmin rejects an anonymous route before its resource callback --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase014\\attempt-2-negative-require-admin.json\n\n\n RUN  v4.1.11 C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase014/fixtures/require-admin-jRPClj\n\n ❯ tests/admin/security.test.ts (4 tests | 1 failed | 3 skipped) 10ms\n     × [authorization] requireAdmin rejects an anonymous route before its resource callback 9ms\n     ↓ [m3-regression] preserves Phase011–013 Gate hashes and exposes exactly five existing menus with one common component implementation\n     ↓ [authorization] denies anonymous USER disabled-admin stale/revoked sessions and missing CSRF without configuration side effects\n     ↓ [authorization] rechecks actor sessionVersion under the write lock after concurrent revocation\n\n Test Files  1 failed (1)\n      Tests  1 failed | 3 skipped (4)\n   Start at  03:20:43\n   Duration  775ms (transform 296ms, setup 110ms, import 432ms, tests 10ms, environment 0ms)\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase014/attempt-2-negative-require-admin.json\n",
+  "stderr": "\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  tests/admin/security.test.ts > admin/security common boundary and M3 inventory > [authorization] requireAdmin rejects an anonymous route before its resource callback\nAssertionError: expected 200 to be 401 // Object.is equality\n\n- Expected\n+ Received\n\n- 401\n+ 200\n\n ❯ tests/admin/security.test.ts:22:29\n     20|       undefined,\n     21|     );\n     22|     expect(response.status).toBe(401);\n       |                             ^\n     23|     expect(callbacks).toBe(0);\n     24|   });\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\n\n",
+  "durationMs": 1826,
+  "startedAt": "2026-09-12T19:20:42.574Z",
+  "finishedAt": "2026-09-12T19:20:44.400Z"
+}

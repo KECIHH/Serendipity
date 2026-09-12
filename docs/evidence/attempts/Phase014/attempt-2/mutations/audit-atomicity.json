@@ -1,0 +1,17 @@
+{
+  "id": "audit-atomicity",
+  "file": "src/server/admin/settings.ts",
+  "testFile": "tests/admin/settings.test.ts",
+  "pattern": "reads exact DTOs and updates every group with paired canonical-hash audits",
+  "caseId": "Phase014:settings",
+  "failure": "expected 503 to be 200",
+  "fixture": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase014\\fixtures\\audit-atomicity-miOSGX",
+  "changes": [
+    {
+      "sourcePath": "src/server/admin/settings.ts",
+      "originalHash": "35c0dfa5dab123538742f42b0fc8d0185a78ee26dd3f38cab35d2c99a9a760a0",
+      "mutatedHash": "db278ab4b237da1210c797204d84905d130fc7dcb3bd3c84eff74b85634a9ceb"
+    }
+  ],
+  "testSourceHash": "96d554c5a46e30e9ef4a0a82018c2de954d25c82f155e384c5878dc8e84d902b"
+}

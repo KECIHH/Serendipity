@@ -1,0 +1,20 @@
+{
+  "command": "docker network inspect --format {{json .Options}}|{{json .Labels}} serendipity-phase014-bf0013251532",
+  "executable": "docker.exe",
+  "arguments": [
+    "network",
+    "inspect",
+    "--format",
+    "{{json .Options}}|{{json .Labels}}",
+    "serendipity-phase014-bf0013251532"
+  ],
+  "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "stdout": "{\"com.docker.network.bridge.enable_ip_masquerade\":\"false\",\"com.docker.network.enable_ipv4\":\"true\",\"com.docker.network.enable_ipv6\":\"false\"}|{\"serendipity.run\":\"bf0013251532\"}\n",
+  "stderr": "",
+  "durationMs": 198,
+  "startedAt": "2026-09-12T19:03:55.192Z",
+  "finishedAt": "2026-09-12T19:03:55.390Z"
+}

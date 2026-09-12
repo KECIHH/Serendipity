@@ -976,7 +976,7 @@ describe.skipIf(!enabled)("admin/users real PostgreSQL", () => {
         expect(empty.items).toHaveLength(0);
         expect(empty.nextCursor).toBeNull();
         const appUser = fixture.config.appUser;
-        expect(appUser).toMatch(/^phase(?:012|013)_app$/);
+        expect(appUser).toMatch(/^phase(?:012|013|014)_app$/);
         await fixture.admin.$executeRawUnsafe(`REVOKE SELECT ON TABLE "User" FROM "${appUser}"`);
         await fixture.admin.$executeRawUnsafe(
           `GRANT SELECT (id,email,role,status,"sessionVersion") ON TABLE "User" TO "${appUser}"`,

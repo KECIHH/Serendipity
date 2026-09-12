@@ -1,0 +1,20 @@
+{
+  "command": "Phase014 browser diagnostic4",
+  "executable": "C:\\Program Files\\nodejs\\node.exe",
+  "arguments": [
+    "--conditions=react-server",
+    "--import",
+    "tsx",
+    "tests/phase014/browser.mjs",
+    "--diagnostic",
+    "--output",
+    "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase014\\browser-diagnostic-4.json"
+  ],
+  "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+  "exitCode": 1,
+  "signal": null,
+  "timedOut": false,
+  "stdout": "",
+  "stderr": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\npage.waitForResponse: Timeout 15000ms exceeded while waiting for event \"response\"\r\n    at responseFor (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase014\\browser.mjs:371:14)\r\n    at <anonymous> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase014\\browser.mjs:659:24)\r\n    at async caseRun (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase014\\browser.mjs:71:26)\r\n    at async <anonymous> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase014\\browser.mjs:627:7)\r\n    at async withApiKeyDatabase (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase013\\api-key-fixture.ts:241:12)\r\n    at async run (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase014\\browser.mjs:297:3)\r\n    at async <anonymous> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase014\\browser.mjs:780:3) {\r\n  name: 'TimeoutError'\r\n}\r\n\r\nNode.js v24.19.0\r\n",
+  "durationMs": 28225
+}

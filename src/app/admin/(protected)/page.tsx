@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { DashboardClient } from "@/components/admin/dashboard-client";
 
 import { AuthAuthorizationError } from "@/server/auth/errors";
 import { requireAdmin } from "@/server/auth/require-admin";
@@ -12,5 +13,5 @@ export default async function AdminPage() {
     if (error instanceof AuthAuthorizationError) redirect("/admin/login");
     throw error;
   }
-  redirect("/admin/users");
+  return <DashboardClient />;
 }

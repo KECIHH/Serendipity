@@ -542,7 +542,7 @@ describe.skipIf(!process.env.PHASE013_FIXTURE_CONFIG)(
           secrets = logSecrets();
         await appendAudits(fixture, [adminAudit(fixture, targetId)]);
         await fixture.admin.$executeRawUnsafe(
-          'REVOKE SELECT ON TABLE "AuditLog" FROM phase013_app',
+          `REVOKE SELECT ON TABLE "AuditLog" FROM "${fixture.config.appUser}"`,
         );
         try {
           const response = await worker.request({
@@ -553,7 +553,9 @@ describe.skipIf(!process.env.PHASE013_FIXTURE_CONFIG)(
           failure(response, 503, "INTERNAL_ERROR");
           expect(containsNoSecrets(response.body, secrets)).toBe(true);
         } finally {
-          await fixture.admin.$executeRawUnsafe('GRANT SELECT ON TABLE "AuditLog" TO phase013_app');
+          await fixture.admin.$executeRawUnsafe(
+            `GRANT SELECT ON TABLE "AuditLog" TO "${fixture.config.appUser}"`,
+          );
         }
         expect(
           page(

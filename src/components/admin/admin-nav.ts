@@ -4,9 +4,11 @@ export type AdminNavItem =
 
 /** Add an entry only in the same change that creates its reachable page. */
 export const ADMIN_NAV = [
+  { kind: "link", href: "/admin", label: "Dashboard" },
   { kind: "link", href: "/admin/users", label: "用户管理" },
   { kind: "link", href: "/admin/api-keys", label: "密钥管理" },
   { kind: "link", href: "/admin/logs", label: "审计日志" },
+  { kind: "link", href: "/admin/settings", label: "系统配置" },
   { kind: "action", action: "logout", label: "退出登录" },
 ] as const satisfies readonly AdminNavItem[];
 
@@ -18,7 +20,8 @@ export function activeAdminHref(
   for (const item of items) {
     if (
       item.kind === "link" &&
-      (pathname === item.href || pathname.startsWith(`${item.href}/`)) &&
+      (pathname === item.href ||
+        (item.href !== "/admin" && pathname.startsWith(`${item.href}/`))) &&
       (active === null || item.href.length > active.length)
     ) {
       active = item.href;

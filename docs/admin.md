@@ -6,7 +6,7 @@ Owner: 管理治理；producerPhase: 2；实现消费者: Phase012–015、Phase
 
 每个管理 Route Handler/Server Action 在任何资源查询前调用 requireAdmin，复核活动数据库会话、ACTIVE ADMIN 与 sessionVersion。写入继续校验 CSRF、Schema、幂等和 CAS。未登录为 AUTH_REQUIRED，非管理员为 FORBIDDEN；不向未授权请求泄露对象是否存在。后台权限不能代替私人行程 owner、分享 token、文件 purpose/usage 或隐私水位授权。
 
-Phase012 的 `src/app/admin/(protected)/layout.tsx` 复用唯一 `src/components/layout/admin-shell.tsx`；根 admin layout 保持中性，`src/app/admin/(public)/login/page.tsx` 不带后台 shell。唯一菜单数组为 `src/components/admin/admin-nav.ts`，Phase013 增加 `/admin/api-keys` 与 `/admin/logs`，保留 `/admin/users` 与退出动作。受保护 `/admin` 确定性重定向用户管理，Phase014 首产 Dashboard 后才切换。当前高亮采用完整路径或 `href + '/'` 前缀的最长匹配；导航支持折叠、方向键、Home/End、Escape 回到开关，以及跳到主要内容。
+Phase012 的 `src/app/admin/(protected)/layout.tsx` 复用唯一 `src/components/layout/admin-shell.tsx`；根 admin layout 保持中性，`src/app/admin/(public)/login/page.tsx` 不带后台 shell。唯一菜单数组为 `src/components/admin/admin-nav.ts`。Phase014 的五个实际入口为 Dashboard（`/admin`）、用户（`/admin/users`）、API 密钥（`/admin/api-keys`）、审计（`/admin/logs`）、系统配置（`/admin/settings`），另有退出动作。Dashboard 只精确匹配 `/admin`，其他导航采用完整路径或 `href + '/'` 前缀的最长匹配；导航支持折叠、方向键、Home/End、Escape 回到开关，以及跳到主要内容。没有模型、Prompt 或 Provider 菜单。
 
 ## 用户与配置 CAS
 
@@ -18,7 +18,21 @@ Phase012 列表、更新和版本冲突统一使用九字段管理摘要；列�
 
 实际服务先取固定 advisory transaction lock，再按 id 顺序锁定活动管理员、actor 和 target，在持锁事务内重新检查 actor 会话及最后管理员数量。仅 serialization、deadlock 与幂等唯一约束竞争进入有界重试；授权、CAS 和审计校验失败不重试成成功。变化审计记录 before/after 的 role、status、revision 与 `sessionVersionIncremented=true`，不记录版本秘密值；reason 沿用隐私自由文本规则，全文替换为 `***`。同值路径先回滚严格审计事务，再以独立 Serializable 事务重新锁定、授权、重查收据与 CAS，只持久化安全成功收据，保持既有审计事务必须包含成功审计的约束。
 
-SystemConfig 的 expectedVersion 比较自己的 revision；updatedAt 只展示。公开配置同时通过 isPublic 和 key 白名单，不准将 Prompt、模型、Provider 或秘密放进 SystemConfig。Phase015 的不可变 PromptVersion/ModelDeployment/ProviderConfigVersion 不原地改写，activatePromptModelTuple 锁定两个 activation，比较共同 revision 并一起加一；PlanningPolicyActivation 使用自身 revision。后期 rollout/停用/回滚继续使用同一治理服务。
+SystemConfig 的 expectedVersion 比较自己的 revision；updatedAt 只展示。公开配置同时通过 isPublic 和 key 白名单，不准将 Prompt、模型、Provider 或秘密放进 SystemConfig。Phase014 配置更新使用 `patch.admin.settings.key` 幂等域，在 Serializable 事务中复核 actor、执行 revision CAS、追加 CONFIG_UPDATE 和保存安全响应收据。合法同值写入也增加 revision 并记录审计；409 关闭旧编辑，重新读取后由管理员明确选择新版本。同 key/payload 重放原响应，异 payload 拒绝；审计只保留前后 canonical SHA-256、revision、字段名与安全原因，不复制配置全文。
+
+Phase015 的不可变 PromptVersion/ModelDeployment/ProviderConfigVersion 不原地改写，activatePromptModelTuple 锁定两个 activation，比较共同 revision 并一起加一；PlanningPolicyActivation 使用自身 revision。后期 rollout/停用/回滚继续使用同一治理服务。
+
+## 已实现的配置与概览
+
+配置 registry 位于 `src/server/config/config-registry.ts`，封闭七个非秘密 key，覆盖五组。原 seed 的三个 GENERAL key（快速规划天数、人数、节奏）保持私有；`ai.timeoutMs` 不能超过部署 `AI_TIMEOUT_MS`，登记该护栏不执行 AI 调用。`export.maxDurationDays` 为1–30，`security.adminPageSize` 为1–100。`ui.notice` 只公开 `enabled/message`，始终剔除 `internalNote`。数据分组、schema 或迁移漂移安全失败。
+
+GET 只列出已保存的登记行，PATCH 只更新存在的 key。原 seed 仍只创建三个 planner 默认值，四个附加 key 不会由读取或页面自动插入。新增 key 时必须一起审查 registry 的 schema、组、默认可见性、投影与部署上限，提供受审的 seed/provisioning 变更及已有行升级说明，补 schema/权限/CAS/审计/公开负例，再通过验收；不能由 UI 任意创建 key。回滚通过同一个受审 PATCH 重放此前合法值与当前 revision，不编辑 AuditLog。
+
+公开 GET `/api/config/public` 同时限制数据库 `isPublic=true` 与 registry allowlist，响应只含明确投影。Cache-Control 为 `public, max-age=60, must-revalidate`；弱 ETag 只由 canonical 公开投影计算，私有值及被剔除字段不影响它。管理 API 一律 `no-store`。
+
+Dashboard 返回四个独立 widget：用户总数/ACTIVE 数、旅行记录总数/状态分布、配置总数/公开标记数、最新10条安全审计。配置“标记为公开”是数据库标记计数，不代表公开投影条数。四个查询分别使用有界事务与 `Promise.allSettled`；单项失败显示该项错误，其余卡片可用。真实空表是成功的0或空列表，整体服务失败显示统一错误。读取前检查八个迁移的完成状态/checksum和十个前置表；缺失、漂移不伪装为“暂无数据”。数据库关闭连接后会清理 Dashboard 的失效连接池，让后续请求重新连接。
+
+五页复用唯一 common PageHeader、LoadingState、EmptyState、ErrorState 与 DataTable；用户/密钥/审计沿用签名 keyset 游标（默认20、最大100）和 AdminPagination。有界 registry 列表仍使用 exact `{items}` DTO。加载、空内容、单项错误与整体错误分别展示；表格在窄屏区域内横向滚动，配置编辑关闭后恢复键盘焦点。
 
 ## 幂等、轮换与审计
 
