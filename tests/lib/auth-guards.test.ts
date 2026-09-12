@@ -21,7 +21,7 @@ vi.mock("next/headers", () => ({ cookies: boundary.cookies, headers: boundary.he
 vi.mock("next/navigation", () => ({ redirect: boundary.redirect }));
 vi.mock("@/components/auth/logout-button", () => ({ LogoutButton: () => null }));
 
-import AdminPage from "@/app/admin/page";
+import ProtectedAdminLayout from "@/app/admin/(protected)/layout";
 import { encodeAuthCookie } from "@/server/auth/cookie";
 import { AuthAuthorizationError, AuthUnavailableError } from "@/server/auth/errors";
 import { withAdminAction, withAdminRoute } from "@/server/auth/guards";
@@ -111,12 +111,12 @@ describe("requireAdmin server authorization", () => {
 });
 
 describe("management page, Route Handler and Server Action guard ordering", () => {
-  it("runs the real protected page guard and redirects unauthenticated requests to public login", async () => {
+  it("runs the real protected layout guard and redirects unauthenticated requests to public login", async () => {
     boundary.headers.mockResolvedValueOnce(new Headers());
-    await expect(AdminPage()).rejects.toThrow("redirect:/admin/login");
+    await expect(ProtectedAdminLayout({ children: null })).rejects.toThrow("redirect:/admin/login");
     expect(boundary.redirect).toHaveBeenCalledExactlyOnceWith("/admin/login");
     expect(boundary.validateSession).not.toHaveBeenCalled();
-    const page = await AdminPage();
+    const page = await ProtectedAdminLayout({ children: null });
     expect(isValidElement(page)).toBe(true);
     expect(boundary.validateSession).toHaveBeenCalledExactlyOnceWith(opaqueToken, "ADMIN");
   });

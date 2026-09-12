@@ -1,0 +1,20 @@
+{
+  "phase": 12,
+  "attemptId": "attempt-5",
+  "status": "FAIL",
+  "failedTest": "real PostgreSQL User contract schema: User retains its required enum/index/field inventory as later models are added",
+  "reportPath": "docs/evidence/attempts/Phase012/attempt-5/phase006-user-regression-vitest.json",
+  "reportHash": "b03b33fd811aea758d321144e3b35d1672c60f914f56552c4c62a65cae1efe51",
+  "total": 31,
+  "passed": 30,
+  "failed": 1,
+  "mainSuite": {
+    "path": "docs/evidence/attempts/Phase012/attempt-5/all-tests-vitest.json",
+    "passed": 460,
+    "failed": 0,
+    "pending": 0
+  },
+  "cause": "The legacy exact User index inventory predates the additive Phase012 createdAt/id and role/status/id indexes.",
+  "repair": "Keep the exact original scalar/enum/unique index assertions and add exact new index names and key definitions when the Phase012 ledger models are present.",
+  "productSourceChangeRequired": false
+}

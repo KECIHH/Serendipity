@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "phase": 12,
+  "status": "FAIL",
+  "simulation": true,
+  "productionTraffic": false,
+  "verificationScope": "AUTOMATED_BROWSER_A11Y",
+  "humanScreenReaderExperience": "NOT_EVALUATED",
+  "caseCount": 7,
+  "results": [
+    {
+      "id": "public-login-layout-375",
+      "status": "PASS",
+      "observations": {
+        "noShell": true,
+        "viewport": 375,
+        "a11y": {
+          "violations": 0,
+          "passes": 23,
+          "incomplete": 0,
+          "version": "4.13.0"
+        }
+      }
+    },
+    {
+      "id": "real-login-protected-shell",
+      "status": "PASS",
+      "observations": {
+        "shellCount": 1,
+        "links": [
+          "/admin/users"
+        ],
+        "deterministicRedirect": "/admin/users",
+        "syntheticDisplayIdentities": true
+      }
+    },
+    {
+      "id": "filter-keyset-pagination",
+      "status": "PASS",
+      "observations": {
+        "firstPage": 20,
+        "secondPage": 5,
+        "uniqueRows": 25,
+        "emptyIsExplicit": true
+      }
+    },
+    {
+      "id": "edit-save-session-audit",
+      "status": "PASS",
+      "observations": {
+        "revisionBefore": 0,
+        "revisionAfter": 1,
+        "sessionVersionIncrement": 1,
+        "activeSessionsAfter": 0,
+        "auditCount": 1,
+        "patchRequests": 1,
+        "focusRestored": true
+      }
+    },
+    {
+      "id": "stale-edit-requires-new-selection",
+      "status": "PASS",
+      "observations": {
+        "httpStatus": 409,
+        "latestVersion": 2,
+        "staleIntentCleared": true,
+        "conflictFocused": true
+      }
+    },
+    {
+      "id": "responsive-keyboard-axe",
+      "status": "PASS",
+      "observations": {
+        "observations": [
+          {
+            "width": 375,
+            "documentScrollWidth": 375,
+            "a11y": {
+              "violations": 0,
+              "passes": 27,
+              "incomplete": 1,
+              "version": "4.13.0"
+            }
+          },
+          {
+            "width": 1280,
+            "documentScrollWidth": 1280,
+            "a11y": {
+              "violations": 0,
+              "passes": 26,
+              "incomplete": 1,
+              "version": "4.13.0"
+            }
+          }
+        ],
+        "keyboard": [
+          "Tab",
+          "Home",
+          "End",
+          "Escape"
+        ],
+        "focusReturn": true
+      }
+    },
+    {
+      "id": "database-failure-retry",
+      "status": "FAIL",
+      "diagnostic": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 0\n\n    at <anonymous> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase012\\browser.mjs:611:16)\n    at async caseRun (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase012\\browser.mjs:110:26)\n    at async <anonymous> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase012\\browser.mjs:592:7)\n    at async withAdminDatabase (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase012\\admin-fixture.ts:220:12)\n    at async runBrowser (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase012\\browser.mjs:288:3)\n    at async <anonymous> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase012\\browser.mjs:645:3)"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-4/admin-login-375-axe.json",
+      "sha256": "372a9f5f40569e1b8d698da045e5b6691022548be15ec7f3b8170ac2e33925b3"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-4/admin-login-375.png",
+      "sha256": "61f686a04e810b05d719857605c98061b36ca47cd8e779d4125d2a2bede2932e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-4/admin-login-375.html",
+      "sha256": "ffe10ce7ed24729f092589675a60214c74066669abb1daa6ea9a7a7c937ed1a8"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-4/admin-users-conflict-375.png",
+      "sha256": "00ddc09e1ce461b877609191bd3a3b150e6b25b8a3c815ebddeabe8e52b85f03"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-4/admin-users-conflict-375.html",
+      "sha256": "24f721cfa392eb6436f2803e56861056ab8234ba4ca8cc148f57690fabefb676"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-4/admin-users-375-axe.json",
+      "sha256": "fb77f8503b13fc99d1110d56bd636b4af921054fb6b7622d1d5977c32ca32119"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-4/admin-users-375.png",
+      "sha256": "1beb5de3fe6795ebfea7494f82fe1caf70ca293df8ed5acff966c2c901a4f7c7"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-4/admin-users-375.html",
+      "sha256": "63f0447bb3f221e2e0a93d7b1a10a240a73afb50c31da03c44871c5e5c548c98"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-4/admin-users-1280-axe.json",
+      "sha256": "a2ce5e7d9eb9edc99fd9f42f19518a462908b29acf458319682c7c44574d3bba"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-4/admin-users-1280.png",
+      "sha256": "2ff7a45ac079cc604a90e9feab676905659f0bacdb1a94250b26f5dfdb8c5421"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-4/admin-users-1280.html",
+      "sha256": "63f0447bb3f221e2e0a93d7b1a10a240a73afb50c31da03c44871c5e5c548c98"
+    }
+  ],
+  "commands": [
+    {
+      "command": "npm run build",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "build"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "\n> serendipity@0.1.0 build\n> next build\n\n   ▲ Next.js 15.5.24\n   - Environments: .env.local\n\n   Creating an optimized production build ...\n ✓ Compiled successfully in 4.6s\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/7) ...\n   Generating static pages (1/7) \r\n   Generating static pages (3/7) \r\n   Generating static pages (5/7) \r\n ✓ Generating static pages (7/7)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                                 Size  First Load JS\n┌ ○ /                                    77.2 kB         180 kB\n├ ○ /_not-found                            993 B         104 kB\n├ ƒ /admin                                 134 B         103 kB\n├ ○ /admin/login                         2.04 kB         120 kB\n├ ƒ /admin/users                         7.84 kB         126 kB\n├ ƒ /api/admin/users                       134 B         103 kB\n├ ƒ /api/admin/users/[id]                  134 B         103 kB\n├ ƒ /api/auth/[...nextauth]                134 B         103 kB\n└ ○ /login                               2.03 kB         117 kB\n+ First Load JS shared by all             103 kB\n  ├ chunks/255-c5a697ddbf82d774.js       46.4 kB\n  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB\n  └ other shared chunks (total)             2 kB\n\n\nƒ Middleware                             37.5 kB\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+      "stderr": "",
+      "durationMs": 24941
+    },
+    {
+      "command": "npm start (browser fixture)",
+      "ready": true,
+      "stoppedByFixture": true,
+      "stdout": "\n> serendipity@0.1.0 start\n> node --import tsx scripts/auth-server.mjs --port 54428 --hostname 127.0.0.1\n\nSerendipity listening on 127.0.0.1:54428\n",
+      "stderr": "",
+      "durationMs": 9200
+    }
+  ],
+  "browserVersion": "140.0.7339.186",
+  "configuredBrowserOrigin": "http://127.0.0.1:54428",
+  "localRequestCount": 33,
+  "externalRequestCount": 0,
+  "blockedRequestDestinations": [],
+  "credentials": "SYNTHETIC_NOT_ARCHIVED",
+  "diagnostic": "Error: Browser case database-failure-retry failed.\n    at caseRun (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase012\\browser.mjs:114:11)\n    at async <anonymous> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase012\\browser.mjs:592:7)\n    at async withAdminDatabase (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase012\\admin-fixture.ts:220:12)\n    at async runBrowser (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase012\\browser.mjs:288:3)\n    at async <anonymous> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\tests\\phase012\\browser.mjs:645:3)"
+}

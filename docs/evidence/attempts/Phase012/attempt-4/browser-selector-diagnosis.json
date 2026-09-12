@@ -1,0 +1,14 @@
+{
+  "phase": 12,
+  "attemptId": "attempt-4",
+  "method": "SOURCE_AND_ARCHIVED_DOM_REVIEW",
+  "failurePath": "docs/evidence/attempts/Phase012/attempt-4/attempt.json",
+  "browserReportPath": "docs/evidence/attempts/Phase012/attempt-4/browser.json",
+  "failedTestPath": "docs/evidence/attempts/Phase012/attempt-4/failed-browser.mjs",
+  "failedTestHash": "8ea3d51f99795c542d35c458e7e302396d5b545613a1d2eb1ad26f00b7cb4d26",
+  "frameworkPath": "node_modules/next/dist/client/components/app-router-announcer.js",
+  "frameworkHash": "4e545064ec8349d7cc464ab281c7b88e7cd32e9175cbc6470da570566316bf1f",
+  "cause": "Next.js AppRouterAnnouncer adds a separate role=alert inside open shadow DOM outside the management main. The browser-wide zero-alert assertion counts that accessibility node after recovery.",
+  "repair": "Keep 503 then 200 response and loaded-list assertions; assert zero alerts within management main and one separate framework route announcer.",
+  "productSourceChangeRequired": false
+}

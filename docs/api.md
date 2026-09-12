@@ -53,6 +53,31 @@ URL path 参数是资源身份唯一来源，JSON 不重复 id/userId/travelReco
 
 游标是不透明且签名的字符串，绑定排序、筛选 hash、读取水位和 owner 域。默认 limit=20、范围1-100，按(createdAt DESC,id DESC)；conversation 按(sequence ASC,id ASC)，版本按(version DESC,id DESC)，Phase099 默认pageSize=50、范围1-100并冻结读取水位。只按 createdAt 排序不合法；篡改、跨筛选/owner 使用返回 VALIDATION_ERROR。
 
+## Phase012 用户管理实现
+
+当前实现 registry 中的 `get.admin.users` 与 `patch.admin.users.id`。两者都要求当前 ACTIVE ADMIN 的 ADMIN audience 会话，成功和错误响应均 `Cache-Control: no-store`。管理资源查询使用 ADMIN_USER_FIELDS 对应的 select；不会先读取完整 User 再删字段。九字段摘要为 `id/email/name/avatarUrl/role/status/lastLoginAt/createdAt/revision`，name、avatarUrl、lastLoginAt 可为 null，时间以 ISO 字符串发送；不包含 passwordHash、sessionVersion、phone、updatedAt 或 reason。
+
+GET `/api/admin/users` 只接受可选 role、status、cursor、limit；未知参数、重复参数、未知枚举和非法整数均为400 VALIDATION_ERROR。role 为 USER/ADMIN，status 为 ACTIVE/DISABLED，limit 默认20、范围1–100。固定 `(createdAt DESC,id DESC)`，响应 data exact 为 `{items:AdminUser[],nextCursor:string|null}`，无总数。游标签名绑定 owner、role/status 筛选 hash、排序、最后位置和首屏数据库读取水位；后续页排除该水位后的新用户。改变筛选或管理员身份须重新请求首屏，不解析或自行构造 cursor；篡改或跨域复用为400 VALIDATION_ERROR。返回前再次检查授权。
+
+PATCH `/api/admin/users/{id}` 要求 `Content-Type: application/json`、当前 Cookie 对应的 `X-CSRF-Token`、受允许的 Origin，以及8–128位 `[A-Za-z0-9_.:-]` 的 `Idempotency-Key` 请求头。正文上限8192 bytes，精确示例如下，userId 只来自 URL：
+
+```json
+{
+  "role": "USER",
+  "status": "DISABLED",
+  "expectedVersion": 3,
+  "reason": "停用该测试账户"
+}
+```
+
+expectedVersion 是 GET 返回的非负 Int revision，不接受字符串、expectedUpdatedAt、额外身份字段或会话字段。reason 必须是合法 Unicode，trim 后1–500个 UTF-16 单元且不含控制字符，输入不应包含秘密或个人正文。规范化四字段进入 JCS requestHash；reason 原文不进入收据，审计全文脱敏为 `***`。
+
+首次处理在 Serializable 事务持锁后先比较 CAS，再判断同值和保护条件。成功 data 始终为上述九字段摘要；`Idempotency-Replayed: false` 表示本次首次完成，包括同值请求，`true` 表示返回既有收据。重放标记放在 header，不扩充 exact DTO。同 owner/operation/resource/key 且同规范化正文重放原摘要；先重新检查当前授权，再读取终态，原 expectedVersion 不重复比较。异正文为409 IDEMPOTENCY_KEY_REUSED，重新选择操作时应使用新键。
+
+版本冲突返回409 VERSION_CONFLICT，details 为 `{currentVersion,action:"RELOAD",current:AdminUser}`；current 同样只有九字段。客户端展示 current 并要求重新选择操作，不自动重试覆盖。自改 role/status 或移除最后一位 ACTIVE ADMIN 返回403 FORBIDDEN；目标不存在仅对已授权请求返回404 NOT_FOUND。缺失/过期/撤销会话、无 ADMIN 权限或 CSRF 失败分别按认证规则拒绝；数据库暂不可用返回503 INTERNAL_ERROR 与安全模板，不能冒充空列表。
+
+实际 role/status 变化将 revision/sessionVersion 各加一，撤销全部目标 ACTIVE AuthSession，并同事务写一条 USER_UPDATE 和成功收据；任何失败全部回滚。同值且 CAS 匹配时仅保存安全收据，不改用户、会话或审计。具体锁、账本期限与持久化轮换基础见 [管理](admin.md)、[数据库](database.md) 和 [Phase012说明](phase012.md)。本节不修改下面的生成目录，也不声明已提供 Phase013 密钥接口。
+
 ## 唯一端点目录
 
 以下10列全部从 registry 生成，排序键为 operationId；这是唯一 method/path/首次生产者表。语义上 request/response 的 exact 展开由后面的机器块按 operationId 关联；不改写上游登记的显示名称。

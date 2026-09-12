@@ -13,7 +13,7 @@ let fixturePrefix: string;
 beforeAll(async () => {
   expect(target.hostname).toBe("127.0.0.1");
   expect(target.pathname).toMatch(
-    /^\/phase(?:00[6789]|01[01])_disposable_[a-f0-9]{12}(?:_[a-z0-9_]+)?$/,
+    /^\/phase(?:00[6789]|01[012])_disposable_[a-f0-9]{12}(?:_[a-z0-9_]+)?$/,
   );
   await connectDb();
   const [identity] = await db.$queryRaw<
@@ -25,7 +25,7 @@ beforeAll(async () => {
   `;
   expect(identity.name).toBe(target.pathname.slice(1));
   expect(identity.version).toMatch(/^17\./);
-  const markedPhase = /^\/phase(00[789]|01[01])_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(
+  const markedPhase = /^\/phase(00[789]|01[012])_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(
     target.pathname,
   );
   if (markedPhase)
@@ -108,11 +108,23 @@ describe("real PostgreSQL User contract", () => {
     const indexes = await db.$queryRaw<
       Array<{ indexname: string; indexdef: string }>
     >`SELECT indexname, indexdef FROM pg_indexes WHERE schemaname='public' AND tablename='User' ORDER BY indexname`;
-    expect(indexes.map(({ indexname }) => indexname)).toEqual([
-      "User_email_key",
-      "User_pkey",
-      "User_status_idx",
-    ]);
+    const includesAdmin = models.some(({ name }) => name === "AdminCommandReceipt");
+    expect(indexes.map(({ indexname }) => indexname)).toEqual(
+      [
+        "User_email_key",
+        "User_pkey",
+        "User_status_idx",
+        ...(includesAdmin ? ["User_createdAt_id_idx", "User_role_status_id_idx"] : []),
+      ].sort(),
+    );
+    if (includesAdmin) {
+      expect(
+        indexes.find(({ indexname }) => indexname === "User_createdAt_id_idx")?.indexdef,
+      ).toContain('USING btree ("createdAt", id)');
+      expect(
+        indexes.find(({ indexname }) => indexname === "User_role_status_id_idx")?.indexdef,
+      ).toContain("USING btree (role, status, id)");
+    }
     expect(indexes.find(({ indexname }) => indexname === "User_email_key")?.indexdef).toContain(
       "UNIQUE",
     );

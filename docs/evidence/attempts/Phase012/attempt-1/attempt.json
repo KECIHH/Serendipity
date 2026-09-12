@@ -1,0 +1,31 @@
+{
+  "phase": 12,
+  "attemptId": "attempt-1",
+  "status": "FAIL",
+  "artifactCommit": null,
+  "planHash": "7362260e861b832f63656390776476f2b093ced7a659c434861f2fbd8c56062e",
+  "command": "Apply and generate Phase012 migration",
+  "exitCode": 1,
+  "reason": "Error: npm exec -- prisma migrate deploy failed: Prisma schema loaded from prisma\\schema.prisma\nDatasource \"db\": PostgreSQL database \"phase012_disposable_984a71e12cc1\", schema \"public\" at \"127.0.0.1:62352\"\n\n7 migrations found in prisma/migrations\n\nApplying migration `20260912013806_admin_commands`\n\nError: P3018\n\nA migration failed to apply. New migrations cannot be applied before the error is recovered from. Read more about how to resolve migration issues in a production database: https://pris.ly/d/migrate-resolve\n\nMigration name: 20260912013806_admin_commands\n\nDatabase error code: 42601\n\nDatabase error:\nERROR: syntax error at end of input\n\nPosition:\n\u001b[1m216\u001b[0m   END IF;\n\u001b[1m217\u001b[0m   SELECT count(*) INTO checkpoint_keys FROM jsonb_object_keys(NEW.\"checkpointJson\");\n\u001b[1m218\u001b[0m   IF checkpoint_keys <> 3 OR NEW.\"checkpointJson\"->'version' IS DISTINCT FROM '1'::jsonb\n\u001b[1m219\u001b[0m      OR NEW.\"checkpointJson\"->'fencingToken' IS DISTINCT FROM to_jsonb(command.\"fencingToken\")\n\u001b[1m220\u001b[0m      OR NEW.\"checkpointJson\"->>'step' IS DISTINCT FROM CASE NEW.stage\n\u001b[1m221\u001b[1;31m        WHEN 'PREPARING' THEN 'PREPARED' WHEN 'TESTING' THEN 'TESTING'\u001b[0m\n\nDbError { severity: \"ERROR\", parsed_severity: Some(Error), code: SqlState(E42601), message: \"syntax error at end of input\", detail: None, hint: None, position: Some(Original(11403)), where_: None, schema: None, table: None, column: None, datatype: None, constraint: None, file: Some(\"scan.l\"), line: Some(1236), routine: Some(\"scanner_yyerror\") }\n\n\n\n    at command (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/phase012-runtime.mjs:166:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/[eval1]:10:2",
+  "records": [
+    {
+      "command": "npm exec -- prisma migrate deploy",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "exec",
+        "--",
+        "prisma",
+        "migrate",
+        "deploy"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "Prisma schema loaded from prisma\\schema.prisma\nDatasource \"db\": PostgreSQL database \"phase012_disposable_984a71e12cc1\", schema \"public\" at \"127.0.0.1:62352\"\n\n7 migrations found in prisma/migrations\n\nApplying migration `20260912013806_admin_commands`\n",
+      "stderr": "Error: P3018\n\nA migration failed to apply. New migrations cannot be applied before the error is recovered from. Read more about how to resolve migration issues in a production database: https://pris.ly/d/migrate-resolve\n\nMigration name: 20260912013806_admin_commands\n\nDatabase error code: 42601\n\nDatabase error:\nERROR: syntax error at end of input\n\nPosition:\n\u001b[1m216\u001b[0m   END IF;\n\u001b[1m217\u001b[0m   SELECT count(*) INTO checkpoint_keys FROM jsonb_object_keys(NEW.\"checkpointJson\");\n\u001b[1m218\u001b[0m   IF checkpoint_keys <> 3 OR NEW.\"checkpointJson\"->'version' IS DISTINCT FROM '1'::jsonb\n\u001b[1m219\u001b[0m      OR NEW.\"checkpointJson\"->'fencingToken' IS DISTINCT FROM to_jsonb(command.\"fencingToken\")\n\u001b[1m220\u001b[0m      OR NEW.\"checkpointJson\"->>'step' IS DISTINCT FROM CASE NEW.stage\n\u001b[1m221\u001b[1;31m        WHEN 'PREPARING' THEN 'PREPARED' WHEN 'TESTING' THEN 'TESTING'\u001b[0m\n\nDbError { severity: \"ERROR\", parsed_severity: Some(Error), code: SqlState(E42601), message: \"syntax error at end of input\", detail: None, hint: None, position: Some(Original(11403)), where_: None, schema: None, table: None, column: None, datatype: None, constraint: None, file: Some(\"scan.l\"), line: Some(1236), routine: Some(\"scanner_yyerror\") }\n\n\n",
+      "durationMs": 1820
+    }
+  ]
+}

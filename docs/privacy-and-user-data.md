@@ -2,7 +2,7 @@
 
 本文件是 Phase002 首产的隐私、最小化与删除契约，owner 为本文件。API exact DTO、认证、密钥持久化和运行拓扑分别由 [API](api.md)、[认证规范](auth.md)、[加密规范](crypto.md)、[托管规范](hosting.md) 负责；数据库模型与不可变性由 [数据库规范](database.md) 定义。需求 consent 字段仅由 [旅行 Schema](travel-plan-schema.md) 定义，Prompt 与事实外发还须满足 [Prompt](prompt-design.md) 和 [Provider](travel-data-provider-strategy.md) 边界。
 
-PrivacyDecisionRegister 只对当前 run 的 ISOLATED_SYNTHETIC 数据有效；automatedDecision 是执行规则得出的本地决定，不代表真人 consent、生产保留政策或法律审批。真实用户研究、真人读屏体验与生产政策均为 NOT_EVALUATED。本阶段只执行文档规则、注入时钟和临时文件清理；没有创建账号/数据库/真实 Provider 请求，也没有验证尚未实现的产品 API/UI。
+PrivacyDecisionRegister 只对当前 run 的 ISOLATED_SYNTHETIC 数据有效；automatedDecision 是执行规则得出的本地决定，不代表真人 consent、生产保留政策或法律审批。真实用户研究、真人读屏体验与生产政策均为 NOT_EVALUATED。Phase002 证据只执行文档规则、注入时钟和临时文件清理，没有创建账号/数据库/真实 Provider 请求；后续产品实现和隔离验证按各自 Phase 归档，不由这些规则模拟器代替。
 
 ## 来源与责任
 
@@ -74,6 +74,16 @@ Phase010 基础 seed 只创建本次隔离 run 的合成管理员与三项内部
 管理员创建与 `SEED_ADMIN_CREATE`、配置创建与 `SEED_CONFIG_CREATE` 均同事务；使用既有 SYSTEM/MIGRATION 主体，actorId/actorEmailSnapshot 均为 null。审计只增加受限 `sourceMarker/seedRunId/seedFingerprint` 及安全计数/结果：固定来源为 PHASE010_BASE_SEED_V1，seedRunId 是可稳定重读的非秘密 disposable-run 标识；seedFingerprint 对已落库管理员行的指定字段（包含加盐 bcrypt hash）连同来源取 JCS SHA-256，精确字段见 [数据库规范](database.md#seed-执行规则)。不直接 hash 明文密码，不将管理员邮箱、bcrypt hash 或指纹输入对象放进 detailJson；普通日志和证据也不输出该行指纹值。
 
 重放同时验证来源、当前行指纹、ADMIN/ACTIVE 和 bcrypt 密码；仅全部匹配才零写入返回。已有普通用户、停用管理员、来源缺失或修改后的凭据/配置均拒绝，seed 不承担提权、启用、重置口令或恢复生产账户的职责。重复 seed 也不追加独立 run 审计。验收在归档 stdout/stderr 前扫描实际原始输出，证据只记录退出码、安全分类、计数与文件 hash；密文虽已加密仍不得作为 fixture 内容复制到 evidence。保留/ERASE 继续遵循本文件既有类别规则，不由 seed 扩大用途或期限。
+
+### Phase012 用户管理最小披露与账本
+
+用户管理列表、成功更新、终态重放及版本冲突只通过 ADMIN_USER_FIELDS 选择九个字段：id/email/name/avatarUrl/role/status/lastLoginAt/createdAt/revision。它们只对当下授权的管理员显示，不能用于公开投影；passwordHash、sessionVersion、phone 和完整 User 均不进入管理 DTO。后台顶部仅接收已认证管理员的 id/email，不附带凭据或其他身份资料。签名游标绑定当前 owner/filter/order/watermark，不构成独立授权凭据。
+
+用户提交的 reason 先校验、trim，规范化内容只参与非秘密 requestHash；AdminCommandReceipt 不保存该正文。USER_UPDATE 的 detailJson 只留下 before/after 的角色、状态、revision、`sessionVersionIncremented` 布尔及受控结果/原因码，reason 全文通过既有脱敏器替换为 `***`，不能将自由文案借审计落库。可信 actorEmailSnapshot 仍遵循下述独立审计追溯边界，不复制到 detailJson、普通日志或阶段证据。
+
+AdminCommandReceipt 仅持久化幂等键 hash、请求 hash、当前领域安全结果和受控执行元数据。重放必须重新授权，历史结果不让被降权/停用或已撤销会话继续读取。活跃记录不按 TTL 删除；终态以数据库完成时刻至少保留24小时，不可倒填时间缩短期限。KeyRotationRun 只存既有 key ID、受控 revision/hash/checkpoint，当前 candidateIdsJson 为 `[]`；不存明文 key、envelope、任意候选正文或外部原始响应。密钥审计到期清理协议尚未生产，当前轮换 run 禁止删除并以 Restrict FK 保留相关收据与密钥引用，不能因终态24小时已过拆除引用链。
+
+Phase012 验收使用任务专属的隔离 PostgreSQL 与合成身份，随机凭据和 canary 仅存被忽略的本地准备区。归档 stdout/stderr、浏览器 DOM/截图和报告前扫描秘密；证据只保留安全计数、版本差异、状态、命令退出码与文件 hash。界面展示的合成示例邮箱不代表真实用户。上述新增持久化边界不声明已实现个人 ERASE、生产保留清理或 Phase016 worker。
 
 ## 删除、归档与恢复
 

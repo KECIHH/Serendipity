@@ -1,0 +1,191 @@
+{
+  "status": "PASS",
+  "scope": "ISOLATED_ROOT_LAYOUT_GIT_PROTOCOL_REGRESSION",
+  "simulation": true,
+  "sourceRepositoryIndexMutated": false,
+  "network": "LOCAL_FILESYSTEM_ONLY",
+  "independentReviewPerformed": false,
+  "reviewFixturePolicy": "Synthetic protocol JSON only; actual phase acceptance requires a separate independent Agent report",
+  "sourceBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+  "testedSourceHashes": {
+    "scripts/validate-phase.mjs": "06bcd9955531054ace725393d8504f037256a428b80f5fe883b95587c31062d1",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319",
+    "scripts/phase-evidence.mjs": "454f1911b53a21aed6f014d8cb6b36d748a6f9ec8b8e7547187d45cd20ce96c9",
+    "scripts/test-validate-phase.mjs": "b4df52b324137973c12ddc352695f2082177d29aaf9d007ba6ebf1c18a76439c",
+    "docs/phase-plans/Phase001-inputs.json": "2f4a1c99660655d719e79a0411706f107df0f8d8f8888487fc4fffa58f0990e5"
+  },
+  "shells": [
+    "powershell",
+    "pwsh"
+  ],
+  "caseCount": 3,
+  "observationCount": 7,
+  "cases": [
+    {
+      "name": "root-equality-empty-prefix-local-inputs-history-pass",
+      "status": "PASS",
+      "durationMs": 12300
+    },
+    {
+      "name": "recovery-history-pass",
+      "status": "PASS",
+      "durationMs": 13117
+    },
+    {
+      "name": "previous-required-case-removal",
+      "status": "PASS",
+      "durationMs": 8657
+    }
+  ],
+  "observations": [
+    {
+      "case": "root-equality-empty-prefix-local-inputs-history-pass",
+      "shell": "powershell",
+      "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json -ProtocolFixture",
+      "exitCode": 0,
+      "expectedDiagnostic": null,
+      "result": {
+        "status": "PASS",
+        "scope": "ISOLATED_PROTOCOL_FIXTURE_VALIDATION",
+        "protocolFixture": true,
+        "layoutVersion": 2,
+        "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-1TZVTB\\positive",
+        "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-1TZVTB\\positive",
+        "projectGitPrefix": "",
+        "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+        "completedThrough": 1,
+        "currentPhase": 2,
+        "artifactCommit": "b297b9a5c9b71ea54d85a8d2adec6c111ffec545",
+        "metadataCommit": "17e72332b56e6fd95a131c7363414360f3bab127",
+        "historicalPhase": 0,
+        "preservedHistoricalFiles": 44,
+        "localIgnoredInputsVerified": 151,
+        "contractCoverage": {
+          "numerator": 20,
+          "denominator": 20
+        },
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "root-equality-empty-prefix-local-inputs-history-pass",
+      "shell": "pwsh",
+      "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json -ProtocolFixture",
+      "exitCode": 0,
+      "expectedDiagnostic": null,
+      "result": {
+        "status": "PASS",
+        "scope": "ISOLATED_PROTOCOL_FIXTURE_VALIDATION",
+        "protocolFixture": true,
+        "layoutVersion": 2,
+        "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-1TZVTB\\positive",
+        "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-1TZVTB\\positive",
+        "projectGitPrefix": "",
+        "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+        "completedThrough": 1,
+        "currentPhase": 2,
+        "artifactCommit": "b297b9a5c9b71ea54d85a8d2adec6c111ffec545",
+        "metadataCommit": "17e72332b56e6fd95a131c7363414360f3bab127",
+        "historicalPhase": 0,
+        "preservedHistoricalFiles": 44,
+        "localIgnoredInputsVerified": 151,
+        "contractCoverage": {
+          "numerator": 20,
+          "denominator": 20
+        },
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "local-fast-forward-sync",
+      "command": "git push <isolated local bare repository> main:refs/heads/main",
+      "exitCode": 0,
+      "metadataCommit": "17e72332b56e6fd95a131c7363414360f3bab127",
+      "network": "LOCAL_FILESYSTEM_ONLY"
+    },
+    {
+      "case": "recovery-history-pass",
+      "shell": "powershell",
+      "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json -ProtocolFixture",
+      "exitCode": 0,
+      "expectedDiagnostic": null,
+      "result": {
+        "status": "PASS",
+        "scope": "ISOLATED_PROTOCOL_FIXTURE_VALIDATION",
+        "protocolFixture": true,
+        "layoutVersion": 2,
+        "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-1TZVTB\\recovery-history-pass",
+        "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-1TZVTB\\recovery-history-pass",
+        "projectGitPrefix": "",
+        "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+        "completedThrough": 1,
+        "currentPhase": 2,
+        "artifactCommit": "b665e4e81ad618d2d976e3f23e3c5b2bb806c6dc",
+        "metadataCommit": "51ac804f26df89b38c2f13f9bba15ec4bdb81d22",
+        "historicalPhase": 0,
+        "preservedHistoricalFiles": 44,
+        "localIgnoredInputsVerified": 151,
+        "contractCoverage": {
+          "numerator": 20,
+          "denominator": 20
+        },
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "recovery-history-pass",
+      "shell": "pwsh",
+      "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json -ProtocolFixture",
+      "exitCode": 0,
+      "expectedDiagnostic": null,
+      "result": {
+        "status": "PASS",
+        "scope": "ISOLATED_PROTOCOL_FIXTURE_VALIDATION",
+        "protocolFixture": true,
+        "layoutVersion": 2,
+        "repositoryRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-1TZVTB\\recovery-history-pass",
+        "projectRoot": "C:\\Users\\11295\\AppData\\Local\\Temp\\serendipity-phase-validator-1TZVTB\\recovery-history-pass",
+        "projectGitPrefix": "",
+        "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+        "completedThrough": 1,
+        "currentPhase": 2,
+        "artifactCommit": "b665e4e81ad618d2d976e3f23e3c5b2bb806c6dc",
+        "metadataCommit": "51ac804f26df89b38c2f13f9bba15ec4bdb81d22",
+        "historicalPhase": 0,
+        "preservedHistoricalFiles": 44,
+        "localIgnoredInputsVerified": 151,
+        "contractCoverage": {
+          "numerator": 20,
+          "denominator": 20
+        },
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "previous-required-case-removal",
+      "shell": "powershell",
+      "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json -ProtocolFixture",
+      "exitCode": 1,
+      "expectedDiagnostic": "PRIOR_PLAN_CASES",
+      "result": {
+        "status": "FAIL",
+        "error": "PRIOR_PLAN_CASES: required case removed: Phase001:original-required-case",
+        "networkPushEvaluated": false
+      }
+    },
+    {
+      "case": "previous-required-case-removal",
+      "shell": "pwsh",
+      "command": "pwsh.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 1 -Strict -Json -ProtocolFixture",
+      "exitCode": 1,
+      "expectedDiagnostic": "PRIOR_PLAN_CASES",
+      "result": {
+        "status": "FAIL",
+        "error": "PRIOR_PLAN_CASES: required case removed: Phase001:original-required-case",
+        "networkPushEvaluated": false
+      }
+    }
+  ],
+  "durationMs": 34078,
+  "fixtureRoot": null
+}

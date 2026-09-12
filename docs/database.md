@@ -507,6 +507,56 @@ Phase096首建并扩FileDerivative/PlaceMedia/AssetUsage。初始QUARANTINED/PEN
 
 Phase106首次建表和public页面，不复用ShareGrant。当前隐私/质量/freshness资格通过才发布，公开PlanViewModel不比share更宽；sitemap仅收当前有效slug，撤销/过期立即拒绝读取并移除下一版索引。归档同事务撤销，ERASE先独立PUBLICATION_REVOKE水位。planVersionId、createdById及(status,expiresAt,id)建索引，版本/发布者引用Restrict。
 
+### 2.21 AdminCommandReceipt（Phase012）
+
+Phase012 首次迁移 `20260912013806_admin_commands` 创建管理命令收据和轮换账本，保留六个既有迁移的字节。同步用户修改与成功收据、USER_UPDATE 审计在同一事务提交；同值请求只写安全收据。该表不是第二套认证或共享任务表。
+
+| 字段               | 类型与默认值                    | 约束与用途                                              |
+| ------------------ | ------------------------------- | ------------------------------------------------------- |
+| id                 | String，cuid()                  | 主键，安全 ID                                           |
+| ownerUserId        | String                          | User.id FK，删除/更新 Restrict；由当前管理员身份取得    |
+| operationId        | String，VarChar(128)            | 用户修改固定 `patch.admin.users.id`                     |
+| resourceId         | String，VarChar(128)            | URL 目标 ID，与 operationId 一起定义幂等域              |
+| idempotencyKeyHash | String，Char(64)                | Idempotency-Key 的 SHA-256 小写 hex；不存头原文         |
+| requestHash        | String，Char(64)                | 已校验、规范化的非秘密 payload 的 JCS SHA-256           |
+| status             | AdminCommandStatus，PENDING     | PENDING/RUNNING/RETRY_WAIT/SUCCEEDED/FAILED             |
+| responseJson       | Json?                           | 仅终态安全结果；用户命令为九字段管理摘要；对象最大32KiB |
+| errorCode          | String?，VarChar(64)            | FAILED 必需的受控大写错误码；SUCCEEDED 为 null          |
+| attemptCount       | Int，0                          | 非负；每次成功领取恰加一                                |
+| availableAt        | DateTime，now()，Timestamptz(3) | 不早于 createdAt；未到期不能领取                        |
+| leaseOwner         | String?，VarChar(128)           | 当前 RUNNING 领取者，非 RUNNING 为 null                 |
+| leaseUntil         | DateTime?，Timestamptz(3)       | 与 leaseOwner 同时有值；数据库时钟检查有效期            |
+| fencingToken       | Int，0                          | 非负；每次成功领取恰加一，旧值不能提交 checkpoint/终态  |
+| createdAt          | DateTime，now()，Timestamptz(3) | 幂等身份的一部分，创建后不可变                          |
+| completedAt        | DateTime?，Timestamptz(3)       | 仅终态有值；终结时由数据库 `auth_now()` 规范化          |
+| expiresAt          | DateTime，Timestamptz(3)        | 必需；不得缩短，至少终结数据库时刻后24小时              |
+
+唯一约束为 `(ownerUserId,operationId,resourceId,idempotencyKeyHash)`，其 owner 最左前缀覆盖 FK 访问；`(status,availableAt,leaseUntil,id)` 支持领取扫描，expiresAt 单列索引支持后续受控保留清理。两个 hash 固定为64位小写 hex。活动记录没有 responseJson/errorCode/completedAt，RUNNING 必须同时有 leaseOwner/leaseUntil 且两个计数大于0；SUCCEEDED 必须有对象结果且无错误码，FAILED 必须有错误码。
+
+SQL trigger 固定身份/requestHash，禁止终态更新和 TRUNCATE。同步用户命令可在同一业务事务直接插入 SUCCEEDED；已有活动收据必须从当前未过期 RUNNING claim 收敛，事务上下文中的 leaseOwner/fencingToken 要匹配。领取 PENDING、到期 RETRY_WAIT 或租约已失效的 RUNNING 时先锁行，再同时递增 attemptCount/fencingToken，租约至多60秒；TypeScript helper 接受1–60秒。重启后的新 claim 读取原记录续接，不重开终态。completedAt 和最低 expiresAt 以数据库时钟决定，调用方不能倒填历史完成时间缩短保留期。
+
+DELETE 只可能针对已到 expiresAt 的终态且没有 KeyRotationRun 引用；活跃记录即使超过名义 TTL 仍保留。当前没有自动清理任务或轮换审计到期删除协议，因此轮换收据和下述 FK 链继续保留，不能由普通 TTL 任务拆除。
+
+### 2.22 KeyRotationRun（Phase012）
+
+| 字段              | 类型与默认值                         | 约束与用途                                                                               |
+| ----------------- | ------------------------------------ | ---------------------------------------------------------------------------------------- |
+| id                | String，cuid()                       | 主键                                                                                     |
+| receiptId         | String，unique                       | AdminCommandReceipt.id FK，一份收据至多一条轮换记录                                      |
+| oldKeyId          | String                               | ApiKeyConfig.id FK；必须与收据 resourceId 一致                                           |
+| newKeyId          | String?                              | ApiKeyConfig.id FK；非空时不得等于 oldKeyId                                              |
+| candidateIdsJson  | Json，[]                             | 当前 CHECK 固定为空数组；Phase015 才扩展为 adapter 控制的 tagged JSON                    |
+| referenceSetHash  | String，Char(64)                     | 完整引用集合的64位小写 SHA-256，创建后不可变                                             |
+| baseRevisionsJson | Json                                 | 安全 ID 到非负 Int revision 的对象；helper 要求包含 oldKeyId，最多128项；数据库限制16KiB |
+| stage             | KeyRotationStage，PREPARING          | PREPARING/TESTING/READY/ACTIVATED/ABORTED                                                |
+| checkpointJson    | Json                                 | exact `{version:1,fencingToken,step}`；token 绑定当前领取，step 与 stage 对应            |
+| createdAt         | DateTime，now()，Timestamptz(3)      | 创建后不可变，不得晚于数据库当前时间                                                     |
+| updatedAt         | DateTime，@updatedAt，Timestamptz(3) | 单调且不晚于数据库当前时间                                                               |
+
+三个 FK 均为 onDelete/onUpdate Restrict；receiptId unique 已覆盖其 FK，oldKeyId/newKeyId 分别建索引，`(stage,updatedAt,id)` 支持进度读取。run 身份、候选集合、引用 hash 和基线 revision 不可改；newKeyId 只允许在 PREPARING 时从 null 绑定一次。插入必须 PREPARING，然后只向 TESTING→READY→ACTIVATED 前进，非终态可以中止至 ABORTED；同阶段更新只续接 checkpoint。ACTIVATED/ABORTED 终态不可改，DELETE/TRUNCATE 均被拒绝。
+
+`prepareKeyRotationRun` 先验证 live claim，再检查旧 key 为 ACTIVE 且 revision 匹配；可选新 key 必须是同 provider 的既存 DISABLED 行。helper 只持久化准备结果，不创建、启用、撤销或切换 key。首次准备与收据在调用方同一事务内执行，部分准备失败一起回滚；后续测试和推进必须消费已持久化的 checkpoint，旧 lease/fence 无法写入。当前 `saveKeyRotationCheckpoint` 只提供 PREPARING/TESTING/READY/ABORTED 进度更新，没有 ACTIVATED 业务接口、外呼或 Phase016 worker。密钥管理 API/页面与引用切换由 Phase013/015 分别生产。
+
 ## 治理版本与激活字段
 
 Phase015第一次即建最终模型。下表展开注册表的必填内容；只标`?`字段可空，其余非空，所有createdAt及内容hash不可变。精确复合FK不能退化为只引用id；所有版本引用采用Restrict，作者去标识只由专用隐私角色处理。

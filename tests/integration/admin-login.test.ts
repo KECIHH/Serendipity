@@ -496,7 +496,7 @@ describe.skipIf(!enabled)("admin-login real PostgreSQL security", () => {
         for (let poll = 0; poll < 30 && !completed; poll++) {
           const [waiter] = await fixture.admin.$queryRaw<Array<{ waiting: boolean }>>`
             SELECT EXISTS(SELECT 1 FROM pg_stat_activity WHERE datname=current_database()
-              AND usename='phase011_app' AND wait_event_type='Lock' AND wait_event='advisory') AS waiting
+              AND usename=${fixture.config.appUser} AND wait_event_type='Lock' AND wait_event='advisory') AS waiting
           `;
           if (waiter.waiting) {
             waitingOnLock = true;
@@ -815,7 +815,9 @@ describe.skipIf(!enabled)("admin-login real PostgreSQL security", () => {
     await withAuthDatabase(async (fixture) => {
       const service = services(fixture);
       try {
-        await fixture.admin.$executeRawUnsafe('REVOKE INSERT ON "AuditLog" FROM phase011_app');
+        await fixture.admin.$executeRawUnsafe(
+          `REVOKE INSERT ON "AuditLog" FROM "${fixture.config.appUser}"`,
+        );
         expect(await service.authenticate()).toEqual({ kind: "UNAVAILABLE" });
         expect(await fixture.app.authSession.count()).toBe(0);
         expect(
@@ -823,22 +825,32 @@ describe.skipIf(!enabled)("admin-login real PostgreSQL security", () => {
             .lastLoginAt,
         ).toBeNull();
         expect((await fixture.app.authLoginAttempt.findFirstOrThrow()).status).toBe("RESERVED");
-        await fixture.admin.$executeRawUnsafe('GRANT INSERT ON "AuditLog" TO phase011_app');
+        await fixture.admin.$executeRawUnsafe(
+          `GRANT INSERT ON "AuditLog" TO "${fixture.config.appUser}"`,
+        );
         const issued = success(await service.authenticate());
-        await fixture.admin.$executeRawUnsafe('REVOKE SELECT ON "AuthSession" FROM phase011_app');
+        await fixture.admin.$executeRawUnsafe(
+          `REVOKE SELECT ON "AuthSession" FROM "${fixture.config.appUser}"`,
+        );
         expect(
           await authorizationObservation(
             service.sessions.validateSession(issued.opaqueToken, "ADMIN"),
           ),
         ).toEqual({ outcome: "REJECTED", status: 503 });
-        await fixture.admin.$executeRawUnsafe('GRANT SELECT ON "AuthSession" TO phase011_app');
         await fixture.admin.$executeRawUnsafe(
-          'REVOKE SELECT ON "AuthLoginAttempt" FROM phase011_app',
+          `GRANT SELECT ON "AuthSession" TO "${fixture.config.appUser}"`,
+        );
+        await fixture.admin.$executeRawUnsafe(
+          `REVOKE SELECT ON "AuthLoginAttempt" FROM "${fixture.config.appUser}"`,
         );
         expect(await service.authenticate()).toEqual({ kind: "UNAVAILABLE" });
         expect(await fixture.app.authSession.count()).toBe(1);
-        await fixture.admin.$executeRawUnsafe('GRANT SELECT ON "AuthLoginAttempt" TO phase011_app');
-        await fixture.admin.$executeRawUnsafe('REVOKE INSERT ON "AuditLog" FROM phase011_app');
+        await fixture.admin.$executeRawUnsafe(
+          `GRANT SELECT ON "AuthLoginAttempt" TO "${fixture.config.appUser}"`,
+        );
+        await fixture.admin.$executeRawUnsafe(
+          `REVOKE INSERT ON "AuditLog" FROM "${fixture.config.appUser}"`,
+        );
         await expect(service.sessions.revokeSession(issued.opaqueToken)).rejects.toMatchObject({
           status: 503,
         });

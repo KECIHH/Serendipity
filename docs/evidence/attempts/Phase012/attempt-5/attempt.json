@@ -1,0 +1,464 @@
+{
+  "phase": 12,
+  "attemptId": "attempt-5",
+  "status": "FAIL",
+  "artifactCommit": null,
+  "command": "node docs/phase-plans/verify-phase012.mjs --quality",
+  "exitCode": 1,
+  "planHash": "b4bbaa708aee29db6dc3c33e552fc729978464ab69314e40e265ea10f4c531b0",
+  "reason": "AssertionError [ERR_ASSERTION]: A required test command failed; see its scanned report\n\n1 !== 0\n\n    at runVitest (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase012.mjs:188:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async quality (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase012.mjs:344:16)\n    at async file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase012.mjs:416:20",
+  "observation": null,
+  "observations": [
+    {
+      "command": "node --version",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "--version"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "v24.19.0\r\n",
+      "stderr": "",
+      "durationMs": 88
+    },
+    {
+      "command": "npm --version",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "--version"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "11.7.0\n",
+      "stderr": "",
+      "durationMs": 196
+    },
+    {
+      "command": "Prisma CLI and checkpoint network regression",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "tests/phase012/cli-network.mjs"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "",
+      "stderr": "{\"command\":\"Prisma validate with inherited network guard: disabled\",\"exitCode\":0,\"durationMs\":1026}\n{\"command\":\"Prisma validate with inherited network guard: mutation-enable-checkpoint\",\"exitCode\":0,\"durationMs\":1098}\n{\"status\":\"PASS\",\"probes\":2,\"productionTraffic\":false}\n",
+      "durationMs": 7267
+    },
+    {
+      "command": "npm run lint",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "lint"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "\n> serendipity@0.1.0 lint\n> eslint . --max-warnings 0\n\n",
+      "stderr": "",
+      "durationMs": 4311
+    },
+    {
+      "command": "npm run typecheck",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "typecheck"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "\n> serendipity@0.1.0 typecheck\n> tsc --noEmit\n\n",
+      "stderr": "",
+      "durationMs": 5491
+    },
+    {
+      "command": "docker inspect --format {{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}} 4d7cbdcdaa9dd4760a8dcaabeb0e90211f50533fe2bba19723790483b567f8a9",
+      "executable": "docker.exe",
+      "arguments": [
+        "inspect",
+        "--format",
+        "{{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}}",
+        "4d7cbdcdaa9dd4760a8dcaabeb0e90211f50533fe2bba19723790483b567f8a9"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "{\"serendipity.phase\":\"012\",\"serendipity.run\":\"984a71e12cc1\"}|{\"5432/tcp\":[{\"HostIp\":\"127.0.0.1\",\"HostPort\":\"62352\"}]}|postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0|true|{\"serendipity-phase012-984a71e12cc1\":{\"IPAMConfig\":null,\"Links\":null,\"Aliases\":null,\"DriverOpts\":null,\"GwPriority\":0,\"NetworkID\":\"e7d5c105d0e31b8af6f443e563a55bca61876a304f899c15808f1a494bd5acef\",\"EndpointID\":\"264528f18eaa7f66d2cf0a3cb31eeff1784bb4dc1d1171365429ac866c135098\",\"Gateway\":\"172.23.0.1\",\"IPAddress\":\"172.23.0.2\",\"MacAddress\":\"5e:a3:05:0d:0f:f5\",\"IPPrefixLen\":16,\"IPv6Gateway\":\"\",\"GlobalIPv6Address\":\"\",\"GlobalIPv6PrefixLen\":0,\"DNSNames\":[\"serendipity-phase012-984a71e12cc1\",\"4d7cbdcdaa9d\"]}}|{\"/var/lib/postgresql/data\":\"rw,size=536870912\"}\n",
+      "stderr": "",
+      "durationMs": 202
+    },
+    {
+      "command": "docker network inspect --format {{json .Options}}|{{json .Labels}} serendipity-phase012-984a71e12cc1",
+      "executable": "docker.exe",
+      "arguments": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .Options}}|{{json .Labels}}",
+        "serendipity-phase012-984a71e12cc1"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "{\"com.docker.network.bridge.enable_ip_masquerade\":\"false\",\"com.docker.network.enable_ipv4\":\"true\",\"com.docker.network.enable_ipv6\":\"false\"}|{\"serendipity.run\":\"984a71e12cc1\"}\n",
+      "stderr": "",
+      "durationMs": 185
+    },
+    {
+      "command": "docker inspect --format {{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}} 4d7cbdcdaa9dd4760a8dcaabeb0e90211f50533fe2bba19723790483b567f8a9",
+      "executable": "docker.exe",
+      "arguments": [
+        "inspect",
+        "--format",
+        "{{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}}",
+        "4d7cbdcdaa9dd4760a8dcaabeb0e90211f50533fe2bba19723790483b567f8a9"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "{\"serendipity.phase\":\"012\",\"serendipity.run\":\"984a71e12cc1\"}|{\"5432/tcp\":[{\"HostIp\":\"127.0.0.1\",\"HostPort\":\"62352\"}]}|postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0|true|{\"serendipity-phase012-984a71e12cc1\":{\"IPAMConfig\":null,\"Links\":null,\"Aliases\":null,\"DriverOpts\":null,\"GwPriority\":0,\"NetworkID\":\"e7d5c105d0e31b8af6f443e563a55bca61876a304f899c15808f1a494bd5acef\",\"EndpointID\":\"264528f18eaa7f66d2cf0a3cb31eeff1784bb4dc1d1171365429ac866c135098\",\"Gateway\":\"172.23.0.1\",\"IPAddress\":\"172.23.0.2\",\"MacAddress\":\"5e:a3:05:0d:0f:f5\",\"IPPrefixLen\":16,\"IPv6Gateway\":\"\",\"GlobalIPv6Address\":\"\",\"GlobalIPv6PrefixLen\":0,\"DNSNames\":[\"serendipity-phase012-984a71e12cc1\",\"4d7cbdcdaa9d\"]}}|{\"/var/lib/postgresql/data\":\"rw,size=536870912\"}\n",
+      "stderr": "",
+      "durationMs": 186
+    },
+    {
+      "command": "docker network inspect --format {{json .Options}}|{{json .Labels}} serendipity-phase012-984a71e12cc1",
+      "executable": "docker.exe",
+      "arguments": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .Options}}|{{json .Labels}}",
+        "serendipity-phase012-984a71e12cc1"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "{\"com.docker.network.bridge.enable_ip_masquerade\":\"false\",\"com.docker.network.enable_ipv4\":\"true\",\"com.docker.network.enable_ipv6\":\"false\"}|{\"serendipity.run\":\"984a71e12cc1\"}\n",
+      "stderr": "",
+      "durationMs": 192
+    },
+    {
+      "command": "docker exec -i 4d7cbdcdaa9dd4760a8dcaabeb0e90211f50533fe2bba19723790483b567f8a9 psql -X -v ON_ERROR_STOP=1 -U phase012_runner -d phase012_disposable_984a71e12cc1 -At",
+      "executable": "docker.exe",
+      "arguments": [
+        "exec",
+        "-i",
+        "4d7cbdcdaa9dd4760a8dcaabeb0e90211f50533fe2bba19723790483b567f8a9",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "phase012_runner",
+        "-d",
+        "phase012_disposable_984a71e12cc1",
+        "-At"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "phase012_disposable_984a71e12cc1|17.11 (Debian 17.11-1.pgdg12+2)|serendipity-phase012-disposable:984a71e12cc1\n",
+      "stderr": "",
+      "durationMs": 278
+    },
+    {
+      "command": "npm run test -- admin/users admin/layout --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase012\\attempt-5-admin-users-layout-vitest.json",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test",
+        "--",
+        "admin/users",
+        "admin/layout",
+        "--no-file-parallelism",
+        "--reporter=default",
+        "--reporter=json",
+        "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase012\\attempt-5-admin-users-layout-vitest.json"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "\n> serendipity@0.1.0 test\n> vitest run admin/users admin/layout --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase012\\attempt-5-admin-users-layout-vitest.json\n\n\n RUN  v4.1.11 C:/Users/11295/Desktop/Serendipity · 际遇\n\n ✓ tests/admin/users.integration.test.ts (17 tests) 44295ms\n       ✓ uses the exact projection and stable filtered keyset pages, and rejects invalid cursors and bounds  2755ms\n       ✓ edits the revision from real GET, serializes competing updates, checks CAS before no-op and ignores login timestamps  3273ms\n       ✓ rejects all unknown enums, duplicate body identifiers, wrong CAS types and unbounded reasons without writes  2479ms\n       ✓ rolls back the user, revocations and receipt if the transactional audit insert fails  2528ms\n       ✓ rejects every actual self role/status change with zero row changes and permits a versioned no-op  2559ms\n       ✓ enforces the real locked invariant for the sole active administrator independently of the self guard  1845ms\n       ✓ keeps one active administrator when two authorized processes concurrently disable each other  3187ms\n       ✓ increments the revocation version and rejects old tokens even when their database rows are active  2658ms\n       ✓ rejects expired and revoked principals and preserves both terminal row states  2453ms\n       ✓ rechecks the actor after a real advisory-lock wait and rolls back when logout wins  2676ms\n       ✓ authorizes before target queries and rejects absent, ordinary, disabled, old-version or non-CSRF identities without changes  2534ms\n       ✓ distinguishes a successful empty result from a real database read failure  2445ms\n       ✓ replays the original response after process restart and later updates, rejects changed payloads and freezes terminal receipts  3227ms\n       ✓ converges simultaneous same-key requests to one immutable effect and separates owner/resource domains  3220ms\n       ✓ rolls back the mutation and audit if the terminal receipt write fails  2524ms\n       ✓ requires a live claim for every state update and bases retention on real completion rather than backfilled creation time  1917ms\n       ✓ persists preparation before testing, atomically rolls back partial candidates and fences resumed checkpoints with retained audit references  2009ms\n ✓ tests/admin/users-client.test.tsx (9 tests) 965ms\n ✓ tests/admin/layout.test.tsx (9 tests) 210ms\n\n Test Files  3 passed (3)\n      Tests  35 passed (35)\n   Start at  10:30:52\n   Duration  49.29s (transform 488ms, setup 273ms, import 1.39s, tests 45.47s, environment 1.56s)\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase012/attempt-5-admin-users-layout-vitest.json\n",
+      "stderr": "stderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > list > uses the exact projection and stable filtered keyset pages, and rejects invalid cursors and bounds\n{\"phase\":12,\"group\":\"list\",\"database\":\"REAL_POSTGRESQL17\",\"total\":28,\"filtered\":16,\"duplicateIds\":0,\"sensitiveColumns\":0,\"invalidInputsRejected\":11,\"crossOwnerCursorRejected\":true}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > role-status > edits the revision from real GET, serializes competing updates, checks CAS before no-op and ignores login timestamps\n{\"phase\":12,\"group\":\"role-status\",\"database\":\"REAL_POSTGRESQL17\",\"revisionBefore\":0,\"revisionAfter\":3,\"initialVersionBefore\":0,\"initialVersionAfter\":1,\"casRaceStatuses\":[200,409],\"auditCount\":3,\"noopIncrement\":0}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > role-status > rejects all unknown enums, duplicate body identifiers, wrong CAS types and unbounded reasons without writes\n{\"phase\":12,\"group\":\"role-status\",\"database\":\"REAL_POSTGRESQL17\",\"invalidSchemasRejected\":9,\"invalidSchemaWrites\":0}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > role-status > rolls back the user, revocations and receipt if the transactional audit insert fails\n{\"phase\":12,\"group\":\"role-status\",\"database\":\"REAL_POSTGRESQL17\",\"fault\":\"AUDIT_INSERT\",\"httpStatus\":503,\"businessChanges\":0,\"revocationChanges\":0,\"receiptChanges\":0}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > self-protection > rejects every actual self role/status change with zero row changes and permits a versioned no-op\n{\"phase\":12,\"group\":\"self-protection\",\"database\":\"REAL_POSTGRESQL17\",\"rejectedChanges\":3,\"rejectedWrites\":0,\"noopRevision\":0,\"noopVersion\":0}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > last-admin > enforces the real locked invariant for the sole active administrator independently of the self guard\n{\"phase\":12,\"group\":\"last-admin\",\"database\":\"REAL_POSTGRESQL17\",\"isolatedInvariantChecks\":2,\"isolatedRejections\":2,\"databaseChanges\":0}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > last-admin > keeps one active administrator when two authorized processes concurrently disable each other\n{\"phase\":12,\"group\":\"last-admin\",\"database\":\"REAL_POSTGRESQL17\",\"schedule\":\"BOTH_REAL_ROUTES_WAIT_ON_HELD_ADMIN_SET_THEN_RELEASE\",\"databaseLockWaiters\":2,\"raceStatuses\":[200,401],\"survivingActiveAdmins\":1,\"auditCount\":1}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > session > increments the revocation version and rejects old tokens even when their database rows are active\n{\"phase\":12,\"group\":\"session\",\"database\":\"REAL_POSTGRESQL17\",\"versionBefore\":0,\"versionAfterFirstChange\":1,\"versionAfterDisableReenable\":3,\"oldRowsRevoked\":4,\"oldTokenRejections\":4,\"activeOldVersionRejected\":true,\"noopVersionIncrement\":0,\"survivesReenable\":false}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > session > rejects expired and revoked principals and preserves both terminal row states\n{\"phase\":12,\"group\":\"session\",\"database\":\"REAL_POSTGRESQL17\",\"revokedPrincipalStatus\":401,\"expiredPrincipalStatus\":401,\"revokedRowStatus\":\"REVOKED\",\"expiredRowStatus\":\"EXPIRED\",\"terminalMutationRejections\":6,\"terminalRowChanges\":0}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > session > rechecks the actor after a real advisory-lock wait and rolls back when logout wins\n{\"phase\":12,\"group\":\"session\",\"database\":\"REAL_POSTGRESQL17\",\"schedule\":\"AUTHORIZED_PATCH_WAITS_THEN_REAL_LOGOUT_COMMITS_BEFORE_LOCK_RELEASE\",\"lockWaiters\":1,\"requestStatusAfterLogout\":401,\"logoutAuditCount\":1,\"businessWritesAfterLogout\":0,\"userUpdateAuditCount\":0,\"receiptCount\":0}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > authorization-idempotency > authorizes before target queries and rejects absent, ordinary, disabled, old-version or non-CSRF identities without changes\n{\"phase\":12,\"group\":\"authorization-idempotency\",\"database\":\"REAL_POSTGRESQL17\",\"rejectedAuthorizationRequests\":15,\"objectExistenceLeaks\":0,\"unauthorizedWrites\":0,\"missingIdempotencyRejected\":true}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > authorization-idempotency > distinguishes a successful empty result from a real database read failure\n{\"phase\":12,\"group\":\"authorization-idempotency\",\"database\":\"REAL_POSTGRESQL17\",\"emptyResultStatus\":200,\"databaseFailureStatus\":503,\"databaseErrorMisrepresentedAsEmpty\":false}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > authorization-idempotency > replays the original response after process restart and later updates, rejects changed payloads and freezes terminal receipts\n{\"phase\":12,\"group\":\"authorization-idempotency\",\"database\":\"REAL_POSTGRESQL17\",\"processRestarts\":1,\"originalResponseReplays\":2,\"payloadConflicts\":2,\"originalResponseRevision\":1,\"currentRevision\":2,\"receipts\":2,\"auditCount\":2,\"terminalMutationRejections\":6,\"insertionMinimumRetentionNormalized\":true,\"normalizedInsertionImmediatelyDeletable\":false,\"minimumTerminalHours\":24}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > authorization-idempotency > converges simultaneous same-key requests to one immutable effect and separates owner/resource domains\n{\"phase\":12,\"group\":\"authorization-idempotency\",\"database\":\"REAL_POSTGRESQL17\",\"schedule\":\"SIX_PARALLEL_REQUESTS_ACROSS_TWO_PROCESSES\",\"sameKeySuccesses\":6,\"replayedResponses\":5,\"businessEffects\":1,\"auditCount\":1,\"finalRevision\":1,\"finalVersion\":1,\"separateOwnerDomain\":true,\"separateResourceDomain\":true}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > authorization-idempotency > rolls back the mutation and audit if the terminal receipt write fails\n{\"phase\":12,\"group\":\"authorization-idempotency\",\"database\":\"REAL_POSTGRESQL17\",\"fault\":\"TERMINAL_RECEIPT_WRITE\",\"httpStatus\":503,\"userChanges\":0,\"revocationChanges\":0,\"auditChanges\":0,\"receiptChanges\":0}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > authorization-idempotency > requires a live claim for every state update and bases retention on real completion rather than backfilled creation time\n{\"phase\":12,\"group\":\"authorization-idempotency\",\"database\":\"REAL_POSTGRESQL17\",\"pendingUnclaimedTransitionRejections\":3,\"schedule\":\"A_FENCE1_EXPIRES_B_FENCE2_REQUEUES_A_AND_B_CANNOT_FINISH_WITHOUT_NEW_CLAIM\",\"retryWaitUnclaimedCompletionRejections\":2,\"successfulFence\":3,\"futureCompletionRejected\":true,\"oldPendingAgeHours\":48,\"completionBackfillNormalized\":true,\"retainedHoursAfterRealCompletion\":24,\"immediatelyDeletable\":false}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > authorization-idempotency > persists preparation before testing, atomically rolls back partial candidates and fences resumed checkpoints with retained audit references\n{\"phase\":12,\"group\":\"authorization-idempotency\",\"database\":\"REAL_POSTGRESQL17\",\"partialPreparationRolledBack\":true,\"partialRowsRemaining\":0,\"persistedRuns\":1,\"persistedCandidates\":1,\"originalFence\":1,\"resumedFence\":2,\"staleCheckpointRejections\":2,\"activeAfterTtlStillClaimable\":true,\"rotationRetentionRejections\":3,\"oldKeyState\":\"ACTIVE\",\"candidateState\":\"DISABLED\",\"keyActivations\":0}\n\n",
+      "durationMs": 50250
+    },
+    {
+      "command": "docker inspect --format {{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}} 4d7cbdcdaa9dd4760a8dcaabeb0e90211f50533fe2bba19723790483b567f8a9",
+      "executable": "docker.exe",
+      "arguments": [
+        "inspect",
+        "--format",
+        "{{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}}",
+        "4d7cbdcdaa9dd4760a8dcaabeb0e90211f50533fe2bba19723790483b567f8a9"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "{\"serendipity.phase\":\"012\",\"serendipity.run\":\"984a71e12cc1\"}|{\"5432/tcp\":[{\"HostIp\":\"127.0.0.1\",\"HostPort\":\"62352\"}]}|postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0|true|{\"serendipity-phase012-984a71e12cc1\":{\"IPAMConfig\":null,\"Links\":null,\"Aliases\":null,\"DriverOpts\":null,\"GwPriority\":0,\"NetworkID\":\"e7d5c105d0e31b8af6f443e563a55bca61876a304f899c15808f1a494bd5acef\",\"EndpointID\":\"264528f18eaa7f66d2cf0a3cb31eeff1784bb4dc1d1171365429ac866c135098\",\"Gateway\":\"172.23.0.1\",\"IPAddress\":\"172.23.0.2\",\"MacAddress\":\"5e:a3:05:0d:0f:f5\",\"IPPrefixLen\":16,\"IPv6Gateway\":\"\",\"GlobalIPv6Address\":\"\",\"GlobalIPv6PrefixLen\":0,\"DNSNames\":[\"serendipity-phase012-984a71e12cc1\",\"4d7cbdcdaa9d\"]}}|{\"/var/lib/postgresql/data\":\"rw,size=536870912\"}\n",
+      "stderr": "",
+      "durationMs": 216
+    },
+    {
+      "command": "docker network inspect --format {{json .Options}}|{{json .Labels}} serendipity-phase012-984a71e12cc1",
+      "executable": "docker.exe",
+      "arguments": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .Options}}|{{json .Labels}}",
+        "serendipity-phase012-984a71e12cc1"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "{\"com.docker.network.bridge.enable_ip_masquerade\":\"false\",\"com.docker.network.enable_ipv4\":\"true\",\"com.docker.network.enable_ipv6\":\"false\"}|{\"serendipity.run\":\"984a71e12cc1\"}\n",
+      "stderr": "",
+      "durationMs": 187
+    },
+    {
+      "command": "docker inspect --format {{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}} 4d7cbdcdaa9dd4760a8dcaabeb0e90211f50533fe2bba19723790483b567f8a9",
+      "executable": "docker.exe",
+      "arguments": [
+        "inspect",
+        "--format",
+        "{{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}}",
+        "4d7cbdcdaa9dd4760a8dcaabeb0e90211f50533fe2bba19723790483b567f8a9"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "{\"serendipity.phase\":\"012\",\"serendipity.run\":\"984a71e12cc1\"}|{\"5432/tcp\":[{\"HostIp\":\"127.0.0.1\",\"HostPort\":\"62352\"}]}|postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0|true|{\"serendipity-phase012-984a71e12cc1\":{\"IPAMConfig\":null,\"Links\":null,\"Aliases\":null,\"DriverOpts\":null,\"GwPriority\":0,\"NetworkID\":\"e7d5c105d0e31b8af6f443e563a55bca61876a304f899c15808f1a494bd5acef\",\"EndpointID\":\"264528f18eaa7f66d2cf0a3cb31eeff1784bb4dc1d1171365429ac866c135098\",\"Gateway\":\"172.23.0.1\",\"IPAddress\":\"172.23.0.2\",\"MacAddress\":\"5e:a3:05:0d:0f:f5\",\"IPPrefixLen\":16,\"IPv6Gateway\":\"\",\"GlobalIPv6Address\":\"\",\"GlobalIPv6PrefixLen\":0,\"DNSNames\":[\"serendipity-phase012-984a71e12cc1\",\"4d7cbdcdaa9d\"]}}|{\"/var/lib/postgresql/data\":\"rw,size=536870912\"}\n",
+      "stderr": "",
+      "durationMs": 185
+    },
+    {
+      "command": "docker network inspect --format {{json .Options}}|{{json .Labels}} serendipity-phase012-984a71e12cc1",
+      "executable": "docker.exe",
+      "arguments": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .Options}}|{{json .Labels}}",
+        "serendipity-phase012-984a71e12cc1"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "{\"com.docker.network.bridge.enable_ip_masquerade\":\"false\",\"com.docker.network.enable_ipv4\":\"true\",\"com.docker.network.enable_ipv6\":\"false\"}|{\"serendipity.run\":\"984a71e12cc1\"}\n",
+      "stderr": "",
+      "durationMs": 187
+    },
+    {
+      "command": "docker exec -i 4d7cbdcdaa9dd4760a8dcaabeb0e90211f50533fe2bba19723790483b567f8a9 psql -X -v ON_ERROR_STOP=1 -U phase012_runner -d phase012_disposable_984a71e12cc1 -At",
+      "executable": "docker.exe",
+      "arguments": [
+        "exec",
+        "-i",
+        "4d7cbdcdaa9dd4760a8dcaabeb0e90211f50533fe2bba19723790483b567f8a9",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "phase012_runner",
+        "-d",
+        "phase012_disposable_984a71e12cc1",
+        "-At"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "phase012_disposable_984a71e12cc1|17.11 (Debian 17.11-1.pgdg12+2)|serendipity-phase012-disposable:984a71e12cc1\n",
+      "stderr": "",
+      "durationMs": 259
+    },
+    {
+      "command": "npm run test -- --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase012\\attempt-5-all-tests-vitest.json",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test",
+        "--",
+        "--no-file-parallelism",
+        "--reporter=default",
+        "--reporter=json",
+        "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase012\\attempt-5-all-tests-vitest.json"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "\n> serendipity@0.1.0 test\n> vitest run --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase012\\attempt-5-all-tests-vitest.json\n\n\n RUN  v4.1.11 C:/Users/11295/Desktop/Serendipity · 际遇\n\nstdout | tests/integration/admin-login.test.ts > admin-login real PostgreSQL security > uniform-failure: four valid-format failures all perform one real cost12 comparison with indistinguishable result and timing\n{\"authTiming\":{\"samplesPerGroup\":16,\"warmupPerGroup\":1,\"alpha\":0.01,\"maxMedianRatio\":1.5,\"permutationP\":0.8395802098950524,\"medianRatio\":1.0050601263750139,\"medians\":[264.71549999999934,263.38275000000067,264.16519999999946,264.00144999999975],\"samplesMs\":[[269,261,263,265,263,265,265,265,265,261,264,268,266,266,277,264],[263,262,265,262,264,264,261,270,265,264,262,282,268,262,262,263],[263,265,270,267,264,265,267,261,267,264,262,265,263,263,261,262],[264,263,262,265,265,263,271,264,262,265,264,264,264,264,263,264]]}}\n\nstdout | tests/integration/admin-login.test.ts > admin-login real PostgreSQL security > guards: real Next request stores and database-backed Route/Action guards precede all resource queries and writes\n{\"guardObservation\":{\"status\":\"PASS\",\"deniedRoute\":[401,403,401],\"deniedAction\":[401,403,401],\"unauthorizedQueries\":0,\"unauthorizedWrites\":0,\"authorizedQueries\":2,\"authorizedWrites\":2,\"revokedRoute\":401,\"revokedAction\":401,\"requestContext\":\"REAL_NEXT_REQUEST_STORE\",\"database\":\"REAL_POSTGRESQL17\"}}\n\n ✓ tests/integration/admin-login.test.ts (20 tests) 73302ms\n     ✓ valid-login: real seeded administrator creates one fixed-lifetime session and transactional audit  2208ms\n     ✓ valid-login: schema and application privileges prohibit history edits, weak deadlines and raw identities  2234ms\n     ✓ uniform-failure: four valid-format failures all perform one real cost12 comparison with indistinguishable result and timing  20039ms\n     ✓ uniform-failure: bounds prevent bcrypt truncation and client role or session claims cannot authorize a USER  2471ms\n     ✓ dual-throttle: sixth account and twenty-first IP attempts deny independently; success preserves attack history  9057ms\n     ✓ dual-throttle: advisory locks enforce both budgets under parallel independent real connections  2556ms\n     ✓ dual-throttle: reservation convergence is idempotent and a crashed reservation releases only after its database TTL  2014ms\n     ✓ persistence-proxy: reconnect and independent process retain buckets; forged forwarding cannot select another identity  3910ms\n     ✓ session-revocation: version change invalidates the old token on the next database check  2455ms\n     ✓ session-revocation: role change invalidates the old token on the next database check  2448ms\n     ✓ session-revocation: status change invalidates the old token on the next database check  2486ms\n     ✓ session-revocation: expiry change invalidates the old token on the next database check  2450ms\n     ✓ session-revocation: logout change invalidates the old token on the next database check  2470ms\n     ✓ session-revocation: a concurrent passwordHash change between comparison and issuance cannot inherit the prior credential check  2131ms\n     ✓ session-revocation: a concurrent sessionVersion change between comparison and issuance cannot inherit the prior credential check  2126ms\n     ✓ session-revocation: a concurrent role change between comparison and issuance cannot inherit the prior credential check  2146ms\n     ✓ session-revocation: a concurrent status change between comparison and issuance cannot inherit the prior credential check  2148ms\n     ✓ guards: real Next request stores and database-backed Route/Action guards precede all resource queries and writes  3034ms\n     ✓ guards: database, throttle and audit failures fail closed and rollback every session/user success effect  2469ms\n     ✓ routing-logout: USER and ADMIN share one service while logout revokes only its current row  2446ms\n ✓ tests/integration/seed.test.ts (26 tests) 67246ms\n     ✓ secret-privilege: successful nested CLI cannot disclose sensitive bytes through stdout  659ms\n     ✓ secret-privilege: successful nested CLI cannot disclose sensitive bytes through stderr  657ms\n     ✓ first-seed: creates one verified admin, three internal defaults and four transactional audits  2431ms\n     ✓ repeated-seed: identical input preserves every business/audit byte and creates no rows  5216ms\n     ✓ repeated-seed: detects changed persisted administrator fingerprint without resetting it  2938ms\n     ✓ repeated-seed: a previously valid seed rejects isolated SOURCE_MARKER corruption  2946ms\n     ✓ repeated-seed: a previously valid seed rejects isolated SEED_RUN_ID corruption  2925ms\n     ✓ repeated-seed: a previously valid seed rejects isolated FINGERPRINT corruption  2921ms\n     ✓ repeated-seed: a previously valid seed rejects isolated ROLE corruption  2944ms\n     ✓ repeated-seed: a previously valid seed rejects isolated STATUS corruption  2935ms\n     ✓ repeated-seed: conflicting existing config value never overwrites the seed  3268ms\n     ✓ repeated-seed: conflicting existing config group never overwrites the seed  3203ms\n     ✓ repeated-seed: conflicting existing config public never overwrites the seed  3204ms\n     ✓ concurrent-seed: independent processes resolve an actual conflict into one consistent seed  4384ms\n     ✓ concurrent-seed: only three retries then read-only reconciliation; exhausted conflicts leave no rows  2357ms\n     ✓ secret-privilege: create-only pre-existing USER remains untouched  2061ms\n     ✓ secret-privilege: create-only pre-existing DISABLED remains untouched  2066ms\n     ✓ secret-privilege: create-only pre-existing UNPROVEN_ADMIN remains untouched  2063ms\n     ✓ secret-privilege: create-only pre-existing OTHER_MARKER remains untouched  2069ms\n     ✓ secret-privilege: create-only pre-existing CONFLICTING_CONFIG remains untouched  2072ms\n     ✓ secret-privilege: production guard rejects even a valid disposable fixture without writes  1747ms\n     ✓ first-seed: audit failure rolls back the administrator and all configuration writes  2080ms\n     ✓ first-seed: rejects MIGRATION_DRIFT before business writes  2055ms\n     ✓ first-seed: rejects MARKER before business writes  2053ms\n     ✓ first-seed: rejects OWNER before business writes  2037ms\n     ✓ secret-privilege: missing/weak/invalid command inputs exit nonzero with no credential output  3949ms\n ✓ tests/admin/users.integration.test.ts (17 tests) 44375ms\n       ✓ uses the exact projection and stable filtered keyset pages, and rejects invalid cursors and bounds  2698ms\n       ✓ edits the revision from real GET, serializes competing updates, checks CAS before no-op and ignores login timestamps  3239ms\n       ✓ rejects all unknown enums, duplicate body identifiers, wrong CAS types and unbounded reasons without writes  2488ms\n       ✓ rolls back the user, revocations and receipt if the transactional audit insert fails  2495ms\n       ✓ rejects every actual self role/status change with zero row changes and permits a versioned no-op  2588ms\n       ✓ enforces the real locked invariant for the sole active administrator independently of the self guard  1819ms\n       ✓ keeps one active administrator when two authorized processes concurrently disable each other  3241ms\n       ✓ increments the revocation version and rejects old tokens even when their database rows are active  2662ms\n       ✓ rejects expired and revoked principals and preserves both terminal row states  2457ms\n       ✓ rechecks the actor after a real advisory-lock wait and rolls back when logout wins  2644ms\n       ✓ authorizes before target queries and rejects absent, ordinary, disabled, old-version or non-CSRF identities without changes  2620ms\n       ✓ distinguishes a successful empty result from a real database read failure  2436ms\n       ✓ replays the original response after process restart and later updates, rejects changed payloads and freezes terminal receipts  3299ms\n       ✓ converges simultaneous same-key requests to one immutable effect and separates owner/resource domains  3213ms\n       ✓ rolls back the mutation and audit if the terminal receipt write fails  2512ms\n       ✓ requires a live claim for every state update and bases retention on real completion rather than backfilled creation time  1932ms\n       ✓ persists preparation before testing, atomically rolls back partial candidates and fences resumed checkpoints with retained audit references  2026ms\n ✓ tests/integration/api-key-schema.test.ts (5 tests) 6343ms\n     ✓ migration: exact field, enum, type, check and index inventory  1218ms\n     ✓ migration: SQL rejects the full malformed envelope matrix and column mismatches  1327ms\n     ✓ migration: fingerprint is globally unique and immutable content cannot be overwritten  1271ms\n     ✓ migration: real changes increment revision once and REVOKED cannot recover  1276ms\n     ✓ governance-absence: only produced models exist and migrations create no key rows  1248ms\n ✓ tests/integration/audit-log.test.ts (24 tests) 2581ms\n     ✓ lookup: empty reads differ from an actual unavailable database  2027ms\n ✓ tests/admin/users-client.test.tsx (9 tests) 933ms\n ✓ tests/integration/chat-message.test.ts (31 tests) 534ms\n ✓ src/middleware.test.ts (14 tests) 415ms\n     ✓ preserves the configured origin through the real Next middleware adapter  391ms\n ✓ tests/lib/admin-login-ui.test.tsx (9 tests) 300ms\n ✓ tests/integration/travel-record.test.ts (32 tests) 284ms\n ✓ tests/integration/config-models.test.ts (24 tests) 218ms\n ✓ tests/admin/layout.test.tsx (9 tests) 209ms\n ✓ src/components/common/common-components.test.tsx (12 tests) 190ms\n ✓ tests/lib/auth-http.test.ts (16 tests) 91ms\n ✓ tests/lib/auth-ingress.test.ts (5 tests) 60ms\n ✓ tests/lib/auth-guards.test.ts (11 tests) 60ms\n ✓ src/app/layout.test.ts (3 tests) 62ms\n ✓ tests/lib/audit-log.test.ts (11 tests) 39ms\n ✓ tests/lib/travel-record.test.ts (12 tests) 20ms\n ✓ tests/lib/chat-message.test.ts (11 tests) 17ms\n ✓ tests/lib/auth.test.ts (45 tests) 15ms\n ✓ tests/lib/auth-services.test.ts (7 tests) 12ms\n ✓ tests/lib/db.test.ts (3 tests) 11ms\n ✓ src/lib/env.test.ts (16 tests) 11ms\n ✓ src/lib/format.test.ts (32 tests) 10ms\n ✓ src/lib/json.test.ts (17 tests) 9ms\n ✓ tests/lib/public-user.test.ts (20 tests) 9ms\n ✓ tests/lib/seed.test.ts (5 tests) 10ms\n ✓ tests/lib/api-key-schema.test.ts (4 tests) 8ms\n ✓ src/lib/api-response.test.ts (10 tests) 9ms\n\n Test Files  30 passed (30)\n      Tests  460 passed (460)\n   Start at  10:31:44\n   Duration  218.39s (transform 1.44s, setup 2.46s, import 4.94s, tests 197.38s, environment 7.79s)\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase012/attempt-5-all-tests-vitest.json\n",
+      "stderr": "stderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > list > uses the exact projection and stable filtered keyset pages, and rejects invalid cursors and bounds\n{\"phase\":12,\"group\":\"list\",\"database\":\"REAL_POSTGRESQL17\",\"total\":28,\"filtered\":16,\"duplicateIds\":0,\"sensitiveColumns\":0,\"invalidInputsRejected\":11,\"crossOwnerCursorRejected\":true}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > role-status > edits the revision from real GET, serializes competing updates, checks CAS before no-op and ignores login timestamps\n{\"phase\":12,\"group\":\"role-status\",\"database\":\"REAL_POSTGRESQL17\",\"revisionBefore\":0,\"revisionAfter\":3,\"initialVersionBefore\":0,\"initialVersionAfter\":1,\"casRaceStatuses\":[200,409],\"auditCount\":3,\"noopIncrement\":0}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > role-status > rejects all unknown enums, duplicate body identifiers, wrong CAS types and unbounded reasons without writes\n{\"phase\":12,\"group\":\"role-status\",\"database\":\"REAL_POSTGRESQL17\",\"invalidSchemasRejected\":9,\"invalidSchemaWrites\":0}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > role-status > rolls back the user, revocations and receipt if the transactional audit insert fails\n{\"phase\":12,\"group\":\"role-status\",\"database\":\"REAL_POSTGRESQL17\",\"fault\":\"AUDIT_INSERT\",\"httpStatus\":503,\"businessChanges\":0,\"revocationChanges\":0,\"receiptChanges\":0}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > self-protection > rejects every actual self role/status change with zero row changes and permits a versioned no-op\n{\"phase\":12,\"group\":\"self-protection\",\"database\":\"REAL_POSTGRESQL17\",\"rejectedChanges\":3,\"rejectedWrites\":0,\"noopRevision\":0,\"noopVersion\":0}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > last-admin > enforces the real locked invariant for the sole active administrator independently of the self guard\n{\"phase\":12,\"group\":\"last-admin\",\"database\":\"REAL_POSTGRESQL17\",\"isolatedInvariantChecks\":2,\"isolatedRejections\":2,\"databaseChanges\":0}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > last-admin > keeps one active administrator when two authorized processes concurrently disable each other\n{\"phase\":12,\"group\":\"last-admin\",\"database\":\"REAL_POSTGRESQL17\",\"schedule\":\"BOTH_REAL_ROUTES_WAIT_ON_HELD_ADMIN_SET_THEN_RELEASE\",\"databaseLockWaiters\":2,\"raceStatuses\":[200,401],\"survivingActiveAdmins\":1,\"auditCount\":1}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > session > increments the revocation version and rejects old tokens even when their database rows are active\n{\"phase\":12,\"group\":\"session\",\"database\":\"REAL_POSTGRESQL17\",\"versionBefore\":0,\"versionAfterFirstChange\":1,\"versionAfterDisableReenable\":3,\"oldRowsRevoked\":4,\"oldTokenRejections\":4,\"activeOldVersionRejected\":true,\"noopVersionIncrement\":0,\"survivesReenable\":false}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > session > rejects expired and revoked principals and preserves both terminal row states\n{\"phase\":12,\"group\":\"session\",\"database\":\"REAL_POSTGRESQL17\",\"revokedPrincipalStatus\":401,\"expiredPrincipalStatus\":401,\"revokedRowStatus\":\"REVOKED\",\"expiredRowStatus\":\"EXPIRED\",\"terminalMutationRejections\":6,\"terminalRowChanges\":0}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > session > rechecks the actor after a real advisory-lock wait and rolls back when logout wins\n{\"phase\":12,\"group\":\"session\",\"database\":\"REAL_POSTGRESQL17\",\"schedule\":\"AUTHORIZED_PATCH_WAITS_THEN_REAL_LOGOUT_COMMITS_BEFORE_LOCK_RELEASE\",\"lockWaiters\":1,\"requestStatusAfterLogout\":401,\"logoutAuditCount\":1,\"businessWritesAfterLogout\":0,\"userUpdateAuditCount\":0,\"receiptCount\":0}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > authorization-idempotency > authorizes before target queries and rejects absent, ordinary, disabled, old-version or non-CSRF identities without changes\n{\"phase\":12,\"group\":\"authorization-idempotency\",\"database\":\"REAL_POSTGRESQL17\",\"rejectedAuthorizationRequests\":15,\"objectExistenceLeaks\":0,\"unauthorizedWrites\":0,\"missingIdempotencyRejected\":true}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > authorization-idempotency > distinguishes a successful empty result from a real database read failure\n{\"phase\":12,\"group\":\"authorization-idempotency\",\"database\":\"REAL_POSTGRESQL17\",\"emptyResultStatus\":200,\"databaseFailureStatus\":503,\"databaseErrorMisrepresentedAsEmpty\":false}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > authorization-idempotency > replays the original response after process restart and later updates, rejects changed payloads and freezes terminal receipts\n{\"phase\":12,\"group\":\"authorization-idempotency\",\"database\":\"REAL_POSTGRESQL17\",\"processRestarts\":1,\"originalResponseReplays\":2,\"payloadConflicts\":2,\"originalResponseRevision\":1,\"currentRevision\":2,\"receipts\":2,\"auditCount\":2,\"terminalMutationRejections\":6,\"insertionMinimumRetentionNormalized\":true,\"normalizedInsertionImmediatelyDeletable\":false,\"minimumTerminalHours\":24}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > authorization-idempotency > converges simultaneous same-key requests to one immutable effect and separates owner/resource domains\n{\"phase\":12,\"group\":\"authorization-idempotency\",\"database\":\"REAL_POSTGRESQL17\",\"schedule\":\"SIX_PARALLEL_REQUESTS_ACROSS_TWO_PROCESSES\",\"sameKeySuccesses\":6,\"replayedResponses\":5,\"businessEffects\":1,\"auditCount\":1,\"finalRevision\":1,\"finalVersion\":1,\"separateOwnerDomain\":true,\"separateResourceDomain\":true}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > authorization-idempotency > rolls back the mutation and audit if the terminal receipt write fails\n{\"phase\":12,\"group\":\"authorization-idempotency\",\"database\":\"REAL_POSTGRESQL17\",\"fault\":\"TERMINAL_RECEIPT_WRITE\",\"httpStatus\":503,\"userChanges\":0,\"revocationChanges\":0,\"auditChanges\":0,\"receiptChanges\":0}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > authorization-idempotency > requires a live claim for every state update and bases retention on real completion rather than backfilled creation time\n{\"phase\":12,\"group\":\"authorization-idempotency\",\"database\":\"REAL_POSTGRESQL17\",\"pendingUnclaimedTransitionRejections\":3,\"schedule\":\"A_FENCE1_EXPIRES_B_FENCE2_REQUEUES_A_AND_B_CANNOT_FINISH_WITHOUT_NEW_CLAIM\",\"retryWaitUnclaimedCompletionRejections\":2,\"successfulFence\":3,\"futureCompletionRejected\":true,\"oldPendingAgeHours\":48,\"completionBackfillNormalized\":true,\"retainedHoursAfterRealCompletion\":24,\"immediatelyDeletable\":false}\n\nstderr | tests/admin/users.integration.test.ts > admin/users real PostgreSQL > authorization-idempotency > persists preparation before testing, atomically rolls back partial candidates and fences resumed checkpoints with retained audit references\n{\"phase\":12,\"group\":\"authorization-idempotency\",\"database\":\"REAL_POSTGRESQL17\",\"partialPreparationRolledBack\":true,\"partialRowsRemaining\":0,\"persistedRuns\":1,\"persistedCandidates\":1,\"originalFence\":1,\"resumedFence\":2,\"staleCheckpointRejections\":2,\"activeAfterTtlStillClaimable\":true,\"rotationRetentionRejections\":3,\"oldKeyState\":\"ACTIVE\",\"candidateState\":\"DISABLED\",\"keyActivations\":0}\n\n",
+      "durationMs": 219414
+    },
+    {
+      "command": "docker inspect --format {{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}} 4d7cbdcdaa9dd4760a8dcaabeb0e90211f50533fe2bba19723790483b567f8a9",
+      "executable": "docker.exe",
+      "arguments": [
+        "inspect",
+        "--format",
+        "{{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}}",
+        "4d7cbdcdaa9dd4760a8dcaabeb0e90211f50533fe2bba19723790483b567f8a9"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "{\"serendipity.phase\":\"012\",\"serendipity.run\":\"984a71e12cc1\"}|{\"5432/tcp\":[{\"HostIp\":\"127.0.0.1\",\"HostPort\":\"62352\"}]}|postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0|true|{\"serendipity-phase012-984a71e12cc1\":{\"IPAMConfig\":null,\"Links\":null,\"Aliases\":null,\"DriverOpts\":null,\"GwPriority\":0,\"NetworkID\":\"e7d5c105d0e31b8af6f443e563a55bca61876a304f899c15808f1a494bd5acef\",\"EndpointID\":\"264528f18eaa7f66d2cf0a3cb31eeff1784bb4dc1d1171365429ac866c135098\",\"Gateway\":\"172.23.0.1\",\"IPAddress\":\"172.23.0.2\",\"MacAddress\":\"5e:a3:05:0d:0f:f5\",\"IPPrefixLen\":16,\"IPv6Gateway\":\"\",\"GlobalIPv6Address\":\"\",\"GlobalIPv6PrefixLen\":0,\"DNSNames\":[\"serendipity-phase012-984a71e12cc1\",\"4d7cbdcdaa9d\"]}}|{\"/var/lib/postgresql/data\":\"rw,size=536870912\"}\n",
+      "stderr": "",
+      "durationMs": 214
+    },
+    {
+      "command": "docker network inspect --format {{json .Options}}|{{json .Labels}} serendipity-phase012-984a71e12cc1",
+      "executable": "docker.exe",
+      "arguments": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .Options}}|{{json .Labels}}",
+        "serendipity-phase012-984a71e12cc1"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "{\"com.docker.network.bridge.enable_ip_masquerade\":\"false\",\"com.docker.network.enable_ipv4\":\"true\",\"com.docker.network.enable_ipv6\":\"false\"}|{\"serendipity.run\":\"984a71e12cc1\"}\n",
+      "stderr": "",
+      "durationMs": 184
+    },
+    {
+      "command": "docker inspect --format {{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}} 4d7cbdcdaa9dd4760a8dcaabeb0e90211f50533fe2bba19723790483b567f8a9",
+      "executable": "docker.exe",
+      "arguments": [
+        "inspect",
+        "--format",
+        "{{json .Config.Labels}}|{{json .NetworkSettings.Ports}}|{{.Config.Image}}|{{.State.Running}}|{{json .NetworkSettings.Networks}}|{{json .HostConfig.Tmpfs}}",
+        "4d7cbdcdaa9dd4760a8dcaabeb0e90211f50533fe2bba19723790483b567f8a9"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "{\"serendipity.phase\":\"012\",\"serendipity.run\":\"984a71e12cc1\"}|{\"5432/tcp\":[{\"HostIp\":\"127.0.0.1\",\"HostPort\":\"62352\"}]}|postgres@sha256:051f7b7b3abdd564d5d1bd1e8c4b9c1b6e77087d1dd22020ede611c096a272e0|true|{\"serendipity-phase012-984a71e12cc1\":{\"IPAMConfig\":null,\"Links\":null,\"Aliases\":null,\"DriverOpts\":null,\"GwPriority\":0,\"NetworkID\":\"e7d5c105d0e31b8af6f443e563a55bca61876a304f899c15808f1a494bd5acef\",\"EndpointID\":\"264528f18eaa7f66d2cf0a3cb31eeff1784bb4dc1d1171365429ac866c135098\",\"Gateway\":\"172.23.0.1\",\"IPAddress\":\"172.23.0.2\",\"MacAddress\":\"5e:a3:05:0d:0f:f5\",\"IPPrefixLen\":16,\"IPv6Gateway\":\"\",\"GlobalIPv6Address\":\"\",\"GlobalIPv6PrefixLen\":0,\"DNSNames\":[\"serendipity-phase012-984a71e12cc1\",\"4d7cbdcdaa9d\"]}}|{\"/var/lib/postgresql/data\":\"rw,size=536870912\"}\n",
+      "stderr": "",
+      "durationMs": 187
+    },
+    {
+      "command": "docker network inspect --format {{json .Options}}|{{json .Labels}} serendipity-phase012-984a71e12cc1",
+      "executable": "docker.exe",
+      "arguments": [
+        "network",
+        "inspect",
+        "--format",
+        "{{json .Options}}|{{json .Labels}}",
+        "serendipity-phase012-984a71e12cc1"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "{\"com.docker.network.bridge.enable_ip_masquerade\":\"false\",\"com.docker.network.enable_ipv4\":\"true\",\"com.docker.network.enable_ipv6\":\"false\"}|{\"serendipity.run\":\"984a71e12cc1\"}\n",
+      "stderr": "",
+      "durationMs": 188
+    },
+    {
+      "command": "docker exec -i 4d7cbdcdaa9dd4760a8dcaabeb0e90211f50533fe2bba19723790483b567f8a9 psql -X -v ON_ERROR_STOP=1 -U phase012_runner -d phase012_disposable_984a71e12cc1 -At",
+      "executable": "docker.exe",
+      "arguments": [
+        "exec",
+        "-i",
+        "4d7cbdcdaa9dd4760a8dcaabeb0e90211f50533fe2bba19723790483b567f8a9",
+        "psql",
+        "-X",
+        "-v",
+        "ON_ERROR_STOP=1",
+        "-U",
+        "phase012_runner",
+        "-d",
+        "phase012_disposable_984a71e12cc1",
+        "-At"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "phase012_disposable_984a71e12cc1|17.11 (Debian 17.11-1.pgdg12+2)|serendipity-phase012-disposable:984a71e12cc1\n",
+      "stderr": "",
+      "durationMs": 260
+    },
+    {
+      "command": "npm run test -- --config tests/phase006/vitest.database.config.mjs --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase012\\attempt-5-phase006-user-regression-vitest.json",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test",
+        "--",
+        "--config",
+        "tests/phase006/vitest.database.config.mjs",
+        "--no-file-parallelism",
+        "--reporter=default",
+        "--reporter=json",
+        "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase012\\attempt-5-phase006-user-regression-vitest.json"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "\n> serendipity@0.1.0 test\n> vitest run --config tests/phase006/vitest.database.config.mjs --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase012\\attempt-5-phase006-user-regression-vitest.json\n\n\n RUN  v4.1.11 C:/Users/11295/Desktop/Serendipity · 际遇\n\n ❯ tests/phase006/database.integration.ts (31 tests | 1 failed) 2210ms\n     × schema: User retains its required enum/index/field inventory as later models are added 19ms\n     ✓ revision: defaults to zero independently of sessions and role 11ms\n     ✓ revision: timestamps do not silently increment the management revision 12ms\n     ✓ revision: database rejects negative revision and sessionVersion 23ms\n     ✓ email-unique: equivalent casing and IDNA inputs cannot create two rows 8ms\n     ✓ email-unique: concurrent canonical registrations have one database winner 22ms\n     ✓ email-check: rejects noncanonical direct database value \"User@example.invalid\" 5ms\n     ✓ email-check: rejects noncanonical direct database value \" user@example.invalid\" 3ms\n     ✓ email-check: rejects noncanonical direct database value \"user@example.invalid \" 3ms\n     ✓ email-check: rejects noncanonical direct database value \"user@EXAMPLE.INVALID\" 4ms\n     ✓ email-check: rejects noncanonical direct database value \"user@例え.テスト\" 3ms\n     ✓ email-check: rejects noncanonical direct database value \"用户@example.invalid\" 3ms\n     ✓ email-check: rejects noncanonical direct database value \".a@example.invalid\" 3ms\n     ✓ email-check: rejects noncanonical direct database value \"a.@example.invalid\" 4ms\n     ✓ email-check: rejects noncanonical direct database value \"a..b@example.invalid\" 3ms\n     ✓ email-check: rejects noncanonical direct database value \"a b@example.invalid\" 3ms\n     ✓ email-check: rejects noncanonical direct database value \"a@example.invalid\\n\" 3ms\n     ✓ email-check: rejects noncanonical direct database value \"a@-label.invalid\" 3ms\n     ✓ email-check: rejects noncanonical direct database value \"a@label-.invalid\" 3ms\n     ✓ email-check: rejects noncanonical direct database value \"a@label..invalid\" 3ms\n     ✓ email-check: rejects noncanonical direct database value \"a@example.invalid.\" 3ms\n     ✓ email-check: rejects noncanonical direct database value \"a@bad_label.invalid\" 3ms\n     ✓ email-check: rejects noncanonical direct database value \"a@@example.invalid\" 3ms\n     ✓ email-check: rejects noncanonical direct database value \"a@example.invalid/path\" 3ms\n     ✓ email-check: rejects noncanonical direct database value \"a@\" 3ms\n     ✓ email-check: rejects noncanonical direct database value \"@example.invalid\" 3ms\n     ✓ email-check: rejects noncanonical direct database value \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@example.invalid\" 2ms\n     ✓ email-check: rejects noncanonical direct database value \"a@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.invalid\" 3ms\n     ✓ email-check: rejects noncanonical direct database value \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc.dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd\" 3ms\n     ✓ email-check: accepts maximum canonical lengths and all allowed local atoms 9ms\n     ✓ failure: a real refused connection crosses only the redacted boundary  2015ms\n\n Test Files  1 failed (1)\n      Tests  1 failed | 30 passed (31)\n   Start at  10:35:24\n   Duration  2.56s (transform 94ms, setup 0ms, import 156ms, tests 2.21s, environment 0ms)\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase012/attempt-5-phase006-user-regression-vitest.json\n",
+      "stderr": "\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  tests/phase006/database.integration.ts > real PostgreSQL User contract > schema: User retains its required enum/index/field inventory as later models are added\nAssertionError: expected [ 'User_createdAt_id_idx', …(4) ] to deeply equal [ 'User_email_key', 'User_pkey', …(1) ]\n\n- Expected\n+ Received\n\n  [\n+   \"User_createdAt_id_idx\",\n    \"User_email_key\",\n    \"User_pkey\",\n+   \"User_role_status_id_idx\",\n    \"User_status_idx\",\n  ]\n\n ❯ tests/phase006/database.integration.ts:111:55\n    109|       Array<{ indexname: string; indexdef: string }>\n    110|     >`SELECT indexname, indexdef FROM pg_indexes WHERE schemaname='pub…\n    111|     expect(indexes.map(({ indexname }) => indexname)).toEqual([\n       |                                                       ^\n    112|       \"User_email_key\",\n    113|       \"User_pkey\",\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\n\n",
+      "durationMs": 3496
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "prisma/migrations/20260912013806_admin_commands/migration.sql",
+      "sha256": "26eac34ab5c30b48adb680a3a770d4454503e3550b3009b4e59cc0dc43e2392d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-5/cli-network.json",
+      "sha256": "31fecbdb6d4aa0fb95fe53773c2967e08a1c69f0e3e7565bde081a65e0ce7c8c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-5/admin-users-layout-vitest.json",
+      "sha256": "3bfea7a11bf6ab55f53e849837fc9a08ea3f58002d35d143e53c87de8927a8e3"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-5/all-tests-vitest.json",
+      "sha256": "82f8f73b410c97ad60e1c7b8407414b7f169400a1e1d785aa315779bc21d8fc7"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-5/phase006-user-regression-vitest.json",
+      "sha256": "b03b33fd811aea758d321144e3b35d1672c60f914f56552c4c62a65cae1efe51"
+    }
+  ],
+  "startedAt": "2026-09-12T02:30:33.042Z",
+  "recordedAt": "2026-09-12T02:35:27.466Z"
+}

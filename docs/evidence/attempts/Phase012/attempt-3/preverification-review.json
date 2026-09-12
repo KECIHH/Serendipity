@@ -1,0 +1,30 @@
+{
+  "phase": 12,
+  "attemptId": "attempt-3",
+  "status": "FAIL",
+  "reviewer": "codex:/root/independent_review",
+  "method": "READ_ONLY_SOURCE_REVIEW",
+  "runtimeTestsRun": false,
+  "findings": [
+    {
+      "id": "RECEIPT_FENCING",
+      "path": "prisma/migrations/20260912013806_admin_commands/migration.sql",
+      "description": "UPDATE from RETRY_WAIT or PENDING can become terminal without a live RUNNING claim; stale context can finalize after takeover."
+    },
+    {
+      "id": "TERMINAL_RETENTION_CLOCK",
+      "path": "prisma/migrations/20260912013806_admin_commands/migration.sql",
+      "description": "Backdated completedAt on an old active receipt can permit immediate deletion after finalization."
+    },
+    {
+      "id": "BROWSER_FUNCTION_BINDING",
+      "path": "tests/phase012/browser.mjs",
+      "description": "Standalone plus before async function turns the declaration into an expression and removes the runBrowser binding."
+    }
+  ],
+  "sourceHashes": {
+    "prisma/migrations/20260912013806_admin_commands/migration.sql": "b75c4a46e07fa45e565ab74ec938e0b94c6da9254a2109d5808952a9e806be58",
+    "tests/phase012/browser.mjs": "de5ea6577fec3f217651f53077699996f9106652d15ecb9a0b3eaf8385006303"
+  },
+  "generatedAt": "2026-09-12T02:03:22.044Z"
+}

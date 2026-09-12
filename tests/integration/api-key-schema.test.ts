@@ -16,7 +16,23 @@ async function rejects(operation: () => Promise<unknown>): Promise<boolean> {
 describe.skipIf(!process.env.PHASE010_FIXTURE_CONFIG)("api-key-schema PostgreSQL", () => {
   it("migration: exact field, enum, type, check and index inventory", async () => {
     const model = Prisma.dmmf.datamodel.models.find((model) => model.name === "ApiKeyConfig")!;
-    expect(model.fields.map((field) => field.name)).toEqual(API_KEY_FIELDS);
+    expect(
+      model.fields.filter((field) => field.kind !== "object").map((field) => field.name),
+    ).toEqual(API_KEY_FIELDS);
+    if (Prisma.dmmf.datamodel.models.some((entry) => entry.name === "KeyRotationRun")) {
+      expect(
+        model.fields
+          .filter((field) => field.kind === "object")
+          .map((field) => ({
+            name: field.name,
+            type: field.type,
+            isList: field.isList,
+          })),
+      ).toEqual([
+        { name: "oldRotationRuns", type: "KeyRotationRun", isList: true },
+        { name: "newRotationRuns", type: "KeyRotationRun", isList: true },
+      ]);
+    }
     expect(
       Prisma.dmmf.datamodel.enums
         .find((value) => value.name === "ApiKeyStatus")
@@ -184,6 +200,8 @@ describe.skipIf(!process.env.PHASE010_FIXTURE_CONFIG)("api-key-schema PostgreSQL
     ];
     if (Prisma.dmmf.datamodel.models.some((model) => model.name === "AuthSession"))
       expected.push("AuthLoginAttempt", "AuthSession");
+    if (Prisma.dmmf.datamodel.models.some((model) => model.name === "AdminCommandReceipt"))
+      expected.push("AdminCommandReceipt", "KeyRotationRun");
     expected.sort();
     expect(Prisma.dmmf.datamodel.models.map((model) => model.name).sort()).toEqual(expected);
     await withSeedDatabase(async ({ app }) => {

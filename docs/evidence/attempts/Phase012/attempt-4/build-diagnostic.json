@@ -1,0 +1,23 @@
+{
+  "phase": 12,
+  "attemptId": "attempt-4",
+  "status": "PASS",
+  "observations": [
+    {
+      "command": "npm run build",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "build"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "\n> serendipity@0.1.0 build\n> next build\n\n   ▲ Next.js 15.5.24\n   - Environments: .env.local\n\n   Creating an optimized production build ...\n ✓ Compiled successfully in 6.6s\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/7) ...\n   Generating static pages (1/7) \r\n   Generating static pages (3/7) \r\n   Generating static pages (5/7) \r\n ✓ Generating static pages (7/7)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                                 Size  First Load JS\n┌ ○ /                                    77.2 kB         180 kB\n├ ○ /_not-found                            993 B         104 kB\n├ ƒ /admin                                 134 B         103 kB\n├ ○ /admin/login                         2.04 kB         120 kB\n├ ƒ /admin/users                         7.84 kB         126 kB\n├ ƒ /api/admin/users                       134 B         103 kB\n├ ƒ /api/admin/users/[id]                  134 B         103 kB\n├ ƒ /api/auth/[...nextauth]                134 B         103 kB\n└ ○ /login                               2.03 kB         117 kB\n+ First Load JS shared by all             103 kB\n  ├ chunks/255-c5a697ddbf82d774.js       46.4 kB\n  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB\n  └ other shared chunks (total)             2 kB\n\n\nƒ Middleware                             37.5 kB\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+      "stderr": "",
+      "durationMs": 28340
+    }
+  ]
+}

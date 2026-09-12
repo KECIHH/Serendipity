@@ -106,7 +106,8 @@ function safeTransactionError(error: unknown): never {
   if (error instanceof AuditLogError) throw error;
   if (
     error instanceof Prisma.PrismaClientKnownRequestError &&
-    ["P2034", "P2002"].includes(error.code)
+    (["P2034", "P2002"].includes(error.code) ||
+      (error.code === "P2010" && (error.meta?.code === "40001" || error.meta?.code === "40P01")))
   ) {
     throw new AuditTransactionConflictError();
   }
@@ -169,6 +170,16 @@ export function openAuditedAuthDatabase(databaseUrl: string) {
   return Object.freeze({
     transaction: <T>(operation: (tx: AuditTransactionClient) => Promise<T>) =>
       enrolledTransaction(client, operation, Prisma.TransactionIsolationLevel.ReadCommitted),
+    disconnect: () => client.$disconnect(),
+  });
+}
+
+/** Management changes retain mandatory auditing and use PostgreSQL serializable isolation. */
+export function openAuditedAdminDatabase(databaseUrl: string) {
+  const client = new PrismaClient({ datasourceUrl: databaseUrl, log: [] });
+  return Object.freeze({
+    transaction: <T>(operation: (tx: AuditTransactionClient) => Promise<T>) =>
+      enrolledTransaction(client, operation, Prisma.TransactionIsolationLevel.Serializable),
     disconnect: () => client.$disconnect(),
   });
 }

@@ -8,6 +8,7 @@ import type { Prisma } from "@prisma/client";
 export const AUDIT_LOG_ACTIONS = Object.freeze({
   CONFIG_UPDATE: "CONFIG_UPDATE",
   USER_DISABLE: "USER_DISABLE",
+  USER_UPDATE: "USER_UPDATE",
   API_KEY_ROTATE: "API_KEY_ROTATE",
   SEED_ADMIN_CREATE: "SEED_ADMIN_CREATE",
   SEED_CONFIG_CREATE: "SEED_CONFIG_CREATE",
@@ -22,6 +23,7 @@ export type AuditLogAction = keyof typeof AUDIT_LOG_ACTIONS;
 export const AUDIT_ACTION_TARGETS = Object.freeze({
   CONFIG_UPDATE: "SystemConfig",
   USER_DISABLE: "User",
+  USER_UPDATE: "User",
   API_KEY_ROTATE: "ApiKeyConfig",
   SEED_ADMIN_CREATE: "User",
   SEED_CONFIG_CREATE: "SystemConfig",
@@ -144,6 +146,7 @@ const sensitiveKeys = new Set([
   "sourcelocator",
   "endpoint",
   "connectionstring",
+  "reason",
 ]);
 
 function isSensitiveKey(key: string): boolean {
@@ -250,6 +253,7 @@ const summaryEnums: Readonly<Record<string, readonly string[]>> = Object.freeze(
   reasonCode: [
     "CONFIG_CHANGED",
     "USER_DISABLED",
+    "USER_UPDATED",
     "KEY_ROTATED",
     "SCHEDULED",
     "MAINTENANCE",
@@ -282,7 +286,7 @@ function validateSummary(value: Json): void {
     } else if (containers.has(key)) validateSummary(item);
     else if (counters.has(key)) {
       if (typeof item !== "number" || !Number.isSafeInteger(item) || item < 0) invalid();
-    } else if (key === "isPublic" || key === "enabled") {
+    } else if (key === "isPublic" || key === "enabled" || key === "sessionVersionIncremented") {
       if (typeof item !== "boolean") invalid();
     } else if (key === "sourceMarker") {
       if (item !== "PHASE010_BASE_SEED_V1") invalid();

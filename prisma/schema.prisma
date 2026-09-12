@@ -36,6 +36,22 @@ enum AuthLoginAttemptStatus {
   EXPIRED
 }
 
+enum AdminCommandStatus {
+  PENDING
+  RUNNING
+  RETRY_WAIT
+  SUCCEEDED
+  FAILED
+}
+
+enum KeyRotationStage {
+  PREPARING
+  TESTING
+  READY
+  ACTIVATED
+  ABORTED
+}
+
 enum TravelStatus {
   DRAFT
   NEEDS_INFO
@@ -75,8 +91,11 @@ model User {
   travelRecords        TravelRecord[]
   auditLogs            AuditLog[]
   authSessions         AuthSession[]
+  adminCommandReceipts AdminCommandReceipt[]
 
   @@index([status])
+  @@index([createdAt, id])
+  @@index([role, status, id])
 }
 
 model SystemConfig {
@@ -170,8 +189,57 @@ model ApiKeyConfig {
   createdAt       DateTime     @default(now()) @db.Timestamptz(3)
   updatedAt       DateTime     @updatedAt @db.Timestamptz(3)
   revision        Int          @default(0)
+  oldRotationRuns KeyRotationRun[] @relation("OldRotationKey")
+  newRotationRuns KeyRotationRun[] @relation("NewRotationKey")
 
   @@index([provider, status])
+}
+
+model AdminCommandReceipt {
+  id                 String             @id @default(cuid())
+  ownerUserId        String
+  operationId        String             @db.VarChar(128)
+  resourceId         String             @db.VarChar(128)
+  idempotencyKeyHash String             @db.Char(64)
+  requestHash        String             @db.Char(64)
+  status             AdminCommandStatus @default(PENDING)
+  responseJson       Json?
+  errorCode          String?            @db.VarChar(64)
+  attemptCount       Int                @default(0)
+  availableAt        DateTime           @default(now()) @db.Timestamptz(3)
+  leaseOwner         String?            @db.VarChar(128)
+  leaseUntil         DateTime?          @db.Timestamptz(3)
+  fencingToken       Int                @default(0)
+  createdAt          DateTime           @default(now()) @db.Timestamptz(3)
+  completedAt        DateTime?          @db.Timestamptz(3)
+  expiresAt          DateTime           @db.Timestamptz(3)
+  owner              User               @relation(fields: [ownerUserId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  keyRotationRun     KeyRotationRun?
+
+  @@unique([ownerUserId, operationId, resourceId, idempotencyKeyHash])
+  @@index([status, availableAt, leaseUntil, id])
+  @@index([expiresAt])
+}
+
+model KeyRotationRun {
+  id                String           @id @default(cuid())
+  receiptId         String           @unique
+  oldKeyId          String
+  newKeyId          String?
+  candidateIdsJson  Json             @default("[]")
+  referenceSetHash  String           @db.Char(64)
+  baseRevisionsJson Json
+  stage             KeyRotationStage @default(PREPARING)
+  checkpointJson    Json
+  createdAt         DateTime         @default(now()) @db.Timestamptz(3)
+  updatedAt         DateTime         @updatedAt @db.Timestamptz(3)
+  receipt           AdminCommandReceipt @relation(fields: [receiptId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  oldKey            ApiKeyConfig     @relation("OldRotationKey", fields: [oldKeyId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  newKey            ApiKeyConfig?    @relation("NewRotationKey", fields: [newKeyId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  @@index([oldKeyId])
+  @@index([newKeyId])
+  @@index([stage, updatedAt, id])
 }
 
 model AuthSession {

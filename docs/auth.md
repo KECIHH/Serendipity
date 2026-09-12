@@ -1,6 +1,6 @@
 # Serendipity · 际遇 认证与凭据契约
 
-Owner: 认证安全；producerPhase: 2；实现消费者: Phase011、Phase012、Phase082–084。本文件拥有凭据规范化、会话准入、限流与重新认证规则。[数据库规范](database.md) 拥有持久字段，[API 契约](api.md) 拥有端点和 exact DTO，[隐私规范](privacy-and-user-data.md) 拥有保留、撤回及删除。路线包来源、绝对路径和 SHA-256 见 [输入清单](phase-plans/Phase002-inputs.json) 与 [索引](index.md)。本阶段只验证文档规则。
+Owner: 认证安全；producerPhase: 2；实现消费者: Phase011、Phase012、Phase082–084。本文件拥有凭据规范化、会话准入、限流与重新认证规则。[数据库规范](database.md) 拥有持久字段，[API 契约](api.md) 拥有端点和 exact DTO，[隐私规范](privacy-and-user-data.md) 拥有保留、撤回及删除。路线包来源、绝对路径和 SHA-256 见 [输入清单](phase-plans/Phase002-inputs.json) 与 [索引](index.md)。Phase002 的机器规则验证与后续产品实现证据分别归档。
 
 ## 唯一凭据服务
 
@@ -17,6 +17,10 @@ Cookie 使用 256-bit CSPRNG opaque token 或其 Auth.js 签名/加密封装，h
 USER audience 可接纳 ACTIVE USER/ADMIN；ADMIN audience 还必须是 ACTIVE ADMIN。ADMIN 只授权管理职责，不隐式授予私人行程 owner 权限。会话终态 REVOKED/EXPIRED 不可恢复。角色/状态/凭据安全变更原子递增 User.sessionVersion 并撤销活动会话。
 
 logout 正常顺序为数据库 CAS 撤销、提交、清 Cookie。数据库失败仍清客户端 Cookie 以降低风险，但返回安全失败，不能宣称服务器会话已撤销。所有 Cookie 授权写操作验证 CSRF token 和允许 Origin，拒绝跨站 Fetch Metadata；Origin、代理地址均来自可信配置，不信任任意 X-Forwarded-For 或 Host。
+
+Phase012 的公开 `/admin/login` 不渲染后台 shell；受保护布局、`/admin` 重定向页及 `/admin/users` 页分别调用 requireAdmin，API 复用相同数据库会话验证能力。GET 在查询前与返回前授权；PATCH 在接收时及持锁 Serializable 事务内再次核验 ACTIVE ADMIN、ADMIN audience、会话有效期和版本匹配。幂等重放也必须通过当前授权，历史成功收据不授予已撤销账户访问权。
+
+用户 role/status 任一实际变化时，revision 与 sessionVersion 同事务各加一，所有目标 ACTIVE AuthSession 改为 REVOKED，revokedAt 来自 `public.auth_now()`，并同事务写入 USER_UPDATE 审计和成功收据。目标旧 Cookie 下一请求被数据库验证拒绝，重新启用也不能恢复旧会话；同值、CAS 冲突、自保护与最后管理员拒绝不改会话代数或会话行。管理页面/响应不返回 sessionVersion，事务授权仅在 SQL 条件内比较该值。客户端退出继续调用既有 Auth.js handler。
 
 ## 数据库限流
 

@@ -267,6 +267,7 @@ describe("audit-log pure boundary", () => {
     expect(Object.keys(AUDIT_LOG_ACTIONS)).toEqual([
       "CONFIG_UPDATE",
       "USER_DISABLE",
+      "USER_UPDATE",
       "API_KEY_ROTATE",
       "SEED_ADMIN_CREATE",
       "SEED_CONFIG_CREATE",

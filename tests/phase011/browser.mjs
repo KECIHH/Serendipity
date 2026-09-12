@@ -517,9 +517,11 @@ async function runBrowser() {
         await page.getByLabel("邮箱", { exact: true }).fill(fixture.seed.email);
         await page.getByLabel("密码", { exact: true }).fill(fixture.seed.password);
         await page.getByRole("button", { name: "登录", exact: true }).click();
-        await page.waitForURL(`${baseUrl}/admin`);
-        await page.getByRole("heading", { name: "登录成功", exact: true }).waitFor();
-        assert.equal((await api.get("/admin", { maxRedirects: 0 })).status(), 200);
+        await page.waitForURL(`${baseUrl}/admin/users`);
+        await page.getByRole("heading", { name: "用户管理", exact: true }).waitFor();
+        const adminEntry = await api.get("/admin", { maxRedirects: 0 });
+        assert.equal(adminEntry.status(), 307);
+        assert.equal(new URL(adminEntry.headers().location, baseUrl).pathname, "/admin/users");
         const current = await currentAdminSession();
         issuedCookie = current.cookie;
         issuedTokenHash = current.tokenHash;

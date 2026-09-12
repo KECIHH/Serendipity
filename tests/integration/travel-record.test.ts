@@ -245,7 +245,13 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
     const includesAudit = Prisma.dmmf.datamodel.models.some(({ name }) => name === "AuditLog");
     const includesApiKey = Prisma.dmmf.datamodel.models.some(({ name }) => name === "ApiKeyConfig");
     const includesAuth = Prisma.dmmf.datamodel.models.some(({ name }) => name === "AuthSession");
-    expect(migrations).toHaveLength(includesAuth ? 6 : includesApiKey ? 5 : includesAudit ? 4 : 3);
+    const includesAdminCommands = Prisma.dmmf.datamodel.models.some(
+      ({ name }) => name === "AdminCommandReceipt",
+    );
+    expect(migrations).toHaveLength(
+      includesAdminCommands ? 7 : includesAuth ? 6 : includesApiKey ? 5 : includesAudit ? 4 : 3,
+    );
+    if (includesAdminCommands) expect(migrations[6].name).toMatch(/^\d{14}_admin_commands$/);
     if (includesAuth) expect(migrations[5].name).toMatch(/^\d{14}_auth_session_login_attempt$/);
     if (includesApiKey) expect(migrations[4].name).toMatch(/^\d{14}_api_key_config$/);
     if (includesAudit) expect(migrations[3].name).toMatch(/^\d{14}_audit_log$/);
@@ -266,15 +272,20 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
     const authModels = models.some(({ name }) => name === "AuthSession")
       ? ["AuthLoginAttempt", "AuthSession"]
       : [];
-    expect(models.map(({ name }) => name).sort()).toEqual([
+    const adminModels = models.some(({ name }) => name === "AdminCommandReceipt")
+      ? ["AdminCommandReceipt", "KeyRotationRun"]
+      : [];
+    const expectedModels = [
       ...apiKeyModels,
       ...auditModels,
       ...authModels,
+      ...adminModels,
       "ChatMessage",
       "SystemConfig",
       "TravelRecord",
       "User",
-    ]);
+    ].sort();
+    expect(models.map(({ name }) => name).sort()).toEqual(expectedModels);
     for (const [modelName, expectedFields] of [
       ["TravelRecord", TRAVEL_RECORD_FIELDS],
       ["ChatMessage", CHAT_MESSAGE_FIELDS],
@@ -287,16 +298,7 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
     const tables = await getDatabase().$queryRaw<Array<{ name: string }>>`
       SELECT tablename AS name FROM pg_tables WHERE schemaname = 'public' ORDER BY tablename
     `;
-    expect(tables.map(({ name }) => name)).toEqual([
-      ...apiKeyModels,
-      ...auditModels,
-      ...authModels,
-      "ChatMessage",
-      "SystemConfig",
-      "TravelRecord",
-      "User",
-      "_prisma_migrations",
-    ]);
+    expect(tables.map(({ name }) => name)).toEqual([...expectedModels, "_prisma_migrations"]);
   });
 
   it("lifecycle-version: TravelRecord SQL types nullability defaults and timestamps are exact", async () => {
@@ -355,10 +357,15 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
     `;
     const includesApiKey = Prisma.dmmf.datamodel.models.some(({ name }) => name === "ApiKeyConfig");
     const includesAuth = Prisma.dmmf.datamodel.models.some(({ name }) => name === "AuthSession");
+    const includesAdminCommands = Prisma.dmmf.datamodel.models.some(
+      ({ name }) => name === "AdminCommandReceipt",
+    );
     expect([...new Set(rows.map(({ name }) => name))]).toEqual([
+      ...(includesAdminCommands ? ["AdminCommandStatus"] : []),
       ...(includesApiKey ? ["ApiKeyStatus"] : []),
       ...(includesAuth ? ["AuthLoginAttemptStatus", "AuthSessionStatus"] : []),
       "ChatMessageKind",
+      ...(includesAdminCommands ? ["KeyRotationStage"] : []),
       "MessageRole",
       "Role",
       "TravelStatus",
@@ -377,6 +384,14 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
       expect(
         rows.filter(({ name }) => name === "AuthLoginAttemptStatus").map(({ value }) => value),
       ).toEqual(["RESERVED", "FAILED", "SUCCEEDED", "EXPIRED"]);
+    }
+    if (includesAdminCommands) {
+      expect(
+        rows.filter(({ name }) => name === "AdminCommandStatus").map(({ value }) => value),
+      ).toEqual(["PENDING", "RUNNING", "RETRY_WAIT", "SUCCEEDED", "FAILED"]);
+      expect(
+        rows.filter(({ name }) => name === "KeyRotationStage").map(({ value }) => value),
+      ).toEqual(["PREPARING", "TESTING", "READY", "ACTIVATED", "ABORTED"]);
     }
     expect(rows.filter(({ name }) => name === "TravelStatus").map(({ value }) => value)).toEqual(
       TRAVEL_STATUSES,

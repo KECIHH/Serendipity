@@ -8,6 +8,11 @@ import { PageHeader } from "@/components/common/page-header";
 import { AdminShell } from "@/components/layout/admin-shell";
 import { SiteHeader } from "@/components/layout/site-header";
 
+vi.mock("next/navigation", () => ({
+  usePathname: () => "/admin/users",
+  useRouter: () => ({ replace: vi.fn(), refresh: vi.fn() }),
+}));
+
 describe("LoadingState", () => {
   it("announces a polite, busy status with a visible default label", () => {
     render(<LoadingState />);
@@ -98,18 +103,21 @@ describe("layout shells", () => {
     expect(within(navigation).queryByRole("link")).not.toBeInTheDocument();
   });
 
-  it("renders all four static admin items and preserves its children", () => {
+  it("renders reachable user management and logout while preserving its children", () => {
     render(
-      <AdminShell>
+      <AdminShell currentUser={{ id: "fixture_admin", email: "layout@example.invalid" }}>
         <h1>后台内容</h1>
       </AdminShell>,
     );
 
     const navigation = screen.getByRole("navigation", { name: "后台导航" });
-    for (const item of ["概览", "用户", "AI 配置", "审计日志"]) {
-      expect(within(navigation).getByText(item)).toBeInTheDocument();
-    }
-    expect(navigation.querySelector("a, button, [tabindex]")).toBeNull();
+    expect(within(navigation).getByRole("link", { name: "用户管理" })).toHaveAttribute(
+      "href",
+      "/admin/users",
+    );
+    expect(within(navigation).getByRole("button", { name: "退出登录" })).toBeEnabled();
+    expect(within(navigation).getAllByRole("link")).toHaveLength(1);
+    expect(within(navigation).queryByText("AI 配置")).not.toBeInTheDocument();
     expect(within(screen.getByRole("main")).getByRole("heading", { level: 1 })).toHaveTextContent(
       "后台内容",
     );

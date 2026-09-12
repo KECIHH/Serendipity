@@ -1,0 +1,98 @@
+{
+  "status": "PASS",
+  "guardPath": "tests/phase006/cli-network-guard.cjs",
+  "guardHash": "da1e1020f2d0f5f171f1a721dfa2c3412a2901d858eee176ed730f45f0ad2ab7",
+  "prismaCliHash": "be113b73852c7c7df202427125beed388fe2cedc04b69560b571b746c7191a5f",
+  "reports": [
+    {
+      "label": "disabled",
+      "result": {
+        "command": "Prisma validate with inherited network guard: disabled",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\node_modules\\prisma\\build\\index.js",
+          "validate",
+          "--schema",
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\prisma\\schema.prisma"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase006\\phase012-network\\attempt-6\\disabled",
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false,
+        "stdout": "Prisma schema loaded from ..\\..\\..\\..\\..\\prisma\\schema.prisma\nThe schema at ..\\..\\..\\..\\..\\prisma\\schema.prisma is valid 🚀\n",
+        "stderr": "",
+        "durationMs": 1052
+      },
+      "events": [
+        {
+          "pid": 40320,
+          "kind": "process",
+          "program": "index.js",
+          "checkpointDisabled": true
+        }
+      ],
+      "publicAttempts": [],
+      "childProcesses": 0
+    },
+    {
+      "label": "mutation-enable-checkpoint",
+      "result": {
+        "command": "Prisma validate with inherited network guard: mutation-enable-checkpoint",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\node_modules\\prisma\\build\\index.js",
+          "validate",
+          "--schema",
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\prisma\\schema.prisma"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase006\\phase012-network\\attempt-6\\mutation-enable-checkpoint",
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false,
+        "stdout": "Prisma schema loaded from ..\\..\\..\\..\\..\\prisma\\schema.prisma\nThe schema at ..\\..\\..\\..\\..\\prisma\\schema.prisma is valid 🚀\n",
+        "stderr": "",
+        "durationMs": 1114
+      },
+      "events": [
+        {
+          "pid": 27856,
+          "kind": "process",
+          "program": "index.js",
+          "checkpointDisabled": false
+        },
+        {
+          "pid": 41520,
+          "kind": "process",
+          "program": "child",
+          "checkpointDisabled": false
+        },
+        {
+          "pid": 41520,
+          "kind": "request",
+          "layer": "http",
+          "protocol": "https:",
+          "hostname": "checkpoint.prisma.io",
+          "pathname": "/v1/check/prisma",
+          "method": "GET",
+          "blockedBeforeNetwork": true
+        }
+      ],
+      "publicAttempts": [
+        {
+          "pid": 41520,
+          "kind": "request",
+          "layer": "http",
+          "protocol": "https:",
+          "hostname": "checkpoint.prisma.io",
+          "pathname": "/v1/check/prisma",
+          "method": "GET",
+          "blockedBeforeNetwork": true
+        }
+      ],
+      "childProcesses": 1
+    }
+  ],
+  "publicRequestsCompleted": 0,
+  "productionTraffic": false,
+  "scope": "ACTUAL_PRISMA_CLI_AND_FORKED_CHECKPOINT_PROCESS"
+}

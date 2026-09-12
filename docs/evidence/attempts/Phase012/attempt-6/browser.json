@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 1,
+  "phase": 12,
+  "status": "PASS",
+  "simulation": true,
+  "productionTraffic": false,
+  "verificationScope": "AUTOMATED_BROWSER_A11Y",
+  "humanScreenReaderExperience": "NOT_EVALUATED",
+  "caseCount": 8,
+  "results": [
+    {
+      "id": "public-login-layout-375",
+      "status": "PASS",
+      "observations": {
+        "noShell": true,
+        "viewport": 375,
+        "a11y": {
+          "violations": 0,
+          "passes": 23,
+          "incomplete": 0,
+          "version": "4.13.0"
+        }
+      }
+    },
+    {
+      "id": "real-login-protected-shell",
+      "status": "PASS",
+      "observations": {
+        "shellCount": 1,
+        "links": [
+          "/admin/users"
+        ],
+        "deterministicRedirect": "/admin/users",
+        "syntheticDisplayIdentities": true
+      }
+    },
+    {
+      "id": "filter-keyset-pagination",
+      "status": "PASS",
+      "observations": {
+        "firstPage": 20,
+        "secondPage": 5,
+        "uniqueRows": 25,
+        "emptyIsExplicit": true
+      }
+    },
+    {
+      "id": "edit-save-session-audit",
+      "status": "PASS",
+      "observations": {
+        "revisionBefore": 0,
+        "revisionAfter": 1,
+        "sessionVersionIncrement": 1,
+        "activeSessionsAfter": 0,
+        "auditCount": 1,
+        "patchRequests": 1,
+        "focusRestored": true
+      }
+    },
+    {
+      "id": "stale-edit-requires-new-selection",
+      "status": "PASS",
+      "observations": {
+        "httpStatus": 409,
+        "latestVersion": 2,
+        "staleIntentCleared": true,
+        "conflictFocused": true
+      }
+    },
+    {
+      "id": "responsive-keyboard-axe",
+      "status": "PASS",
+      "observations": {
+        "observations": [
+          {
+            "width": 375,
+            "documentScrollWidth": 375,
+            "a11y": {
+              "violations": 0,
+              "passes": 27,
+              "incomplete": 1,
+              "version": "4.13.0"
+            }
+          },
+          {
+            "width": 1280,
+            "documentScrollWidth": 1280,
+            "a11y": {
+              "violations": 0,
+              "passes": 26,
+              "incomplete": 1,
+              "version": "4.13.0"
+            }
+          }
+        ],
+        "keyboard": [
+          "Tab",
+          "Home",
+          "End",
+          "Escape"
+        ],
+        "focusReturn": true
+      }
+    },
+    {
+      "id": "database-failure-retry",
+      "status": "PASS",
+      "observations": {
+        "injectedDatabaseFailure": 503,
+        "retryStatus": 200,
+        "emptyStateNotUsedForFailure": true,
+        "managementAlertsAfterRetry": 0,
+        "separateRouteAnnouncer": true
+      }
+    },
+    {
+      "id": "logout-closes-management-access",
+      "status": "PASS",
+      "observations": {
+        "revokedSessions": true,
+        "nextProtectedRequest": 401,
+        "publicLoginHasNoShell": true
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/admin-login-375-axe.json",
+      "sha256": "75b49d4cf730baee88cbd9764871a6b6c749546350905be6847e5e9a90093320"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/admin-login-375.png",
+      "sha256": "61f686a04e810b05d719857605c98061b36ca47cd8e779d4125d2a2bede2932e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/admin-login-375.html",
+      "sha256": "5860be9da25056bdb460b119f6b1fd6d500b49a11270ca89b293ea6b20e07d9b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/admin-users-conflict-375.png",
+      "sha256": "00ddc09e1ce461b877609191bd3a3b150e6b25b8a3c815ebddeabe8e52b85f03"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/admin-users-conflict-375.html",
+      "sha256": "4301f058fb39ff16c8e16ea3a136df35f973fc53fa0342772fbe0323eefa3995"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/admin-users-375-axe.json",
+      "sha256": "f12f7959bab9238b7e965c1f0270f3d7c0a563722ecba1656781180b77fadd6d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/admin-users-375.png",
+      "sha256": "1beb5de3fe6795ebfea7494f82fe1caf70ca293df8ed5acff966c2c901a4f7c7"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/admin-users-375.html",
+      "sha256": "980121d04c317b90dc6e80129350cdf4d3f850bbf25ce0d3fcf3d2b73045b2a4"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/admin-users-1280-axe.json",
+      "sha256": "4773eb4fa4cf9ecb4e533cb39197f93991ee29bd8527a0c7c53adf7de0f065ed"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/admin-users-1280.png",
+      "sha256": "2ff7a45ac079cc604a90e9feab676905659f0bacdb1a94250b26f5dfdb8c5421"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase012/attempt-6/admin-users-1280.html",
+      "sha256": "980121d04c317b90dc6e80129350cdf4d3f850bbf25ce0d3fcf3d2b73045b2a4"
+    }
+  ],
+  "commands": [
+    {
+      "command": "npm run build",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "build"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "\n> serendipity@0.1.0 build\n> next build\n\n   ▲ Next.js 15.5.24\n   - Environments: .env.local\n\n   Creating an optimized production build ...\n ✓ Compiled successfully in 4.2s\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/7) ...\n   Generating static pages (1/7) \r\n   Generating static pages (3/7) \r\n   Generating static pages (5/7) \r\n ✓ Generating static pages (7/7)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                                 Size  First Load JS\n┌ ○ /                                    77.2 kB         180 kB\n├ ○ /_not-found                            993 B         104 kB\n├ ƒ /admin                                 134 B         103 kB\n├ ○ /admin/login                         2.04 kB         120 kB\n├ ƒ /admin/users                         7.84 kB         126 kB\n├ ƒ /api/admin/users                       134 B         103 kB\n├ ƒ /api/admin/users/[id]                  134 B         103 kB\n├ ƒ /api/auth/[...nextauth]                134 B         103 kB\n└ ○ /login                               2.03 kB         117 kB\n+ First Load JS shared by all             103 kB\n  ├ chunks/255-c5a697ddbf82d774.js       46.4 kB\n  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB\n  └ other shared chunks (total)             2 kB\n\n\nƒ Middleware                             37.5 kB\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+      "stderr": "",
+      "durationMs": 23462
+    },
+    {
+      "command": "npm start (browser fixture)",
+      "ready": true,
+      "stoppedByFixture": true,
+      "stdout": "\n> serendipity@0.1.0 start\n> node --import tsx scripts/auth-server.mjs --port 55836 --hostname 127.0.0.1\n\nSerendipity listening on 127.0.0.1:55836\n",
+      "stderr": "",
+      "durationMs": 8344
+    }
+  ],
+  "browserVersion": "140.0.7339.186",
+  "configuredBrowserOrigin": "http://127.0.0.1:55836",
+  "localRequestCount": 38,
+  "externalRequestCount": 0,
+  "blockedRequestDestinations": [],
+  "credentials": "SYNTHETIC_NOT_ARCHIVED"
+}

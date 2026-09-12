@@ -1,0 +1,66 @@
+{
+  "phase": 12,
+  "attemptId": "attempt-6",
+  "status": "PASS",
+  "observations": [
+    {
+      "command": "npm run test -- --config tests/phase006/vitest.database.config.mjs --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase012\\attempt-6-legacy-diagnostic.json",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test",
+        "--",
+        "--config",
+        "tests/phase006/vitest.database.config.mjs",
+        "--no-file-parallelism",
+        "--reporter=default",
+        "--reporter=json",
+        "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase012\\attempt-6-legacy-diagnostic.json"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "\n> serendipity@0.1.0 test\n> vitest run --config tests/phase006/vitest.database.config.mjs --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase012\\attempt-6-legacy-diagnostic.json\n\n\n RUN  v4.1.11 C:/Users/11295/Desktop/Serendipity · 际遇\n\n ✓ tests/phase006/database.integration.ts (31 tests) 2208ms\n     ✓ failure: a real refused connection crosses only the redacted boundary  2022ms\n\n Test Files  1 passed (1)\n      Tests  31 passed (31)\n   Start at  10:40:30\n   Duration  2.55s (transform 81ms, setup 0ms, import 151ms, tests 2.21s, environment 0ms)\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase012/attempt-6-legacy-diagnostic.json\n",
+      "stderr": "",
+      "durationMs": 3459
+    },
+    {
+      "command": "Phase012 evidence guards diagnostic",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "tests/phase012/evidence-guards.mjs",
+        "--output",
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase012\\attempt-6-evidence-diagnostic.json"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "",
+      "stderr": "{\"status\":\"PASS\",\"caseCount\":48}\n",
+      "durationMs": 367
+    },
+    {
+      "command": "Dual-shell validator compatibility diagnostic",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "scripts/test-validate-phase.mjs",
+        "--shell",
+        "both",
+        "--case",
+        "root-equality-empty-prefix-local-inputs-history-pass,recovery-history-pass,previous-required-case-removal",
+        "--output",
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase012\\attempt-6-validator-diagnostic.json"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "",
+      "stderr": "{\n  \"status\": \"PASS\",\n  \"scope\": \"ISOLATED_ROOT_LAYOUT_GIT_PROTOCOL_REGRESSION\",\n  \"caseCount\": 3,\n  \"observationCount\": 7,\n  \"durationMs\": 33409,\n  \"output\": \"C:\\\\Users\\\\11295\\\\Desktop\\\\Serendipity · 际遇\\\\.scaffold\\\\phase012\\\\attempt-6-validator-diagnostic.json\"\n}\n",
+      "durationMs": 34078
+    }
+  ]
+}

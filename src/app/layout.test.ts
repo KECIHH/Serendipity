@@ -78,14 +78,18 @@ describe("application layout boundaries", () => {
     expect(existsSync(resolve(repositoryRoot, "src/app/(site)/page.tsx"))).toBe(true);
   });
 
-  it("has only the public login and the guarded temporary administrator page", () => {
+  it("keeps public login separate from the protected redirect and user administration", () => {
     const adminPages = sourceFiles(resolve(repositoryRoot, "src/app/admin")).filter((filePath) =>
       /[/\\]page\.[jt]sx?$/.test(filePath),
     );
 
     expect(
       adminPages.map((filePath) => relative(repositoryRoot, filePath).replaceAll("\\", "/")).sort(),
-    ).toEqual(["src/app/admin/login/page.tsx", "src/app/admin/page.tsx"]);
+    ).toEqual([
+      "src/app/admin/(protected)/page.tsx",
+      "src/app/admin/(protected)/users/page.tsx",
+      "src/app/admin/(public)/login/page.tsx",
+    ]);
     const adminLayout = readFileSync(resolve(repositoryRoot, "src/app/admin/layout.tsx"), "utf8");
     expect(adminLayout).not.toMatch(/AdminShell|AdminSidebar|SiteHeader/);
   });

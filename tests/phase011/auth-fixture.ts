@@ -6,6 +6,7 @@ import { spawn } from "node:child_process";
 import { PrismaClient } from "@prisma/client";
 
 export interface AuthFixtureConfig {
+  phase: "011" | "012";
   runId: string;
   database: string;
   user: string;
@@ -20,11 +21,14 @@ export interface AuthFixtureConfig {
 export function fixtureConfig(): AuthFixtureConfig {
   const file = process.env.PHASE011_FIXTURE_CONFIG;
   assert(file, "Phase011 requires its task-owned database configuration");
-  const config = JSON.parse(fs.readFileSync(file, "utf8")) as AuthFixtureConfig;
+  const config = JSON.parse(fs.readFileSync(file, "utf8")) as Omit<AuthFixtureConfig, "phase">;
   assert.match(config.runId, /^[a-f0-9]{12}$/);
-  assert.equal(config.database, `phase011_disposable_${config.runId}`);
-  assert.equal(config.user, "phase011_runner");
-  assert.equal(config.appUser, "phase011_app");
+  const match = /^phase(011|012)_disposable_([a-f0-9]{12})$/.exec(config.database);
+  assert(match, "Auth regression requires an owned Phase011 or Phase012 database");
+  const phase = match[1] as AuthFixtureConfig["phase"];
+  assert.equal(config.database, `phase${phase}_disposable_${config.runId}`);
+  assert.equal(config.user, `phase${phase}_runner`);
+  assert.equal(config.appUser, `phase${phase}_app`);
   for (const [value, role] of [
     [config.url, config.user],
     [config.appUrl, config.appUser],
@@ -37,7 +41,7 @@ export function fixtureConfig(): AuthFixtureConfig {
     assert.equal(url.username, role);
   }
   assert(config.authSecret.length >= 32);
-  return config;
+  return { ...config, phase };
 }
 
 export function registerCanary(values: Record<string, string>): void {
@@ -133,7 +137,7 @@ export async function withAuthDatabase<T>(
 ): Promise<T> {
   const config = fixtureConfig();
   const database = `${config.database}_a${randomBytes(5).toString("hex")}`;
-  assert.match(database, /^phase011_disposable_[a-f0-9]{12}_a[a-f0-9]{10}$/);
+  assert.match(database, /^phase(?:011|012)_disposable_[a-f0-9]{12}_a[a-f0-9]{10}$/);
   const control = new PrismaClient({ datasourceUrl: config.url, log: [] });
   const [identity] = await control.$queryRaw<
     Array<{ name: string; version: string; marker: string }>
@@ -142,7 +146,7 @@ export async function withAuthDatabase<T>(
     shobj_description(oid,'pg_database') AS marker FROM pg_database WHERE datname=current_database()
   `;
   assert.equal(identity.name, config.database);
-  assert.equal(identity.marker, `serendipity-phase011-disposable:${config.runId}`);
+  assert.equal(identity.marker, `serendipity-phase${config.phase}-disposable:${config.runId}`);
   assert.match(identity.version, /^17\./);
   await control.$executeRawUnsafe(`CREATE DATABASE "${database}"`);
   const owner = new URL(config.url),
@@ -155,7 +159,7 @@ export async function withAuthDatabase<T>(
   const app = new PrismaClient({ datasourceUrl: url, log: [] });
   try {
     await control.$executeRawUnsafe(
-      `COMMENT ON DATABASE "${database}" IS 'serendipity-phase011-disposable:${config.runId}'`,
+      `COMMENT ON DATABASE "${database}" IS 'serendipity-phase${config.phase}-disposable:${config.runId}'`,
     );
     const migration = await runAuthCommand(
       [path.resolve("node_modules/prisma/build/index.js"), "migrate", "deploy"],
@@ -164,13 +168,13 @@ export async function withAuthDatabase<T>(
     assert.equal(migration.exitCode, 0, "Auth fixture migration failed");
     for (const statement of [
       "REVOKE CREATE ON SCHEMA public FROM PUBLIC",
-      "GRANT USAGE ON SCHEMA public TO phase011_app",
-      'GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE "User", "SystemConfig", "TravelRecord", "ChatMessage", "ApiKeyConfig" TO phase011_app',
-      'GRANT SELECT, INSERT ON TABLE "AuditLog", "AuthSession", "AuthLoginAttempt" TO phase011_app',
-      'GRANT UPDATE (status,"lastSeenAt","revokedAt") ON "AuthSession" TO phase011_app',
-      'GRANT UPDATE (status,"completedAt") ON "AuthLoginAttempt" TO phase011_app',
-      'GRANT SELECT ON "_prisma_migrations" TO phase011_app',
-      "GRANT EXECUTE ON FUNCTION public.auth_now() TO phase011_app",
+      `GRANT USAGE ON SCHEMA public TO "${config.appUser}"`,
+      `GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE "User", "SystemConfig", "TravelRecord", "ChatMessage", "ApiKeyConfig" TO "${config.appUser}"`,
+      `GRANT SELECT, INSERT ON TABLE "AuditLog", "AuthSession", "AuthLoginAttempt" TO "${config.appUser}"`,
+      `GRANT UPDATE (status,"lastSeenAt","revokedAt") ON "AuthSession" TO "${config.appUser}"`,
+      `GRANT UPDATE (status,"completedAt") ON "AuthLoginAttempt" TO "${config.appUser}"`,
+      `GRANT SELECT ON "_prisma_migrations" TO "${config.appUser}"`,
+      `GRANT EXECUTE ON FUNCTION public.auth_now() TO "${config.appUser}"`,
     ])
       await admin.$executeRawUnsafe(statement);
     const email = `auth-${randomBytes(8).toString("hex")}@example.invalid`;
