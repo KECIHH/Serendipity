@@ -73,25 +73,65 @@ enum ChatMessageKind {
   STRUCTURED
 }
 
+enum ProviderMode {
+  MOCK
+  LIVE
+}
+
+enum CredentialRequirement {
+  NONE
+  REQUIRED
+}
+
+enum PromptModelActivationStatus {
+  ACTIVE
+  DISABLED
+}
+
+enum AiOutputStatus {
+  SUCCEEDED
+  FAILED
+  CANCELLED
+}
+
+enum AiReservationStatus {
+  RESERVED
+  RECONCILING
+  SETTLED
+  RELEASED
+}
+
+enum AiSubmissionState {
+  NOT_SENT
+  MAY_HAVE_BEEN_SENT
+  ACCEPTED
+}
+
 model User {
-  id                   String         @id @default(cuid())
-  email                String         @unique
-  phone                String?
-  name                 String?
-  avatarUrl            String?
-  passwordHash         String
-  role                 Role           @default(USER)
-  status               UserStatus     @default(ACTIVE)
-  sessionVersion       Int            @default(0)
-  revision             Int            @default(0)
-  lastLoginAt          DateTime?
-  createdAt            DateTime       @default(now()) @db.Timestamptz(3)
-  updatedAt            DateTime       @updatedAt @db.Timestamptz(3)
-  updatedSystemConfigs SystemConfig[]
-  travelRecords        TravelRecord[]
-  auditLogs            AuditLog[]
-  authSessions         AuthSession[]
-  adminCommandReceipts AdminCommandReceipt[]
+  id                        String                     @id @default(cuid())
+  email                     String                     @unique
+  phone                     String?
+  name                      String?
+  avatarUrl                 String?
+  passwordHash              String
+  role                      Role                       @default(USER)
+  status                    UserStatus                 @default(ACTIVE)
+  sessionVersion            Int                        @default(0)
+  revision                  Int                        @default(0)
+  lastLoginAt               DateTime?
+  createdAt                 DateTime                   @default(now()) @db.Timestamptz(3)
+  updatedAt                 DateTime                   @updatedAt @db.Timestamptz(3)
+  updatedSystemConfigs      SystemConfig[]
+  travelRecords             TravelRecord[]
+  auditLogs                 AuditLog[]
+  authSessions              AuthSession[]
+  adminCommandReceipts      AdminCommandReceipt[]
+  promptVersions            PromptVersion[]
+  modelDeployments          ModelDeployment[]
+  planningPolicies          PlanningPolicyVersion[]
+  promptActivations         PromptActivation[]
+  promptModelActivations    PromptModelActivation[]
+  planningPolicyActivations PlanningPolicyActivation[]
 
   @@index([status])
   @@index([createdAt, id])
@@ -116,17 +156,18 @@ model SystemConfig {
 }
 
 model TravelRecord {
-  id              String        @id @default(cuid())
+  id              String           @id @default(cuid())
   userId          String?
-  anonTokenHash   String?       @db.Char(64)
+  anonTokenHash   String?          @db.Char(64)
   title           String
-  status          TravelStatus  @default(DRAFT)
-  version         Int           @default(0)
+  status          TravelStatus     @default(DRAFT)
+  version         Int              @default(0)
   requirementJson Json?
-  createdAt       DateTime      @default(now()) @db.Timestamptz(3)
-  updatedAt       DateTime      @updatedAt @db.Timestamptz(3)
-  user            User?         @relation(fields: [userId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  createdAt       DateTime         @default(now()) @db.Timestamptz(3)
+  updatedAt       DateTime         @updatedAt @db.Timestamptz(3)
+  user            User?            @relation(fields: [userId], references: [id], onDelete: Restrict, onUpdate: Cascade)
   messages        ChatMessage[]
+  aiOutputRecords AiOutputRecord[]
 
   @@index([userId, createdAt, id])
   @@index([anonTokenHash, createdAt, id])
@@ -176,21 +217,22 @@ model AuditLog {
 }
 
 model ApiKeyConfig {
-  id              String       @id @default(cuid())
-  name            String
-  provider        String
-  encryptedKey    String       @db.Text
-  encryptionKeyId String
-  envelopeVersion Int          @default(1)
-  keyFingerprint  String       @unique @db.Char(64)
-  status          ApiKeyStatus @default(ACTIVE)
-  lastUsedAt      DateTime?    @db.Timestamptz(3)
-  revokedAt       DateTime?    @db.Timestamptz(3)
-  createdAt       DateTime     @default(now()) @db.Timestamptz(3)
-  updatedAt       DateTime     @updatedAt @db.Timestamptz(3)
-  revision        Int          @default(0)
-  oldRotationRuns KeyRotationRun[] @relation("OldRotationKey")
-  newRotationRuns KeyRotationRun[] @relation("NewRotationKey")
+  id                     String                  @id @default(cuid())
+  name                   String
+  provider               String
+  encryptedKey           String                  @db.Text
+  encryptionKeyId        String
+  envelopeVersion        Int                     @default(1)
+  keyFingerprint         String                  @unique @db.Char(64)
+  status                 ApiKeyStatus            @default(ACTIVE)
+  lastUsedAt             DateTime?               @db.Timestamptz(3)
+  revokedAt              DateTime?               @db.Timestamptz(3)
+  createdAt              DateTime                @default(now()) @db.Timestamptz(3)
+  updatedAt              DateTime                @updatedAt @db.Timestamptz(3)
+  revision               Int                     @default(0)
+  oldRotationRuns        KeyRotationRun[]        @relation("OldRotationKey")
+  newRotationRuns        KeyRotationRun[]        @relation("NewRotationKey")
+  providerConfigVersions ProviderConfigVersion[]
 
   @@index([provider, status])
 }
@@ -222,20 +264,20 @@ model AdminCommandReceipt {
 }
 
 model KeyRotationRun {
-  id                String           @id @default(cuid())
-  receiptId         String           @unique
+  id                String              @id @default(cuid())
+  receiptId         String              @unique
   oldKeyId          String
   newKeyId          String?
-  candidateIdsJson  Json             @default("[]")
-  referenceSetHash  String           @db.Char(64)
+  candidateIdsJson  Json                @default("[]")
+  referenceSetHash  String              @db.Char(64)
   baseRevisionsJson Json
-  stage             KeyRotationStage @default(PREPARING)
+  stage             KeyRotationStage    @default(PREPARING)
   checkpointJson    Json
-  createdAt         DateTime         @default(now()) @db.Timestamptz(3)
-  updatedAt         DateTime         @updatedAt @db.Timestamptz(3)
+  createdAt         DateTime            @default(now()) @db.Timestamptz(3)
+  updatedAt         DateTime            @updatedAt @db.Timestamptz(3)
   receipt           AdminCommandReceipt @relation(fields: [receiptId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-  oldKey            ApiKeyConfig     @relation("OldRotationKey", fields: [oldKeyId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-  newKey            ApiKeyConfig?    @relation("NewRotationKey", fields: [newKeyId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  oldKey            ApiKeyConfig        @relation("OldRotationKey", fields: [oldKeyId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  newKey            ApiKeyConfig?       @relation("NewRotationKey", fields: [newKeyId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   @@index([oldKeyId])
   @@index([newKeyId])
@@ -274,4 +316,209 @@ model AuthLoginAttempt {
   @@index([scope, ipHash, createdAt])
   @@index([scope, accountHash, createdAt])
   @@index([status, reservedUntil, id])
+}
+
+model PromptDefinition {
+  id        String   @id @default(cuid())
+  key       String   @unique @db.VarChar(128)
+  purpose   String   @db.VarChar(256)
+  createdAt DateTime @default(now()) @db.Timestamptz(3)
+
+  versions        PromptVersion[]
+  activation      PromptActivation?
+  modelActivation PromptModelActivation?
+
+  @@index([createdAt])
+}
+
+model PromptVersion {
+  id                    String   @id @default(cuid())
+  definitionId          String
+  version               Int
+  content               String   @db.Text
+  contentHash           String   @db.Char(64)
+  variablesJson         Json
+  responseSchemaVersion Int
+  createdById           String?
+  createdAt             DateTime @default(now()) @db.Timestamptz(3)
+
+  definition       PromptDefinition        @relation(fields: [definitionId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  createdBy        User?                   @relation(fields: [createdById], references: [id], onDelete: SetNull, onUpdate: Restrict)
+  activations      PromptActivation[]
+  modelActivations PromptModelActivation[]
+  outputRecords    AiOutputRecord[]
+
+  @@unique([definitionId, version])
+  @@unique([definitionId, contentHash])
+  @@unique([definitionId, id])
+  @@index([createdAt])
+}
+
+model PromptActivation {
+  definitionId      String   @id
+  championVersionId String
+  revision          Int      @default(0)
+  updatedById       String?
+  updatedAt         DateTime @updatedAt @db.Timestamptz(3)
+
+  definition      PromptDefinition @relation(fields: [definitionId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  championVersion PromptVersion    @relation(fields: [definitionId, championVersionId], references: [definitionId, id], onDelete: Restrict, onUpdate: Restrict)
+  updatedBy       User?            @relation(fields: [updatedById], references: [id], onDelete: SetNull, onUpdate: Restrict)
+
+  @@index([updatedById, updatedAt])
+}
+
+model ModelDeployment {
+  id                  String   @default(cuid())
+  configVersion       Int
+  providerId          String
+  providerModelName   String   @db.VarChar(128)
+  paramsJson          Json
+  capabilitiesJson    Json
+  contextWindowTokens Int
+  contentHash         String   @db.Char(64)
+  createdById         String?
+  createdAt           DateTime @default(now()) @db.Timestamptz(3)
+
+  provider              ProviderConfigVersion   @relation(fields: [providerId, providerConfigVersion], references: [providerId, configVersion], onDelete: Restrict, onUpdate: Restrict)
+  providerConfigVersion Int
+  createdBy             User?                   @relation(fields: [createdById], references: [id], onDelete: SetNull, onUpdate: Restrict)
+  activations           PromptModelActivation[]
+  outputRecords         AiOutputRecord[]
+
+  @@id([id, configVersion])
+  @@index([providerId, createdAt])
+  @@index([createdById])
+}
+
+model ProviderConfigVersion {
+  providerId            String                @default(cuid())
+  configVersion         Int
+  mode                  ProviderMode
+  baseUrl               String                @db.VarChar(512)
+  capabilities          Json
+  timeoutMs             Int
+  maxRetries            Int
+  quotaTokensPerDay     Int
+  costLimitPerDay       Decimal               @db.Decimal(18, 8)
+  region                String                @db.VarChar(64)
+  locale                String                @db.VarChar(35)
+  credentialRequirement CredentialRequirement
+  secretRef             String?
+  contentHash           String                @db.Char(64)
+  createdAt             DateTime              @default(now()) @db.Timestamptz(3)
+
+  secretRefKey  ApiKeyConfig?           @relation(fields: [secretRef], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  deployments   ModelDeployment[]
+  activations   PromptModelActivation[]
+  outputRecords AiOutputRecord[]
+
+  @@id([providerId, configVersion])
+  @@index([mode, createdAt])
+  @@index([secretRef])
+}
+
+model PromptModelActivation {
+  definitionId            String                      @id
+  promptVersionId         String
+  deploymentId            String
+  deploymentConfigVersion Int
+  providerId              String
+  providerConfigVersion   Int
+  status                  PromptModelActivationStatus @default(DISABLED)
+  revision                Int                         @default(0)
+  updatedById             String?
+  updatedAt               DateTime                    @updatedAt @db.Timestamptz(3)
+
+  definition    PromptDefinition      @relation(fields: [definitionId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  promptVersion PromptVersion         @relation(fields: [definitionId, promptVersionId], references: [definitionId, id], onDelete: Restrict, onUpdate: Restrict)
+  deployment    ModelDeployment       @relation(fields: [deploymentId, deploymentConfigVersion], references: [id, configVersion], onDelete: Restrict, onUpdate: Restrict)
+  provider      ProviderConfigVersion @relation(fields: [providerId, providerConfigVersion], references: [providerId, configVersion], onDelete: Restrict, onUpdate: Restrict)
+  updatedBy     User?                 @relation(fields: [updatedById], references: [id], onDelete: SetNull, onUpdate: Restrict)
+
+  @@index([status, updatedAt])
+  @@index([updatedById, updatedAt])
+  @@index([providerId, providerConfigVersion])
+}
+
+model PlanningPolicyVersion {
+  id          String   @id @default(cuid())
+  version     Int      @unique
+  contentJson Json
+  contentHash String   @db.Char(64)
+  createdById String?
+  createdAt   DateTime @default(now()) @db.Timestamptz(3)
+
+  createdBy  User?                     @relation(fields: [createdById], references: [id], onDelete: SetNull, onUpdate: Restrict)
+  activation PlanningPolicyActivation?
+  outputs    AiOutputRecord[]
+
+  @@index([createdAt])
+}
+
+model PlanningPolicyActivation {
+  policyKey       String   @id @db.VarChar(128)
+  activeVersionId String   @unique
+  revision        Int      @default(0)
+  updatedById     String?
+  updatedAt       DateTime @updatedAt @db.Timestamptz(3)
+
+  activeVersion PlanningPolicyVersion @relation(fields: [activeVersionId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  updatedBy     User?                 @relation(fields: [updatedById], references: [id], onDelete: SetNull, onUpdate: Restrict)
+}
+
+model AiOutputRecord {
+  id                      String         @id @default(cuid())
+  travelRecordId          String?
+  traceId                 String         @db.VarChar(128)
+  attemptNo               Int
+  promptVersionId         String
+  activationRevision      Int
+  planningPolicyVersionId String
+  deploymentId            String
+  deploymentConfigVersion Int
+  providerId              String
+  providerConfigVersion   Int
+  inputHash               String         @db.Char(64)
+  outputHash              String         @db.Char(64)
+  rawOutput               String?        @db.Text
+  parsedOk                Boolean
+  status                  AiOutputStatus
+  errorCode               String?        @db.VarChar(64)
+  errorMessage            String?        @db.VarChar(256)
+  inputTokens             Int?
+  outputTokens            Int?
+  durationMs              Int
+  createdAt               DateTime       @default(now()) @db.Timestamptz(3)
+
+  travelRecord   TravelRecord?         @relation(fields: [travelRecordId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  promptVersion  PromptVersion         @relation(fields: [promptVersionId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  planningPolicy PlanningPolicyVersion @relation(fields: [planningPolicyVersionId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  deployment     ModelDeployment       @relation(fields: [deploymentId, deploymentConfigVersion], references: [id, configVersion], onDelete: Restrict, onUpdate: Restrict)
+  provider       ProviderConfigVersion @relation(fields: [providerId, providerConfigVersion], references: [providerId, configVersion], onDelete: Restrict, onUpdate: Restrict)
+
+  @@unique([traceId, attemptNo])
+  @@index([createdAt])
+  @@index([travelRecordId, createdAt])
+}
+
+model AiUsageReservation {
+  id                String              @id @default(cuid())
+  bucketKey         String              @db.VarChar(128)
+  traceId           String              @db.VarChar(128)
+  attemptNo         Int
+  estimatedTokens   Int
+  estimatedCost     Decimal             @db.Decimal(18, 8)
+  actualTokens      Int?
+  actualCost        Decimal?            @db.Decimal(18, 8)
+  status            AiReservationStatus @default(RESERVED)
+  submissionState   AiSubmissionState   @default(NOT_SENT)
+  providerRequestId String?             @db.VarChar(128)
+  expiresAt         DateTime            @db.Timestamptz(3)
+  createdAt         DateTime            @default(now()) @db.Timestamptz(3)
+  settledAt         DateTime?           @db.Timestamptz(3)
+
+  @@unique([traceId, attemptNo])
+  @@index([bucketKey, status, createdAt])
+  @@index([expiresAt, status])
 }

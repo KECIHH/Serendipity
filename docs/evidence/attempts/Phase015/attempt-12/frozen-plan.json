@@ -1,0 +1,859 @@
+{
+  "phase": 15,
+  "attemptId": "attempt-12",
+  "producer": "Phase015",
+  "consumers": [
+    "Phase019",
+    "Phase090",
+    "Phase091",
+    "Phase092",
+    "M4"
+  ],
+  "scope": "Final immutable AI prompt/model/provider governance, guarded calling, durable reservations, evidence records, and Phase013 key-reference integration",
+  "implementationContextId": "codex-native-root-phase015-20260913",
+  "testMode": "full",
+  "testModeReason": "Phase015 introduces the final AI governance schema, server-only egress boundary, quota invariants, and consumes the Phase013 key rotation contract; phase-verification-v1 section3 requires full repository regression.",
+  "crossAttemptReuse": "disabled",
+  "engineeringRegression": {
+    "mode": "full",
+    "baseCommit": "66f595a9348a69016771e86d9a1417b48ddb0ee6",
+    "discovery": "vitest list --json; exact file/fullName equality, all discovered assertions pass without skip",
+    "dedicatedCardCommand": "npm run test -- ai-governance provider-registry guarded-client prompt-service",
+    "fullCommand": "npm run test",
+    "includes": [
+      "src/**/*.test.{ts,tsx}",
+      "tests/**/*.test.{ts,tsx}"
+    ]
+  },
+  "sourcePaths": [
+    ".env.example",
+    ".gitattributes",
+    ".gitignore",
+    ".prettierignore",
+    ".prettierrc.json",
+    "AGENTS.md",
+    "README.md",
+    "components.json",
+    "docs/admin.md",
+    "docs/agent-execution-contract.md",
+    "docs/api.md",
+    "docs/auth.md",
+    "docs/code-style.md",
+    "docs/crypto.md",
+    "docs/database.md",
+    "docs/development-execution-policy.md",
+    "docs/directory-structure.md",
+    "docs/env-registry.json",
+    "docs/evidence/attempts/Phase015/archive-redactions.json",
+    "docs/evidence/attempts/Phase015/attempt-11/review.json",
+    "docs/evidence/attempts/Phase015/attempt-5/attempt-redacted.json",
+    "docs/evidence/attempts/Phase015/attempt-5/commands/004-redacted.json",
+    "docs/evidence/attempts/Phase015/independent-review-guarded-results.json",
+    "docs/evidence/attempts/Phase015/independent-review-initial.json",
+    "docs/evidence/attempts/Phase015/independent-review-repro-results.json",
+    "docs/evidence/attempts/Phase015/recovery-admission.json",
+    "docs/git-workflow.md",
+    "docs/hosting.md",
+    "docs/index.md",
+    "docs/phase-completion-log.md",
+    "docs/phase-plans/Phase015-inputs.json",
+    "docs/phase-plans/Phase015.json",
+    "docs/phase-plans/advance-phase015.mjs",
+    "docs/phase-plans/complete-phase015.mjs",
+    "docs/phase-plans/phase015-evidence.mjs",
+    "docs/phase-plans/phase015-runtime.mjs",
+    "docs/phase-plans/prepare-phase015.mjs",
+    "docs/phase-plans/retry-phase015.mjs",
+    "docs/phase-plans/verify-phase015.mjs",
+    "docs/phase006.md",
+    "docs/phase007.md",
+    "docs/phase008.md",
+    "docs/phase009.md",
+    "docs/phase010.md",
+    "docs/phase011.md",
+    "docs/phase012.md",
+    "docs/phase013.md",
+    "docs/phase014.md",
+    "docs/phase015.md",
+    "docs/planning-policy.json",
+    "docs/privacy-and-user-data.md",
+    "docs/project-constitution.md",
+    "docs/project-layout.json",
+    "docs/prompt-design.md",
+    "docs/roadmap-run.json",
+    "docs/runtime-baseline.json",
+    "docs/tech-stack.md",
+    "docs/testing-execution-policy.md",
+    "docs/travel-data-provider-strategy.md",
+    "docs/travel-plan-schema.md",
+    "docs/ui-design-system.md",
+    "eslint.config.mjs",
+    "next.config.ts",
+    "package-lock.json",
+    "package.json",
+    "postcss.config.mjs",
+    "prisma/.gitkeep",
+    "prisma/migrations/20260910000000_init_user/migration.sql",
+    "prisma/migrations/20260910172735_system_config/migration.sql",
+    "prisma/migrations/20260911002217_travel_record_chat_message/migration.sql",
+    "prisma/migrations/20260911042258_audit_log/migration.sql",
+    "prisma/migrations/20260911104017_api_key_config/migration.sql",
+    "prisma/migrations/20260911151715_auth_session_login_attempt/migration.sql",
+    "prisma/migrations/20260912013806_admin_commands/migration.sql",
+    "prisma/migrations/20260912061403_key_rotation_contract/migration.sql",
+    "prisma/migrations/20260913000000_ai_governance/migration.sql",
+    "prisma/migrations/migration_lock.toml",
+    "prisma/schema.prisma",
+    "prisma/seed.ts",
+    "public/file.svg",
+    "public/globe.svg",
+    "public/next.svg",
+    "public/vercel.svg",
+    "public/window.svg",
+    "scripts/auth-server.mjs",
+    "scripts/check-project-layout.mjs",
+    "scripts/checkpoint-history.mjs",
+    "scripts/checkpoint-maintenance.mjs",
+    "scripts/complete-phase003.mjs",
+    "scripts/eslint-env.mjs",
+    "scripts/generate-api-contract.mjs",
+    "scripts/phase-evidence.mjs",
+    "scripts/phase003-evidence.mjs",
+    "scripts/prepare-checkpoint-import.mjs",
+    "scripts/prepare-phase003.mjs",
+    "scripts/test-checkpoint-import.mjs",
+    "scripts/test-checkpoint-maintenance.mjs",
+    "scripts/test-phase-input-paths.mjs",
+    "scripts/test-validate-phase.mjs",
+    "scripts/validate-phase.mjs",
+    "scripts/validate-phase.ps1",
+    "scripts/verify-phase003.mjs",
+    "src/app/(site)/layout.tsx",
+    "src/app/(site)/login/page.tsx",
+    "src/app/(site)/page.tsx",
+    "src/app/admin/(protected)/api-keys/page.tsx",
+    "src/app/admin/(protected)/layout.tsx",
+    "src/app/admin/(protected)/logs/page.tsx",
+    "src/app/admin/(protected)/page.tsx",
+    "src/app/admin/(protected)/settings/page.tsx",
+    "src/app/admin/(protected)/users/page.tsx",
+    "src/app/admin/(public)/login/page.tsx",
+    "src/app/admin/layout.tsx",
+    "src/app/api/admin/api-keys/[id]/rotate/route.ts",
+    "src/app/api/admin/api-keys/[id]/route.ts",
+    "src/app/api/admin/api-keys/route.ts",
+    "src/app/api/admin/dashboard/stats/route.ts",
+    "src/app/api/admin/logs/route.ts",
+    "src/app/api/admin/settings/[key]/route.ts",
+    "src/app/api/admin/settings/route.ts",
+    "src/app/api/admin/users/[id]/route.ts",
+    "src/app/api/admin/users/route.ts",
+    "src/app/api/auth/[...nextauth]/route.ts",
+    "src/app/api/config/public/route.ts",
+    "src/app/error.tsx",
+    "src/app/favicon.ico",
+    "src/app/globals.css",
+    "src/app/layout.test.ts",
+    "src/app/layout.tsx",
+    "src/app/not-found.tsx",
+    "src/components/admin/.gitkeep",
+    "src/components/admin/admin-nav.ts",
+    "src/components/admin/admin-pagination.tsx",
+    "src/components/admin/api-keys-client.tsx",
+    "src/components/admin/dashboard-client.tsx",
+    "src/components/admin/logs-client.tsx",
+    "src/components/admin/settings-client.tsx",
+    "src/components/admin/users-client.tsx",
+    "src/components/auth/login-form.tsx",
+    "src/components/auth/logout-button.tsx",
+    "src/components/chat/.gitkeep",
+    "src/components/common/.gitkeep",
+    "src/components/common/common-components.test.tsx",
+    "src/components/common/data-table.tsx",
+    "src/components/common/empty-state.tsx",
+    "src/components/common/error-state.tsx",
+    "src/components/common/loading-state.tsx",
+    "src/components/common/page-header.tsx",
+    "src/components/layout/.gitkeep",
+    "src/components/layout/admin-shell.tsx",
+    "src/components/layout/site-header.tsx",
+    "src/components/travel/.gitkeep",
+    "src/components/ui/button.tsx",
+    "src/components/ui/sonner.tsx",
+    "src/instrumentation.ts",
+    "src/lib/admin-api-keys.ts",
+    "src/lib/admin-dashboard.ts",
+    "src/lib/admin-logs.ts",
+    "src/lib/admin-settings.ts",
+    "src/lib/admin-users.ts",
+    "src/lib/ai/.gitkeep",
+    "src/lib/ai/prompt-contract.json",
+    "src/lib/ai/provider.ts",
+    "src/lib/ai/schemas.ts",
+    "src/lib/api-response.test.ts",
+    "src/lib/api-response.ts",
+    "src/lib/env-cli.ts",
+    "src/lib/env-schema.ts",
+    "src/lib/env.test.ts",
+    "src/lib/env.ts",
+    "src/lib/format.test.ts",
+    "src/lib/format.ts",
+    "src/lib/json.test.ts",
+    "src/lib/json.ts",
+    "src/lib/schemas/system-config.ts",
+    "src/lib/utils.ts",
+    "src/middleware.test.ts",
+    "src/middleware.ts",
+    "src/server/admin/api-key-cursor.ts",
+    "src/server/admin/api-keys.ts",
+    "src/server/admin/command-receipt.ts",
+    "src/server/admin/dashboard.ts",
+    "src/server/admin/key-candidate-client.ts",
+    "src/server/admin/key-reference.ts",
+    "src/server/admin/key-rotation.ts",
+    "src/server/admin/log-cursor.ts",
+    "src/server/admin/logs.ts",
+    "src/server/admin/migration-inventory.ts",
+    "src/server/admin/readiness.ts",
+    "src/server/admin/settings.ts",
+    "src/server/admin/user-cursor.ts",
+    "src/server/admin/users.ts",
+    "src/server/ai/bootstrap-probes.json",
+    "src/server/ai/bootstrap-templates.json",
+    "src/server/ai/deepseek-provider.ts",
+    "src/server/ai/enable-mock-cli.ts",
+    "src/server/ai/enable-mock.ts",
+    "src/server/ai/guarded-client.ts",
+    "src/server/ai/key-candidate-client.ts",
+    "src/server/ai/key-candidate-context.ts",
+    "src/server/ai/mock-provider.ts",
+    "src/server/ai/planning-policy-bootstrap.json",
+    "src/server/ai/planning-policy.ts",
+    "src/server/ai/provider-key-reference-adapter.ts",
+    "src/server/ai/provider-registry.ts",
+    "src/server/ai/url-guard.ts",
+    "src/server/ai/usage-reservations.ts",
+    "src/server/anonymous-owner.ts",
+    "src/server/api-key-envelope.ts",
+    "src/server/audit-log.ts",
+    "src/server/auth.ts",
+    "src/server/auth/auth-config.ts",
+    "src/server/auth/auth-handler.ts",
+    "src/server/auth/clock.ts",
+    "src/server/auth/cookie.ts",
+    "src/server/auth/credentials-service.ts",
+    "src/server/auth/errors.ts",
+    "src/server/auth/guards.ts",
+    "src/server/auth/login-throttle.ts",
+    "src/server/auth/require-admin.ts",
+    "src/server/auth/session-service.ts",
+    "src/server/auth/trusted-client.ts",
+    "src/server/auth/types.ts",
+    "src/server/config/config-registry.ts",
+    "src/server/config/config-service.ts",
+    "src/server/db.ts",
+    "src/server/ingress.ts",
+    "src/server/projections/admin-api-key.ts",
+    "src/server/projections/admin-user.ts",
+    "src/server/projections/public-user.ts",
+    "src/server/repositories/chat-message.ts",
+    "src/server/repositories/data-layer-error.ts",
+    "src/server/repositories/travel-record.ts",
+    "src/server/security/secret-envelope.ts",
+    "src/server/seed-input.ts",
+    "src/server/services/.gitkeep",
+    "src/server/services/ai-governance-service.ts",
+    "src/server/services/audit-log-service.ts",
+    "src/server/services/model-resolution-service.ts",
+    "src/server/services/prompt-service.ts",
+    "src/server/services/seed-service.ts",
+    "src/types/.gitkeep",
+    "tests/admin/api-keys-client.test.tsx",
+    "tests/admin/api-keys.integration.test.ts",
+    "tests/admin/dashboard-client.test.tsx",
+    "tests/admin/dashboard.test.ts",
+    "tests/admin/layout.test.tsx",
+    "tests/admin/logs-client.test.tsx",
+    "tests/admin/logs.test.ts",
+    "tests/admin/security.test.ts",
+    "tests/admin/settings-client.test.tsx",
+    "tests/admin/settings.test.ts",
+    "tests/admin/users-client.test.tsx",
+    "tests/admin/users.integration.test.ts",
+    "tests/integration/admin-login.test.ts",
+    "tests/integration/api-key-schema.test.ts",
+    "tests/integration/audit-log.test.ts",
+    "tests/integration/chat-message.test.ts",
+    "tests/integration/config-models.test.ts",
+    "tests/integration/secret-envelope.test.ts",
+    "tests/integration/seed.test.ts",
+    "tests/integration/travel-record.test.ts",
+    "tests/lib/admin-api-keys.test.ts",
+    "tests/lib/admin-login-ui.test.tsx",
+    "tests/lib/api-key-schema.test.ts",
+    "tests/lib/audit-log.test.ts",
+    "tests/lib/auth-guards.test.ts",
+    "tests/lib/auth-http.test.ts",
+    "tests/lib/auth-ingress.test.ts",
+    "tests/lib/auth-services.test.ts",
+    "tests/lib/auth.test.ts",
+    "tests/lib/chat-message.test.ts",
+    "tests/lib/db.test.ts",
+    "tests/lib/public-user.test.ts",
+    "tests/lib/secret-envelope.test.ts",
+    "tests/lib/seed.test.ts",
+    "tests/lib/travel-record.test.ts",
+    "tests/phase005/browser.mjs",
+    "tests/phase005/components-fixture.tsx",
+    "tests/phase005/fixtures/phase003-home.tsx",
+    "tests/phase006/cli-network-guard.cjs",
+    "tests/phase006/cli-network.mjs",
+    "tests/phase006/database.integration.ts",
+    "tests/phase006/studio.mjs",
+    "tests/phase006/user-types.ts",
+    "tests/phase006/vitest.database.config.mjs",
+    "tests/phase007/cli-network.mjs",
+    "tests/phase007/config-fixture.ts",
+    "tests/phase007/config-types.ts",
+    "tests/phase008/cli-network.mjs",
+    "tests/phase008/data-fixture.ts",
+    "tests/phase008/data-types.ts",
+    "tests/phase008/evidence-guards.mjs",
+    "tests/phase009/audit-fixture.ts",
+    "tests/phase009/audit-types.ts",
+    "tests/phase009/cli-network.mjs",
+    "tests/phase009/evidence-guards.mjs",
+    "tests/phase010/api-key-fixture.ts",
+    "tests/phase010/api-key-types.ts",
+    "tests/phase010/cli-network.mjs",
+    "tests/phase010/evidence-guards.mjs",
+    "tests/phase010/seed-fixture.ts",
+    "tests/phase011/auth-fixture.ts",
+    "tests/phase011/auth-types.ts",
+    "tests/phase011/auth-worker.ts",
+    "tests/phase011/browser.mjs",
+    "tests/phase011/cli-network.mjs",
+    "tests/phase011/evidence-guards.mjs",
+    "tests/phase012/admin-fixture.ts",
+    "tests/phase012/admin-worker.ts",
+    "tests/phase012/browser.mjs",
+    "tests/phase012/cli-network.mjs",
+    "tests/phase012/evidence-guards.mjs",
+    "tests/phase013/api-key-fixture.ts",
+    "tests/phase013/api-key-worker.ts",
+    "tests/phase013/browser.mjs",
+    "tests/phase013/cli-network.mjs",
+    "tests/phase013/evidence-guards.mjs",
+    "tests/phase013/logs-fixture.ts",
+    "tests/phase014/browser.mjs",
+    "tests/phase014/evidence-guards.mjs",
+    "tests/phase014/fixture.ts",
+    "tests/phase014/worker.ts",
+    "tests/phase015/ai-governance-key-rotation.test.ts",
+    "tests/phase015/ai-governance.test.ts",
+    "tests/phase015/evidence-guards.mjs",
+    "tests/phase015/fixture.ts",
+    "tests/phase015/guarded-client.test.ts",
+    "tests/phase015/http-fixture.ts",
+    "tests/phase015/import-boundary.ts",
+    "tests/phase015/prompt-service.test.ts",
+    "tests/phase015/provider-registry.test.ts",
+    "tests/phase015/source-scan-allowlist.json",
+    "tests/phase015/worker.ts",
+    "tsconfig.json",
+    "vitest.config.ts",
+    "vitest.setup.ts",
+    "vitest/stubs/server-only.ts"
+  ],
+  "modificationScope": [
+    ".env.example",
+    "README.md",
+    "docs/database.md",
+    "docs/env-registry.json",
+    "docs/evidence/attempts/Phase015/",
+    "docs/phase-plans/Phase015-inputs.json",
+    "docs/phase-plans/Phase015.json",
+    "docs/phase-plans/complete-phase015.mjs",
+    "docs/phase-plans/phase015-evidence.mjs",
+    "docs/phase-plans/phase015-runtime.mjs",
+    "docs/phase-plans/prepare-phase015.mjs",
+    "docs/phase-plans/verify-phase015.mjs",
+    "docs/phase015.md",
+    "docs/prompt-design.md",
+    "docs/privacy-and-user-data.md",
+    "docs/travel-data-provider-strategy.md",
+    "package.json",
+    "package-lock.json",
+    "prisma/migrations/20260913000000_ai_governance/",
+    "prisma/schema.prisma",
+    "src/lib/ai/",
+    "src/lib/env-schema.ts",
+    "src/lib/env.test.ts",
+    "src/server/admin/api-keys.ts",
+    "src/server/ai/",
+    "src/server/config/config-registry.ts",
+    "src/server/services/",
+    "tests/admin/api-keys.integration.test.ts",
+    "tests/admin/dashboard.test.ts",
+    "tests/admin/security.test.ts",
+    "tests/integration/api-key-schema.test.ts",
+    "tests/integration/config-models.test.ts",
+    "tests/integration/audit-log.test.ts",
+    "tests/integration/travel-record.test.ts",
+    "tests/phase008/data-fixture.ts",
+    "tests/phase011/auth-fixture.ts",
+    "tests/phase009/audit-fixture.ts",
+    "tests/phase010/seed-fixture.ts",
+    "tests/phase012/admin-fixture.ts",
+    "tests/phase013/api-key-fixture.ts",
+    "tests/phase014/fixture.ts",
+    "tests/phase015/",
+    "vitest.config.ts",
+    "docs/phase-plans/retry-phase015.mjs",
+    "docs/phase-plans/advance-phase015.mjs",
+    "src/server/admin/key-candidate-client.ts",
+    "src/server/admin/key-rotation.ts",
+    "docs/planning-policy.json",
+    ".gitignore"
+  ],
+  "requiredCaseIds": [
+    "Phase015:schema-bootstrap",
+    "Phase015:resolution",
+    "Phase015:isolation-ssrf",
+    "Phase015:timeout-cancel-retry",
+    "Phase015:quota-cost",
+    "Phase015:version-evidence",
+    "Phase015:kill-switch",
+    "Phase015:mutation"
+  ],
+  "cases": [
+    {
+      "testCaseId": "Phase015:schema-bootstrap",
+      "command": "npm run test -- ai-governance",
+      "denominator": 1,
+      "inputPath": "prisma/schema.prisma",
+      "outputPath": "docs/evidence/attempts/Phase015/attempt-12/schema-bootstrap.json",
+      "expected": "An empty Phase014 database migrates additively to exactly 8 prompt definitions and version-1 prompts, one MOCK provider config version, one mock model deployment, 8 prompt activations, 8 disabled prompt-model activations, one immutable planning policy version and active pointer, and ai.calls.enabled=false. Bootstrap is idempotent with zero immutable-row updates. Temporary PromptConfig/AiModelConfig tables remain absent."
+    },
+    {
+      "testCaseId": "Phase015:resolution",
+      "command": "npm run test -- prompt-service model-resolution",
+      "denominator": 1,
+      "inputPath": "src/server/services/prompt-service.ts",
+      "outputPath": "docs/evidence/attempts/Phase015/attempt-12/resolution.json",
+      "expected": "A consistent snapshot resolves exact prompt, model, and provider versions. Missing pointers, cross-definition/version references, content hash drift, disabled tuples, schema/capability mismatch, unknown or missing variables, and disabled required secrets return CONFIG_ERROR with zero adapter calls. Atomic tuple activation increments both pointer revisions together or not at all."
+    },
+    {
+      "testCaseId": "Phase015:isolation-ssrf",
+      "command": "npm run test -- provider-registry isolation",
+      "denominator": 1,
+      "inputPath": "src/server/ai/provider-registry.ts",
+      "outputPath": "docs/evidence/attempts/Phase015/attempt-12/isolation-ssrf.json",
+      "expected": "Only server-only adapter files may import provider transports. Business import scans find zero direct SDK/provider fetch usage. HTTPS, hostname allowlist, port, DNS private/link-local/loopback rejection, per-redirect revalidation with a two-hop maximum, and response-size limits reject unsafe targets without secret disclosure."
+    },
+    {
+      "testCaseId": "Phase015:timeout-cancel-retry",
+      "command": "npm run test -- guarded-client timeout",
+      "denominator": 1,
+      "inputPath": "src/server/ai/guarded-client.ts",
+      "outputPath": "docs/evidence/attempts/Phase015/attempt-12/timeout-cancel-retry.json",
+      "expected": "A shared total deadline and AbortSignal stop work and mark the correct state. A retry occurs only before any response byte for explicit connect/429/5xx errors, at most once, with injected jitter/Retry-After and a shared budget. First-byte, cancellation, schema, 4xx, configuration, and cost failures do not retry."
+    },
+    {
+      "testCaseId": "Phase015:quota-cost",
+      "command": "npm run test -- guarded-client quota",
+      "denominator": 1,
+      "inputPath": "src/server/ai/guarded-client.ts",
+      "outputPath": "docs/evidence/attempts/Phase015/attempt-12/quota-cost.json",
+      "expected": "Durable reservations use atomic buckets and Decimal conservative upper bounds. Concurrent calls never exceed token/cost hard caps. NOT_SENT releases are idempotent; submission is atomically marked MAY_HAVE_BEEN_SENT before transport. Unknown, cancelled, timed-out, and lost-response reservations enter RECONCILING and remain reserved. Settle and reconcile are idempotent; each retry attempt owns a reservation."
+    },
+    {
+      "testCaseId": "Phase015:version-evidence",
+      "command": "npm run test -- guarded-client evidence",
+      "denominator": 1,
+      "inputPath": "src/server/ai/guarded-client.ts",
+      "outputPath": "docs/evidence/attempts/Phase015/attempt-12/version-evidence.json",
+      "expected": "Every adapter attempt appends one AiOutputRecord with exact prompt/model/provider versions, trace and attempt numbers, hashes, status/error, duration, and token usage. Production rawOutput is null; prompt, user-sensitive text, credentials, authorization headers, and raw provider bodies never enter evidence or public errors."
+    },
+    {
+      "testCaseId": "Phase015:kill-switch",
+      "command": "npm run test -- ai-governance kill",
+      "denominator": 1,
+      "inputPath": "src/server/services/ai-governance-service.ts",
+      "outputPath": "docs/evidence/attempts/Phase015/attempt-12/kill-switch.json",
+      "expected": "Default and disabled kill states perform zero adapter calls before reservation. Authorized MOCK activation succeeds through the guarded client. LIVE requires environment admission and an ACTIVE database key. NONE sends no credential; REQUIRED without an ACTIVE key remains at zero egress. Restart does not turn a disabled switch back on."
+    },
+    {
+      "testCaseId": "Phase015:mutation",
+      "command": "npm run test -- ai-governance provider-registry guarded-client prompt-service",
+      "denominator": 1,
+      "inputPath": "tests/phase015/fixture.ts",
+      "outputPath": "docs/evidence/attempts/Phase015/attempt-12/mutation.json",
+      "expected": "In isolated temporary copies, removing the guarded-client entry point, activation/kill check, reservation CAS, or AbortSignal makes the corresponding fixed fixture red. Restoring the source makes the complete eight-scenario collection green. The mutation observation command itself exits zero."
+    }
+  ],
+  "threshold": {
+    "originalThreshold": 8,
+    "automatedThreshold": 8,
+    "requiredPassRate": 1,
+    "waived": false
+  },
+  "supportingChecks": [
+    "lint",
+    "typecheck",
+    "format:check",
+    "build",
+    "full-regression",
+    "dedicated-card",
+    "prisma-migrate",
+    "prisma-migrate-status",
+    "import-boundary",
+    "secret-scan",
+    "negative-controls",
+    "layout",
+    "validator-regression",
+    "evidence-guards"
+  ],
+  "migrationPolicy": {
+    "mode": "ONE_ADDITIVE_AI_GOVERNANCE",
+    "preserveExistingMigrationBytes": true,
+    "newTablesAllowed": true
+  },
+  "negativeControls": [
+    "guarded-client-boundary",
+    "activation-check",
+    "kill-switch",
+    "reservation-cas",
+    "abort-signal",
+    "unknown-expiry-release"
+  ],
+  "decisions": [
+    "Create only the final governance models in one additive migration; no compatibility tables, temporary PromptConfig/AiModelConfig models, or second prompt/model system.",
+    "Keep provider interfaces and schemas free of secrets, network code, and server implementations. Server-only adapters and guarded client own egress.",
+    "Default state is ai.calls.enabled=false, MOCK provider, and all prompt-model activations disabled. The controlled CLI enables mock only through admin service, fixtures, and guarded calls.",
+    "Use deterministic fixture clocks, transport events, chunks, and usage; real adapter contract behavior is tested against isolated loopback HTTP only in test scope.",
+    "Retire AI_API_KEY, AI_BASE_URL, and AI_MODEL from runtime server requirements; versioned database config and secretRef are the only live adapter source.",
+    "Register a real Phase013 key-reference adapter against ProviderConfigVersion and PromptModelActivation and rerun two-reference rotation, failure, concurrency, and emergency revoke cases.",
+    "No public AI governance UI, Planner business, real external provider call, production traffic, or formal plan persistence in this phase."
+  ],
+  "previousAttempts": [
+    {
+      "attemptId": "attempt-1",
+      "planPath": "docs/evidence/attempts/Phase015/attempt-1/plan.json",
+      "planHash": "8eca68d80a529af01dbcbd9e1821bec18b7260cbd94ae0e8b2aa0a985e6b121d",
+      "failurePath": "docs/evidence/attempts/Phase015/attempt-1/attempt.json",
+      "failureHash": "e223efeebf2d9c0766179d11fabbcb8cac5714a152f5951a91513462e4658c8e"
+    },
+    {
+      "attemptId": "attempt-2",
+      "planPath": "docs/evidence/attempts/Phase015/attempt-2/plan.json",
+      "planHash": "324bcdbc6f1c09d4672d21a9848e93c37003db1a9d1486ed0be8ed653fa232d9",
+      "failurePath": "docs/evidence/attempts/Phase015/attempt-2/attempt.json",
+      "failureHash": "5fc80d263b3b95d11fe6d19025078ce45ea5f98a0f31f00127d7512faa4a6c2b"
+    },
+    {
+      "attemptId": "attempt-3",
+      "planPath": "docs/evidence/attempts/Phase015/attempt-3/plan.json",
+      "planHash": "e1fb92cbd2c6a2fc989ef7ee577f1775790c5a4f700c6de4678551e08e8198e0",
+      "failurePath": "docs/evidence/attempts/Phase015/attempt-3/attempt.json",
+      "failureHash": "46e458f4d7e001d7bfc8ee90e3e999091c121ce54bbfdb5191fae21bb28351c1"
+    },
+    {
+      "attemptId": "attempt-4",
+      "planPath": "docs/evidence/attempts/Phase015/attempt-4/frozen-plan.json",
+      "planHash": "78871749abed4a304b86b0ed9a8452d7152e13a9ac1d46b98bb8b3607cb39cb6",
+      "failurePath": "docs/evidence/attempts/Phase015/attempt-4/attempt.json",
+      "failureHash": "bee49066d10027eaa96de1d0d0763700d96a12f0c58ce34fe9848f87abc86d2e"
+    },
+    {
+      "attemptId": "attempt-5",
+      "planPath": "docs/evidence/attempts/Phase015/attempt-5/frozen-plan.json",
+      "planHash": "d0a8fe27f21f05b85c5894c0880d19ee1014842aa7c635cceb4b3ad7a5b2da44",
+      "failurePath": "docs/evidence/attempts/Phase015/attempt-5/attempt.json",
+      "failureHash": "f9424c321ee3d9e3933f52cb0ceb83edae719b6c14f3ae393b5b569970a7f203"
+    },
+    {
+      "attemptId": "attempt-6",
+      "planPath": "docs/evidence/attempts/Phase015/attempt-6/frozen-plan.json",
+      "planHash": "54b9fed46eb1c394e9acaec15ebe7d8c5a0626b3d2ad6e981aada4b4d5646c7e",
+      "failurePath": "docs/evidence/attempts/Phase015/attempt-6/attempt.json",
+      "failureHash": "a940c1285a60062ef9733dbc5e51d972579b22b83ad5fa9bed914386ec9bf1da"
+    },
+    {
+      "attemptId": "attempt-7",
+      "planPath": "docs/evidence/attempts/Phase015/attempt-7/frozen-plan.json",
+      "planHash": "ba7a14fbedcd362176696a3941d30707f835c6dc36e5ee40b0cb1bcb8d06b923",
+      "failurePath": "docs/evidence/attempts/Phase015/attempt-7/attempt.json",
+      "failureHash": "ec0e4b7541134760e9381a6e3c67e35079a943372ed9535861839d70ffd606b5"
+    },
+    {
+      "attemptId": "attempt-8",
+      "planPath": "docs/evidence/attempts/Phase015/attempt-8/frozen-plan.json",
+      "planHash": "1d9297d46ed426e3aae7c5dbf03831273b5eb21a285ee3b97814a8bab4a6b6f0",
+      "failurePath": "docs/evidence/attempts/Phase015/attempt-8/attempt.json",
+      "failureHash": "9253cfd3c1503f6b130cf0d573eb72cb0acadbeb4d12892f0e1ad406611bdac8"
+    },
+    {
+      "attemptId": "attempt-9",
+      "planPath": "docs/evidence/attempts/Phase015/attempt-9/frozen-plan.json",
+      "planHash": "456e84a83575925eaf2d4a4fda816ef5e8a98295cd7133e8aac050bab580f059",
+      "failurePath": "docs/evidence/attempts/Phase015/attempt-9/attempt.json",
+      "failureHash": "a5dbb2b0e4ef6dc60195ee64e8d4f1698a6654173d92a3b65413609b17c995ce"
+    },
+    {
+      "attemptId": "attempt-10",
+      "planPath": "docs/evidence/attempts/Phase015/attempt-10/frozen-plan.json",
+      "planHash": "c943f0a466bb718d2386069c1b1a6eb8858eb170de6ed1d0b43dfd3af250d2e6",
+      "failurePath": "docs/evidence/attempts/Phase015/attempt-10/attempt.json",
+      "failureHash": "bee13e504db6371f6e0cacf44a46bdfe7e73fe4332241f2ab2f888fed7fd76ce"
+    },
+    {
+      "attemptId": "attempt-11",
+      "planPath": "docs/evidence/attempts/Phase015/attempt-11/frozen-plan.json",
+      "planHash": "c176fcbd282445006476e605f1cae33fdd34e082aca1f9dd21228914afa8abfa",
+      "failurePath": "docs/evidence/attempts/Phase015/attempt-11/attempt.json",
+      "failureHash": "2d9afe7c90b4de554a5053da3ff44b50d574132b2828ff98663e15eeb0ea470a"
+    }
+  ],
+  "notApplicable": [
+    "Real external Provider traffic, real credentials, production deployment, human review, and public governance UI are not required or claimed."
+  ],
+  "costAccounting": {
+    "implementation": {
+      "durationMs": null,
+      "measurementStatus": "UNMEASURED"
+    },
+    "infrastructure": {
+      "durationMs": null,
+      "measurementStatus": "UNMEASURED"
+    },
+    "verification": "Timestamped actual command observations",
+    "review": "Independent reviewer start/end timestamps",
+    "productionRequests": 0
+  },
+  "assertionBindings": {
+    "Phase015:schema-bootstrap": [
+      {
+        "file": "tests/phase015/ai-governance.test.ts",
+        "fullName": "Phase015 AI governance database [schema-bootstrap] bootstrap rejects stored provider and model content with copied valid hashes"
+      },
+      {
+        "file": "tests/phase015/ai-governance.test.ts",
+        "fullName": "Phase015 AI governance database [schema-bootstrap] creates the exact final schema with disabled defaults and an idempotent bootstrap"
+      },
+      {
+        "file": "tests/phase015/ai-governance.test.ts",
+        "fullName": "Phase015 AI governance database [schema-bootstrap] invalid but correctly hashed planning policy remains unusable"
+      },
+      {
+        "file": "tests/phase015/ai-governance.test.ts",
+        "fullName": "Phase015 AI governance database [schema-bootstrap] the application role cannot update or delete any immutable version"
+      },
+      {
+        "file": "tests/phase015/ai-governance.test.ts",
+        "fullName": "Phase015 frozen prompt and policy contracts [schema-bootstrap] the eight templates and runtime schemas match reviewed source documents"
+      },
+      {
+        "file": "tests/phase015/ai-governance.test.ts",
+        "fullName": "Phase015 frozen prompt and policy contracts [schema-bootstrap] typed policy rejects missing groups, wrong units, ranges, decimals and production scope"
+      }
+    ],
+    "Phase015:resolution": [
+      {
+        "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+        "fullName": "Phase015 real Provider key rotation [resolution] a competing activation invalidates the captured reference revisions without partial switch"
+      },
+      {
+        "file": "tests/phase015/guarded-client.test.ts",
+        "fullName": "Phase015 guarded client [resolution] owner, synthetic policy and privacy violations fail before any reservation"
+      },
+      {
+        "file": "tests/phase015/prompt-service.test.ts",
+        "fullName": "Phase015 prompt resolution [resolution] absent activation pointers fail closed before creating reservations"
+      },
+      {
+        "file": "tests/phase015/prompt-service.test.ts",
+        "fullName": "Phase015 prompt resolution [resolution] both resolvers reject disabled tuples and stale activation CAS"
+      },
+      {
+        "file": "tests/phase015/prompt-service.test.ts",
+        "fullName": "Phase015 prompt resolution [resolution] concurrent tuple switches expose only complete old or new snapshots"
+      },
+      {
+        "file": "tests/phase015/prompt-service.test.ts",
+        "fullName": "Phase015 prompt resolution [resolution] database rejects cross-definition and cross-provider tuple references"
+      },
+      {
+        "file": "tests/phase015/prompt-service.test.ts",
+        "fullName": "Phase015 prompt resolution [resolution] invalid prompt hash is rejected before egress"
+      },
+      {
+        "file": "tests/phase015/prompt-service.test.ts",
+        "fullName": "Phase015 prompt resolution [resolution] provider locale, model context and unpriced bounds cannot be activated for a call"
+      },
+      {
+        "file": "tests/phase015/prompt-service.test.ts",
+        "fullName": "Phase015 prompt resolution [resolution] rejects missing, unknown, nullable and structurally invalid variables"
+      },
+      {
+        "file": "tests/phase015/prompt-service.test.ts",
+        "fullName": "Phase015 prompt resolution [resolution] resolves exact immutable versions and accepts a compatible prompt version two"
+      },
+      {
+        "file": "tests/phase015/prompt-service.test.ts",
+        "fullName": "Phase015 prompt resolution [resolution] variable schema drift and incompatible response schema are rejected"
+      }
+    ],
+    "Phase015:isolation-ssrf": [
+      {
+        "file": "tests/phase015/provider-registry.test.ts",
+        "fullName": "Phase015 real provider isolation [isolation] business SDK, network, direct adapter and secret imports stay inside declared boundaries"
+      },
+      {
+        "file": "tests/phase015/provider-registry.test.ts",
+        "fullName": "Phase015 real provider isolation [isolation] default DNS lookup is used and only allowlisted HTTPS URLs pass"
+      },
+      {
+        "file": "tests/phase015/provider-registry.test.ts",
+        "fullName": "Phase015 real provider isolation [isolation] malformed JSON, incomplete streams, partial socket loss and oversized bodies never retry"
+      },
+      {
+        "file": "tests/phase015/provider-registry.test.ts",
+        "fullName": "Phase015 real provider isolation [isolation] redirect DNS changes cannot reach a private address"
+      },
+      {
+        "file": "tests/phase015/provider-registry.test.ts",
+        "fullName": "Phase015 real provider isolation [isolation] rejects private, reserved, mapped IPv6 and mixed DNS rebinding addresses"
+      },
+      {
+        "file": "tests/phase015/provider-registry.test.ts",
+        "fullName": "Phase015 real provider isolation [isolation] serializes the actual request and pins the prepared endpoint once"
+      },
+      {
+        "file": "tests/phase015/provider-registry.test.ts",
+        "fullName": "Phase015 real provider isolation [isolation] transport overrides are test-only and fixed to numeric loopback"
+      },
+      {
+        "file": "tests/phase015/provider-registry.test.ts",
+        "fullName": "Phase015 real provider isolation [isolation] validates every redirect, rejects private targets and stops at two hops"
+      }
+    ],
+    "Phase015:timeout-cancel-retry": [
+      {
+        "file": "tests/phase015/guarded-client.test.ts",
+        "fullName": "Phase015 guarded client [timeout-cancel-retry] a shared total deadline includes Retry-After and terminates blocked HTTP"
+      },
+      {
+        "file": "tests/phase015/guarded-client.test.ts",
+        "fullName": "Phase015 guarded client [timeout-cancel-retry] external AbortSignal cancels an in-flight request and never retries"
+      },
+      {
+        "file": "tests/phase015/guarded-client.test.ts",
+        "fullName": "Phase015 guarded client [timeout-cancel-retry] first byte, invalid JSON and schema mismatches never retry and are traced"
+      },
+      {
+        "file": "tests/phase015/guarded-client.test.ts",
+        "fullName": "Phase015 guarded client [timeout-cancel-retry] real before-byte HTTP retries at most once with separate durable reservations"
+      },
+      {
+        "file": "tests/phase015/provider-registry.test.ts",
+        "fullName": "Phase015 real provider isolation [timeout-cancel-retry] HTTP errors retry only before body bytes and retain Retry-After"
+      },
+      {
+        "file": "tests/phase015/provider-registry.test.ts",
+        "fullName": "Phase015 real provider isolation [timeout-cancel-retry] parses split SSE frames, usage and DONE without exposing raw data"
+      },
+      {
+        "file": "tests/phase015/provider-registry.test.ts",
+        "fullName": "Phase015 real provider isolation [timeout-cancel-retry] pre-abort sends zero requests and cancellation interrupts a blocked body read"
+      }
+    ],
+    "Phase015:quota-cost": [
+      {
+        "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+        "fullName": "Phase015 real Provider key rotation [quota-cost] candidate probes enforce frozen token and Decimal cost budgets before transport"
+      },
+      {
+        "file": "tests/phase015/guarded-client.test.ts",
+        "fullName": "Phase015 guarded client [quota-cost] a lost response remains charged across days and provider proof settles only once"
+      },
+      {
+        "file": "tests/phase015/guarded-client.test.ts",
+        "fullName": "Phase015 guarded client [quota-cost] concurrent Decimal reservations never exceed the frozen token or cost cap"
+      },
+      {
+        "file": "tests/phase015/guarded-client.test.ts",
+        "fullName": "Phase015 guarded client [quota-cost] NOT_SENT release and unknown upper-bound reconciliation are idempotent"
+      }
+    ],
+    "Phase015:version-evidence": [
+      {
+        "file": "tests/phase015/guarded-client.test.ts",
+        "fullName": "Phase015 guarded client [version-evidence] failed evidence persistence cannot return a successful AI result"
+      },
+      {
+        "file": "tests/phase015/guarded-client.test.ts",
+        "fullName": "Phase015 guarded client [version-evidence] request content, policy, revisions and exact model configuration bind every attempt"
+      }
+    ],
+    "Phase015:kill-switch": [
+      {
+        "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+        "fullName": "Phase015 real Provider key rotation [kill-switch] candidate probes cannot bypass a closed global switch"
+      },
+      {
+        "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+        "fullName": "Phase015 real Provider key rotation [kill-switch] emergency revoke during the candidate request prevents subsequent calls and activation"
+      },
+      {
+        "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+        "fullName": "Phase015 real Provider key rotation [kill-switch] one failed real candidate leaves every active tuple and the old key unchanged"
+      },
+      {
+        "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+        "fullName": "Phase015 real Provider key rotation [kill-switch] rotates two real provider/model references atomically and preserves disabled references"
+      },
+      {
+        "file": "tests/phase015/ai-governance.test.ts",
+        "fullName": "Phase015 AI governance database [kill-switch] default and restart stay closed; real ADMIN enablement is audited and guarded"
+      },
+      {
+        "file": "tests/phase015/ai-governance.test.ts",
+        "fullName": "Phase015 AI governance database [kill-switch] failed guarded post-enable probe closes the switch and disables every tuple"
+      },
+      {
+        "file": "tests/phase015/ai-governance.test.ts",
+        "fullName": "Phase015 AI governance database [kill-switch] the isolated CLI uses the same ADMIN settings service and can be rerun"
+      },
+      {
+        "file": "tests/phase015/ai-governance.test.ts",
+        "fullName": "Phase015 AI governance database [kill-switch] unauthorized actors and failed fixture preflight leave all activations disabled"
+      },
+      {
+        "file": "tests/phase015/guarded-client.test.ts",
+        "fullName": "Phase015 guarded client [kill-switch] a valid envelope with a mismatched fingerprint is refused before transport"
+      },
+      {
+        "file": "tests/phase015/guarded-client.test.ts",
+        "fullName": "Phase015 guarded client [kill-switch] absent LIVE admission and inactive required keys create no reservations or requests"
+      },
+      {
+        "file": "tests/phase015/guarded-client.test.ts",
+        "fullName": "Phase015 guarded client [kill-switch] an emergency kill or revoke during preparation stops the dispatch"
+      },
+      {
+        "file": "tests/phase015/guarded-client.test.ts",
+        "fullName": "Phase015 guarded client [kill-switch] NONE dispatches without credentials and ACTIVE REQUIRED resolves only inside the adapter"
+      }
+    ]
+  },
+  "discoverySnapshot": {
+    "path": "docs/evidence/attempts/Phase015/attempt-12/frozen-discovery.json",
+    "sha256": "e9152f1b64cf9b5f2627a4b70efb9b53ccb634d33ef5c9fdea0f72063e659158",
+    "discovered": 597
+  },
+  "archiveRedactions": {
+    "path": "docs/evidence/attempts/Phase015/archive-redactions.json",
+    "sha256": "c6e9fb93fb260260cacc547bf1d8e8e6b027c281026a4b5e483d072def3285fd"
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "phase": 15,
+  "mode": "RESUMED_PHASE_CANDIDATE",
+  "observedAt": "2026-09-13T07:37:02.009Z",
+  "head": "66f595a9348a69016771e86d9a1417b48ddb0ee6",
+  "remoteHead": "66f595a9348a69016771e86d9a1417b48ddb0ee6",
+  "originalPreflight": "UNVERIFIED_PRESERVED_IN_ATTEMPT_10",
+  "originalReceiptPath": "docs/evidence/attempts/Phase015/attempt-10/input-receipt.json",
+  "originalReceiptHash": "c7c326b6a9f44304556eee75edabb584af1ecf01c407623d18e46e9a16cf8ca4",
+  "resumedWorkingTree": "M .env.example\n M README.md\n M docs/database.md\n M docs/env-registry.json\n M docs/privacy-and-user-data.md\n M docs/prompt-design.md\n M docs/travel-data-provider-strategy.md\n M package.json\n M prisma/schema.prisma\n M src/lib/env-schema.ts\n M src/lib/env.test.ts\n M src/server/admin/api-keys.ts\n M src/server/admin/key-candidate-client.ts\n M src/server/admin/key-rotation.ts\n M src/server/config/config-registry.ts\n M tests/admin/api-keys.integration.test.ts\n M tests/admin/dashboard.test.ts\n M tests/admin/security.test.ts\n M tests/integration/api-key-schema.test.ts\n M tests/integration/audit-log.test.ts\n M tests/integration/config-models.test.ts\n M tests/integration/travel-record.test.ts\n M tests/phase008/data-fixture.ts\n M tests/phase009/audit-fixture.ts\n M tests/phase010/seed-fixture.ts\n M tests/phase011/auth-fixture.ts\n M tests/phase012/admin-fixture.ts\n M tests/phase013/api-key-fixture.ts\n M tests/phase014/fixture.ts\n M vitest.config.ts\n?? docs/evidence/attempts/Phase015/attempt-1/attempt.json\n?? docs/evidence/attempts/Phase015/attempt-1/frozen-plan.json\n?? docs/evidence/attempts/Phase015/attempt-1/plan.json\n?? docs/evidence/attempts/Phase015/attempt-10/attempt.json\n?? docs/evidence/attempts/Phase015/attempt-10/commands/001.json\n?? docs/evidence/attempts/Phase015/attempt-10/commands/002.json\n?? docs/evidence/attempts/Phase015/attempt-10/commands/003.json\n?? docs/evidence/attempts/Phase015/attempt-10/dedicated.json\n?? docs/evidence/attempts/Phase015/attempt-10/discovery.json\n?? docs/evidence/attempts/Phase015/attempt-10/frozen-plan.json\n?? docs/evidence/attempts/Phase015/attempt-10/input-receipt.json\n?? docs/evidence/attempts/Phase015/attempt-2/attempt.json\n?? docs/evidence/attempts/Phase015/attempt-2/frozen-plan.json\n?? docs/evidence/attempts/Phase015/attempt-2/input-receipt.json\n?? docs/evidence/attempts/Phase015/attempt-2/plan.json\n?? docs/evidence/attempts/Phase015/attempt-3/attempt.json\n?? docs/evidence/attempts/Phase015/attempt-3/commands/001.json\n?? docs/evidence/attempts/Phase015/attempt-3/commands/002.json\n?? docs/evidence/attempts/Phase015/attempt-3/commands/003.json\n?? docs/evidence/attempts/Phase015/attempt-3/discovery.json\n?? docs/evidence/attempts/Phase015/attempt-3/frozen-plan.json\n?? docs/evidence/attempts/Phase015/attempt-3/input-receipt.json\n?? docs/evidence/attempts/Phase015/attempt-3/plan.json\n?? docs/evidence/attempts/Phase015/attempt-4/attempt.json\n?? docs/evidence/attempts/Phase015/attempt-4/commands/001.json\n?? docs/evidence/attempts/Phase015/attempt-4/commands/002.json\n?? docs/evidence/attempts/Phase015/attempt-4/commands/003.json\n?? docs/evidence/attempts/Phase015/attempt-4/commands/004.json\n?? docs/evidence/attempts/Phase015/attempt-4/dedicated.json\n?? docs/evidence/attempts/Phase015/attempt-4/discovery.json\n?? docs/evidence/attempts/Phase015/attempt-4/frozen-plan.json\n?? docs/evidence/attempts/Phase015/attempt-5/attempt.json\n?? docs/evidence/attempts/Phase015/attempt-5/commands/001.json\n?? docs/evidence/attempts/Phase015/attempt-5/commands/002.json\n?? docs/evidence/attempts/Phase015/attempt-5/commands/003.json\n?? docs/evidence/attempts/Phase015/attempt-5/commands/004.json\n?? docs/evidence/attempts/Phase015/attempt-5/dedicated.json\n?? docs/evidence/attempts/Phase015/attempt-5/discovery.json\n?? docs/evidence/attempts/Phase015/attempt-5/frozen-plan.json\n?? docs/evidence/attempts/Phase015/attempt-6/attempt.json\n?? docs/evidence/attempts/Phase015/attempt-6/commands/001.json\n?? docs/evidence/attempts/Phase015/attempt-6/commands/002.json\n?? docs/evidence/attempts/Phase015/attempt-6/commands/003.json\n?? docs/evidence/attempts/Phase015/attempt-6/commands/004.json\n?? docs/evidence/attempts/Phase015/attempt-6/dedicated.json\n?? docs/evidence/attempts/Phase015/attempt-6/discovery.json\n?? docs/evidence/attempts/Phase015/attempt-6/frozen-plan.json\n?? docs/evidence/attempts/Phase015/attempt-7/attempt.json\n?? docs/evidence/attempts/Phase015/attempt-7/commands/001.json\n?? docs/evidence/attempts/Phase015/attempt-7/commands/002.json\n?? docs/evidence/attempts/Phase015/attempt-7/commands/003.json\n?? docs/evidence/attempts/Phase015/attempt-7/commands/004.json\n?? docs/evidence/attempts/Phase015/attempt-7/dedicated.json\n?? docs/evidence/attempts/Phase015/attempt-7/discovery.json\n?? docs/evidence/attempts/Phase015/attempt-7/frozen-plan.json\n?? docs/evidence/attempts/Phase015/attempt-8/attempt.json\n?? docs/evidence/attempts/Phase015/attempt-8/commands/001.json\n?? docs/evidence/attempts/Phase015/attempt-8/commands/002.json\n?? docs/evidence/attempts/Phase015/attempt-8/commands/003.json\n?? docs/evidence/attempts/Phase015/attempt-8/commands/004.json\n?? docs/evidence/attempts/Phase015/attempt-8/dedicated.json\n?? docs/evidence/attempts/Phase015/attempt-8/discovery.json\n?? docs/evidence/attempts/Phase015/attempt-8/frozen-plan.json\n?? docs/evidence/attempts/Phase015/attempt-8/full-regression.json\n?? docs/evidence/attempts/Phase015/attempt-9/attempt.json\n?? docs/evidence/attempts/Phase015/attempt-9/commands/001.json\n?? docs/evidence/attempts/Phase015/attempt-9/commands/002.json\n?? docs/evidence/attempts/Phase015/attempt-9/commands/003.json\n?? docs/evidence/attempts/Phase015/attempt-9/commands/004.json\n?? docs/evidence/attempts/Phase015/attempt-9/commands/005.json\n?? docs/evidence/attempts/Phase015/attempt-9/dedicated.json\n?? docs/evidence/attempts/Phase015/attempt-9/discovery.json\n?? docs/evidence/attempts/Phase015/attempt-9/frozen-plan.json\n?? docs/evidence/attempts/Phase015/attempt-9/full-regression.json\n?? docs/phase-plans/Phase015-inputs.json\n?? docs/phase-plans/Phase015.json\n?? docs/phase-plans/advance-phase015.mjs\n?? docs/phase-plans/complete-phase015.mjs\n?? docs/phase-plans/phase015-evidence.mjs\n?? docs/phase-plans/phase015-runtime.mjs\n?? docs/phase-plans/prepare-phase015.mjs\n?? docs/phase-plans/retry-phase015.mjs\n?? docs/phase-plans/verify-phase015.mjs\n?? docs/phase015.md\n?? docs/planning-policy.json\n?? prisma/migrations/20260913000000_ai_governance/migration.sql\n?? src/lib/ai/prompt-contract.json\n?? src/lib/ai/provider.ts\n?? src/lib/ai/schemas.ts\n?? src/server/ai/bootstrap-probes.json\n?? src/server/ai/bootstrap-templates.json\n?? src/server/ai/deepseek-provider.ts\n?? src/server/ai/enable-mock-cli.ts\n?? src/server/ai/enable-mock.ts\n?? src/server/ai/guarded-client.ts\n?? src/server/ai/key-candidate-client.ts\n?? src/server/ai/mock-provider.ts\n?? src/server/ai/planning-policy-bootstrap.json\n?? src/server/ai/planning-policy.ts\n?? src/server/ai/provider-key-reference-adapter.ts\n?? src/server/ai/provider-registry.ts\n?? src/server/ai/url-guard.ts\n?? src/server/ai/usage-reservations.ts\n?? src/server/services/ai-governance-service.ts\n?? src/server/services/model-resolution-service.ts\n?? src/server/services/prompt-service.ts\n?? tests/phase015/ai-governance-key-rotation.test.ts\n?? tests/phase015/ai-governance.test.ts\n?? tests/phase015/fixture.ts\n?? tests/phase015/guarded-client.test.ts\n?? tests/phase015/http-fixture.ts\n?? tests/phase015/import-boundary.ts\n?? tests/phase015/prompt-service.test.ts\n?? tests/phase015/provider-registry.test.ts",
+  "isolatedBaseline": {
+    "path": ".scaffold/phase015/admission-repo",
+    "head": "66f595a9348a69016771e86d9a1417b48ddb0ee6",
+    "workingTree": "",
+    "branch": "main",
+    "localHistoryBundleSha256": "f6b6ed832f26751f1148b842c29d1d60a2efbfd26cfa311885e75ccb2e200524",
+    "localWhitespaceAttributes": "\n# Phase013 immutable failure overlays and raw SQL output\n/docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/overlays/archived-failure-source/docs/evidence/attempts/Phase013/attempt-5/frame-origin-rejection/prior-evidence-sources/phase013-evidence.mjs whitespace=-blank-at-eof\n/docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/overlays/original-evidence-raw/docs/evidence/attempts/Phase013/attempt-5/all-tests-vitest.json whitespace=-blank-at-eof\n/docs/evidence/attempts/Phase013/attempt-6/history-evidence-rejection/overlays/original-migration-diagnostic/docs/evidence/attempts/Phase013/attempt-1/migration-diagnostic.json whitespace=-blank-at-eof\n/docs/evidence/attempts/Phase013/setup/schema-diff.sql whitespace=-blank-at-eof\n"
+  },
+  "remoteVerification": {
+    "command": "git ls-remote origin refs/heads/main",
+    "exitCode": 0,
+    "head": "66f595a9348a69016771e86d9a1417b48ddb0ee6",
+    "startedAt": "2026-09-13T07:37:00.324Z",
+    "finishedAt": "2026-09-13T07:37:02.346Z"
+  },
+  "shells": [
+    {
+      "shell": "PowerShell 7",
+      "command": "& 'C:\\Users\\11295\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe' -NoProfile -ExecutionPolicy Bypass -File '.scaffold/phase015/admission-repo/scripts/validate-phase.ps1' -CompletedThrough 14 -Strict -Json",
+      "exitCode": 0,
+      "result": {
+        "status": "PASS",
+        "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+        "protocolFixture": false,
+        "layoutVersion": 2,
+        "repositoryRoot": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\admission-repo",
+        "projectRoot": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\admission-repo",
+        "projectGitPrefix": "",
+        "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+        "completedThrough": 14,
+        "currentPhase": 15,
+        "artifactCommit": "8340f3df1884f85f4c5bae0d1d5606b4b3df89ec",
+        "metadataCommit": "66f595a9348a69016771e86d9a1417b48ddb0ee6",
+        "maintenanceHead": "baeab8dc0904c10f6df0b6a3bec931d5eb2a07c0",
+        "admissionOnly": false,
+        "checkpointMaintenance": {
+          "path": "docs/checkpoint-migrations/testing-policy-20260912.json",
+          "sha256": "abdd84536d1a33a2f838019d18051fed4af944f4c99d2286065698cbbf52d68f",
+          "commit": "408f6ae5516069efcaa423cc61ea431e528bd040",
+          "policy": {
+            "path": "docs/testing-execution-policy.md",
+            "version": "phase-verification-v1",
+            "sha256": "a1f2666b2a757bf7dccb016e997a60f33a0f91f7612add8d40411e30735f8532"
+          }
+        },
+        "executionMaintenance": {
+          "path": "docs/checkpoint-migrations/execution-policy-20260912.json",
+          "sha256": "46519e6a4118a5e0e222dc7de1d8fd3148af158824b9e61204ec2dcd43068e9a",
+          "commit": "baeab8dc0904c10f6df0b6a3bec931d5eb2a07c0",
+          "policy": {
+            "path": "docs/development-execution-policy.md",
+            "version": "phase-execution-v2",
+            "sha256": "58b4eaef7fda2a45c69e41feb766d04893d44a7092117410d7e707bc5e7b9320"
+          }
+        },
+        "historicalPhase": 0,
+        "preservedHistoricalFiles": 44,
+        "checkpointImport": {
+          "path": "docs/checkpoint-migrations/history-20260909.json",
+          "sha256": "45bc0742f7b12506a007c84a0f3f9808f2f9b9e8d292a60fab345f4966e1d5b4",
+          "importedThrough": 2,
+          "continuationBaselineCommit": "8c5eb222b62c304f00d4b26b1c5f192db13491b9",
+          "currentHead": "66f595a9348a69016771e86d9a1417b48ddb0ee6",
+          "admissionOnly": false
+        },
+        "localIgnoredInputsVerified": 151,
+        "contractCoverage": {
+          "numerator": 33,
+          "denominator": 33
+        },
+        "networkPushEvaluated": false
+      },
+      "startedAt": "2026-09-13T07:30:30.862Z",
+      "observedCompletedAt": "2026-09-13T07:33:51.800Z",
+      "exactDurationMs": null
+    },
+    {
+      "shell": "Windows PowerShell 5.1",
+      "command": "& 'C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe' -NoProfile -ExecutionPolicy Bypass -File '.scaffold/phase015/admission-repo/scripts/validate-phase.ps1' -CompletedThrough 14 -Strict -Json",
+      "exitCode": 0,
+      "result": {
+        "status": "PASS",
+        "scope": "ROOT_LAYOUT_PHASE_CHECKPOINT_SEAL",
+        "protocolFixture": false,
+        "layoutVersion": 2,
+        "repositoryRoot": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\admission-repo",
+        "projectRoot": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\admission-repo",
+        "projectGitPrefix": "",
+        "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+        "completedThrough": 14,
+        "currentPhase": 15,
+        "artifactCommit": "8340f3df1884f85f4c5bae0d1d5606b4b3df89ec",
+        "metadataCommit": "66f595a9348a69016771e86d9a1417b48ddb0ee6",
+        "maintenanceHead": "baeab8dc0904c10f6df0b6a3bec931d5eb2a07c0",
+        "admissionOnly": false,
+        "checkpointMaintenance": {
+          "path": "docs/checkpoint-migrations/testing-policy-20260912.json",
+          "sha256": "abdd84536d1a33a2f838019d18051fed4af944f4c99d2286065698cbbf52d68f",
+          "commit": "408f6ae5516069efcaa423cc61ea431e528bd040",
+          "policy": {
+            "path": "docs/testing-execution-policy.md",
+            "version": "phase-verification-v1",
+            "sha256": "a1f2666b2a757bf7dccb016e997a60f33a0f91f7612add8d40411e30735f8532"
+          }
+        },
+        "executionMaintenance": {
+          "path": "docs/checkpoint-migrations/execution-policy-20260912.json",
+          "sha256": "46519e6a4118a5e0e222dc7de1d8fd3148af158824b9e61204ec2dcd43068e9a",
+          "commit": "baeab8dc0904c10f6df0b6a3bec931d5eb2a07c0",
+          "policy": {
+            "path": "docs/development-execution-policy.md",
+            "version": "phase-execution-v2",
+            "sha256": "58b4eaef7fda2a45c69e41feb766d04893d44a7092117410d7e707bc5e7b9320"
+          }
+        },
+        "historicalPhase": 0,
+        "preservedHistoricalFiles": 44,
+        "checkpointImport": {
+          "path": "docs/checkpoint-migrations/history-20260909.json",
+          "sha256": "45bc0742f7b12506a007c84a0f3f9808f2f9b9e8d292a60fab345f4966e1d5b4",
+          "importedThrough": 2,
+          "continuationBaselineCommit": "8c5eb222b62c304f00d4b26b1c5f192db13491b9",
+          "currentHead": "66f595a9348a69016771e86d9a1417b48ddb0ee6",
+          "admissionOnly": false
+        },
+        "localIgnoredInputsVerified": 151,
+        "contractCoverage": {
+          "numerator": 33,
+          "denominator": 33
+        },
+        "networkPushEvaluated": false
+      },
+      "startedAt": "2026-09-13T07:30:30.862Z",
+      "observedCompletedAt": "2026-09-13T07:33:51.802Z",
+      "exactDurationMs": null
+    }
+  ],
+  "historicalAnomalies": [
+    {
+      "attemptId": "attempt-1",
+      "path": "docs/evidence/attempts/Phase015/attempt-1/attempt.json",
+      "sha256": "e223efeebf2d9c0766179d11fabbcb8cac5714a152f5951a91513462e4658c8e",
+      "recordedPlanHash": "c4bc2e03155cca31374134626a16a64b283522d95c3e891729747d3d885fb996",
+      "archivedPlanHash": "8eca68d80a529af01dbcbd9e1821bec18b7260cbd94ae0e8b2aa0a985e6b121d",
+      "disposition": "Failed legacy receipt has an orphan plan hash and hand-entered start time. Preserve raw bytes; no pass or reusable product evidence is inferred."
+    }
+  ],
+  "note": "Restores the Phase014 baseline admission for the current resumed candidate. It does not retroactively certify the original clean-worktree claim or change any historical Gate. All current Phase015 verification starts in a new attempt."
+}

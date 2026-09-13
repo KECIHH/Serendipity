@@ -1,0 +1,121 @@
+{
+  "phase": 15,
+  "attemptId": "attempt-3",
+  "status": "FAIL",
+  "blockedCategory": "VERIFICATION",
+  "artifactCommit": null,
+  "planHash": "e1fb92cbd2c6a2fc989ef7ee577f1775790c5a4f700c6de4678551e08e8198e0",
+  "sourceHashes": {
+    ".env.example": "ffa6675684cce7270a11500ba6f43b09a748d668e225f15c9357aab130254031",
+    "README.md": "14a90f5afe6d61df2b19da0b3aec8d4c372cca5517cfbd5e69d65de7ec191787",
+    "docs/database.md": "6f83f05e0bb9c2cab1d82178933513fa8f1c67ce00e330d3a542160faa340aa8",
+    "docs/development-execution-policy.md": "58b4eaef7fda2a45c69e41feb766d04893d44a7092117410d7e707bc5e7b9320",
+    "docs/env-registry.json": "4b1b19da963b530eff617bbdd02b07ecff25c426fd9107fc1a2dc5f23e02a29e",
+    "docs/phase-completion-log.md": "56cdd65d50af0a343c342e7496f8e7fd5ec3634d31f507fdfc826fd72a68190f",
+    "docs/phase-plans/Phase015-inputs.json": "c7c326b6a9f44304556eee75edabb584af1ecf01c407623d18e46e9a16cf8ca4",
+    "docs/phase-plans/Phase015.json": "e1fb92cbd2c6a2fc989ef7ee577f1775790c5a4f700c6de4678551e08e8198e0",
+    "docs/phase-plans/complete-phase015.mjs": "091699250a3a487fe731a4e06375038820fa8263ad05eb441bad79d6a473ace6",
+    "docs/phase-plans/phase015-evidence.mjs": "e49146dec861d1d3fc30072c49664a0d4d9078649c662a1c5f8eb3553103793e",
+    "docs/phase-plans/phase015-runtime.mjs": "b67bbdc6fb697545d668c96afe3958cbb392a003f170ad9b0d3345320f9d55aa",
+    "docs/phase-plans/prepare-phase015.mjs": "8b51446bb985a240b9219d5ccc9aa653cab1f2b882a5f608c36d8adb4e2dbc85",
+    "docs/phase-plans/retry-phase015.mjs": "f98d649d945f97fe870bf22e4f3619d677b82644f53191e078e1164c4953d80a",
+    "docs/phase-plans/verify-phase015.mjs": "86e5a7c72db042cc134ea956e326df247c17d33fde18e5decc64491454aa1120",
+    "docs/phase015.md": "299237cb3166a455ab975bfb8aa510649dab7848114632ce2a5525d554c7a604",
+    "docs/privacy-and-user-data.md": "7d02b6787c42ed201b293e8ccf63e8a3b58553f120d24ea1c4d7cd90890ef756",
+    "docs/prompt-design.md": "1e6b2b601769dd2ae5e09076abfe3fc336f808dc107882fdb83904e9991a10ba",
+    "docs/roadmap-run.json": "ee596cce67577b4e224a2081017ca9f8f1955e709d04e17ff920edb026d45f90",
+    "docs/testing-execution-policy.md": "a1f2666b2a757bf7dccb016e997a60f33a0f91f7612add8d40411e30735f8532",
+    "docs/travel-data-provider-strategy.md": "0b6df0cdb72e820164a0f82932b53bdfbc26e86c2f5ff29bc946a05dfe19d856",
+    "package-lock.json": "e1253d4a0e5aba2d25e397b0774abc10100629c2af247e282a5ec0ace8330b1d",
+    "package.json": "1d5ba7ba3acfa20c92d1d0c260c8d2f89cf93f0405b015d1ada068dda6df06ce",
+    "prisma/migrations/20260913000000_ai_governance/migration.sql": "3096a0fbfef83c27e6cb1841e74584d3b1b9f75d7a3ca88122cd894de978cfd5",
+    "prisma/schema.prisma": "42749be8c072ff2b1801ab834d59bef6b1d9267c7ba112f0b41ca164967a1a0a",
+    "src/lib/ai/provider.ts": "f4f019eacd44402063e2bce0b0fb98b58e7ceaa998479b87db1fca142e575743",
+    "src/lib/ai/schemas.ts": "2a18f597f20a9282b978574cc84f2af02cf03d712c637b24d21b84e3185f0edb",
+    "src/lib/env-schema.ts": "c706b6b5d604e9a0b441d2dfe94d0360c76b08843f89b3d203699e5ef2501493",
+    "src/lib/env.test.ts": "4cd3d3623ac7061804498751f53ae0ca7a70f6292d57ca3578927d334c0e48f2",
+    "src/server/admin/api-keys.ts": "1d76a96fc1e356b69dd1d2ac80a9af835851650e4d1dd85380a3f3ad1a520deb",
+    "src/server/ai/deepseek-provider.ts": "a3f6ac174dd2209b9b94c5fbe467e8c0f81a87c1826da04f02d15fd572c83b4f",
+    "src/server/ai/enable-mock-cli.ts": "51dfe613c12db731be85ef243c810b24e864191bdaf3ff5b0d6ba77032efeb81",
+    "src/server/ai/guarded-client.ts": "35d490e807ff94ea71ce8cdb6d39838c3009e64ee9a9be0f6a8f747438c0cd1c",
+    "src/server/ai/mock-provider.ts": "5adad0a901ffaa1e32fa6d52cdfa108a50f01b932b1815906fa9686ea9aedbb0",
+    "src/server/ai/provider-key-reference-adapter.ts": "8d4761fd8389527eafac969a14b215804a8c4b6757988dc9d779ab4337fe19f3",
+    "src/server/ai/provider-registry.ts": "ffbcb325de3f7bd0dc5e44d766f807833181f0ffbeeca80b363c3e6e913bdbf2",
+    "src/server/ai/url-guard.ts": "6a11e63f39870c89f1271bae87907d338738e587f81c5b3fd95695a628a5739a",
+    "src/server/config/config-registry.ts": "a82d66c1d8a4252828473b81fbeb1440be9918a6f47f73268ca5347cff66aaf0",
+    "src/server/services/ai-governance-service.ts": "7b2bfda94bc5bd7a28c87776cc855ba28a55031cada07af6a33d79a5ec9686ef",
+    "src/server/services/model-resolution-service.ts": "5f6ef01295301388e499e616764ba91789f1fdc17754fc84b0df8cdfcd216ad6",
+    "src/server/services/prompt-service.ts": "dfd917045305ca5e18b1ef339e19084f8500b607171567cbc85c84bd01e6cda1",
+    "tests/admin/security.test.ts": "5b751d269134835877526965219ced253936660fb57f5cb5fe96c9d3bb6e24fe",
+    "tests/phase010/seed-fixture.ts": "698b17341d781abf9b2f59bdb3d4f8d17d5bccf77f690a41c6cb9fe7d037bb9e",
+    "tests/phase012/admin-fixture.ts": "d4fae9d497f9e380134df96be89040d5c0a863eade8129f6e63d6b1bffd87d12",
+    "tests/phase013/api-key-fixture.ts": "3e1412bbfed537e44f25e2f5c1e09beb7993723310db45960977fbdf75138460",
+    "tests/phase014/fixture.ts": "c1601bbcceeba003ac1381c2ec5fbc4b49989aa347e500ad307e74b19884dfbf",
+    "tests/phase015/ai-governance.test.ts": "1a3db0a22bfbb0c43152ad35b36dd1aa38d19275c5c3eb7caa78deabf163a2d3",
+    "tests/phase015/fixture.ts": "13c2dce369adda872a12ae8f2a5bd6c019f5d2659e2732f3aaae51368dda4dea",
+    "tests/phase015/guarded-client.test.ts": "1014f0bce9c999925ff98407940777ab2ab2e8148e6df31eb1ff0cbdde0d5f8f",
+    "tests/phase015/prompt-service.test.ts": "5fd648dd3aae06ddbd90574288f3461dfc0ba9630d8f1824229351e537dc6baa",
+    "tests/phase015/provider-registry.test.ts": "fadcf1cca992e1a263641f7eb059a22cfe1c60651d0ab6a80d05ebd7e7625f7c",
+    "vitest.config.ts": "ecb8272ae26b0bab92b171849b3674ab2ebc8d63dc06d52b48c25f23d8186114"
+  },
+  "command": "node docs/phase-plans/verify-phase015.mjs --all",
+  "observations": [
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\node_modules\\prisma\\build\\index.js migrate reset --force --skip-seed",
+      "cwd": ".",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "Prisma schema loaded from prisma\\schema.prisma\nDatasource \"db\": PostgreSQL database \"phase015_disposable_bf0013251532\", schema \"public\" at \"127.0.0.1:56610\"\n\nApplying migration `20260910000000_init_user`\nApplying migration `20260910172735_system_config`\nApplying migration `20260911002217_travel_record_chat_message`\nApplying migration `20260911042258_audit_log`\nApplying migration `20260911104017_api_key_config`\nApplying migration `20260911151715_auth_session_login_attempt`\nApplying migration `20260912013806_admin_commands`\nApplying migration `20260912061403_key_rotation_contract`\nApplying migration `20260913000000_ai_governance`\n\nDatabase reset successful\n\nThe following migration(s) have been applied:\n\nmigrations/\n  └─ 20260910000000_init_user/\n    └─ migration.sql\n  └─ 20260910172735_system_config/\n    └─ migration.sql\n  └─ 20260911002217_travel_record_chat_message/\n    └─ migration.sql\n  └─ 20260911042258_audit_log/\n    └─ migration.sql\n  └─ 20260911104017_api_key_config/\n    └─ migration.sql\n  └─ 20260911151715_auth_session_login_attempt/\n    └─ migration.sql\n  └─ 20260912013806_admin_commands/\n    └─ migration.sql\n  └─ 20260912061403_key_rotation_contract/\n    └─ migration.sql\n  └─ 20260913000000_ai_governance/\n    └─ migration.sql\n\nRunning generate... (Use --skip-generate to skip the generators)\n\u001b[2K\u001b[1A\u001b[2K\u001b[GRunning generate... - Prisma Client\n\u001b[2K\u001b[1A\u001b[2K\u001b[G✔ Generated Prisma Client (v6.19.0) to .\\node_modules\\@prisma\\client in 135ms\n\n",
+      "stderr": "",
+      "durationMs": 1836,
+      "startedAt": "2026-09-13T04:32:17.409Z",
+      "finishedAt": "2026-09-13T04:32:19.245Z"
+    },
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\node_modules\\vitest\\vitest.mjs list --no-file-parallelism --json=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-3-discovery.json",
+      "cwd": ".",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "",
+      "stderr": "",
+      "durationMs": 33151,
+      "startedAt": "2026-09-13T04:32:19.249Z",
+      "finishedAt": "2026-09-13T04:32:52.400Z"
+    },
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\node_modules\\vitest\\vitest.mjs run ai-governance provider-registry guarded-client prompt-service --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-3-dedicated.json",
+      "cwd": ".",
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "stdout": "\n RUN  v4.1.11 C:/Users/11295/Desktop/Serendipity · 际遇\n\n ❯ tests/phase015/guarded-client.test.ts (5 tests | 1 failed) 910ms\n     ✓ [timeout-cancel-retry] retries once before first byte and never after first byte 99ms\n     ✓ [timeout-cancel-retry] cancellation marks an unknown reservation RECONCILING 41ms\n     × [timeout-cancel-retry] propagates an external AbortSignal to the provider 76ms\n     ✓ [quota-cost] concurrent reservations never exceed the durable hard cap  375ms\n     ✓ [version-evidence] records exact versions, hashes, usage, and no raw content 37ms\n ✓ tests/phase015/ai-governance.test.ts (3 tests) 458ms\n ✓ tests/phase015/prompt-service.test.ts (3 tests) 164ms\n ✓ tests/phase015/provider-registry.test.ts (4 tests) 57ms\n\n Test Files  1 failed | 3 passed (4)\n      Tests  1 failed | 14 passed (15)\n   Start at  12:32:53\n   Duration  3.09s (transform 204ms, setup 359ms, import 342ms, tests 1.59s, environment 0ms)\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase015/attempt-3-dedicated.json\n",
+      "stderr": "\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  tests/phase015/guarded-client.test.ts > Phase015 guarded client > [timeout-cancel-retry] propagates an external AbortSignal to the provider\nAssertionError: expected { ok: true, …(6) } to match object { ok: false, errorCode: 'CANCELLED' }\n(7 matching properties omitted from actual)\n\n- Expected\n+ Received\n\n  {\n-   \"errorCode\": \"CANCELLED\",\n-   \"ok\": false,\n+   \"ok\": true,\n  }\n\n ❯ tests/phase015/guarded-client.test.ts:84:25\n     82|     await new Promise((resolve) => setTimeout(resolve, 5));\n     83|     controller.abort();\n     84|     await expect(pending).resolves.toMatchObject({ ok: false, errorCod…\n       |                         ^\n     85|   });\n     86|\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\n\n",
+      "durationMs": 3777,
+      "startedAt": "2026-09-13T04:32:52.410Z",
+      "finishedAt": "2026-09-13T04:32:56.187Z"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/attempts/Phase015/attempt-3/commands/001.json",
+      "sha256": "a75dca3c0974880b97b4b661e0ab0f838c6d5a461bbb4daea36a215fd52073a9"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase015/attempt-3/commands/002.json",
+      "sha256": "7f87f819dff63c3608d76c2544681d463bbce645979aa374fe43d84ae0c96e11"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase015/attempt-3/discovery.json",
+      "sha256": "ab183b0c9fca03dc66ccd89c969a1422e12e3d69d630abb6edc57106b1d0ea3b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase015/attempt-3/commands/003.json",
+      "sha256": "23d47f362f941c3e6aa3cf568f9e632f2febfd57d8cdfa1b46e94393869cb5dc"
+    }
+  ],
+  "error": "AssertionError [ERR_ASSERTION]: dedicated.json failed:\n\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  tests/phase015/guarded-client.test.ts > Phase015 guarded client > [timeout-cancel-retry] propagates an external AbortSignal to the provider\nAssertionError: expected { ok: true, …(6) } to match object { ok: false, errorCode: 'CANCELLED' }\n(7 matching properties omitted from actual)\n\n- Expected\n+ Received\n\n  {\n-   \"errorCode\": \"CANCELLED\",\n-   \"ok\": false,\n+   \"ok\": true,\n  }\n\n ❯ tests/phase015/guarded-client.test.ts:84:25\n     82|     await new Promise((resolve) => setTimeout(resolve, 5));\n     83|     controller.abort();\n     84|     await expect(pending).resolves.toMatchObject({ ok: false, errorCod…\n       |                         ^\n     85|   });\n     86|\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\n\n\n\n1 !== 0\n\n    at run (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase015.mjs:77:10)\n    at vitestOutput (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase015.mjs:138:18)\n    at all (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase015.mjs:222:21)\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase015.mjs:358:21\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)",
+  "startedAt": "2026-09-13T04:32:17.089Z",
+  "finishedAt": "2026-09-13T04:32:56.193Z"
+}

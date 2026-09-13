@@ -1,0 +1,18 @@
+{
+  "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run build",
+  "executable": "C:\\Program Files\\nodejs\\node.exe",
+  "arguments": [
+    "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+    "run",
+    "build"
+  ],
+  "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+  "startedAt": "2026-09-13T09:34:10.825Z",
+  "finishedAt": "2026-09-13T09:34:30.926Z",
+  "exitCode": 1,
+  "signal": null,
+  "timedOut": false,
+  "stdout": "\n> serendipity@0.1.0 build\n> next build\n\n   ▲ Next.js 15.5.24\n   - Environments: .env.local\n\n   Creating an optimized production build ...\n ✓ Compiled successfully in 6.9s\n   Linting and checking validity of types ...\n   Collecting page data ...\n",
+  "stderr": "Error [EnvConfigError]: Environment configuration is invalid:\n- AUTH_URL: value is required\n- AUTH_TRUSTED_PROXY_CIDRS: value is required\n    at h (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.next\\server\\chunks\\789.js:11:2704)\n    at 87447 (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.next\\server\\chunks\\789.js:11:4524)\n    at c (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.next\\server\\webpack-runtime.js:1:127)\n    at 68662 (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.next\\server\\chunks\\662.js:1:163)\n    at c (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.next\\server\\webpack-runtime.js:1:127)\n    at 60696 (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.next\\server\\app\\api\\admin\\users\\[id]\\route.js:1:1084)\n    at c (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.next\\server\\webpack-runtime.js:1:127)\n    at <unknown> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.next\\server\\app\\api\\admin\\users\\[id]\\route.js:1:7075)\n    at c.X (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.next\\server\\webpack-runtime.js:1:1191)\n    at <unknown> (C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.next\\server\\app\\api\\admin\\users\\[id]\\route.js:1:7045) {\n  missing: [Array],\n  invalid: []\n}\n\n> Build error occurred\n[Error: Failed to collect page data for /api/admin/users/[id]] {\n  type: 'Error'\n}\n",
+  "durationMs": 20101
+}

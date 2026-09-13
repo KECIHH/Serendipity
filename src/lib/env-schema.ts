@@ -18,7 +18,7 @@ export type EnvRegistryEntry = Readonly<{
   key: string;
   scope: EnvScope;
   producerPhase: number;
-  requiredWhen: "always" | "platform-provided" | "AI_MOCK=false" | "seed";
+  requiredWhen: "always" | "platform-provided" | "AI_MOCK=false" | "seed" | "bootstrap-fixture";
   secret: boolean;
   schema: EnvSchema;
   defaultValue?: string;
@@ -83,35 +83,35 @@ export const envRegistry = [
   },
   {
     key: "AI_API_KEY",
-    scope: "server",
+    scope: "test",
     producerPhase: 4,
-    requiredWhen: "AI_MOCK=false",
+    requiredWhen: "bootstrap-fixture",
     secret: true,
     schema: "string",
-    documentInExample: true,
-    readerPaths: ["src/lib/env.ts", "vitest.setup.ts"],
+    documentInExample: false,
+    readerPaths: ["tests/phase015/fixture.ts"],
   },
   {
     key: "AI_BASE_URL",
-    scope: "server",
+    scope: "test",
     producerPhase: 4,
-    requiredWhen: "always",
+    requiredWhen: "bootstrap-fixture",
     secret: false,
     schema: "https-url",
     defaultValue: "https://api.deepseek.com",
-    documentInExample: true,
-    readerPaths: ["src/lib/env.ts", "vitest.setup.ts"],
+    documentInExample: false,
+    readerPaths: ["tests/phase015/fixture.ts"],
   },
   {
     key: "AI_MODEL",
-    scope: "server",
+    scope: "test",
     producerPhase: 4,
-    requiredWhen: "always",
+    requiredWhen: "bootstrap-fixture",
     secret: false,
     schema: "non-empty",
     defaultValue: "deepseek-chat",
-    documentInExample: true,
-    readerPaths: ["src/lib/env.ts", "vitest.setup.ts"],
+    documentInExample: false,
+    readerPaths: ["tests/phase015/fixture.ts"],
   },
   {
     key: "AI_MOCK",
@@ -154,7 +154,14 @@ export const envRegistry = [
     secret: false,
     schema: "string",
     documentInExample: false,
-    readerPaths: ["next.config.ts", "vitest.config.ts"],
+    readerPaths: [
+      "next.config.ts",
+      "vitest.config.ts",
+      "src/server/ai/deepseek-provider.ts",
+      "src/server/ai/enable-mock.ts",
+      "src/server/ai/provider-registry.ts",
+      "src/server/ai/url-guard.ts",
+    ],
   },
   {
     key: "PORT",
@@ -191,7 +198,7 @@ export const envRegistry = [
 export type EnvParserContext = Readonly<{
   registry?: readonly EnvRegistryEntry[];
   currentPhase?: number;
-  command?: "seed";
+  command?: "seed" | "bootstrap-fixture";
 }>;
 
 type ValueForSchema<T extends EnvSchema> = T extends "boolean-literal"
@@ -347,7 +354,8 @@ export function parseEnv(
     (entry) =>
       entry.scope === scope &&
       entry.producerPhase <= (context.currentPhase ?? ENV_SCHEMA_PHASE) &&
-      (entry.requiredWhen !== "seed" || context.command === "seed"),
+      (entry.requiredWhen !== "seed" || context.command === "seed") &&
+      (entry.requiredWhen !== "bootstrap-fixture" || context.command === "bootstrap-fixture"),
   );
   const missing: string[] = [];
   const invalid: string[] = [];
@@ -357,7 +365,10 @@ export function parseEnv(
   for (const entry of entries) {
     const value = source[entry.key];
     if (value === undefined) {
-      if (entry.requiredWhen !== "platform-provided") {
+      if (
+        entry.requiredWhen !== "platform-provided" &&
+        entry.requiredWhen !== "bootstrap-fixture"
+      ) {
         missing.push(entry.key);
         issues.push(`${entry.key}: value is required`);
       }

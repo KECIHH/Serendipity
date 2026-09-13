@@ -71,43 +71,40 @@
   },
   {
     "key": "AI_API_KEY",
-    "scope": "server",
+    "scope": "test",
     "producerPhase": 4,
-    "requiredWhen": "AI_MOCK=false",
+    "requiredWhen": "bootstrap-fixture",
     "secret": true,
     "schema": "string",
-    "documentInExample": true,
+    "documentInExample": false,
     "readerPaths": [
-      "src/lib/env.ts",
-      "vitest.setup.ts"
+      "tests/phase015/fixture.ts"
     ]
   },
   {
     "key": "AI_BASE_URL",
-    "scope": "server",
+    "scope": "test",
     "producerPhase": 4,
-    "requiredWhen": "always",
+    "requiredWhen": "bootstrap-fixture",
     "secret": false,
     "schema": "https-url",
     "defaultValue": "https://api.deepseek.com",
-    "documentInExample": true,
+    "documentInExample": false,
     "readerPaths": [
-      "src/lib/env.ts",
-      "vitest.setup.ts"
+      "tests/phase015/fixture.ts"
     ]
   },
   {
     "key": "AI_MODEL",
-    "scope": "server",
+    "scope": "test",
     "producerPhase": 4,
-    "requiredWhen": "always",
+    "requiredWhen": "bootstrap-fixture",
     "secret": false,
     "schema": "non-empty",
     "defaultValue": "deepseek-chat",
-    "documentInExample": true,
+    "documentInExample": false,
     "readerPaths": [
-      "src/lib/env.ts",
-      "vitest.setup.ts"
+      "tests/phase015/fixture.ts"
     ]
   },
   {
@@ -162,7 +159,11 @@
     "documentInExample": false,
     "readerPaths": [
       "next.config.ts",
-      "vitest.config.ts"
+      "vitest.config.ts",
+      "src/server/ai/deepseek-provider.ts",
+      "src/server/ai/enable-mock.ts",
+      "src/server/ai/provider-registry.ts",
+      "src/server/ai/url-guard.ts"
     ]
   },
   {

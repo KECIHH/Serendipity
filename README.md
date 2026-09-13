@@ -29,14 +29,11 @@ Copy-Item .env.example .env.local
 | `AUTH_URL`                 | 固定认证 origin；本地为 `http://localhost:3000`，其他主机必须 HTTPS |
 | `AUTH_TRUSTED_PROXY_CIDRS` | 可信代理 CIDR 逗号列表；默认空，不接受客户端伪造的转发地址          |
 | `ENCRYPTION_KEY`           | 服务端 AES-256-GCM 加密主密钥（32 字节 Base64）                     |
-| `AI_API_KEY`               | AI Provider 凭据；模拟模式可留空                                    |
-| `AI_BASE_URL`              | AI Provider HTTPS 地址                                              |
-| `AI_MODEL`                 | AI Provider 模型标识                                                |
 | `AI_MOCK`                  | 是否启用受控 AI 模拟；设为 `true` 时不消耗真实额度                  |
 | `AI_TIMEOUT_MS`            | AI 请求超时（毫秒）                                                 |
 | `AI_DAILY_COST_LIMIT`      | 每日 AI 费用上限                                                    |
 
-服务端启动会一次性校验全部必需变量，缺失或格式错误时直接终止。
+服务端启动会一次性校验全部必需变量，缺失或格式错误时直接终止。`AI_API_KEY`、`AI_BASE_URL` 与 `AI_MODEL` 已从服务端必需输入退役；真实调用的模型、端点与密钥引用只来自版本化数据库治理配置。
 
 ## 质量命令
 
@@ -115,9 +112,11 @@ Next.js 与 eslint-config-next 固定为 **15.5.24**，shadcn CLI 固定为 **3.
 
 管理员不能改变自己的角色或状态，提交后必须保留至少一位启用的管理员。修改通过 `revision` 检查并发版本；成功变化在同一事务内撤销目标全部活动会话、保存幂等收据并追加审计。版本冲突显示最新摘要并要求重新选择操作；同一请求重试复用幂等键。接口、账本和七组验收命令见 [Phase012说明](docs/phase012.md)，阶段完成状态以 Gate、双 shell seal 和远端提交为准。
 
-`/admin/api-keys` 提供不可读回的密钥录入、改名、停用/启用、轮换与紧急撤销；页面只显示12位短指纹。密钥以带记录 AAD 的 AES-256-GCM 保存，敏感写与审计、幂等收据一起提交，已撤销密钥不能恢复。`/admin/logs` 提供有界筛选与游标分页，详情经统一脱敏后以文本展示。当前 Provider 引用集合为空；两引用轮换通过隔离数据库和本地 HTTP 验证。安全边界、重试方式和验收入口见 [Phase013说明](docs/phase013.md)。
+`/admin/api-keys` 提供不可读回的密钥录入、改名、停用/启用、轮换与紧急撤销；页面只显示12位短指纹。密钥以带记录 AAD 的 AES-256-GCM 保存，敏感写与审计、幂等收据一起提交，已撤销密钥不能恢复。`/admin/logs` 提供有界筛选与游标分页，详情经统一脱敏后以文本展示。Phase015 已接入真实 Provider 配置与激活引用；两引用轮换通过隔离数据库和本地 HTTP 验证。安全边界、重试方式和验收入口见 [Phase013说明](docs/phase013.md)。
 
 `/admin` 展示四项基础统计与最新安全审计，单项查询失败单独显示错误。`/admin/settings` 按封闭 registry 编辑已保存的配置，使用 revision CAS、持久幂等与原子审计；公开接口只返回双重白名单后的投影。新增 key、部署上限和 M3 验收见 [Phase014说明](docs/phase014.md) 与 [管理指南](docs/admin.md)。
+
+Phase015 建立最终 Prompt/模型/Provider 版本治理、唯一 guarded client、SSRF 防线、持久配额预留与逐 attempt 输出证据。默认 `ai.calls.enabled=false`，八个 Prompt 模型元组均 DISABLED。受控启用命令为 `npm run ai:enable-mock -- --fixture-config <本地隔离配置路径>`，只接受带当前 run 标记的数据库与其中的合成 ADMIN，经固定探测、完整元组激活和 Phase014 审计服务开启 MOCK，后续探测失败会关闭。LIVE 的 NONE 配置不注入凭据；REQUIRED 只用 ACTIVE 数据库密钥，另需环境准入和精确版本解析。当前 PlanningPolicy 仅允许合成环境，未批准生产用户调用。真实适配器与真实治理引用轮换通过隔离 HTTP 验证。实现与验收入口见 [Phase015说明](docs/phase015.md)。
 
 完整任务005验收由 `node docs/phase-plans/verify-phase005.mjs --all` 执行，覆盖六个测试文件、质量命令、真实 HTTP、浏览器与临时副本中的反向测试。报告按 attempt 保存，已存在报告不覆盖；失败后使用 `node docs/phase-plans/complete-phase005.mjs --retry` 保存旧计划并开始同阶段的新 attempt。最终 Gate 在 artifact 提交后由 `--metadata` 生成。
 

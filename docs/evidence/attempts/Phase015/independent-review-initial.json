@@ -1,0 +1,825 @@
+{
+  "status": "FAIL",
+  "reviewerId": "phase015_independent_review",
+  "reviewerRunId": "/root/phase015_independent_review",
+  "startedAt": "2026-09-13T06:03:32Z",
+  "deadlineAt": "2026-09-13T06:48:32Z",
+  "capturedAt": "2026-09-13T06:05:07.708Z",
+  "basis": {
+    "planPath": "docs/phase-plans/Phase015.json",
+    "planHash": "c943f0a466bb718d2386069c1b1a6eb8858eb170de6ed1d0b43dfd3af250d2e6",
+    "attemptId": "attempt-10",
+    "sourceHashes": {
+      ".env.example": "ffa6675684cce7270a11500ba6f43b09a748d668e225f15c9357aab130254031",
+      "README.md": "14a90f5afe6d61df2b19da0b3aec8d4c372cca5517cfbd5e69d65de7ec191787",
+      "docs/database.md": "6f83f05e0bb9c2cab1d82178933513fa8f1c67ce00e330d3a542160faa340aa8",
+      "docs/development-execution-policy.md": "58b4eaef7fda2a45c69e41feb766d04893d44a7092117410d7e707bc5e7b9320",
+      "docs/env-registry.json": "4b1b19da963b530eff617bbdd02b07ecff25c426fd9107fc1a2dc5f23e02a29e",
+      "docs/phase-completion-log.md": "56cdd65d50af0a343c342e7496f8e7fd5ec3634d31f507fdfc826fd72a68190f",
+      "docs/phase-plans/Phase015-inputs.json": "c7c326b6a9f44304556eee75edabb584af1ecf01c407623d18e46e9a16cf8ca4",
+      "docs/phase-plans/Phase015.json": "c943f0a466bb718d2386069c1b1a6eb8858eb170de6ed1d0b43dfd3af250d2e6",
+      "docs/phase-plans/advance-phase015.mjs": "4e11d88b5f65285fdbdebb058a21b12124eacc52d6badf0f88e794c4b98de341",
+      "docs/phase-plans/complete-phase015.mjs": "091699250a3a487fe731a4e06375038820fa8263ad05eb441bad79d6a473ace6",
+      "docs/phase-plans/phase015-evidence.mjs": "6f9930ebf5498324f4ba5643ab6abf5ab9fcd88fabe55f3874a674733fe29565",
+      "docs/phase-plans/phase015-runtime.mjs": "8365d2e94585b17683ba2aed723ab3fb45f9d4a0dd73cafe372a4b271aba4c86",
+      "docs/phase-plans/prepare-phase015.mjs": "8b51446bb985a240b9219d5ccc9aa653cab1f2b882a5f608c36d8adb4e2dbc85",
+      "docs/phase-plans/retry-phase015.mjs": "f98d649d945f97fe870bf22e4f3619d677b82644f53191e078e1164c4953d80a",
+      "docs/phase-plans/verify-phase015.mjs": "84457f9f71b4e99dc9bef75e225d1a6b1d748c6215828f42e0569d766bfbfe67",
+      "docs/phase015.md": "299237cb3166a455ab975bfb8aa510649dab7848114632ce2a5525d554c7a604",
+      "docs/privacy-and-user-data.md": "7d02b6787c42ed201b293e8ccf63e8a3b58553f120d24ea1c4d7cd90890ef756",
+      "docs/prompt-design.md": "1e6b2b601769dd2ae5e09076abfe3fc336f808dc107882fdb83904e9991a10ba",
+      "docs/roadmap-run.json": "ee596cce67577b4e224a2081017ca9f8f1955e709d04e17ff920edb026d45f90",
+      "docs/testing-execution-policy.md": "a1f2666b2a757bf7dccb016e997a60f33a0f91f7612add8d40411e30735f8532",
+      "docs/travel-data-provider-strategy.md": "0b6df0cdb72e820164a0f82932b53bdfbc26e86c2f5ff29bc946a05dfe19d856",
+      "package-lock.json": "e1253d4a0e5aba2d25e397b0774abc10100629c2af247e282a5ec0ace8330b1d",
+      "package.json": "1d5ba7ba3acfa20c92d1d0c260c8d2f89cf93f0405b015d1ada068dda6df06ce",
+      "prisma/migrations/20260913000000_ai_governance/migration.sql": "3096a0fbfef83c27e6cb1841e74584d3b1b9f75d7a3ca88122cd894de978cfd5",
+      "prisma/schema.prisma": "42749be8c072ff2b1801ab834d59bef6b1d9267c7ba112f0b41ca164967a1a0a",
+      "src/lib/ai/provider.ts": "f4f019eacd44402063e2bce0b0fb98b58e7ceaa998479b87db1fca142e575743",
+      "src/lib/ai/schemas.ts": "2a18f597f20a9282b978574cc84f2af02cf03d712c637b24d21b84e3185f0edb",
+      "src/lib/env-schema.ts": "c706b6b5d604e9a0b441d2dfe94d0360c76b08843f89b3d203699e5ef2501493",
+      "src/lib/env.test.ts": "4cd3d3623ac7061804498751f53ae0ca7a70f6292d57ca3578927d334c0e48f2",
+      "src/server/admin/api-keys.ts": "1d76a96fc1e356b69dd1d2ac80a9af835851650e4d1dd85380a3f3ad1a520deb",
+      "src/server/ai/deepseek-provider.ts": "c98ea0e87860717143ac172f2100acae1cd3781359f432d781ab61bdfa2b9c27",
+      "src/server/ai/enable-mock-cli.ts": "51dfe613c12db731be85ef243c810b24e864191bdaf3ff5b0d6ba77032efeb81",
+      "src/server/ai/guarded-client.ts": "06a76df75999ac387c81ffae8fddb6cde72aeeaa854c53e39e76a5d16005f588",
+      "src/server/ai/mock-provider.ts": "5adad0a901ffaa1e32fa6d52cdfa108a50f01b932b1815906fa9686ea9aedbb0",
+      "src/server/ai/provider-key-reference-adapter.ts": "8d4761fd8389527eafac969a14b215804a8c4b6757988dc9d779ab4337fe19f3",
+      "src/server/ai/provider-registry.ts": "ffbcb325de3f7bd0dc5e44d766f807833181f0ffbeeca80b363c3e6e913bdbf2",
+      "src/server/ai/url-guard.ts": "6a11e63f39870c89f1271bae87907d338738e587f81c5b3fd95695a628a5739a",
+      "src/server/config/config-registry.ts": "a82d66c1d8a4252828473b81fbeb1440be9918a6f47f73268ca5347cff66aaf0",
+      "src/server/services/ai-governance-service.ts": "7b2bfda94bc5bd7a28c87776cc855ba28a55031cada07af6a33d79a5ec9686ef",
+      "src/server/services/model-resolution-service.ts": "5f6ef01295301388e499e616764ba91789f1fdc17754fc84b0df8cdfcd216ad6",
+      "src/server/services/prompt-service.ts": "dfd917045305ca5e18b1ef339e19084f8500b607171567cbc85c84bd01e6cda1",
+      "tests/admin/api-keys.integration.test.ts": "afdf0cf7290f50af19ab047f31515b4ec48ce440f7d90624989b7ca3632b99d7",
+      "tests/admin/dashboard.test.ts": "258abb5c2e0684cc6fbfa1714e8f1bc30dcbd232f0c4a86974f7fd4659b61e07",
+      "tests/admin/security.test.ts": "5b751d269134835877526965219ced253936660fb57f5cb5fe96c9d3bb6e24fe",
+      "tests/integration/api-key-schema.test.ts": "9e0e1734220d6fe66a5d929eec36c096ab1d5d694882c93c4bfbef45da798a93",
+      "tests/integration/config-models.test.ts": "3619dfe47d613f9cd0ad87a8b17b7b9e3aa001c67a8a7ee7044f57955b54c049",
+      "tests/integration/audit-log.test.ts": "b707bfae3d367cf6bbbc9d5b2eb8b55c6cc969045eb9497339fe3192e4b0e404",
+      "tests/integration/travel-record.test.ts": "d4db628df0288cf336afd91c8e5bed5ec254afb109c80be42bd688432a58bb8c",
+      "tests/phase008/data-fixture.ts": "fa46f1f40f9bfb4dc6211cc1b3e475f4cf752f23c362cc37848ec11ee64a843d",
+      "tests/phase011/auth-fixture.ts": "b8a5c7f0ebd046ba2417c0033e9e9e616d213228ef815a0adc270e514822b273",
+      "tests/phase009/audit-fixture.ts": "c104d1529eaa799f462761953929eba68a370a1decd29e78c1583296381500cc",
+      "tests/phase010/seed-fixture.ts": "41204e829f69ad465fc6142c698c071789d8b6198cdb3e03577d6dec935f7353",
+      "tests/phase012/admin-fixture.ts": "aa1bdee39db738a904879eabc7e6fa000ed27e3d47cb4569a3cc135579acab7c",
+      "tests/phase013/api-key-fixture.ts": "1d1c1ddf71f44e1708425feaedcb93f05e873f3bfcde76f1de23fe45c4c0575f",
+      "tests/phase014/fixture.ts": "c1601bbcceeba003ac1381c2ec5fbc4b49989aa347e500ad307e74b19884dfbf",
+      "tests/phase015/ai-governance.test.ts": "1a3db0a22bfbb0c43152ad35b36dd1aa38d19275c5c3eb7caa78deabf163a2d3",
+      "tests/phase015/fixture.ts": "13c2dce369adda872a12ae8f2a5bd6c019f5d2659e2732f3aaae51368dda4dea",
+      "tests/phase015/guarded-client.test.ts": "1014f0bce9c999925ff98407940777ab2ab2e8148e6df31eb1ff0cbdde0d5f8f",
+      "tests/phase015/prompt-service.test.ts": "7383b379ef1e1e5283ae058a659e1ad65a571a51b56c614d9280ffc679863047",
+      "tests/phase015/provider-registry.test.ts": "fadcf1cca992e1a263641f7eb059a22cfe1c60651d0ab6a80d05ebd7e7625f7c",
+      "vitest.config.ts": "ecb8272ae26b0bab92b171849b3674ab2ebc8d63dc06d52b48c25f23d8186114"
+    },
+    "additionalInputs": {
+      "AGENTS.md": "15f13a3f5a19147ba3f9254cdddc1ecd6b44fc087e88810b0532c71215e171b4",
+      "Serendipity · 际遇/Phase015.md": "66f4829b90b2afb1b5bb0c30b6166fddbd59cb87e6fa6a6e6b01ea7c35517065"
+    }
+  },
+  "completeSemanticReview": true,
+  "inspectedPaths": [
+    "AGENTS.md",
+    "docs/testing-execution-policy.md",
+    "docs/development-execution-policy.md",
+    "Serendipity · 际遇/Phase015.md",
+    "docs/phase-plans/Phase015.json",
+    "docs/phase015.md",
+    "src/server/ai/guarded-client.ts",
+    "src/server/services/prompt-service.ts",
+    "src/server/services/model-resolution-service.ts",
+    "src/lib/ai/provider.ts",
+    "src/lib/ai/schemas.ts",
+    "src/server/ai/deepseek-provider.ts",
+    "src/server/ai/provider-registry.ts",
+    "src/server/ai/url-guard.ts",
+    "src/server/ai/mock-provider.ts",
+    "src/server/ai/enable-mock-cli.ts",
+    "src/server/ai/provider-key-reference-adapter.ts",
+    "src/server/services/ai-governance-service.ts",
+    "prisma/schema.prisma",
+    "prisma/migrations/20260913000000_ai_governance/migration.sql",
+    "tests/phase015/ai-governance.test.ts",
+    "tests/phase015/guarded-client.test.ts",
+    "tests/phase015/provider-registry.test.ts",
+    "tests/phase015/prompt-service.test.ts",
+    "tests/phase015/fixture.ts",
+    "src/server/admin/api-keys.ts",
+    "src/server/admin/key-reference.ts",
+    "src/server/admin/key-candidate-client.ts",
+    "src/server/admin/settings.ts",
+    "src/server/security/secret-envelope.ts",
+    "src/server/config/config-registry.ts",
+    "src/server/db.ts",
+    "src/lib/env.ts",
+    "src/lib/env-schema.ts",
+    "src/lib/env.test.ts",
+    "vitest.setup.ts",
+    "vitest.config.ts",
+    "package.json",
+    ".env.example",
+    "README.md",
+    "docs/database.md",
+    "docs/prompt-design.md",
+    "docs/env-registry.json",
+    "docs/privacy-and-user-data.md",
+    "docs/travel-data-provider-strategy.md",
+    "docs/travel-plan-schema.md",
+    "docs/hosting.md",
+    "Serendipity · 际遇/Phase002.md",
+    "Serendipity · 际遇/Phase093.md",
+    "Serendipity · 际遇/docs/roadmap-canonical-contract.md",
+    "Serendipity · 际遇/docs/agent-only-execution-contract.md",
+    "Serendipity · 际遇/docs/phase-gate.schema.json",
+    "tests/admin/api-keys.integration.test.ts",
+    "tests/admin/dashboard.test.ts",
+    "tests/admin/security.test.ts",
+    "tests/integration/api-key-schema.test.ts",
+    "tests/integration/config-models.test.ts",
+    "tests/integration/audit-log.test.ts",
+    "tests/integration/travel-record.test.ts",
+    "tests/phase008/data-fixture.ts",
+    "tests/phase009/audit-fixture.ts",
+    "tests/phase010/seed-fixture.ts",
+    "tests/phase011/auth-fixture.ts",
+    "tests/phase012/admin-fixture.ts",
+    "tests/phase013/api-key-fixture.ts",
+    "tests/phase014/fixture.ts",
+    "docs/phase-plans/phase015-evidence.mjs",
+    "docs/phase-plans/phase015-runtime.mjs"
+  ],
+  "findings": [
+    {
+      "id": "R01",
+      "severity": "P1",
+      "blocking": true,
+      "status": "OPEN",
+      "title": "Default LIVE adapter can never resolve DNS",
+      "locations": [
+        {
+          "path": "src/server/ai/url-guard.ts",
+          "line": 57
+        },
+        {
+          "path": "src/server/ai/provider-registry.ts",
+          "line": 76
+        }
+      ],
+      "requirements": [
+        "Task8 save/call URL validation",
+        "Task11 real adapter implementation",
+        "kill-switch NONE/REQUIRED permitted profiles"
+      ],
+      "minimalTrigger": "Call validateProviderUrl on the valid allowlisted HTTPS endpoint without dnsLookup. The optional call returns undefined, and registry does not supply dnsLookup.",
+      "consequence": "All registry-created LIVE adapters fail before transport, including valid ACTIVE credentials and NONE.",
+      "suggestedVerification": "Exercise real registry -> adapter -> isolated HTTP for NONE and ACTIVE REQUIRED; normal DNS must use lookup or an authenticated pinned transport.",
+      "diagnostic": ".scaffold/phase015/independent-review-repro-results.json"
+    },
+    {
+      "id": "R02",
+      "severity": "P1",
+      "blocking": true,
+      "status": "OPEN",
+      "title": "SSRF guard neither normalizes all private addresses nor pins the checked connection",
+      "locations": [
+        {
+          "path": "src/server/ai/url-guard.ts",
+          "line": 21
+        },
+        {
+          "path": "src/server/ai/deepseek-provider.ts",
+          "line": 19
+        },
+        {
+          "path": "src/server/ai/provider-registry.ts",
+          "line": 69
+        }
+      ],
+      "requirements": [
+        "Task8 DNS rebinding/private/redirect refusal",
+        "Task11 test transport is NODE_ENV test and exact-loopback bound",
+        "Environment hard caps cannot be bypassed"
+      ],
+      "minimalTrigger": "Injected DNS returns ::ffff:7f00:1, ::ffff:a9fe:a9fe, fe90::1 or 100.64.0.1; all are accepted. validate returns a hostname URL which default fetch resolves independently. liveEgressAllowed=true overrides AI_MOCK=true; transport/dns/allowlist options have no test-only gate.",
+      "consequence": "Fixing R01 alone exposes rebinding/private peers and release transport overrides.",
+      "suggestedVerification": "Normalize byte-level IPv4/IPv6 CIDRs, pin resolved IP and check actual peer, verify every redirect; reject non-test arbitrary transports and noninventory loopback; test AI_MOCK=true override rejection.",
+      "diagnostic": ".scaffold/phase015/independent-review-repro-results.json"
+    },
+    {
+      "id": "R03",
+      "severity": "P1",
+      "blocking": true,
+      "status": "OPEN",
+      "title": "Response-byte and timeout state are lost, so invalid/post-byte failures retry and abort can stall",
+      "locations": [
+        {
+          "path": "src/server/ai/deepseek-provider.ts",
+          "line": 39
+        },
+        {
+          "path": "src/server/ai/deepseek-provider.ts",
+          "line": 139
+        },
+        {
+          "path": "src/server/ai/deepseek-provider.ts",
+          "line": 177
+        },
+        {
+          "path": "src/server/ai/guarded-client.ts",
+          "line": 340
+        }
+      ],
+      "requirements": [
+        "Task7 before-byte connect/429/5xx only, one retry, jitter/Retry-After and shared deadline",
+        "Task6 AbortSignal/timeout ordering",
+        "Group4 timeout/cancel/retry"
+      ],
+      "minimalTrigger": "Return 200 with malformed body: result is retryable=true/receivedByte=false after consuming bytes. Empty 429 is receivedByte=true and Retry-After:3 becomes25ms. Pre-aborted call still invokes transport. Pending reader.read is not raced/cancelled on abort.",
+      "consequence": "Guard retries parser/oversize/after-byte errors, omits permitted empty429 retry, ignores actual Retry-After/jitter, labels deadline abort CANCELLED, and can hang after cancellation.",
+      "suggestedVerification": "Isolated HTTP partial SSE/JSON then close; malformed200, oversized body, empty429/503, 4xx, connect failure, timeout, preabort and blocked body; assert call count, exact attempt reservations, elapsed deadline, safe public retryability.",
+      "diagnostic": ".scaffold/phase015/independent-review-repro-results.json"
+    },
+    {
+      "id": "R04",
+      "severity": "P1",
+      "blocking": true,
+      "status": "OPEN",
+      "title": "Required streaming adapter and HTTP contract coverage are absent",
+      "locations": [
+        {
+          "path": "src/server/ai/deepseek-provider.ts",
+          "line": 124
+        },
+        {
+          "path": "src/server/ai/mock-provider.ts",
+          "line": 87
+        },
+        {
+          "path": "tests/phase015/provider-registry.test.ts",
+          "line": 18
+        }
+      ],
+      "requirements": [
+        "Task5 deterministic fixture chunks/usage/duration",
+        "Task11 request serialization, stream parsing, headers/body/429/5xx/timeout/invalidJSON/size isolated transport"
+      ],
+      "minimalTrigger": "Adapter forces stream:false and parses only choices[0].message.content. Mock chunkCount only appears as a number in a JSON output. Tests fabricate Response objects in memory, not isolated HTTP or bound record-replay.",
+      "consequence": "There is no implemented streaming/SSE path and no actual HTTP evidence for required headers, fragmented multibyte content, error/usage mapping or cancellation.",
+      "suggestedVerification": "Use same real adapter code against a fixed-loopback test transport with split UTF8/SSE frames, bounded chunks, [DONE], usage, malformed/truncated stream, authorization NONE/REQUIRED, and zero public network.",
+      "diagnostic": null
+    },
+    {
+      "id": "R05",
+      "severity": "P1",
+      "blocking": true,
+      "status": "OPEN",
+      "title": "Resolution can assemble a mixed tuple and adapter can select a different model version",
+      "locations": [
+        {
+          "path": "src/server/ai/guarded-client.ts",
+          "line": 255
+        },
+        {
+          "path": "src/server/services/prompt-service.ts",
+          "line": 68
+        },
+        {
+          "path": "src/server/services/model-resolution-service.ts",
+          "line": 27
+        },
+        {
+          "path": "src/server/ai/provider-registry.ts",
+          "line": 49
+        }
+      ],
+      "requirements": [
+        "Task3 one DB consistency snapshot with same definition/version/revision",
+        "Exact ModelDeployment(id,configVersion) on every attempt"
+      ],
+      "minimalTrigger": "Switch activation after definition include but before resolveModelSnapshot re-reads it. The first read stays revision1/providerV1 while second returns modelV2/providerV2. Registry selects deployments by id take1, without deploymentConfigVersion.",
+      "consequence": "Evidence can name modelV2 with providerV1 while actual adapter used modelV1; concurrent activation does not produce only complete old/new tuples.",
+      "suggestedVerification": "Real PostgreSQL interleaving switches between two complete tuples; accept old or new only. Put two model versions under same provider config, assert actual request model matches resolved composite key.",
+      "diagnostic": ".scaffold/phase015/independent-review-guarded-results.json"
+    },
+    {
+      "id": "R06",
+      "severity": "P1",
+      "blocking": true,
+      "status": "OPEN",
+      "title": "Activation SQL lacks composite compatibility and monotonic CAS constraints",
+      "locations": [
+        {
+          "path": "prisma/migrations/20260913000000_ai_governance/migration.sql",
+          "line": 230
+        },
+        {
+          "path": "src/server/services/prompt-service.ts",
+          "line": 128
+        }
+      ],
+      "requirements": [
+        "Final models3/6/9 composite FK/trigger compatibility, CAS revision+1",
+        "Task3 trigger rejects one-sided or stale activation"
+      ],
+      "minimalTrigger": "The deferred trigger checks only PromptActivation versus PromptModelActivation promptVersion/revision equality. Independent deployment/provider FKs allow mismatched provider association. Updating both revisions backwards or changing status without increment satisfies it; PlanningPolicyActivation has only revision>=0. Service accepts no expectedRevision.",
+      "consequence": "Application-role SQL and stale commands can create invalid or backward activations despite declared DB invariants.",
+      "suggestedVerification": "Under real app role reject mismatched deployment/provider, rollback paired revisions, same-revision pointer/status changes, stale expectedRevision, and stale policy CAS; valid simultaneous+1 must work.",
+      "diagnostic": null
+    },
+    {
+      "id": "R07",
+      "severity": "P1",
+      "blocking": true,
+      "status": "OPEN",
+      "title": "Registered Phase013 adapter cannot complete real rotation and has ambiguous candidate identities",
+      "locations": [
+        {
+          "path": "src/server/ai/provider-key-reference-adapter.ts",
+          "line": 40
+        },
+        {
+          "path": "src/server/ai/provider-key-reference-adapter.ts",
+          "line": 66
+        },
+        {
+          "path": "src/server/ai/provider-key-reference-adapter.ts",
+          "line": 135
+        },
+        {
+          "path": "src/server/ai/provider-key-reference-adapter.ts",
+          "line": 161
+        },
+        {
+          "path": "src/server/services/prompt-service.ts",
+          "line": 163
+        }
+      ],
+      "requirements": [
+        "Task10 real active references, new immutable config, all revisions atomic",
+        "Task10 actual two-reference success/failure/concurrency/revoke PostgreSQL rerun"
+      ],
+      "minimalTrigger": "prepareCandidates creates only a new provider version. activate retains old ModelDeployment version whose providerConfigVersion must equal the old value, so activatePromptModelTuple rejects the new provider version. listActiveReferences includes DISABLED; candidates collapse different source configs by providerId and lookups omit providerId.",
+      "consequence": "Normal rotation fails; after fixing that, candidates can be misbound across providers or disabled activations enabled. Existing Phase013 two-reference tests still inject refs.adapter backed by phase013_fixture, not this class.",
+      "suggestedVerification": "Run real ProviderConfigVersion/ModelDeployment/PromptModelActivation two-reference rotation, one candidate failure, competition/revoke, differing source versions and same numeric versions on two providers; preserve disabled state and exact key/client target.",
+      "diagnostic": null
+    },
+    {
+      "id": "R08",
+      "severity": "P1",
+      "blocking": true,
+      "status": "OPEN",
+      "title": "Prompt variable and response contracts are not enforced in the initial candidate",
+      "locations": [
+        {
+          "path": "src/lib/ai/schemas.ts",
+          "line": 181
+        },
+        {
+          "path": "src/server/ai/guarded-client.ts",
+          "line": 304
+        },
+        {
+          "path": "src/server/services/prompt-service.ts",
+          "line": 62
+        }
+      ],
+      "requirements": [
+        "Task3 validate contentHash/schema/variables and shared runtime schemas",
+        "Frozen docs/prompt-design input/output exact contracts",
+        "CONFIG_ERROR/zero-call for invalid configuration"
+      ],
+      "minimalTrigger": "Initial parser accepts arbitrary nonempty scalar strings, including invalid locale/date/timezone/stage; rejects valid structured array/object variables; never checks stored variablesJson. Guard marks arbitrary JSON {arbitrary:accepted} parsedOk=true; resolver also rejects every valid PromptVersion>1.",
+      "consequence": "Incompatible inputs and outputs are treated as valid, while legitimate next immutable prompt versions cannot be consumed.",
+      "suggestedVerification": "Use frozen eight-key input/output fixtures and negatives for formats/structure/unknown keys/max bytes; validate stored variable/schema binding; enable compatible version2; structure only, without pulling Phase017 repair business forward.",
+      "diagnostic": ".scaffold/phase015/independent-review-repro-results.json"
+    },
+    {
+      "id": "R09",
+      "severity": "P1",
+      "blocking": true,
+      "status": "OPEN",
+      "title": "Guard does not enforce owner, consent, privacy projection or provider region policy",
+      "locations": [
+        {
+          "path": "src/server/ai/guarded-client.ts",
+          "line": 17
+        },
+        {
+          "path": "src/server/ai/guarded-client.ts",
+          "line": 74
+        },
+        {
+          "path": "src/server/ai/guarded-client.ts",
+          "line": 253
+        }
+      ],
+      "requirements": [
+        "Task6 owner/policy then input privacy before egress",
+        "docs/privacy-and-user-data sensitiveRequirementProcessing false/null forbids sensitive raw text",
+        "AI may not decide permission/consent"
+      ],
+      "minimalTrigger": "Guard input has no authorized owner/profile/consent context; a caller may supply any travelRecordId and arbitrary userMessage. Only authorization/bearer/cookie string patterns are checked.",
+      "consequence": "After LIVE admission is repaired, private/foreign-owned or unconsented sensitive text can reach transport and be attached to another record.",
+      "suggestedVerification": "Server-owned authorization context with negative owner, absent/withdrawn consent, forbidden region/locale/data projection; all fail before reservation/secret resolution/network. Synthetic tests must be explicitly scoped.",
+      "diagnostic": null
+    },
+    {
+      "id": "R10",
+      "severity": "P1",
+      "blocking": true,
+      "status": "OPEN",
+      "title": "Quota and cost estimates ignore frozen settings and do not upper-bound the actual request",
+      "locations": [
+        {
+          "path": "src/server/ai/guarded-client.ts",
+          "line": 14
+        },
+        {
+          "path": "src/server/ai/guarded-client.ts",
+          "line": 101
+        },
+        {
+          "path": "src/server/ai/guarded-client.ts",
+          "line": 115
+        },
+        {
+          "path": "src/server/ai/guarded-client.ts",
+          "line": 286
+        }
+      ],
+      "requirements": [
+        "Final reservation Decimal conservative frozen pricing/input/maxOutput/fees upper bound",
+        "Task4 model context window",
+        "Hard constraints environment max timeout/cost and database quota"
+      ],
+      "minimalTrigger": "With provider quota=1,cost=0.000001,model context=1/maxOutput=1 and env cost=0.000001 the guard succeeds, reserves2191 tokens and sends maxOutput2048. Estimate bytes/4 is a heuristic, not a proved upper bound. Cost uses one unversioned price, no frozen paid tariff/fees, and settled totals sum estimated not actual.",
+      "consequence": "Configured hard caps/context limits are bypassed and actual billed costs can exceed supposedly conservative reservations.",
+      "suggestedVerification": "Vary DB/env caps/timeout/modelparams, high-token Unicode inputs, known input/output pricing and fees, unavailable upper bound, and usage above reservation; all must remain within proven Decimal caps.",
+      "diagnostic": ".scaffold/phase015/independent-review-guarded-results.json"
+    },
+    {
+      "id": "R11",
+      "severity": "P1",
+      "blocking": true,
+      "status": "OPEN",
+      "title": "Durable reconciliation/release is missing and unknown reservations disappear at the day boundary",
+      "locations": [
+        {
+          "path": "src/server/ai/guarded-client.ts",
+          "line": 101
+        },
+        {
+          "path": "src/server/ai/guarded-client.ts",
+          "line": 157
+        },
+        {
+          "path": "src/server/ai/guarded-client.ts",
+          "line": 199
+        },
+        {
+          "path": "src/server/ai/guarded-client.ts",
+          "line": 237
+        }
+      ],
+      "requirements": [
+        "Group5 settle/release/reconcile idempotent, cross-day unknown liability remains reserved",
+        "expiresAt triggers reconciliation only, proved NOT_SENT releases",
+        "Without provider reconciliation settle upper bound once"
+      ],
+      "minimalTrigger": "Reservations are summed only where bucketKey equals today. No release/reconcile endpoint/service/worker exists; unknown stays RECONCILING until a new day ignores it. persistSuccess requires one update and is not an idempotent settlement API. Provider/DB exceptions can leave submitted RESERVED with no attempt.",
+      "consequence": "Unknown billed requests allow fresh next-day capacity; no bounded terminal recovery or exactly-once settlement can be demonstrated.",
+      "suggestedVerification": "Accepted then response lost, pre-send failure, cancelled/timeout, repeated settlement, retry each own reservation, expiration unknown mutation, and cross-day reconciliation under real DB concurrency.",
+      "diagnostic": null
+    },
+    {
+      "id": "R12",
+      "severity": "P1",
+      "blocking": true,
+      "status": "OPEN",
+      "title": "Mock enablement bypasses ADMIN service and approves before testing",
+      "locations": [
+        {
+          "path": "src/server/services/ai-governance-service.ts",
+          "line": 254
+        },
+        {
+          "path": "src/server/ai/enable-mock-cli.ts",
+          "line": 54
+        }
+      ],
+      "requirements": [
+        "First enablement same ADMIN service, synthetic run admin, fixture validation before activation and Phase014 settings update",
+        "No direct kill/config bypass or fake success probe"
+      ],
+      "minimalTrigger": "enableMockAi trusts arbitrary actorId and callback, then updates SystemConfig directly without authentication/audit/receipt. CLI picks any ACTIVE ADMIN and passes probe async true, activates/enables first, then runs fixed-trace guarded probes; failures leave the flag enabled.",
+      "consequence": "An unverified fixture/actor can turn AI on; failures/re-runs can leave a partially prepared enabled environment.",
+      "suggestedVerification": "Exercise CLI/service with USER or non-run admin, failed fixtures/quota/audit, repeat invocation, and real Phase014 settings command; prove no activation/kill change on failed preflight and exact audit/receipts.",
+      "diagnostic": null
+    },
+    {
+      "id": "R13",
+      "severity": "P1",
+      "blocking": true,
+      "status": "OPEN",
+      "title": "Emergency kill and revoked keys are not rechecked before each dispatch",
+      "locations": [
+        {
+          "path": "src/server/ai/guarded-client.ts",
+          "line": 253
+        },
+        {
+          "path": "src/server/ai/guarded-client.ts",
+          "line": 279
+        },
+        {
+          "path": "src/server/ai/provider-registry.ts",
+          "line": 84
+        }
+      ],
+      "requirements": [
+        "Goal bind kill snapshot before external call",
+        "Emergency disable/revoke precedes cache/TTL and new calls",
+        "Task10 emergency revoke interrupts real adapter use"
+      ],
+      "minimalTrigger": "isAiEnabled runs once before multiple asynchronous lookups and reservation; decrypted adapter is retained for both attempts. Disable AI or revoke secret while waiting/after first retryable failure and next dispatch still occurs.",
+      "consequence": "A committed emergency stop/revoke can be followed by new egress using previously decrypted credentials.",
+      "suggestedVerification": "Delay before markSubmitted/transport, commit kill/revoke concurrently, assert no later request or retry and correct NOT_SENT reservation release.",
+      "diagnostic": null
+    },
+    {
+      "id": "R14",
+      "severity": "P1",
+      "blocking": true,
+      "status": "OPEN",
+      "title": "Evidence input hash is detached from transmitted messages",
+      "locations": [
+        {
+          "path": "src/server/ai/guarded-client.ts",
+          "line": 180
+        },
+        {
+          "path": "src/server/ai/guarded-client.ts",
+          "line": 225
+        },
+        {
+          "path": "src/server/ai/guarded-client.ts",
+          "line": 282
+        }
+      ],
+      "requirements": [
+        "Each attempt exact inputHash/version/trace/duration",
+        "User messages remain separate and validated variables delivered as bounded user data"
+      ],
+      "minimalTrigger": "Two distinct userMessage values with identical variables produce the same inputHash; validated variables are never rendered into system/user data at all. Arbitrary supplied userMessage becomes the full user payload.",
+      "consequence": "Evidence cannot identify the actual input and prompt tasks omit their validated structured data.",
+      "suggestedVerification": "Assert request payload includes exact frozen validated variable projection and separate user text, both hash-bound; changing either content changes inputHash; raw contents absent from persisted records.",
+      "diagnostic": ".scaffold/phase015/independent-review-guarded-results.json"
+    },
+    {
+      "id": "R15",
+      "severity": "P1",
+      "blocking": true,
+      "status": "OPEN",
+      "title": "The declared eight groups omit required business assertions and mutation witnesses",
+      "locations": [
+        {
+          "path": "tests/phase015/provider-registry.test.ts",
+          "line": 104
+        },
+        {
+          "path": "tests/phase015/guarded-client.test.ts",
+          "line": 17
+        },
+        {
+          "path": "tests/admin/api-keys.integration.test.ts",
+          "line": 430
+        },
+        {
+          "path": "docs/phase-plans/phase015-evidence.mjs",
+          "line": 22
+        }
+      ],
+      "requirements": [
+        "Eight full business scenario groups and real negative controls",
+        "Test policies: count/name/overall PASS does not prove required assertions"
+      ],
+      "minimalTrigger": "Initial dedicated report contains15 passed tests but no real ProviderConfig key references, NONE/no-decrypt success, ACTIVE REQUIRED success, expiry/reconcile/cross-day budget, genuine deadline, concurrent tuple switching, or full hash/schema negatives. Import scan covers only src/server and literal fetch/SDK strings, not src/app/lib or direct adapter import. Activation mutant removes model resolver status guard but prompt resolver rejects first, leaving test green.",
+      "consequence": "Eight group tags cannot authorize Gate PASS; a removed safety check may not produce the required red fixed fixture.",
+      "suggestedVerification": "Map every card assertion to executed leaf checks; add meaningful isolated HTTP and real DB cases, test true guard bypass/direct provider imports including app/lib, mutate the actual checked activation/reservation-CAS path, restore and execute all eight groups.",
+      "diagnostic": null
+    },
+    {
+      "id": "R16",
+      "severity": "P1",
+      "blocking": true,
+      "status": "OPEN",
+      "title": "Initial bootstrap policy and prompt content have no required frozen source binding",
+      "locations": [
+        {
+          "path": "src/server/services/ai-governance-service.ts",
+          "line": 11
+        },
+        {
+          "path": "src/server/services/ai-governance-service.ts",
+          "line": 22
+        },
+        {
+          "path": "src/server/services/prompt-service.ts",
+          "line": 72
+        }
+      ],
+      "requirements": [
+        "Final model9 typed freshness/planning/quality policy and task1/2 source-reviewed bootstrap",
+        "Task2 reviewed templates from docs/prompt-design with hash"
+      ],
+      "minimalTrigger": "Policy is ad hoc quickDefaults/24h12h/maxDaily12/score0.8; there is no typed source/unit/bounds contract. The only Phase002 numeric freshness source is explicitly fixture-only seconds; Phase093 lists fields without values. Prompt template only tells the model to follow Phase002, with no supplied actual rules. Resolver accepts any valid-hashed policy content, including {}.",
+      "consequence": "Bootstrapped immutable v1 cannot substantiate declared planning thresholds or reviewed prompt contracts.",
+      "suggestedVerification": "Add an explicit Phase015 synthetic safe bootstrap derived contract with producer/source/unit/min/max/default and runtime scope/schema checks; do not rewrite frozen Phase002 inputs or claim fixture values are approved production. Bind prompt templates to reviewed docs and compare exact bootstrap source/hash. This remediation scope was agreed with root; no numeric values approved in this review.",
+      "diagnostic": null
+    }
+  ],
+  "pending": [
+    "Root repairs initial blocking findings and freezes one candidate in a new attempt",
+    "Same independent reviewer compares all source additions/modifications/deletions plus affected consumers and each finding closure",
+    "Independently inspect current complete formal discovery/dedicated/full/quality/migration/mutation/restoration evidence and source/plan hashes",
+    "Only then may current-attempt review.json say PASS; this initial FAIL record does not grant a Gate"
+  ],
+  "decision": "FAIL",
+  "completedAt": "2026-09-13T06:23:43.812Z",
+  "reviewCoverage": {
+    "productsAndBusinessContracts": "COMPLETE_FOR_INITIAL_SOURCE_SNAPSHOT",
+    "assertionSemantics": "COMPLETE_FOR_INITIAL_SOURCE_SNAPSHOT",
+    "finalEvidenceAndSeal": "PENDING_STABLE_CANDIDATE",
+    "acceptanceInfrastructure": "INITIAL_MAPPING_AND_MUTATION_SEMANTICS_CHECKED; root_is_repairing_runner_and_final_full_review_still_required"
+  },
+  "independence": {
+    "implementationParticipation": false,
+    "productOrTestFilesModified": false,
+    "gitIndexOrCommitsTouched": false,
+    "databaseCommandsRun": false,
+    "publicNetworkCalls": 0
+  },
+  "currentSourceComparison": {
+    "observedAt": "2026-09-13T06:23:43.814Z",
+    "changedSinceInitial": [
+      {
+        "path": "docs/prompt-design.md",
+        "initialSha256": "1e6b2b601769dd2ae5e09076abfe3fc336f808dc107882fdb83904e9991a10ba",
+        "currentSha256": "2c524282029052811832a249bb15706099a42b666c3d91637bc82067961085ff"
+      },
+      {
+        "path": "prisma/migrations/20260913000000_ai_governance/migration.sql",
+        "initialSha256": "3096a0fbfef83c27e6cb1841e74584d3b1b9f75d7a3ca88122cd894de978cfd5",
+        "currentSha256": "cb90751d2c7a8ba0935ae64af3c6f4e7b856305bf7b52de802ada6c352989a18"
+      },
+      {
+        "path": "prisma/schema.prisma",
+        "initialSha256": "42749be8c072ff2b1801ab834d59bef6b1d9267c7ba112f0b41ca164967a1a0a",
+        "currentSha256": "266475d816620339419111b4934a99997f892a3c7035d051815ad49e7b2c08db"
+      },
+      {
+        "path": "src/lib/ai/provider.ts",
+        "initialSha256": "f4f019eacd44402063e2bce0b0fb98b58e7ceaa998479b87db1fca142e575743",
+        "currentSha256": "7c03052150252d304da7ccdd43b77b9ac0e905c88c9af33545839154d46b64eb"
+      },
+      {
+        "path": "src/lib/ai/schemas.ts",
+        "initialSha256": "2a18f597f20a9282b978574cc84f2af02cf03d712c637b24d21b84e3185f0edb",
+        "currentSha256": "acc352333c74a38c35be226fef5053e65c3cd37efcc62e6005393d3a4d9d93e9"
+      },
+      {
+        "path": "src/server/ai/deepseek-provider.ts",
+        "initialSha256": "c98ea0e87860717143ac172f2100acae1cd3781359f432d781ab61bdfa2b9c27",
+        "currentSha256": "c2bfa707b823bb2441e53019bdb91de985d635989ddf593d10ab4851b7137063"
+      },
+      {
+        "path": "src/server/ai/mock-provider.ts",
+        "initialSha256": "5adad0a901ffaa1e32fa6d52cdfa108a50f01b932b1815906fa9686ea9aedbb0",
+        "currentSha256": "8c99c13d58d89ad03f880f1e034a6fa77285581f97612e2ca8982e18bb7eeb68"
+      },
+      {
+        "path": "src/server/ai/provider-registry.ts",
+        "initialSha256": "ffbcb325de3f7bd0dc5e44d766f807833181f0ffbeeca80b363c3e6e913bdbf2",
+        "currentSha256": "8ff7e4b69581c1a9798cccb900877768d8fbc3c7798b3e84d69c480dda3c1f9a"
+      },
+      {
+        "path": "src/server/ai/url-guard.ts",
+        "initialSha256": "6a11e63f39870c89f1271bae87907d338738e587f81c5b3fd95695a628a5739a",
+        "currentSha256": "72dd26a8cdfa901d36b1612ef55af6e217ec5da8bdcd56d4c905179e8dbba334"
+      },
+      {
+        "path": "src/server/services/ai-governance-service.ts",
+        "initialSha256": "7b2bfda94bc5bd7a28c87776cc855ba28a55031cada07af6a33d79a5ec9686ef",
+        "currentSha256": "2cc5e23dacd9a56a4f9f356ad52ee7f0e53d074cc67a49826d02b1f0e6bb948e"
+      },
+      {
+        "path": "src/server/services/model-resolution-service.ts",
+        "initialSha256": "5f6ef01295301388e499e616764ba91789f1fdc17754fc84b0df8cdfcd216ad6",
+        "currentSha256": "55cca485f3cf557efbb95bab00af2e0d74b37deb1051dce4090b3217295116ae"
+      },
+      {
+        "path": "src/server/services/prompt-service.ts",
+        "initialSha256": "dfd917045305ca5e18b1ef339e19084f8500b607171567cbc85c84bd01e6cda1",
+        "currentSha256": "b3fdec01abd9af67c26f6f83395b17bd06d533a21de6e23aa706a273e70b1333"
+      }
+    ],
+    "note": "Concurrent repairs are not closed by this report. Initial source hashes are preserved; final stable candidate needs delta review and current formal reports."
+  },
+  "initialRawReport": {
+    "path": ".scaffold/phase015/attempt-10-dedicated.json",
+    "sha256": "deba3bf95c4c48d89611accae8acd194a1d93821fa7e68cae22e6f8badf10b3b",
+    "reportedTests": 15,
+    "reportedPassed": 15,
+    "usedAsCurrentPassEvidence": false
+  },
+  "diagnostics": [
+    {
+      "path": ".scaffold/phase015/independent-review-repro-results.json",
+      "sha256": "a443f7bdc14c67b0db99b077803e6d3f8041a421a35cfb91b834315de6570e3c",
+      "kind": "NoDB_NoNetwork_Synthetic_MinimalReproduction",
+      "exitCode": 0
+    },
+    {
+      "path": ".scaffold/phase015/independent-review-guarded-results.json",
+      "sha256": "ce45f9461aa03f87063f76644d80bb30bfa474efaca55e2f8e15ad815a6d7c67",
+      "kind": "ExplicitFakeDatabase_NoNetwork_MinimalReproduction",
+      "exitCode": 0,
+      "note": "Input schema changed concurrently; successful diagnostic uses valid structured scoreReasons after the root repair. This is diagnostic evidence, not real-DB or formal acceptance."
+    }
+  ],
+  "caseAssessments": [
+    {
+      "testCaseId": "Phase015:schema-bootstrap",
+      "decision": "FAIL",
+      "findings": [
+        "R06",
+        "R12",
+        "R16"
+      ]
+    },
+    {
+      "testCaseId": "Phase015:resolution",
+      "decision": "FAIL",
+      "findings": [
+        "R05",
+        "R06",
+        "R08",
+        "R14"
+      ]
+    },
+    {
+      "testCaseId": "Phase015:isolation-ssrf",
+      "decision": "FAIL",
+      "findings": [
+        "R01",
+        "R02",
+        "R04",
+        "R15"
+      ]
+    },
+    {
+      "testCaseId": "Phase015:timeout-cancel-retry",
+      "decision": "FAIL",
+      "findings": [
+        "R03",
+        "R04",
+        "R13"
+      ]
+    },
+    {
+      "testCaseId": "Phase015:quota-cost",
+      "decision": "FAIL",
+      "findings": [
+        "R10",
+        "R11"
+      ]
+    },
+    {
+      "testCaseId": "Phase015:version-evidence",
+      "decision": "FAIL",
+      "findings": [
+        "R05",
+        "R08",
+        "R14"
+      ]
+    },
+    {
+      "testCaseId": "Phase015:kill-switch",
+      "decision": "FAIL",
+      "findings": [
+        "R01",
+        "R07",
+        "R09",
+        "R12",
+        "R13"
+      ]
+    },
+    {
+      "testCaseId": "Phase015:mutation",
+      "decision": "FAIL",
+      "findings": [
+        "R15"
+      ]
+    }
+  ]
+}

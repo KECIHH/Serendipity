@@ -16,6 +16,17 @@ async function rejects(operation: () => Promise<unknown>): Promise<boolean> {
 describe.skipIf(!process.env.PHASE010_FIXTURE_CONFIG)("api-key-schema PostgreSQL", () => {
   it("migration: exact field, enum, type, check and index inventory", async () => {
     const model = Prisma.dmmf.datamodel.models.find((model) => model.name === "ApiKeyConfig")!;
+    const expectedRelations = [
+      { name: "oldRotationRuns", type: "KeyRotationRun", isList: true },
+      { name: "newRotationRuns", type: "KeyRotationRun", isList: true },
+    ];
+    if (Prisma.dmmf.datamodel.models.some((entry) => entry.name === "ProviderConfigVersion")) {
+      expectedRelations.push({
+        name: "providerConfigVersions",
+        type: "ProviderConfigVersion",
+        isList: true,
+      });
+    }
     expect(
       model.fields.filter((field) => field.kind !== "object").map((field) => field.name),
     ).toEqual(API_KEY_FIELDS);
@@ -28,10 +39,7 @@ describe.skipIf(!process.env.PHASE010_FIXTURE_CONFIG)("api-key-schema PostgreSQL
             type: field.type,
             isList: field.isList,
           })),
-      ).toEqual([
-        { name: "oldRotationRuns", type: "KeyRotationRun", isList: true },
-        { name: "newRotationRuns", type: "KeyRotationRun", isList: true },
-      ]);
+      ).toEqual(expectedRelations);
     }
     expect(
       Prisma.dmmf.datamodel.enums
@@ -202,6 +210,19 @@ describe.skipIf(!process.env.PHASE010_FIXTURE_CONFIG)("api-key-schema PostgreSQL
       expected.push("AuthLoginAttempt", "AuthSession");
     if (Prisma.dmmf.datamodel.models.some((model) => model.name === "AdminCommandReceipt"))
       expected.push("AdminCommandReceipt", "KeyRotationRun");
+    if (Prisma.dmmf.datamodel.models.some((model) => model.name === "PromptDefinition"))
+      expected.push(
+        "AiOutputRecord",
+        "AiUsageReservation",
+        "ModelDeployment",
+        "PlanningPolicyActivation",
+        "PlanningPolicyVersion",
+        "PromptActivation",
+        "PromptDefinition",
+        "PromptModelActivation",
+        "PromptVersion",
+        "ProviderConfigVersion",
+      );
     expected.sort();
     expect(Prisma.dmmf.datamodel.models.map((model) => model.name).sort()).toEqual(expected);
     await withSeedDatabase(async ({ app }) => {

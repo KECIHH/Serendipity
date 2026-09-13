@@ -1,0 +1,1922 @@
+{
+  "testCaseId": "Phase015:mutation",
+  "command": "npm run test -- ai-governance provider-registry guarded-client prompt-service",
+  "status": "PASS",
+  "exitCode": 0,
+  "numerator": 1,
+  "denominator": 1,
+  "inputPath": "tests/phase015/fixture.ts",
+  "inputHash": "e0c8c7d717b8ef123ceeecc8f0f0a7697151e944d5c4a485b7d03f3532c87d58",
+  "planHash": "5e7475cda0a9711d03172ea8c06473ab83bc2a381553210378004bf80385b2c8",
+  "sourceHashes": {
+    ".env.example": "ffa6675684cce7270a11500ba6f43b09a748d668e225f15c9357aab130254031",
+    ".gitattributes": "5f52d486cab522fa6daa07235ca6c5ff8131ba803fb675bb2db588a7a1f1f7e4",
+    ".gitignore": "8b2ebf50b0ae0b92b98aa27e5c773cb06bc0a50fc7c24b4b243f0f862c9b1adf",
+    ".prettierignore": "4d0360bfc0e85bcf158669d14e074bff6609ab2bd10cbf6fa0b626c2cb323fc7",
+    ".prettierrc.json": "a8443c8c223de29983998d16e4a8f9298898a008a7244db0c2d84eab18eeeab7",
+    "AGENTS.md": "15f13a3f5a19147ba3f9254cdddc1ecd6b44fc087e88810b0532c71215e171b4",
+    "README.md": "99f96a21fd8daaeff06951a5bec57ac613cf025df56e6877ee0f41549370f392",
+    "components.json": "2cc1a8206b39ade49917b804fd9d67f95f2b9558ecc2a98bd35a211e0423b320",
+    "docs/admin.md": "7840d735a8cd4088d29932a5493801bdd6e3b8cfa39c9087d3de34f698e94f7a",
+    "docs/agent-execution-contract.md": "8692435b6b71dd7275a3f8f4c418a02168da845c332545c174dad28a47da1364",
+    "docs/api.md": "c4eeb15648c79f1da2d3031d349f79166254568e26e26e27c7180414d6891a77",
+    "docs/auth.md": "61d4a77d2e776f1a1f712d15fbe9d132db22da3f2a0eb30a12340b1250430c39",
+    "docs/code-style.md": "7b2ef781010f47a11b77788241cf6ee660e57b420c0f7a87ad2eae0a42571734",
+    "docs/crypto.md": "0565b76370509829fe3df67b6947f0d9b862757817684f94a6d5f85bfece735c",
+    "docs/database.md": "e31e485586143f6e1ca4d957c3b61e083871e53f83ff36b5ef138a88e509131d",
+    "docs/development-execution-policy.md": "58b4eaef7fda2a45c69e41feb766d04893d44a7092117410d7e707bc5e7b9320",
+    "docs/directory-structure.md": "620fb2220069c11e53a182bb9b15699be287ebce2053f4e2c69d4252f2e1d5df",
+    "docs/env-registry.json": "95eecb5a5855a5218a25e07f9611a20cce595abe7c119f8d72a69c3b9ba35de5",
+    "docs/evidence/attempts/Phase015/archive-redactions.json": "c6e9fb93fb260260cacc547bf1d8e8e6b027c281026a4b5e483d072def3285fd",
+    "docs/evidence/attempts/Phase015/attempt-11/review.json": "7e09868c70e1ebb1ddd718aab57bb479ec807472bc828b23963f374cbb68c42b",
+    "docs/evidence/attempts/Phase015/attempt-12/review.json": "35147d6be8531e5bb80f6bbbcf48e41ae29ac5999dbc5dac9183b50a42826d2e",
+    "docs/evidence/attempts/Phase015/attempt-5/attempt-redacted.json": "90f6246f1a53f3dbc67874e2df4647614f066cbe23e361eee72077c4a4baa91a",
+    "docs/evidence/attempts/Phase015/attempt-5/commands/004-redacted.json": "4a729f4461608e1b05d7199fd6bd7c209b4d43ec9563e78ec0737d0bab58cddb",
+    "docs/evidence/attempts/Phase015/independent-review-guarded-results.json": "ce45f9461aa03f87063f76644d80bb30bfa474efaca55e2f8e15ad815a6d7c67",
+    "docs/evidence/attempts/Phase015/independent-review-initial.json": "05d0e099fb51156a98085b7872558e099c4b18f84108de13c1dbb143d8e46296",
+    "docs/evidence/attempts/Phase015/independent-review-repro-results.json": "a443f7bdc14c67b0db99b077803e6d3f8041a421a35cfb91b834315de6570e3c",
+    "docs/evidence/attempts/Phase015/recovery-admission.json": "da2d3693ef1cd93d7298ebba9f88f00fc19fe5408230b62d95ae79d1e4d04adb",
+    "docs/git-workflow.md": "ddf33176a55ff215b8d48d95e315819a7113be57f8cd0ef6506341a6a9c94a2b",
+    "docs/hosting.md": "fdd88dcd151a1bde24bb756c882c917093c153f9f1a010957af5ed5327152810",
+    "docs/index.md": "e8ccb2c0352b408bdb7724b6c539fd09107b71fbdbdaeaee78f51f52f7e82214",
+    "docs/phase-completion-log.md": "56cdd65d50af0a343c342e7496f8e7fd5ec3634d31f507fdfc826fd72a68190f",
+    "docs/phase-plans/Phase015-inputs.json": "b8b9bb093088b3bae656f770b7e27e19c34142d1753755c5ab62cb3ab4798a32",
+    "docs/phase-plans/Phase015.json": "5e7475cda0a9711d03172ea8c06473ab83bc2a381553210378004bf80385b2c8",
+    "docs/phase-plans/advance-phase015.mjs": "0cc754baf833be1c3e3e86b1a3a78730d3ab58c35c053945bc3e104486d4f68b",
+    "docs/phase-plans/complete-phase015.mjs": "476bd7979745389915155275a3e2faaa2cf96efa852ff1e684fefadedf169a02",
+    "docs/phase-plans/phase015-evidence.mjs": "de60c3e18c7ce04d0551bfbe96e057a058f7ab267e85ddf9b1348aefba06ccfd",
+    "docs/phase-plans/phase015-runtime.mjs": "96cf0b39c87ebdace44a873f969d00a684aa5229bd70b09b6637103e5c865337",
+    "docs/phase-plans/prepare-phase015.mjs": "a26b73cd338c8f10c8c6ad507501067d278b07b88c4c7587bf41ec44059fd481",
+    "docs/phase-plans/retry-phase015.mjs": "5b03e3ba7d4a2661cf3194dc27bf6fc7ad7b2296d5e7fa325d387d988263994c",
+    "docs/phase-plans/verify-phase015.mjs": "606dc17ab7a10836d9a64d26b79f743010211dd3c6108adc779cb8f57fb70de8",
+    "docs/phase006.md": "a5d9c679b32655d5668aecb9ad4cbbc80c2204ba5b11ad67ad5d9f5e27065890",
+    "docs/phase007.md": "3b170faf843a27a198c8fb4d9e827cafa74b45c654473c4a2ad2dcad485cf9f7",
+    "docs/phase008.md": "6707cb0b787ab010f93e3a78d015746148a6defa6c0a1134d6f617996b444baf",
+    "docs/phase009.md": "10688bbb3a2ba2416bafa85101e5f79882a5da5f40f2837bd2f39ca3af271e17",
+    "docs/phase010.md": "de96ae0b48b03df7d0961e3b9ff903fcc39990dd019e353adbb430f19730e89a",
+    "docs/phase011.md": "734a8a017921ff0ab683a0a1d255230a11f1d1d0b9d68162376b064ef291605a",
+    "docs/phase012.md": "6315715f8d6d03f91c753ab4e39e899e2e3504e062d9ad589ac068bc19574a91",
+    "docs/phase013.md": "b1167d86b4f7c05a7920be987afbbc4810bb2dfff9c72447229bfff7c6829aaf",
+    "docs/phase014.md": "8a5cdcb206db9333669d265e1f9e4fcc2640c9bc6cc6ade062098abf2bdf4f48",
+    "docs/phase015.md": "1ebcc95450ddf7217a38bd7561cd56c52204556b549d78c2c684b7052cba39d6",
+    "docs/planning-policy.json": "6fbe7595424a66dd0f4aa2e86fe922a329470866ad8360d04de9e96fcc097d83",
+    "docs/privacy-and-user-data.md": "74339c752a1e11031bd9e58796a2116b1d0960028de94f8aa2f03873e65b3d35",
+    "docs/project-constitution.md": "8f1dd176e30e815a09502a91c5b0ef2722b7bb71d5e919fbfc70cfecf3e9dedd",
+    "docs/project-layout.json": "7efe30a30fe009a8e1226563cae53d39ed2a2193be78bc0f0a776f57f67710ba",
+    "docs/prompt-design.md": "c241711892c658376bb6437c55511a55f249ffabe4421866113560668a83ed32",
+    "docs/roadmap-run.json": "ee596cce67577b4e224a2081017ca9f8f1955e709d04e17ff920edb026d45f90",
+    "docs/runtime-baseline.json": "4676117c22c618491cd41192866f8c221f274cf61ee9fcc480d2326a860018de",
+    "docs/tech-stack.md": "258620f3e18d042eac1e26165f411e8879ecd4b0d91d8e7986aaed4f3f10d2c7",
+    "docs/testing-execution-policy.md": "a1f2666b2a757bf7dccb016e997a60f33a0f91f7612add8d40411e30735f8532",
+    "docs/travel-data-provider-strategy.md": "0b6df0cdb72e820164a0f82932b53bdfbc26e86c2f5ff29bc946a05dfe19d856",
+    "docs/travel-plan-schema.md": "d3f0492c8d0d22e6de3b21e44368dbf4bb9a49018180e99adf8eb796badb40cd",
+    "docs/ui-design-system.md": "8b232c6742bf846f131ea3040d5892ed7b270940bfd4109ccfb768ed63fdb158",
+    "eslint.config.mjs": "f45d4d5b4e4808481617530c717d97108af6488b39e008e49b4161aefd818708",
+    "next.config.ts": "085a0c4e7d9e80f806b4e7b1efa62d1c8015707381bdafde49fd1887b3348072",
+    "package-lock.json": "e1253d4a0e5aba2d25e397b0774abc10100629c2af247e282a5ec0ace8330b1d",
+    "package.json": "1d5ba7ba3acfa20c92d1d0c260c8d2f89cf93f0405b015d1ada068dda6df06ce",
+    "postcss.config.mjs": "141ef24ca27a99d08962210fdf20212d3435fdcfa21b46cd88b44d22f751dfae",
+    "prisma/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "prisma/migrations/20260910000000_init_user/migration.sql": "b65593d8d8a7a1821a2f65415616e5c083a0e38785bcac2a46ea362d126de3a3",
+    "prisma/migrations/20260910172735_system_config/migration.sql": "25f5d0d35a216ee085fad468f5d69d740610369ff91fcdd0ebe4a188deef45cc",
+    "prisma/migrations/20260911002217_travel_record_chat_message/migration.sql": "761979289b28f413d47c09290f43e9d01ffc22421918103a51d6c67b638bb48f",
+    "prisma/migrations/20260911042258_audit_log/migration.sql": "9707b78108c51f9a10ebfa86fa816d7caf353bcd1f09a0cce2eefcac6b392373",
+    "prisma/migrations/20260911104017_api_key_config/migration.sql": "9bc311e50f3dccc7dc7885a901285fd1f359beb0e3b808bdc1e4c16ab4ce79d1",
+    "prisma/migrations/20260911151715_auth_session_login_attempt/migration.sql": "e4913a97a5ff09d9ee71efaebd58163b8b5f5db9f0fe7747bd07783aed66c08f",
+    "prisma/migrations/20260912013806_admin_commands/migration.sql": "26eac34ab5c30b48adb680a3a770d4454503e3550b3009b4e59cc0dc43e2392d",
+    "prisma/migrations/20260912061403_key_rotation_contract/migration.sql": "21eccfad37e0bf03d758a98f1bc5ef5b6b2bd6bf15d96490f9e923ba3b4eed4f",
+    "prisma/migrations/20260913000000_ai_governance/migration.sql": "0bb09337aaeec5336ba582c7a026a6b904ce90f0cf3c9cb5e8afbf4aa317ae0b",
+    "prisma/migrations/migration_lock.toml": "99836963713b4f5b269ad49af0ed3d7b0b2e336115c2f92dc9ac683d139d0900",
+    "prisma/schema.prisma": "266475d816620339419111b4934a99997f892a3c7035d051815ad49e7b2c08db",
+    "prisma/seed.ts": "dea4fc6ad30555657a06cdc1fad50af5968e45ad35884ec65df6f244035a07fa",
+    "public/file.svg": "2b67812c325c199a02536cdbeea0c593a72f707d323b72ee3e08dbab06753bd4",
+    "public/globe.svg": "b614b9bf183925957661ac851498fe1d8029fd43a62fbfed86f9e2624a57e7cf",
+    "public/next.svg": "55995dfad6ecb4945a1e856ddca03c5e16aa5bf13fd21b4df6a74ae79357bcfc",
+    "public/vercel.svg": "f081337b2fee635b455b63275406a3e7f39d6a014e25ad90dab5a67e62a12ac4",
+    "public/window.svg": "644768c4aaeb4767bce293344eeb0c125fb804a94d801440424072202d85e3a1",
+    "scripts/auth-server.mjs": "bad8d4aa1e8469aa7d1f7bafe9b96ca1a2e904916b0faba37c13a87033212458",
+    "scripts/check-project-layout.mjs": "d19f27109ff142516a7b0454e7f9b9a03629fd11923e7f6b88c7ee9323eb1d35",
+    "scripts/checkpoint-history.mjs": "673a4f5ff409ce0a4fcb7b1754c2d977199fc502a8732cda01082b9a0eababa1",
+    "scripts/checkpoint-maintenance.mjs": "7399e1fa743c1e14223434a22a0bc0f27b089dda3ba69b3a0cb711bc60ff643a",
+    "scripts/complete-phase003.mjs": "7dfd3f076da235b7b0d33a950fe08e6f48b3ac46b3c6aea70ea81b9cb6b3204f",
+    "scripts/eslint-env.mjs": "f2ded148de31d4d35ede46a162116f81b48b459b869ade8411a5e25c9f5f21ce",
+    "scripts/generate-api-contract.mjs": "6dad8aa0bbd68630b9149babed05e1bdc0c315d262ce16665cbe3fc133dd6009",
+    "scripts/phase-evidence.mjs": "454f1911b53a21aed6f014d8cb6b36d748a6f9ec8b8e7547187d45cd20ce96c9",
+    "scripts/phase003-evidence.mjs": "5a6660faa40d3710df19b9881f203be6dcb3e459c5b9c4fcf6169548890abbb4",
+    "scripts/prepare-checkpoint-import.mjs": "81f21058f17b87d053f1fc0b2762fca645d53fc7a1440d68ee7908d20ce3ac0a",
+    "scripts/prepare-phase003.mjs": "8a1a7482ee04835e3819bf81dcaa7b27ee4172ba806688b26105cae937b4ca5b",
+    "scripts/test-checkpoint-import.mjs": "9b0d18dda79e9cb8602727a72555ca392b9558b2dcc1360349f73c89560a8e11",
+    "scripts/test-checkpoint-maintenance.mjs": "69ce62d465b2996b9a80b8b68898351e8e3259d93daeaaacfe0df7d832005f58",
+    "scripts/test-phase-input-paths.mjs": "ce18f4dbde62c19eba879e3354af7a6d92d2ee71a191ba89bf6dd10dbddce1c5",
+    "scripts/test-validate-phase.mjs": "796a7b93fe3feec9029f2bf3fdcab1c93ce9c3a37640b4e5d4bb403b359ca52b",
+    "scripts/validate-phase.mjs": "4a1c1f44b75ffc61d863a6b95de0fb0bd17e9bce5b6d586bb73867d8121b3392",
+    "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319",
+    "scripts/verify-phase003.mjs": "f3b77a187709cab823dcd7a6fc84b1644dacdf3f0c5a728b4202aca357510955",
+    "src/app/(site)/layout.tsx": "dbf6397819844277acac383530a3a616f29e1068b9b5ba2d08f2886b3cca5207",
+    "src/app/(site)/login/page.tsx": "f249db17070503c398e3797298b3e7dcfe479822a68dbbf8cc948713098318f0",
+    "src/app/(site)/page.tsx": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e",
+    "src/app/admin/(protected)/api-keys/page.tsx": "065703ec8311f286cb8253b652075892e38e2b7a959826328a806762c58b9e68",
+    "src/app/admin/(protected)/layout.tsx": "e70caf93524b74b78acd5b0ddd786ba5b01720066c4f1069c4dac09e674ff523",
+    "src/app/admin/(protected)/logs/page.tsx": "4371da51e366ae66a32f40e5f70579cfb161c673ba4b6aa29858aa0d6a0f34df",
+    "src/app/admin/(protected)/page.tsx": "2c5a5fa091cb27b701f9b9810203796bfdb1034c3af9b429d2965d6f994bd4dc",
+    "src/app/admin/(protected)/settings/page.tsx": "d75c915a275e4fb55b5ceb615327eeb82b71417915b67bb238187e578550dd88",
+    "src/app/admin/(protected)/users/page.tsx": "a8a3eeae5128722cbf0d07cfd438562a76d2b2169efa5528c73c9ba3aa55d481",
+    "src/app/admin/(public)/login/page.tsx": "e4d2826c6d3cc7535c2f25bdaedf82bfb282f1cdd05f5090a9e51f990348132a",
+    "src/app/admin/layout.tsx": "8b4bbf2a89ea590d1a686b332736450d8a0864c866027d367c825a17b3ace374",
+    "src/app/api/admin/api-keys/[id]/rotate/route.ts": "4db590e820079d426930fd1ff98e574591a5e66a57d27bc5bb7867817890180f",
+    "src/app/api/admin/api-keys/[id]/route.ts": "da3fa5fa4d27067e85ac32c8490a186f200740f4784dbfbf053e3738a59338ac",
+    "src/app/api/admin/api-keys/route.ts": "ebb249c1bd39a6cbcc5fa93350895795f604992314a48963d86832362a3f0f73",
+    "src/app/api/admin/dashboard/stats/route.ts": "d41f73e3f3b0c54ae10dfa601a5f54bbfdd382092b34cf61f19fb7f6ba52f087",
+    "src/app/api/admin/logs/route.ts": "8990638f69a3b52dd3c16555d165fe1f1b1228c87d28810833b0eb6288f181e1",
+    "src/app/api/admin/settings/[key]/route.ts": "51ccce54ac5d1bf8641f7f250045c64a0a0d7f4dfb5a7626f8ad876d06a12764",
+    "src/app/api/admin/settings/route.ts": "14b23ac154731054205471b1bc5fb7163cbe28c28416e95e488531c833221cc7",
+    "src/app/api/admin/users/[id]/route.ts": "196b4b13a820ce41804c30fdf8e766a43f5db23bcb834f16bd90dae15221d7bd",
+    "src/app/api/admin/users/route.ts": "53d73d045da3c1cd0ef8b95d212ed0e4254995ba796bdff03d4f963db44877d9",
+    "src/app/api/auth/[...nextauth]/route.ts": "dd450e1faa1e87afceb14785dfb22559a24edff039e355d64c01dc1d9f060fa7",
+    "src/app/api/config/public/route.ts": "ca01f98398b6daf7a01040c560f99f906dfc1232ee3830e01287b8ba41a08dde",
+    "src/app/error.tsx": "bcb13e2af0bcbd83249ca252fe810d7d40cb2004b4bd1cf9f97b3517badbf8b4",
+    "src/app/favicon.ico": "2b8ad2d33455a8f736fc3a8ebf8f0bdea8848ad4c0db48a2833bd0f9cd775932",
+    "src/app/globals.css": "f88153c2b0c26a4f65e48626ab5a05e68c8d962952be88ead2032c8a90b10a1f",
+    "src/app/layout.test.ts": "6a82ad3d41bcfa1d4d48e618729b904a20832ce2a2a222b98ab70d678a7b987b",
+    "src/app/layout.tsx": "a9de0b5ba9380f5a058487639bd6be0d13c5a1293f720d38965d1b3dec793a6f",
+    "src/app/not-found.tsx": "f863ee0d441b75afc4ef144b45d72222583a78c5b1b404a4ab2f59dc9809c98a",
+    "src/components/admin/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/admin/admin-nav.ts": "90540bef7939f0f47cb404cfd6bd27746a46f6f322d50862d7b0b3a11eb7f3b3",
+    "src/components/admin/admin-pagination.tsx": "3f9945dcfe00fffcfe7962779bde10e41c8b6c114aae49474bc08b9d28db4343",
+    "src/components/admin/api-keys-client.tsx": "587da69c5c9c75c499491ca383db2268f0f633276edcd1c7167c09d7622d1723",
+    "src/components/admin/dashboard-client.tsx": "ef1ab2d4a4e5b5742a74909a630660bc409bfb3ea0594f7799f0f34df2e43353",
+    "src/components/admin/logs-client.tsx": "a25d3e8be1bd7b4f56dc28ad96804cc19ff30bd169003339093a7015aee7fa66",
+    "src/components/admin/settings-client.tsx": "a56e84b0a34e7e02724dfd57f0145c6db64020c549c102c3c95cc223ebcc4b2a",
+    "src/components/admin/users-client.tsx": "1d10ee71f918fb5768797cf468268bbdfaad76eaf93b64f82ca266b3f9fd7ffa",
+    "src/components/auth/login-form.tsx": "5166c864dd671f361efe75d334cb8b7a8a6724a484af2b0b5368893fad9ae7e2",
+    "src/components/auth/logout-button.tsx": "9c41908cbf849d013720de1ef39000d173440fff2c4a5cf371454eeca1684035",
+    "src/components/chat/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/common/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/common/common-components.test.tsx": "de468759777a9bd28048961735ee55ce0d1fe3292f6500bcc4a3464236ad9ef2",
+    "src/components/common/data-table.tsx": "b1fdabdf942f4765bcd23b6f3e5e59a8700a3672eb95435de35d94e7b3975300",
+    "src/components/common/empty-state.tsx": "a5b1a914935eace3193451be25c9cf8178010345ef76963e0ecb12713e284795",
+    "src/components/common/error-state.tsx": "4ef42505cda6c3a5d4c35180022eedab13ce9f33ac9e412e924dd5b9bb9d808d",
+    "src/components/common/loading-state.tsx": "0a010951d56d20dc1860ed8bd78a5c95671bd1323014330c00b4519aafe1c37f",
+    "src/components/common/page-header.tsx": "e16834dc7227edd49bfe3c495e614e91efd3a4a7ffcea041678111b8fb727d53",
+    "src/components/layout/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/layout/admin-shell.tsx": "75d9817f25dc0361b704b75e34ba7ee3e6ec1959a408bf428e5bce146cbe28f1",
+    "src/components/layout/site-header.tsx": "f4fdc237b4a3d76ac8280ff80390966ec3a1fe95d67bba7f2e5abb475ed98295",
+    "src/components/travel/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/components/ui/button.tsx": "abd7a62c5b38d8836c88906285ea0df0a40d3dd55f7d404a07672f749e37f43f",
+    "src/components/ui/sonner.tsx": "f28cba0be08c0873d121f6f35107c9e0b209ef649b0d0625c32e46cf0b2ed9a2",
+    "src/instrumentation.ts": "4ff6be1caa61426f26540f107f1b609bda7ad79e40b72d5c2b563d7fbb3c4821",
+    "src/lib/admin-api-keys.ts": "6ec4d776b3f0aabfc83b84d66bc461deaf04a53f7bdae4ad6438e8fd2661f8dd",
+    "src/lib/admin-dashboard.ts": "dcc235f9dbbd513f26e30af7fe49647f7cb71ef34bf7372185a82ebf87a70232",
+    "src/lib/admin-logs.ts": "a8b5fb9fae681f0b9357940268ec6ae3593086462b314f209d5e6d90141c2fc8",
+    "src/lib/admin-settings.ts": "5fa9adc777d174b14c0f7307f93175f32c8d18fe7d2075b5f322b799771b0602",
+    "src/lib/admin-users.ts": "6076e7f5a6a4257bdf36f717ea32a38ace7a161eb9292d42fa1d883414c338f2",
+    "src/lib/ai/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/lib/ai/prompt-contract.json": "4fd9569bd3da7ee814322cc3900ec23f542ab5c4fcfab0ab5044613f93c3807c",
+    "src/lib/ai/provider.ts": "7c03052150252d304da7ccdd43b77b9ac0e905c88c9af33545839154d46b64eb",
+    "src/lib/ai/schemas.ts": "36f2ae15de6e31499c28b5d5d2ef838dd3648c304a0998dfa432e364a8596cd5",
+    "src/lib/api-response.test.ts": "4660ad9249e90641f09cbfd7dd914504fa4d1cea7fd180c6c407eb70f2a6cd1d",
+    "src/lib/api-response.ts": "235635f476f988af2f7d2bdb867acc85bd3d4d777a99c8c7da555206b9a65a6a",
+    "src/lib/env-cli.ts": "1090373f099810914b9fb8405226c095e9101463608922f163e4b399a416937f",
+    "src/lib/env-schema.ts": "fa3d2dabaacd552655dc75f25280e1c4096caab69eed388be857320eafd3f2c8",
+    "src/lib/env.test.ts": "4cd3d3623ac7061804498751f53ae0ca7a70f6292d57ca3578927d334c0e48f2",
+    "src/lib/env.ts": "51a3612afe39103e04f214185192f0e39e8bc5cb43d27b21922fdd1748096658",
+    "src/lib/format.test.ts": "bfbf9788fbc9506c299acdafe03debe5ee8ce6bc4baff11092d08d935d2cfdbe",
+    "src/lib/format.ts": "0834ccea0511ed8b0374db59527702e3707a251f44d367e70bf748e27dbe37a0",
+    "src/lib/json.test.ts": "2e17c72f917730c5adabd17ed3f434ab9d50d0215651f768938bff3e9fb50a60",
+    "src/lib/json.ts": "b482e4f8309135800ce6526b771b809aff8ea219d4fc89060c3b4ba057b3ed11",
+    "src/lib/schemas/system-config.ts": "84cab5c3e15856c75595c6f165417356ab17756bc4cbee6fc98625d54d696c43",
+    "src/lib/utils.ts": "55bbdc94cef3e0c8a8bba386e94f97228dd2c967fe61466fc565378890550c08",
+    "src/middleware.test.ts": "20c52096c0a600447be63fc93ab922d1254c543e3982c5da5ea14944eb9c86c0",
+    "src/middleware.ts": "d243eec2e62a52fb2d661c2b4386a5f22f28229831644735769a27332c488322",
+    "src/server/admin/api-key-cursor.ts": "d90ad06e223a93a2d8943be357c68a65db9849ec2893dec30be851d8fb8e4c3e",
+    "src/server/admin/api-keys.ts": "06e68186e43e6918ac9aa6d9a65c737c85c7e618f761a61fc6c8779da8e73aeb",
+    "src/server/admin/command-receipt.ts": "d90debb5336640d4312499137b2f4faca6c5d0a407a69585cb653cd4109c2903",
+    "src/server/admin/dashboard.ts": "e640d69f04731aa10b79b1e8debc6e301c9bd5b5ad3aae604a33818dbb8a6a3a",
+    "src/server/admin/key-candidate-client.ts": "f8c27b1142eca16e7b96916d87c94755077345ef1fa8290794b033543102b350",
+    "src/server/admin/key-reference.ts": "9fcb9b38af3ccdb0d07d8e877b009f4d76f5aa5b464851419e58e4c2f73a64d0",
+    "src/server/admin/key-rotation.ts": "dc52ea856a48082d760c7e1c81c2c46695b47bf70144cce1639ff75357d004bf",
+    "src/server/admin/log-cursor.ts": "66811cc88f584c08ddecf70db33f644ea1d95a16bb2675bb6d8e8bfb1a6a84b5",
+    "src/server/admin/logs.ts": "1504e72abe916f41b9be668296e22753e997441e86a86f30488dec02d2bd9868",
+    "src/server/admin/migration-inventory.ts": "30316013e8c781089768ede1d6316767193c7e72a084ac1c2424aab4dd86eeff",
+    "src/server/admin/readiness.ts": "7e548ba749ef8a4573e7b34fd2e3804d878185afb07dbdb4a6782322c1ec3909",
+    "src/server/admin/settings.ts": "35c0dfa5dab123538742f42b0fc8d0185a78ee26dd3f38cab35d2c99a9a760a0",
+    "src/server/admin/user-cursor.ts": "e6451f52c6b17aeb88a6ea2c37a2f0281b2c20394b4d00668b55ee918e807ac3",
+    "src/server/admin/users.ts": "f7d838ff621d6e4110eaa2a61f48d986aa9771aaf0b059edf8d5d6ff8bfa8d2e",
+    "src/server/ai/bootstrap-probes.json": "a1c6fdb6bf166ab3d45c84b4fbe5500afeaf928ec97af20b6822a7d2d3e229d3",
+    "src/server/ai/bootstrap-templates.json": "02032d7ee20b1f67febca0214519935615ab6ed11321ceff0c56cae0f06a0234",
+    "src/server/ai/deepseek-provider.ts": "12345eb253dc970deba1493807ce4974a28f299108077ab2173692bc4b764c98",
+    "src/server/ai/enable-mock-cli.ts": "4594b7a2667588f6701a065825af7e9a8c56bf78e0af290b29294636f148a0ea",
+    "src/server/ai/enable-mock.ts": "f76f52203dd0f6db1e4f6a6185ae0a3190637b8615543985e3d1b0c7f097db35",
+    "src/server/ai/guarded-client.ts": "9960dd4c6bb0b5db94eb591d82c5d515d1e24e937fee4ff3c5b911edf0ad3e85",
+    "src/server/ai/key-candidate-client.ts": "537edc88bdf49f94c9f2996490095cba9b5d3f9f808b1b5bff99e4653c18374d",
+    "src/server/ai/key-candidate-context.ts": "2ff60809a38eda22c61cbf02956c884f0de9c05b51cd774fe6a6b581802358b9",
+    "src/server/ai/mock-provider.ts": "57de7dacfc3783bebdadbc94f7cde424b16693c9a7627b6059436e651c3a1593",
+    "src/server/ai/planning-policy-bootstrap.json": "6fbe7595424a66dd0f4aa2e86fe922a329470866ad8360d04de9e96fcc097d83",
+    "src/server/ai/planning-policy.ts": "3a62b89cf80a497938b598260a4b37a722564c305da1a372a60d44b731f32e94",
+    "src/server/ai/provider-key-reference-adapter.ts": "1a53e277128a2b689027c27b418225589f97e1a58fc7bea65713b7b79b3c56c9",
+    "src/server/ai/provider-registry.ts": "9837e64237022ac651e573e61ab2bdb57fc4b52362405aa337df4fb3f8eb22a1",
+    "src/server/ai/url-guard.ts": "72dd26a8cdfa901d36b1612ef55af6e217ec5da8bdcd56d4c905179e8dbba334",
+    "src/server/ai/usage-reservations.ts": "1cce56d78d6fc1aae067b7cd885985e4487f273938ab44c267d9facae2695501",
+    "src/server/anonymous-owner.ts": "7250641a004fe8994a7eae0ce06ed9a5330b7260e5ad4da7e8c87bf2c082c0ea",
+    "src/server/api-key-envelope.ts": "814dad96afc484b82aea53c8e8fdceb2787bae58b9417ce9ad45a005d3bdebc4",
+    "src/server/audit-log.ts": "bc79c2fcdf1f0daae02f04c2775e4ef064153b936f2a54483dc2549fbffe7fc7",
+    "src/server/auth.ts": "af08f9c7a2b08672e5c516d38beb71fd4edd0566f0d5e98b669417d28cbec4fe",
+    "src/server/auth/auth-config.ts": "12bfc18d7104851f9969a5fdae3c6546bfd72df0be92000ca72e87684f3129b1",
+    "src/server/auth/auth-handler.ts": "f9478cc627dbad5fd4cff7ffa5c56d4afcf8541632b31a5e4651d49f109916fe",
+    "src/server/auth/clock.ts": "1dd54d5679fb14a38cb4d2a7a28fde5a479155267812a2bca36e6c323e33b68e",
+    "src/server/auth/cookie.ts": "2b8b16cd9c1a5abdb1de86020e530378b46e7ec99dff2190c3d58909927dcd15",
+    "src/server/auth/credentials-service.ts": "0f12e60c5c1cf24ec324984a74b120619745078427d37226ecceab84dae50f09",
+    "src/server/auth/errors.ts": "ee3dbd777a25889c877cbc9954466b3033ec2850eb306394bdcdc3aeee777f3b",
+    "src/server/auth/guards.ts": "850c4b508d35265967d6432e386b6209a7875df24253f64228a5a709628dc9e2",
+    "src/server/auth/login-throttle.ts": "4d78d969fbfa4b152b968a3214c3083710b7450f7854b78d63bc8dbb47aa3e3a",
+    "src/server/auth/require-admin.ts": "5463258472cc77adb6c88af93ff28d01db235d218a877029a73d7ae7185f204e",
+    "src/server/auth/session-service.ts": "867697b3d9679dc0d33524a8ba6f96a13784764601781f069078dd543ca7bdab",
+    "src/server/auth/trusted-client.ts": "2efb55c8197a40d006ead049a0de720c90dc2c0a04789b9e5f605a85bdc0fc84",
+    "src/server/auth/types.ts": "88e0a3508f077cf5f99199133a8ba9a581f799e105500b50443996ed360c9d5a",
+    "src/server/config/config-registry.ts": "a82d66c1d8a4252828473b81fbeb1440be9918a6f47f73268ca5347cff66aaf0",
+    "src/server/config/config-service.ts": "10be71684de1e5de39c3f13e3c0ae91172c8f6934e2f2a35a331a32559212c8c",
+    "src/server/db.ts": "d2f6bec02e8dc7eb25eb782def2f24d018a1c27358cd62dfd5aeb22030457db7",
+    "src/server/ingress.ts": "b03b16891cdc66e760c2dd6fb8779e979eb1a43a8fbc244c87e5b7ab085975ad",
+    "src/server/projections/admin-api-key.ts": "887a7c6c709c6d94f2e5e6713a6e8176ff22351ab991ca1e757abbf9bae262a4",
+    "src/server/projections/admin-user.ts": "396c25dc8b29d3a865f2490192f3665071c87112055c4ddc5ecfc9cfc72c1de3",
+    "src/server/projections/public-user.ts": "de8e550fe63c9c2bbf0e8f33ba39b518227dd7358680ec9eb77449be4c96a680",
+    "src/server/repositories/chat-message.ts": "707d2e77b7534a1e0cdd16a1d05c8b472372a1349036d4ca76dd2d81ddfecad4",
+    "src/server/repositories/data-layer-error.ts": "c62080e20792a91c18bed5c9e39c1c8d58f13c383601a46c86b25478a27d9ad1",
+    "src/server/repositories/travel-record.ts": "334a0ebd7118a8584089482713196c786ceee7956fd884f72d6f3ec980b3907f",
+    "src/server/security/secret-envelope.ts": "17f9ccfc8acfe65ac287db299fc36c16f49274b1c7da40598dd48c3a62ba1c6b",
+    "src/server/seed-input.ts": "ca76b7628f8fd60230062cd0692e05130461bb7f4dadea7458fab2c7b7de252a",
+    "src/server/services/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/server/services/ai-governance-service.ts": "4284ed43c415d464491a69f6e8aef8b21aefd3e1324f13a1a21c271f432e356b",
+    "src/server/services/audit-log-service.ts": "c1fc076e07576591a1e266e371df5b25a26b1e3acb4924d3d7d676b91e0d1d68",
+    "src/server/services/model-resolution-service.ts": "7217609d612a9682976c6656de513fa2be5e95e7739de9cde1e992a64fc852c8",
+    "src/server/services/prompt-service.ts": "95b6de4eb3362e1658061bb14fd837c4e12da2ca6093eb281febbf4ffe5fce07",
+    "src/server/services/seed-service.ts": "ca76e7aa52fb62e009c38d0472eb399d1bb6b60814a316d9d00d6383c6911c35",
+    "src/types/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/admin/api-keys-client.test.tsx": "55c956045986f15608f7f796fcdb4b6c0b09b4e5bf3888ed3603a90c67f1aa92",
+    "tests/admin/api-keys.integration.test.ts": "afdf0cf7290f50af19ab047f31515b4ec48ce440f7d90624989b7ca3632b99d7",
+    "tests/admin/dashboard-client.test.tsx": "8fa584b571d1829818264567d72cb1e36ad3f852867445928269dd5fe2f74a20",
+    "tests/admin/dashboard.test.ts": "258abb5c2e0684cc6fbfa1714e8f1bc30dcbd232f0c4a86974f7fd4659b61e07",
+    "tests/admin/layout.test.tsx": "496d3e3b8722e0f2d48d0811e99c5652459c8e3a4d22e4e4968ebcba83a43c4a",
+    "tests/admin/logs-client.test.tsx": "11360059512f7b93ca8bd2597130b911c608490f56873a79b2f36be38de927eb",
+    "tests/admin/logs.test.ts": "46ff9320d6d9e6de7247837c5bfface680459f8088efecaeb9668073c5bd47d3",
+    "tests/admin/security.test.ts": "5b751d269134835877526965219ced253936660fb57f5cb5fe96c9d3bb6e24fe",
+    "tests/admin/settings-client.test.tsx": "c18603afeb9d8d15b967fa48b16f9176955cac4c6a440052dd05b4302fb6432e",
+    "tests/admin/settings.test.ts": "96d554c5a46e30e9ef4a0a82018c2de954d25c82f155e384c5878dc8e84d902b",
+    "tests/admin/users-client.test.tsx": "7b215369349270d63f992ff01cde135daeac7db38144e2b5683f24592431e712",
+    "tests/admin/users.integration.test.ts": "bfd463b445c1b2b83eca24af1b80b2972b77c5db3bdf6201331cdac3a51819f6",
+    "tests/integration/admin-login.test.ts": "b8ca4708285893de01c424bb1daec081107a4a0e0df212fdff234535626f1319",
+    "tests/integration/api-key-schema.test.ts": "9e0e1734220d6fe66a5d929eec36c096ab1d5d694882c93c4bfbef45da798a93",
+    "tests/integration/audit-log.test.ts": "b707bfae3d367cf6bbbc9d5b2eb8b55c6cc969045eb9497339fe3192e4b0e404",
+    "tests/integration/chat-message.test.ts": "23dcf6dc0107e54c00aeace6352e1bce0921cabff3ceb9101674d90794c80b0b",
+    "tests/integration/config-models.test.ts": "3619dfe47d613f9cd0ad87a8b17b7b9e3aa001c67a8a7ee7044f57955b54c049",
+    "tests/integration/secret-envelope.test.ts": "154ff5b9830911ca75a103ed418c28fc21187084f185069f8814bcfd6e7002ef",
+    "tests/integration/seed.test.ts": "b1c3171398c7fe0495b770b509c577a556d85ec9a717a49de0437edc45651bde",
+    "tests/integration/travel-record.test.ts": "d4db628df0288cf336afd91c8e5bed5ec254afb109c80be42bd688432a58bb8c",
+    "tests/lib/admin-api-keys.test.ts": "ee9e5e9198c7d69ec560302eaa96caafc572c87f40eec8787cad67be7328d8d0",
+    "tests/lib/admin-login-ui.test.tsx": "3dded57571706f75968024bca5664e55005d0ca6fc49789e76420435762e9eaa",
+    "tests/lib/api-key-schema.test.ts": "cb3ebdfe084e7068ba8aed3d7edec09e32ea7d9da39e606533e38f3baa421111",
+    "tests/lib/audit-log.test.ts": "895e63c1af000a98706b32e56263fe32b0565dad35e431a9e8633fc3a8d4e16e",
+    "tests/lib/auth-guards.test.ts": "75d103d1ff2fa78be51df4d874b4dced4321fb4369be244003256e1ae73aeb21",
+    "tests/lib/auth-http.test.ts": "624284e59d7ccd6a88dbed9aa54e1bdbdb41814492feced3195f111865fab34d",
+    "tests/lib/auth-ingress.test.ts": "0ec1077654776a812812fe05eecf9d445076baf560f769f585861ce60d52bf0d",
+    "tests/lib/auth-services.test.ts": "435c4113d321659851ab8bda56264e46735bab0c5fa2de30780cc8712a0e14c1",
+    "tests/lib/auth.test.ts": "fb8bb3b519253cd9d931ec208a6c78954fe94d11aa3b8cd65297ce55ee8a418c",
+    "tests/lib/chat-message.test.ts": "d2d380b64f03dc2c2ffbaaa6176c6d5b565f3ba91d90c5a15871efc00c12fffb",
+    "tests/lib/db.test.ts": "e638b23182053c44a3937c2d63f1baa6e3cb7c8735588ac50002ba85ccfcb136",
+    "tests/lib/public-user.test.ts": "86f5828629f9998528bb65748271b33991b682cd6dc720866160d51243547ad2",
+    "tests/lib/secret-envelope.test.ts": "0fc5f807552befc65150d73a054a2d2e7b76a88ade72dcc7bd0d126787ed87ec",
+    "tests/lib/seed.test.ts": "63373fc0ac7f10f632f982580bd0594d9fa2da927adc6c4248fb04808da55154",
+    "tests/lib/travel-record.test.ts": "b657b5c2e59ac83917ddda4fc5a8ad3fcca44ac9783d6570750f2aba7ffd265c",
+    "tests/phase005/browser.mjs": "65cee15ce4171423bde4c82689466d1b1c45a64cb1a847ec6200661465676881",
+    "tests/phase005/components-fixture.tsx": "c1ca905c69634b0f2066888e4c83cb913b6c66182830439337656157ece27e05",
+    "tests/phase005/fixtures/phase003-home.tsx": "59a50d491a75200a86777bbd63ff20f92ca1cefbfb9192c86b6408644b5c436e",
+    "tests/phase006/cli-network-guard.cjs": "da1e1020f2d0f5f171f1a721dfa2c3412a2901d858eee176ed730f45f0ad2ab7",
+    "tests/phase006/cli-network.mjs": "21664e3f9f0467ab5e92fdc60b84f2df27c106bb1267ec8a734cfe128f7bbd72",
+    "tests/phase006/database.integration.ts": "73d57fb93515b0fbe5dd9dcded1eed6766dd066ffe085deee70cad51b51bbcba",
+    "tests/phase006/studio.mjs": "04816f53f00927939193655814e966819ac4aa477eb9042f5b5b2f1b5fbc9916",
+    "tests/phase006/user-types.ts": "3ab183310d3add2e18415f83f732cf913f883f18bbdd06a71dc9de0ce76d47c5",
+    "tests/phase006/vitest.database.config.mjs": "b0d0de6cebdd51e1418960674b8b977d64072787cc123d19bd05a0595d58b267",
+    "tests/phase007/cli-network.mjs": "e7a842985395ccb9111d165f7e1aeb56de02fa509ecf6a449dffc4a69c00e312",
+    "tests/phase007/config-fixture.ts": "a47ad51c9dae3a4224ce3971e8051e7e17240bc6dac1dd47ab8b2e4fcaf8d1e5",
+    "tests/phase007/config-types.ts": "ce6093ffc4aa4929631b2e25c2819d2ee16bc7ad5346a0b1db06e89055931709",
+    "tests/phase008/cli-network.mjs": "ff64f0299c5ed5ab62509d3b9bd26c7a17fcc657a1b2186e493584df67b7b7f7",
+    "tests/phase008/data-fixture.ts": "fa46f1f40f9bfb4dc6211cc1b3e475f4cf752f23c362cc37848ec11ee64a843d",
+    "tests/phase008/data-types.ts": "c854d2e0e84b57ff593a7ff82dab2a7f68488659a854d6e5e06527f5af14166e",
+    "tests/phase008/evidence-guards.mjs": "086c5341e065310597f14bc09432eca2f6a6ef7129eea9d9732fa505a7eae683",
+    "tests/phase009/audit-fixture.ts": "8fa2ce5da0c0a3c824976ee00be28724d1d367c641a98f01e40a991636e34255",
+    "tests/phase009/audit-types.ts": "ad6e2865de09a24facaff29ef15ad266694515420bf86e2066ae5de43ba4274e",
+    "tests/phase009/cli-network.mjs": "10218552478835c1d2338bc50515ca66140dbcc478073e7d138fe4e68a5954ae",
+    "tests/phase009/evidence-guards.mjs": "ad68ea652122a0eb28fc73497710772942b43f14c4a71f854f822cbef0a76be6",
+    "tests/phase010/api-key-fixture.ts": "d542ba5e7e0973dae9a5dedcb7f02efe13fea791d29d2ed1a8992fa28be200ad",
+    "tests/phase010/api-key-types.ts": "96ad6dc0927901c526ddc4532deb47fb2edc24009ca7397cc8646a6bd7347973",
+    "tests/phase010/cli-network.mjs": "2d4a5f37b631ab222ff5ca822d061d7e7c16eb1841c02e767700a69dd0a4623a",
+    "tests/phase010/evidence-guards.mjs": "fbf173e4f7a43a571069c0d5423dfb9cc73f8c2de2156052aa6c76730017e0db",
+    "tests/phase010/seed-fixture.ts": "ca83ea6764ba00469d62fde9333cb7f979bd79ec3f187248ae38cc4dda3187fe",
+    "tests/phase011/auth-fixture.ts": "b8a5c7f0ebd046ba2417c0033e9e9e616d213228ef815a0adc270e514822b273",
+    "tests/phase011/auth-types.ts": "0693390b60b2cadf9a29c2111f952c895f82ca641ae703619ff24912bc53e5b3",
+    "tests/phase011/auth-worker.ts": "3b0c86786f97db34b721d09a17392c7057a2a5302c51645d2e245e34d49276e5",
+    "tests/phase011/browser.mjs": "d1719873ab0a27386f6a492c81cfd31e3c56f6a9395a436878f3b8d801968f60",
+    "tests/phase011/cli-network.mjs": "698e7c1d72d4f3c2b05e44b86e84912ea6d1e248d5e9774630e81f31bc158af1",
+    "tests/phase011/evidence-guards.mjs": "fca1e525c57bccd66c26005c985c81fad359e306e8b9ba6f8c259d5bdf767b35",
+    "tests/phase012/admin-fixture.ts": "aa1bdee39db738a904879eabc7e6fa000ed27e3d47cb4569a3cc135579acab7c",
+    "tests/phase012/admin-worker.ts": "4f398afd47df9f73b97c59035298b351c24576462914e173962a4395d42297bc",
+    "tests/phase012/browser.mjs": "b7023632666f44558a064370d6a9d0d65e75b8a4858299fccde33707d5b63e3f",
+    "tests/phase012/cli-network.mjs": "1f09ce2c8dfba19cdd7cc6791f90b066514c76a0de24d5fa69ec73fe2b561433",
+    "tests/phase012/evidence-guards.mjs": "7312dffacbf64a77b1f8fa7969b70aebfdbb1176ef0c201cb97431163742d25e",
+    "tests/phase013/api-key-fixture.ts": "1d1c1ddf71f44e1708425feaedcb93f05e873f3bfcde76f1de23fe45c4c0575f",
+    "tests/phase013/api-key-worker.ts": "7b5a315a5138176b07139bd4aeb9ca22710b04591fa9e44eb8b1c418236e4d0b",
+    "tests/phase013/browser.mjs": "228cd515f5f462a1331bbc2900e7ea6d957e3dc991292dd8c23b62922bc52324",
+    "tests/phase013/cli-network.mjs": "1f4a2296263683a0057d35e441ef217a3e63f57de14c328fd77077a199aabb75",
+    "tests/phase013/evidence-guards.mjs": "f23462dde36dc1db2b2ffccae329758029dd837e612315809ab79517bdd16d1d",
+    "tests/phase013/logs-fixture.ts": "87c79d2e7f47a6da21841736965f8710c53377c8b22408cb6116f4be734f1dcd",
+    "tests/phase014/browser.mjs": "b77ddbcad185dc29c28f40a2847e6ca4d8635b43a66727e36e8f8cb347ab769a",
+    "tests/phase014/evidence-guards.mjs": "7318fe19cbbb3c0e8f889e19115cf8a5b483a656df690b74c5f8faabc02c257b",
+    "tests/phase014/fixture.ts": "c1601bbcceeba003ac1381c2ec5fbc4b49989aa347e500ad307e74b19884dfbf",
+    "tests/phase014/worker.ts": "a95e05c76cb393d3ffe67c25fe9b42c07175e0747c4eebc257192ed4bdedebf6",
+    "tests/phase015/ai-governance-key-rotation.test.ts": "e335c581a798343e018b01d52ceb2dc542b5ee0b1ef63a4f01b4abe8cc023e50",
+    "tests/phase015/ai-governance.test.ts": "5bc7956d57ba8a599d6b0ac2ff0b6f877b0257981b41ef65bad9b228ec98c73d",
+    "tests/phase015/evidence-guards.mjs": "a5ecb19711ac3f03229ef59184dd7088320dbd9f3efd2a41832169717c4a175e",
+    "tests/phase015/fixture.ts": "e0c8c7d717b8ef123ceeecc8f0f0a7697151e944d5c4a485b7d03f3532c87d58",
+    "tests/phase015/guarded-client.test.ts": "2cc219d792840b7d4bab62a311e143653aa0d636a7cf08f6b73a2324c22db1d4",
+    "tests/phase015/http-fixture.ts": "a29ca4ae53a31bd2b08193ffddf51eaa5a3a8dfaab6ac528e392678131750ef5",
+    "tests/phase015/import-boundary.ts": "0db88d4c7077d853364c1a6fd846534de467aeddde8a5029e528fc4fa68c1161",
+    "tests/phase015/prompt-service.test.ts": "0ec9d9fda6d167ce2cd57072c79949c8599b535ca9b251beb9b8dbe1dd1d9d6a",
+    "tests/phase015/provider-registry.test.ts": "51c717c735765be4dd75f9a14517f51d8f00e4553be5d79154adbb33d2825d18",
+    "tests/phase015/source-scan-allowlist.json": "88a26a2ba5747da1e6c8b220472f37d23f0ad92118396ec9ff806560f6cd28d1",
+    "tests/phase015/worker.ts": "33c4964ca6c49884f3060f84ebdb92313944698ddd8c50c54ddba5e98c052ce5",
+    "tsconfig.json": "21a23eb2fa0b1ffcb9c6d591fdec866566c2a2d7562c4ec5beb0d6b8c007c65a",
+    "vitest.config.ts": "ecb8272ae26b0bab92b171849b3674ab2ebc8d63dc06d52b48c25f23d8186114",
+    "vitest.setup.ts": "e512871a40d72cd44e0c0d96189a3f105ab192d021a3016e9f3d014aa8937035",
+    "vitest/stubs/server-only.ts": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+  },
+  "simulation": true,
+  "productionTraffic": false,
+  "details": {
+    "artifacts": [
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/frozen-discovery.json",
+        "sha256": "58a14366e117b9ec13f15a9343d719da4f0e7ac49fed1a100bf0538623e52ce6"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/frozen-plan.json",
+        "sha256": "5e7475cda0a9711d03172ea8c06473ab83bc2a381553210378004bf80385b2c8"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/freeze-command.json",
+        "sha256": "0ee8015bc53ed5fa09c856048f76b688aed14e8657f97a9dd2a1e6e23753e63b"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/input-receipt.json",
+        "sha256": "b8b9bb093088b3bae656f770b7e27e19c34142d1753755c5ab62cb3ab4798a32"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/001.json",
+        "sha256": "8fe7bbab49a80a29dff50a64211c26a8694a3eca11665abece813e322b285a97"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/002.json",
+        "sha256": "a387747183102b93e6a439766f08bf9014f087dbb219984b315b7ace29606074"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/003.json",
+        "sha256": "759e21dc51e91b39c6a52617c984454cc4cf882448ae92502e33d7545f9fa283"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/004.json",
+        "sha256": "a0f0488b5f38fac340099acefda18839f835c70bde24ccd21bc080053ee58128"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/005.json",
+        "sha256": "dcd52e90143e263dbbc75359e68a8df88cf1acca3ce59613ca0f507465331aed"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/006.json",
+        "sha256": "d80d3333531294aab4a5dafc0417deb227b555f12d0956d55b7551d8152d1ab8"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/007.json",
+        "sha256": "dc97d1fc569cf8b7f8bff1f828abe5083b04e3d7dab058d0ea53cf6bbb9ccaa0"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/evidence-guards.json",
+        "sha256": "147531f0fea485e61ec1dab22066eea9d1c361fa6cde6a6d0151f90990b57100"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/008.json",
+        "sha256": "6414e558415245cbbb9be64506b03db2be776e6b561077045c18bcbae3b84c66"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/precheck-discovery.json",
+        "sha256": "58a14366e117b9ec13f15a9343d719da4f0e7ac49fed1a100bf0538623e52ce6"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/009.json",
+        "sha256": "27b6285e588d0969d4eb9ea5578d43b8b16ad60b0273c425f4a816e81b2ca2ad"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/validator-regression.json",
+        "sha256": "0be96d7c3a93e9315632f3c607b1fdce21159ba100eef91169f2d117d5e6efa3"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/010.json",
+        "sha256": "b47c1bbe89f7af7004797a8985149a2f8af55c2017bf6e70584f75d7a3f306e1"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/011.json",
+        "sha256": "498c1532dd4321a36344a2b0bfeeb3b196d2f30821793d57d430573831837d3d"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/case-command-1.json",
+        "sha256": "e0c54837885fdd8bc4a00fd467ad8218c86b54eb38d15a7fb27e9d01f03a1307"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/012.json",
+        "sha256": "98eb62f88f77c249a3d1ba24e3c90f11a0194c985cbbe509d38afc219c63d8b4"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/case-command-2.json",
+        "sha256": "4f335071077f3b82775df94135d29706b616bb87aef4357dedaaac7f14190de5"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/013.json",
+        "sha256": "ff14107482a0ca0283baa5110847070fa46b8bed6216ead3087a68275f01f287"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/case-command-3.json",
+        "sha256": "5fe4218c63ae55c1710088e516f8523cd2a6add4e1f21f7b0387984af696e407"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/014.json",
+        "sha256": "98506ca6a924a714300fdc0a41d945b66f0504d8d4bd72df81f684fedb740f44"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/case-command-4.json",
+        "sha256": "53869f263c520dc9e1451066c295529428edfc4eeef5da7822f7b3e0ce3cfa2c"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/015.json",
+        "sha256": "02dbe02cbe858400ec8b0f3fcbacbbc82c54885dc7c871049983589f6db0bacc"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/case-command-5.json",
+        "sha256": "ea7e06b7e6ce6f4aac3b5ab2e796192c498aea097b6f06f2f705de80cebdfe6c"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/016.json",
+        "sha256": "0a1fbc1a6f464f868258413713c7f29e11200704cab62f8af3e1c6b6aaf32f26"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/case-command-6.json",
+        "sha256": "07ef0088abcba093fbad9ac12b6626e76fd65a14b5da987def2f18c1efdab9fc"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/017.json",
+        "sha256": "6de88eca901a53271889f75713e9465f824f63500d9dec087cd5ed2f575649c3"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/case-command-7.json",
+        "sha256": "1e50f52da8d1257d34986f1c291102d44c4b4a6463460fb9f030ffc33e18ae1e"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/018.json",
+        "sha256": "dd998f0bbdd48491be37731a69b42bc04f3eeddd9b257ab049f7c71d08cf5ff3"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/case-command-8.json",
+        "sha256": "25e177235eef6362b65d4e329a7811dfadf59f554e385e74533532280d809e94"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/019.json",
+        "sha256": "293287a3cc776c3b73ed14cb1dce5511f4f84f40a07c51a6b21740cdf7e7dde7"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/full-regression.json",
+        "sha256": "71e0691e34d9e9bbe5cb5927e402dc74b922a973f5a239046f38cd7191f77a9c"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/020.json",
+        "sha256": "d8bac074c5aae69c7babe7cdde36e6f63c90c5aba0281459cb419ffbd2fe7239"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/021.json",
+        "sha256": "66f5893f8b8d99045f9423cdc4c4d1f3bc3767931782de9576b87cfe4e1433ca"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/022.json",
+        "sha256": "ec46d68288d3524e6ff08322df9c207cbfed8b7d37f37c9527723409971a7d06"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/mutations/guarded-client-boundary-report.json",
+        "sha256": "c9f913d30084d4a1643ac28bcfaef96ba107dc81884723df3bd987b56d7dca67"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/mutations/guarded-client-boundary.json",
+        "sha256": "ef3d7728d743bf3d371538b5e24e57583dcf0863bb4033aa8579ba88c552d770"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/023.json",
+        "sha256": "ff8ef31fd06059ede3a3b125227792c0e46954a63fcb2c0d4316a78f666fe845"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/mutations/activation-check-report.json",
+        "sha256": "5f28a0a64b03293492ccad693d8755b300abc9f40ce8feadf0c9a89d67e3b500"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/mutations/activation-check.json",
+        "sha256": "40197d434073f5edfa18b2dd8c12f240f3ff1132a100d98ec1a1334458b30f5d"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/024.json",
+        "sha256": "19b790bd4568508ec587e10f9cd5d433702e62e8b3e505ac9d52abc264802a92"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/mutations/kill-switch-report.json",
+        "sha256": "e87b7d8353fc1ae0e0c8baf73a07459eb5040dd645ddee6e48111bb7b048c66f"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/mutations/kill-switch.json",
+        "sha256": "04ad377c50d340bafb0ceedd9cd5ac78be7581c76f79023de0819eed3f9c8d20"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/025.json",
+        "sha256": "202b4aa75e3ec5bb052db3dcacbe2f47c27991b2acea5cb3ad19766ddf8b574f"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/mutations/reservation-cas-report.json",
+        "sha256": "bae8f214658fc166d9600d98cec0e9bd9743c8c4feb75574e44b6cf1552d48e1"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/mutations/reservation-cas.json",
+        "sha256": "581643995332f05b0a84f3e2c131d20669ba0ba38f027313319c9518c5e91bde"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/026.json",
+        "sha256": "981d81d481d6d87b83bf8cf315ec2dddc483dfae0ad568a10dbff5745a80bfd2"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/mutations/abort-signal-report.json",
+        "sha256": "9b4926acd0c599ea7de3c1424362605bbdbf0dc0c569ed35ed5325eda3695982"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/mutations/abort-signal.json",
+        "sha256": "72d4f436d1deeff61a6f3cfa5d1b6352a770efee7eb6f81d7ad94e642812cf25"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/027.json",
+        "sha256": "40c17b678774692a9ab723f5f5004ddd49759361299f429f7dc8225b3214f9f2"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/mutations/unknown-expiry-release-report.json",
+        "sha256": "428939b22d8dd3562fdebc9e3f033d68855ca6227fb6b6f8dd1c5b425196f717"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/mutations/unknown-expiry-release.json",
+        "sha256": "f11ebc4c367727408c480fe197e0ecef6fb2e2218f9bc8fc6931456b2bd80810"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/028.json",
+        "sha256": "bca7b95cb21619ffb3dc9e98e087ebae87449da241511d171f33705d3a8533a8"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/commands/029.json",
+        "sha256": "77f7b69d224791139367c13ba066c1dc5634249525cc133c84c0abe0698ab22e"
+      },
+      {
+        "path": "docs/evidence/attempts/Phase015/attempt-14/restored-card.json",
+        "sha256": "23df1dea850b036622f8ce58b2477d4878c2248fb7f78b3cb55e964ab8e03df2"
+      }
+    ],
+    "discovery": {
+      "reportPath": "docs/evidence/attempts/Phase015/attempt-14/precheck-discovery.json",
+      "reportHash": "58a14366e117b9ec13f15a9343d719da4f0e7ac49fed1a100bf0538623e52ce6",
+      "discovered": 597,
+      "executed": 597
+    },
+    "full": {
+      "logicalCommand": "npm run test",
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-full-regression.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-full-regression.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+        "startedAt": "2026-09-13T09:43:21.211Z",
+        "finishedAt": "2026-09-13T09:49:42.600Z",
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-full-regression.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase015/attempt-14-full-regression.json\n",
+        "stderr": "",
+        "durationMs": 381389
+      },
+      "reportPath": "docs/evidence/attempts/Phase015/attempt-14/full-regression.json",
+      "reportHash": "71e0691e34d9e9bbe5cb5927e402dc74b922a973f5a239046f38cd7191f77a9c",
+      "mappings": [
+        {
+          "testCaseId": "Phase015:schema-bootstrap",
+          "tag": "[schema-bootstrap]",
+          "assertions": [
+            {
+              "file": "tests/phase015/ai-governance.test.ts",
+              "fullName": "Phase015 AI governance database [schema-bootstrap] bootstrap rejects stored provider and model content with copied valid hashes"
+            },
+            {
+              "file": "tests/phase015/ai-governance.test.ts",
+              "fullName": "Phase015 AI governance database [schema-bootstrap] creates the exact final schema with disabled defaults and an idempotent bootstrap"
+            },
+            {
+              "file": "tests/phase015/ai-governance.test.ts",
+              "fullName": "Phase015 AI governance database [schema-bootstrap] invalid but correctly hashed planning policy remains unusable"
+            },
+            {
+              "file": "tests/phase015/ai-governance.test.ts",
+              "fullName": "Phase015 AI governance database [schema-bootstrap] the application role cannot update or delete any immutable version"
+            },
+            {
+              "file": "tests/phase015/ai-governance.test.ts",
+              "fullName": "Phase015 frozen prompt and policy contracts [schema-bootstrap] the eight templates and runtime schemas match reviewed source documents"
+            },
+            {
+              "file": "tests/phase015/ai-governance.test.ts",
+              "fullName": "Phase015 frozen prompt and policy contracts [schema-bootstrap] typed policy rejects missing groups, wrong units, ranges, decimals and production scope"
+            }
+          ]
+        },
+        {
+          "testCaseId": "Phase015:resolution",
+          "tag": "[resolution]",
+          "assertions": [
+            {
+              "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+              "fullName": "Phase015 real Provider key rotation [resolution] a competing activation invalidates the captured reference revisions without partial switch"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [resolution] owner, synthetic policy and privacy violations fail before any reservation"
+            },
+            {
+              "file": "tests/phase015/prompt-service.test.ts",
+              "fullName": "Phase015 prompt resolution [resolution] absent activation pointers fail closed before creating reservations"
+            },
+            {
+              "file": "tests/phase015/prompt-service.test.ts",
+              "fullName": "Phase015 prompt resolution [resolution] both resolvers reject disabled tuples and stale activation CAS"
+            },
+            {
+              "file": "tests/phase015/prompt-service.test.ts",
+              "fullName": "Phase015 prompt resolution [resolution] concurrent tuple switches expose only complete old or new snapshots"
+            },
+            {
+              "file": "tests/phase015/prompt-service.test.ts",
+              "fullName": "Phase015 prompt resolution [resolution] database rejects cross-definition and cross-provider tuple references"
+            },
+            {
+              "file": "tests/phase015/prompt-service.test.ts",
+              "fullName": "Phase015 prompt resolution [resolution] invalid prompt hash is rejected before egress"
+            },
+            {
+              "file": "tests/phase015/prompt-service.test.ts",
+              "fullName": "Phase015 prompt resolution [resolution] provider locale, model context and unpriced bounds cannot be activated for a call"
+            },
+            {
+              "file": "tests/phase015/prompt-service.test.ts",
+              "fullName": "Phase015 prompt resolution [resolution] rejects missing, unknown, nullable and structurally invalid variables"
+            },
+            {
+              "file": "tests/phase015/prompt-service.test.ts",
+              "fullName": "Phase015 prompt resolution [resolution] resolves exact immutable versions and accepts a compatible prompt version two"
+            },
+            {
+              "file": "tests/phase015/prompt-service.test.ts",
+              "fullName": "Phase015 prompt resolution [resolution] variable schema drift and incompatible response schema are rejected"
+            }
+          ]
+        },
+        {
+          "testCaseId": "Phase015:isolation-ssrf",
+          "tag": "[isolation]",
+          "assertions": [
+            {
+              "file": "tests/phase015/provider-registry.test.ts",
+              "fullName": "Phase015 real provider isolation [isolation] business SDK, network, direct adapter and secret imports stay inside declared boundaries"
+            },
+            {
+              "file": "tests/phase015/provider-registry.test.ts",
+              "fullName": "Phase015 real provider isolation [isolation] default DNS lookup is used and only allowlisted HTTPS URLs pass"
+            },
+            {
+              "file": "tests/phase015/provider-registry.test.ts",
+              "fullName": "Phase015 real provider isolation [isolation] malformed JSON, incomplete streams, partial socket loss and oversized bodies never retry"
+            },
+            {
+              "file": "tests/phase015/provider-registry.test.ts",
+              "fullName": "Phase015 real provider isolation [isolation] redirect DNS changes cannot reach a private address"
+            },
+            {
+              "file": "tests/phase015/provider-registry.test.ts",
+              "fullName": "Phase015 real provider isolation [isolation] rejects private, reserved, mapped IPv6 and mixed DNS rebinding addresses"
+            },
+            {
+              "file": "tests/phase015/provider-registry.test.ts",
+              "fullName": "Phase015 real provider isolation [isolation] serializes the actual request and pins the prepared endpoint once"
+            },
+            {
+              "file": "tests/phase015/provider-registry.test.ts",
+              "fullName": "Phase015 real provider isolation [isolation] transport overrides are test-only and fixed to numeric loopback"
+            },
+            {
+              "file": "tests/phase015/provider-registry.test.ts",
+              "fullName": "Phase015 real provider isolation [isolation] validates every redirect, rejects private targets and stops at two hops"
+            }
+          ]
+        },
+        {
+          "testCaseId": "Phase015:timeout-cancel-retry",
+          "tag": "[timeout-cancel-retry]",
+          "assertions": [
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [timeout-cancel-retry] a shared total deadline includes Retry-After and terminates blocked HTTP"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [timeout-cancel-retry] external AbortSignal cancels an in-flight request and never retries"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [timeout-cancel-retry] first byte, invalid JSON and schema mismatches never retry and are traced"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [timeout-cancel-retry] real before-byte HTTP retries at most once with separate durable reservations"
+            },
+            {
+              "file": "tests/phase015/provider-registry.test.ts",
+              "fullName": "Phase015 real provider isolation [timeout-cancel-retry] HTTP errors retry only before body bytes and retain Retry-After"
+            },
+            {
+              "file": "tests/phase015/provider-registry.test.ts",
+              "fullName": "Phase015 real provider isolation [timeout-cancel-retry] parses split SSE frames, usage and DONE without exposing raw data"
+            },
+            {
+              "file": "tests/phase015/provider-registry.test.ts",
+              "fullName": "Phase015 real provider isolation [timeout-cancel-retry] pre-abort sends zero requests and cancellation interrupts a blocked body read"
+            }
+          ]
+        },
+        {
+          "testCaseId": "Phase015:quota-cost",
+          "tag": "[quota-cost]",
+          "assertions": [
+            {
+              "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+              "fullName": "Phase015 real Provider key rotation [quota-cost] candidate probes enforce frozen token and Decimal cost budgets before transport"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [quota-cost] a lost response remains charged across days and provider proof settles only once"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [quota-cost] concurrent Decimal reservations never exceed the frozen token or cost cap"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [quota-cost] NOT_SENT release and unknown upper-bound reconciliation are idempotent"
+            }
+          ]
+        },
+        {
+          "testCaseId": "Phase015:version-evidence",
+          "tag": "[version-evidence]",
+          "assertions": [
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [version-evidence] failed evidence persistence cannot return a successful AI result"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [version-evidence] request content, policy, revisions and exact model configuration bind every attempt"
+            }
+          ]
+        },
+        {
+          "testCaseId": "Phase015:kill-switch",
+          "tag": "[kill-switch]",
+          "assertions": [
+            {
+              "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+              "fullName": "Phase015 real Provider key rotation [kill-switch] candidate probes cannot bypass a closed global switch"
+            },
+            {
+              "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+              "fullName": "Phase015 real Provider key rotation [kill-switch] emergency revoke during the candidate request prevents subsequent calls and activation"
+            },
+            {
+              "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+              "fullName": "Phase015 real Provider key rotation [kill-switch] one failed real candidate leaves every active tuple and the old key unchanged"
+            },
+            {
+              "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+              "fullName": "Phase015 real Provider key rotation [kill-switch] rotates two real provider/model references atomically and preserves disabled references"
+            },
+            {
+              "file": "tests/phase015/ai-governance.test.ts",
+              "fullName": "Phase015 AI governance database [kill-switch] default and restart stay closed; real ADMIN enablement is audited and guarded"
+            },
+            {
+              "file": "tests/phase015/ai-governance.test.ts",
+              "fullName": "Phase015 AI governance database [kill-switch] failed guarded post-enable probe closes the switch and disables every tuple"
+            },
+            {
+              "file": "tests/phase015/ai-governance.test.ts",
+              "fullName": "Phase015 AI governance database [kill-switch] the isolated CLI uses the same ADMIN settings service and can be rerun"
+            },
+            {
+              "file": "tests/phase015/ai-governance.test.ts",
+              "fullName": "Phase015 AI governance database [kill-switch] unauthorized actors and failed fixture preflight leave all activations disabled"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [kill-switch] a valid envelope with a mismatched fingerprint is refused before transport"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [kill-switch] absent LIVE admission and inactive required keys create no reservations or requests"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [kill-switch] an emergency kill or revoke during preparation stops the dispatch"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [kill-switch] NONE dispatches without credentials and ACTIVE REQUIRED resolves only inside the adapter"
+            }
+          ]
+        },
+        {
+          "testCaseId": "Phase015:mutation",
+          "observedIn": "negative-controls-and-restored-card"
+        }
+      ]
+    },
+    "dedicated": {
+      "logicalCommand": "npm run test -- ai-governance provider-registry guarded-client prompt-service",
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- ai-governance provider-registry guarded-client prompt-service --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-case-command-8.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "ai-governance",
+          "provider-registry",
+          "guarded-client",
+          "prompt-service",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-case-command-8.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+        "startedAt": "2026-09-13T09:42:43.855Z",
+        "finishedAt": "2026-09-13T09:43:21.124Z",
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run ai-governance provider-registry guarded-client prompt-service --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-case-command-8.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase015/attempt-14-case-command-8.json\n",
+        "stderr": "",
+        "durationMs": 37269
+      },
+      "reportPath": "docs/evidence/attempts/Phase015/attempt-14/case-command-8.json",
+      "reportHash": "25e177235eef6362b65d4e329a7811dfadf59f554e385e74533532280d809e94",
+      "mappings": [
+        {
+          "testCaseId": "Phase015:schema-bootstrap",
+          "tag": "[schema-bootstrap]",
+          "assertions": [
+            {
+              "file": "tests/phase015/ai-governance.test.ts",
+              "fullName": "Phase015 AI governance database [schema-bootstrap] bootstrap rejects stored provider and model content with copied valid hashes"
+            },
+            {
+              "file": "tests/phase015/ai-governance.test.ts",
+              "fullName": "Phase015 AI governance database [schema-bootstrap] creates the exact final schema with disabled defaults and an idempotent bootstrap"
+            },
+            {
+              "file": "tests/phase015/ai-governance.test.ts",
+              "fullName": "Phase015 AI governance database [schema-bootstrap] invalid but correctly hashed planning policy remains unusable"
+            },
+            {
+              "file": "tests/phase015/ai-governance.test.ts",
+              "fullName": "Phase015 AI governance database [schema-bootstrap] the application role cannot update or delete any immutable version"
+            },
+            {
+              "file": "tests/phase015/ai-governance.test.ts",
+              "fullName": "Phase015 frozen prompt and policy contracts [schema-bootstrap] the eight templates and runtime schemas match reviewed source documents"
+            },
+            {
+              "file": "tests/phase015/ai-governance.test.ts",
+              "fullName": "Phase015 frozen prompt and policy contracts [schema-bootstrap] typed policy rejects missing groups, wrong units, ranges, decimals and production scope"
+            }
+          ]
+        },
+        {
+          "testCaseId": "Phase015:resolution",
+          "tag": "[resolution]",
+          "assertions": [
+            {
+              "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+              "fullName": "Phase015 real Provider key rotation [resolution] a competing activation invalidates the captured reference revisions without partial switch"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [resolution] owner, synthetic policy and privacy violations fail before any reservation"
+            },
+            {
+              "file": "tests/phase015/prompt-service.test.ts",
+              "fullName": "Phase015 prompt resolution [resolution] absent activation pointers fail closed before creating reservations"
+            },
+            {
+              "file": "tests/phase015/prompt-service.test.ts",
+              "fullName": "Phase015 prompt resolution [resolution] both resolvers reject disabled tuples and stale activation CAS"
+            },
+            {
+              "file": "tests/phase015/prompt-service.test.ts",
+              "fullName": "Phase015 prompt resolution [resolution] concurrent tuple switches expose only complete old or new snapshots"
+            },
+            {
+              "file": "tests/phase015/prompt-service.test.ts",
+              "fullName": "Phase015 prompt resolution [resolution] database rejects cross-definition and cross-provider tuple references"
+            },
+            {
+              "file": "tests/phase015/prompt-service.test.ts",
+              "fullName": "Phase015 prompt resolution [resolution] invalid prompt hash is rejected before egress"
+            },
+            {
+              "file": "tests/phase015/prompt-service.test.ts",
+              "fullName": "Phase015 prompt resolution [resolution] provider locale, model context and unpriced bounds cannot be activated for a call"
+            },
+            {
+              "file": "tests/phase015/prompt-service.test.ts",
+              "fullName": "Phase015 prompt resolution [resolution] rejects missing, unknown, nullable and structurally invalid variables"
+            },
+            {
+              "file": "tests/phase015/prompt-service.test.ts",
+              "fullName": "Phase015 prompt resolution [resolution] resolves exact immutable versions and accepts a compatible prompt version two"
+            },
+            {
+              "file": "tests/phase015/prompt-service.test.ts",
+              "fullName": "Phase015 prompt resolution [resolution] variable schema drift and incompatible response schema are rejected"
+            }
+          ]
+        },
+        {
+          "testCaseId": "Phase015:isolation-ssrf",
+          "tag": "[isolation]",
+          "assertions": [
+            {
+              "file": "tests/phase015/provider-registry.test.ts",
+              "fullName": "Phase015 real provider isolation [isolation] business SDK, network, direct adapter and secret imports stay inside declared boundaries"
+            },
+            {
+              "file": "tests/phase015/provider-registry.test.ts",
+              "fullName": "Phase015 real provider isolation [isolation] default DNS lookup is used and only allowlisted HTTPS URLs pass"
+            },
+            {
+              "file": "tests/phase015/provider-registry.test.ts",
+              "fullName": "Phase015 real provider isolation [isolation] malformed JSON, incomplete streams, partial socket loss and oversized bodies never retry"
+            },
+            {
+              "file": "tests/phase015/provider-registry.test.ts",
+              "fullName": "Phase015 real provider isolation [isolation] redirect DNS changes cannot reach a private address"
+            },
+            {
+              "file": "tests/phase015/provider-registry.test.ts",
+              "fullName": "Phase015 real provider isolation [isolation] rejects private, reserved, mapped IPv6 and mixed DNS rebinding addresses"
+            },
+            {
+              "file": "tests/phase015/provider-registry.test.ts",
+              "fullName": "Phase015 real provider isolation [isolation] serializes the actual request and pins the prepared endpoint once"
+            },
+            {
+              "file": "tests/phase015/provider-registry.test.ts",
+              "fullName": "Phase015 real provider isolation [isolation] transport overrides are test-only and fixed to numeric loopback"
+            },
+            {
+              "file": "tests/phase015/provider-registry.test.ts",
+              "fullName": "Phase015 real provider isolation [isolation] validates every redirect, rejects private targets and stops at two hops"
+            }
+          ]
+        },
+        {
+          "testCaseId": "Phase015:timeout-cancel-retry",
+          "tag": "[timeout-cancel-retry]",
+          "assertions": [
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [timeout-cancel-retry] a shared total deadline includes Retry-After and terminates blocked HTTP"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [timeout-cancel-retry] external AbortSignal cancels an in-flight request and never retries"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [timeout-cancel-retry] first byte, invalid JSON and schema mismatches never retry and are traced"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [timeout-cancel-retry] real before-byte HTTP retries at most once with separate durable reservations"
+            },
+            {
+              "file": "tests/phase015/provider-registry.test.ts",
+              "fullName": "Phase015 real provider isolation [timeout-cancel-retry] HTTP errors retry only before body bytes and retain Retry-After"
+            },
+            {
+              "file": "tests/phase015/provider-registry.test.ts",
+              "fullName": "Phase015 real provider isolation [timeout-cancel-retry] parses split SSE frames, usage and DONE without exposing raw data"
+            },
+            {
+              "file": "tests/phase015/provider-registry.test.ts",
+              "fullName": "Phase015 real provider isolation [timeout-cancel-retry] pre-abort sends zero requests and cancellation interrupts a blocked body read"
+            }
+          ]
+        },
+        {
+          "testCaseId": "Phase015:quota-cost",
+          "tag": "[quota-cost]",
+          "assertions": [
+            {
+              "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+              "fullName": "Phase015 real Provider key rotation [quota-cost] candidate probes enforce frozen token and Decimal cost budgets before transport"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [quota-cost] a lost response remains charged across days and provider proof settles only once"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [quota-cost] concurrent Decimal reservations never exceed the frozen token or cost cap"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [quota-cost] NOT_SENT release and unknown upper-bound reconciliation are idempotent"
+            }
+          ]
+        },
+        {
+          "testCaseId": "Phase015:version-evidence",
+          "tag": "[version-evidence]",
+          "assertions": [
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [version-evidence] failed evidence persistence cannot return a successful AI result"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [version-evidence] request content, policy, revisions and exact model configuration bind every attempt"
+            }
+          ]
+        },
+        {
+          "testCaseId": "Phase015:kill-switch",
+          "tag": "[kill-switch]",
+          "assertions": [
+            {
+              "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+              "fullName": "Phase015 real Provider key rotation [kill-switch] candidate probes cannot bypass a closed global switch"
+            },
+            {
+              "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+              "fullName": "Phase015 real Provider key rotation [kill-switch] emergency revoke during the candidate request prevents subsequent calls and activation"
+            },
+            {
+              "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+              "fullName": "Phase015 real Provider key rotation [kill-switch] one failed real candidate leaves every active tuple and the old key unchanged"
+            },
+            {
+              "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+              "fullName": "Phase015 real Provider key rotation [kill-switch] rotates two real provider/model references atomically and preserves disabled references"
+            },
+            {
+              "file": "tests/phase015/ai-governance.test.ts",
+              "fullName": "Phase015 AI governance database [kill-switch] default and restart stay closed; real ADMIN enablement is audited and guarded"
+            },
+            {
+              "file": "tests/phase015/ai-governance.test.ts",
+              "fullName": "Phase015 AI governance database [kill-switch] failed guarded post-enable probe closes the switch and disables every tuple"
+            },
+            {
+              "file": "tests/phase015/ai-governance.test.ts",
+              "fullName": "Phase015 AI governance database [kill-switch] the isolated CLI uses the same ADMIN settings service and can be rerun"
+            },
+            {
+              "file": "tests/phase015/ai-governance.test.ts",
+              "fullName": "Phase015 AI governance database [kill-switch] unauthorized actors and failed fixture preflight leave all activations disabled"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [kill-switch] a valid envelope with a mismatched fingerprint is refused before transport"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [kill-switch] absent LIVE admission and inactive required keys create no reservations or requests"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [kill-switch] an emergency kill or revoke during preparation stops the dispatch"
+            },
+            {
+              "file": "tests/phase015/guarded-client.test.ts",
+              "fullName": "Phase015 guarded client [kill-switch] NONE dispatches without credentials and ACTIVE REQUIRED resolves only inside the adapter"
+            }
+          ]
+        },
+        {
+          "testCaseId": "Phase015:mutation",
+          "observedIn": "negative-controls-and-restored-card"
+        }
+      ]
+    },
+    "database": {
+      "database": "phase015_disposable_bf0013251532",
+      "host": "127.0.0.1",
+      "isolated": true,
+      "productionTraffic": false,
+      "credentials": "SYNTHETIC_NOT_RECORDED",
+      "appliedMigrations": 9,
+      "previousMigrationsPreserved": 8,
+      "runtimeOwner": false,
+      "runtimeSuperuser": false,
+      "version": "17.11 (Debian 17.11-1.pgdg12+2)",
+      "migrations": [
+        {
+          "name": "20260910000000_init_user",
+          "sha256": "b65593d8d8a7a1821a2f65415616e5c083a0e38785bcac2a46ea362d126de3a3"
+        },
+        {
+          "name": "20260910172735_system_config",
+          "sha256": "25f5d0d35a216ee085fad468f5d69d740610369ff91fcdd0ebe4a188deef45cc"
+        },
+        {
+          "name": "20260911002217_travel_record_chat_message",
+          "sha256": "761979289b28f413d47c09290f43e9d01ffc22421918103a51d6c67b638bb48f"
+        },
+        {
+          "name": "20260911042258_audit_log",
+          "sha256": "9707b78108c51f9a10ebfa86fa816d7caf353bcd1f09a0cce2eefcac6b392373"
+        },
+        {
+          "name": "20260911104017_api_key_config",
+          "sha256": "9bc311e50f3dccc7dc7885a901285fd1f359beb0e3b808bdc1e4c16ab4ce79d1"
+        },
+        {
+          "name": "20260911151715_auth_session_login_attempt",
+          "sha256": "e4913a97a5ff09d9ee71efaebd58163b8b5f5db9f0fe7747bd07783aed66c08f"
+        },
+        {
+          "name": "20260912013806_admin_commands",
+          "sha256": "26eac34ab5c30b48adb680a3a770d4454503e3550b3009b4e59cc0dc43e2392d"
+        },
+        {
+          "name": "20260912061403_key_rotation_contract",
+          "sha256": "21eccfad37e0bf03d758a98f1bc5ef5b6b2bd6bf15d96490f9e923ba3b4eed4f"
+        },
+        {
+          "name": "20260913000000_ai_governance",
+          "sha256": "0bb09337aaeec5336ba582c7a026a6b904ce90f0cf3c9cb5e8afbf4aa317ae0b"
+        }
+      ]
+    },
+    "assertionMapping": {
+      "testCaseId": "Phase015:mutation",
+      "observedIn": "negative-controls-and-restored-card"
+    },
+    "dedicatedAssertionMapping": {
+      "testCaseId": "Phase015:mutation",
+      "observedIn": "negative-controls-and-restored-card"
+    },
+    "actualExecution": {
+      "testCaseId": "Phase015:mutation",
+      "logicalCommand": "npm run test -- ai-governance provider-registry guarded-client prompt-service",
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- ai-governance provider-registry guarded-client prompt-service --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-case-command-8.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "ai-governance",
+          "provider-registry",
+          "guarded-client",
+          "prompt-service",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-case-command-8.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+        "startedAt": "2026-09-13T09:42:43.855Z",
+        "finishedAt": "2026-09-13T09:43:21.124Z",
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run ai-governance provider-registry guarded-client prompt-service --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-case-command-8.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase015/attempt-14-case-command-8.json\n",
+        "stderr": "",
+        "durationMs": 37269
+      },
+      "reportPath": "docs/evidence/attempts/Phase015/attempt-14/case-command-8.json",
+      "reportHash": "25e177235eef6362b65d4e329a7811dfadf59f554e385e74533532280d809e94"
+    },
+    "negativeControls": {
+      "rows": [
+        {
+          "id": "guarded-client-boundary",
+          "originalCase": "Phase015:isolation-ssrf",
+          "exitCode": 1,
+          "reportPath": "docs/evidence/attempts/Phase015/attempt-14/mutations/guarded-client-boundary-report.json",
+          "reportHash": "c9f913d30084d4a1643ac28bcfaef96ba107dc81884723df3bd987b56d7dca67",
+          "receiptPath": "docs/evidence/attempts/Phase015/attempt-14/mutations/guarded-client-boundary.json",
+          "receiptHash": "ef3d7728d743bf3d371538b5e24e57583dcf0863bb4033aa8579ba88c552d770",
+          "failureEvidence": {
+            "id": "guarded-client-boundary",
+            "file": "src/server/ai/guarded-client.ts",
+            "testFile": "tests/phase015/provider-registry.test.ts",
+            "assertion": "Phase015 real provider isolation [isolation] business SDK, network, direct adapter and secret imports stay inside declared boundaries",
+            "signal": "AssertionError: expected [ Array(1) ] to deeply equal []\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase015/fixtures/guarded-client-boundary-9VtiL0/tests/phase015/provider-registry.test.ts:391:30\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:"
+          },
+          "testSourceHash": "51c717c735765be4dd75f9a14517f51d8f00e4553be5d79154adbb33d2825d18",
+          "changes": [
+            {
+              "sourcePath": "src/server/ai/guarded-client.ts",
+              "originalHash": "9960dd4c6bb0b5db94eb591d82c5d515d1e24e937fee4ff3c5b911edf0ad3e85",
+              "mutatedHash": "17165c5da0a90511d2bdae7e1daabb7b91a9e34e09ff5ae08261be421600bc79"
+            }
+          ],
+          "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\fixtures\\guarded-client-boundary-9VtiL0",
+          "result": {
+            "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase015/provider-registry.test.ts -t \\[isolation\\] business SDK, network, direct adapter and secret imports stay inside declared boundaries --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-negative-guarded-client-boundary.json",
+            "executable": "C:\\Program Files\\nodejs\\node.exe",
+            "arguments": [
+              "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+              "run",
+              "test",
+              "--",
+              "tests/phase015/provider-registry.test.ts",
+              "-t",
+              "\\[isolation\\] business SDK, network, direct adapter and secret imports stay inside declared boundaries",
+              "--reporter=json",
+              "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-negative-guarded-client-boundary.json"
+            ],
+            "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\fixtures\\guarded-client-boundary-9VtiL0",
+            "startedAt": "2026-09-13T09:50:09.279Z",
+            "finishedAt": "2026-09-13T09:50:11.303Z",
+            "exitCode": 1,
+            "signal": null,
+            "timedOut": false,
+            "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/phase015/provider-registry.test.ts -t \\[isolation\\] business SDK, network, direct adapter and secret imports stay inside declared boundaries --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-negative-guarded-client-boundary.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase015/attempt-14-negative-guarded-client-boundary.json\n",
+            "stderr": "",
+            "durationMs": 2024
+          }
+        },
+        {
+          "id": "activation-check",
+          "originalCase": "Phase015:resolution",
+          "exitCode": 1,
+          "reportPath": "docs/evidence/attempts/Phase015/attempt-14/mutations/activation-check-report.json",
+          "reportHash": "5f28a0a64b03293492ccad693d8755b300abc9f40ce8feadf0c9a89d67e3b500",
+          "receiptPath": "docs/evidence/attempts/Phase015/attempt-14/mutations/activation-check.json",
+          "receiptHash": "40197d434073f5edfa18b2dd8c12f240f3ff1132a100d98ec1a1334458b30f5d",
+          "failureEvidence": {
+            "id": "activation-check",
+            "file": "src/server/services/model-resolution-service.ts",
+            "testFile": "tests/phase015/prompt-service.test.ts",
+            "assertion": "Phase015 prompt resolution [resolution] both resolvers reject disabled tuples and stale activation CAS",
+            "signal": "Error: promise resolved \"{ deploymentId: 'mock-model', …(9) }\" instead of rejecting\n    at _Assertion.__VITEST_REJECTS__ (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1747:17)\n    at _Assertion.propertyGetter (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/chai/index.js:1570:27)\n    at Reflect.get (<anonymous>)\n    at Object.proxyGetter [as get] (file:///C:/Users/11295/Desktop/Serendipity"
+          },
+          "testSourceHash": "0ec9d9fda6d167ce2cd57072c79949c8599b535ca9b251beb9b8dbe1dd1d9d6a",
+          "changes": [
+            {
+              "sourcePath": "src/server/services/model-resolution-service.ts",
+              "originalHash": "7217609d612a9682976c6656de513fa2be5e95e7739de9cde1e992a64fc852c8",
+              "mutatedHash": "6a4fc53eb55c2e9d967f84d61f7d665b31442ad46f7fbae1a065b1594235eecd"
+            }
+          ],
+          "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\fixtures\\activation-check-ZKIfX9",
+          "result": {
+            "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase015/prompt-service.test.ts -t \\[resolution\\] both resolvers reject disabled tuples and stale activation CAS --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-negative-activation-check.json",
+            "executable": "C:\\Program Files\\nodejs\\node.exe",
+            "arguments": [
+              "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+              "run",
+              "test",
+              "--",
+              "tests/phase015/prompt-service.test.ts",
+              "-t",
+              "\\[resolution\\] both resolvers reject disabled tuples and stale activation CAS",
+              "--reporter=json",
+              "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-negative-activation-check.json"
+            ],
+            "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\fixtures\\activation-check-ZKIfX9",
+            "startedAt": "2026-09-13T09:50:12.052Z",
+            "finishedAt": "2026-09-13T09:50:14.786Z",
+            "exitCode": 1,
+            "signal": null,
+            "timedOut": false,
+            "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/phase015/prompt-service.test.ts -t \\[resolution\\] both resolvers reject disabled tuples and stale activation CAS --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-negative-activation-check.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase015/attempt-14-negative-activation-check.json\n",
+            "stderr": "",
+            "durationMs": 2734
+          }
+        },
+        {
+          "id": "kill-switch",
+          "originalCase": "Phase015:kill-switch",
+          "exitCode": 1,
+          "reportPath": "docs/evidence/attempts/Phase015/attempt-14/mutations/kill-switch-report.json",
+          "reportHash": "e87b7d8353fc1ae0e0c8baf73a07459eb5040dd645ddee6e48111bb7b048c66f",
+          "receiptPath": "docs/evidence/attempts/Phase015/attempt-14/mutations/kill-switch.json",
+          "receiptHash": "04ad377c50d340bafb0ceedd9cd5ac78be7581c76f79023de0819eed3f9c8d20",
+          "failureEvidence": {
+            "id": "kill-switch",
+            "file": "src/server/ai/guarded-client.ts",
+            "testFile": "tests/phase015/ai-governance.test.ts",
+            "assertion": "Phase015 AI governance database [kill-switch] default and restart stay closed; real ADMIN enablement is audited and guarded",
+            "signal": "AssertionError: expected { ok: false, …(4) } to match object { ok: false, …(1) }\n(3 matching properties omitted from actual)\n    at Proxy.<anonymous> (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1283:10)\n    at Proxy.<anonymous> (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1156:15)\n    at Proxy.methodWrapper (file:///C:/Users/11295/Desktop/Serendipity%20%C"
+          },
+          "testSourceHash": "5bc7956d57ba8a599d6b0ac2ff0b6f877b0257981b41ef65bad9b228ec98c73d",
+          "changes": [
+            {
+              "sourcePath": "src/server/ai/guarded-client.ts",
+              "originalHash": "9960dd4c6bb0b5db94eb591d82c5d515d1e24e937fee4ff3c5b911edf0ad3e85",
+              "mutatedHash": "4900bd54519734c7e5eccda1b66aa845a1bd33c73dc3c1e42e0e731e1849e090"
+            }
+          ],
+          "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\fixtures\\kill-switch-Mz4SMm",
+          "result": {
+            "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase015/ai-governance.test.ts -t \\[kill-switch\\] default and restart stay closed; real ADMIN enablement is audited and guarded --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-negative-kill-switch.json",
+            "executable": "C:\\Program Files\\nodejs\\node.exe",
+            "arguments": [
+              "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+              "run",
+              "test",
+              "--",
+              "tests/phase015/ai-governance.test.ts",
+              "-t",
+              "\\[kill-switch\\] default and restart stay closed; real ADMIN enablement is audited and guarded",
+              "--reporter=json",
+              "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-negative-kill-switch.json"
+            ],
+            "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\fixtures\\kill-switch-Mz4SMm",
+            "startedAt": "2026-09-13T09:50:15.521Z",
+            "finishedAt": "2026-09-13T09:50:17.639Z",
+            "exitCode": 1,
+            "signal": null,
+            "timedOut": false,
+            "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/phase015/ai-governance.test.ts -t \\[kill-switch\\] default and restart stay closed; real ADMIN enablement is audited and guarded --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-negative-kill-switch.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase015/attempt-14-negative-kill-switch.json\n",
+            "stderr": "",
+            "durationMs": 2118
+          }
+        },
+        {
+          "id": "reservation-cas",
+          "originalCase": "Phase015:quota-cost",
+          "exitCode": 1,
+          "reportPath": "docs/evidence/attempts/Phase015/attempt-14/mutations/reservation-cas-report.json",
+          "reportHash": "bae8f214658fc166d9600d98cec0e9bd9743c8c4feb75574e44b6cf1552d48e1",
+          "receiptPath": "docs/evidence/attempts/Phase015/attempt-14/mutations/reservation-cas.json",
+          "receiptHash": "581643995332f05b0a84f3e2c131d20669ba0ba38f027313319c9518c5e91bde",
+          "failureEvidence": {
+            "id": "reservation-cas",
+            "file": "src/server/ai/usage-reservations.ts",
+            "testFile": "tests/phase015/guarded-client.test.ts",
+            "assertion": "Phase015 guarded client [quota-cost] concurrent Decimal reservations never exceed the frozen token or cost cap",
+            "signal": "AssertionError: expected [ { status: 'fulfilled', …(1) }, …(4) ] to have a length of 2 but got 5\n    at Proxy.<anonymous> (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1389:20)\n    at Proxy.<anonymous> (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/expect/dist/index.js:1156:15)\n    at Proxy.methodWrapper (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/no"
+          },
+          "testSourceHash": "2cc219d792840b7d4bab62a311e143653aa0d636a7cf08f6b73a2324c22db1d4",
+          "changes": [
+            {
+              "sourcePath": "src/server/ai/usage-reservations.ts",
+              "originalHash": "1cce56d78d6fc1aae067b7cd885985e4487f273938ab44c267d9facae2695501",
+              "mutatedHash": "139e56cc0df79e2ab6e4b652e6d6f399664634fc50e8c8e9d11f9df2a23cdbc2"
+            }
+          ],
+          "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\fixtures\\reservation-cas-xF11KA",
+          "result": {
+            "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase015/guarded-client.test.ts -t \\[quota-cost\\] concurrent Decimal reservations never exceed the frozen token or cost cap --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-negative-reservation-cas.json",
+            "executable": "C:\\Program Files\\nodejs\\node.exe",
+            "arguments": [
+              "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+              "run",
+              "test",
+              "--",
+              "tests/phase015/guarded-client.test.ts",
+              "-t",
+              "\\[quota-cost\\] concurrent Decimal reservations never exceed the frozen token or cost cap",
+              "--reporter=json",
+              "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-negative-reservation-cas.json"
+            ],
+            "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\fixtures\\reservation-cas-xF11KA",
+            "startedAt": "2026-09-13T09:50:18.384Z",
+            "finishedAt": "2026-09-13T09:50:21.149Z",
+            "exitCode": 1,
+            "signal": null,
+            "timedOut": false,
+            "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/phase015/guarded-client.test.ts -t \\[quota-cost\\] concurrent Decimal reservations never exceed the frozen token or cost cap --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-negative-reservation-cas.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase015/attempt-14-negative-reservation-cas.json\n",
+            "stderr": "",
+            "durationMs": 2765
+          }
+        },
+        {
+          "id": "abort-signal",
+          "originalCase": "Phase015:timeout-cancel-retry",
+          "exitCode": 1,
+          "reportPath": "docs/evidence/attempts/Phase015/attempt-14/mutations/abort-signal-report.json",
+          "reportHash": "9b4926acd0c599ea7de3c1424362605bbdbf0dc0c569ed35ed5325eda3695982",
+          "receiptPath": "docs/evidence/attempts/Phase015/attempt-14/mutations/abort-signal.json",
+          "receiptHash": "72d4f436d1deeff61a6f3cfa5d1b6352a770efee7eb6f81d7ad94e642812cf25",
+          "failureEvidence": {
+            "id": "abort-signal",
+            "file": "src/server/ai/guarded-client.ts",
+            "testFile": "tests/phase015/guarded-client.test.ts",
+            "assertion": "Phase015 guarded client [timeout-cancel-retry] external AbortSignal cancels an in-flight request and never retries",
+            "signal": "AssertionError: expected 2025 to be less than 1200\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase015/fixtures/abort-signal-FSlzUX/tests/phase015/guarded-client.test.ts:291:36\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+          },
+          "testSourceHash": "2cc219d792840b7d4bab62a311e143653aa0d636a7cf08f6b73a2324c22db1d4",
+          "changes": [
+            {
+              "sourcePath": "src/server/ai/guarded-client.ts",
+              "originalHash": "9960dd4c6bb0b5db94eb591d82c5d515d1e24e937fee4ff3c5b911edf0ad3e85",
+              "mutatedHash": "625e030d8a86f8ff76cba6a6268f30e50409a156965b0b6a843e474dde3c1fbf"
+            }
+          ],
+          "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\fixtures\\abort-signal-FSlzUX",
+          "result": {
+            "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase015/guarded-client.test.ts -t \\[timeout-cancel-retry\\] external AbortSignal cancels an in-flight request and never retries --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-negative-abort-signal.json",
+            "executable": "C:\\Program Files\\nodejs\\node.exe",
+            "arguments": [
+              "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+              "run",
+              "test",
+              "--",
+              "tests/phase015/guarded-client.test.ts",
+              "-t",
+              "\\[timeout-cancel-retry\\] external AbortSignal cancels an in-flight request and never retries",
+              "--reporter=json",
+              "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-negative-abort-signal.json"
+            ],
+            "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\fixtures\\abort-signal-FSlzUX",
+            "startedAt": "2026-09-13T09:50:21.883Z",
+            "finishedAt": "2026-09-13T09:50:26.688Z",
+            "exitCode": 1,
+            "signal": null,
+            "timedOut": false,
+            "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/phase015/guarded-client.test.ts -t \\[timeout-cancel-retry\\] external AbortSignal cancels an in-flight request and never retries --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-negative-abort-signal.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase015/attempt-14-negative-abort-signal.json\n",
+            "stderr": "",
+            "durationMs": 4805
+          }
+        },
+        {
+          "id": "unknown-expiry-release",
+          "originalCase": "Phase015:quota-cost",
+          "exitCode": 1,
+          "reportPath": "docs/evidence/attempts/Phase015/attempt-14/mutations/unknown-expiry-release-report.json",
+          "reportHash": "428939b22d8dd3562fdebc9e3f033d68855ca6227fb6b6f8dd1c5b425196f717",
+          "receiptPath": "docs/evidence/attempts/Phase015/attempt-14/mutations/unknown-expiry-release.json",
+          "receiptHash": "f11ebc4c367727408c480fe197e0ecef6fb2e2218f9bc8fc6931456b2bd80810",
+          "failureEvidence": {
+            "id": "unknown-expiry-release",
+            "file": "src/server/ai/usage-reservations.ts",
+            "testFile": "tests/phase015/guarded-client.test.ts",
+            "assertion": "Phase015 guarded client [quota-cost] NOT_SENT release and unknown upper-bound reconciliation are idempotent",
+            "signal": "PrismaClientUnknownRequestError: \nInvalid `tx.aiUsageReservation.update()` invocation in\nC:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase015/fixtures/unknown-expiry-release-mPM6j4/src/server/ai/usage-reservations.ts:167:33\n\n  164     (!row.providerRequestId || proof.providerRequestId !== row.providerRequestId))\n  165 )\n  166   throw new Error(\"CONFIG_ERROR\");\n→ 167 await tx.aiUsageReservation.update(\nError occurred during query execution:\nConnectorError(ConnectorError { user_facing_error:"
+          },
+          "testSourceHash": "2cc219d792840b7d4bab62a311e143653aa0d636a7cf08f6b73a2324c22db1d4",
+          "changes": [
+            {
+              "sourcePath": "src/server/ai/usage-reservations.ts",
+              "originalHash": "1cce56d78d6fc1aae067b7cd885985e4487f273938ab44c267d9facae2695501",
+              "mutatedHash": "48c1c5596bf74eff3a01ef0c1397bbfc294d5b5b9a634a8cf19a6a8a1bb2a1b4"
+            }
+          ],
+          "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\fixtures\\unknown-expiry-release-mPM6j4",
+          "result": {
+            "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase015/guarded-client.test.ts -t \\[quota-cost\\] NOT_SENT release and unknown upper-bound reconciliation are idempotent --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-negative-unknown-expiry-release.json",
+            "executable": "C:\\Program Files\\nodejs\\node.exe",
+            "arguments": [
+              "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+              "run",
+              "test",
+              "--",
+              "tests/phase015/guarded-client.test.ts",
+              "-t",
+              "\\[quota-cost\\] NOT_SENT release and unknown upper-bound reconciliation are idempotent",
+              "--reporter=json",
+              "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-negative-unknown-expiry-release.json"
+            ],
+            "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\fixtures\\unknown-expiry-release-mPM6j4",
+            "startedAt": "2026-09-13T09:50:27.423Z",
+            "finishedAt": "2026-09-13T09:50:30.320Z",
+            "exitCode": 1,
+            "signal": null,
+            "timedOut": false,
+            "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/phase015/guarded-client.test.ts -t \\[quota-cost\\] NOT_SENT release and unknown upper-bound reconciliation are idempotent --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-negative-unknown-expiry-release.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase015/attempt-14-negative-unknown-expiry-release.json\n",
+            "stderr": "",
+            "durationMs": 2897
+          }
+        }
+      ],
+      "sourceUnchanged": true,
+      "restore": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\node_modules\\prisma\\build\\index.js migrate reset --force --skip-seed --skip-generate && docker exec 46465dca7b530ef6eae2d8af7824f5435f580ee232d6064838cd62bdebbf5403 psql -X -v ON_ERROR_STOP=1 -U phase014_runner -d phase015_disposable_bf0013251532 -At -c REVOKE CREATE ON SCHEMA public FROM PUBLIC;\nGRANT USAGE ON SCHEMA public TO phase014_app;\nGRANT SELECT,INSERT,UPDATE,DELETE ON TABLE \"User\",\"SystemConfig\",\"TravelRecord\",\"ChatMessage\",\"ApiKeyConfig\" TO phase014_app;\nGRANT SELECT,INSERT ON TABLE \"AuditLog\",\"AuthSession\",\"AuthLoginAttempt\" TO phase014_app;\nREVOKE UPDATE,DELETE,TRUNCATE,REFERENCES,TRIGGER ON TABLE \"AuditLog\" FROM phase014_app;\nGRANT UPDATE (status,\"lastSeenAt\",\"revokedAt\") ON \"AuthSession\" TO phase014_app;\nGRANT UPDATE (status,\"completedAt\") ON \"AuthLoginAttempt\" TO phase014_app;\nGRANT SELECT,INSERT,UPDATE ON TABLE \"AdminCommandReceipt\",\"KeyRotationRun\" TO phase014_app;\nGRANT SELECT ON \"_prisma_migrations\" TO phase014_app;\nGRANT EXECUTE ON FUNCTION public.auth_now() TO phase014_app;\nGRANT SELECT,INSERT ON TABLE \"PromptDefinition\",\"PromptVersion\",\"PlanningPolicyVersion\",\"ProviderConfigVersion\",\"ModelDeployment\" TO phase014_app;\nGRANT SELECT,INSERT,UPDATE ON TABLE \"PromptActivation\",\"PromptModelActivation\",\"PlanningPolicyActivation\" TO phase014_app;\nGRANT SELECT,INSERT,UPDATE ON TABLE \"AiUsageReservation\" TO phase014_app;\nGRANT SELECT,INSERT ON TABLE \"AiOutputRecord\" TO phase014_app;\nCOMMENT ON DATABASE \"phase015_disposable_bf0013251532\" IS 'serendipity-phase015-disposable:bf0013251532';",
+        "executable": "docker",
+        "arguments": [
+          "exec",
+          "46465dca7b530ef6eae2d8af7824f5435f580ee232d6064838cd62bdebbf5403",
+          "psql",
+          "-X",
+          "-v",
+          "ON_ERROR_STOP=1",
+          "-U",
+          "phase014_runner",
+          "-d",
+          "phase015_disposable_bf0013251532",
+          "-At",
+          "-c",
+          "REVOKE CREATE ON SCHEMA public FROM PUBLIC;\nGRANT USAGE ON SCHEMA public TO phase014_app;\nGRANT SELECT,INSERT,UPDATE,DELETE ON TABLE \"User\",\"SystemConfig\",\"TravelRecord\",\"ChatMessage\",\"ApiKeyConfig\" TO phase014_app;\nGRANT SELECT,INSERT ON TABLE \"AuditLog\",\"AuthSession\",\"AuthLoginAttempt\" TO phase014_app;\nREVOKE UPDATE,DELETE,TRUNCATE,REFERENCES,TRIGGER ON TABLE \"AuditLog\" FROM phase014_app;\nGRANT UPDATE (status,\"lastSeenAt\",\"revokedAt\") ON \"AuthSession\" TO phase014_app;\nGRANT UPDATE (status,\"completedAt\") ON \"AuthLoginAttempt\" TO phase014_app;\nGRANT SELECT,INSERT,UPDATE ON TABLE \"AdminCommandReceipt\",\"KeyRotationRun\" TO phase014_app;\nGRANT SELECT ON \"_prisma_migrations\" TO phase014_app;\nGRANT EXECUTE ON FUNCTION public.auth_now() TO phase014_app;\nGRANT SELECT,INSERT ON TABLE \"PromptDefinition\",\"PromptVersion\",\"PlanningPolicyVersion\",\"ProviderConfigVersion\",\"ModelDeployment\" TO phase014_app;\nGRANT SELECT,INSERT,UPDATE ON TABLE \"PromptActivation\",\"PromptModelActivation\",\"PlanningPolicyActivation\" TO phase014_app;\nGRANT SELECT,INSERT,UPDATE ON TABLE \"AiUsageReservation\" TO phase014_app;\nGRANT SELECT,INSERT ON TABLE \"AiOutputRecord\" TO phase014_app;\nCOMMENT ON DATABASE \"phase015_disposable_bf0013251532\" IS 'serendipity-phase015-disposable:bf0013251532';"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+        "startedAt": "2026-09-13T09:50:32.228Z",
+        "finishedAt": "2026-09-13T09:50:32.489Z",
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false,
+        "stdout": "Prisma schema loaded from prisma\\schema.prisma\nDatasource \"db\": PostgreSQL database \"phase015_disposable_bf0013251532\", schema \"public\" at \"127.0.0.1:56610\"\n\nApplying migration `20260910000000_init_user`\nApplying migration `20260910172735_system_config`\nApplying migration `20260911002217_travel_record_chat_message`\nApplying migration `20260911042258_audit_log`\nApplying migration `20260911104017_api_key_config`\nApplying migration `20260911151715_auth_session_login_attempt`\nApplying migration `20260912013806_admin_commands`\nApplying migration `20260912061403_key_rotation_contract`\nApplying migration `20260913000000_ai_governance`\n\nDatabase reset successful\n\nThe following migration(s) have been applied:\n\nmigrations/\n  └─ 20260910000000_init_user/\n    └─ migration.sql\n  └─ 20260910172735_system_config/\n    └─ migration.sql\n  └─ 20260911002217_travel_record_chat_message/\n    └─ migration.sql\n  └─ 20260911042258_audit_log/\n    └─ migration.sql\n  └─ 20260911104017_api_key_config/\n    └─ migration.sql\n  └─ 20260911151715_auth_session_login_attempt/\n    └─ migration.sql\n  └─ 20260912013806_admin_commands/\n    └─ migration.sql\n  └─ 20260912061403_key_rotation_contract/\n    └─ migration.sql\n  └─ 20260913000000_ai_governance/\n    └─ migration.sql\n\n\nREVOKE\nGRANT\nGRANT\nGRANT\nREVOKE\nGRANT\nGRANT\nGRANT\nGRANT\nGRANT\nGRANT\nGRANT\nGRANT\nGRANT\nCOMMENT\n",
+        "stderr": "\n",
+        "durationMs": 1495,
+        "databaseMarker": "serendipity-phase015-disposable:bf0013251532",
+        "steps": [
+          {
+            "command": "docker exec 46465dca7b530ef6eae2d8af7824f5435f580ee232d6064838cd62bdebbf5403 psql -X -v ON_ERROR_STOP=1 -U phase014_runner -d phase015_disposable_bf0013251532 -At -c SELECT current_database() || '|' || shobj_description(oid,'pg_database') FROM pg_database WHERE datname=current_database()",
+            "executable": "docker",
+            "arguments": [
+              "exec",
+              "46465dca7b530ef6eae2d8af7824f5435f580ee232d6064838cd62bdebbf5403",
+              "psql",
+              "-X",
+              "-v",
+              "ON_ERROR_STOP=1",
+              "-U",
+              "phase014_runner",
+              "-d",
+              "phase015_disposable_bf0013251532",
+              "-At",
+              "-c",
+              "SELECT current_database() || '|' || shobj_description(oid,'pg_database') FROM pg_database WHERE datname=current_database()"
+            ],
+            "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+            "startedAt": "2026-09-13T09:50:30.656Z",
+            "finishedAt": "2026-09-13T09:50:30.979Z",
+            "exitCode": 0,
+            "signal": null,
+            "timedOut": false,
+            "stdout": "phase015_disposable_bf0013251532|serendipity-phase015-disposable:bf0013251532\n",
+            "stderr": "",
+            "durationMs": 323
+          },
+          {
+            "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\node_modules\\prisma\\build\\index.js migrate reset --force --skip-seed --skip-generate",
+            "executable": "C:\\Program Files\\nodejs\\node.exe",
+            "arguments": [
+              "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\node_modules\\prisma\\build\\index.js",
+              "migrate",
+              "reset",
+              "--force",
+              "--skip-seed",
+              "--skip-generate"
+            ],
+            "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+            "startedAt": "2026-09-13T09:50:30.986Z",
+            "finishedAt": "2026-09-13T09:50:32.220Z",
+            "exitCode": 0,
+            "signal": null,
+            "timedOut": false,
+            "stdout": "Prisma schema loaded from prisma\\schema.prisma\nDatasource \"db\": PostgreSQL database \"phase015_disposable_bf0013251532\", schema \"public\" at \"127.0.0.1:56610\"\n\nApplying migration `20260910000000_init_user`\nApplying migration `20260910172735_system_config`\nApplying migration `20260911002217_travel_record_chat_message`\nApplying migration `20260911042258_audit_log`\nApplying migration `20260911104017_api_key_config`\nApplying migration `20260911151715_auth_session_login_attempt`\nApplying migration `20260912013806_admin_commands`\nApplying migration `20260912061403_key_rotation_contract`\nApplying migration `20260913000000_ai_governance`\n\nDatabase reset successful\n\nThe following migration(s) have been applied:\n\nmigrations/\n  └─ 20260910000000_init_user/\n    └─ migration.sql\n  └─ 20260910172735_system_config/\n    └─ migration.sql\n  └─ 20260911002217_travel_record_chat_message/\n    └─ migration.sql\n  └─ 20260911042258_audit_log/\n    └─ migration.sql\n  └─ 20260911104017_api_key_config/\n    └─ migration.sql\n  └─ 20260911151715_auth_session_login_attempt/\n    └─ migration.sql\n  └─ 20260912013806_admin_commands/\n    └─ migration.sql\n  └─ 20260912061403_key_rotation_contract/\n    └─ migration.sql\n  └─ 20260913000000_ai_governance/\n    └─ migration.sql\n\n",
+            "stderr": "",
+            "durationMs": 1234
+          },
+          {
+            "command": "docker exec 46465dca7b530ef6eae2d8af7824f5435f580ee232d6064838cd62bdebbf5403 psql -X -v ON_ERROR_STOP=1 -U phase014_runner -d phase015_disposable_bf0013251532 -At -c REVOKE CREATE ON SCHEMA public FROM PUBLIC;\nGRANT USAGE ON SCHEMA public TO phase014_app;\nGRANT SELECT,INSERT,UPDATE,DELETE ON TABLE \"User\",\"SystemConfig\",\"TravelRecord\",\"ChatMessage\",\"ApiKeyConfig\" TO phase014_app;\nGRANT SELECT,INSERT ON TABLE \"AuditLog\",\"AuthSession\",\"AuthLoginAttempt\" TO phase014_app;\nREVOKE UPDATE,DELETE,TRUNCATE,REFERENCES,TRIGGER ON TABLE \"AuditLog\" FROM phase014_app;\nGRANT UPDATE (status,\"lastSeenAt\",\"revokedAt\") ON \"AuthSession\" TO phase014_app;\nGRANT UPDATE (status,\"completedAt\") ON \"AuthLoginAttempt\" TO phase014_app;\nGRANT SELECT,INSERT,UPDATE ON TABLE \"AdminCommandReceipt\",\"KeyRotationRun\" TO phase014_app;\nGRANT SELECT ON \"_prisma_migrations\" TO phase014_app;\nGRANT EXECUTE ON FUNCTION public.auth_now() TO phase014_app;\nGRANT SELECT,INSERT ON TABLE \"PromptDefinition\",\"PromptVersion\",\"PlanningPolicyVersion\",\"ProviderConfigVersion\",\"ModelDeployment\" TO phase014_app;\nGRANT SELECT,INSERT,UPDATE ON TABLE \"PromptActivation\",\"PromptModelActivation\",\"PlanningPolicyActivation\" TO phase014_app;\nGRANT SELECT,INSERT,UPDATE ON TABLE \"AiUsageReservation\" TO phase014_app;\nGRANT SELECT,INSERT ON TABLE \"AiOutputRecord\" TO phase014_app;\nCOMMENT ON DATABASE \"phase015_disposable_bf0013251532\" IS 'serendipity-phase015-disposable:bf0013251532';",
+            "executable": "docker",
+            "arguments": [
+              "exec",
+              "46465dca7b530ef6eae2d8af7824f5435f580ee232d6064838cd62bdebbf5403",
+              "psql",
+              "-X",
+              "-v",
+              "ON_ERROR_STOP=1",
+              "-U",
+              "phase014_runner",
+              "-d",
+              "phase015_disposable_bf0013251532",
+              "-At",
+              "-c",
+              "REVOKE CREATE ON SCHEMA public FROM PUBLIC;\nGRANT USAGE ON SCHEMA public TO phase014_app;\nGRANT SELECT,INSERT,UPDATE,DELETE ON TABLE \"User\",\"SystemConfig\",\"TravelRecord\",\"ChatMessage\",\"ApiKeyConfig\" TO phase014_app;\nGRANT SELECT,INSERT ON TABLE \"AuditLog\",\"AuthSession\",\"AuthLoginAttempt\" TO phase014_app;\nREVOKE UPDATE,DELETE,TRUNCATE,REFERENCES,TRIGGER ON TABLE \"AuditLog\" FROM phase014_app;\nGRANT UPDATE (status,\"lastSeenAt\",\"revokedAt\") ON \"AuthSession\" TO phase014_app;\nGRANT UPDATE (status,\"completedAt\") ON \"AuthLoginAttempt\" TO phase014_app;\nGRANT SELECT,INSERT,UPDATE ON TABLE \"AdminCommandReceipt\",\"KeyRotationRun\" TO phase014_app;\nGRANT SELECT ON \"_prisma_migrations\" TO phase014_app;\nGRANT EXECUTE ON FUNCTION public.auth_now() TO phase014_app;\nGRANT SELECT,INSERT ON TABLE \"PromptDefinition\",\"PromptVersion\",\"PlanningPolicyVersion\",\"ProviderConfigVersion\",\"ModelDeployment\" TO phase014_app;\nGRANT SELECT,INSERT,UPDATE ON TABLE \"PromptActivation\",\"PromptModelActivation\",\"PlanningPolicyActivation\" TO phase014_app;\nGRANT SELECT,INSERT,UPDATE ON TABLE \"AiUsageReservation\" TO phase014_app;\nGRANT SELECT,INSERT ON TABLE \"AiOutputRecord\" TO phase014_app;\nCOMMENT ON DATABASE \"phase015_disposable_bf0013251532\" IS 'serendipity-phase015-disposable:bf0013251532';"
+            ],
+            "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+            "startedAt": "2026-09-13T09:50:32.228Z",
+            "finishedAt": "2026-09-13T09:50:32.489Z",
+            "exitCode": 0,
+            "signal": null,
+            "timedOut": false,
+            "stdout": "REVOKE\nGRANT\nGRANT\nGRANT\nREVOKE\nGRANT\nGRANT\nGRANT\nGRANT\nGRANT\nGRANT\nGRANT\nGRANT\nGRANT\nCOMMENT\n",
+            "stderr": "",
+            "durationMs": 261
+          }
+        ]
+      },
+      "restored": {
+        "logicalCommand": "npm run test -- ai-governance provider-registry guarded-client prompt-service",
+        "result": {
+          "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- ai-governance provider-registry guarded-client prompt-service --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-restored-card.json",
+          "executable": "C:\\Program Files\\nodejs\\node.exe",
+          "arguments": [
+            "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "test",
+            "--",
+            "ai-governance",
+            "provider-registry",
+            "guarded-client",
+            "prompt-service",
+            "--reporter=json",
+            "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-restored-card.json"
+          ],
+          "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+          "startedAt": "2026-09-13T09:50:32.547Z",
+          "finishedAt": "2026-09-13T09:51:09.698Z",
+          "exitCode": 0,
+          "signal": null,
+          "timedOut": false,
+          "stdout": "\n> serendipity@0.1.0 test\n> vitest run ai-governance provider-registry guarded-client prompt-service --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-14-restored-card.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase015/attempt-14-restored-card.json\n",
+          "stderr": "",
+          "durationMs": 37151
+        },
+        "reportPath": "docs/evidence/attempts/Phase015/attempt-14/restored-card.json",
+        "reportHash": "23df1dea850b036622f8ce58b2477d4878c2248fb7f78b3cb55e964ab8e03df2",
+        "mappings": [
+          {
+            "testCaseId": "Phase015:schema-bootstrap",
+            "tag": "[schema-bootstrap]",
+            "assertions": [
+              {
+                "file": "tests/phase015/ai-governance.test.ts",
+                "fullName": "Phase015 AI governance database [schema-bootstrap] bootstrap rejects stored provider and model content with copied valid hashes"
+              },
+              {
+                "file": "tests/phase015/ai-governance.test.ts",
+                "fullName": "Phase015 AI governance database [schema-bootstrap] creates the exact final schema with disabled defaults and an idempotent bootstrap"
+              },
+              {
+                "file": "tests/phase015/ai-governance.test.ts",
+                "fullName": "Phase015 AI governance database [schema-bootstrap] invalid but correctly hashed planning policy remains unusable"
+              },
+              {
+                "file": "tests/phase015/ai-governance.test.ts",
+                "fullName": "Phase015 AI governance database [schema-bootstrap] the application role cannot update or delete any immutable version"
+              },
+              {
+                "file": "tests/phase015/ai-governance.test.ts",
+                "fullName": "Phase015 frozen prompt and policy contracts [schema-bootstrap] the eight templates and runtime schemas match reviewed source documents"
+              },
+              {
+                "file": "tests/phase015/ai-governance.test.ts",
+                "fullName": "Phase015 frozen prompt and policy contracts [schema-bootstrap] typed policy rejects missing groups, wrong units, ranges, decimals and production scope"
+              }
+            ]
+          },
+          {
+            "testCaseId": "Phase015:resolution",
+            "tag": "[resolution]",
+            "assertions": [
+              {
+                "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+                "fullName": "Phase015 real Provider key rotation [resolution] a competing activation invalidates the captured reference revisions without partial switch"
+              },
+              {
+                "file": "tests/phase015/guarded-client.test.ts",
+                "fullName": "Phase015 guarded client [resolution] owner, synthetic policy and privacy violations fail before any reservation"
+              },
+              {
+                "file": "tests/phase015/prompt-service.test.ts",
+                "fullName": "Phase015 prompt resolution [resolution] absent activation pointers fail closed before creating reservations"
+              },
+              {
+                "file": "tests/phase015/prompt-service.test.ts",
+                "fullName": "Phase015 prompt resolution [resolution] both resolvers reject disabled tuples and stale activation CAS"
+              },
+              {
+                "file": "tests/phase015/prompt-service.test.ts",
+                "fullName": "Phase015 prompt resolution [resolution] concurrent tuple switches expose only complete old or new snapshots"
+              },
+              {
+                "file": "tests/phase015/prompt-service.test.ts",
+                "fullName": "Phase015 prompt resolution [resolution] database rejects cross-definition and cross-provider tuple references"
+              },
+              {
+                "file": "tests/phase015/prompt-service.test.ts",
+                "fullName": "Phase015 prompt resolution [resolution] invalid prompt hash is rejected before egress"
+              },
+              {
+                "file": "tests/phase015/prompt-service.test.ts",
+                "fullName": "Phase015 prompt resolution [resolution] provider locale, model context and unpriced bounds cannot be activated for a call"
+              },
+              {
+                "file": "tests/phase015/prompt-service.test.ts",
+                "fullName": "Phase015 prompt resolution [resolution] rejects missing, unknown, nullable and structurally invalid variables"
+              },
+              {
+                "file": "tests/phase015/prompt-service.test.ts",
+                "fullName": "Phase015 prompt resolution [resolution] resolves exact immutable versions and accepts a compatible prompt version two"
+              },
+              {
+                "file": "tests/phase015/prompt-service.test.ts",
+                "fullName": "Phase015 prompt resolution [resolution] variable schema drift and incompatible response schema are rejected"
+              }
+            ]
+          },
+          {
+            "testCaseId": "Phase015:isolation-ssrf",
+            "tag": "[isolation]",
+            "assertions": [
+              {
+                "file": "tests/phase015/provider-registry.test.ts",
+                "fullName": "Phase015 real provider isolation [isolation] business SDK, network, direct adapter and secret imports stay inside declared boundaries"
+              },
+              {
+                "file": "tests/phase015/provider-registry.test.ts",
+                "fullName": "Phase015 real provider isolation [isolation] default DNS lookup is used and only allowlisted HTTPS URLs pass"
+              },
+              {
+                "file": "tests/phase015/provider-registry.test.ts",
+                "fullName": "Phase015 real provider isolation [isolation] malformed JSON, incomplete streams, partial socket loss and oversized bodies never retry"
+              },
+              {
+                "file": "tests/phase015/provider-registry.test.ts",
+                "fullName": "Phase015 real provider isolation [isolation] redirect DNS changes cannot reach a private address"
+              },
+              {
+                "file": "tests/phase015/provider-registry.test.ts",
+                "fullName": "Phase015 real provider isolation [isolation] rejects private, reserved, mapped IPv6 and mixed DNS rebinding addresses"
+              },
+              {
+                "file": "tests/phase015/provider-registry.test.ts",
+                "fullName": "Phase015 real provider isolation [isolation] serializes the actual request and pins the prepared endpoint once"
+              },
+              {
+                "file": "tests/phase015/provider-registry.test.ts",
+                "fullName": "Phase015 real provider isolation [isolation] transport overrides are test-only and fixed to numeric loopback"
+              },
+              {
+                "file": "tests/phase015/provider-registry.test.ts",
+                "fullName": "Phase015 real provider isolation [isolation] validates every redirect, rejects private targets and stops at two hops"
+              }
+            ]
+          },
+          {
+            "testCaseId": "Phase015:timeout-cancel-retry",
+            "tag": "[timeout-cancel-retry]",
+            "assertions": [
+              {
+                "file": "tests/phase015/guarded-client.test.ts",
+                "fullName": "Phase015 guarded client [timeout-cancel-retry] a shared total deadline includes Retry-After and terminates blocked HTTP"
+              },
+              {
+                "file": "tests/phase015/guarded-client.test.ts",
+                "fullName": "Phase015 guarded client [timeout-cancel-retry] external AbortSignal cancels an in-flight request and never retries"
+              },
+              {
+                "file": "tests/phase015/guarded-client.test.ts",
+                "fullName": "Phase015 guarded client [timeout-cancel-retry] first byte, invalid JSON and schema mismatches never retry and are traced"
+              },
+              {
+                "file": "tests/phase015/guarded-client.test.ts",
+                "fullName": "Phase015 guarded client [timeout-cancel-retry] real before-byte HTTP retries at most once with separate durable reservations"
+              },
+              {
+                "file": "tests/phase015/provider-registry.test.ts",
+                "fullName": "Phase015 real provider isolation [timeout-cancel-retry] HTTP errors retry only before body bytes and retain Retry-After"
+              },
+              {
+                "file": "tests/phase015/provider-registry.test.ts",
+                "fullName": "Phase015 real provider isolation [timeout-cancel-retry] parses split SSE frames, usage and DONE without exposing raw data"
+              },
+              {
+                "file": "tests/phase015/provider-registry.test.ts",
+                "fullName": "Phase015 real provider isolation [timeout-cancel-retry] pre-abort sends zero requests and cancellation interrupts a blocked body read"
+              }
+            ]
+          },
+          {
+            "testCaseId": "Phase015:quota-cost",
+            "tag": "[quota-cost]",
+            "assertions": [
+              {
+                "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+                "fullName": "Phase015 real Provider key rotation [quota-cost] candidate probes enforce frozen token and Decimal cost budgets before transport"
+              },
+              {
+                "file": "tests/phase015/guarded-client.test.ts",
+                "fullName": "Phase015 guarded client [quota-cost] a lost response remains charged across days and provider proof settles only once"
+              },
+              {
+                "file": "tests/phase015/guarded-client.test.ts",
+                "fullName": "Phase015 guarded client [quota-cost] concurrent Decimal reservations never exceed the frozen token or cost cap"
+              },
+              {
+                "file": "tests/phase015/guarded-client.test.ts",
+                "fullName": "Phase015 guarded client [quota-cost] NOT_SENT release and unknown upper-bound reconciliation are idempotent"
+              }
+            ]
+          },
+          {
+            "testCaseId": "Phase015:version-evidence",
+            "tag": "[version-evidence]",
+            "assertions": [
+              {
+                "file": "tests/phase015/guarded-client.test.ts",
+                "fullName": "Phase015 guarded client [version-evidence] failed evidence persistence cannot return a successful AI result"
+              },
+              {
+                "file": "tests/phase015/guarded-client.test.ts",
+                "fullName": "Phase015 guarded client [version-evidence] request content, policy, revisions and exact model configuration bind every attempt"
+              }
+            ]
+          },
+          {
+            "testCaseId": "Phase015:kill-switch",
+            "tag": "[kill-switch]",
+            "assertions": [
+              {
+                "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+                "fullName": "Phase015 real Provider key rotation [kill-switch] candidate probes cannot bypass a closed global switch"
+              },
+              {
+                "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+                "fullName": "Phase015 real Provider key rotation [kill-switch] emergency revoke during the candidate request prevents subsequent calls and activation"
+              },
+              {
+                "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+                "fullName": "Phase015 real Provider key rotation [kill-switch] one failed real candidate leaves every active tuple and the old key unchanged"
+              },
+              {
+                "file": "tests/phase015/ai-governance-key-rotation.test.ts",
+                "fullName": "Phase015 real Provider key rotation [kill-switch] rotates two real provider/model references atomically and preserves disabled references"
+              },
+              {
+                "file": "tests/phase015/ai-governance.test.ts",
+                "fullName": "Phase015 AI governance database [kill-switch] default and restart stay closed; real ADMIN enablement is audited and guarded"
+              },
+              {
+                "file": "tests/phase015/ai-governance.test.ts",
+                "fullName": "Phase015 AI governance database [kill-switch] failed guarded post-enable probe closes the switch and disables every tuple"
+              },
+              {
+                "file": "tests/phase015/ai-governance.test.ts",
+                "fullName": "Phase015 AI governance database [kill-switch] the isolated CLI uses the same ADMIN settings service and can be rerun"
+              },
+              {
+                "file": "tests/phase015/ai-governance.test.ts",
+                "fullName": "Phase015 AI governance database [kill-switch] unauthorized actors and failed fixture preflight leave all activations disabled"
+              },
+              {
+                "file": "tests/phase015/guarded-client.test.ts",
+                "fullName": "Phase015 guarded client [kill-switch] a valid envelope with a mismatched fingerprint is refused before transport"
+              },
+              {
+                "file": "tests/phase015/guarded-client.test.ts",
+                "fullName": "Phase015 guarded client [kill-switch] absent LIVE admission and inactive required keys create no reservations or requests"
+              },
+              {
+                "file": "tests/phase015/guarded-client.test.ts",
+                "fullName": "Phase015 guarded client [kill-switch] an emergency kill or revoke during preparation stops the dispatch"
+              },
+              {
+                "file": "tests/phase015/guarded-client.test.ts",
+                "fullName": "Phase015 guarded client [kill-switch] NONE dispatches without credentials and ACTIVE REQUIRED resolves only inside the adapter"
+              }
+            ]
+          },
+          {
+            "testCaseId": "Phase015:mutation",
+            "observedIn": "negative-controls-and-restored-card"
+          }
+        ]
+      }
+    }
+  }
+}

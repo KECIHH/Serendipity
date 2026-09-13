@@ -28,9 +28,9 @@ FactStatus 回答单条事实是否有可追溯证据；FactFreshness 是绑定 
 
 规则块的四个 profile 是实现蓝图，endpoint/许可证证据尚未产出时保持关闭。capabilities 声明接口边界，不代表该服务已经可用。每个实际 config 必須补齐条款/许可证证据 hash、适用范围、核验时间、attribution、缓存与再展示许可、地域/语言、配额、成本、TTL/maxStale 和 machineAdmissionRuleVersion，机器准入缺任意项即 BLOCK。NONE 必须 secretRef=null 且禁止发送凭据；REQUIRED 必须引用 ACTIVE key。无密钥不等于没有条款/配额约束。
 
-Phase010 只首产 `ApiKeyConfig` 的版本化存储边界，`ProviderConfigVersion.secretRef` 在 Phase015 将直接引用已有 `ApiKeyConfig.id`，不是第二张 secret 表，也不复制 envelope、API key 或主密钥。REQUIRED 的普通调用须在服务端解析 ACTIVE 行，DISABLED/REVOKED 均拒绝；只有 Phase013 受保护的轮换候选测试可解析其本次 DISABLED 候选。NONE 始终要求 secretRef=null，不解密、不发凭据。具体 envelope、完整 fingerprint 与 AAD 共用 [加密契约](crypto.md)。
+Phase010 只首产 `ApiKeyConfig` 的版本化存储边界，Phase015 的 `ProviderConfigVersion.secretRef` 已直接引用已有 `ApiKeyConfig.id`，不是第二张 secret 表，也不复制 envelope、API key 或主密钥。REQUIRED 的普通调用由 `src/server/ai/provider-registry.ts` 在服务端解析 ACTIVE 行，DISABLED/REVOKED 均拒绝；Phase013 轮换通过 `src/server/ai/provider-key-reference-adapter.ts` 消费同一治理引用。NONE 始终要求 secretRef=null，不解密、不发凭据。具体 envelope、完整 fingerprint 与 AAD 共用 [加密契约](crypto.md)。
 
-Phase010 migration/基础 seed 不创建密钥行、ProviderConfigVersion、模型、Prompt、AiOutputRecord 或治理激活。Phase013 尚无 Provider 表时不能查询未来表；Phase015 首产治理模型后必须注册真实引用 adapter，再消费相同密钥生命周期和轮换协议。当前 AI_API_KEY 等 bootstrap 环境值不由 seed 迁入数据库，Phase015 才按契约退役为历史 fixture。部署环境护栏优先约束未来版本中的 timeout/quota/cost 等运行值，DB 配置及默认值不得放宽环境上限；具体来源职责见 [托管规范](hosting.md#phase010-配置优先级与基础-seed)。
+Phase010 migration/基础 seed 不创建密钥行、ProviderConfigVersion、模型、Prompt、AiOutputRecord 或治理激活。Phase013 尚无 Provider 表时不能查询未来表；Phase015 已注册真实引用 adapter 并消费相同密钥生命周期和轮换协议。AI_API_KEY、AI_BASE_URL、AI_MODEL 不再是服务端必需来源，只保留为隔离 fixture 的 test 输入，不由 seed 迁入数据库。部署环境护栏继续约束 timeout/quota/cost 等硬上限，DB 版本配置不得放宽环境上限；具体来源职责见 [托管规范](hosting.md#phase010-配置优先级与基础-seed)。
 
 Nominatim 与 OSRM 公共演示端点不成为生产默认值；底层数据许可与软件许可分开核对。Open-Meteo 的免费/付费及具体端点条款分别核对。ManualEvidence 的单条证据还须具备来源机构、受控录入者标识、核验时间、适用对象/日期/有效期、摘要和许可；录入者由隔离合成主体提供，不编造真人审批。没有 URL 时允许真实受控 sourceLocator+contentHash，不伪造公网 URL。相同资源、URL 或 locator/hash 去重，不能重复算独立证据。
 

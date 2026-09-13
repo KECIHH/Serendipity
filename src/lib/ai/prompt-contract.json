@@ -1,0 +1,1823 @@
+{
+  "schemaVersion": 1,
+  "definitions": {
+    "Locale": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 35,
+      "format": "bcp47-locale"
+    },
+    "Text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "format": "nonblank-text"
+    },
+    "TextList": {
+      "type": "array",
+      "maxItems": 30,
+      "items": {
+        "$ref": "#/$defs/Text"
+      }
+    },
+    "Dimension": {
+      "enum": [
+        "comfort",
+        "budgetFit",
+        "routeEfficiency",
+        "scheduleFeasibility",
+        "attractionFit",
+        "foodFit",
+        "photographyFit",
+        "accessibility",
+        "weatherResilience",
+        "sourceReliability"
+      ]
+    },
+    "Operation": {
+      "enum": [
+        "ADD",
+        "REMOVE",
+        "REPLACE",
+        "MOVE_EVENT",
+        "CHANGE_TRANSPORT",
+        "UPDATE_CONSTRAINT",
+        "LOCK",
+        "UNLOCK",
+        "REPLAN_SCOPE"
+      ]
+    },
+    "Candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidateId", "label", "allowedOperations"],
+      "properties": {
+        "candidateId": {
+          "$ref": "travel-requirement-v1#/$defs/Id"
+        },
+        "label": {
+          "$ref": "#/$defs/Text"
+        },
+        "allowedOperations": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 9,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/Operation"
+          }
+        }
+      }
+    },
+    "MissingFieldSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "priority", "reasonCode"],
+      "properties": {
+        "field": {
+          "$ref": "travel-requirement-v1#/$defs/FieldPath"
+        },
+        "priority": {
+          "enum": ["blocking", "normal", "optional"]
+        },
+        "reasonCode": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[A-Z][A-Z0-9_]+$",
+          "format": "nonblank-text"
+        }
+      }
+    },
+    "SummaryRequirementInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "origin",
+        "destinations",
+        "dateRange",
+        "durationDays",
+        "travelers",
+        "budget",
+        "preferences"
+      ],
+      "properties": {
+        "origin": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["city", "country"],
+              "properties": {
+                "city": {
+                  "$ref": "travel-requirement-v1#/$defs/NullableText"
+                },
+                "country": {
+                  "$ref": "travel-requirement-v1#/$defs/Country"
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "destinations": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 20,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "city", "country", "type"],
+            "properties": {
+              "name": {
+                "$ref": "travel-requirement-v1#/$defs/Text"
+              },
+              "city": {
+                "$ref": "travel-requirement-v1#/$defs/NullableText"
+              },
+              "country": {
+                "$ref": "travel-requirement-v1#/$defs/Country"
+              },
+              "type": {
+                "enum": ["country", "province", "region", "city", "attraction", null]
+              }
+            }
+          }
+        },
+        "dateRange": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["startDate", "endDate", "isFlexible", "timezone"],
+              "properties": {
+                "startDate": {
+                  "$ref": "travel-requirement-v1#/$defs/Date"
+                },
+                "endDate": {
+                  "$ref": "travel-requirement-v1#/$defs/Date"
+                },
+                "isFlexible": {
+                  "type": "boolean"
+                },
+                "timezone": {
+                  "type": "string",
+                  "format": "iana-timezone",
+                  "maxLength": 80
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "durationDays": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "maximum": 365
+        },
+        "travelers": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "totalCount",
+            "adultCount",
+            "childCount",
+            "elderCount",
+            "ageUnknownCount",
+            "relationship"
+          ],
+          "properties": {
+            "totalCount": {
+              "type": ["integer", "null"],
+              "minimum": 1,
+              "maximum": 100
+            },
+            "adultCount": {
+              "$ref": "travel-requirement-v1#/$defs/Count"
+            },
+            "childCount": {
+              "$ref": "travel-requirement-v1#/$defs/Count"
+            },
+            "elderCount": {
+              "$ref": "travel-requirement-v1#/$defs/Count"
+            },
+            "ageUnknownCount": {
+              "$ref": "travel-requirement-v1#/$defs/Count"
+            },
+            "relationship": {
+              "enum": ["solo", "couple", "family", "friends", "colleagues", "other", null]
+            }
+          }
+        },
+        "budget": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["amount", "currency", "level", "isFlexible", "perPerson", "hardLimit"],
+          "properties": {
+            "amount": {
+              "$ref": "travel-requirement-v1#/$defs/Amount"
+            },
+            "currency": {
+              "$ref": "travel-requirement-v1#/$defs/Currency"
+            },
+            "level": {
+              "enum": ["budget", "standard", "premium", null]
+            },
+            "isFlexible": {
+              "$ref": "travel-requirement-v1#/$defs/NullableBoolean"
+            },
+            "perPerson": {
+              "$ref": "travel-requirement-v1#/$defs/NullableBoolean"
+            },
+            "hardLimit": {
+              "$ref": "travel-requirement-v1#/$defs/NullableBoolean"
+            }
+          }
+        },
+        "preferences": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["pace", "interests", "transport"],
+          "properties": {
+            "pace": {
+              "enum": ["slow", "moderate", "fast", null]
+            },
+            "interests": {
+              "type": "array",
+              "maxItems": 8,
+              "uniqueItems": true,
+              "items": {
+                "enum": ["摄影", "美食", "徒步", "City Walk", "滑雪", "温泉", "博物馆", "自然风光"]
+              }
+            },
+            "transport": {
+              "type": "array",
+              "maxItems": 6,
+              "uniqueItems": true,
+              "items": {
+                "enum": [
+                  "self_driving",
+                  "high_speed_rail",
+                  "flight",
+                  "public_transit",
+                  "charter",
+                  "hiking"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "travelDefinitions": {
+    "Id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{1,95}$"
+    },
+    "Hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "Text": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "format": "nonblank-text"
+    },
+    "NullableText": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Text"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "Confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "NullableBoolean": {
+      "type": ["boolean", "null"]
+    },
+    "Count": {
+      "type": ["integer", "null"],
+      "minimum": 0,
+      "maximum": 100
+    },
+    "Date": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "Currency": {
+      "type": ["string", "null"],
+      "pattern": "^[A-Z]{3}$",
+      "format": "iso-currency"
+    },
+    "Country": {
+      "type": ["string", "null"],
+      "pattern": "^[A-Z]{2}$",
+      "format": "iso-country"
+    },
+    "Amount": {
+      "type": ["string", "null"],
+      "pattern": "^(0|[1-9][0-9]{0,11})(\\.[0-9]{0,3}[1-9])?$"
+    },
+    "TextList": {
+      "type": "array",
+      "maxItems": 20,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/Text"
+      }
+    },
+    "Origin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["city", "country", "confidence"],
+      "properties": {
+        "city": {
+          "$ref": "#/$defs/NullableText"
+        },
+        "country": {
+          "$ref": "#/$defs/Country"
+        },
+        "confidence": {
+          "$ref": "#/$defs/Confidence"
+        }
+      }
+    },
+    "Destination": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "city", "country", "type", "confidence"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "name": {
+          "$ref": "#/$defs/Text"
+        },
+        "city": {
+          "$ref": "#/$defs/NullableText"
+        },
+        "country": {
+          "$ref": "#/$defs/Country"
+        },
+        "type": {
+          "enum": ["country", "province", "region", "city", "attraction", null]
+        },
+        "confidence": {
+          "$ref": "#/$defs/Confidence"
+        }
+      }
+    },
+    "DateRange": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["startDate", "endDate", "text", "isFlexible", "timezone", "confidence"],
+      "properties": {
+        "startDate": {
+          "$ref": "#/$defs/Date"
+        },
+        "endDate": {
+          "$ref": "#/$defs/Date"
+        },
+        "text": {
+          "$ref": "#/$defs/NullableText"
+        },
+        "isFlexible": {
+          "type": "boolean"
+        },
+        "timezone": {
+          "type": "string",
+          "format": "iana-timezone",
+          "maxLength": 80
+        },
+        "confidence": {
+          "$ref": "#/$defs/Confidence"
+        }
+      }
+    },
+    "Travelers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "totalCount",
+        "adultCount",
+        "childCount",
+        "elderCount",
+        "ageUnknownCount",
+        "relationship",
+        "notes",
+        "hasChild",
+        "hasElder",
+        "isCouple",
+        "isFamily",
+        "confidence"
+      ],
+      "properties": {
+        "totalCount": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "maximum": 100
+        },
+        "adultCount": {
+          "$ref": "#/$defs/Count"
+        },
+        "childCount": {
+          "$ref": "#/$defs/Count"
+        },
+        "elderCount": {
+          "$ref": "#/$defs/Count"
+        },
+        "ageUnknownCount": {
+          "$ref": "#/$defs/Count"
+        },
+        "relationship": {
+          "enum": ["solo", "couple", "family", "friends", "colleagues", "other", null]
+        },
+        "notes": {
+          "$ref": "#/$defs/TextList"
+        },
+        "hasChild": {
+          "$ref": "#/$defs/NullableBoolean"
+        },
+        "hasElder": {
+          "$ref": "#/$defs/NullableBoolean"
+        },
+        "isCouple": {
+          "$ref": "#/$defs/NullableBoolean"
+        },
+        "isFamily": {
+          "$ref": "#/$defs/NullableBoolean"
+        },
+        "confidence": {
+          "$ref": "#/$defs/Confidence"
+        }
+      }
+    },
+    "Budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "amount",
+        "currency",
+        "level",
+        "isFlexible",
+        "perPerson",
+        "hardLimit",
+        "confidence"
+      ],
+      "properties": {
+        "amount": {
+          "$ref": "#/$defs/Amount"
+        },
+        "currency": {
+          "$ref": "#/$defs/Currency"
+        },
+        "level": {
+          "enum": ["budget", "standard", "premium", null]
+        },
+        "isFlexible": {
+          "$ref": "#/$defs/NullableBoolean"
+        },
+        "perPerson": {
+          "$ref": "#/$defs/NullableBoolean"
+        },
+        "hardLimit": {
+          "$ref": "#/$defs/NullableBoolean"
+        },
+        "confidence": {
+          "$ref": "#/$defs/Confidence"
+        }
+      }
+    },
+    "HardConstraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "text"],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "kind": {
+          "enum": ["time", "transport", "dietary", "mobility", "budget", "other"]
+        },
+        "text": {
+          "$ref": "#/$defs/Text"
+        }
+      }
+    },
+    "Accessibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stepFreeRequired", "maxWalkingMinutes", "notes"],
+      "properties": {
+        "stepFreeRequired": {
+          "$ref": "#/$defs/NullableBoolean"
+        },
+        "maxWalkingMinutes": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "maximum": 1440
+        },
+        "notes": {
+          "$ref": "#/$defs/TextList"
+        }
+      }
+    },
+    "Consent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sensitiveRequirementProcessing"],
+      "properties": {
+        "sensitiveRequirementProcessing": {
+          "$ref": "#/$defs/NullableBoolean"
+        }
+      }
+    },
+    "Preferences": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pace",
+        "interests",
+        "avoid",
+        "transport",
+        "hardConstraints",
+        "accessibility",
+        "consent",
+        "confidence"
+      ],
+      "properties": {
+        "pace": {
+          "enum": ["slow", "moderate", "fast", null]
+        },
+        "interests": {
+          "type": "array",
+          "maxItems": 8,
+          "uniqueItems": true,
+          "items": {
+            "enum": ["摄影", "美食", "徒步", "City Walk", "滑雪", "温泉", "博物馆", "自然风光"]
+          }
+        },
+        "avoid": {
+          "$ref": "#/$defs/TextList"
+        },
+        "transport": {
+          "type": "array",
+          "maxItems": 6,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "self_driving",
+              "high_speed_rail",
+              "flight",
+              "public_transit",
+              "charter",
+              "hiking"
+            ]
+          }
+        },
+        "hardConstraints": {
+          "type": "array",
+          "maxItems": 20,
+          "items": {
+            "$ref": "#/$defs/HardConstraint"
+          }
+        },
+        "accessibility": {
+          "$ref": "#/$defs/Accessibility"
+        },
+        "consent": {
+          "$ref": "#/$defs/Consent"
+        },
+        "confidence": {
+          "$ref": "#/$defs/Confidence"
+        }
+      }
+    },
+    "SpecialFlags": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["isSelfDriving", "isHiking", "isOverseas"],
+      "properties": {
+        "isSelfDriving": {
+          "$ref": "#/$defs/NullableBoolean"
+        },
+        "isHiking": {
+          "$ref": "#/$defs/NullableBoolean"
+        },
+        "isOverseas": {
+          "$ref": "#/$defs/NullableBoolean"
+        }
+      }
+    },
+    "FieldPath": {
+      "enum": [
+        "origin",
+        "destinations",
+        "dateRange",
+        "durationDays",
+        "travelers",
+        "budget",
+        "preferences.pace",
+        "preferences.interests",
+        "preferences.avoid",
+        "preferences.transport",
+        "preferences.hardConstraints",
+        "preferences.accessibility",
+        "preferences.consent"
+      ]
+    },
+    "FieldSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "messageId", "inputHash", "method", "confidence"],
+      "properties": {
+        "field": {
+          "$ref": "#/$defs/FieldPath"
+        },
+        "messageId": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "inputHash": {
+          "$ref": "#/$defs/Hash"
+        },
+        "method": {
+          "enum": ["USER_TEXT", "USER_CONTROL", "DERIVED", "CLEAR"]
+        },
+        "confidence": {
+          "$ref": "#/$defs/Confidence"
+        }
+      }
+    },
+    "MissingField": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "priority", "question", "reason"],
+      "properties": {
+        "field": {
+          "$ref": "#/$defs/FieldPath"
+        },
+        "priority": {
+          "enum": ["blocking", "normal", "optional"]
+        },
+        "question": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300,
+          "format": "nonblank-text"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300,
+          "format": "nonblank-text"
+        }
+      }
+    },
+    "TravelRequirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemaVersion",
+        "revision",
+        "origin",
+        "destinations",
+        "dateRange",
+        "durationDays",
+        "travelers",
+        "budget",
+        "preferences",
+        "specialFlags",
+        "fieldSources",
+        "missingFields"
+      ],
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "origin": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Origin"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "destinations": {
+          "type": "array",
+          "maxItems": 20,
+          "items": {
+            "$ref": "#/$defs/Destination"
+          }
+        },
+        "dateRange": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/DateRange"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "durationDays": {
+          "type": ["integer", "null"],
+          "minimum": 1,
+          "maximum": 365
+        },
+        "travelers": {
+          "$ref": "#/$defs/Travelers"
+        },
+        "budget": {
+          "$ref": "#/$defs/Budget"
+        },
+        "preferences": {
+          "$ref": "#/$defs/Preferences"
+        },
+        "specialFlags": {
+          "$ref": "#/$defs/SpecialFlags"
+        },
+        "fieldSources": {
+          "type": "array",
+          "maxItems": 13,
+          "items": {
+            "$ref": "#/$defs/FieldSource"
+          }
+        },
+        "missingFields": {
+          "type": "array",
+          "maxItems": 13,
+          "items": {
+            "$ref": "#/$defs/MissingField"
+          }
+        }
+      }
+    }
+  },
+  "keys": [
+    {
+      "key": "nlu.extract",
+      "purpose": "USER_TEXT_ENTITY_CANDIDATES",
+      "firstConsumerPhase": 19,
+      "inputSchemaVersion": 1,
+      "outputSchemaVersion": 1,
+      "maxInputBytes": 20000,
+      "maxOutputBytes": 20000,
+      "variables": [
+        {
+          "name": "userText",
+          "required": true,
+          "nullable": false,
+          "maxLength": 4000,
+          "delivery": "user_message",
+          "sensitivity": "private"
+        },
+        {
+          "name": "locale",
+          "required": true,
+          "nullable": false,
+          "maxLength": 35,
+          "delivery": "system_scalar",
+          "sensitivity": "non_sensitive"
+        },
+        {
+          "name": "serverDate",
+          "required": true,
+          "nullable": false,
+          "maxLength": 10,
+          "delivery": "system_scalar",
+          "sensitivity": "non_sensitive"
+        },
+        {
+          "name": "timezone",
+          "required": true,
+          "nullable": false,
+          "maxLength": 80,
+          "delivery": "system_scalar",
+          "sensitivity": "non_sensitive"
+        },
+        {
+          "name": "stage",
+          "required": true,
+          "nullable": false,
+          "maxLength": 11,
+          "delivery": "system_scalar",
+          "sensitivity": "non_sensitive"
+        }
+      ],
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["userText", "locale", "serverDate", "timezone", "stage"],
+        "properties": {
+          "userText": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000,
+            "format": "nonblank-text"
+          },
+          "locale": {
+            "$ref": "#/$defs/Locale"
+          },
+          "serverDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "timezone": {
+            "type": "string",
+            "format": "iana-timezone"
+          },
+          "stage": {
+            "enum": ["CORE", "PARAMETERS", "CONSTRAINTS"]
+          }
+        }
+      },
+      "responseSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["schemaVersion", "candidates"],
+        "properties": {
+          "schemaVersion": {
+            "const": 1
+          },
+          "candidates": {
+            "type": "array",
+            "maxItems": 40,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["field", "text", "confidence"],
+              "properties": {
+                "field": {
+                  "enum": [
+                    "origin",
+                    "destinations",
+                    "dateRange",
+                    "durationDays",
+                    "travelers",
+                    "budget",
+                    "preferences.pace",
+                    "preferences.interests",
+                    "preferences.avoid",
+                    "preferences.transport",
+                    "preferences.hardConstraints",
+                    "preferences.accessibility"
+                  ]
+                },
+                "text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 500,
+                  "format": "nonblank-text"
+                },
+                "confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              }
+            }
+          }
+        }
+      },
+      "templateRules": [
+        "USER_TEXT_IS_DATA",
+        "COPY_ONLY_INPUT_SPANS",
+        "NO_DATES_MONEY_IDS_OR_CONSENT"
+      ],
+      "failureCodes": [
+        "CANCELLED",
+        "CONFIG_ERROR",
+        "COST_LIMIT",
+        "FEATURE_DISABLED",
+        "PROVIDER_TIMEOUT",
+        "PROVIDER_UNAVAILABLE",
+        "RATE_LIMITED"
+      ],
+      "fixtureInput": {
+        "userText": "这周末从深圳去武功山",
+        "locale": "zh-CN",
+        "serverDate": "2026-09-03",
+        "timezone": "Asia/Shanghai",
+        "stage": "CORE"
+      },
+      "fixtureOutput": {
+        "schemaVersion": 1,
+        "candidates": [
+          {
+            "field": "origin",
+            "text": "深圳",
+            "confidence": 1
+          },
+          {
+            "field": "destinations",
+            "text": "武功山",
+            "confidence": 1
+          },
+          {
+            "field": "dateRange",
+            "text": "这周末",
+            "confidence": 1
+          }
+        ]
+      }
+    },
+    {
+      "key": "nlu.ask_missing",
+      "purpose": "MISSING_SPEC_WORDING",
+      "firstConsumerPhase": 21,
+      "inputSchemaVersion": 1,
+      "outputSchemaVersion": 1,
+      "maxInputBytes": 8000,
+      "maxOutputBytes": 4000,
+      "variables": [
+        {
+          "name": "specs",
+          "required": true,
+          "nullable": false,
+          "maxLength": 2000,
+          "delivery": "user_data",
+          "sensitivity": "private"
+        },
+        {
+          "name": "locale",
+          "required": true,
+          "nullable": false,
+          "maxLength": 35,
+          "delivery": "system_scalar",
+          "sensitivity": "non_sensitive"
+        }
+      ],
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["specs", "locale"],
+        "properties": {
+          "specs": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 3,
+            "items": {
+              "$ref": "#/$defs/MissingFieldSpec"
+            }
+          },
+          "locale": {
+            "$ref": "#/$defs/Locale"
+          }
+        }
+      },
+      "responseSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["schemaVersion", "questions"],
+        "properties": {
+          "schemaVersion": {
+            "const": 1
+          },
+          "questions": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 3,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["field", "question"],
+              "properties": {
+                "field": {
+                  "$ref": "travel-requirement-v1#/$defs/FieldPath"
+                },
+                "question": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 300,
+                  "format": "nonblank-text"
+                }
+              }
+            }
+          }
+        }
+      },
+      "templateRules": [
+        "WORD_ONLY_SELECTED_SPECS",
+        "NO_PRIORITY_OR_READINESS_CHANGE",
+        "DETERMINISTIC_FALLBACK_FOR_ALL_SPECS"
+      ],
+      "failureCodes": [
+        "CANCELLED",
+        "CONFIG_ERROR",
+        "COST_LIMIT",
+        "FEATURE_DISABLED",
+        "PROVIDER_TIMEOUT",
+        "PROVIDER_UNAVAILABLE",
+        "RATE_LIMITED"
+      ],
+      "failureFallback": "DETERMINISTIC_QUESTION_FOR_EACH_SPEC",
+      "fixtureInput": {
+        "specs": [
+          {
+            "field": "destinations",
+            "priority": "blocking",
+            "reasonCode": "DESTINATION_UNRESOLVED"
+          }
+        ],
+        "locale": "zh-CN"
+      },
+      "fixtureOutput": {
+        "schemaVersion": 1,
+        "questions": [
+          {
+            "field": "destinations",
+            "question": "这次想去哪个城市或地区？"
+          }
+        ]
+      }
+    },
+    {
+      "key": "planner.generate",
+      "purpose": "REQUIREMENT_SUMMARY_WORDING",
+      "firstConsumerPhase": 22,
+      "inputSchemaVersion": 1,
+      "outputSchemaVersion": 1,
+      "maxInputBytes": 65536,
+      "maxOutputBytes": 12000,
+      "variables": [
+        {
+          "name": "requirement",
+          "required": true,
+          "nullable": false,
+          "maxLength": 32768,
+          "delivery": "user_data",
+          "sensitivity": "private_minimized"
+        },
+        {
+          "name": "assumptionSummaries",
+          "required": true,
+          "nullable": false,
+          "maxLength": 4000,
+          "delivery": "user_data",
+          "sensitivity": "private_minimized"
+        },
+        {
+          "name": "locale",
+          "required": true,
+          "nullable": false,
+          "maxLength": 35,
+          "delivery": "system_scalar",
+          "sensitivity": "non_sensitive"
+        }
+      ],
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["requirement", "assumptionSummaries", "locale"],
+        "properties": {
+          "requirement": {
+            "$ref": "#/$defs/SummaryRequirementInput"
+          },
+          "assumptionSummaries": {
+            "$ref": "#/$defs/TextList"
+          },
+          "locale": {
+            "$ref": "#/$defs/Locale"
+          }
+        }
+      },
+      "responseSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schemaVersion",
+          "title",
+          "description",
+          "bestFor",
+          "overallRecommendation",
+          "recommendedReason"
+        ],
+        "properties": {
+          "schemaVersion": {
+            "const": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "format": "nonblank-text"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1200,
+            "format": "nonblank-text"
+          },
+          "bestFor": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 8,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80,
+              "format": "nonblank-text"
+            }
+          },
+          "overallRecommendation": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500,
+            "format": "nonblank-text"
+          },
+          "recommendedReason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500,
+            "format": "nonblank-text"
+          }
+        }
+      },
+      "templateRules": [
+        "SUMMARY_WORDING_ONLY",
+        "NO_FACTS_OR_SOURCE_REFS",
+        "SERVER_ASSEMBLES_V1_BINDING"
+      ],
+      "failureCodes": [
+        "CANCELLED",
+        "CONFIG_ERROR",
+        "COST_LIMIT",
+        "FEATURE_DISABLED",
+        "PROVIDER_TIMEOUT",
+        "PROVIDER_UNAVAILABLE",
+        "RATE_LIMITED",
+        "VALIDATION_ERROR"
+      ],
+      "fixtureInputFrom": "schema-fixtures.base:summary-projection",
+      "fixtureInput": {
+        "assumptionSummaries": [],
+        "locale": "zh-CN"
+      },
+      "fixtureOutput": {
+        "schemaVersion": 1,
+        "title": "上饶与黄山两日意向",
+        "description": "围绕两处目的地安排较慢节奏，具体安排仍需核验。",
+        "bestFor": ["偏好美食与慢节奏的旅行者"],
+        "overallRecommendation": "先核验跨城交通再确定每日安排。",
+        "recommendedReason": "保留原有目的地顺序与慢节奏偏好。"
+      }
+    },
+    {
+      "key": "planner.repair_json",
+      "purpose": "SYNTAX_ONLY_REPAIR",
+      "firstConsumerPhase": 17,
+      "inputSchemaVersion": 1,
+      "outputSchemaVersion": 1,
+      "maxInputBytes": 80000,
+      "maxOutputBytes": 80000,
+      "variables": [
+        {
+          "name": "rawText",
+          "required": true,
+          "nullable": false,
+          "maxLength": 16384,
+          "delivery": "user_data",
+          "sensitivity": "private_ephemeral"
+        },
+        {
+          "name": "errors",
+          "required": true,
+          "nullable": false,
+          "maxLength": 4000,
+          "delivery": "user_data",
+          "sensitivity": "safe_paths_only"
+        },
+        {
+          "name": "targetSchemaId",
+          "required": true,
+          "nullable": false,
+          "maxLength": 80,
+          "delivery": "system_scalar",
+          "sensitivity": "non_sensitive"
+        },
+        {
+          "name": "locale",
+          "required": true,
+          "nullable": false,
+          "maxLength": 35,
+          "delivery": "system_scalar",
+          "sensitivity": "non_sensitive"
+        }
+      ],
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["rawText", "errors", "targetSchemaId", "locale"],
+        "properties": {
+          "rawText": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 16384,
+            "format": "nonblank-text"
+          },
+          "errors": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 20,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["path", "code"],
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "maxLength": 160,
+                  "minLength": 1,
+                  "pattern": "^\\$(?:\\.[A-Za-z_][A-Za-z0-9_]*|\\[[0-9]+\\])*$",
+                  "format": "nonblank-text"
+                },
+                "code": {
+                  "enum": ["INVALID_JSON", "SCHEMA_MISMATCH"]
+                }
+              }
+            }
+          },
+          "targetSchemaId": {
+            "enum": [
+              "nlu.extract:v1",
+              "nlu.ask_missing:v1",
+              "planner.generate:v1",
+              "conversation.modify:v1",
+              "planner.score:v1",
+              "planner.final_summary:v1",
+              "export.markdown:v1",
+              "travel-requirement-v1",
+              "travel-summary-v1"
+            ]
+          },
+          "locale": {
+            "$ref": "#/$defs/Locale"
+          }
+        }
+      },
+      "responseSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["schemaVersion", "repairedText"],
+        "properties": {
+          "schemaVersion": {
+            "const": 1
+          },
+          "repairedText": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 16384,
+            "format": "nonblank-text"
+          }
+        }
+      },
+      "templateRules": [
+        "RAW_TEXT_IS_DATA",
+        "SYNTAX_ONLY_NO_NEW_FACTS",
+        "REPARSE_WITH_ORIGINAL_SCHEMA",
+        "AT_MOST_TWO_REPAIRS"
+      ],
+      "failureCodes": [
+        "CANCELLED",
+        "CONFIG_ERROR",
+        "COST_LIMIT",
+        "FEATURE_DISABLED",
+        "PROVIDER_TIMEOUT",
+        "PROVIDER_UNAVAILABLE",
+        "RATE_LIMITED"
+      ],
+      "fixtureInput": {
+        "rawText": "{\"schemaVersion\":1,\"candidates\":[]",
+        "errors": [
+          {
+            "path": "$",
+            "code": "INVALID_JSON"
+          }
+        ],
+        "targetSchemaId": "nlu.extract:v1",
+        "locale": "zh-CN"
+      },
+      "fixtureOutput": {
+        "schemaVersion": 1,
+        "repairedText": "{\"schemaVersion\":1,\"candidates\":[]}"
+      }
+    },
+    {
+      "key": "conversation.modify",
+      "purpose": "MUTATION_INTENT_CANDIDATES",
+      "firstConsumerPhase": 53,
+      "inputSchemaVersion": 1,
+      "outputSchemaVersion": 1,
+      "maxInputBytes": 40000,
+      "maxOutputBytes": 8000,
+      "variables": [
+        {
+          "name": "userText",
+          "required": true,
+          "nullable": false,
+          "maxLength": 4000,
+          "delivery": "user_message",
+          "sensitivity": "private"
+        },
+        {
+          "name": "candidates",
+          "required": true,
+          "nullable": false,
+          "maxLength": 16000,
+          "delivery": "user_data",
+          "sensitivity": "private_minimized"
+        },
+        {
+          "name": "locale",
+          "required": true,
+          "nullable": false,
+          "maxLength": 35,
+          "delivery": "system_scalar",
+          "sensitivity": "non_sensitive"
+        }
+      ],
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["userText", "candidates", "locale"],
+        "properties": {
+          "userText": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000,
+            "format": "nonblank-text"
+          },
+          "candidates": {
+            "type": "array",
+            "maxItems": 30,
+            "items": {
+              "$ref": "#/$defs/Candidate"
+            }
+          },
+          "locale": {
+            "$ref": "#/$defs/Locale"
+          }
+        }
+      },
+      "responseSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "schemaVersion",
+          "operation",
+          "targetCandidateIds",
+          "requestedText",
+          "explanation"
+        ],
+        "properties": {
+          "schemaVersion": {
+            "const": 1
+          },
+          "operation": {
+            "$ref": "#/$defs/Operation"
+          },
+          "targetCandidateIds": {
+            "type": "array",
+            "maxItems": 30,
+            "uniqueItems": true,
+            "items": {
+              "$ref": "travel-requirement-v1#/$defs/Id"
+            }
+          },
+          "requestedText": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000,
+            "format": "nonblank-text"
+          },
+          "explanation": {
+            "$ref": "#/$defs/Text"
+          }
+        }
+      },
+      "templateRules": [
+        "NO_EXECUTION_OR_PERMISSION",
+        "ONLY_SUPPLIED_TARGET_CANDIDATES",
+        "AMBIGUITY_REQUIRES_EXPLICIT_CONFIRMATION"
+      ],
+      "failureCodes": [
+        "CANCELLED",
+        "CONFIG_ERROR",
+        "COST_LIMIT",
+        "FEATURE_DISABLED",
+        "PROVIDER_TIMEOUT",
+        "PROVIDER_UNAVAILABLE",
+        "RATE_LIMITED",
+        "VALIDATION_ERROR"
+      ],
+      "fixtureInput": {
+        "userText": "删除这项安排",
+        "candidates": [
+          {
+            "candidateId": "candidate_event_a",
+            "label": "已选安排",
+            "allowedOperations": ["REMOVE"]
+          }
+        ],
+        "locale": "zh-CN"
+      },
+      "fixtureOutput": {
+        "schemaVersion": 1,
+        "operation": "REMOVE",
+        "targetCandidateIds": ["candidate_event_a"],
+        "requestedText": "删除这项安排",
+        "explanation": "请求删除已选安排，提交前仍需验证影响范围。"
+      }
+    },
+    {
+      "key": "planner.score",
+      "purpose": "DETERMINISTIC_SCORE_EXPLANATION",
+      "firstConsumerPhase": 45,
+      "inputSchemaVersion": 1,
+      "outputSchemaVersion": 1,
+      "maxInputBytes": 20000,
+      "maxOutputBytes": 20000,
+      "variables": [
+        {
+          "name": "scoreReasons",
+          "required": true,
+          "nullable": false,
+          "maxLength": 8000,
+          "delivery": "user_data",
+          "sensitivity": "private_minimized"
+        },
+        {
+          "name": "locale",
+          "required": true,
+          "nullable": false,
+          "maxLength": 35,
+          "delivery": "system_scalar",
+          "sensitivity": "non_sensitive"
+        }
+      ],
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["scoreReasons", "locale"],
+        "properties": {
+          "scoreReasons": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 10,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["dimension", "score", "reasonCodes"],
+              "properties": {
+                "dimension": {
+                  "$ref": "#/$defs/Dimension"
+                },
+                "score": {
+                  "type": ["number", "null"],
+                  "minimum": 0,
+                  "maximum": 100
+                },
+                "reasonCodes": {
+                  "$ref": "#/$defs/TextList"
+                }
+              }
+            }
+          },
+          "locale": {
+            "$ref": "#/$defs/Locale"
+          }
+        }
+      },
+      "responseSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["schemaVersion", "explanations", "overallExplanation"],
+        "properties": {
+          "schemaVersion": {
+            "const": 1
+          },
+          "explanations": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 10,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["dimension", "text"],
+              "properties": {
+                "dimension": {
+                  "$ref": "#/$defs/Dimension"
+                },
+                "text": {
+                  "$ref": "#/$defs/Text"
+                }
+              }
+            }
+          },
+          "overallExplanation": {
+            "$ref": "#/$defs/Text"
+          }
+        }
+      },
+      "templateRules": [
+        "NO_NUMERIC_SCORE_OUTPUT",
+        "NO_NEW_EVIDENCE",
+        "EXPLAIN_ONLY_DETERMINISTIC_REASONS"
+      ],
+      "failureCodes": [
+        "CANCELLED",
+        "CONFIG_ERROR",
+        "COST_LIMIT",
+        "FEATURE_DISABLED",
+        "PROVIDER_TIMEOUT",
+        "PROVIDER_UNAVAILABLE",
+        "RATE_LIMITED"
+      ],
+      "failureFallback": "DETERMINISTIC_REASON_TEMPLATES",
+      "fixtureInput": {
+        "scoreReasons": [
+          {
+            "dimension": "comfort",
+            "score": 80,
+            "reasonCodes": ["REST_INTERVAL_SATISFIED"]
+          }
+        ],
+        "locale": "zh-CN"
+      },
+      "fixtureOutput": {
+        "schemaVersion": 1,
+        "explanations": [
+          {
+            "dimension": "comfort",
+            "text": "已按规则保留休息间隔。"
+          }
+        ],
+        "overallExplanation": "说明仅解释当前确定性评分。"
+      }
+    },
+    {
+      "key": "planner.final_summary",
+      "purpose": "VERIFIED_PLAN_FINAL_WORDING",
+      "firstConsumerPhase": 48,
+      "inputSchemaVersion": 1,
+      "outputSchemaVersion": 1,
+      "maxInputBytes": 65536,
+      "maxOutputBytes": 12000,
+      "variables": [
+        {
+          "name": "summary",
+          "required": true,
+          "nullable": false,
+          "maxLength": 1200,
+          "delivery": "user_data",
+          "sensitivity": "private_minimized"
+        },
+        {
+          "name": "dailyHighlights",
+          "required": true,
+          "nullable": false,
+          "maxLength": 16000,
+          "delivery": "user_data",
+          "sensitivity": "private_minimized"
+        },
+        {
+          "name": "budgetSummary",
+          "required": true,
+          "nullable": true,
+          "maxLength": 500,
+          "delivery": "user_data",
+          "sensitivity": "private_minimized"
+        },
+        {
+          "name": "riskSummaries",
+          "required": true,
+          "nullable": false,
+          "maxLength": 8000,
+          "delivery": "user_data",
+          "sensitivity": "private_minimized"
+        },
+        {
+          "name": "assumptionSummaries",
+          "required": true,
+          "nullable": false,
+          "maxLength": 8000,
+          "delivery": "user_data",
+          "sensitivity": "private_minimized"
+        },
+        {
+          "name": "limitations",
+          "required": true,
+          "nullable": false,
+          "maxLength": 8000,
+          "delivery": "user_data",
+          "sensitivity": "private_minimized"
+        },
+        {
+          "name": "locale",
+          "required": true,
+          "nullable": false,
+          "maxLength": 35,
+          "delivery": "system_scalar",
+          "sensitivity": "non_sensitive"
+        }
+      ],
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "summary",
+          "dailyHighlights",
+          "budgetSummary",
+          "riskSummaries",
+          "assumptionSummaries",
+          "limitations",
+          "locale"
+        ],
+        "properties": {
+          "summary": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1200,
+            "format": "nonblank-text"
+          },
+          "dailyHighlights": {
+            "$ref": "#/$defs/TextList"
+          },
+          "budgetSummary": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Text"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "riskSummaries": {
+            "$ref": "#/$defs/TextList"
+          },
+          "assumptionSummaries": {
+            "$ref": "#/$defs/TextList"
+          },
+          "limitations": {
+            "$ref": "#/$defs/TextList"
+          },
+          "locale": {
+            "$ref": "#/$defs/Locale"
+          }
+        }
+      },
+      "responseSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["schemaVersion", "finalSummary"],
+        "properties": {
+          "schemaVersion": {
+            "const": 1
+          },
+          "finalSummary": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 3000,
+            "format": "nonblank-text"
+          }
+        }
+      },
+      "templateRules": [
+        "ONLY_VERIFIED_INPUT",
+        "PRESERVE_UNKNOWN_AND_LIMITATIONS",
+        "NO_FACT_SCORE_QUALITY_OR_EXECUTION_WRITES"
+      ],
+      "failureCodes": [
+        "CANCELLED",
+        "CONFIG_ERROR",
+        "COST_LIMIT",
+        "FEATURE_DISABLED",
+        "PROVIDER_TIMEOUT",
+        "PROVIDER_UNAVAILABLE",
+        "RATE_LIMITED",
+        "VALIDATION_ERROR"
+      ],
+      "fixtureInput": {
+        "summary": "已验证的行程摘要",
+        "dailyHighlights": ["按已验证顺序游览"],
+        "budgetSummary": null,
+        "riskSummaries": [],
+        "assumptionSummaries": [],
+        "limitations": ["费用仍有未知项"],
+        "locale": "zh-CN"
+      },
+      "fixtureOutput": {
+        "schemaVersion": 1,
+        "finalSummary": "按已验证顺序游览，费用仍有未知项。"
+      }
+    },
+    {
+      "key": "export.markdown",
+      "purpose": "ISOLATED_NONCANONICAL_WORDING_EXPERIMENT",
+      "firstConsumerPhase": 15,
+      "formalExportAllowed": false,
+      "formalExportBoundaryPhase": 104,
+      "inputSchemaVersion": 1,
+      "outputSchemaVersion": 1,
+      "maxInputBytes": 20000,
+      "maxOutputBytes": 20000,
+      "variables": [
+        {
+          "name": "publicTextBlocks",
+          "required": true,
+          "nullable": false,
+          "maxLength": 8000,
+          "delivery": "user_data",
+          "sensitivity": "synthetic_public_projection"
+        },
+        {
+          "name": "locale",
+          "required": true,
+          "nullable": false,
+          "maxLength": 35,
+          "delivery": "system_scalar",
+          "sensitivity": "non_sensitive"
+        }
+      ],
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["publicTextBlocks", "locale"],
+        "properties": {
+          "publicTextBlocks": {
+            "$ref": "#/$defs/TextList"
+          },
+          "locale": {
+            "$ref": "#/$defs/Locale"
+          }
+        }
+      },
+      "responseSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["schemaVersion", "markdown"],
+        "properties": {
+          "schemaVersion": {
+            "const": 1
+          },
+          "markdown": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000,
+            "format": "nonblank-text"
+          }
+        }
+      },
+      "templateRules": [
+        "SYNTHETIC_EXPERIMENT_ONLY",
+        "NEVER_CANONICAL_EXPORT",
+        "NO_NEW_FACTS_OR_HTML"
+      ],
+      "failureCodes": [
+        "CANCELLED",
+        "CONFIG_ERROR",
+        "COST_LIMIT",
+        "FEATURE_DISABLED",
+        "PROVIDER_TIMEOUT",
+        "PROVIDER_UNAVAILABLE",
+        "RATE_LIMITED"
+      ],
+      "fixtureInput": {
+        "publicTextBlocks": ["合成旅行说明"],
+        "locale": "zh-CN"
+      },
+      "fixtureOutput": {
+        "schemaVersion": 1,
+        "markdown": "# 合成旅行说明"
+      }
+    }
+  ]
+}

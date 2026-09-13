@@ -1,0 +1,12 @@
+{
+  "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\node_modules\\vitest\\vitest.mjs run ai-governance provider-registry guarded-client prompt-service --no-file-parallelism --reporter=default --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase015\\attempt-3-dedicated.json",
+  "cwd": ".",
+  "exitCode": 1,
+  "signal": null,
+  "timedOut": false,
+  "stdout": "\n RUN  v4.1.11 C:/Users/11295/Desktop/Serendipity · 际遇\n\n ❯ tests/phase015/guarded-client.test.ts (5 tests | 1 failed) 910ms\n     ✓ [timeout-cancel-retry] retries once before first byte and never after first byte 99ms\n     ✓ [timeout-cancel-retry] cancellation marks an unknown reservation RECONCILING 41ms\n     × [timeout-cancel-retry] propagates an external AbortSignal to the provider 76ms\n     ✓ [quota-cost] concurrent reservations never exceed the durable hard cap  375ms\n     ✓ [version-evidence] records exact versions, hashes, usage, and no raw content 37ms\n ✓ tests/phase015/ai-governance.test.ts (3 tests) 458ms\n ✓ tests/phase015/prompt-service.test.ts (3 tests) 164ms\n ✓ tests/phase015/provider-registry.test.ts (4 tests) 57ms\n\n Test Files  1 failed | 3 passed (4)\n      Tests  1 failed | 14 passed (15)\n   Start at  12:32:53\n   Duration  3.09s (transform 204ms, setup 359ms, import 342ms, tests 1.59s, environment 0ms)\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase015/attempt-3-dedicated.json\n",
+  "stderr": "\n⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯\n\n FAIL  tests/phase015/guarded-client.test.ts > Phase015 guarded client > [timeout-cancel-retry] propagates an external AbortSignal to the provider\nAssertionError: expected { ok: true, …(6) } to match object { ok: false, errorCode: 'CANCELLED' }\n(7 matching properties omitted from actual)\n\n- Expected\n+ Received\n\n  {\n-   \"errorCode\": \"CANCELLED\",\n-   \"ok\": false,\n+   \"ok\": true,\n  }\n\n ❯ tests/phase015/guarded-client.test.ts:84:25\n     82|     await new Promise((resolve) => setTimeout(resolve, 5));\n     83|     controller.abort();\n     84|     await expect(pending).resolves.toMatchObject({ ok: false, errorCod…\n       |                         ^\n     85|   });\n     86|\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯\n\n",
+  "durationMs": 3777,
+  "startedAt": "2026-09-13T04:32:52.410Z",
+  "finishedAt": "2026-09-13T04:32:56.187Z"
+}

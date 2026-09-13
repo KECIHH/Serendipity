@@ -2254,3 +2254,7 @@ preferences.consent.sensitiveRequirementProcessing=false/null 不允许向模型
 ```
 
 运行 `node docs/phase-plans/check-phase002-provider-privacy.mjs --case privacy`。生产实现阶段必须用相同规则驱动真实服务/API/UI/存储再验证，不能把本阶段临时文件模拟器作为产品删除服务。
+
+## Phase015 AI 证据最小化
+
+每次 AI attempt 的 `AiOutputRecord` 只保存 trace/attempt、三类精确版本、activationRevision、planningPolicyVersionId、实际发送消息与输出的 canonical SHA-256、解析状态、安全错误类别、token 用量和时延；Phase015 全模式 `rawOutput` 均由数据库约束强制为 null，本卡未开放 debug capture，不保存完整 Prompt、用户原文、Provider 原始响应、authorization header 或 secretRef 解析值。`AiUsageReservation` 只保存保守估算与账单对账状态，不含 Prompt 正文或用户内容。公开错误仅返回封闭错误码和安全文案；解密失败、URL 拒绝、超时、取消与配额拒绝都不泄露目标地址、凭据指纹或原始响应。

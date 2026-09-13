@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "producerPhase": 15,
+  "scope": "SYNTHETIC_ONLY",
+  "source": "Phase015: fills the previously missing typed planning/quality bootstrap contract; not a Phase002 frozen numerical policy and not production approval.",
+  "freshness": {
+    "agingAfterSeconds": {
+      "value": 60,
+      "unit": "second",
+      "min": 1,
+      "max": 86400,
+      "source": "Phase015 safe bootstrap",
+      "reason": "Synthetic conservative observation window"
+    },
+    "ttlSeconds": {
+      "value": 120,
+      "unit": "second",
+      "min": 1,
+      "max": 86400,
+      "source": "Phase015 safe bootstrap",
+      "reason": "Synthetic expiry threshold"
+    },
+    "maxStaleSeconds": {
+      "value": 180,
+      "unit": "second",
+      "min": 1,
+      "max": 172800,
+      "source": "Phase015 safe bootstrap",
+      "reason": "Synthetic fallback cap"
+    },
+    "licenseMaxAgeSeconds": {
+      "value": 600,
+      "unit": "second",
+      "min": 1,
+      "max": 86400,
+      "source": "Phase015 safe bootstrap",
+      "reason": "Synthetic license refresh cap"
+    }
+  },
+  "planning": {
+    "dailyWalkingLimit": {
+      "value": 8000,
+      "unit": "metre",
+      "min": 0,
+      "max": 30000,
+      "source": "Phase015 safe bootstrap",
+      "reason": "Conservative synthetic daily walking ceiling"
+    },
+    "maxDailyDuration": {
+      "value": 480,
+      "unit": "minute",
+      "min": 60,
+      "max": 960,
+      "source": "Phase015 safe bootstrap",
+      "reason": "Eight-hour synthetic activity ceiling"
+    },
+    "transferBuffer": {
+      "value": 30,
+      "unit": "minute",
+      "min": 0,
+      "max": 240,
+      "source": "Phase015 safe bootstrap",
+      "reason": "Synthetic inter-event margin"
+    },
+    "openingBuffer": {
+      "value": 30,
+      "unit": "minute",
+      "min": 0,
+      "max": 240,
+      "source": "Phase015 safe bootstrap",
+      "reason": "Synthetic opening-hours margin"
+    },
+    "mealWindow": {
+      "value": 60,
+      "unit": "minute",
+      "min": 15,
+      "max": 180,
+      "source": "Phase015 safe bootstrap",
+      "reason": "Synthetic meal allowance"
+    },
+    "restBuffer": {
+      "value": 30,
+      "unit": "minute",
+      "min": 0,
+      "max": 180,
+      "source": "Phase015 safe bootstrap",
+      "reason": "Synthetic rest allowance"
+    },
+    "detourLimit": {
+      "value": 2000,
+      "unit": "metre",
+      "min": 0,
+      "max": 10000,
+      "source": "Phase015 safe bootstrap",
+      "reason": "Bounded synthetic detour"
+    },
+    "budgetTolerance": {
+      "value": "0",
+      "unit": "ratio",
+      "min": "0",
+      "max": "1",
+      "source": "Phase015 safe bootstrap",
+      "reason": "No synthetic hard-budget overshoot"
+    },
+    "maxReplanIterations": {
+      "value": 3,
+      "unit": "iteration",
+      "min": 1,
+      "max": 5,
+      "source": "Phase015 safe bootstrap",
+      "reason": "Bounded deterministic iteration count"
+    }
+  },
+  "quality": {
+    "minOverallScore": {
+      "value": 80,
+      "unit": "point",
+      "min": 0,
+      "max": 100,
+      "source": "Phase015 safe bootstrap",
+      "reason": "Synthetic quality threshold, not a real-world reliability claim"
+    },
+    "requireSourceRefs": true,
+    "unknownFactsBlockSave": true
+  }
+}

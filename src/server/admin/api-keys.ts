@@ -26,10 +26,9 @@ import {
   writeSucceededKeyReceipt,
   type AdminCommandIdentity,
 } from "@/server/admin/command-receipt";
-import {
-  createKeyCandidateClient,
-  type KeyCandidateClient,
-} from "@/server/admin/key-candidate-client";
+import type { KeyCandidateClient } from "@/server/admin/key-candidate-client";
+import { createProviderKeyCandidateClient } from "@/server/ai/key-candidate-client";
+import { ProviderConfigKeyReferenceAdapter } from "@/server/ai/provider-key-reference-adapter";
 import { KeyLifecycleError, type KeyReferenceAdapter } from "@/server/admin/key-reference";
 import { createKeyRotationCoordinator } from "@/server/admin/key-rotation";
 import { AuditLogError, createAuditContext, type AuditRequestContext } from "@/server/audit-log";
@@ -193,8 +192,8 @@ export function createAdminApiKeysService(options: AdminApiKeysServiceOptions = 
     client,
     audited,
     resolver,
-    adapters: options.referenceAdapters ?? [],
-    candidateClient: options.candidateClient ?? createKeyCandidateClient(),
+    adapters: options.referenceAdapters ?? [new ProviderConfigKeyReferenceAdapter()],
+    candidateClient: options.candidateClient ?? createProviderKeyCandidateClient(client),
   });
 
   async function authorize(request: Request): Promise<CurrentIdentity> {

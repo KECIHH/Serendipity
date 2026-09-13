@@ -249,13 +249,18 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
     const includesAdminCommands = Prisma.dmmf.datamodel.models.some(
       ({ name }) => name === "AdminCommandReceipt",
     );
+    const includesAiGovernance = Prisma.dmmf.datamodel.models.some(
+      ({ name }) => name === "PromptDefinition",
+    );
     const includesRotationContract = readdirSync("prisma/migrations").some((name) =>
       /^\d{14}_key_rotation_contract$/.test(name),
     );
     expect(migrations).toHaveLength(
       (includesAdminCommands ? 7 : includesAuth ? 6 : includesApiKey ? 5 : includesAudit ? 4 : 3) +
-        Number(includesRotationContract),
+        Number(includesRotationContract) +
+        Number(includesAiGovernance),
     );
+    if (includesAiGovernance) expect(migrations[8].name).toMatch(/^\d{14}_ai_governance$/);
     if (includesRotationContract)
       expect(migrations[7].name).toMatch(/^\d{14}_key_rotation_contract$/);
     if (includesAdminCommands) expect(migrations[6].name).toMatch(/^\d{14}_admin_commands$/);
@@ -282,11 +287,26 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
     const adminModels = models.some(({ name }) => name === "AdminCommandReceipt")
       ? ["AdminCommandReceipt", "KeyRotationRun"]
       : [];
+    const aiGovernanceModels = models.some(({ name }) => name === "PromptDefinition")
+      ? [
+          "AiOutputRecord",
+          "AiUsageReservation",
+          "ModelDeployment",
+          "PlanningPolicyActivation",
+          "PlanningPolicyVersion",
+          "PromptActivation",
+          "PromptDefinition",
+          "PromptModelActivation",
+          "PromptVersion",
+          "ProviderConfigVersion",
+        ]
+      : [];
     const expectedModels = [
       ...apiKeyModels,
       ...auditModels,
       ...authModels,
       ...adminModels,
+      ...aiGovernanceModels,
       "ChatMessage",
       "SystemConfig",
       "TravelRecord",
@@ -367,13 +387,21 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
     const includesAdminCommands = Prisma.dmmf.datamodel.models.some(
       ({ name }) => name === "AdminCommandReceipt",
     );
+    const includesAiGovernance = Prisma.dmmf.datamodel.models.some(
+      ({ name }) => name === "PromptDefinition",
+    );
     expect([...new Set(rows.map(({ name }) => name))]).toEqual([
       ...(includesAdminCommands ? ["AdminCommandStatus"] : []),
+      ...(includesAiGovernance
+        ? ["AiOutputStatus", "AiReservationStatus", "AiSubmissionState"]
+        : []),
       ...(includesApiKey ? ["ApiKeyStatus"] : []),
       ...(includesAuth ? ["AuthLoginAttemptStatus", "AuthSessionStatus"] : []),
       "ChatMessageKind",
+      ...(includesAiGovernance ? ["CredentialRequirement"] : []),
       ...(includesAdminCommands ? ["KeyRotationStage"] : []),
       "MessageRole",
+      ...(includesAiGovernance ? ["PromptModelActivationStatus", "ProviderMode"] : []),
       "Role",
       "TravelStatus",
       "UserStatus",

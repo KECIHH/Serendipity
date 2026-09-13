@@ -86,24 +86,12 @@ describe("readEnv", () => {
     expectInvalid(source, "AI_MOCK");
   });
 
-  it("API key required when AI_MOCK is false", () => {
+  it("retired AI provider bootstrap keys do not block server startup", () => {
     const source = validSource();
-    source.AI_MOCK = "false";
-    source.AI_API_KEY = "";
-    expectInvalid(source, "AI_API_KEY");
-  });
-
-  it("mock optional allows an empty AI_API_KEY", () => {
-    const source = validSource();
-    source.AI_MOCK = "true";
-    source.AI_API_KEY = "";
-    expect(readEnv(source).AI_API_KEY).toBe("");
-  });
-
-  it("rejects http for AI_BASE_URL", () => {
-    const source = validSource();
-    source.AI_BASE_URL = "http://api.deepseek.com";
-    expectInvalid(source, "AI_BASE_URL");
+    expect(source).not.toHaveProperty("AI_API_KEY");
+    expect(source).not.toHaveProperty("AI_BASE_URL");
+    expect(source).not.toHaveProperty("AI_MODEL");
+    expect(readEnv(source).AI_MOCK).toBe(true);
   });
 
   it("rejects invalid and too-small timeout values", () => {
@@ -147,7 +135,7 @@ describe("readEnv", () => {
         (entry) => entry.scope === "client" && entry.secret && entry.documentInExample,
       ),
     ).toHaveLength(0);
-    expect(expectedKeys).toHaveLength(11);
+    expect(expectedKeys).toHaveLength(8);
   });
 
   it("registers future CLI inputs without activating them for the Web parser", () => {

@@ -25,11 +25,11 @@
 | `PromptVersion` | 15 | id PK；(definitionId,version) 与 (definitionId,contentHash) unique | definitionId -> PromptDefinition；createdById? -> User；版本内容/variablesJson 必填 | 无生命周期；候选/激活状态不写版本行 | content/contentHash/schema/createdAt 全部不可变，数据库拒绝 UPDATE/DELETE | 正常业务 Restrict；保留全部引用历史；作者可匿名化 | 仅授权 ADMIN 编辑/比较；业务 DTO 不返回系统 Prompt | prisma/schema.prisma#PromptVersion | Phase015/090 |
 | `PromptActivation` | 15 | definitionId PK/unique；revision>=0 | definitionId -> PromptDefinition；championVersionId -> 同 definition PromptVersion；updatedBy? -> User | 无独立生命周期；启停由配对 PromptModelActivation.status | 仅 activatePromptModelTuple 同事务更新两指针和共同 revision | 禁单侧更新/删除；引用版本 Restrict | 仅 ADMIN 配置摘要/统一 activationRevision | prisma/schema.prisma#PromptActivation | Phase015/090；canonical 2.2 |
 | `ModelDeployment` | 15 | (id,configVersion) 复合 PK；contentHash 校验 | providerId 为 Provider 身份；实际调用经 activation 精确绑定 providerConfigVersion；createdById? | 无生命周期；不含 enabled/isDefault | providerModelName/paramsJson/capabilitiesJson/configVersion/createdAt 不可变 | 被调用/activation 引用时 Restrict；新配置新版本 | ADMIN 安全能力与版本摘要；不暴露 secret/baseUrl | prisma/schema.prisma#ModelDeployment | Phase015/091 |
-| `ProviderConfigVersion` | 15 | (providerId,configVersion) 复合 PK | secretRef? -> ApiKeyConfig；NONE 必须 null；REQUIRED 必须 ACTIVE key；无明文凭据 | mode=MOCK/LIVE；credentialRequirement=NONE/REQUIRED；版本行无启停 status | baseUrl/paramsJson/策略/contentHash/createdAt 不可变；更新新 configVersion | 所有历史调用、事实和治理引用 Restrict | ADMIN 掩码配置；公开只允许安全来源信息，不含 endpoint/secretRef/envelope | prisma/schema.prisma#ProviderConfigVersion | Phase015/028/092；canonical 2.2 |
+| `ProviderConfigVersion` | 15 | (providerId,configVersion) 复合 PK | secretRef? -> ApiKeyConfig；NONE 必须 null；REQUIRED 必须 ACTIVE key；无明文凭据 | mode=MOCK/LIVE；credentialRequirement=NONE/REQUIRED；版本行无启停 status | baseUrl/capabilities/timeoutMs/maxRetries/quotaTokensPerDay/costLimitPerDay/region/locale/contentHash/createdAt 不可变；更新新 configVersion | 所有历史调用、事实和治理引用 Restrict | ADMIN 掩码配置；公开只允许安全来源信息，不含 endpoint/secretRef/envelope | prisma/schema.prisma#ProviderConfigVersion | Phase015/028/092；canonical 2.2 |
 | `PromptModelActivation` | 15 | definitionId PK/unique；revision>=0 | definitionId/promptVersionId；(deploymentId,deploymentConfigVersion)；(providerId,providerConfigVersion) 精确 FK；updatedBy? | ACTIVE/DISABLED | 兼容元组与 PromptActivation 同事务 CAS，共同 revision；单次调用冻结一致快照 | 禁单侧删除/切换；引用历史版本 Restrict | ADMIN 安全完整元组和 activationRevision | prisma/schema.prisma#PromptModelActivation | Phase015/090/091 |
 | `PlanningPolicyVersion` | 15 | id PK；version unique；contentHash 校验 | createdById? -> User；contentJson/schema 必填 | 无生命周期；状态不得回写版本 | 内容、单位、阈值、hash、createdAt 不可变 | 被 activation/run/trace/报告引用时 Restrict | ADMIN 策略摘要；普通用户仅适用规则的安全说明 | prisma/schema.prisma#PlanningPolicyVersion | Phase015/093 |
 | `PlanningPolicyActivation` | 15 | policyKey PK；单例 active pointer；revision>=0 | activeVersionId -> PlanningPolicyVersion；updatedBy? -> User | 无独立生命周期 | 自身 revision CAS，不要求与 Prompt revision 数值相同 | activation 不因缓存 TTL 消失；引用版本 Restrict | ADMIN 指针/revision；不公开内部阈值 | prisma/schema.prisma#PlanningPolicyActivation | Phase015/093 |
-| `AiOutputRecord` | 15 | id PK；(traceId,attemptNo) unique | travelRecordId?；promptVersionId -> PromptVersion；deployment/provider 均精确复合 FK；rawOutput?/errorMessage?/inputTokens?/outputTokens? | attempt 结果：SUCCEEDED/FAILED/CANCELLED；parsedOk 为独立布尔 | 每次 attempt 完成后追加；production rawOutput=null；精确版本不可改 | 跟随 trace/审计保留期；受引用时 Restrict；专用隐私清理原文 | ADMIN 脱敏状态/hash/token/duration；mock-debug 仅显式 capturePolicy 裁剪内容 | prisma/schema.prisma#AiOutputRecord | Phase001/015/018；attempt 终态为现有调用结果的派生细化 |
+| `AiOutputRecord` | 15 | id PK；(traceId,attemptNo) unique | travelRecordId?；promptVersionId -> PromptVersion；deployment/provider 均精确复合 FK；planningPolicyVersionId；activationRevision；rawOutput?/errorMessage?/inputTokens?/outputTokens? | attempt 结果：SUCCEEDED/FAILED/CANCELLED；parsedOk 为独立布尔 | 每次 attempt 完成后追加；全模式 rawOutput=null；精确版本不可改 | 跟随 trace/审计保留期；受引用时 Restrict | ADMIN 脱敏状态/hash/token/duration；本卡未开放 capture | prisma/schema.prisma#AiOutputRecord | Phase001/015/018；attempt 终态为现有调用结果的派生细化 |
 | `AiUsageReservation` | 15 | id PK；(traceId,attemptNo) unique | actualTokens?/actualCost?/providerRequestId?/settledAt?；绑定本 attempt 的计价/版本证据 | RESERVED/RECONCILING/SETTLED/RELEASED；submissionState=NOT_SENT/MAY_HAVE_BEEN_SENT/ACCEPTED | 上界与幂等域固定；结算/释放只一次；未知费用继续占额 | expiresAt 只触发对账，不能释放未知费用；结算证据按财务最小保留规则 | 无公共投影；ADMIN 仅聚合费用与安全对账状态 | prisma/schema.prisma#AiUsageReservation | Phase015；canonical 2.2；state-machines 16 |
 | `ChatCommand` | 16 | id PK；(ownerKeyHash,kind,idempotencyKeyHash) unique | travelRecordId/userMessageId/payloadRef 必填；assistantMessageId?/errorCode?/errorMessage?/startedAt?/completedAt? | kind=PLAN_DRAFT/CHAT_MESSAGE；PENDING/RUNNING/COMPLETED/FAILED/CANCELLED | 接受输入/历史 ownerKeyHash 不变；终态不重开 | 活跃 payload pin；终态按隐私期；归属合并不改历史幂等域 | 仅当前 owner 安全状态/消息；无 share/public 投影 | prisma/schema.prisma#ChatCommand | Phase016/023/082；state-machines 3 |
 | `ChatCommandEvent` | 16 | eventId PK；(aggregateId,sequence) unique | aggregateId -> ChatCommand；traceId 非空；payloadJson 按事件 schema | status 记录所属 ChatCommand 当次状态；type 是独立事件名 | append-only；assistant.delta/瞬时心跳不入库 | 持久 replay 窗口后按隐私清理；已引用终态收据先保留 | 仅合法 owner SSE 白名单，不含 payload 原文/秘密 | prisma/schema.prisma#ChatCommandEvent | Phase016；canonical 3 |
@@ -279,7 +279,9 @@ Phase011 首产的两张认证表使用唯一 `auth_session_login_attempt` migra
 | providerConfigVersion | Int | 否 | 引用ProviderConfigVersion(providerId,configVersion) |
 | inputHash | Char(64) | 否 | 输入canonical字节SHA-256 |
 | outputHash | Char(64) | 否 | 输出字节SHA-256；无返回时hash空字节，不造输出 |
-| rawOutput | Text | 是 | 所有生产attempt必须null，mock-debug仅显式capturePolicy裁剪限长 |
+| activationRevision | Int | 否 | 本次冻结的 Prompt/Model 两指针共同 revision |
+| planningPolicyVersionId | String | 否 | 精确 PlanningPolicyVersion FK；Restrict |
+| rawOutput | Text | 是 | Phase015 所有模式均由 CHECK 强制 null；未开放 debug capture |
 | parsedOk | Boolean | 否 | 独立解析结果，非成功替代状态 |
 | status | AiOutputStatus | 否 | SUCCEEDED/FAILED/CANCELLED，完成attempt追加 |
 | errorCode | String | 否 | 成功NONE，失败为稳定分类；不使用原始服务商body |
@@ -664,3 +666,15 @@ API Key使用版本化AES-256-GCM envelope，当前key来自ENCRYPTION_KEY；enc
 ## Phase014 配置与 Dashboard 消费
 
 Phase014 复用八个既有迁移、SystemConfig 与 AdminCommandReceipt；schema 和历史迁移字节不变。设置 CAS 使用 revision，更新、CONFIG_UPDATE 审计及安全响应收据在同一 Serializable 事务中完成。审计存 canonical valueHash 与版本差异。Dashboard 读取前核对全部已完成迁移的 checksum 及十个前置表，单查询故障与空表区分。registry 与受审 provisioning 规则见 [管理指南](admin.md)。
+
+## Phase015 AI 治理实现
+
+Phase015 通过唯一追加迁移 `20260913000000_ai_governance` 创建十个最终治理模型：PromptDefinition、PromptVersion、PromptActivation、ModelDeployment、ProviderConfigVersion、PromptModelActivation、PlanningPolicyVersion、PlanningPolicyActivation、AiOutputRecord、AiUsageReservation。历史八个迁移字节不变；不创建 PromptConfig/AiModelConfig 兼容表或导入桥。
+
+PromptDefinition、PromptVersion、ModelDeployment、ProviderConfigVersion、PlanningPolicyVersion 由数据库触发器拒绝 UPDATE/DELETE。PromptActivation 与 PromptModelActivation 使用延迟约束触发器保证同一 definition、同一 PromptVersion、同一 revision 原子切换。AiUsageReservation 的 CHECK 与触发器保证 RELEASED 只能属于 NOT_SENT，并把 RECONCILING 或 MAY_HAVE_BEEN_SENT 的未知结果改为 RELEASED/NOT_SENT 的尝试直接拒绝。
+
+`bootstrapAiGovernance` 在空库创建八个 definition/version-1/激活指针/禁用模型元组、一个 MOCK ProviderConfigVersion、一个 mock ModelDeployment、一个 PlanningPolicyVersion/Activation 和 `ai.calls.enabled=false`；重复执行所有 created 计数为0且不更新不可变行。`enableMockAi` 是唯一受控启用入口，逐 key probe 后激活八个完整元组并显式打开开关。运行调用统一经 guarded client 冻结三类版本、预留配额、传递 AbortSignal/总 deadline 并追加 AiOutputRecord。
+
+本卡同时冻结 [PlanningPolicy 合成 bootstrap](planning-policy.json)：单位、范围、来源与用途逐项记录并在解析时校验，scope 为 SYNTHETIC_ONLY。原 Phase002 未提供冻结的 planning/quality 数值，已有 freshness 数值仅为离线 fixture；本卡不将其冒称为生产阈值。生产用户调用在政策授权前被拒绝。
+
+ModelDeployment 的 `(providerId,providerConfigVersion)` 是复合 FK。activation 和 AiOutputRecord 的 deployment/provider 组合由触发器再次核对归属。三类 activation 的 UPDATE 必须恰好 revision+1。AiUsageReservation 的身份、估算、到期时间及终态不可回退；已绑定 providerRequestId 不可更换。按 Provider 锁定预算时汇总当前日 SETTLED 实际费用，以及所有日期 RESERVED/RECONCILING 的上界。`releaseUnsentReservation` 只幂等释放未发送项，`reconcileReservation` 按匹配的 Provider 证明或到期上界仅结算一次。

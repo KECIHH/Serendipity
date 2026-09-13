@@ -23,10 +23,10 @@ export function fixtureConfig(): AdminFixtureConfig {
   assert(file, "Phase012 requires its task-owned database configuration");
   const config = JSON.parse(fs.readFileSync(file, "utf8")) as AdminFixtureConfig;
   assert.match(config.runId, /^[a-f0-9]{12}$/);
-  const match = /^phase(012|013|014)_disposable_([a-f0-9]{12})$/.exec(config.database);
+  const match = /^phase(012|013|014|015)_disposable_([a-f0-9]{12})$/.exec(config.database);
   assert(match, "Admin regression requires an owned Phase012 or Phase013 database");
-  const phase = match[1] as AdminFixtureConfig["phase"];
-  assert.equal(config.database, `phase${phase}_disposable_${config.runId}`);
+  const phase = (match[1] === "015" ? "014" : match[1]) as AdminFixtureConfig["phase"];
+  assert.equal(config.database, `phase${match[1]}_disposable_${config.runId}`);
   assert.equal(config.user, `phase${phase}_runner`);
   assert.equal(config.appUser, `phase${phase}_app`);
   config.phase = phase;
@@ -135,8 +135,10 @@ export async function withAdminDatabase<T>(
   operation: (fixture: AdminFixture) => Promise<T>,
 ): Promise<T> {
   const config = fixtureConfig();
+  const databasePhase = /^phase(\d{3})_/.exec(config.database)?.[1];
+  assert(databasePhase, "Admin regression requires a phased database name");
   const database = `${config.database}_u${randomBytes(5).toString("hex")}`;
-  assert.match(database, /^phase(?:012|013|014)_disposable_[a-f0-9]{12}_u[a-f0-9]{10}$/);
+  assert.match(database, /^phase(?:012|013|014|015)_disposable_[a-f0-9]{12}_u[a-f0-9]{10}$/);
   const control = new PrismaClient({ datasourceUrl: config.url, log: [] });
   const [identity] = await control.$queryRaw<
     Array<{ name: string; version: string; marker: string }>
@@ -145,7 +147,7 @@ export async function withAdminDatabase<T>(
     shobj_description(oid,'pg_database') AS marker FROM pg_database WHERE datname=current_database()
   `;
   assert.equal(identity.name, config.database);
-  assert.equal(identity.marker, `serendipity-phase${config.phase}-disposable:${config.runId}`);
+  assert.equal(identity.marker, `serendipity-phase${databasePhase}-disposable:${config.runId}`);
   assert.match(identity.version, /^17\./);
   await control.$executeRawUnsafe(`CREATE DATABASE "${database}"`);
   const owner = new URL(config.url),
@@ -158,7 +160,7 @@ export async function withAdminDatabase<T>(
   const app = new PrismaClient({ datasourceUrl: url, log: [] });
   try {
     await control.$executeRawUnsafe(
-      `COMMENT ON DATABASE "${database}" IS 'serendipity-phase${config.phase}-disposable:${config.runId}'`,
+      `COMMENT ON DATABASE "${database}" IS 'serendipity-phase${databasePhase}-disposable:${config.runId}'`,
     );
     const migration = await runAdminCommand(
       [path.resolve("node_modules/prisma/build/index.js"), "migrate", "deploy"],
@@ -175,6 +177,10 @@ export async function withAdminDatabase<T>(
       'GRANT SELECT, INSERT, UPDATE ON TABLE "AdminCommandReceipt", "KeyRotationRun" TO phase012_app',
       'GRANT SELECT ON "_prisma_migrations" TO phase012_app',
       "GRANT EXECUTE ON FUNCTION public.auth_now() TO phase012_app",
+      'GRANT SELECT, INSERT ON TABLE "PromptDefinition", "PromptVersion", "PlanningPolicyVersion", "ProviderConfigVersion", "ModelDeployment" TO phase012_app',
+      'GRANT SELECT, INSERT, UPDATE ON TABLE "PromptActivation", "PromptModelActivation", "PlanningPolicyActivation" TO phase012_app',
+      'GRANT SELECT, INSERT, UPDATE ON TABLE "AiUsageReservation" TO phase012_app',
+      'GRANT SELECT, INSERT ON TABLE "AiOutputRecord" TO phase012_app',
     ])
       await admin.$executeRawUnsafe(statement.replaceAll("phase012_app", config.appUser));
     const [role] = await app.$queryRaw<

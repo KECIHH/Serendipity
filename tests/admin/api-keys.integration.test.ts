@@ -1,5 +1,6 @@
 // @vitest-environment node
 import { createHash, randomBytes, randomUUID } from "node:crypto";
+import { Prisma } from "@prisma/client";
 import { describe, expect, it } from "vitest";
 import {
   assertApiKeyTransition,
@@ -737,9 +738,11 @@ describe.skipIf(!enabled)("admin/api-keys real PostgreSQL", () => {
         const tables = await fixture.admin.$queryRaw<
           Array<{ table_name: string }>
         >`SELECT table_name FROM information_schema.tables WHERE table_schema='public'`;
-        expect(tables.some((row) => /Provider|AiModel|PromptConfig/.test(row.table_name))).toBe(
-          false,
-        );
+        if (!Prisma.dmmf.datamodel.models.some((model) => model.name === "PromptDefinition")) {
+          expect(tables.some((row) => /Provider|AiModel|PromptConfig/.test(row.table_name))).toBe(
+            false,
+          );
+        }
         observe("rotate-revoke", {
           realReferenceCount: 0,
           providerTableQueries: 0,

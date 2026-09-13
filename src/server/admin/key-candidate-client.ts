@@ -5,7 +5,8 @@ import { lookup } from "node:dns/promises";
 import http from "node:http";
 import https from "node:https";
 import { isIP } from "node:net";
-import type { PrismaClient } from "@prisma/client";
+import type { ApiKeyConfig, Prisma, PrismaClient } from "@prisma/client";
+import type { AdminCommandClaim } from "@/server/admin/command-receipt";
 import { stableStringify } from "@/lib/json";
 import { parseApiKeyId } from "@/lib/admin-api-keys";
 import { decryptSecret, type KeyResolver } from "@/server/security/secret-envelope";
@@ -21,8 +22,19 @@ export interface KeyCandidateClientOptions {
   readonly timeoutMs?: number;
 }
 
+export interface KeyCandidateAuthorization {
+  readonly runId: string;
+  readonly claim: AdminCommandClaim;
+  authorize(tx: Prisma.TransactionClient): Promise<{ id: string; email: string }>;
+}
 export interface KeyCandidateClient {
   verify(target: KeyConnectionTarget, plainKey: string): Promise<string>;
+  verifyRecord?(
+    target: KeyConnectionTarget,
+    record: ApiKeyConfig,
+    resolver: KeyResolver,
+    authorization?: KeyCandidateAuthorization,
+  ): Promise<string>;
 }
 
 function ipv4Bits(address: string): bigint {

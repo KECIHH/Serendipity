@@ -63,6 +63,10 @@ function notice(value: ConfigValue): ConfigValue {
 }
 /** Only non-secret values. Registering a key does not create a future feature or a DB row. */
 export const CONFIG_REGISTRY: readonly ConfigEntry[] = Object.freeze([
+  privateEntry("ai.calls.enabled", "AI", "boolean", (value) => {
+    if (typeof value !== "boolean") throw new SettingInputError();
+    return value;
+  }),
   privateEntry("planner.quick.defaultDurationDays", "GENERAL", "整数 1–30", integer(1, 30)),
   privateEntry("planner.quick.defaultTravelerCount", "GENERAL", "整数 1–20", integer(1, 20)),
   privateEntry("planner.quick.defaultPace", "GENERAL", "slow | moderate | fast", (value) => {

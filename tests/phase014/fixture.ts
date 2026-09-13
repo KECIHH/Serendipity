@@ -14,6 +14,7 @@ import {
 } from "../phase013/api-key-fixture";
 
 export const settingDefaults = {
+  "ai.calls.enabled": false,
   "planner.quick.defaultDurationDays": 3,
   "planner.quick.defaultTravelerCount": 1,
   "planner.quick.defaultPace": "moderate",

@@ -37,7 +37,7 @@ function readDisposableTarget(value: string | undefined): {
   } catch {
     throw new Error("PHASE007_DATABASE_URL must identify this run's disposable database");
   }
-  const name = /^\/phase(00[789]|01[01234])_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(
+  const name = /^\/phase(00[789]|01[012345])_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(
     target.pathname,
   );
   const allowedOptions = new Set(["schema", "connect_timeout", "pool_timeout", "connection_limit"]);
@@ -117,6 +117,9 @@ describe.skipIf(databaseUrl === undefined)("SystemConfig real PostgreSQL contrac
     const includesAdminCommands = Prisma.dmmf.datamodel.models.some(
       ({ name }) => name === "AdminCommandReceipt",
     );
+    const includesAiGovernance = Prisma.dmmf.datamodel.models.some(
+      ({ name }) => name === "PromptDefinition",
+    );
     const includesRotationContract = readdirSync("prisma/migrations").some((name) =>
       /^\d{14}_key_rotation_contract$/.test(name),
     );
@@ -131,8 +134,11 @@ describe.skipIf(databaseUrl === undefined)("SystemConfig real PostgreSQL contrac
               ? 4
               : includesTravelLayer
                 ? 3
-                : 2) + Number(includesRotationContract),
+                : 2) +
+        Number(includesRotationContract) +
+        Number(includesAiGovernance),
     );
+    if (includesAiGovernance) expect(migrations[8].name).toMatch(/^\d{14}_ai_governance$/);
     if (includesRotationContract)
       expect(migrations[7].name).toMatch(/^\d{14}_key_rotation_contract$/);
     if (includesAdminCommands) expect(migrations[6].name).toMatch(/^\d{14}_admin_commands$/);
@@ -162,6 +168,19 @@ describe.skipIf(databaseUrl === undefined)("SystemConfig real PostgreSQL contrac
       expectedModels.push("AuthLoginAttempt", "AuthSession");
     if (models.some(({ name }) => name === "AdminCommandReceipt"))
       expectedModels.push("AdminCommandReceipt", "KeyRotationRun");
+    if (models.some(({ name }) => name === "PromptDefinition"))
+      expectedModels.push(
+        "AiOutputRecord",
+        "AiUsageReservation",
+        "ModelDeployment",
+        "PlanningPolicyActivation",
+        "PlanningPolicyVersion",
+        "PromptActivation",
+        "PromptDefinition",
+        "PromptModelActivation",
+        "PromptVersion",
+        "ProviderConfigVersion",
+      );
     expectedModels.sort();
     expect(models.map(({ name }) => name).sort()).toEqual(expectedModels);
     const model = models.find(({ name }) => name === "SystemConfig");

@@ -1,0 +1,100 @@
+{
+  "kind": "independent-review-diagnostic-not-gate",
+  "timestamp": "2026-09-13T06:14:52.892Z",
+  "databaseTouched": false,
+  "networkUsed": false,
+  "sourceHashes": {
+    "src/server/ai/guarded-client.ts": "06a76df75999ac387c81ffae8fddb6cde72aeeaa854c53e39e76a5d16005f588",
+    "src/server/services/prompt-service.ts": "dfd917045305ca5e18b1ef339e19084f8500b607171567cbc85c84bd01e6cda1",
+    "src/server/services/model-resolution-service.ts": "5f6ef01295301388e499e616764ba91789f1fdc17754fc84b0df8cdfcd216ad6",
+    "src/server/ai/provider-registry.ts": "ffbcb325de3f7bd0dc5e44d766f807833181f0ffbeeca80b363c3e6e913bdbf2"
+  },
+  "observations": {
+    "fakeDatabaseExplicitlyUsed": true,
+    "results": [
+      {
+        "ok": true,
+        "traceId": "review-0",
+        "attemptNo": 1,
+        "output": {
+          "arbitrary": "accepted"
+        },
+        "inputTokens": 12,
+        "outputTokens": 24,
+        "durationMs": 890
+      },
+      {
+        "ok": true,
+        "traceId": "review-1",
+        "attemptNo": 1,
+        "output": {
+          "arbitrary": "accepted"
+        },
+        "inputTokens": 12,
+        "outputTokens": 24,
+        "durationMs": 891
+      }
+    ],
+    "configured": {
+      "quotaTokensPerDay": 1,
+      "costLimitPerDay": "0.000001",
+      "contextWindowTokens": 1,
+      "maxOutputTokens": 1,
+      "envCostLimit": "0.000001"
+    },
+    "reservations": [
+      {
+        "bucketKey": "daily:review-provider:2026-09-13",
+        "traceId": "review-0",
+        "attemptNo": 1,
+        "estimatedTokens": 2191,
+        "estimatedCost": "0.00219100",
+        "status": "RESERVED",
+        "submissionState": "NOT_SENT",
+        "expiresAt": "2026-09-13T06:16:52.887Z"
+      },
+      {
+        "bucketKey": "daily:review-provider:2026-09-13",
+        "traceId": "review-1",
+        "attemptNo": 1,
+        "estimatedTokens": 2191,
+        "estimatedCost": "0.00219100",
+        "status": "RESERVED",
+        "submissionState": "NOT_SENT",
+        "expiresAt": "2026-09-13T06:16:52.891Z"
+      }
+    ],
+    "requests": [
+      {
+        "system": "synthetic template without rendered variables",
+        "userMessage": "actual input A",
+        "maxOutputTokens": 2048,
+        "responseFormat": "json"
+      },
+      {
+        "system": "synthetic template without rendered variables",
+        "userMessage": "actual input B",
+        "maxOutputTokens": 2048,
+        "responseFormat": "json"
+      }
+    ],
+    "inputHashes": [
+      "a555cdc9e7ca97a43190c59da0d61b5e01ad6c60bc6a71312764d30942446186",
+      "a555cdc9e7ca97a43190c59da0d61b5e01ad6c60bc6a71312764d30942446186"
+    ],
+    "parsedOk": [
+      true,
+      true
+    ],
+    "travelRecordIds": [
+      "another-owner-synthetic-record",
+      "another-owner-synthetic-record"
+    ],
+    "mixedSnapshot": {
+      "activationRevision": 1,
+      "modelVersion": 2,
+      "modelProviderVersion": 2,
+      "providerVersion": 1
+    }
+  }
+}

@@ -270,14 +270,26 @@ export function createKeyRotationCoordinator(options: CoordinatorOptions) {
       return { row, targets, run };
     });
     // No database transaction remains open while the controlled HTTP transport runs.
-    const plainKey = decryptSecret(loaded.row, resolver);
-    if (generateFingerprint(plainKey) !== loaded.row.keyFingerprint)
+    const plainKey = candidateClient.verifyRecord ? undefined : decryptSecret(loaded.row, resolver);
+    if (plainKey !== undefined && generateFingerprint(plainKey) !== loaded.row.keyFingerprint)
       throw new KeyLifecycleError(503, "CONFIG_ERROR");
     const started = Date.now(),
       proofs: string[] = [];
     for (const target of loaded.targets) {
       if (Date.now() - started > 30_000) throw new KeyLifecycleError(503, "PROVIDER_TIMEOUT");
-      proofs.push(await candidateClient.verify(target, plainKey));
+      await transaction(async (tx) => {
+        await scope.authorize(tx);
+        await assertAdminCommandClaim(tx, prepared.claim);
+      });
+      proofs.push(
+        candidateClient.verifyRecord
+          ? await candidateClient.verifyRecord(target, loaded.row, resolver, {
+              runId: loaded.run.id,
+              claim: prepared.claim,
+              authorize: scope.authorize,
+            })
+          : await candidateClient.verify(target, plainKey!),
+      );
     }
     const targetsHash = digest(loaded.targets);
     const verificationHash = digest({

@@ -23,13 +23,13 @@ export function fixtureConfig(): Config {
   assert(file, "Phase010 requires its task-owned database configuration");
   const config = JSON.parse(fs.readFileSync(file, "utf8")) as Omit<Config, "phase">;
   assert.match(config.runId, /^[a-f0-9]{12}$/);
-  const match = /^phase(010|011|012|013|014)_disposable_([a-f0-9]{12})$/.exec(config.database);
+  const match = /^phase(010|011|012|013|014|015)_disposable_([a-f0-9]{12})$/.exec(config.database);
   assert(
     match,
     "Seed regression requires an owned Phase010, Phase011, Phase012 or Phase013 database",
   );
-  const phase = match[1] as Config["phase"];
-  assert.equal(config.database, `phase${phase}_disposable_${config.runId}`);
+  const phase = (match[1] === "015" ? "014" : match[1]) as Config["phase"];
+  assert.equal(config.database, `phase${match[1]}_disposable_${config.runId}`);
   assert.equal(config.user, `phase${phase}_runner`);
   assert.equal(config.appUser, `phase${phase}_app`);
   for (const [value, username] of [
@@ -54,9 +54,10 @@ export async function childCommand(
   const configFile = process.env.PHASE010_FIXTURE_CONFIG;
   assert(configFile, "CLI fixtures require the task-owned scan configuration");
   const config = fixtureConfig();
+  const runtimePhase = config.database.startsWith("phase015_") ? "015" : config.phase;
   const runtimePath = path.resolve(
     path.dirname(configFile),
-    `../../docs/phase-plans/phase${config.phase}-runtime.mjs`,
+    `../../docs/phase-plans/phase${runtimePhase}-runtime.mjs`,
   );
   const { scanSensitiveText } = await import(pathToFileURL(runtimePath).href);
   return new Promise((resolve, reject) => {
@@ -157,9 +158,14 @@ export async function withSeedDatabase<T>(
   }) => Promise<T>,
 ): Promise<T> {
   const config = fixtureConfig();
+  const databasePhase = /^phase(\d{3})_/.exec(config.database)?.[1];
+  assert(databasePhase, "Seed regression requires a phased database name");
   const database = `${config.database}_t${randomBytes(5).toString("hex")}`;
   assert(database.length <= 63);
-  assert.match(database, /^phase(?:010|011|012|013|014)_disposable_[a-f0-9]{12}_t[a-f0-9]{10}$/);
+  assert.match(
+    database,
+    /^phase(?:010|011|012|013|014|015)_disposable_[a-f0-9]{12}_t[a-f0-9]{10}$/,
+  );
   const control = new PrismaClient({ datasourceUrl: config.url, log: [] });
   const [identity] = await control.$queryRaw<
     Array<{ name: string; role: string; marker: string | null; version: string }>
@@ -169,11 +175,11 @@ export async function withSeedDatabase<T>(
   `;
   assert.equal(identity.name, config.database);
   assert.equal(identity.role, config.user);
-  assert.equal(identity.marker, `serendipity-phase${config.phase}-disposable:${config.runId}`);
+  assert.equal(identity.marker, `serendipity-phase${databasePhase}-disposable:${config.runId}`);
   assert.match(identity.version, /^17\./);
   await control.$executeRawUnsafe(`CREATE DATABASE "${database}"`);
   await control.$executeRawUnsafe(
-    `COMMENT ON DATABASE "${database}" IS 'serendipity-phase${config.phase}-disposable:${config.runId}'`,
+    `COMMENT ON DATABASE "${database}" IS 'serendipity-phase${databasePhase}-disposable:${config.runId}'`,
   );
   const ownerUrl = new URL(config.url);
   ownerUrl.pathname = `/${database}`;

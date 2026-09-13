@@ -63,7 +63,7 @@ describe.skipIf(!process.env.PHASE014_FIXTURE_CONFIG)("admin/dashboard real Post
         await worker.request({ method: "GET", path: "/api/admin/dashboard/stats", session: actor }),
       );
       expect(result.widgets.users).toEqual({ status: "ok", data: { total: 3, active: 2 } });
-      expect(result.widgets.configs).toEqual({ status: "ok", data: { total: 7, public: 1 } });
+      expect(result.widgets.configs).toEqual({ status: "ok", data: { total: 8, public: 1 } });
       expect(result.widgets.travelRecords).toEqual({
         status: "ok",
         data: {

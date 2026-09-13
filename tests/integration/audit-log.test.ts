@@ -23,7 +23,7 @@ const runtimeUrl = process.env.PHASE009_RUNTIME_DATABASE_URL;
 let admin: PrismaClient;
 let app: PrismaClient;
 let fixture: AuditFixture;
-let databasePhase: "009" | "010" | "011" | "012" | "013" | "014";
+let runtimePhase: "009" | "010" | "011" | "012" | "013" | "014";
 
 function indexNames(value: unknown): string[] {
   if (Array.isArray(value)) return value.flatMap(indexNames);
@@ -37,7 +37,7 @@ function indexNames(value: unknown): string[] {
 
 describe.skipIf(!databaseUrl)("audit-log real PostgreSQL contract", () => {
   beforeAll(async () => {
-    databasePhase = readPhase009Target(runtimeUrl, true).phase;
+    runtimePhase = readPhase009Target(runtimeUrl, true).runtimePhase;
     ({ admin, app } = await connectPhase009Database(databaseUrl, runtimeUrl));
   });
   beforeEach(() => {
@@ -243,6 +243,19 @@ describe.skipIf(!databaseUrl)("audit-log real PostgreSQL contract", () => {
       expectedModels.push("AuthLoginAttempt", "AuthSession");
     if (Prisma.dmmf.datamodel.models.some(({ name }) => name === "AdminCommandReceipt"))
       expectedModels.push("AdminCommandReceipt", "KeyRotationRun");
+    if (Prisma.dmmf.datamodel.models.some(({ name }) => name === "PromptDefinition"))
+      expectedModels.push(
+        "AiOutputRecord",
+        "AiUsageReservation",
+        "ModelDeployment",
+        "PlanningPolicyActivation",
+        "PlanningPolicyVersion",
+        "PromptActivation",
+        "PromptDefinition",
+        "PromptModelActivation",
+        "PromptVersion",
+        "ProviderConfigVersion",
+      );
     expectedModels.sort();
     expect(Prisma.dmmf.datamodel.models.map(({ name }) => name).sort()).toEqual(expectedModels);
     const columns = await admin.$queryRaw<
@@ -363,7 +376,7 @@ describe.skipIf(!databaseUrl)("audit-log real PostgreSQL contract", () => {
       FROM pg_roles r, pg_class c WHERE r.rolname=current_user AND c.oid='"AuditLog"'::regclass
     `;
     expect(role).toEqual({
-      name: `phase${databasePhase}_app`,
+      name: `phase${runtimePhase}_app`,
       superuser: false,
       createRole: false,
       createDb: false,
@@ -385,15 +398,15 @@ describe.skipIf(!databaseUrl)("audit-log real PostgreSQL contract", () => {
       () => app.$executeRaw`ALTER TABLE "AuditLog" DISABLE TRIGGER "AuditLog_append_only"`,
       () => app.$executeRaw`DROP TRIGGER "AuditLog_append_only" ON "AuditLog"`,
       () =>
-        databasePhase === "014"
+        runtimePhase === "014"
           ? app.$executeRaw`SET ROLE phase014_runner`
-          : databasePhase === "013"
+          : runtimePhase === "013"
             ? app.$executeRaw`SET ROLE phase013_runner`
-            : databasePhase === "012"
+            : runtimePhase === "012"
               ? app.$executeRaw`SET ROLE phase012_runner`
-              : databasePhase === "011"
+              : runtimePhase === "011"
                 ? app.$executeRaw`SET ROLE phase011_runner`
-                : databasePhase === "010"
+                : runtimePhase === "010"
                   ? app.$executeRaw`SET ROLE phase010_runner`
                   : app.$executeRaw`SET ROLE phase009_runner`,
     ])
@@ -403,15 +416,15 @@ describe.skipIf(!databaseUrl)("audit-log real PostgreSQL contract", () => {
   for (const operation of ["UPDATE", "DELETE", "TRUNCATE"] as const) {
     it(`append-only: trigger rejects ${operation} even after accidental DML grants`, async () => {
       const ref = await runAuditedTransaction((tx) => writeAuditLog(tx, systemInput(fixture.id())));
-      if (databasePhase === "014")
+      if (runtimePhase === "014")
         await admin.$executeRaw`GRANT UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" TO phase014_app`;
-      else if (databasePhase === "013")
+      else if (runtimePhase === "013")
         await admin.$executeRaw`GRANT UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" TO phase013_app`;
-      else if (databasePhase === "012")
+      else if (runtimePhase === "012")
         await admin.$executeRaw`GRANT UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" TO phase012_app`;
-      else if (databasePhase === "011")
+      else if (runtimePhase === "011")
         await admin.$executeRaw`GRANT UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" TO phase011_app`;
-      else if (databasePhase === "010")
+      else if (runtimePhase === "010")
         await admin.$executeRaw`GRANT UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" TO phase010_app`;
       else
         await admin.$executeRaw`GRANT UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" TO phase009_app`;
@@ -426,15 +439,15 @@ describe.skipIf(!databaseUrl)("audit-log real PostgreSQL contract", () => {
         expect(rejected).toBe(true);
         expect(await app.auditLog.findUnique({ where: { id: ref.id } })).not.toBeNull();
       } finally {
-        if (databasePhase === "014")
+        if (runtimePhase === "014")
           await admin.$executeRaw`REVOKE UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" FROM phase014_app`;
-        else if (databasePhase === "013")
+        else if (runtimePhase === "013")
           await admin.$executeRaw`REVOKE UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" FROM phase013_app`;
-        else if (databasePhase === "012")
+        else if (runtimePhase === "012")
           await admin.$executeRaw`REVOKE UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" FROM phase012_app`;
-        else if (databasePhase === "011")
+        else if (runtimePhase === "011")
           await admin.$executeRaw`REVOKE UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" FROM phase011_app`;
-        else if (databasePhase === "010")
+        else if (runtimePhase === "010")
           await admin.$executeRaw`REVOKE UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" FROM phase010_app`;
         else
           await admin.$executeRaw`REVOKE UPDATE, DELETE, TRUNCATE ON TABLE "AuditLog" FROM phase009_app`;

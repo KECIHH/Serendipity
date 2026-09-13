@@ -55,9 +55,7 @@ describe("admin/security common boundary and M3 inventory", () => {
     }
     expect(fs.existsSync("src/components/admin/page-header.tsx")).toBe(false);
     const schema = fs.readFileSync("prisma/schema.prisma", "utf8");
-    expect(schema).not.toMatch(
-      /model\s+(?:AiModelConfig|PromptConfig|AiOutputRecord|ModelDeployment|PromptVersion|ProviderConfig)\b/,
-    );
+    expect(schema).not.toMatch(/model\s+(?:AiModelConfig|PromptConfig)\b/);
   });
 });
 describe.skipIf(!process.env.PHASE014_FIXTURE_CONFIG)("admin/security real sessions", () => {

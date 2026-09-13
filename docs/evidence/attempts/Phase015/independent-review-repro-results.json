@@ -1,0 +1,90 @@
+{
+  "kind": "independent-review-diagnostic-not-gate",
+  "timestamp": "2026-09-13T06:10:01.336Z",
+  "databaseTouched": false,
+  "networkUsed": false,
+  "sourceHashes": {
+    "src/server/ai/url-guard.ts": "6a11e63f39870c89f1271bae87907d338738e587f81c5b3fd95695a628a5739a",
+    "src/server/ai/deepseek-provider.ts": "c98ea0e87860717143ac172f2100acae1cd3781359f432d781ab61bdfa2b9c27",
+    "src/lib/ai/schemas.ts": "2a18f597f20a9282b978574cc84f2af02cf03d712c637b24d21b84e3185f0edb"
+  },
+  "observations": [
+    {
+      "id": "default-dns",
+      "accepted": false,
+      "error": "CONFIG_ERROR"
+    },
+    {
+      "id": "unsafe-address",
+      "address": "::ffff:7f00:1",
+      "accepted": true
+    },
+    {
+      "id": "unsafe-address",
+      "address": "::ffff:a9fe:a9fe",
+      "accepted": true
+    },
+    {
+      "id": "unsafe-address",
+      "address": "fe90::1",
+      "accepted": true
+    },
+    {
+      "id": "unsafe-address",
+      "address": "100.64.0.1",
+      "accepted": true
+    },
+    {
+      "id": "unsafe-address",
+      "address": "224.0.0.1",
+      "accepted": true
+    },
+    {
+      "id": "malformed-body",
+      "result": {
+        "ok": false,
+        "errorCode": "PROVIDER_UNAVAILABLE",
+        "retryable": true,
+        "receivedByte": false,
+        "durationMs": 16
+      }
+    },
+    {
+      "id": "empty-429",
+      "result": {
+        "ok": false,
+        "errorCode": "RATE_LIMITED",
+        "retryable": true,
+        "receivedByte": true,
+        "durationMs": 0,
+        "retryAfterMs": 25
+      }
+    },
+    {
+      "id": "preabort-egress",
+      "result": {
+        "ok": false,
+        "errorCode": "CANCELLED",
+        "retryable": false,
+        "receivedByte": false,
+        "durationMs": 0
+      },
+      "transportCalls": 1
+    },
+    {
+      "id": "stalled-body-abort",
+      "atDeadline": "still-pending-70ms-after-abort"
+    },
+    {
+      "id": "invalid-schema-scalars",
+      "accepted": true,
+      "parsed": {
+        "userText": "synthetic",
+        "locale": "bad_locale?",
+        "serverDate": "2026-99-99",
+        "timezone": "not-a-timezone",
+        "stage": "extract"
+      }
+    }
+  ]
+}

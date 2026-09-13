@@ -75,7 +75,12 @@ export function systemInput(targetId: string | null = null): AuditLogInput {
 export function readPhase009Target(
   value: string | undefined,
   runtime: boolean,
-): { url: URL; runId: string; phase: "009" | "010" | "011" | "012" | "013" | "014" } {
+): {
+  url: URL;
+  runId: string;
+  phase: "009" | "010" | "011" | "012" | "013" | "014" | "015";
+  runtimePhase: "009" | "010" | "011" | "012" | "013" | "014";
+} {
   let url: URL;
   try {
     if (value === undefined) throw new Error();
@@ -83,9 +88,17 @@ export function readPhase009Target(
   } catch {
     throw new Error("Phase009 requires an explicit disposable database URL");
   }
-  const match = /^\/phase(009|010|011|012|013|014)_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(
-    url.pathname,
-  );
+  const match =
+    /^\/phase(009|010|011|012|013|014|015)_disposable_([a-f0-9]{12})(?:_[a-z0-9_]+)?$/.exec(
+      url.pathname,
+    );
+  const runtimePhase = (match?.[1] === "015" ? "014" : match?.[1]) as
+    | "009"
+    | "010"
+    | "011"
+    | "012"
+    | "013"
+    | "014";
   if (
     !match ||
     url.pathname.length > 64 ||
@@ -93,13 +106,18 @@ export function readPhase009Target(
     url.hostname !== "127.0.0.1" ||
     !url.port ||
     url.hash ||
-    url.username !== `phase${match[1]}_${runtime ? "app" : "runner"}` ||
+    url.username !== `phase${runtimePhase}_${runtime ? "app" : "runner"}` ||
     [...url.searchParams.keys()].some(
       (key) => !["connect_timeout", "pool_timeout", "connection_limit"].includes(key),
     )
   )
     throw new Error("Phase009 rejected an unowned database target");
-  return { url, runId: match[2], phase: match[1] as "009" | "010" | "011" | "012" | "013" | "014" };
+  return {
+    url,
+    runId: match[2],
+    phase: match[1] as "009" | "010" | "011" | "012" | "013" | "014" | "015",
+    runtimePhase,
+  };
 }
 
 export async function connectPhase009Database(
@@ -117,8 +135,8 @@ export async function connectPhase009Database(
   await connectDb(admin);
   try {
     for (const [client, role] of [
-      [app, `phase${runtime.phase}_app`],
-      [admin, `phase${owner.phase}_runner`],
+      [app, `phase${runtime.runtimePhase}_app`],
+      [admin, `phase${owner.runtimePhase}_runner`],
     ] as const) {
       const [identity] = await client.$queryRaw<
         Array<{ name: string; role: string; version: string; marker: string | null }>

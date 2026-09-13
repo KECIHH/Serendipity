@@ -7,6 +7,7 @@ import { PrismaClient } from "@prisma/client";
 
 export interface AuthFixtureConfig {
   phase: "011" | "012" | "013" | "014";
+  databasePhase: "011" | "012" | "013" | "014" | "015";
   runId: string;
   database: string;
   user: string;
@@ -23,10 +24,10 @@ export function fixtureConfig(): AuthFixtureConfig {
   assert(file, "Phase011 requires its task-owned database configuration");
   const config = JSON.parse(fs.readFileSync(file, "utf8")) as Omit<AuthFixtureConfig, "phase">;
   assert.match(config.runId, /^[a-f0-9]{12}$/);
-  const match = /^phase(011|012|013|014)_disposable_([a-f0-9]{12})$/.exec(config.database);
+  const match = /^phase(011|012|013|014|015)_disposable_([a-f0-9]{12})$/.exec(config.database);
   assert(match, "Auth regression requires an owned Phase011, Phase012 or Phase013 database");
-  const phase = match[1] as AuthFixtureConfig["phase"];
-  assert.equal(config.database, `phase${phase}_disposable_${config.runId}`);
+  const phase = (match[1] === "015" ? "014" : match[1]) as AuthFixtureConfig["phase"];
+  assert.equal(config.database, `phase${match[1]}_disposable_${config.runId}`);
   assert.equal(config.user, `phase${phase}_runner`);
   assert.equal(config.appUser, `phase${phase}_app`);
   for (const [value, role] of [
@@ -41,7 +42,7 @@ export function fixtureConfig(): AuthFixtureConfig {
     assert.equal(url.username, role);
   }
   assert(config.authSecret.length >= 32);
-  return { ...config, phase };
+  return { ...config, phase, databasePhase: match[1] as AuthFixtureConfig["databasePhase"] };
 }
 
 export function registerCanary(values: Record<string, string>): void {
@@ -137,7 +138,7 @@ export async function withAuthDatabase<T>(
 ): Promise<T> {
   const config = fixtureConfig();
   const database = `${config.database}_a${randomBytes(5).toString("hex")}`;
-  assert.match(database, /^phase(?:011|012|013|014)_disposable_[a-f0-9]{12}_a[a-f0-9]{10}$/);
+  assert.match(database, /^phase(?:011|012|013|014|015)_disposable_[a-f0-9]{12}_a[a-f0-9]{10}$/);
   const control = new PrismaClient({ datasourceUrl: config.url, log: [] });
   const [identity] = await control.$queryRaw<
     Array<{ name: string; version: string; marker: string }>
@@ -146,7 +147,10 @@ export async function withAuthDatabase<T>(
     shobj_description(oid,'pg_database') AS marker FROM pg_database WHERE datname=current_database()
   `;
   assert.equal(identity.name, config.database);
-  assert.equal(identity.marker, `serendipity-phase${config.phase}-disposable:${config.runId}`);
+  assert.equal(
+    identity.marker,
+    `serendipity-phase${config.databasePhase}-disposable:${config.runId}`,
+  );
   assert.match(identity.version, /^17\./);
   await control.$executeRawUnsafe(`CREATE DATABASE "${database}"`);
   const owner = new URL(config.url),
@@ -159,7 +163,7 @@ export async function withAuthDatabase<T>(
   const app = new PrismaClient({ datasourceUrl: url, log: [] });
   try {
     await control.$executeRawUnsafe(
-      `COMMENT ON DATABASE "${database}" IS 'serendipity-phase${config.phase}-disposable:${config.runId}'`,
+      `COMMENT ON DATABASE "${database}" IS 'serendipity-phase${config.databasePhase}-disposable:${config.runId}'`,
     );
     const migration = await runAuthCommand(
       [path.resolve("node_modules/prisma/build/index.js"), "migrate", "deploy"],
