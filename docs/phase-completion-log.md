@@ -72,3 +72,6 @@ Phase013 计划：docs/phase-plans/Phase013.json；唯一 Gate：docs/evidence/P
 | Phase014 | SystemConfig、Dashboard 与 M3 | registry五组、CAS/幂等原子审计、双白名单公开投影、独立widget与五页共用组件；完整路径/hash见Gate | 固定5/5；Vitest 549/549；四反向控制；PostgreSQL17；真实浏览器7场景；lint/typecheck/format/build/layout/validator通过；独立Agent复核；artifactCommit=8340f3df1884f85f4c5bae0d1d5606b4b3df89ec；attemptId=attempt-2 | 无生产流量、真实身份或AI治理；未执行Phase015 | metadata后双shell seal、clean和GitHub同步；授权止于014 |
 
 Phase014 计划：docs/phase-plans/Phase014.json；唯一 Gate：docs/evidence/Phase014-gate.json；原始报告与独立复核：docs/evidence/attempts/Phase014/。
+| Phase015 | 最终AI治理、Provider与调用护栏 | 十个治理模型、幂等bootstrap、版本解析、SSRF/超时/重试、持久配额、无rawOutput证据、kill switch与Phase013引用adapter；完整路径/hash见Gate | 固定8/8；Vitest 597/597；专用50断言；6项反向控制及恢复后全卡重跑；PostgreSQL17；lint/typecheck/format/build/layout/validator通过；独立Agent复核；artifactCommit=77592c56b748682fbcc1e664741aab11fc51a1f4；attemptId=attempt-14 | 无生产流量、真实凭据、真实Provider调用或治理UI；策略仅合成环境；未执行Phase016 | metadata后双shell seal、clean和GitHub同步；授权止于015 |
+
+Phase015 计划：docs/phase-plans/Phase015.json；唯一 Gate：docs/evidence/Phase015-gate.json；原始报告与独立复核：docs/evidence/attempts/Phase015/。
