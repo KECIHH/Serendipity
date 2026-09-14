@@ -73,6 +73,32 @@ enum ChatMessageKind {
   STRUCTURED
 }
 
+enum ChatCommandKind {
+  CHAT_MESSAGE
+  PLAN_DRAFT
+}
+
+enum ChatCommandStatus {
+  PENDING
+  RUNNING
+  COMPLETED
+  FAILED
+  CANCELLED
+}
+
+enum TaskStatus {
+  PENDING
+  RUNNING
+  SUCCEEDED
+  FAILED
+  CANCELLED
+}
+
+enum OutboxStatus {
+  PENDING
+  DELIVERED
+}
+
 enum ProviderMode {
   MOCK
   LIVE
@@ -167,6 +193,7 @@ model TravelRecord {
   updatedAt       DateTime         @updatedAt @db.Timestamptz(3)
   user            User?            @relation(fields: [userId], references: [id], onDelete: Restrict, onUpdate: Cascade)
   messages        ChatMessage[]
+  commands        ChatCommand[]
   aiOutputRecords AiOutputRecord[]
 
   @@index([userId, createdAt, id])
@@ -188,6 +215,8 @@ model ChatMessage {
   travelRecord     TravelRecord    @relation(fields: [travelRecordId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   replyTo          ChatMessage?    @relation("ChatMessageReplies", fields: [replyToMessageId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   replies          ChatMessage[]   @relation("ChatMessageReplies")
+  commandUser      ChatCommand?    @relation("CommandUserMessage")
+  commandAssistant ChatCommand?    @relation("CommandAssistantMessage")
 
   @@unique([travelRecordId, sequence])
   @@unique([travelRecordId, clientMessageId])
@@ -278,6 +307,7 @@ model KeyRotationRun {
   receipt           AdminCommandReceipt @relation(fields: [receiptId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   oldKey            ApiKeyConfig        @relation("OldRotationKey", fields: [oldKeyId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   newKey            ApiKeyConfig?       @relation("NewRotationKey", fields: [newKeyId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  task              DurableTask?        @relation("RotationTask")
 
   @@index([oldKeyId])
   @@index([newKeyId])
@@ -470,6 +500,7 @@ model PlanningPolicyActivation {
 model AiOutputRecord {
   id                      String         @id @default(cuid())
   travelRecordId          String?
+  commandId               String?
   traceId                 String         @db.VarChar(128)
   attemptNo               Int
   promptVersionId         String
@@ -492,6 +523,7 @@ model AiOutputRecord {
   createdAt               DateTime       @default(now()) @db.Timestamptz(3)
 
   travelRecord   TravelRecord?         @relation(fields: [travelRecordId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  command        ChatCommand?          @relation(fields: [commandId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   promptVersion  PromptVersion         @relation(fields: [promptVersionId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   planningPolicy PlanningPolicyVersion @relation(fields: [planningPolicyVersionId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   deployment     ModelDeployment       @relation(fields: [deploymentId, deploymentConfigVersion], references: [id, configVersion], onDelete: Restrict, onUpdate: Restrict)
@@ -499,6 +531,7 @@ model AiOutputRecord {
 
   @@unique([traceId, attemptNo])
   @@index([createdAt])
+  @@index([commandId])
   @@index([travelRecordId, createdAt])
 }
 
@@ -521,4 +554,140 @@ model AiUsageReservation {
   @@unique([traceId, attemptNo])
   @@index([bucketKey, status, createdAt])
   @@index([expiresAt, status])
+}
+
+model ChatCommand {
+  id                   String            @id @default(cuid())
+  travelRecordId       String
+  ownerKeyHash         String            @db.Char(64)
+  kind                 ChatCommandKind
+  idempotencyKeyHash   String            @db.Char(64)
+  requestHash          String            @db.Char(64)
+  payloadRef           String?           @db.VarChar(128)
+  payloadSchemaVersion Int?
+  status               ChatCommandStatus @default(PENDING)
+  userMessageId        String
+  assistantMessageId   String?
+  traceId              String            @db.VarChar(36)
+  errorCode            String?           @db.VarChar(64)
+  errorMessage         String?           @db.VarChar(256)
+  startedAt            DateTime?         @db.Timestamptz(3)
+  completedAt          DateTime?         @db.Timestamptz(3)
+  createdAt            DateTime          @default(now()) @db.Timestamptz(3)
+  updatedAt            DateTime          @updatedAt @db.Timestamptz(3)
+
+  travelRecord     TravelRecord        @relation(fields: [travelRecordId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userMessage      ChatMessage         @relation("CommandUserMessage", fields: [userMessageId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  assistantMessage ChatMessage?        @relation("CommandAssistantMessage", fields: [assistantMessageId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  events           ChatCommandEvent[]
+  idempotency      CommandIdempotency?
+  task             DurableTask?       @relation("CommandTask")
+  outputs          AiOutputRecord[]
+
+  @@unique([userMessageId])
+  @@unique([assistantMessageId])
+  @@index([ownerKeyHash, kind, status, createdAt])
+  @@index([travelRecordId, status, createdAt])
+  @@index([kind, status, createdAt])
+}
+
+model ChatCommandEvent {
+  id             String   @id @default(cuid())
+  eventId        String   @unique @db.VarChar(36)
+  sequence       BigInt   @default(autoincrement())
+  aggregateId    String   @db.VarChar(128)
+  traceId        String   @db.VarChar(36)
+  type           String   @db.VarChar(64)
+  status         String   @db.VarChar(32)
+  occurredAt     DateTime @db.Timestamptz(3)
+  payloadVersion Int
+  payloadJson    Json
+  createdAt      DateTime @default(now()) @db.Timestamptz(3)
+
+  command ChatCommand @relation(fields: [aggregateId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@unique([aggregateId, sequence])
+  @@index([aggregateId, sequence])
+}
+
+model CommandIdempotency {
+  id                 String          @id @default(cuid())
+  ownerKeyHash       String          @db.Char(64)
+  kind               ChatCommandKind
+  idempotencyKeyHash String          @db.Char(64)
+  requestHash        String          @db.Char(64)
+  commandId          String?         @unique
+  responseJson       Json?
+  status             ChatCommandStatus
+  expiresAt          DateTime        @db.Timestamptz(3)
+  createdAt          DateTime        @default(now()) @db.Timestamptz(3)
+  updatedAt          DateTime        @updatedAt @db.Timestamptz(3)
+
+  command ChatCommand? @relation(fields: [commandId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+
+  @@unique([ownerKeyHash, kind, idempotencyKeyHash])
+  @@index([expiresAt])
+}
+
+model DurableTask {
+  id                   String     @id @default(cuid())
+  kind                 String     @db.VarChar(64)
+  aggregateId          String     @db.VarChar(128)
+  payloadHash          String     @db.Char(64)
+  payloadRef           String?    @db.VarChar(128)
+  payloadSchemaVersion Int?
+  status               TaskStatus @default(PENDING)
+  attemptCount         Int        @default(0)
+  maxAttempts          Int
+  availableAt          DateTime   @default(now()) @db.Timestamptz(3)
+  leaseOwner           String?    @db.VarChar(128)
+  leaseUntil           DateTime?  @db.Timestamptz(3)
+  fencingToken         Int        @default(0)
+  checkpointJson       Json
+  resultRef            String?    @db.VarChar(128)
+  errorCategory        String?    @db.VarChar(64)
+  createdAt            DateTime   @default(now()) @db.Timestamptz(3)
+  updatedAt            DateTime   @updatedAt @db.Timestamptz(3)
+
+  commandId     String?       @unique
+  rotationRunId String?       @unique
+  command       ChatCommand?    @relation("CommandTask", fields: [commandId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  keyRotation   KeyRotationRun? @relation("RotationTask", fields: [rotationRunId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+
+  @@unique([kind, aggregateId])
+  @@index([status, availableAt, leaseUntil, id])
+  @@index([leaseOwner, fencingToken])
+  @@index([commandId])
+  @@index([rotationRunId])
+}
+
+model TaskPayload {
+  id                String   @id @default(cuid())
+  ownerKeyHash      String   @db.Char(64)
+  schemaVersion     Int
+  ciphertext        String   @db.Text
+  encryptionKeyId   String
+  contentHash       String   @db.Char(64)
+  expiresAt         DateTime @db.Timestamptz(3)
+  createdAt         DateTime @default(now()) @db.Timestamptz(3)
+
+  @@index([ownerKeyHash, expiresAt])
+  @@index([expiresAt])
+}
+
+model Outbox {
+  id           String      @id @default(cuid())
+  aggregateId  String      @db.VarChar(128)
+  type         String      @db.VarChar(64)
+  eventId      String      @unique @db.VarChar(36)
+  payloadHash  String      @db.Char(64)
+  payloadJson  Json
+  status       OutboxStatus @default(PENDING)
+  attemptCount Int         @default(0)
+  availableAt  DateTime    @default(now()) @db.Timestamptz(3)
+  createdAt    DateTime    @default(now()) @db.Timestamptz(3)
+  publishedAt  DateTime?   @db.Timestamptz(3)
+
+  @@index([status, availableAt, id])
+  @@index([aggregateId])
 }
