@@ -1,36 +1,25 @@
-import { createHash } from "node:crypto";
 import registry from "./prompt-contract.json";
+import travel from "./travel-contract.json";
+import { canonicalJson } from "./canonical-json";
+import { safeParseAiJson } from "./json-parser";
+import { requirementIssues } from "./requirement-validation";
+import {
+  createRuntimeSchema,
+  validateJsonSchema,
+  type JsonSchema,
+  type RuntimeSchema,
+} from "./schema-validation";
+import type {
+  PromptInputMap,
+  PromptOutputMap,
+  TravelRequirement,
+  TravelPlanSummaryDraft,
+} from "./schema-types";
 
-export type PromptKey =
-  | "nlu.extract"
-  | "nlu.ask_missing"
-  | "planner.generate"
-  | "planner.repair_json"
-  | "conversation.modify"
-  | "planner.score"
-  | "planner.final_summary"
-  | "export.markdown";
-type JsonSchema = {
-  $ref?: string;
-  type?: string | string[];
-  const?: unknown;
-  enum?: unknown[];
-  anyOf?: JsonSchema[];
-  oneOf?: JsonSchema[];
-  required?: string[];
-  additionalProperties?: boolean;
-  properties?: Record<string, JsonSchema>;
-  items?: JsonSchema;
-  minItems?: number;
-  maxItems?: number;
-  uniqueItems?: boolean;
-  minLength?: number;
-  maxLength?: number;
-  minimum?: number;
-  maximum?: number;
-  pattern?: string;
-  format?: string;
-};
+export { canonicalJson } from "./canonical-json";
+export type * from "./schema-types";
+export type { RuntimeSchema, SchemaIssue } from "./schema-validation";
+export type PromptKey = keyof PromptOutputMap;
 export interface PromptVariableContract {
   readonly name: string;
   readonly required: boolean;
@@ -56,147 +45,88 @@ export const PROMPT_KEY_CONTRACTS = registry.keys.map((row) => ({
   ...row,
   responseSchemaVersion: row.outputSchemaVersion,
 })) as unknown as readonly PromptKeyContract[];
-
 export function promptKeyContract(key: string): PromptKeyContract {
   const contract = PROMPT_KEY_CONTRACTS.find((item) => item.key === key);
   if (!contract) throw new Error("CONFIG_ERROR");
   return contract;
 }
-export function canonicalJson(value: unknown): string {
-  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(",")}]`;
-  if (value === null || typeof value === "boolean" || typeof value === "string")
-    return JSON.stringify(value);
-  if (typeof value === "number" && Number.isFinite(value)) return JSON.stringify(value);
-  if (typeof value === "object") {
-    return `{${Object.keys(value as Record<string, unknown>)
-      .sort()
-      .filter((key) => (value as Record<string, unknown>)[key] !== undefined)
-      .map(
-        (key) => `${JSON.stringify(key)}:${canonicalJson((value as Record<string, unknown>)[key])}`,
+function promptSchema<K extends PromptKey>(key: K): RuntimeSchema<PromptOutputMap[K]> {
+  const contract = promptKeyContract(key);
+  return createRuntimeSchema<PromptOutputMap[K]>(
+    `${key}:v1`,
+    contract.responseSchema,
+    registry.definitions,
+    contract.maxOutputBytes,
+    (value) => {
+      if (
+        key === "export.markdown" &&
+        /<[^>]+>|(?:javascript|data|vbscript)\s*:/i.test(
+          (value as PromptOutputMap["export.markdown"]).markdown,
+        )
       )
-      .join(",")}}`;
-  }
-  throw new Error("CONFIG_ERROR");
+        return [{ path: "$.markdown", summary: "CONSTRAINT" }];
+      return [];
+    },
+  );
 }
-export function canonicalHash(value: unknown): string {
-  return createHash("sha256")
-    .update(`${canonicalJson(value)}\n`, "utf8")
-    .digest("hex");
-}
-function invalid(): never {
-  throw new Error("CONFIG_ERROR");
-}
-function matchesType(value: unknown, type: string) {
-  if (type === "null") return value === null;
-  if (type === "array") return Array.isArray(value);
-  if (type === "object")
-    return value !== null && typeof value === "object" && !Array.isArray(value);
-  if (type === "integer") return Number.isSafeInteger(value);
-  if (type === "number") return typeof value === "number" && Number.isFinite(value);
-  return typeof value === type;
-}
-function validFormat(value: string, format: string) {
-  try {
-    if (format === "nonblank-text") return value.trim().length > 0;
-    if (format === "bcp47-locale")
-      return Intl.getCanonicalLocales(value)[0] === value && /^[A-Za-z0-9-]+$/.test(value);
-    if (format === "iana-timezone")
-      return (
-        new Intl.DateTimeFormat("en", { timeZone: value }).resolvedOptions().timeZone.length > 0
-      );
-    if (format === "date")
-      return (
-        /^\d{4}-\d{2}-\d{2}$/.test(value) &&
-        new Date(`${value}T00:00:00Z`).toISOString().slice(0, 10) === value
-      );
-    if (format === "decimal-string") return /^(?:0|[1-9]\d*)(?:\.\d+)?$/.test(value);
-    return true;
-  } catch {
-    return false;
-  }
-}
-function validate(
-  value: unknown,
-  schema: JsonSchema,
-  depth = 0,
-  definitions = registry.definitions as Record<string, JsonSchema>,
-): void {
-  if (depth > 40) invalid();
-  if (schema.$ref) {
-    const [document, key] = schema.$ref.split("#/$defs/");
-    if (document !== "" && document !== "travel-requirement-v1") invalid();
-    const defs =
-      document === "travel-requirement-v1"
-        ? (registry.travelDefinitions as Record<string, JsonSchema>)
-        : definitions;
-    if (!defs[key]) invalid();
-    validate(value, defs[key], depth + 1, defs);
-    return;
-  }
-  const choices = schema.anyOf ?? schema.oneOf;
-  if (choices) {
-    const count = choices.filter((choice) => {
-      try {
-        validate(value, choice, depth + 1, definitions);
-        return true;
-      } catch {
-        return false;
-      }
-    }).length;
-    if (schema.oneOf ? count !== 1 : count === 0) invalid();
-  }
-  if (Object.hasOwn(schema, "const") && canonicalJson(value) !== canonicalJson(schema.const))
-    invalid();
-  if (schema.enum && !schema.enum.some((entry) => canonicalJson(entry) === canonicalJson(value)))
-    invalid();
-  if (
-    schema.type &&
-    !(Array.isArray(schema.type) ? schema.type : [schema.type]).some((type) =>
-      matchesType(value, type),
-    )
-  )
-    invalid();
-  if (typeof value === "string") {
-    const length = Array.from(value).length;
-    if (length < (schema.minLength ?? 0) || length > (schema.maxLength ?? Infinity)) invalid();
-    if (schema.pattern && !new RegExp(schema.pattern, "u").test(value)) invalid();
-    if (schema.format && !validFormat(value, schema.format)) invalid();
-  }
-  if (
-    typeof value === "number" &&
-    (!Number.isFinite(value) ||
-      value < (schema.minimum ?? -Infinity) ||
-      value > (schema.maximum ?? Infinity))
-  )
-    invalid();
-  if (Array.isArray(value)) {
-    if (value.length < (schema.minItems ?? 0) || value.length > (schema.maxItems ?? Infinity))
-      invalid();
-    if (schema.uniqueItems && new Set(value.map(canonicalJson)).size !== value.length) invalid();
-    for (const entry of value) {
-      if (schema.items) validate(entry, schema.items, depth + 1, definitions);
-    }
-  } else if (value !== null && typeof value === "object") {
-    const record = value as Record<string, unknown>;
-    if (Object.getPrototypeOf(value) !== Object.prototype && Object.getPrototypeOf(value) !== null)
-      invalid();
-    for (const key of schema.required ?? [])
-      if (!Object.hasOwn(record, key) || record[key] === undefined) invalid();
-    for (const [key, entry] of Object.entries(record)) {
-      const child = schema.properties?.[key];
-      if (!child && schema.additionalProperties === false) invalid();
-      if (entry === undefined || ["__proto__", "constructor", "prototype"].includes(key)) invalid();
-      if (child) validate(entry, child, depth + 1, definitions);
-    }
-  }
+export const TravelRequirementSchema = createRuntimeSchema<TravelRequirement>(
+  "travel-requirement-v1",
+  travel.requirement,
+  travel.requirement.$defs,
+  131072,
+  requirementIssues,
+);
+export const TravelPlanSummaryDraftSchema = createRuntimeSchema<TravelPlanSummaryDraft>(
+  "travel-summary-v1",
+  travel.summary,
+  travel.requirement.$defs,
+  32768,
+  (value) =>
+    new Set(value.destinations.map((item) => item.id)).size === value.destinations.length
+      ? []
+      : [{ path: "$.destinations", summary: "REFERENCE" }],
+);
+export const NluExtractOutputSchema = promptSchema("nlu.extract");
+export const NluAskMissingOutputSchema = promptSchema("nlu.ask_missing");
+export const PlannerGenerateOutputSchema = promptSchema("planner.generate");
+export const PlannerRepairJsonOutputSchema = promptSchema("planner.repair_json");
+export const ConversationModifyOutputSchema = promptSchema("conversation.modify");
+export const PlannerScoreOutputSchema = promptSchema("planner.score");
+export const PlannerFinalSummaryOutputSchema = promptSchema("planner.final_summary");
+export const ExportMarkdownOutputSchema = promptSchema("export.markdown");
+export const PromptOutputSchemas = Object.freeze({
+  "nlu.extract": NluExtractOutputSchema,
+  "nlu.ask_missing": NluAskMissingOutputSchema,
+  "planner.generate": PlannerGenerateOutputSchema,
+  "planner.repair_json": PlannerRepairJsonOutputSchema,
+  "conversation.modify": ConversationModifyOutputSchema,
+  "planner.score": PlannerScoreOutputSchema,
+  "planner.final_summary": PlannerFinalSummaryOutputSchema,
+  "export.markdown": ExportMarkdownOutputSchema,
+});
+export type RepairTargetSchemaId =
+  | `${Exclude<PromptKey, "planner.repair_json">}:v1`
+  | "travel-requirement-v1"
+  | "travel-summary-v1";
+export function repairTargetSchema(id: string): RuntimeSchema<unknown> {
+  if (id === TravelRequirementSchema.schemaId) return TravelRequirementSchema;
+  if (id === TravelPlanSummaryDraftSchema.schemaId) return TravelPlanSummaryDraftSchema;
+  const schema = Object.values(PromptOutputSchemas).find(
+    (item) => item.schemaId === id && item !== PlannerRepairJsonOutputSchema,
+  );
+  if (!schema) throw new Error("CONFIG_ERROR");
+  return schema;
 }
 export function parsePromptVariables(
   key: string,
   input: Readonly<Record<string, unknown>>,
 ): Record<string, unknown> {
   const contract = promptKeyContract(key);
-  validate(input, contract.inputSchema);
-  if (Buffer.byteLength(canonicalJson(input), "utf8") > contract.maxInputBytes) invalid();
+  if (
+    validateJsonSchema(input, contract.inputSchema, registry.definitions).length ||
+    new TextEncoder().encode(canonicalJson(input)).byteLength > contract.maxInputBytes
+  )
+    throw new Error("CONFIG_ERROR");
   for (const definition of contract.variables) {
     const value = input[definition.name];
     if (
@@ -205,29 +135,80 @@ export function parsePromptVariables(
       Array.from(typeof value === "string" ? value : canonicalJson(value)).length >
         definition.maxLength
     )
-      invalid();
+      throw new Error("CONFIG_ERROR");
   }
   return structuredClone(input);
 }
 export function parsePromptResponse(key: string, output: string): unknown {
-  const contract = promptKeyContract(key);
-  if (Buffer.byteLength(output, "utf8") > contract.maxOutputBytes)
-    throw new Error("SCHEMA_MISMATCH");
-  let value: unknown;
-  try {
-    value = JSON.parse(output);
-  } catch {
-    throw new Error("INVALID_JSON");
+  const parsed = safeParseAiJson(
+    output,
+    PromptOutputSchemas[promptKeyContract(key).key] as RuntimeSchema<unknown>,
+  );
+  if (!parsed.ok) throw new Error(parsed.errorCode);
+  return parsed.data;
+}
+
+/** Input-bound references are a separate semantic boundary, never model-provided authority. */
+export function validatePromptReferences<K extends PromptKey>(
+  key: K,
+  input: PromptInputMap[K],
+  output: PromptOutputMap[K],
+): void {
+  let valid = true;
+  if (key === "nlu.extract") {
+    const request = input as PromptInputMap["nlu.extract"],
+      response = output as PromptOutputMap["nlu.extract"];
+    const fields: Record<string, readonly string[]> = {
+      CORE: ["origin", "destinations", "dateRange"],
+      PARAMETERS: [
+        "durationDays",
+        "travelers",
+        "budget",
+        "preferences.pace",
+        "preferences.interests",
+        "preferences.avoid",
+      ],
+      CONSTRAINTS: [
+        "preferences.transport",
+        "preferences.hardConstraints",
+        "preferences.accessibility",
+      ],
+    };
+    valid = response.candidates.every(
+      (candidate) =>
+        request.userText.includes(candidate.text) &&
+        fields[request.stage].includes(candidate.field),
+    );
   }
-  try {
-    validate(value, contract.responseSchema);
-    if (
-      key === "export.markdown" &&
-      /<[^>]+>|(?:javascript|data|vbscript)\s*:/i.test((value as { markdown: string }).markdown)
-    )
-      invalid();
-  } catch {
-    throw new Error("SCHEMA_MISMATCH");
+  if (key === "nlu.ask_missing") {
+    const request = input as PromptInputMap["nlu.ask_missing"],
+      response = output as PromptOutputMap["nlu.ask_missing"];
+    const fields = response.questions.map((item) => item.field);
+    valid =
+      new Set(fields).size === fields.length &&
+      canonicalJson([...fields].sort()) ===
+        canonicalJson(request.specs.map((item) => item.field).sort());
   }
-  return value;
+  if (key === "conversation.modify") {
+    const request = input as PromptInputMap["conversation.modify"],
+      response = output as PromptOutputMap["conversation.modify"];
+    valid =
+      response.targetCandidateIds.every((id) =>
+        request.candidates.some(
+          (candidate) =>
+            candidate.candidateId === id &&
+            candidate.allowedOperations.includes(response.operation),
+        ),
+      ) && request.userText.includes(response.requestedText);
+  }
+  if (key === "planner.score") {
+    const request = input as PromptInputMap["planner.score"],
+      response = output as PromptOutputMap["planner.score"];
+    const dimensions = response.explanations.map((item) => item.dimension);
+    valid =
+      new Set(dimensions).size === dimensions.length &&
+      canonicalJson([...dimensions].sort()) ===
+        canonicalJson(request.scoreReasons.map((item) => item.dimension).sort());
+  }
+  if (!valid) throw new Error("VALIDATION_ERROR");
 }

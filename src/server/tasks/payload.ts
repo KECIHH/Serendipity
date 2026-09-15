@@ -2,7 +2,8 @@ import "server-only";
 import { createCipheriv, createDecipheriv, createHash, randomBytes, randomUUID } from "node:crypto";
 import type { Prisma, TaskPayload } from "@prisma/client";
 import { env } from "@/lib/env";
-import { canonicalJson, canonicalHash } from "@/lib/ai/schemas";
+import { canonicalHash } from "@/server/ai/canonical-hash";
+import { canonicalJson } from "@/lib/ai/schemas";
 
 export const PAYLOAD_RETENTION_MS = 24 * 60 * 60 * 1000;
 const MAX_PAYLOAD_BYTES = 128 * 1024;

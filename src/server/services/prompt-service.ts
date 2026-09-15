@@ -1,7 +1,8 @@
 import "server-only";
 
 import type { Prisma } from "@prisma/client";
-import { canonicalHash, parsePromptVariables, promptKeyContract } from "@/lib/ai/schemas";
+import { canonicalHash } from "@/server/ai/canonical-hash";
+import { parsePromptVariables, promptKeyContract } from "@/lib/ai/schemas";
 import { resolveModelSnapshot } from "@/server/services/model-resolution-service";
 import { parsePlanningPolicy } from "@/server/ai/planning-policy";
 

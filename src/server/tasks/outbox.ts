@@ -1,6 +1,6 @@
 import "server-only";
 import { Prisma, type Outbox, type PrismaClient } from "@prisma/client";
-import { canonicalHash } from "@/lib/ai/schemas";
+import { canonicalHash } from "@/server/ai/canonical-hash";
 import { validateChatEnvelope } from "@/lib/chat-stream";
 import { envelopeFromRow, publishPersistentWakeup } from "@/server/chat/events";
 import { readAuthClock } from "@/server/auth/clock";

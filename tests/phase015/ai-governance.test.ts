@@ -3,12 +3,8 @@ import fs from "node:fs";
 import { randomUUID } from "node:crypto";
 import type { Prisma } from "@prisma/client";
 import { afterAll, beforeEach, describe, expect, it } from "vitest";
-import {
-  canonicalHash,
-  parsePromptVariables,
-  parsePromptResponse,
-  PROMPT_KEY_CONTRACTS,
-} from "@/lib/ai/schemas";
+import { canonicalHash } from "@/server/ai/canonical-hash";
+import { parsePromptVariables, parsePromptResponse, PROMPT_KEY_CONTRACTS } from "@/lib/ai/schemas";
 import contract from "@/lib/ai/prompt-contract.json";
 import templates from "@/server/ai/bootstrap-templates.json";
 import policy from "@/server/ai/planning-policy-bootstrap.json";

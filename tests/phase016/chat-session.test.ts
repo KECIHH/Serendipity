@@ -35,7 +35,8 @@ import {
   registerPayloadPin,
   payloadId,
 } from "@/server/tasks/payload";
-import { canonicalHash, promptKeyContract } from "@/lib/ai/schemas";
+import { canonicalHash } from "@/server/ai/canonical-hash";
+import { promptKeyContract } from "@/lib/ai/schemas";
 import { createSessionService } from "@/server/auth/session-service";
 import { createAdminApiKeysService } from "@/server/admin/api-keys";
 import { createProviderKeyCandidateClient } from "@/server/ai/key-candidate-client";
@@ -1334,6 +1335,16 @@ describe.skipIf(!enabled)("Phase016 chat-session", () => {
       where: { traceId: c.input.traceId },
     });
     expect(reservation.status).not.toBe("RELEASED");
+    const attempts = await db.aiOutputRecord.findMany({ where: { commandId: c.commandId } });
+    expect(attempts).toHaveLength(1);
+    expect(attempts[0]).toMatchObject({
+      traceId: c.input.traceId,
+      status: "CANCELLED",
+      parsedOk: false,
+      errorCode: "CANCELLED",
+      rawOutput: null,
+    });
+    expect(attempts[0].durationMs).toBeGreaterThanOrEqual(0);
     expect(await commandCounts(db, c.commandId)).toEqual({
       status: "CANCELLED",
       users: 1,

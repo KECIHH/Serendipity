@@ -1,0 +1,201 @@
+{
+  "phase": 17,
+  "attemptId": "attempt-1",
+  "decision": "INCOMPLETE",
+  "status": "SEMANTIC_CHECKPOINT",
+  "reviewerRunId": "phase017-independent-review-20260915T154200Z",
+  "contextId": "/root/phase017_reviewer",
+  "generatedBy": "/root/phase017_reviewer",
+  "implementationContextId": "codex-native-root-phase017-20260915",
+  "runnerIdentity": {
+    "kind": "INDEPENDENT_CODEX_AGENT",
+    "implementationAuthored": false
+  },
+  "startedAt": "2026-09-15T15:42:00Z",
+  "deadlineAt": "2026-09-15T16:27:00Z",
+  "checkpointAt": "2026-09-15T15:54:47.852Z",
+  "independence": {
+    "participatedInImplementation": false,
+    "productFilesModified": false,
+    "gitIndexOrCommitModified": false,
+    "productSuitesOrServicesStarted": false,
+    "minimalReadOnlyReproduction": "esbuild write:false plus vm execution of syntax-proof.ts"
+  },
+  "planPath": "docs/phase-plans/Phase017.json",
+  "planHashAtCheckpoint": "e2a151c95e0dd52e6efa1bd8f7fc67ba17fccb8274b1f42a72ec553b703df13e",
+  "sourceHashesAtSemanticCheckpoint": {
+    "AGENTS.md": "15f13a3f5a19147ba3f9254cdddc1ecd6b44fc087e88810b0532c71215e171b4",
+    "docs/agent-execution-contract.md": "8692435b6b71dd7275a3f8f4c418a02168da845c332545c174dad28a47da1364",
+    "docs/database.md": "d3e310699f2c88f88ad49eeae5d7fa6916a81d85dc882f24d07537055ec81f04",
+    "docs/development-execution-policy.md": "58b4eaef7fda2a45c69e41feb766d04893d44a7092117410d7e707bc5e7b9320",
+    "docs/phase-plans/check-phase002-schema-prompt.mjs": "c3c897a5ff8a96dfaea4b102737b63f9e9f686aee13e653385d15cd2d8810190",
+    "docs/phase-plans/phase017-evidence.mjs": "989ec9ed47898b9771c3d2d170c9fd9087b962ce370c76258040e87f7e26987f",
+    "docs/phase-plans/phase017-runtime.mjs": "c317500c5a9d21d4e2df5a6f6fbe9b21b057ba1628722d2050b40aec0d4dc5b7",
+    "docs/phase-plans/prepare-phase017.mjs": "545e74916103bd89eb6fca5b644ebf97d94cbcaeacd12c71d5f3f73825c460fd",
+    "docs/prompt-design.md": "c241711892c658376bb6437c55511a55f249ffabe4421866113560668a83ed32",
+    "docs/testing-execution-policy.md": "a1f2666b2a757bf7dccb016e997a60f33a0f91f7612add8d40411e30735f8532",
+    "docs/travel-plan-schema.md": "d3f0492c8d0d22e6de3b21e44368dbf4bb9a49018180e99adf8eb796badb40cd",
+    "prisma/schema.prisma": "39010b6e4762e2cdc4c5294d1098c2102ad5205833efe3245692795881a22bd3",
+    "scripts/generate-ai-schemas.mjs": "5c67078e749240e9377d5236027dde205edce55052a0e1461d843868b6cdb043",
+    "src/lib/ai/canonical-json.ts": "0e7422bcd683ac1fa8cfeea628830bb905ba326e0261438195c397347fe05e3e",
+    "src/lib/ai/context-manager.ts": "db782fbec32b5f1e4c2849dc946566538fb48eb16ee84fc6990a3ed488cde129",
+    "src/lib/ai/json-parser.ts": "cc260d3954f18a64356522a5b01c9158ed9878e8c21aa99e771523b3cf968398",
+    "src/lib/ai/prompt-contract.json": "4fd9569bd3da7ee814322cc3900ec23f542ab5c4fcfab0ab5044613f93c3807c",
+    "src/lib/ai/provider.ts": "3ff5bb4320bafbd65b4ce094571a2acd3ffdfdb035311ec04d44db395b7e1aa1",
+    "src/lib/ai/requirement-validation.ts": "b0a60805fc5d0f041d2fe2f4cf6e02222aeb559ea5fa80152bfea7077c324188",
+    "src/lib/ai/schema-types.ts": "e90db638a872d0919946c6c34eac357f4ca08a8764876659bc5c05415ed8e968",
+    "src/lib/ai/schema-validation.ts": "e90d98635d5197f1159cbc0d367fbc0e23e026432433921b5720de7471eea53c",
+    "src/lib/ai/schemas.ts": "70f47113b8b57ebcc80d6cb7e71ea7140ce12095735711ce33ae0e1cc44d1621",
+    "src/lib/ai/syntax-proof.ts": "9d0576f3bcc277be9bf7c19402fcb1c13c7b3d7a775bdc9c63be0192534d6725",
+    "src/lib/ai/travel-contract.json": "cde655dabaf2cbce35dea3b329908ae1195cc4effd9f6cbcb7fcf94839bf4e91",
+    "src/server/ai/canonical-hash.ts": "f13d24067c4819b00dc6adb63c95651cb71c5b88eba4a7a12fecdec765dc5ec0",
+    "src/server/ai/capture-policy.ts": "c6d6e5d200b33f07db24aba8606806d02d5ae472eb9e6ff10e009f3c9b32ca7e",
+    "src/server/ai/deepseek-provider.ts": "c5f8da4bc107fca6d97242034a4d568db0ceb45a1b0526c08842c0f8988a1248",
+    "src/server/ai/guarded-client.ts": "91d6e9e3b0b39797eae60825d5f0fe8d934efaa415b400bbce0582a16577ee76",
+    "src/server/ai/json-repair.ts": "7d51b65a86af02aad4a469ee538a71cc3097a48458ab0ff795285adf001768df",
+    "src/server/ai/key-candidate-client.ts": "7e844d594c14338739b9f70e61100a8ef1964c2b2fe921166f6d15cc521b07d3",
+    "src/server/ai/key-candidate-context.ts": "859bc2446a269b6eb202221e0c5ea3a4a538522d87b6c5470999cac99dbe0f98",
+    "src/server/ai/mock-provider.ts": "cc2eae7832357653505527470ebc377d66990c8a812d17a0804756466e6301d6",
+    "src/server/ai/nlu-context.ts": "bde4423cf4926b1af51beae9f289588e65aad96fdcaa8f270de8fc6db1ae04d4",
+    "src/server/ai/provider-key-reference-adapter.ts": "a246909ef06b93109aa6274e7fcfa3bc57074089873cf8111ffc9e93e4209f0f",
+    "src/server/ai/provider-registry.ts": "20759166b0f180c4d39e77c68f768967074f1ecfd5981d5f865df7040eabbb08",
+    "src/server/ai/summary-binding.ts": "28098bfcbb0e9fbc5319e871c9661d91ae78b4fb34515ec46a5f95abdc8fd8a1",
+    "src/server/ai/usage-reservations.ts": "f3998cede099f99b4ea563305a7b6e8b597cf6a8476257965b24de02e4e1ee8e",
+    "src/server/anonymous-owner.ts": "7250641a004fe8994a7eae0ce06ed9a5330b7260e5ad4da7e8c87bf2c082c0ea",
+    "src/server/chat/command-service.ts": "65161986ed6403531608d149bb46dfa363d4d9da939edb01ceb9d8d1e8317bc8",
+    "src/server/chat/events.ts": "cda089c9a6046bc4b6f31ee814eda9ea3147c8313b9aa14724585ddb4e76cc78",
+    "src/server/chat/history.ts": "ab821226d69958180a6155ef3b2fb4fb031cea34d65bf5190d15e12de9cc2171",
+    "src/server/repositories/data-layer-error.ts": "c62080e20792a91c18bed5c9e39c1c8d58f13c383601a46c86b25478a27d9ad1",
+    "src/server/repositories/travel-record.ts": "453ef95bfaddbfc08200748844d9579245a55a3ff188e206ee7ad5511b6e65d9",
+    "src/server/services/ai-governance-service.ts": "fabd8872a495dbf9e82b51311fecedac1fe1944cf37714f7e24cc273e1d04ba4",
+    "src/server/services/model-resolution-service.ts": "cf1ce2378788b6ab9337ccdfd07d7722cf8bc7592603348856a1224897997809",
+    "src/server/services/prompt-service.ts": "ed76419e0140e9632392f89511a85ff22a2f3b1905f3b99980990737c7d513ee",
+    "src/server/tasks/durable-task.ts": "dd2539a49d0adc7c4d0ba4128ecaba56c94d773fc1bb43cb23b11aed23bc030e",
+    "src/server/tasks/outbox.ts": "a09c5683a0e5cb42de896152871d3afc679c2bdafdd9718944becfb4c4b781aa",
+    "src/server/tasks/payload.ts": "88c0b77727316dc503d8419e0c7d43bc729e7c488b408cbf84ba876092c48c7a",
+    "tests/phase008/data-types.ts": "048fdc60d7afac22b49db74903ef89f0543bac66e7cd3bdf71d9604c9feecc35",
+    "tests/phase015/ai-governance.test.ts": "affa53f1cd9bb393ca0a86312fc3478e2c38b9dd10b4c0f3c827aef4807a43b7",
+    "tests/phase015/fixture.ts": "1c6d6663ae2a7e77917eab3a0f96715f00931913dd536fb949329576f40ba0fa",
+    "tests/phase015/guarded-client.test.ts": "fa49ed183df6fc263b98c10f53a783811962410a9f9125578765ad9ae45870b2",
+    "tests/phase015/prompt-service.test.ts": "681baff4f21089fdfd03a12dd30d98aa5aba687910a3cd218ceca6245865c812",
+    "tests/phase016/chat-session.test.ts": "ef0db2604ce2ba28e8126f97ead67f5ed177e9e86fac675096b00dcdd9c83f0c",
+    "tests/phase017/context-manager.test.ts": "690507e37ac311598f2cc907f99b13c2c0e48f03427b38ececacdbb9064f75aa",
+    "tests/phase017/context-types.ts": "c01b9e51a41f05593fc3a5c24c751f2fc122353f22f84474978bb6acfb6e1f4c",
+    "tests/phase017/fixture.ts": "5fb39cfbec2f12f6bc05381cc7fe476f33e99116bc5f9f73ab1250330a897dd8",
+    "tests/phase017/fixtures.json": "62b68042a6c40b2c9e5707084f8c8b605af64f4b1fcade4b0cc63b0579353433",
+    "tests/phase017/json-parser-boundary.test.ts": "3fb7fe46a60a88b9c4f3327506a7aae41606508671109b9ddf979d234ef06d3e",
+    "tests/phase017/json-parser.test.ts": "ef54abba14b3f75130faabedfa163eb901b15605d54d17d57653484aed013956",
+    "tests/phase017/json-repair.test.ts": "8e2d1a43f2f100dcc9a5ac5a76c8679d9f026def291085d1bcab62cd6b8fc5e8",
+    "tests/phase017/schemas.test.ts": "6d9c4ccdbccf6e44fe1989a3afcbe44fdb620229ca25d471824b3bd4c99292ed"
+  },
+  "reviewedScope": [
+    "All new product modules and changed product/test behavior; all six fixture groups and 43 frozen requirement cases",
+    "Shared pure parser/schema imports and actual browser/server-only boundary test design",
+    "Eight prompt outputs, document generation, cross-field requirement refinements and summary reference binding",
+    "Guarded request lifecycle, budgets, cancellation, deadlines, nullable provider usage and append-only tracking",
+    "Repair cap, raw-output hashes, input references, context identity and syntax-only fact proof",
+    "Ownership-locked history and validated requirement persistence without formal plan/version tables",
+    "Initial Phase017 runtime, prepare and evidence collector implementation; final verify/complete and raw reports still absent"
+  ],
+  "minimalProbes": {
+    "sourceHashes": {
+      "src/lib/ai/syntax-proof.ts": "9d0576f3bcc277be9bf7c19402fcb1c13c7b3d7a775bdc9c63be0192534d6725",
+      "src/lib/ai/json-parser.ts": "cc260d3954f18a64356522a5b01c9158ed9878e8c21aa99e771523b3cf968398"
+    },
+    "tool": "esbuild write:false + node:vm",
+    "exitCode": 0,
+    "results": [
+      {
+        "id": "number-string-coercion",
+        "expected": false,
+        "observed": false
+      },
+      {
+        "id": "existing-key-value-rebinding",
+        "expected": false,
+        "observed": false
+      },
+      {
+        "id": "missing-final-brace",
+        "expected": true,
+        "observed": true
+      },
+      {
+        "id": "missing-comma",
+        "expected": true,
+        "observed": true
+      },
+      {
+        "id": "trailing-comma",
+        "expected": true,
+        "observed": true
+      }
+    ]
+  },
+  "issues": [
+    {
+      "id": "R017-01",
+      "priority": 1,
+      "title": "Preserve scalar kinds and existing key/value bindings during repair",
+      "status": "CODE_FIXED_PENDING_FORMAL_REPORT",
+      "basis": "docs/prompt-design.md:1582",
+      "paths": [
+        "src/lib/ai/syntax-proof.ts",
+        "tests/phase017/json-repair.test.ts"
+      ],
+      "finding": "Original tokenizer merged numeric and string scalars and discarded all separators, accepting schema version coercion and changed existing colon bindings. Current read-only probes reject both; final targeted/full/negative reports remain pending."
+    },
+    {
+      "id": "R017-02",
+      "priority": 2,
+      "title": "Optional debug capture must not suppress persisted attempts",
+      "status": "CODE_FIXED_PENDING_FORMAL_REPORT",
+      "paths": [
+        "src/server/ai/guarded-client.ts",
+        "tests/phase017/json-repair.test.ts"
+      ],
+      "finding": "A throwing onDebugCapture callback previously escaped before persist. Current code isolates callback exceptions and has a DB-backed regression; no final report has yet been supplied."
+    },
+    {
+      "id": "R017-03",
+      "priority": 1,
+      "title": "Bind repairs to the original request context and immutable inputs",
+      "status": "FIX_IN_PROGRESS",
+      "paths": [
+        "src/server/ai/guarded-client.ts",
+        "src/server/ai/json-repair.ts",
+        "tests/phase017/json-repair.test.ts"
+      ],
+      "finding": "A newly minted context with the same trace could reset cancellation/deadline/budgets. New private WeakMap receipts bind original context, attempt, schema, input hash and output hash; repair must also snapshot originalVariables before async work and current evidence is pending."
+    },
+    {
+      "id": "R017-04",
+      "priority": 1,
+      "title": "Distinguish business assertion failures from infrastructure errors",
+      "status": "OPEN",
+      "paths": [
+        "docs/phase-plans/phase017-evidence.mjs",
+        "tests/phase017/evidence-guards.mjs"
+      ],
+      "finding": "Imported negative-evidence predicate accepted a TypeError carrying the expected business witness. Phase017 must explicitly require a business assertion class and reject the same-diagnostic TypeError."
+    },
+    {
+      "id": "R017-05",
+      "priority": 2,
+      "title": "Require actual supporting-check executions",
+      "status": "OPEN",
+      "paths": [
+        "docs/phase-plans/phase017-evidence.mjs",
+        "tests/phase017/evidence-guards.mjs"
+      ],
+      "finding": "supportingResults admitted PASS with empty details, so lint/typecheck/format/build evidence could be omitted without collector rejection. Freeze concrete check/command bindings and exercise omission rejection."
+    }
+  ],
+  "remainingScope": [
+    "Current fixes and their actual reports",
+    "Stable complete plan/source-basis, verify/complete scripts and evidence guard suite",
+    "Dedicated/full discovery equality, all five mutations and restored six fixture groups",
+    "Final source/plan/case/quality report hashes and dispositions",
+    "No final PASS or Gate may rely on this incomplete checkpoint"
+  ]
+}

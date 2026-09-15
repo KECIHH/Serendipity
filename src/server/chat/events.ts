@@ -2,7 +2,7 @@ import "server-only";
 import { randomUUID } from "node:crypto";
 import { Client } from "pg";
 import { Prisma, type ChatCommandEvent } from "@prisma/client";
-import { canonicalHash } from "@/lib/ai/schemas";
+import { canonicalHash } from "@/server/ai/canonical-hash";
 import { validateChatEnvelope, type ChatEventEnvelope } from "@/lib/chat-stream";
 
 const CHANNEL = "serendipity_chat";

@@ -24,7 +24,7 @@ export interface ProviderRequest {
 export interface ProviderSuccess {
   readonly ok: true;
   readonly output: string;
-  readonly usage: ProviderUsage;
+  readonly usage: ProviderUsage | null;
   readonly durationMs: number;
   readonly providerRequestId?: string;
   readonly receivedByte: true;

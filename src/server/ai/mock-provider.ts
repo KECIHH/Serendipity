@@ -20,7 +20,7 @@ export interface MockProviderOptions {
   readonly events?: readonly MockProviderEvent[];
   readonly clock?: () => number;
   readonly output?: string;
-  readonly usage?: { inputTokens: number; outputTokens: number };
+  readonly usage?: { inputTokens: number; outputTokens: number } | null;
   readonly chunkCount?: number;
   readonly delayMs?: number;
 }
@@ -117,7 +117,10 @@ export class MockAiProvider implements ProviderAdapter {
     return {
       ok: true,
       output,
-      usage: this.options.usage ?? { inputTokens: 12, outputTokens: 24 },
+      usage:
+        this.options.usage === undefined
+          ? { inputTokens: 12, outputTokens: 24 }
+          : this.options.usage,
       durationMs,
       receivedByte: true,
       providerRequestId: `mock-${this.calls.length}`,

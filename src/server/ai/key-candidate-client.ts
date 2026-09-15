@@ -1,7 +1,7 @@
 import "server-only";
 import { randomUUID } from "node:crypto";
 import type { PrismaClient } from "@prisma/client";
-import { canonicalHash } from "@/lib/ai/schemas";
+import { canonicalHash } from "@/server/ai/canonical-hash";
 import { KeyLifecycleError } from "@/server/admin/key-reference";
 import type { KeyCandidateClient } from "@/server/admin/key-candidate-client";
 import { callGuardedKeyCandidate } from "./guarded-client";

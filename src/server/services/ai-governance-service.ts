@@ -1,7 +1,8 @@
 import "server-only";
 
 import type { Prisma } from "@prisma/client";
-import { PROMPT_KEY_CONTRACTS, canonicalHash } from "@/lib/ai/schemas";
+import { canonicalHash } from "@/server/ai/canonical-hash";
+import { PROMPT_KEY_CONTRACTS } from "@/lib/ai/schemas";
 import bootstrapTemplates from "@/server/ai/bootstrap-templates.json";
 import bootstrapPolicy from "@/server/ai/planning-policy-bootstrap.json";
 import { parsePlanningPolicy } from "@/server/ai/planning-policy";

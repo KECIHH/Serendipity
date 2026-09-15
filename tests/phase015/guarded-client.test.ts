@@ -1,7 +1,8 @@
 // @vitest-environment node
 import { randomBytes, randomUUID } from "node:crypto";
 import { afterAll, beforeEach, describe, expect, it, vi } from "vitest";
-import { canonicalHash, promptKeyContract } from "@/lib/ai/schemas";
+import { canonicalHash } from "@/server/ai/canonical-hash";
+import { promptKeyContract } from "@/lib/ai/schemas";
 import { callGuardedAi } from "@/server/ai/guarded-client";
 import { resolvePromptSnapshot } from "@/server/services/prompt-service";
 import {

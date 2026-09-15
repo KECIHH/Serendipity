@@ -1,0 +1,747 @@
+{
+  "schemaVersion": 1,
+  "fixtureIds": [
+    "clean",
+    "parse",
+    "schema",
+    "repair-success",
+    "repair-failure",
+    "truncation"
+  ],
+  "requirement": {
+    "schemaVersion": 1,
+    "revision": 1,
+    "origin": {
+      "city": "深圳",
+      "country": "CN",
+      "confidence": 1
+    },
+    "destinations": [
+      {
+        "id": "dest_shangrao",
+        "name": "上饶",
+        "city": "上饶",
+        "country": "CN",
+        "type": "city",
+        "confidence": 1
+      },
+      {
+        "id": "dest_huangshan",
+        "name": "黄山",
+        "city": "黄山",
+        "country": "CN",
+        "type": "city",
+        "confidence": 1
+      }
+    ],
+    "dateRange": {
+      "startDate": "2026-09-05",
+      "endDate": "2026-09-06",
+      "text": "这周末",
+      "isFlexible": false,
+      "timezone": "Asia/Shanghai",
+      "confidence": 1
+    },
+    "durationDays": 2,
+    "travelers": {
+      "totalCount": 2,
+      "adultCount": 1,
+      "childCount": 0,
+      "elderCount": 1,
+      "ageUnknownCount": 0,
+      "relationship": "family",
+      "notes": [],
+      "hasChild": false,
+      "hasElder": true,
+      "isCouple": false,
+      "isFamily": true,
+      "confidence": 1
+    },
+    "budget": {
+      "amount": "3000",
+      "currency": "CNY",
+      "level": null,
+      "isFlexible": false,
+      "perPerson": true,
+      "hardLimit": true,
+      "confidence": 1
+    },
+    "preferences": {
+      "pace": "slow",
+      "interests": [
+        "美食"
+      ],
+      "avoid": [],
+      "transport": [
+        "high_speed_rail"
+      ],
+      "hardConstraints": [],
+      "accessibility": {
+        "stepFreeRequired": null,
+        "maxWalkingMinutes": null,
+        "notes": []
+      },
+      "consent": {
+        "sensitiveRequirementProcessing": null
+      },
+      "confidence": 1
+    },
+    "specialFlags": {
+      "isSelfDriving": false,
+      "isHiking": false,
+      "isOverseas": false
+    },
+    "fieldSources": [
+      {
+        "field": "origin",
+        "messageId": "fixture_message_a",
+        "inputHash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "method": "USER_TEXT",
+        "confidence": 1
+      },
+      {
+        "field": "destinations",
+        "messageId": "fixture_message_a",
+        "inputHash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "method": "USER_TEXT",
+        "confidence": 1
+      },
+      {
+        "field": "dateRange",
+        "messageId": "fixture_message_a",
+        "inputHash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "method": "USER_TEXT",
+        "confidence": 1
+      },
+      {
+        "field": "durationDays",
+        "messageId": null,
+        "inputHash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "method": "DERIVED",
+        "confidence": 1
+      },
+      {
+        "field": "travelers",
+        "messageId": "fixture_message_a",
+        "inputHash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "method": "USER_TEXT",
+        "confidence": 1
+      },
+      {
+        "field": "budget",
+        "messageId": "fixture_message_a",
+        "inputHash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "method": "USER_TEXT",
+        "confidence": 1
+      },
+      {
+        "field": "preferences.pace",
+        "messageId": "fixture_message_a",
+        "inputHash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "method": "USER_TEXT",
+        "confidence": 1
+      },
+      {
+        "field": "preferences.interests",
+        "messageId": "fixture_message_a",
+        "inputHash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "method": "USER_TEXT",
+        "confidence": 1
+      },
+      {
+        "field": "preferences.transport",
+        "messageId": "fixture_message_a",
+        "inputHash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "method": "USER_TEXT",
+        "confidence": 1
+      }
+    ],
+    "missingFields": []
+  },
+  "requirementCases": [
+    {
+      "id": "valid-ordered-destinations",
+      "expected": "PASS",
+      "changes": []
+    },
+    {
+      "id": "unknown-money-not-zero",
+      "expected": "PASS",
+      "changes": [
+        {
+          "path": "budget.amount",
+          "value": null
+        },
+        {
+          "path": "budget.currency",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "explicit-zero-budget",
+      "expected": "PASS",
+      "changes": [
+        {
+          "path": "budget.amount",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "numeric-money-rejected",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "budget.amount",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "invalid-calendar-date",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "dateRange.startDate",
+          "value": "2026-02-30"
+        },
+        {
+          "path": "dateRange.endDate",
+          "value": "2026-03-03"
+        }
+      ]
+    },
+    {
+      "id": "invalid-zone",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "dateRange.timezone",
+          "value": "GMT+8"
+        }
+      ]
+    },
+    {
+      "id": "absent-full-field",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "origin",
+          "remove": true
+        }
+      ]
+    },
+    {
+      "id": "unknown-origin",
+      "expected": "PASS",
+      "changes": [
+        {
+          "path": "origin",
+          "value": null
+        },
+        {
+          "path": "specialFlags.isOverseas",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "empty-preference",
+      "expected": "PASS",
+      "changes": [
+        {
+          "path": "preferences.interests",
+          "value": []
+        }
+      ]
+    },
+    {
+      "id": "empty-string-origin",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "origin.city",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "duplicate-stable-id",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "destinations.1.id",
+          "value": "dest_shangrao"
+        }
+      ]
+    },
+    {
+      "id": "overlapping-age-count",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "travelers.adultCount",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "unknown-age-not-elder",
+      "expected": "PASS",
+      "changes": [
+        {
+          "path": "travelers.adultCount",
+          "value": null
+        },
+        {
+          "path": "travelers.elderCount",
+          "value": null
+        },
+        {
+          "path": "travelers.ageUnknownCount",
+          "value": null
+        },
+        {
+          "path": "travelers.hasElder",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "fractional-count",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "travelers.totalCount",
+          "value": 2.5
+        }
+      ]
+    },
+    {
+      "id": "wrong-draft-version",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "schemaVersion",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "undeclared-fact",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "coordinates",
+          "value": [
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "id": "canonical-decimal-fraction",
+      "expected": "PASS",
+      "changes": [
+        {
+          "path": "budget.amount",
+          "value": "12.5"
+        }
+      ]
+    },
+    {
+      "id": "three-decimal-currency",
+      "expected": "PASS",
+      "changes": [
+        {
+          "path": "budget.currency",
+          "value": "BHD"
+        },
+        {
+          "path": "budget.amount",
+          "value": "1.234"
+        }
+      ]
+    },
+    {
+      "id": "unknown-currency-four-decimals",
+      "expected": "PASS",
+      "changes": [
+        {
+          "path": "budget.currency",
+          "value": null
+        },
+        {
+          "path": "budget.amount",
+          "value": "1.2345"
+        }
+      ]
+    },
+    {
+      "id": "currency-precision-rejected",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "budget.amount",
+          "value": "1.234"
+        }
+      ]
+    },
+    {
+      "id": "zero-decimal-currency-rejected",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "budget.currency",
+          "value": "JPY"
+        },
+        {
+          "path": "budget.amount",
+          "value": "1.5"
+        }
+      ]
+    },
+    {
+      "id": "negative-money-rejected",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "budget.amount",
+          "value": "-1"
+        }
+      ]
+    },
+    {
+      "id": "exponent-money-rejected",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "budget.amount",
+          "value": "1e3"
+        }
+      ]
+    },
+    {
+      "id": "leading-zero-money-rejected",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "budget.amount",
+          "value": "01"
+        }
+      ]
+    },
+    {
+      "id": "trailing-zero-money-rejected",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "budget.amount",
+          "value": "1.00"
+        }
+      ]
+    },
+    {
+      "id": "money-whitespace-rejected",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "budget.amount",
+          "value": " 1"
+        }
+      ]
+    },
+    {
+      "id": "unknown-currency-code-rejected",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "budget.currency",
+          "value": "XXX"
+        }
+      ]
+    },
+    {
+      "id": "pseudo-country-code-rejected",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "origin.country",
+          "value": "ZZ"
+        },
+        {
+          "path": "specialFlags.isOverseas",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "valid-leap-date",
+      "expected": "PASS",
+      "changes": [
+        {
+          "path": "dateRange.startDate",
+          "value": "2028-02-28"
+        },
+        {
+          "path": "dateRange.endDate",
+          "value": "2028-02-29"
+        }
+      ]
+    },
+    {
+      "id": "invalid-nonleap-date",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "dateRange.startDate",
+          "value": "2026-02-29"
+        },
+        {
+          "path": "dateRange.endDate",
+          "value": "2026-03-02"
+        }
+      ]
+    },
+    {
+      "id": "date-year-zero-rejected",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "dateRange.startDate",
+          "value": "0000-01-01"
+        },
+        {
+          "path": "dateRange.endDate",
+          "value": "0000-01-02"
+        }
+      ]
+    },
+    {
+      "id": "reversed-date-window",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "dateRange.startDate",
+          "value": "2026-09-07"
+        }
+      ]
+    },
+    {
+      "id": "partial-date-window",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "dateRange.endDate",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "date-without-zone",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "dateRange.timezone",
+          "remove": true
+        }
+      ]
+    },
+    {
+      "id": "fixed-duration-mismatch",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "durationDays",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "flexible-window-keeps-duration",
+      "expected": "PASS",
+      "changes": [
+        {
+          "path": "dateRange.isFlexible",
+          "value": true
+        },
+        {
+          "path": "dateRange.endDate",
+          "value": "2026-09-10"
+        }
+      ]
+    },
+    {
+      "id": "flexible-window-too-short",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "dateRange.isFlexible",
+          "value": true
+        },
+        {
+          "path": "dateRange.endDate",
+          "value": "2026-09-05"
+        }
+      ]
+    },
+    {
+      "id": "numeric-destination-id-rejected",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "destinations.0.id",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "known-fields-require-sources",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "fieldSources",
+          "value": []
+        }
+      ]
+    },
+    {
+      "id": "unsafe-revision-rejected",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "revision",
+          "value": 9007199254740992
+        }
+      ]
+    },
+    {
+      "id": "origin-null-object-rejected",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "origin",
+          "value": {
+            "city": null,
+            "country": null,
+            "confidence": 0
+          }
+        },
+        {
+          "path": "specialFlags.isOverseas",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "date-null-object-rejected",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "dateRange.startDate",
+          "value": null
+        },
+        {
+          "path": "dateRange.endDate",
+          "value": null
+        },
+        {
+          "path": "dateRange.text",
+          "value": null
+        },
+        {
+          "path": "durationDays",
+          "value": null
+        }
+      ]
+    },
+    {
+      "id": "whitespace-location-rejected",
+      "expected": "FAIL",
+      "changes": [
+        {
+          "path": "origin.city",
+          "value": "   "
+        }
+      ]
+    }
+  ],
+  "promptOutputs": {
+    "nlu.extract": {
+      "schemaVersion": 1,
+      "candidates": [
+        {
+          "field": "origin",
+          "text": "深圳",
+          "confidence": 1
+        },
+        {
+          "field": "destinations",
+          "text": "武功山",
+          "confidence": 1
+        },
+        {
+          "field": "dateRange",
+          "text": "这周末",
+          "confidence": 1
+        }
+      ]
+    },
+    "nlu.ask_missing": {
+      "schemaVersion": 1,
+      "questions": [
+        {
+          "field": "destinations",
+          "question": "这次想去哪个城市或地区？"
+        }
+      ]
+    },
+    "planner.generate": {
+      "schemaVersion": 1,
+      "title": "上饶与黄山两日意向",
+      "description": "围绕两处目的地安排较慢节奏，具体安排仍需核验。",
+      "bestFor": [
+        "偏好美食与慢节奏的旅行者"
+      ],
+      "overallRecommendation": "先核验跨城交通再确定每日安排。",
+      "recommendedReason": "保留原有目的地顺序与慢节奏偏好。"
+    },
+    "planner.repair_json": {
+      "schemaVersion": 1,
+      "repairedText": "{\"schemaVersion\":1,\"candidates\":[]}"
+    },
+    "conversation.modify": {
+      "schemaVersion": 1,
+      "operation": "REMOVE",
+      "targetCandidateIds": [
+        "candidate_event_a"
+      ],
+      "requestedText": "删除这项安排",
+      "explanation": "请求删除已选安排，提交前仍需验证影响范围。"
+    },
+    "planner.score": {
+      "schemaVersion": 1,
+      "explanations": [
+        {
+          "dimension": "comfort",
+          "text": "已按规则保留休息间隔。"
+        }
+      ],
+      "overallExplanation": "说明仅解释当前确定性评分。"
+    },
+    "planner.final_summary": {
+      "schemaVersion": 1,
+      "finalSummary": "按已验证顺序游览，费用仍有未知项。"
+    },
+    "export.markdown": {
+      "schemaVersion": 1,
+      "markdown": "# 合成旅行说明"
+    }
+  },
+  "provenance": {
+    "path": "docs/travel-plan-schema.md",
+    "sha256": "d3f0492c8d0d22e6de3b21e44368dbf4bb9a49018180e99adf8eb796badb40cd"
+  }
+}

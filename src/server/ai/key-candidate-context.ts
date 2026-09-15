@@ -1,6 +1,6 @@
 import "server-only";
 import type { ApiKeyConfig, Prisma } from "@prisma/client";
-import { canonicalHash } from "@/lib/ai/schemas";
+import { canonicalHash } from "@/server/ai/canonical-hash";
 import type { KeyCandidateAuthorization } from "@/server/admin/key-candidate-client";
 import { assertAdminCommandClaim } from "@/server/admin/command-receipt";
 import { parseReferenceCandidates, type KeyConnectionTarget } from "@/server/admin/key-reference";

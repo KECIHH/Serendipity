@@ -5,13 +5,27 @@ import { env } from "@/lib/env";
 import { authorizeWorkerCommand } from "@/server/chat/ownership";
 import { assertTaskLease, type TaskLease } from "@/server/tasks/durable-task";
 import type { AiErrorCode, ProviderResult, ProviderRequest } from "@/lib/ai/provider";
+import { canonicalHash } from "@/server/ai/canonical-hash";
 import {
-  canonicalHash,
   canonicalJson,
   parsePromptVariables,
   parsePromptResponse,
   promptKeyContract,
+  PromptOutputSchemas,
 } from "@/lib/ai/schemas";
+import {
+  validatePromptReferences,
+  type PromptKey,
+  type PromptInputMap,
+  type PromptOutputMap,
+} from "@/lib/ai/schemas";
+import {
+  assertNluContext,
+  nluRemainingMilliseconds,
+  reserveNluBudget,
+  type NluContext,
+} from "./nlu-context";
+import { captureAiOutput, type AiCapturePolicy } from "./capture-policy";
 import {
   resolveProviderAdapter,
   type ProviderRegistryOptions,
@@ -41,8 +55,8 @@ export type GuardedAiCallResult =
       readonly traceId: string;
       readonly attemptNo: number;
       readonly output: unknown;
-      readonly inputTokens: number;
-      readonly outputTokens: number;
+      readonly inputTokens: number | null;
+      readonly outputTokens: number | null;
       readonly durationMs: number;
       readonly retryable: false;
       readonly safeMessage: string;
@@ -51,6 +65,8 @@ export type GuardedAiCallResult =
       readonly ok: false;
       readonly traceId: string;
       readonly errorCode: AiErrorCode;
+      readonly attemptNo?: number;
+      readonly internalCode?: "INVALID_JSON" | "SCHEMA_MISMATCH" | "VALIDATION_ERROR";
       readonly retryable: boolean;
       readonly safeMessage: string;
     };
@@ -67,6 +83,40 @@ export interface GuardedAiClientOptions extends ProviderRegistryOptions {
   readonly jitter?: () => number;
   readonly costCap?: string;
   readonly validateOutput?: (output: unknown) => unknown;
+  readonly nluContext?: NluContext;
+  readonly capturePolicy?: AiCapturePolicy;
+  readonly onDebugCapture?: (text: string) => void;
+  /** Ephemeral server memory only. This callback never changes the persisted result. */
+  readonly onInvalidOutput?: (rawText: string, attemptNo: number) => void;
+}
+
+interface FailedJsonAttempt {
+  readonly promptKey: string;
+  readonly schemaId: string;
+  readonly variablesHash: string;
+  readonly outputHash: string;
+  claimed: boolean;
+}
+const failedJsonAttempts = new WeakMap<NluContext, Map<number, FailedJsonAttempt>>();
+/** Consume an ephemeral receipt created only after this exact context persisted its failed call. */
+export function claimOriginalJsonAttempt(
+  context: NluContext,
+  attemptNo: number,
+  binding: Omit<FailedJsonAttempt, "claimed">,
+): boolean {
+  assertNluContext(context);
+  const recorded = failedJsonAttempts.get(context)?.get(attemptNo);
+  if (
+    !recorded ||
+    recorded.claimed ||
+    recorded.promptKey !== binding.promptKey ||
+    recorded.schemaId !== binding.schemaId ||
+    recorded.variablesHash !== binding.variablesHash ||
+    recorded.outputHash !== binding.outputHash
+  )
+    return false;
+  recorded.claimed = true;
+  return true;
 }
 
 async function authorizeCommandCall(
@@ -93,7 +143,7 @@ function safeError(
   errorCode: AiErrorCode,
   traceId: string,
   retryable = false,
-): GuardedAiCallResult {
+): Extract<GuardedAiCallResult, { ok: false }> {
   const messages: Record<AiErrorCode, string> = {
     FEATURE_DISABLED: "AI calls are disabled.",
     CONFIG_ERROR: "AI configuration is unavailable.",
@@ -231,15 +281,37 @@ async function persist(
 ) {
   const success = result.ok && !internalCode;
   await options.db.$transaction(async (tx) => {
-    await authorizeCommandCall(tx, input, options);
-    const actualTokens = result.ok
-      ? result.usage.inputTokens + result.usage.outputTokens
-      : undefined;
-    const actualCost = result.ok
-      ? actualUsageCost(snapshot, result.usage.inputTokens, result.usage.outputTokens)
-      : undefined;
+    if (options.owner?.kind === "COMMAND") {
+      // Authorization and the live lease were checked before reserving/submitting this call.
+      // Accounting for that reservation must survive cancellation or lease expiry. This path
+      // can only append its attempt and settle its own budget; it cannot authorize new work.
+      const stored = await tx.aiUsageReservation.findUnique({ where: { id: reservation.id } });
+      const command = await tx.chatCommand.findUnique({ where: { id: options.owner.commandId } });
+      const task = await tx.durableTask.findUnique({ where: { id: options.owner.lease.taskId } });
+      if (
+        !stored ||
+        stored.traceId !== input.traceId ||
+        stored.attemptNo !== reservation.attemptNo ||
+        stored.bucketKey !== reservation.bucketKey ||
+        !command ||
+        command.id !== input.commandId ||
+        command.traceId !== input.traceId ||
+        command.travelRecordId !== input.travelRecordId ||
+        !task ||
+        task.commandId !== command.id ||
+        task.fencingToken < options.owner.lease.fencingToken
+      )
+        throw new Error("CONFIG_ERROR");
+    } else await authorizeCommandCall(tx, input, options);
+    const actualTokens =
+      result.ok && result.usage ? result.usage.inputTokens + result.usage.outputTokens : undefined;
+    const actualCost =
+      result.ok && result.usage
+        ? actualUsageCost(snapshot, result.usage.inputTokens, result.usage.outputTokens)
+        : undefined;
     const settled =
       result.ok &&
+      result.usage !== null &&
       actualTokens! <= reservation.estimatedTokens &&
       actualCost!.lte(reservation.estimatedCost);
     const update = await tx.aiUsageReservation.updateMany({
@@ -289,8 +361,8 @@ async function persist(
           : (internalCode ??
             (!result.ok ? (result.internalCode ?? result.errorCode) : "PROVIDER_UNAVAILABLE")),
         errorMessage: success ? null : "Provider attempt failed.",
-        inputTokens: result.ok ? result.usage.inputTokens : null,
-        outputTokens: result.ok ? result.usage.outputTokens : null,
+        inputTokens: result.ok ? (result.usage?.inputTokens ?? null) : null,
+        outputTokens: result.ok ? (result.usage?.outputTokens ?? null) : null,
         durationMs: Math.max(0, Math.round(result.durationMs)),
       },
     });
@@ -341,6 +413,57 @@ export async function callGuardedAi(
   return executeGuardedAi(input, options);
 }
 
+export interface GuardedJsonChatInput<K extends PromptKey> {
+  readonly promptKey: K;
+  readonly variables: PromptInputMap[K];
+  readonly userMessage: string;
+  readonly context: NluContext;
+  readonly travelRecordId?: string;
+  readonly commandId?: string;
+  readonly attemptNo?: number;
+}
+/** Phase017+ typed entry point. All calls share the certified request context. */
+export async function guardedJsonChat<K extends PromptKey>(
+  input: GuardedJsonChatInput<K>,
+  options: Omit<GuardedAiClientOptions, "owner" | "nluContext">,
+): Promise<GuardedAiCallResult> {
+  let variables: PromptInputMap[K];
+  try {
+    assertNluContext(input.context);
+    const scalars = input.variables as Readonly<Record<string, unknown>>;
+    if (
+      scalars.locale !== input.context.locale ||
+      (Object.hasOwn(scalars, "serverDate") && scalars.serverDate !== input.context.serverDate) ||
+      (Object.hasOwn(scalars, "timezone") && scalars.timezone !== input.context.timezone)
+    )
+      throw new Error("CONFIG_ERROR");
+    variables = parsePromptVariables(input.promptKey, scalars) as unknown as PromptInputMap[K];
+  } catch (error) {
+    const code =
+      error instanceof Error && ["CANCELLED", "PROVIDER_TIMEOUT"].includes(error.message)
+        ? (error.message as AiErrorCode)
+        : "CONFIG_ERROR";
+    return safeError(code, input.context?.traceId ?? "unavailable");
+  }
+  return executeGuardedAi(
+    {
+      ...input,
+      variables: variables as Readonly<Record<string, unknown>>,
+      traceId: input.context.traceId,
+      signal: input.context.signal,
+    },
+    {
+      ...options,
+      owner: input.context.ownerContext,
+      nluContext: input.context,
+      validateOutput(output) {
+        validatePromptReferences(input.promptKey, variables, output as PromptOutputMap[K]);
+        return options.validateOutput ? options.validateOutput(output) : output;
+      },
+    },
+  );
+}
+
 export async function callGuardedKeyCandidate(
   input: GuardedAiCallInput,
   options: GuardedAiClientOptions,
@@ -363,6 +486,15 @@ async function executeGuardedAi(
   const codeForAbort = () =>
     input.signal?.aborted ? ("CANCELLED" as const) : ("PROVIDER_TIMEOUT" as const);
   try {
+    if (options.nluContext) {
+      assertNluContext(options.nluContext);
+      if (
+        input.signal !== options.nluContext.signal ||
+        input.traceId !== options.nluContext.traceId ||
+        options.owner !== options.nluContext.ownerContext
+      )
+        throw new Error("CONFIG_ERROR");
+    }
     if (!(await isAiEnabled(options.db))) return safeError("FEATURE_DISABLED", input.traceId);
     if (controller.signal.aborted) return safeError(codeForAbort(), input.traceId);
     const snapshot = await options.db.$transaction(
@@ -383,7 +515,10 @@ async function executeGuardedAi(
     );
     const estimate = estimateUsage(snapshot, requestBytes);
     const timeout = Math.min(snapshot.provider.timeoutMs, env.AI_TIMEOUT_MS);
-    const deadlineAt = realStart + timeout;
+    const deadlineAt = Math.min(
+      realStart + timeout,
+      options.nluContext ? Date.now() + nluRemainingMilliseconds(options.nluContext) : Infinity,
+    );
     if (Date.now() >= deadlineAt) return safeError("PROVIDER_TIMEOUT", input.traceId);
     timer = setTimeout(abort, deadlineAt - Date.now());
     const context = { signal: controller.signal, deadlineAt };
@@ -392,7 +527,9 @@ async function executeGuardedAi(
     if (!Number.isSafeInteger(firstAttempt) || firstAttempt < 1) throw new Error("CONFIG_ERROR");
     for (
       let attemptNo = firstAttempt;
-      attemptNo <= firstAttempt + Math.min(1, snapshot.provider.maxRetries);
+      attemptNo <=
+      firstAttempt +
+        (input.promptKey === "planner.repair_json" ? 0 : Math.min(1, snapshot.provider.maxRetries));
       attemptNo++
     ) {
       if (controller.signal.aborted) return safeError(codeForAbort(), input.traceId);
@@ -412,7 +549,14 @@ async function executeGuardedAi(
       await resolution.adapter.prepare?.(context);
       if (controller.signal.aborted) return safeError(codeForAbort(), input.traceId);
       let reservation: AiUsageReservation;
+      let requestBudget: ReturnType<typeof reserveNluBudget> | undefined;
       try {
+        if (options.nluContext)
+          requestBudget = reserveNluBudget(
+            options.nluContext,
+            estimate.estimatedTokens,
+            estimate.estimatedCost,
+          );
         reservation = await reserveUsage(options.db, snapshot, {
           traceId: input.traceId,
           attemptNo,
@@ -426,6 +570,7 @@ async function executeGuardedAi(
           authorize: (tx) => authorizeCommandCall(tx, input, options),
         });
       } catch (error) {
+        requestBudget?.settle({ tokens: 0, cost: new Prisma.Decimal(0) });
         const code = error instanceof Error ? error.message : "CONFIG_ERROR";
         if (["COST_LIMIT", "RATE_LIMITED"].includes(code))
           await persistAdmissionFailure(
@@ -442,6 +587,7 @@ async function executeGuardedAi(
       try {
         await markSubmitted(options, reservation, snapshot, controller.signal, candidate, input);
       } catch (error) {
+        requestBudget?.settle({ tokens: 0, cost: new Prisma.Decimal(0) });
         await persist(
           options,
           input,
@@ -462,6 +608,7 @@ async function executeGuardedAi(
         throw error;
       }
       let result: ProviderResult;
+      const attemptStart = Date.now();
       try {
         result = await resolution.adapter.complete(request, {
           signal: controller.signal,
@@ -497,16 +644,31 @@ async function executeGuardedAi(
           durationMs: Date.now() - realStart,
           providerRequestId: result.providerRequestId,
         };
+      result = { ...result, durationMs: Math.max(0, Date.now() - attemptStart) };
       let output: unknown, internalCode: string | undefined;
       if (result.ok) {
+        const capture = captureAiOutput(
+          result.output,
+          options.capturePolicy,
+          options.owner?.kind === "SYNTHETIC" && snapshot.provider.mode === "MOCK",
+        );
+        if (capture !== null) {
+          // Optional diagnostics cannot interrupt append-only accounting for an external call.
+          try {
+            options.onDebugCapture?.(capture);
+          } catch {
+            /* Deliberately omit callback contents and exceptions from logs. */
+          }
+        }
         try {
           if (
-            result.usage.inputTokens > estimate.inputTokens ||
-            result.usage.outputTokens > estimate.outputTokens ||
-            !Number.isSafeInteger(result.usage.inputTokens) ||
-            !Number.isSafeInteger(result.usage.outputTokens) ||
-            result.usage.inputTokens < 0 ||
-            result.usage.outputTokens < 0 ||
+            (result.usage !== null &&
+              (result.usage.inputTokens > estimate.inputTokens ||
+                result.usage.outputTokens > estimate.outputTokens ||
+                !Number.isSafeInteger(result.usage.inputTokens) ||
+                !Number.isSafeInteger(result.usage.outputTokens) ||
+                result.usage.inputTokens < 0 ||
+                result.usage.outputTokens < 0)) ||
             Buffer.byteLength(result.output) > Math.min(options.maxOutputBytes ?? 262144, 262144)
           )
             throw new Error("SCHEMA_MISMATCH");
@@ -514,10 +676,29 @@ async function executeGuardedAi(
           if (options.validateOutput) output = options.validateOutput(output);
         } catch (error) {
           internalCode =
-            error instanceof Error && ["INVALID_JSON", "SCHEMA_MISMATCH"].includes(error.message)
+            error instanceof Error &&
+            ["INVALID_JSON", "SCHEMA_MISMATCH", "VALIDATION_ERROR"].includes(error.message)
               ? error.message
               : "SCHEMA_MISMATCH";
         }
+      }
+      if (
+        result.ok &&
+        result.usage &&
+        Number.isSafeInteger(result.usage.inputTokens) &&
+        Number.isSafeInteger(result.usage.outputTokens) &&
+        result.usage.inputTokens >= 0 &&
+        result.usage.outputTokens >= 0 &&
+        result.usage.inputTokens <= estimate.inputTokens &&
+        result.usage.outputTokens <= estimate.outputTokens
+      )
+        requestBudget?.settle({
+          tokens: result.usage.inputTokens + result.usage.outputTokens,
+          cost: actualUsageCost(snapshot, result.usage.inputTokens, result.usage.outputTokens),
+        });
+      else {
+        requestBudget?.settle();
+        if (result.ok && result.usage) result = { ...result, usage: null };
       }
       try {
         await persist(options, input, snapshot, reservation, request, result, internalCode);
@@ -531,23 +712,49 @@ async function executeGuardedAi(
             .catch(() => {});
         return safeError("PROVIDER_UNAVAILABLE", input.traceId);
       }
-      if (result.ok)
+      if (result.ok) {
+        if (
+          options.nluContext &&
+          input.promptKey !== "planner.repair_json" &&
+          (internalCode === "INVALID_JSON" || internalCode === "SCHEMA_MISMATCH")
+        ) {
+          const attempts =
+            failedJsonAttempts.get(options.nluContext) ?? new Map<number, FailedJsonAttempt>();
+          attempts.set(attemptNo, {
+            promptKey: input.promptKey,
+            schemaId: PromptOutputSchemas[promptKeyContract(input.promptKey).key].schemaId,
+            variablesHash: canonicalHash(input.variables),
+            outputHash: canonicalHash(result.output),
+            claimed: false,
+          });
+          failedJsonAttempts.set(options.nluContext, attempts);
+        }
+        if (internalCode && options.onInvalidOutput)
+          options.onInvalidOutput(result.output, attemptNo);
         return internalCode
-          ? safeError("PROVIDER_UNAVAILABLE", input.traceId)
+          ? {
+              ...safeError("PROVIDER_UNAVAILABLE", input.traceId),
+              ok: false,
+              errorCode: "PROVIDER_UNAVAILABLE",
+              attemptNo,
+              internalCode: internalCode as "INVALID_JSON" | "SCHEMA_MISMATCH" | "VALIDATION_ERROR",
+            }
           : {
               ok: true,
               traceId: input.traceId,
               attemptNo,
               output,
-              inputTokens: result.usage.inputTokens,
-              outputTokens: result.usage.outputTokens,
+              inputTokens: result.usage?.inputTokens ?? null,
+              outputTokens: result.usage?.outputTokens ?? null,
               durationMs: Date.now() - realStart,
               retryable: false,
               safeMessage: "AI call completed.",
             };
+      }
       const retry =
         attemptNo === firstAttempt &&
         snapshot.provider.maxRetries > 0 &&
+        input.promptKey !== "planner.repair_json" &&
         result.retryable &&
         !result.receivedByte &&
         ["RATE_LIMITED", "PROVIDER_UNAVAILABLE"].includes(result.errorCode) &&
@@ -570,7 +777,14 @@ async function executeGuardedAi(
     const code = error instanceof Error ? error.message : "CONFIG_ERROR";
     if (controller.signal.aborted) return safeError(codeForAbort(), input.traceId);
     return safeError(
-      ["FEATURE_DISABLED", "RATE_LIMITED", "COST_LIMIT", "CANCELLED", "CONFIG_ERROR"].includes(code)
+      [
+        "FEATURE_DISABLED",
+        "RATE_LIMITED",
+        "COST_LIMIT",
+        "CANCELLED",
+        "PROVIDER_TIMEOUT",
+        "CONFIG_ERROR",
+      ].includes(code)
         ? (code as AiErrorCode)
         : "CONFIG_ERROR",
       input.traceId,

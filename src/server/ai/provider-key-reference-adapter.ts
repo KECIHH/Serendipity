@@ -1,6 +1,6 @@
 import "server-only";
 import type { Prisma, ModelDeployment, ProviderConfigVersion } from "@prisma/client";
-import { canonicalHash } from "@/lib/ai/schemas";
+import { canonicalHash } from "@/server/ai/canonical-hash";
 import type {
   KeyConnectionTarget,
   KeyReference,

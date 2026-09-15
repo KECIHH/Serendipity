@@ -2,7 +2,8 @@ import "server-only";
 import type { Prisma } from "@prisma/client";
 import type { lookup } from "node:dns/promises";
 import { env } from "@/lib/env";
-import { canonicalHash, promptKeyContract } from "@/lib/ai/schemas";
+import { canonicalHash } from "@/server/ai/canonical-hash";
+import { promptKeyContract } from "@/lib/ai/schemas";
 import type { ProviderAdapter } from "@/lib/ai/provider";
 import {
   DeepSeekProvider,
@@ -30,7 +31,7 @@ export interface ProviderRegistryOptions {
   readonly mockClock?: () => number;
   readonly mockOutput?: string;
   readonly mockDelayMs?: number;
-  readonly mockUsage?: { inputTokens: number; outputTokens: number };
+  readonly mockUsage?: { inputTokens: number; outputTokens: number } | null;
   readonly resolveSecret?: (record: SecretRecord) => string;
 }
 export async function resolveProviderAdapter(
@@ -93,7 +94,7 @@ export async function resolveProviderAdapter(
         options.mockClock ||
         options.mockOutput ||
         options.mockDelayMs ||
-        options.mockUsage)
+        options.mockUsage !== undefined)
     )
       throw new Error("CONFIG_ERROR");
     return {

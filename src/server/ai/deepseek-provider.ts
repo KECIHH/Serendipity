@@ -195,17 +195,20 @@ function parseCompletion(body: string, streaming: boolean) {
   if (
     typeof output !== "string" ||
     !output ||
-    !usage ||
-    !Number.isSafeInteger(usage.prompt_tokens) ||
-    !Number.isSafeInteger(usage.completion_tokens) ||
-    usage.prompt_tokens! < 0 ||
-    usage.completion_tokens! < 0 ||
+    (usage != null &&
+      (!Number.isSafeInteger(usage.prompt_tokens) ||
+        !Number.isSafeInteger(usage.completion_tokens) ||
+        usage.prompt_tokens! < 0 ||
+        usage.completion_tokens! < 0)) ||
     (id !== undefined && (typeof id !== "string" || !/^[A-Za-z0-9_.:-]{1,128}$/.test(id)))
   )
     throw new Error("PROVIDER_RESPONSE");
   return {
     output,
-    usage: { inputTokens: usage.prompt_tokens!, outputTokens: usage.completion_tokens! },
+    usage:
+      usage == null
+        ? null
+        : { inputTokens: usage.prompt_tokens!, outputTokens: usage.completion_tokens! },
     id,
   };
 }
@@ -383,7 +386,7 @@ export class DeepSeekProvider implements ProviderAdapter {
         } catch {
           return failure("PROVIDER_UNAVAILABLE", false, { internalCode: "INVALID_JSON" });
         }
-        if (parsed.usage.outputTokens > request.maxOutputTokens)
+        if (parsed.usage && parsed.usage.outputTokens > request.maxOutputTokens)
           return failure("PROVIDER_UNAVAILABLE");
         if (!streaming) await context.onDelta?.(parsed.output);
         return {

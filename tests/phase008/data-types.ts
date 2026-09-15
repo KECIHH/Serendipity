@@ -22,6 +22,7 @@ import type {
   CreateTravelRecordInput,
   TransferAnonymousTravelRecordInput,
 } from "@/server/repositories/travel-record";
+import type { TravelRequirement } from "@/lib/ai/schemas";
 
 type Equal<A, B> =
   (<T>() => T extends A ? 1 : 2) extends <T>() => T extends B ? 1 : 2 ? true : false;
@@ -46,7 +47,7 @@ export type OwnerCompileTimeContract = [
   Assert<Equal<Assignable<AnonTokenHash, string>, true>>,
   Assert<Equal<CreateTravelRecordInput["owner"], TravelRecordOwner>>,
   Assert<Equal<TransferAnonymousTravelRecordInput["owner"], AnonymousTravelRecordOwner>>,
-  Assert<Equal<CreateTravelRecordInput["requirementJson"], null | undefined>>,
+  Assert<Equal<CreateTravelRecordInput["requirementJson"], TravelRequirement | null | undefined>>,
   Assert<Equal<AppendChatMessageInput["contentJson"], null | undefined>>,
   Assert<Equal<AppendChatMessageInput["owner"], TravelRecordOwner>>,
 ];

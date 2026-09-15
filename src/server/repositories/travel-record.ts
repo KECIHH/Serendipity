@@ -1,6 +1,6 @@
 import "server-only";
 
-import { Prisma, type TravelRecord } from "@prisma/client";
+import { Prisma, type TravelRecord, type PrismaClient } from "@prisma/client";
 
 import {
   parseTravelRecordOwner,
@@ -8,11 +8,11 @@ import {
   type TravelRecordOwner,
 } from "@/server/anonymous-owner";
 import { db } from "@/server/db";
+import { TravelRequirementSchema, type TravelRequirement } from "@/lib/ai/schemas";
 import {
   DataLayerError,
   parseDataIdentifier,
   readDataLayerObject,
-  requireAbsentJson,
   runDataLayerOperation,
 } from "@/server/repositories/data-layer-error";
 
@@ -24,7 +24,7 @@ export interface OwnedTravelRecordInput {
 export interface CreateTravelRecordInput {
   owner: TravelRecordOwner;
   title: string;
-  requirementJson?: null;
+  requirementJson?: TravelRequirement | null;
 }
 
 export interface TransferAnonymousTravelRecordInput {
@@ -56,7 +56,10 @@ function cleanTitle(value: unknown): string {
   return title;
 }
 
-export async function createTravelRecord(input: CreateTravelRecordInput): Promise<TravelRecord> {
+export async function createTravelRecord(
+  input: CreateTravelRecordInput,
+  client: PrismaClient = db,
+): Promise<TravelRecord> {
   const fields = readDataLayerObject(
     input,
     ["owner", "title", "requirementJson"],
@@ -64,10 +67,20 @@ export async function createTravelRecord(input: CreateTravelRecordInput): Promis
   );
   const owner = parseTravelRecordOwner(fields.owner);
   const title = cleanTitle(fields.title);
-  requireAbsentJson(fields.requirementJson);
+  const requirement =
+    fields.requirementJson == null
+      ? null
+      : TravelRequirementSchema.safeParse(fields.requirementJson);
+  if (requirement && !requirement.success) throw new DataLayerError("VALIDATION_ERROR");
   return runDataLayerOperation(() =>
-    db.travelRecord.create({
-      data: { ...owner, title, requirementJson: Prisma.DbNull },
+    client.travelRecord.create({
+      data: {
+        ...owner,
+        title,
+        requirementJson: requirement?.success
+          ? (requirement.data as Prisma.InputJsonValue)
+          : Prisma.DbNull,
+      },
     }),
   );
 }

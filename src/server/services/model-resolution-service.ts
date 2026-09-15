@@ -1,7 +1,7 @@
 import "server-only";
 
 import type { ModelDeployment, Prisma } from "@prisma/client";
-import { canonicalHash } from "@/lib/ai/schemas";
+import { canonicalHash } from "@/server/ai/canonical-hash";
 
 export interface ResolvedModelSnapshot {
   readonly deploymentId: string;

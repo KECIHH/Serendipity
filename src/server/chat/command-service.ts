@@ -1,7 +1,7 @@
 import "server-only";
 import { createHash, randomUUID } from "node:crypto";
 import { Prisma, type PrismaClient } from "@prisma/client";
-import { canonicalHash } from "@/lib/ai/schemas";
+import { canonicalHash } from "@/server/ai/canonical-hash";
 import type { TravelRecordOwner } from "@/server/anonymous-owner";
 import { parseDataIdentifier, readDataLayerObject } from "@/server/repositories/data-layer-error";
 import { readAuthClock } from "@/server/auth/clock";

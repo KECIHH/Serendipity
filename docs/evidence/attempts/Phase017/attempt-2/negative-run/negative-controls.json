@@ -1,0 +1,883 @@
+{
+  "rows": [
+    {
+      "id": "fence-cleaning",
+      "originalCase": "Phase017:clean",
+      "exitCode": 1,
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\fixtures\\fence-cleaning-sGhqcU",
+      "changes": [
+        {
+          "sourcePath": "src/lib/ai/json-parser.ts",
+          "originalHash": "cc260d3954f18a64356522a5b01c9158ed9878e8c21aa99e771523b3cf968398",
+          "mutatedHash": "4ccae218c3f1cc73275628d5792670580e3863173118fc372df9ac9c41540678"
+        }
+      ],
+      "testSourceHash": "ef54abba14b3f75130faabedfa163eb901b15605d54d17d57653484aed013956",
+      "reportPath": "docs/evidence/attempts/Phase017/attempt-2/negative-run/mutations/fence-cleaning-report.json",
+      "reportHash": "9a8715b7bd63271ee65c20a76c528c065dcbf33a7932411fe3dba46fa220e41f",
+      "receiptPath": "docs/evidence/attempts/Phase017/attempt-2/negative-run/mutations/fence-cleaning.json",
+      "receiptHash": "3ed672105ab4efb8b9a32cdc0bb496c34e170cc6be1d09b7634b70f86826e776",
+      "failureEvidence": {
+        "id": "fence-cleaning",
+        "file": "src/lib/ai/json-parser.ts",
+        "testFile": "tests/phase017/json-parser.test.ts",
+        "assertion": "AI JSON parser clean: paired fences and BOM preserve the complete JSON",
+        "signal": "AssertionError: FENCE_CLEANING_REQUIRED: expected '```json\\n{\"schemaVersion\":1,\"title\":\"…' to be '{\"schemaVersion\":1,\"title\":\"上饶与黄山两日意向…' // Object.is equality\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase017/fixtures/fence-cleaning-sGhqcU/tests/phase017/json-parser.test.ts:15:61\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9"
+      },
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase017/json-parser.test.ts -t clean: paired fences and BOM preserve the complete JSON --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490532093-negative-fence-cleaning.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "tests/phase017/json-parser.test.ts",
+          "-t",
+          "clean: paired fences and BOM preserve the complete JSON",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490532093-negative-fence-cleaning.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\fixtures\\fence-cleaning-sGhqcU",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-15T16:42:12.094Z",
+        "finishedAt": "2026-09-15T16:42:13.660Z",
+        "durationMs": 1566,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/phase017/json-parser.test.ts -t clean: paired fences and BOM preserve the complete JSON --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490532093-negative-fence-cleaning.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase017/attempt-2-1789490532093-negative-fence-cleaning.json\n",
+        "stderr": ""
+      }
+    },
+    {
+      "id": "schema-validation",
+      "originalCase": "Phase017:parse",
+      "exitCode": 1,
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\fixtures\\schema-validation-c2Nykf",
+      "changes": [
+        {
+          "sourcePath": "src/lib/ai/json-parser.ts",
+          "originalHash": "cc260d3954f18a64356522a5b01c9158ed9878e8c21aa99e771523b3cf968398",
+          "mutatedHash": "93a9ad96c280a3a4c19651dcb9d14a93b857926102a5f7f81e9dd0cea0cf5d43"
+        }
+      ],
+      "testSourceHash": "ef54abba14b3f75130faabedfa163eb901b15605d54d17d57653484aed013956",
+      "reportPath": "docs/evidence/attempts/Phase017/attempt-2/negative-run/mutations/schema-validation-report.json",
+      "reportHash": "8e179eef0f7bfede0e6b371bcc7571a841312c1281756e874da55ab58c3d2542",
+      "receiptPath": "docs/evidence/attempts/Phase017/attempt-2/negative-run/mutations/schema-validation.json",
+      "receiptHash": "88dc3460304c0f93d3eda72870211e3c8cee66f264df72f17d3654930d3f4a4d",
+      "failureEvidence": {
+        "id": "schema-validation",
+        "file": "src/lib/ai/json-parser.ts",
+        "testFile": "tests/phase017/json-parser.test.ts",
+        "assertion": "AI JSON parser parse: data is typed only after strict schema validation",
+        "signal": "AssertionError: SCHEMA_VALIDATION_REQUIRED: expected true to be false // Object.is equality\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase017/fixtures/schema-validation-c2Nykf/tests/phase017/json-parser.test.ts:47:7\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js"
+      },
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase017/json-parser.test.ts -t parse: data is typed only after strict schema validation --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490534581-negative-schema-validation.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "tests/phase017/json-parser.test.ts",
+          "-t",
+          "parse: data is typed only after strict schema validation",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490534581-negative-schema-validation.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\fixtures\\schema-validation-c2Nykf",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-15T16:42:14.581Z",
+        "finishedAt": "2026-09-15T16:42:16.097Z",
+        "durationMs": 1516,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/phase017/json-parser.test.ts -t parse: data is typed only after strict schema validation --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490534581-negative-schema-validation.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase017/attempt-2-1789490534581-negative-schema-validation.json\n",
+        "stderr": ""
+      }
+    },
+    {
+      "id": "retry-bound",
+      "originalCase": "Phase017:repair-failure",
+      "exitCode": 1,
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\fixtures\\retry-bound-MCQHdp",
+      "changes": [
+        {
+          "sourcePath": "src/server/ai/json-repair.ts",
+          "originalHash": "ae6cbaa5f62b1cedcdf006d8744770d0976d8ff9ddc606bdd6bc6ddf336a9dfc",
+          "mutatedHash": "a3e42ba0e72c1d9f1b08c5032f4cae0e9629622bd41e315a865e6a6de5b29f69"
+        }
+      ],
+      "testSourceHash": "064b77eca67e82395f7244d7eef3d1bbc57635c5e2996e402ae2244c46f3faee",
+      "reportPath": "docs/evidence/attempts/Phase017/attempt-2/negative-run/mutations/retry-bound-report.json",
+      "reportHash": "f7afd372e78da3f062979c7950bac956901e424ca00ffe88372cf6888808ff1b",
+      "receiptPath": "docs/evidence/attempts/Phase017/attempt-2/negative-run/mutations/retry-bound.json",
+      "receiptHash": "a602dee9a6b04fbaba7de2d5ac6e95f2cd430839fa556463f1c949121490f80d",
+      "failureEvidence": {
+        "id": "retry-bound",
+        "file": "src/server/ai/json-repair.ts",
+        "testFile": "tests/phase017/json-repair.test.ts",
+        "assertion": "guarded JSON repair integration repair-failure: two unsuccessful repairs stop without a third call or partial write",
+        "signal": "AssertionError: REPAIR_LIMIT_REQUIRED: expected 4 to be 3 // Object.is equality\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase017/fixtures/retry-bound-MCQHdp/tests/phase017/json-repair.test.ts:260:55\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+      },
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase017/json-repair.test.ts -t repair-failure: two unsuccessful repairs stop without a third call or partial write --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490536973-negative-retry-bound.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "tests/phase017/json-repair.test.ts",
+          "-t",
+          "repair-failure: two unsuccessful repairs stop without a third call or partial write",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490536973-negative-retry-bound.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\fixtures\\retry-bound-MCQHdp",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-15T16:42:16.973Z",
+        "finishedAt": "2026-09-15T16:42:20.581Z",
+        "durationMs": 3608,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/phase017/json-repair.test.ts -t repair-failure: two unsuccessful repairs stop without a third call or partial write --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490536973-negative-retry-bound.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase017/attempt-2-1789490536973-negative-retry-bound.json\n",
+        "stderr": ""
+      }
+    },
+    {
+      "id": "fact-preservation",
+      "originalCase": "Phase017:repair-failure",
+      "exitCode": 1,
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\fixtures\\fact-preservation-nTTfLU",
+      "changes": [
+        {
+          "sourcePath": "src/server/ai/json-repair.ts",
+          "originalHash": "ae6cbaa5f62b1cedcdf006d8744770d0976d8ff9ddc606bdd6bc6ddf336a9dfc",
+          "mutatedHash": "74c7d2c2c9706f2970df60eb5cc65fb70ebadb9248480f44796d9775f4463126"
+        }
+      ],
+      "testSourceHash": "064b77eca67e82395f7244d7eef3d1bbc57635c5e2996e402ae2244c46f3faee",
+      "reportPath": "docs/evidence/attempts/Phase017/attempt-2/negative-run/mutations/fact-preservation-report.json",
+      "reportHash": "36237ed29ee48c57933fefa68590e63cb2003c728c7966ccdde8c08da8d20939",
+      "receiptPath": "docs/evidence/attempts/Phase017/attempt-2/negative-run/mutations/fact-preservation.json",
+      "receiptHash": "467b13138292679f3a8a200c13ff3375d8ae658a1b16ade6d90d5c8e75f32ac3",
+      "failureEvidence": {
+        "id": "fact-preservation",
+        "file": "src/server/ai/json-repair.ts",
+        "testFile": "tests/phase017/json-repair.test.ts",
+        "assertion": "guarded JSON repair integration repair-failure: altered facts fail even when both schema and original input references allow them",
+        "signal": "AssertionError: FACT_PRESERVATION_REQUIRED: expected true to be false // Object.is equality\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase017/fixtures/fact-preservation-nTTfLU/tests/phase017/json-repair.test.ts:284:55\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+      },
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase017/json-repair.test.ts -t repair-failure: altered facts fail even when both schema and original input references allow them --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490541415-negative-fact-preservation.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "tests/phase017/json-repair.test.ts",
+          "-t",
+          "repair-failure: altered facts fail even when both schema and original input references allow them",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490541415-negative-fact-preservation.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\fixtures\\fact-preservation-nTTfLU",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-15T16:42:21.415Z",
+        "finishedAt": "2026-09-15T16:42:24.750Z",
+        "durationMs": 3335,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/phase017/json-repair.test.ts -t repair-failure: altered facts fail even when both schema and original input references allow them --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490541415-negative-fact-preservation.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase017/attempt-2-1789490541415-negative-fact-preservation.json\n",
+        "stderr": ""
+      }
+    },
+    {
+      "id": "system-retention",
+      "originalCase": "Phase017:truncation",
+      "exitCode": 1,
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\fixtures\\system-retention-8Qt4r3",
+      "changes": [
+        {
+          "sourcePath": "src/lib/ai/context-manager.ts",
+          "originalHash": "db782fbec32b5f1e4c2849dc946566538fb48eb16ee84fc6990a3ed488cde129",
+          "mutatedHash": "227c631d5c8e4bb82d98d2d650acdf61e3f418488b9dda16d7735779f4f1e1fb"
+        }
+      ],
+      "testSourceHash": "690507e37ac311598f2cc907f99b13c2c0e48f03427b38ececacdbb9064f75aa",
+      "reportPath": "docs/evidence/attempts/Phase017/attempt-2/negative-run/mutations/system-retention-report.json",
+      "reportHash": "7605c1705e8b5a15577a25b15afe4dae80ea135dcf4fdaaf520e23f7321d6e03",
+      "receiptPath": "docs/evidence/attempts/Phase017/attempt-2/negative-run/mutations/system-retention.json",
+      "receiptHash": "c26c00fb4bc25a842dde21e86040f7bc18f37fbf9035b73ecd8914326d2b64dd",
+      "failureEvidence": {
+        "id": "system-retention",
+        "file": "src/lib/ai/context-manager.ts",
+        "testFile": "tests/phase017/context-manager.test.ts",
+        "assertion": "context limits truncation: system and newest turns survive message limits without mutating history",
+        "signal": "AssertionError: SYSTEM_RETENTION_REQUIRED: expected [ { role: 'assistant', …(1) }, …(1) ] to deeply equal [ { role: 'system', …(1) }, …(1) ]\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase017/fixtures/system-retention-8Qt4r3/tests/phase017/context-manager.test.ts:43:60\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%"
+      },
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase017/context-manager.test.ts -t truncation: system and newest turns survive message limits without mutating history --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490545593-negative-system-retention.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "tests/phase017/context-manager.test.ts",
+          "-t",
+          "truncation: system and newest turns survive message limits without mutating history",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490545593-negative-system-retention.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\fixtures\\system-retention-8Qt4r3",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-15T16:42:25.593Z",
+        "finishedAt": "2026-09-15T16:42:27.105Z",
+        "durationMs": 1512,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/phase017/context-manager.test.ts -t truncation: system and newest turns survive message limits without mutating history --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490545593-negative-system-retention.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase017/attempt-2-1789490545593-negative-system-retention.json\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "sourceUnchanged": true,
+  "restored": {
+    "logicalCommand": "npm run test -- json-parser schemas context-manager json-repair",
+    "result": {
+      "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- json-parser schemas context-manager json-repair --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490547358-restored-card.json",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test",
+        "--",
+        "json-parser",
+        "schemas",
+        "context-manager",
+        "json-repair",
+        "--reporter=json",
+        "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490547358-restored-card.json"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "startedAt": "2026-09-15T16:42:27.358Z",
+      "finishedAt": "2026-09-15T16:42:46.408Z",
+      "durationMs": 19050,
+      "stdout": "\n> serendipity@0.1.0 test\n> vitest run json-parser schemas context-manager json-repair --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490547358-restored-card.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase017/attempt-2-1789490547358-restored-card.json\n",
+      "stderr": ""
+    },
+    "reportPath": "docs/evidence/attempts/Phase017/attempt-2/negative-run/restored-card.json",
+    "reportHash": "78d0c6fb2fd8542fe88b0dafe9fb5c52bcc9d5bdec99159aefc5061916f337e9",
+    "attemptAudit": {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/negative-run/restored-card-attempt-audit.json",
+      "sha256": "2e33c125f649415db8a61b1ec65e4766eb48e15eeeae1ef49bc70be127295948"
+    },
+    "mappings": [
+      {
+        "testCaseId": "Phase017:clean",
+        "tag": "clean:",
+        "assertions": [
+          {
+            "file": "tests/phase017/json-parser.test.ts",
+            "fullName": "AI JSON parser clean: empty and unpaired or prefixed fences never discard content"
+          },
+          {
+            "file": "tests/phase017/json-parser.test.ts",
+            "fullName": "AI JSON parser clean: paired fences and BOM preserve the complete JSON"
+          }
+        ]
+      },
+      {
+        "testCaseId": "Phase017:parse",
+        "tag": "parse:",
+        "assertions": [
+          {
+            "file": "tests/phase017/json-parser-boundary.test.ts",
+            "fullName": "client import boundary parse: browser bundle imports and executes the pure parser with its typed schemas"
+          },
+          {
+            "file": "tests/phase017/json-parser-boundary.test.ts",
+            "fullName": "client import boundary parse: client runtime rejects the real server-only import src/lib/env.ts"
+          },
+          {
+            "file": "tests/phase017/json-parser-boundary.test.ts",
+            "fullName": "client import boundary parse: client runtime rejects the real server-only import src/server/ai/json-repair.ts"
+          },
+          {
+            "file": "tests/phase017/json-parser.test.ts",
+            "fullName": "AI JSON parser parse: bounded failures expose only safe known paths and fixed summaries"
+          },
+          {
+            "file": "tests/phase017/json-parser.test.ts",
+            "fullName": "AI JSON parser parse: data is typed only after strict schema validation"
+          },
+          {
+            "file": "tests/phase017/json-repair.test.ts",
+            "fullName": "guarded JSON repair integration parse: code-fenced output is parsed without any formal-plan write"
+          }
+        ]
+      },
+      {
+        "testCaseId": "Phase017:schema",
+        "tag": "schema:",
+        "assertions": [
+          {
+            "file": "tests/phase017/json-repair.test.ts",
+            "fullName": "guarded JSON repair integration schema: only validated requirement snapshots can be persisted and history checks ownership"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: all eight prompt outputs reject extra keys, missing fields, enums and version drift"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: known prompt references are constrained to this request"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'absent-full-field'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'canonical-decimal-fraction'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'currency-precision-rejected'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'date-null-object-rejected'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'date-without-zone'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'date-year-zero-rejected'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'duplicate-stable-id'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'empty-preference'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'empty-string-origin'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'explicit-zero-budget'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'exponent-money-rejected'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'fixed-duration-mismatch'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'flexible-window-keeps-duration'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'flexible-window-too-short'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'fractional-count'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'invalid-calendar-date'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'invalid-nonleap-date'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'invalid-zone'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'known-fields-require-sources'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'leading-zero-money-rejected'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'money-whitespace-rejected'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'negative-money-rejected'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'numeric-destination-id-rejected'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'numeric-money-rejected'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'origin-null-object-rejected'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'overlapping-age-count'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'partial-date-window'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'pseudo-country-code-rejected'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'reversed-date-window'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'three-decimal-currency'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'trailing-zero-money-rejected'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'undeclared-fact'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'unknown-age-not-elder'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'unknown-currency-code-rejected'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'unknown-currency-four-decimals'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'unknown-money-not-zero'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'unknown-origin'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'unsafe-revision-rejected'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'valid-leap-date'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'valid-ordered-destinations'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'whitespace-location-rejected'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'wrong-draft-version'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: requirement v1 'zero-decimal-currency-rejected'"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: runtime structures are byte-for-value projections of the named document contracts"
+          },
+          {
+            "file": "tests/phase017/schemas.test.ts",
+            "fullName": "frozen AI schemas schema: summary binds exact revision hash destination order and duration without saving"
+          }
+        ]
+      },
+      {
+        "testCaseId": "Phase017:repair-success",
+        "tag": "repair-success:",
+        "assertions": [
+          {
+            "file": "tests/phase017/json-repair.test.ts",
+            "fullName": "guarded JSON repair integration repair-success: a real guarded repair appends the original and repair with exact version bindings"
+          },
+          {
+            "file": "tests/phase017/json-repair.test.ts",
+            "fullName": "guarded JSON repair integration repair-success: explicit synthetic mock capture is cropped and remains opt in"
+          },
+          {
+            "file": "tests/phase017/json-repair.test.ts",
+            "fullName": "guarded JSON repair integration repair-success: syntax repair with missing usage retains truthful accounting"
+          },
+          {
+            "file": "tests/phase017/json-repair.test.ts",
+            "fullName": "guarded JSON repair integration repair-success: throwing optional debug capture cannot erase an attempted call"
+          },
+          {
+            "file": "tests/phase017/json-repair.test.ts",
+            "fullName": "syntax proof repair-success: punctuation and provable quoted keys preserve scalar types and values"
+          }
+        ]
+      },
+      {
+        "testCaseId": "Phase017:repair-failure",
+        "tag": "repair-failure:",
+        "assertions": [
+          {
+            "file": "tests/phase017/json-repair.test.ts",
+            "fullName": "guarded JSON repair integration repair-failure: a replacement context or altered variables cannot claim the original attempt"
+          },
+          {
+            "file": "tests/phase017/json-repair.test.ts",
+            "fullName": "guarded JSON repair integration repair-failure: altered facts fail even when both schema and original input references allow them"
+          },
+          {
+            "file": "tests/phase017/json-repair.test.ts",
+            "fullName": "guarded JSON repair integration repair-failure: caller mutation cannot change the original reference snapshot during repair"
+          },
+          {
+            "file": "tests/phase017/json-repair.test.ts",
+            "fullName": "guarded JSON repair integration repair-failure: cancellation deadline and token exhaustion share the original context"
+          },
+          {
+            "file": "tests/phase017/json-repair.test.ts",
+            "fullName": "guarded JSON repair integration repair-failure: cost from the original request cannot be reset for repair"
+          },
+          {
+            "file": "tests/phase017/json-repair.test.ts",
+            "fullName": "guarded JSON repair integration repair-failure: missing original attempts and changed raw bytes never call the provider"
+          },
+          {
+            "file": "tests/phase017/json-repair.test.ts",
+            "fullName": "guarded JSON repair integration repair-failure: production persistence policy keeps successful failed and twice repaired output raw text absent"
+          },
+          {
+            "file": "tests/phase017/json-repair.test.ts",
+            "fullName": "guarded JSON repair integration repair-failure: repair transport rate limits are returned without nested retry"
+          },
+          {
+            "file": "tests/phase017/json-repair.test.ts",
+            "fullName": "guarded JSON repair integration repair-failure: scalar type coercion is rejected even if the repaired schema passes"
+          },
+          {
+            "file": "tests/phase017/json-repair.test.ts",
+            "fullName": "guarded JSON repair integration repair-failure: two unsuccessful repairs stop without a third call or partial write"
+          },
+          {
+            "file": "tests/phase017/json-repair.test.ts",
+            "fullName": "syntax proof repair-failure: new facts changed bindings and ambiguous tokens are rejected"
+          },
+          {
+            "file": "tests/phase017/json-repair.test.ts",
+            "fullName": "syntax proof repair-failure: ordinary API projection maps technical failures safely"
+          }
+        ]
+      },
+      {
+        "testCaseId": "Phase017:truncation",
+        "tag": "truncation:",
+        "assertions": [
+          {
+            "file": "tests/phase017/context-manager.test.ts",
+            "fullName": "context limits truncation: concurrent consumers share token cost cancellation and deadline limits"
+          },
+          {
+            "file": "tests/phase017/context-manager.test.ts",
+            "fullName": "context limits truncation: empty history, stable sequence, Unicode and character bounds"
+          },
+          {
+            "file": "tests/phase017/context-manager.test.ts",
+            "fullName": "context limits truncation: impossible system limits fail instead of deleting rules"
+          },
+          {
+            "file": "tests/phase017/context-manager.test.ts",
+            "fullName": "context limits truncation: one immutable context carries the local date signal and server identity"
+          },
+          {
+            "file": "tests/phase017/context-manager.test.ts",
+            "fullName": "context limits truncation: system and newest turns survive message limits without mutating history"
+          }
+        ]
+      },
+      {
+        "testCaseId": "Phase017:negative-controls",
+        "observedIn": "five-mutations-and-restored-six-groups"
+      }
+    ]
+  },
+  "artifacts": [
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/frozen-discovery.json",
+      "sha256": "ccde62004e5b5f4c1bb6970fe4578f56dd2be850a5d88f0339262767e30f5430"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/frozen-plan.json",
+      "sha256": "27378b55bc256b49a0c2884d58f8b91beb564f8ab5a461dffb3003f89cb0cddd"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/freeze-command.json",
+      "sha256": "4d084dcc01925e5f5e9549cc22fcf48b608112c89df93327ba3a801691057dac"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/source-basis.json",
+      "sha256": "425fc8552f23b912ed53651d96f07cf2eb0b6805db212510115060abf2283d3b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/input-receipt.json",
+      "sha256": "43b482f7fa9088773408f007947c23f63841e345ec6c9eaeb176a3ff42fa63f3"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-1/requirements-freeze.json",
+      "sha256": "e2a151c95e0dd52e6efa1bd8f7fc67ba17fccb8274b1f42a72ec553b703df13e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/negative-run/commands/001.json",
+      "sha256": "cb0250b4b285c0055c23ce7e914be19d8bd2d51d7e393f95752138191294a787"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/negative-run/mutations/fence-cleaning-report.json",
+      "sha256": "9a8715b7bd63271ee65c20a76c528c065dcbf33a7932411fe3dba46fa220e41f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/negative-run/mutations/fence-cleaning.json",
+      "sha256": "3ed672105ab4efb8b9a32cdc0bb496c34e170cc6be1d09b7634b70f86826e776"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/negative-run/commands/002.json",
+      "sha256": "707b2ef9132cb488eb95dbeee53f7e99eb458079a5650f6b149152db2fb96f20"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/negative-run/mutations/schema-validation-report.json",
+      "sha256": "8e179eef0f7bfede0e6b371bcc7571a841312c1281756e874da55ab58c3d2542"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/negative-run/mutations/schema-validation.json",
+      "sha256": "88dc3460304c0f93d3eda72870211e3c8cee66f264df72f17d3654930d3f4a4d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/negative-run/commands/003.json",
+      "sha256": "29c754c9dcfa87235161f695d12641dc7442ebb505268e86ec71d534445e19a7"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/negative-run/mutations/retry-bound-report.json",
+      "sha256": "f7afd372e78da3f062979c7950bac956901e424ca00ffe88372cf6888808ff1b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/negative-run/mutations/retry-bound.json",
+      "sha256": "a602dee9a6b04fbaba7de2d5ac6e95f2cd430839fa556463f1c949121490f80d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/negative-run/commands/004.json",
+      "sha256": "cc2a2662f4b763060fd53becba51bf7ab42f0eed1166f4210d714fbf168e0a80"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/negative-run/mutations/fact-preservation-report.json",
+      "sha256": "36237ed29ee48c57933fefa68590e63cb2003c728c7966ccdde8c08da8d20939"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/negative-run/mutations/fact-preservation.json",
+      "sha256": "467b13138292679f3a8a200c13ff3375d8ae658a1b16ade6d90d5c8e75f32ac3"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/negative-run/commands/005.json",
+      "sha256": "dd35b407ca9ff9a5a43d2fd7786e32be04b2fac1a6dec3ce4fffc5778b0a67a7"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/negative-run/mutations/system-retention-report.json",
+      "sha256": "7605c1705e8b5a15577a25b15afe4dae80ea135dcf4fdaaf520e23f7321d6e03"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/negative-run/mutations/system-retention.json",
+      "sha256": "c26c00fb4bc25a842dde21e86040f7bc18f37fbf9035b73ecd8914326d2b64dd"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/negative-run/commands/006.json",
+      "sha256": "994cac43d971b00e6da42c51dafb96e9cdff7d714e17ce4a6b5bd510c1f719d2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/negative-run/restored-card.json",
+      "sha256": "78d0c6fb2fd8542fe88b0dafe9fb5c52bcc9d5bdec99159aefc5061916f337e9"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase017/attempt-2/negative-run/restored-card-attempt-audit.json",
+      "sha256": "2e33c125f649415db8a61b1ec65e4766eb48e15eeeae1ef49bc70be127295948"
+    }
+  ],
+  "observations": [
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase017/json-parser.test.ts -t clean: paired fences and BOM preserve the complete JSON --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490532093-negative-fence-cleaning.json",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test",
+        "--",
+        "tests/phase017/json-parser.test.ts",
+        "-t",
+        "clean: paired fences and BOM preserve the complete JSON",
+        "--reporter=json",
+        "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490532093-negative-fence-cleaning.json"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\fixtures\\fence-cleaning-sGhqcU",
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "startedAt": "2026-09-15T16:42:12.094Z",
+      "finishedAt": "2026-09-15T16:42:13.660Z",
+      "durationMs": 1566,
+      "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/phase017/json-parser.test.ts -t clean: paired fences and BOM preserve the complete JSON --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490532093-negative-fence-cleaning.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase017/attempt-2-1789490532093-negative-fence-cleaning.json\n",
+      "stderr": ""
+    },
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase017/json-parser.test.ts -t parse: data is typed only after strict schema validation --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490534581-negative-schema-validation.json",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test",
+        "--",
+        "tests/phase017/json-parser.test.ts",
+        "-t",
+        "parse: data is typed only after strict schema validation",
+        "--reporter=json",
+        "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490534581-negative-schema-validation.json"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\fixtures\\schema-validation-c2Nykf",
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "startedAt": "2026-09-15T16:42:14.581Z",
+      "finishedAt": "2026-09-15T16:42:16.097Z",
+      "durationMs": 1516,
+      "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/phase017/json-parser.test.ts -t parse: data is typed only after strict schema validation --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490534581-negative-schema-validation.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase017/attempt-2-1789490534581-negative-schema-validation.json\n",
+      "stderr": ""
+    },
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase017/json-repair.test.ts -t repair-failure: two unsuccessful repairs stop without a third call or partial write --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490536973-negative-retry-bound.json",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test",
+        "--",
+        "tests/phase017/json-repair.test.ts",
+        "-t",
+        "repair-failure: two unsuccessful repairs stop without a third call or partial write",
+        "--reporter=json",
+        "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490536973-negative-retry-bound.json"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\fixtures\\retry-bound-MCQHdp",
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "startedAt": "2026-09-15T16:42:16.973Z",
+      "finishedAt": "2026-09-15T16:42:20.581Z",
+      "durationMs": 3608,
+      "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/phase017/json-repair.test.ts -t repair-failure: two unsuccessful repairs stop without a third call or partial write --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490536973-negative-retry-bound.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase017/attempt-2-1789490536973-negative-retry-bound.json\n",
+      "stderr": ""
+    },
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase017/json-repair.test.ts -t repair-failure: altered facts fail even when both schema and original input references allow them --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490541415-negative-fact-preservation.json",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test",
+        "--",
+        "tests/phase017/json-repair.test.ts",
+        "-t",
+        "repair-failure: altered facts fail even when both schema and original input references allow them",
+        "--reporter=json",
+        "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490541415-negative-fact-preservation.json"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\fixtures\\fact-preservation-nTTfLU",
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "startedAt": "2026-09-15T16:42:21.415Z",
+      "finishedAt": "2026-09-15T16:42:24.750Z",
+      "durationMs": 3335,
+      "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/phase017/json-repair.test.ts -t repair-failure: altered facts fail even when both schema and original input references allow them --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490541415-negative-fact-preservation.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase017/attempt-2-1789490541415-negative-fact-preservation.json\n",
+      "stderr": ""
+    },
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase017/context-manager.test.ts -t truncation: system and newest turns survive message limits without mutating history --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490545593-negative-system-retention.json",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test",
+        "--",
+        "tests/phase017/context-manager.test.ts",
+        "-t",
+        "truncation: system and newest turns survive message limits without mutating history",
+        "--reporter=json",
+        "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490545593-negative-system-retention.json"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\fixtures\\system-retention-8Qt4r3",
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "startedAt": "2026-09-15T16:42:25.593Z",
+      "finishedAt": "2026-09-15T16:42:27.105Z",
+      "durationMs": 1512,
+      "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/phase017/context-manager.test.ts -t truncation: system and newest turns survive message limits without mutating history --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490545593-negative-system-retention.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase017/attempt-2-1789490545593-negative-system-retention.json\n",
+      "stderr": ""
+    },
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- json-parser schemas context-manager json-repair --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490547358-restored-card.json",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test",
+        "--",
+        "json-parser",
+        "schemas",
+        "context-manager",
+        "json-repair",
+        "--reporter=json",
+        "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490547358-restored-card.json"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "startedAt": "2026-09-15T16:42:27.358Z",
+      "finishedAt": "2026-09-15T16:42:46.408Z",
+      "durationMs": 19050,
+      "stdout": "\n> serendipity@0.1.0 test\n> vitest run json-parser schemas context-manager json-repair --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase017\\attempt-2-1789490547358-restored-card.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase017/attempt-2-1789490547358-restored-card.json\n",
+      "stderr": ""
+    }
+  ]
+}

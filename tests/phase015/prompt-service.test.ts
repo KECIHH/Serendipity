@@ -2,7 +2,7 @@
 import { randomUUID } from "node:crypto";
 import { Prisma } from "@prisma/client";
 import { afterAll, beforeEach, describe, expect, it } from "vitest";
-import { canonicalHash } from "@/lib/ai/schemas";
+import { canonicalHash } from "@/server/ai/canonical-hash";
 import { resolvePromptSnapshot, activatePromptModelTuple } from "@/server/services/prompt-service";
 import { resolveModelSnapshot } from "@/server/services/model-resolution-service";
 import { callGuardedAi } from "@/server/ai/guarded-client";

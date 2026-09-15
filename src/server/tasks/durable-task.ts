@@ -3,7 +3,7 @@ import { randomUUID } from "node:crypto";
 import { Prisma, type DurableTask } from "@prisma/client";
 import { readAuthClock } from "@/server/auth/clock";
 import { readTaskPayload } from "./payload";
-import { canonicalHash } from "@/lib/ai/schemas";
+import { canonicalHash } from "@/server/ai/canonical-hash";
 
 export const DEFAULT_LEASE_MS = 30_000;
 export const DEFAULT_MAX_ATTEMPTS = 5;

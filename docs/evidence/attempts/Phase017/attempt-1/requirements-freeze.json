@@ -1,0 +1,166 @@
+{
+  "phase": 17,
+  "attemptId": "attempt-1",
+  "producer": "Phase017",
+  "consumers": [
+    "Phase019",
+    "Phase020",
+    "Phase021",
+    "Phase022",
+    "Phase023",
+    "M4"
+  ],
+  "scope": "Typed AI output parsing, syntax-only repair, immutable NluContext and bounded history; no schema migration or formal plan version.",
+  "implementationContextId": "codex-native-root-phase017-20260915",
+  "phaseStartCommit": "f57fae935e5657980433f8009d1c1e3a7ac97849",
+  "testMode": "full",
+  "testModeReason": "Shared AI DTO validation, client/server import boundaries, provider usage and guarded request budgets change; affected selection is unavailable. Full discovered product regression plus all six fixtures and five isolated negative controls are required.",
+  "crossAttemptReuse": "disabled",
+  "engineeringRegression": {
+    "mode": "full",
+    "baseCommit": "f57fae935e5657980433f8009d1c1e3a7ac97849",
+    "fullCommand": "npm run test",
+    "dedicatedCardCommand": "npm run test -- json-parser schemas context-manager json-repair",
+    "discovery": "vitest list --json; exact file/fullName equality, no skipped or zero tests"
+  },
+  "requiredCaseIds": [
+    "Phase017:clean",
+    "Phase017:parse",
+    "Phase017:schema",
+    "Phase017:repair-success",
+    "Phase017:repair-failure",
+    "Phase017:truncation",
+    "Phase017:negative-controls"
+  ],
+  "cases": [
+    {
+      "testCaseId": "Phase017:clean",
+      "command": "npm run test -- json-parser schemas context-manager json-repair",
+      "denominator": 1,
+      "inputPath": "tests/phase017/fixtures.json",
+      "outputPath": "docs/evidence/attempts/Phase017/attempt-1/clean.json",
+      "expected": "Remove BOM, outer whitespace and paired fences without removing JSON content; empty, unpaired and injected text are rejected safely."
+    },
+    {
+      "testCaseId": "Phase017:parse",
+      "command": "npm run test -- json-parser schemas context-manager json-repair",
+      "denominator": 1,
+      "inputPath": "tests/phase017/fixtures.json",
+      "outputPath": "docs/evidence/attempts/Phase017/attempt-1/parse.json",
+      "expected": "Parse the registered typed output in memory; syntax failures are INVALID_JSON, schema failures are SCHEMA_MISMATCH, public errors are 503 PROVIDER_UNAVAILABLE; no raw values or stack in errors."
+    },
+    {
+      "testCaseId": "Phase017:schema",
+      "command": "npm run test -- json-parser schemas context-manager json-repair",
+      "denominator": 1,
+      "inputPath": "tests/phase017/fixtures.json",
+      "outputPath": "docs/evidence/attempts/Phase017/attempt-1/schema.json",
+      "expected": "Consume the frozen TravelRequirement v1, TravelPlanSummaryDraft v1 and all eight prompt schemas exactly; reject unknown keys, version drift, invalid enums/scalars/derived values/references and preserve the formal-plan write boundary."
+    },
+    {
+      "testCaseId": "Phase017:repair-success",
+      "command": "npm run test -- json-parser schemas context-manager json-repair",
+      "denominator": 1,
+      "inputPath": "tests/phase017/fixtures.json",
+      "outputPath": "docs/evidence/attempts/Phase017/attempt-1/repair-success.json",
+      "expected": "Use the active planner.repair_json through guardedJsonChat; restore only provable syntax/type formatting without changing values, bindings, identities, dates, coordinates, money, routes or sources; append the original and each repair attempt with exact versions and server duration; missing usage stays null."
+    },
+    {
+      "testCaseId": "Phase017:repair-failure",
+      "command": "npm run test -- json-parser schemas context-manager json-repair",
+      "denominator": 1,
+      "inputPath": "tests/phase017/fixtures.json",
+      "outputPath": "docs/evidence/attempts/Phase017/attempt-1/repair-failure.json",
+      "expected": "At most two repair calls; failed schema/semantic validation, fact fabrication, timeout/rate/cancellation and exhausted shared deadline/token/cost budget stop safely; every sent attempt is append-only with safe hashes and production rawOutput null; no plan or partial success writes."
+    },
+    {
+      "testCaseId": "Phase017:truncation",
+      "command": "npm run test -- json-parser schemas context-manager json-repair",
+      "denominator": 1,
+      "inputPath": "tests/phase017/fixtures.json",
+      "outputPath": "docs/evidence/attempts/Phase017/attempt-1/truncation.json",
+      "expected": "Build immutable typed history from owner-checked ChatMessage sequence, preserve required system rules and most recent user/assistant messages within maxMessages/maxChars; impossible limits return CONFIG_ERROR; exact server-injected NluContext keeps one clock, signal, identity, trace and budget."
+    },
+    {
+      "testCaseId": "Phase017:negative-controls",
+      "command": "node docs/phase-plans/verify-phase017.mjs --negative-controls",
+      "denominator": 5,
+      "inputPath": "tests/phase017/fixtures.json",
+      "outputPath": "docs/evidence/attempts/Phase017/attempt-1/negative-controls.json",
+      "expected": "Temporary removal of fence cleaning, schema validation, two-repair limit, fact preservation or system retention must fail the exact targeted assertion; restore bytes and rerun all six fixture groups."
+    }
+  ],
+  "threshold": {
+    "originalThreshold": 6,
+    "automatedThreshold": 6,
+    "requiredPassRate": 1,
+    "unvalidatedPlanWrites": 0,
+    "maxRepairAttempts": 2,
+    "waived": false
+  },
+  "negativeControls": [
+    "fence-cleaning",
+    "schema-validation",
+    "retry-bound",
+    "fact-preservation",
+    "system-retention"
+  ],
+  "sourcePaths": [
+    "docs/phase-plans/Phase017-inputs.json",
+    "docs/testing-execution-policy.md",
+    "docs/development-execution-policy.md",
+    "docs/travel-plan-schema.md",
+    "docs/prompt-design.md",
+    "docs/database.md",
+    "docs/agent-execution-contract.md"
+  ],
+  "modificationScope": [
+    "src/lib/ai/",
+    "src/server/ai/",
+    "src/server/services/",
+    "src/server/chat/",
+    "src/server/tasks/",
+    "src/server/repositories/travel-record.ts",
+    "tests/phase017/",
+    "tests/phase015/",
+    "tests/phase016/",
+    "tests/phase008/",
+    "tests/integration/",
+    "docs/ai-output-parsing.md",
+    "docs/phase-plans/Phase017.json",
+    "docs/phase-plans/Phase017-inputs.json",
+    "docs/phase-plans/prepare-phase017.mjs",
+    "docs/phase-plans/phase017-runtime.mjs",
+    "docs/phase-plans/phase017-evidence.mjs",
+    "docs/phase-plans/verify-phase017.mjs",
+    "docs/phase-plans/complete-phase017.mjs",
+    "docs/evidence/attempts/Phase017/",
+    "scripts/generate-ai-schemas.mjs"
+  ],
+  "supportingChecks": [
+    "typecheck",
+    "lint",
+    "format:check",
+    "build",
+    "full-regression",
+    "dedicated-card",
+    "import-boundary",
+    "secret-scan",
+    "negative-controls",
+    "layout",
+    "evidence-guards",
+    "schema-provenance",
+    "database-audit"
+  ],
+  "previousAttempts": [],
+  "requirementsFrozenAt": "2026-09-15T15:11:44.923Z",
+  "costAccounting": {
+    "implementationStartedAt": "2026-09-15T15:11:44.923Z",
+    "reviewBudgetMinutes": 45,
+    "measuredIn": "command records and review timestamps",
+    "crossAttemptReuse": "disabled"
+  },
+  "notApplicable": [
+    "Formal TravelPlanV2 and TravelPlanVersion remain future Phase024/025 work. No real traffic or private credentials."
+  ]
+}
