@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "policy": "Exact path/hash/rule only; run secrets and canaries are never exempt",
+  "fixtures": [
+    {
+      "path": ".env.example",
+      "sha256": "ffa6675684cce7270a11500ba6f43b09a748d668e225f15c9357aab130254031",
+      "rules": ["DATABASE_CREDENTIAL"],
+      "reason": "Public REPLACE_ME example, never a generated credential"
+    },
+    {
+      "path": "tests/lib/audit-log.test.ts",
+      "sha256": "895e63c1af000a98706b32e56263fe32b0565dad35e431a9e8633fc3a8d4e16e",
+      "rules": ["DATABASE_CREDENTIAL"],
+      "reason": "Synthetic unreachable port 1 database failure fixture"
+    },
+    {
+      "path": "tests/lib/db.test.ts",
+      "sha256": "e638b23182053c44a3937c2d63f1baa6e3cb7c8735588ac50002ba85ccfcb136",
+      "rules": ["DATABASE_CREDENTIAL"],
+      "reason": "Synthetic driver error redaction fixture"
+    },
+    {
+      "path": "tests/lib/seed.test.ts",
+      "sha256": "63373fc0ac7f10f632f982580bd0594d9fa2da927adc6c4248fb04808da55154",
+      "rules": ["DATABASE_CREDENTIAL"],
+      "reason": "Fixed fixture:fixture URL parser inputs"
+    },
+    {
+      "path": "tests/lib/travel-record.test.ts",
+      "sha256": "b657b5c2e59ac83917ddda4fc5a8ad3fcca44ac9783d6570750f2aba7ffd265c",
+      "rules": ["DATABASE_CREDENTIAL"],
+      "reason": "Fixed synthetic:synthetic allow/deny URL parser inputs"
+    },
+    {
+      "path": "tests/phase010/api-key-fixture.ts",
+      "sha256": "d542ba5e7e0973dae9a5dedcb7f02efe13fea791d29d2ed1a8992fa28be200ad",
+      "rules": ["ENCRYPTED_ENVELOPE"],
+      "reason": "YQ and YR== malformed base64 cases, no actual envelope"
+    },
+    {
+      "path": "vitest.setup.ts",
+      "sha256": "e512871a40d72cd44e0c0d96189a3f105ab192d021a3016e9f3d014aa8937035",
+      "rules": ["DATABASE_CREDENTIAL"],
+      "reason": "Fixed test:test unit-only setup URL"
+    }
+  ]
+}

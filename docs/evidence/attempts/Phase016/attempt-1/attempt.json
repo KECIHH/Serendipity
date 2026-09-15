@@ -1,0 +1,17 @@
+{
+  "phase": 16,
+  "attemptId": "attempt-1",
+  "status": "FAIL",
+  "blockedCategory": "PREFLIGHT_AND_IMPLEMENTATION",
+  "artifactCommit": null,
+  "planHash": "1e73cdc2377344313f2a399b1c810736cdb2931d8c6191ea02736210a22120da",
+  "command": "Read-only recovery audit of existing Phase016 candidate",
+  "productAcceptanceExecuted": false,
+  "findings": [
+    "phaseStartCommit points to Phase015 artifact, prerequisites evidence points to Phase014",
+    "missing durable payload/task/outbox acceptance and real key rotation handler",
+    "incomplete owner, lease/fencing, cancellation and replay controls",
+    "negative controls do not exercise claimed invariant and report placeholders are not evidence"
+  ],
+  "generatedAt": "2026-09-15T10:08:41.742Z"
+}

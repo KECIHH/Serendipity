@@ -5,6 +5,10 @@ import { env } from "@/lib/env";
 import { parseEnv, envRegistry } from "@/lib/env-schema";
 import { hashAnonymousToken, type AnonTokenHash } from "@/server/anonymous-owner";
 import { ChatCommandError } from "@/server/chat/error-codes";
+import type { Prisma, PrismaClient } from "@prisma/client";
+import { readAuthCookie } from "@/server/auth/cookie";
+import { hashSessionToken } from "@/server/auth/session-service";
+import { bindOwnerAuthorization } from "./ownership";
 
 export const ANONYMOUS_COOKIE_NAME = "anon_token";
 export const ANONYMOUS_COOKIE_MAX_AGE_SECONDS = 30 * 24 * 60 * 60; // fixed 30 days
@@ -34,7 +38,9 @@ function encodeEnvelope(claims: AnonCookieClaims, key: Buffer): string {
   const iv = randomBytes(12);
   const keyId = createHash("sha256").update(key).digest("hex");
   const cipher = createCipheriv("aes-256-gcm", key, iv, { authTagLength: 16 });
-  cipher.setAAD(envelopeAad(ANON_ENVELOPE_VERSION, keyId, claims.issuedAt, claims.absoluteExpiresAt));
+  cipher.setAAD(
+    envelopeAad(ANON_ENVELOPE_VERSION, keyId, claims.issuedAt, claims.absoluteExpiresAt),
+  );
   const ciphertext = Buffer.concat([
     cipher.update(Buffer.from(claims.opaqueToken, "utf8")),
     cipher.final(),
@@ -56,7 +62,9 @@ function decodeEnvelope(value: string, key: Buffer, now: number): AnonCookieClai
   if (typeof value !== "string" || value.length > 4096) return null;
   let envelope: Record<string, unknown>;
   try {
-    envelope = JSON.parse(Buffer.from(value, "base64url").toString("utf8"));
+    const parsed: unknown = JSON.parse(Buffer.from(value, "base64url").toString("utf8"));
+    if (parsed === null || typeof parsed !== "object" || Array.isArray(parsed)) return null;
+    envelope = parsed as Record<string, unknown>;
   } catch {
     return null;
   }
@@ -77,7 +85,12 @@ function decodeEnvelope(value: string, key: Buffer, now: number): AnonCookieClai
   if (envelope.k !== keyId) return null;
   const issuedAt = envelope.ia;
   const absoluteExpiresAt = envelope.ea;
-  if (absoluteExpiresAt <= now || issuedAt > now) return null;
+  if (
+    absoluteExpiresAt <= now ||
+    issuedAt > now ||
+    absoluteExpiresAt - issuedAt !== ANONYMOUS_COOKIE_MAX_AGE_SECONDS * 1000
+  )
+    return null;
   let token: string;
   try {
     const decipher = createDecipheriv("aes-256-gcm", key, Buffer.from(envelope.i, "base64"), {
@@ -133,18 +146,25 @@ function secureFlag(): boolean {
  * intended for the Phase023 bootstrap endpoint. Returns the Set-Cookie header and the
  * opaque token (used only at the cookie boundary).
  */
-export function issueOrReuseAnonymousSession(now = Date.now()): {
+export function issueOrReuseAnonymousSession(
+  request?: Request,
+  now = Date.now(),
+): {
   cookieHeader: string;
-  token: string;
+  reused: boolean;
 } {
-  const token = randomBytes(TOKEN_BYTES).toString("base64url");
-  const issuedAt = now;
-  const absoluteExpiresAt = now + ANONYMOUS_COOKIE_MAX_AGE_SECONDS * 1000;
-  const claims: AnonCookieClaims = { opaqueToken: token, issuedAt, absoluteExpiresAt };
-  const value = encodeEnvelope(claims, masterKey());
+  const existing = request ? requestCookies(request)?.get(ANONYMOUS_COOKIE_NAME) : undefined;
+  const reused = existing ? decodeEnvelope(existing, masterKey(), now) : null;
+  const claims: AnonCookieClaims = reused ?? {
+    opaqueToken: randomBytes(TOKEN_BYTES).toString("base64url"),
+    issuedAt: now,
+    absoluteExpiresAt: now + ANONYMOUS_COOKIE_MAX_AGE_SECONDS * 1000,
+  };
+  const absoluteExpiresAt = claims.absoluteExpiresAt;
+  const value = reused ? existing! : encodeEnvelope(claims, masterKey());
   const secure = secureFlag();
-  const cookie = `${ANONYMOUS_COOKIE_NAME}=${value}; Path=/; Max-Age=${ANONYMOUS_COOKIE_MAX_AGE_SECONDS}; Expires=${new Date(absoluteExpiresAt).toUTCString()}; HttpOnly; SameSite=Lax${secure ? "; Secure" : ""}`;
-  return { cookieHeader: cookie, token };
+  const cookie = `${ANONYMOUS_COOKIE_NAME}=${value}; Path=/; Max-Age=${Math.floor((absoluteExpiresAt - now) / 1000)}; Expires=${new Date(absoluteExpiresAt).toUTCString()}; HttpOnly; SameSite=Lax${secure ? "; Secure" : ""}`;
+  return { cookieHeader: cookie, reused: reused !== null };
 }
 
 /**
@@ -164,12 +184,35 @@ export function readAnonymousCookie(request: Request, now = Date.now()): string 
  * Resolve an existing owner. A valid signed-in user wins; otherwise only an existing
  * verified anonymous Cookie is accepted happily. Never generates a Cookie here.
  */
-export function resolveExistingOwner(
+export async function resolveExistingOwner(
   request: Request,
-  options: { userId?: string | null } = {},
+  options: { db: PrismaClient },
   now = Date.now(),
-): { userId: string; anonTokenHash?: never } | { anonTokenHash: AnonTokenHash; userId?: never } | null {
-  if (options.userId) return { userId: options.userId };
+): Promise<
+  | { userId: string; anonTokenHash?: never }
+  | { anonTokenHash: AnonTokenHash; userId?: never }
+  | null
+> {
+  const claims = await readAuthCookie(request);
+  if (claims) {
+    const tokenHash = hashSessionToken(claims.opaqueToken);
+    const check = async (tx: Prisma.TransactionClient) => {
+      const sessions = await tx.$queryRawUnsafe<Array<{ userId: string }>>(
+        'SELECT s."userId" FROM "AuthSession" s JOIN "User" u ON u.id=s."userId" WHERE s."tokenHash"=$1 AND s.status=\'ACTIVE\' AND s."expiresAt">public.auth_now() AND u.status=\'ACTIVE\' AND s."sessionVersion"=u."sessionVersion" AND (s.audience=\'USER\' OR (s.audience=\'ADMIN\' AND u.role=\'ADMIN\')) FOR SHARE OF s,u',
+        tokenHash,
+      );
+      if (!sessions[0]) throw new ChatCommandError("AUTH_REQUIRED", 401);
+      return sessions[0].userId;
+    };
+    try {
+      const userId = await options.db.$transaction(check);
+      return bindOwnerAuthorization({ userId }, async (tx) => {
+        if ((await check(tx)) !== userId) throw new ChatCommandError("AUTH_REQUIRED", 401);
+      });
+    } catch (error) {
+      if (!(error instanceof ChatCommandError)) throw error;
+    }
+  }
   const token = readAnonymousCookie(request, now);
   if (!token) return null;
   return { anonTokenHash: hashAnonymousToken(token) };

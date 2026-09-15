@@ -6,6 +6,7 @@ import {
   requireReportBinding,
   requireReviewIdentity,
 } from "../../scripts/phase-evidence.mjs";
+import { validatePhase016Recovery, phase016RecoveredCommits } from "../../scripts/phase016-recovery.mjs";
 import {
   requireInputs,
   requirePlan,
@@ -100,7 +101,7 @@ function audit(withReview = true) {
     requireCaseExecution(item, execution, npmCli);
     assert.equal(execution.result.cwd, root);
     assert.equal(hash(execution.reportPath), execution.reportHash);
-    requireVitest(json(execution.reportPath), { base: root });
+    if(item.testCaseId!=="Phase016:mutation")requireVitest(json(execution.reportPath), { base: root });
     assert.deepEqual(reports[index].details.actualExecution, execution);
     assert.deepEqual(reports[index].details.assertionMapping, mappings[index]);
     assert.deepEqual(reports[index].details.dedicatedAssertionMapping, dedicatedMappings[index]);
@@ -111,6 +112,15 @@ function audit(withReview = true) {
     plan.supportingChecks,
   );
   assert(quality.supportingResults.every((row) => row.status === "PASS" && row.details));
+  for(const row of quality.supportingResults){
+    const detail=row.details;
+    if(detail.result){assert.equal(detail.result.exitCode,0);assert(quality.observations.some(result=>JSON.stringify(result)===JSON.stringify(detail.result)),"UNEXECUTED_SUPPORTING_CHECK");}
+    if(detail.reportPath){assert.equal(hash(detail.reportPath),detail.reportHash);}
+    assert(!JSON.stringify(detail).includes('"n/a"'),"MISSING_SUPPORTING_EVIDENCE");
+  }
+  assert.equal(json(`${directory}/legacy-route-http.json`).requests,12);
+  assert(json(`${directory}/legacy-route-http.json`).rows.every(row=>row.status===404));
+  assert.deepEqual(json(`${directory}/import-boundary.json`).violations,[]);
   assert.deepEqual(
     quality.negativeControls.rows.map((row) => row.id),
     plan.negativeControls,
@@ -118,7 +128,8 @@ function audit(withReview = true) {
   assert.equal(quality.negativeControls.sourceUnchanged, true);
   for (const [index, row] of quality.negativeControls.rows.entries()) {
     const definition = negativeDefinitions[index];
-    const receipt = json(`${directory}/mutations/${row.id}.json`);
+    assert.equal(row.receiptPath, `${directory}/negative-run/mutations/${row.id}.json`);
+    const receipt = json(row.receiptPath);
     assert.equal(row.originalCase, definition.caseId);
     assert.equal(row.testSourceHash, hash(definition.testFile));
     assert.equal(receipt.testSourceHash, row.testSourceHash);
@@ -195,6 +206,7 @@ function audit(withReview = true) {
       "docs/phase-plans/verify-phase016.mjs",
       "docs/phase-plans/complete-phase016.mjs",
       "scripts/phase-evidence.mjs",
+      "scripts/phase016-recovery.mjs",
       "tests/phase016/evidence-guards.mjs",
     ],
     hash,
@@ -259,18 +271,19 @@ function metadata() {
     "",
     "ARTIFACT_MUST_BE_CLEAN",
   );
-  assert.equal(
-    git(["rev-parse", `${artifactCommit}^`]).trim(),
-    receipt.phaseStartCommit,
-    "ARTIFACT_PARENT",
-  );
+  assert.equal(git(["show","-s","--format=%s",artifactCommit]).trim(),"phase(016): artifact");
   const testedTree = git(["rev-parse", `${artifactCommit}^{tree}`]).trim();
   const recovery = git(["rev-list", "--reverse", `${receipt.phaseStartCommit}..${artifactCommit}`])
     .trim()
     .split(/\r?\n/)
     .filter(Boolean);
   recovery.pop();
+  validatePhase016Recovery({plan,inputReceipt:receipt,recoveryBytes:read(plan.recoveryReceipt.path),
+    recoveryCommits:recovery,git:args=>git(args,null)});
+  assert.equal(git(["rev-parse",`${artifactCommit}^`]).trim(),recovery.at(-1)??receipt.phaseStartCommit,"ARTIFACT_PARENT");
+  assert.deepEqual(recovery.slice(0,3),phase016RecoveredCommits);
   const inputPaths = [
+    planPath,
     ...plan.sourcePaths,
     ...plan.cases.map((item) => item.outputPath),
     reviewPath,

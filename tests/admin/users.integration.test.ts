@@ -15,6 +15,7 @@ import {
   type AdminCommandClaim,
 } from "@/server/admin/command-receipt";
 import { createSessionService } from "@/server/auth/session-service";
+import { completeTask, failTask } from "@/server/tasks/durable-task";
 import { apiKeyFixture } from "../phase010/api-key-fixture";
 import {
   createSubject,
@@ -119,6 +120,8 @@ async function snapshot(fixture: AdminFixture): Promise<string> {
     UNION ALL SELECT 'AuditLog',encode(sha256(convert_to(row_to_json(t)::text,'UTF8')),'hex') FROM "AuditLog" t
     UNION ALL SELECT 'AdminCommandReceipt',encode(sha256(convert_to(row_to_json(t)::text,'UTF8')),'hex') FROM "AdminCommandReceipt" t
     UNION ALL SELECT 'KeyRotationRun',encode(sha256(convert_to(row_to_json(t)::text,'UTF8')),'hex') FROM "KeyRotationRun" t
+    UNION ALL SELECT 'DurableTask',encode(sha256(convert_to(row_to_json(t)::text,'UTF8')),'hex') FROM "DurableTask" t
+    UNION ALL SELECT 'Outbox',encode(sha256(convert_to(row_to_json(t)::text,'UTF8')),'hex') FROM "Outbox" t
     UNION ALL SELECT 'ApiKeyConfig',encode(sha256(convert_to(row_to_json(t)::text,'UTF8')),'hex') FROM "ApiKeyConfig" t ORDER BY 1,2
   `;
   return createHash("sha256").update(JSON.stringify(rows)).digest("hex");
@@ -1265,7 +1268,7 @@ describe.skipIf(!enabled)("admin/users real PostgreSQL", () => {
           leaseUntil: null,
         });
         const context = async (tx: Prisma.TransactionClient, claim: AdminCommandClaim) => {
-          await tx.$executeRaw`SELECT set_config('serendipity.admin_lease_owner', ${claim.leaseOwner}, true),set_config('serendipity.admin_fencing_token', ${String(claim.fencingToken)}, true)`;
+          await tx.$executeRaw`SELECT set_config('serendipity.task_id', ${claim.taskId}, true),set_config('serendipity.task_owner', ${claim.leaseOwner}, true),set_config('serendipity.task_fence', ${String(claim.fencingToken)}, true)`;
         };
         const pendingSnapshot = await snapshot(fixture);
         for (const update of [
@@ -1316,6 +1319,7 @@ describe.skipIf(!enabled)("admin/users real PostgreSQL", () => {
               leaseUntil: null,
             },
           });
+          await failTask(tx, { ...current, retryable: true, backoffMs: 1000 });
         });
         const retrySnapshot = await snapshot(fixture);
         for (const staleClaim of [original, current]) {
@@ -1338,9 +1342,19 @@ describe.skipIf(!enabled)("admin/users real PostgreSQL", () => {
         });
         expect(retainedRetry).toEqual({
           status: "RETRY_WAIT",
-          fencingToken: 2,
-          attemptCount: 2,
+          fencingToken: 0,
+          attemptCount: 0,
           responseJson: null,
+        });
+        expect(
+          await fixture.app.durableTask.findUnique({
+            where: { id: current.taskId },
+            select: { status: true, fencingToken: true, attemptCount: true },
+          }),
+        ).toEqual({
+          status: "PENDING",
+          fencingToken: 2,
+          attemptCount: 1,
         });
         await fixture.setClock(retryAt);
         const resumed = claimed(
@@ -1372,12 +1386,23 @@ describe.skipIf(!enabled)("admin/users real PostgreSQL", () => {
             where: { id: receipt.id },
             data: completion(retryAt),
           });
+          await completeTask(tx, resumed);
         });
         const completed = await fixture.app.adminCommandReceipt.findUniqueOrThrow({
           where: { id: receipt.id },
           select: { status: true, fencingToken: true, completedAt: true },
         });
-        expect(completed).toEqual({ status: "SUCCEEDED", fencingToken: 3, completedAt: retryAt });
+        expect(completed).toEqual({ status: "SUCCEEDED", fencingToken: 0, completedAt: retryAt });
+        expect(
+          await fixture.app.durableTask.findUnique({
+            where: { id: resumed.taskId },
+            select: { status: true, fencingToken: true, attemptCount: true },
+          }),
+        ).toEqual({
+          status: "SUCCEEDED",
+          fencingToken: 3,
+          attemptCount: 2,
+        });
         const oldPending = await fixture.app.$transaction((tx) =>
           reserveAdminCommand(tx, identity()),
         );
@@ -1395,13 +1420,15 @@ describe.skipIf(!enabled)("admin/users real PostgreSQL", () => {
         );
         const lateCompleted = await fixture.app.$transaction(async (tx) => {
           await context(tx, lateClaim);
-          return tx.adminCommandReceipt.update({
+          const completed = await tx.adminCommandReceipt.update({
             where: { id: oldPending.id },
             data: {
               ...completion(oldPending.createdAt),
               expiresAt: oldPending.expiresAt,
             },
           });
+          await completeTask(tx, lateClaim);
+          return completed;
         });
         expect(lateCompleted.completedAt?.getTime()).toBe(lateNow.getTime());
         expect(lateCompleted.expiresAt.getTime()).toBeGreaterThanOrEqual(
@@ -1549,7 +1576,7 @@ describe.skipIf(!enabled)("admin/users real PostgreSQL", () => {
         ).rejects.toMatchObject({ kind: "CLAIM_LOST" });
         await expect(
           fixture.app.$transaction(async (tx) => {
-            await tx.$executeRaw`SELECT set_config('serendipity.admin_lease_owner', ${prepared.claim.leaseOwner}, true),set_config('serendipity.admin_fencing_token', ${String(prepared.claim.fencingToken)}, true)`;
+            await tx.$executeRaw`SELECT set_config('serendipity.task_id', ${prepared.claim.taskId}, true),set_config('serendipity.task_owner', ${prepared.claim.leaseOwner}, true),set_config('serendipity.task_fence', ${String(prepared.claim.fencingToken)}, true)`;
             await tx.keyRotationRun.update({
               where: { id: prepared.run.id },
               data: {
@@ -1606,6 +1633,7 @@ describe.skipIf(!enabled)("admin/users real PostgreSQL", () => {
               leaseUntil: null,
             },
           });
+          await failTask(tx, { ...resumed, retryable: false, errorCategory: "SYNTHETIC_ABORT" });
         });
         const pending = await fixture.app.$transaction((tx) =>
           reserveAdminCommand(tx, identity("e".repeat(64))),

@@ -2258,3 +2258,11 @@ preferences.consent.sensitiveRequirementProcessing=false/null 不允许向模型
 ## Phase015 AI 证据最小化
 
 每次 AI attempt 的 `AiOutputRecord` 只保存 trace/attempt、三类精确版本、activationRevision、planningPolicyVersionId、实际发送消息与输出的 canonical SHA-256、解析状态、安全错误类别、token 用量和时延；Phase015 全模式 `rawOutput` 均由数据库约束强制为 null，本卡未开放 debug capture，不保存完整 Prompt、用户原文、Provider 原始响应、authorization header 或 secretRef 解析值。`AiUsageReservation` 只保存保守估算与账单对账状态，不含 Prompt 正文或用户内容。公开错误仅返回封闭错误码和安全文案；解密失败、URL 拒绝、超时、取消与配额拒绝都不泄露目标地址、凭据指纹或原始响应。
+
+## Phase016 会话与后台输入
+
+匿名 Cookie 使用 32 个随机字节及签名，HttpOnly、SameSite=Lax、path=/，非 localhost 为 Secure；固定绝对期限 30 天，复用不续期。数据库仅记录匿名 token 的 SHA-256 和带域区分的 ownerKeyHash，绝不保存 Cookie 或幂等头原文。当前 owner 授权与历史幂等域分离；未来匿名合并通过统一 consumed/alias 扩展点接入。
+
+TaskPayload 用 AES-256-GCM 加密，AAD 绑定 id、ownerKeyHash、schemaVersion、contentHash、expiresAt；只有受控服务可解密，并再次校验内容哈希和 schema。输入/输出引用供进程恢复使用，不进入日志、SSE 或公共导出。普通 payload 至少保留至相关命令/任务终态后 24 小时，活动引用始终 pin；VERSION_WORKSPACE、OPEN_CLARIFICATION、PENDING_OVERRIDE、UNFINISHED_ERASE 扩展点可继续阻止清理。正式版本、未消费确认/覆盖及未完成 ERASE 后续生产卡必须登记 pin。
+
+聊天历史只保存已接受 USER 意图和完整校验后的最终 ASSISTANT。超时、限流、费用拒绝、网络及无效输出保留 USER 和一个安全 FAILED 终态；取消保留 CANCELLED，零 partial assistant。瞬时分块不写事件表或 Outbox。断线不取消也不触发额外请求；可能已发送但费用未知的 reservation 不因取消或失租释放。AiOutputRecord 以 commandId/trace/attempt 关联，不保存原始 Provider body。

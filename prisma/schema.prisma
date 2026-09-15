@@ -210,6 +210,7 @@ model ChatMessage {
   contentJson      Json?
   sequence         Int
   clientMessageId  String?
+  commandId        String?
   replyToMessageId String?
   createdAt        DateTime        @default(now()) @db.Timestamptz(3)
   travelRecord     TravelRecord    @relation(fields: [travelRecordId], references: [id], onDelete: Cascade, onUpdate: Cascade)
@@ -217,10 +218,12 @@ model ChatMessage {
   replies          ChatMessage[]   @relation("ChatMessageReplies")
   commandUser      ChatCommand?    @relation("CommandUserMessage")
   commandAssistant ChatCommand?    @relation("CommandAssistantMessage")
+  command          ChatCommand?    @relation("CommandMessages", fields: [commandId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   @@unique([travelRecordId, sequence])
   @@unique([travelRecordId, clientMessageId])
   @@index([replyToMessageId])
+  @@index([commandId])
 }
 
 model AuditLog {
@@ -286,6 +289,7 @@ model AdminCommandReceipt {
   expiresAt          DateTime           @db.Timestamptz(3)
   owner              User               @relation(fields: [ownerUserId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   keyRotationRun     KeyRotationRun?
+  task               DurableTask? @relation("ReceiptTask")
 
   @@unique([ownerUserId, operationId, resourceId, idempotencyKeyHash])
   @@index([status, availableAt, leaseUntil, id])
@@ -563,12 +567,12 @@ model ChatCommand {
   kind                 ChatCommandKind
   idempotencyKeyHash   String            @db.Char(64)
   requestHash          String            @db.Char(64)
-  payloadRef           String?           @db.VarChar(128)
-  payloadSchemaVersion Int?
+  payloadRef           String            @db.VarChar(128)
+  payloadSchemaVersion Int
   status               ChatCommandStatus @default(PENDING)
   userMessageId        String
   assistantMessageId   String?
-  traceId              String            @db.VarChar(36)
+  traceId              String            @db.VarChar(128)
   errorCode            String?           @db.VarChar(64)
   errorMessage         String?           @db.VarChar(256)
   startedAt            DateTime?         @db.Timestamptz(3)
@@ -583,9 +587,11 @@ model ChatCommand {
   idempotency      CommandIdempotency?
   task             DurableTask?       @relation("CommandTask")
   outputs          AiOutputRecord[]
+  messages         ChatMessage[] @relation("CommandMessages")
 
   @@unique([userMessageId])
   @@unique([assistantMessageId])
+  @@unique([ownerKeyHash, kind, idempotencyKeyHash])
   @@index([ownerKeyHash, kind, status, createdAt])
   @@index([travelRecordId, status, createdAt])
   @@index([kind, status, createdAt])
@@ -594,9 +600,9 @@ model ChatCommand {
 model ChatCommandEvent {
   id             String   @id @default(cuid())
   eventId        String   @unique @db.VarChar(36)
-  sequence       BigInt   @default(autoincrement())
+  sequence       Int
   aggregateId    String   @db.VarChar(128)
-  traceId        String   @db.VarChar(36)
+  traceId        String   @db.VarChar(128)
   type           String   @db.VarChar(64)
   status         String   @db.VarChar(32)
   occurredAt     DateTime @db.Timestamptz(3)
@@ -634,8 +640,8 @@ model DurableTask {
   kind                 String     @db.VarChar(64)
   aggregateId          String     @db.VarChar(128)
   payloadHash          String     @db.Char(64)
-  payloadRef           String?    @db.VarChar(128)
-  payloadSchemaVersion Int?
+  payloadRef           String     @db.VarChar(128)
+  payloadSchemaVersion Int
   status               TaskStatus @default(PENDING)
   attemptCount         Int        @default(0)
   maxAttempts          Int
@@ -651,8 +657,10 @@ model DurableTask {
 
   commandId     String?       @unique
   rotationRunId String?       @unique
+  adminReceiptId String?      @unique
   command       ChatCommand?    @relation("CommandTask", fields: [commandId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   keyRotation   KeyRotationRun? @relation("RotationTask", fields: [rotationRunId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  adminReceipt  AdminCommandReceipt? @relation("ReceiptTask", fields: [adminReceiptId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
   @@unique([kind, aggregateId])
   @@index([status, availableAt, leaseUntil, id])

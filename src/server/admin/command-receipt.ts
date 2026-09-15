@@ -15,6 +15,15 @@ import { stableStringify } from "@/lib/json";
 import { AuditLogError } from "@/server/audit-log";
 import { readAuthClock } from "@/server/auth/clock";
 import {
+  assertTaskLease,
+  claimTask,
+  completeTask,
+  enqueueTask,
+  failTask,
+  saveTaskCheckpoint,
+  TaskLeaseLost,
+} from "@/server/tasks/durable-task";
+import {
   parseApiKeyDto,
   parseApiKeyId,
   parseApiKeyPatch,
@@ -192,7 +201,7 @@ export async function reserveAdminCommand(
   const previous = await findAdminCommandReceipt(tx, identity);
   if (previous) return previous;
   const now = await readAuthClock(tx);
-  return tx.adminCommandReceipt.create({
+  const receipt = await tx.adminCommandReceipt.create({
     data: {
       ...identity,
       status: "PENDING",
@@ -201,6 +210,15 @@ export async function reserveAdminCommand(
       expiresAt: new Date(now.getTime() + ADMIN_RECEIPT_MIN_RETENTION_MS),
     },
   });
+  await enqueueTask(tx, {
+    kind: "ADMIN_KEY_ROTATION",
+    aggregateId: receipt.id,
+    adminReceiptId: receipt.id,
+    payloadRef: "admin-command:" + receipt.id,
+    payloadHash: receipt.requestHash,
+    payloadSchemaVersion: 1,
+  });
+  return receipt;
 }
 
 /** Synchronous user commands publish their immutable result atomically with their business effect. */
@@ -283,6 +301,7 @@ export function readSucceededUserReceipt(receipt: AdminCommandReceipt): AdminUse
 }
 
 export interface AdminCommandClaim {
+  readonly taskId: string;
   readonly receiptId: string;
   readonly leaseOwner: string;
   readonly fencingToken: number;
@@ -300,28 +319,27 @@ export async function claimAdminCommand(
   }
   await tx.$queryRaw`SELECT id FROM "AdminCommandReceipt" WHERE id = ${receiptId} FOR UPDATE`;
   const receipt = await tx.adminCommandReceipt.findUnique({ where: { id: receiptId } });
-  const now = await readAuthClock(tx);
-  if (
-    !receipt ||
-    receipt.status === "SUCCEEDED" ||
-    receipt.status === "FAILED" ||
-    receipt.availableAt > now ||
-    (receipt.status === "RUNNING" && receipt.leaseUntil !== null && receipt.leaseUntil > now)
-  )
-    return null;
-  const leaseUntil = new Date(now.getTime() + input.leaseMs);
-  const row = await tx.adminCommandReceipt.update({
-    where: { id: receiptId, fencingToken: receipt.fencingToken },
-    data: {
-      status: "RUNNING",
-      leaseOwner,
-      leaseUntil,
-      fencingToken: { increment: 1 },
-      attemptCount: { increment: 1 },
-    },
-    select: { fencingToken: true },
+  if (!receipt || receipt.status === "SUCCEEDED" || receipt.status === "FAILED") return null;
+  const claimed = await claimTask(tx, {
+    kind: "ADMIN_KEY_ROTATION",
+    aggregateId: receiptId,
+    leaseOwner,
+    leaseMs: input.leaseMs,
   });
-  return Object.freeze({ receiptId, leaseOwner, fencingToken: row.fencingToken, leaseUntil });
+  if (!claimed) return null;
+  await assertTaskLease(tx, {
+    taskId: claimed.task.id,
+    leaseOwner,
+    fencingToken: claimed.task.fencingToken,
+  });
+  await tx.adminCommandReceipt.update({ where: { id: receiptId }, data: { status: "RUNNING" } });
+  return Object.freeze({
+    taskId: claimed.task.id,
+    receiptId,
+    leaseOwner,
+    fencingToken: claimed.task.fencingToken,
+    leaseUntil: claimed.task.leaseUntil!,
+  });
 }
 
 export async function assertAdminCommandClaim(
@@ -340,21 +358,28 @@ export async function assertAdminCommandClaim(
   await tx.$queryRaw`SELECT id FROM "AdminCommandReceipt" WHERE id = ${claim.receiptId} FOR UPDATE`;
   const receipt = await tx.adminCommandReceipt.findUnique({ where: { id: claim.receiptId } });
   const now = await readAuthClock(tx);
-  if (
-    !receipt ||
-    receipt.status !== "RUNNING" ||
-    receipt.leaseOwner !== claim.leaseOwner ||
-    receipt.fencingToken !== claim.fencingToken ||
-    !receipt.leaseUntil ||
-    receipt.leaseUntil <= now ||
-    receipt.leaseUntil.getTime() !== claim.leaseUntil.getTime()
-  )
-    throw new AdminCommandError("CLAIM_LOST");
-  await tx.$executeRaw`
-    SELECT set_config('serendipity.admin_lease_owner', ${claim.leaseOwner}, true),
-           set_config('serendipity.admin_fencing_token', ${String(claim.fencingToken)}, true)
-  `;
-  return { receipt, now };
+  if (!receipt || receipt.status !== "RUNNING") throw new AdminCommandError("CLAIM_LOST");
+  try {
+    const task = await assertTaskLease(tx, claim);
+    if (task.adminReceiptId !== receipt.id) throw new AdminCommandError("CLAIM_LOST");
+    const authorization = (task.checkpointJson as Prisma.JsonObject).authorization as
+      | Prisma.JsonObject
+      | undefined;
+    const actor = await tx.user.findUnique({ where: { id: receipt.ownerUserId } });
+    if (
+      !authorization ||
+      authorization.ownerUserId !== receipt.ownerUserId ||
+      !actor ||
+      actor.status !== "ACTIVE" ||
+      actor.role !== "ADMIN" ||
+      authorization.sessionVersion !== actor.sessionVersion
+    )
+      throw new AdminCommandError("CLAIM_LOST");
+    return { receipt, now, task };
+  } catch (error) {
+    if (error instanceof TaskLeaseLost) throw new AdminCommandError("CLAIM_LOST");
+    throw error;
+  }
 }
 
 function revisions(value: Record<string, number>, oldKeyId: string): Prisma.InputJsonObject {
@@ -432,7 +457,7 @@ export async function prepareKeyRotationRun(
       (!newKey || newKey.status !== "DISABLED" || newKey.provider !== oldKey.provider))
   )
     throw new AdminCommandError("INVALID_STATE");
-  return tx.keyRotationRun.create({
+  const run = await tx.keyRotationRun.create({
     data: {
       receiptId: receipt.id,
       oldKeyId,
@@ -446,6 +471,11 @@ export async function prepareKeyRotationRun(
       updatedAt: now,
     },
   });
+  await tx.durableTask.update({
+    where: { id: input.claim.taskId },
+    data: { rotationRunId: run.id },
+  });
+  return run;
 }
 
 const checkpointSteps = {
@@ -494,7 +524,7 @@ export async function saveKeyRotationCheckpoint(
   ) {
     throw new AdminCommandError("INVALID_STATE");
   }
-  return tx.keyRotationRun.update({
+  const updated = await tx.keyRotationRun.update({
     where: { id: runId },
     data: {
       stage: input.stage,
@@ -510,6 +540,13 @@ export async function saveKeyRotationCheckpoint(
       updatedAt: now,
     },
   });
+  const task = await tx.durableTask.findUniqueOrThrow({ where: { id: input.claim.taskId } });
+  await saveTaskCheckpoint(tx, input.claim, {
+    ...(task.checkpointJson as Prisma.InputJsonObject),
+    stage: input.stage,
+    rotationRunId: runId,
+  });
+  return updated;
 }
 
 export function isAdminCommandValidation(error: unknown): boolean {
@@ -573,7 +610,7 @@ export async function finishKeyRotationCommand(
   )
     throw new AdminCommandError("VALIDATION_ERROR");
   await tx.adminCommandReceipt.update({
-    where: { id: claim.receiptId, fencingToken: claim.fencingToken },
+    where: { id: claim.receiptId },
     data: {
       status: failureCode === undefined ? "SUCCEEDED" : "FAILED",
       responseJson: { ...safe, key: { ...safe.key } },
@@ -582,11 +619,11 @@ export async function finishKeyRotationCommand(
       expiresAt: new Date(
         Math.max(receipt.expiresAt.getTime(), now.getTime() + ADMIN_RECEIPT_MIN_RETENTION_MS),
       ),
-      leaseOwner: null,
-      leaseUntil: null,
     },
     select: { id: true },
   });
+  if (failureCode === undefined) await completeTask(tx, { ...claim, resultRef: claim.receiptId });
+  else await failTask(tx, { ...claim, retryable: false, errorCategory: failureCode });
 }
 
 export async function releaseKeyRotationCommand(
@@ -595,8 +632,14 @@ export async function releaseKeyRotationCommand(
 ): Promise<void> {
   const { now } = await assertAdminCommandClaim(tx, claim);
   await tx.adminCommandReceipt.update({
-    where: { id: claim.receiptId, fencingToken: claim.fencingToken },
-    data: { status: "RETRY_WAIT", availableAt: now, leaseOwner: null, leaseUntil: null },
+    where: { id: claim.receiptId },
+    data: { status: "RETRY_WAIT", availableAt: new Date(now.getTime() + 1000) },
     select: { id: true },
+  });
+  await failTask(tx, {
+    ...claim,
+    retryable: true,
+    backoffMs: 1000,
+    errorCategory: "PROVIDER_UNAVAILABLE",
   });
 }

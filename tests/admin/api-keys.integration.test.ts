@@ -408,6 +408,11 @@ describe.skipIf(!enabled)("admin/api-keys real PostgreSQL", () => {
               (await refs.active()).every((row) => row.secretRef === old.id && row.revision === 0),
             ).toBe(true);
             delete refs.controls[mode];
+            const retryTask = await fixture.app.durableTask.findFirstOrThrow({
+              where: { kind: "ADMIN_KEY_ROTATION" },
+            });
+            expect(retryTask.status).toBe("PENDING");
+            await fixture.setClock(retryTask.availableAt);
           }
           const result = await service.rotate(await makeApiKeyRequest(input), old.id);
           expect(result.stage).toBe("ACTIVATED");
@@ -538,6 +543,7 @@ describe.skipIf(!enabled)("admin/api-keys real PostgreSQL", () => {
           expect(parseReferenceCandidates(run.candidateIdsJson)).toHaveLength(2);
           await service.disconnect();
           delete refs.controls.failReference;
+          await fixture.setClock(new Date(fixture.clock.getTime() + 1000));
           service = createAdminApiKeysService({
             databaseUrl: fixture.url,
             resolver: fixture.resolver,
@@ -552,8 +558,13 @@ describe.skipIf(!enabled)("admin/api-keys real PostgreSQL", () => {
           const receipt = await fixture.app.adminCommandReceipt.findUniqueOrThrow({
             where: { id: run.receiptId },
           });
-          expect(receipt.attemptCount).toBe(2);
-          expect(receipt.fencingToken).toBe(2);
+          expect(receipt.attemptCount).toBe(0);
+          expect(receipt.fencingToken).toBe(0);
+          const task = await fixture.app.durableTask.findUniqueOrThrow({
+            where: { adminReceiptId: receipt.id },
+          });
+          expect(task.attemptCount).toBe(2);
+          expect(task.fencingToken).toBe(2);
           observe("rotate-revoke", {
             failedCandidates: 1,
             oldReferencesPreserved: 2,
@@ -965,6 +976,11 @@ describe.skipIf(!enabled)("admin/api-keys real PostgreSQL", () => {
             await fixture.admin.$executeRawUnsafe(
               `DROP TRIGGER phase013_reject_final ON "${table}"`,
             );
+            const retryTask = await fixture.app.durableTask.findFirstOrThrow({
+              where: { kind: "ADMIN_KEY_ROTATION" },
+            });
+            expect(retryTask.status).toBe("PENDING");
+            await fixture.setClock(retryTask.availableAt);
             const result = await service.rotate(await makeApiKeyRequest(input), old.id);
             expect(result.key.id).toBe(run.newKeyId);
             expect(result.stage).toBe("ACTIVATED");

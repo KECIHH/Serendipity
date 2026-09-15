@@ -181,6 +181,7 @@ export async function withAdminDatabase<T>(
       'GRANT SELECT, INSERT, UPDATE ON TABLE "PromptActivation", "PromptModelActivation", "PlanningPolicyActivation" TO phase012_app',
       'GRANT SELECT, INSERT, UPDATE ON TABLE "AiUsageReservation" TO phase012_app',
       'GRANT SELECT, INSERT ON TABLE "AiOutputRecord" TO phase012_app',
+      'GRANT SELECT, INSERT, UPDATE ON TABLE "DurableTask", "Outbox" TO phase012_app',
     ])
       await admin.$executeRawUnsafe(statement.replaceAll("phase012_app", config.appUser));
     const [role] = await app.$queryRaw<

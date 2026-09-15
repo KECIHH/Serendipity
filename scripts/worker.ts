@@ -1,58 +1,45 @@
-import "server-only";
-
-import { db } from "@/server/db";
-import { runTask, drainOutbox, type WorkerContext, type TaskHandler, type TaskKind } from "@/server/tasks/dispatcher";
-import { processKeyRotationTask, processChatCommandTask } from "@/server/chat/process-task";
-
-const runId = process.env.WORKER_RUN_ID ?? `worker_${process.pid}`;
-const ctx: WorkerContext = { kind: "CHAT_COMMAND", runId, pollMs: 1000, leaseMs: 30_000 };
+import { randomUUID } from "node:crypto";
+import { setTimeout as delay } from "node:timers/promises";
+import { db } from "../src/server/db";
+import {
+  runTask,
+  runnableTasks,
+  drainOutbox,
+  type TaskHandler,
+} from "../src/server/tasks/dispatcher";
+import { processChatCommandTask, processKeyRotationTask } from "../src/server/chat/process-task";
+import { adminApiKeysService } from "../src/server/admin/api-keys";
 
 const handlers: Record<string, TaskHandler> = {
   CHAT_COMMAND: processChatCommandTask,
   ADMIN_KEY_ROTATION: processKeyRotationTask,
 };
-
-const POLL_MS = Number(process.env.WORKER_POLL_MS ?? 1000);
-
+const runId = "worker_" + randomUUID().replaceAll("-", "");
+let stopping = false;
+process.on("SIGINT", () => {
+  stopping = true;
+});
+process.on("SIGTERM", () => {
+  stopping = true;
+});
 async function tick() {
-  const delivered = await drainOutbox(ctx);
-  const kinds = Object.keys(handlers) as (keyof typeof handlers)[];
-  const rows = await db.durableTask.findMany({
-    where: {
-      status: "PENDING",
-      availableAt: { lte: new Date() },
-      kind: { in: kinds },
-    },
-    orderBy: { createdAt: "asc" },
-    take: 10,
-    select: { id: true, kind: true, aggregateId: true },
-  });
-  for (const row of rows) {
-    const handler = handlers[row.kind];
-    if (!handler) continue;
-    await runTask(handler, {
-      kind: row.kind as TaskKind,
-      aggregateId: row.aggregateId,
-      runId,
-      leaseMs: ctx.leaseMs,
-    });
+  await drainOutbox(db);
+  for (const row of await runnableTasks(db)) {
+    if (stopping) break;
+    await runTask(handlers[row.kind], { db, ...row, runId });
   }
-  return delivered + rows.length;
 }
-
-if (runId === "worker_test") {
-  const result = await tick();
-  process.stdout.write(JSON.stringify({ ok: true, delivered: result }));
-} else {
-  const timer = setInterval(async () => {
+try {
+  do {
     try {
       await tick();
-    } catch (error) {
-      process.stderr.write(`${error instanceof Error ? error.message : String(error)}\n`);
+    } catch {
+      process.stderr.write("Worker tick failed; durable work remains recoverable.\n");
     }
-  }, POLL_MS);
-  process.on("SIGINT", () => {
-    clearInterval(timer);
-    process.exit(0);
-  });
+    if (process.argv.includes("--once")) break;
+    if (!stopping) await delay(1000);
+  } while (!stopping);
+} finally {
+  await db.$disconnect();
+  await adminApiKeysService().disconnect();
 }

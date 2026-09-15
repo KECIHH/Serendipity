@@ -38,6 +38,7 @@ export const CHAT_MESSAGE_FIELDS = [
   "contentJson",
   "sequence",
   "clientMessageId",
+  ...(Prisma.dmmf.datamodel.models.some(({ name }) => name === "ChatCommand") ? ["commandId"] : []),
   "replyToMessageId",
   "createdAt",
 ] as const;

@@ -197,6 +197,7 @@ export async function withApiKeyDatabase<T>(
       'GRANT SELECT, INSERT, UPDATE ON TABLE "PromptActivation", "PromptModelActivation", "PlanningPolicyActivation" TO phase013_app',
       'GRANT SELECT, INSERT, UPDATE ON TABLE "AiUsageReservation" TO phase013_app',
       'GRANT SELECT, INSERT ON TABLE "AiOutputRecord" TO phase013_app',
+      'GRANT SELECT, INSERT, UPDATE ON TABLE "DurableTask", "Outbox" TO phase013_app',
     ])
       await admin.$executeRawUnsafe(statement.replaceAll("phase013_app", config.appUser));
     const [role] = await app.$queryRaw<

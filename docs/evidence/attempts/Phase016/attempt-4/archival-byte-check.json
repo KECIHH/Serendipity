@@ -1,0 +1,117 @@
+{
+  "phase": 16,
+  "attemptId": "attempt-4",
+  "planPath": "docs/phase-plans/Phase016.json",
+  "planHash": "9eee72c2491a097ba2a02c1f7e12893fc799721663dd668ae74b70262cf6b4e2",
+  "status": "PASS",
+  "createdAt": "2026-09-15T13:12:06.538Z",
+  "policy": {
+    "path": "docs/development-execution-policy.md",
+    "sha256": "58b4eaef7fda2a45c69e41feb766d04893d44a7092117410d7e707bc5e7b9320",
+    "section": "2",
+    "requirement": "历史原始证据的空白问题按精确路径及既有规则处理，不改写其字节。"
+  },
+  "preserved": {
+    "path": "docs/evidence/attempts/Phase016/attempt-1/freeze-command.json",
+    "sha256": "e479f87cef0b100bf183e509a60dffae1b31ec5da3febd5a906a64cd3519ae25",
+    "byteLength": 621,
+    "carriageReturnCount": 1,
+    "originalBytesUnchanged": true,
+    "inCurrentSourcePaths": false
+  },
+  "handling": {
+    "staging": "git hash-object -w --no-filters, then git update-index --add --cacheinfo",
+    "ordinaryPaths": "git diff --cached --check -- . :(exclude)docs/evidence/attempts/Phase016/attempt-1/freeze-command.json",
+    "preservedPath": [
+      "-c",
+      "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+      "diff",
+      "--cached",
+      "--check",
+      "--",
+      "docs/evidence/attempts/Phase016/attempt-1/freeze-command.json"
+    ],
+    "scope": "Only the exact preserved historical path recognizes CRLF; all default whitespace errors remain checked. No Git config or attribute file is changed."
+  },
+  "isolatedFixture": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\archive-whitespace-RRBuRv",
+  "defaultCheck": {
+    "args": [
+      "diff",
+      "--cached",
+      "--check",
+      "--",
+      "docs/evidence/attempts/Phase016/attempt-1/freeze-command.json"
+    ],
+    "exitCode": 2,
+    "stdout": "docs/evidence/attempts/Phase016/attempt-1/freeze-command.json:18: trailing whitespace.\n+}\r\n",
+    "stderr": ""
+  },
+  "checks": [
+    {
+      "id": "preserved-original-crlf",
+      "expectedExitCode": 0,
+      "args": [
+        "-c",
+        "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+        "diff",
+        "--cached",
+        "--check",
+        "--",
+        "docs/evidence/attempts/Phase016/attempt-1/freeze-command.json"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "reject-trailing-space",
+      "expectedExitCode": 2,
+      "args": [
+        "-c",
+        "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+        "diff",
+        "--cached",
+        "--check",
+        "--",
+        "docs/evidence/attempts/Phase016/attempt-1/freeze-command.json"
+      ],
+      "exitCode": 2,
+      "stdout": "docs/evidence/attempts/Phase016/attempt-1/freeze-command.json:1: trailing whitespace.\n+text \r\n",
+      "stderr": ""
+    },
+    {
+      "id": "reject-blank-final-line",
+      "expectedExitCode": 2,
+      "args": [
+        "-c",
+        "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+        "diff",
+        "--cached",
+        "--check",
+        "--",
+        "docs/evidence/attempts/Phase016/attempt-1/freeze-command.json"
+      ],
+      "exitCode": 2,
+      "stdout": "docs/evidence/attempts/Phase016/attempt-1/freeze-command.json:2: new blank line at EOF.\n",
+      "stderr": ""
+    },
+    {
+      "id": "reject-space-before-tab",
+      "expectedExitCode": 2,
+      "args": [
+        "-c",
+        "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+        "diff",
+        "--cached",
+        "--check",
+        "--",
+        "docs/evidence/attempts/Phase016/attempt-1/freeze-command.json"
+      ],
+      "exitCode": 2,
+      "stdout": "docs/evidence/attempts/Phase016/attempt-1/freeze-command.json:1: space before tab in indent.\n+ \ttext\r\n",
+      "stderr": ""
+    }
+  ],
+  "currentSourcesUnchanged": 2890,
+  "productEvidenceReuse": "Same unchanged attempt-4 source, plan and reports; this is archival byte preservation, not a product or runner change."
+}

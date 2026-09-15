@@ -678,3 +678,15 @@ PromptDefinition、PromptVersion、ModelDeployment、ProviderConfigVersion、Pla
 本卡同时冻结 [PlanningPolicy 合成 bootstrap](planning-policy.json)：单位、范围、来源与用途逐项记录并在解析时校验，scope 为 SYNTHETIC_ONLY。原 Phase002 未提供冻结的 planning/quality 数值，已有 freshness 数值仅为离线 fixture；本卡不将其冒称为生产阈值。生产用户调用在政策授权前被拒绝。
 
 ModelDeployment 的 `(providerId,providerConfigVersion)` 是复合 FK。activation 和 AiOutputRecord 的 deployment/provider 组合由触发器再次核对归属。三类 activation 的 UPDATE 必须恰好 revision+1。AiUsageReservation 的身份、估算、到期时间及终态不可回退；已绑定 providerRequestId 不可更换。按 Provider 锁定预算时汇总当前日 SETTLED 实际费用，以及所有日期 RESERVED/RECONCILING 的上界。`releaseUnsentReservation` 只幂等释放未发送项，`reconcileReservation` 按匹配的 Provider 证明或到期上界仅结算一次。
+
+## Phase016 实现说明
+
+`20260914165140_chat_command_events` 增加 ChatCommand、ChatCommandEvent、CommandIdempotency、DurableTask、TaskPayload、Outbox，并为 ChatMessage/AiOutputRecord 增加 commandId。精确列及 SQL 约束以本卡 Prisma schema 和迁移为准：ChatCommandEvent 实际采用 id 主键、eventId 全局唯一；CommandIdempotency 采用 id 主键及 `(ownerKeyHash,kind,idempotencyKeyHash)` 唯一键。两者均非复合主键。
+
+接受事务先锁当前 owner/record，再以 max(sequence)+1 分配消息序号；USER、command、加密输入、幂等收据、task、message.accepted 和 Outbox 一并提交。首稿原语接受调用者同一事务内创建的 record；FINALIZED 仅接受追加命令，不改正式版本。命令关联消息不可更改，部分唯一索引限制每命令一条 USER、至多一条 ASSISTANT；延迟约束校验同 record、角色、收据状态、终态及 Outbox。事件只能为 message.accepted、assistant.completed、command.failed、command.cancelled，后三者互斥。
+
+DurableTask 是两种已登记任务 CHAT_COMMAND/ADMIN_KEY_ROTATION 的唯一租约来源。领取提交后才执行外呼；claim/heartbeat/checkpoint/完成均以数据库 auth_now、leaseOwner、leaseUntil、递增 fencingToken 校验。过期 RUNNING 接管保留 attemptCount 和 checkpoint；显式失败重试才增加下一次 attempt，受 availableAt 和 maxAttempts 限制。聊天 OUTPUT_READY 用受控加密结果引用恢复，已完成外呼不重复执行。旧轮换 receipt 的 lease/fence/attempt 列只保留历史值，当前轮换继续复用原 KeyRotationRun 和审计执行器；Serializable 冲突做有界重试。
+
+Outbox 的 availableAt 用作 5 秒投递可见性期限，attemptCount 用于 ACK CAS。投递先验证事件账与 payloadHash，再发 PostgreSQL NOTIFY；ACK 丢失可重投同 eventId，消费者按持久 sequence 去重。`assistant.delta` 仅经 LISTEN/NOTIFY 到当前连接，事件表及 Outbox 行数均为零。应用角色对事件仅有 SELECT/INSERT；TaskPayload 仅有 SELECT/INSERT/受控 DELETE，并单列 UPDATE(id) 供行锁使用，不可变触发器拒绝实际 UPDATE。
+
+重放窗口固定最多 1000 帧、256 KiB、24 小时，连接最多 60 秒。窗口过期只停止增量重放，返回 410 后按持久消息对账；事件、命令、收据和任务目前随聚合保留，普通应用角色不得自行删除它们。输入与结果 payload 的清理至少等待引用任务/命令终态后 24 小时，并检查领域 pin；此卡不提前实现未来业务表。

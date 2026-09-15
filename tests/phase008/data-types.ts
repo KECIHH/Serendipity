@@ -99,6 +99,7 @@ export type GeneratedTravelAndMessageContract = [
       | "sequence"
       | "clientMessageId"
       | "replyToMessageId"
+      | "commandId"
       | "createdAt"
     >
   >,

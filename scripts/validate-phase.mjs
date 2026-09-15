@@ -14,6 +14,7 @@ import {
 } from "./phase-evidence.mjs";
 import { checkpointHistoryEnvironment, validateCheckpointImport } from "./checkpoint-history.mjs";
 import { validateCheckpointMaintenance } from "./checkpoint-maintenance.mjs";
+import { validatePhase016Recovery, phase016RecoveryPath } from "./phase016-recovery.mjs";
 
 const defaultRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
@@ -1307,6 +1308,16 @@ export function validatePhase({
     const phaseStartIndex =
       checkpointMaintenance?.phaseStartIndex(n, previousMetadataIndex) ?? previousMetadataIndex + 1;
     const recovery = history.slice(phaseStartIndex, artifactIndex).map((entry) => entry.id);
+    const legacyRecovery =
+      n === 16
+        ? validatePhase016Recovery({
+            plan,
+            inputReceipt: receipt,
+            recoveryBytes: blob(currentArtifactCommit, phase016RecoveryPath),
+            recoveryCommits: recovery,
+            git,
+          })
+        : new Set();
     same(
       evidence.details.recoveryCommits,
       recovery,
@@ -1341,8 +1352,12 @@ export function validatePhase({
       const match = new RegExp(
         `^phase\\(${String(n).padStart(3, "0")}\\): (artifact|metadata|recovery)$`,
       ).exec(entry.subject);
-      ensure(match, "COMMIT_SUBJECT", `Unexpected phase commit subject: ${entry.subject}`);
-      const kind = match[1];
+      ensure(
+        match || (index < artifactIndex && legacyRecovery.has(entry.id)),
+        "COMMIT_SUBJECT",
+        `Unexpected phase commit subject: ${entry.subject}`,
+      );
+      const kind = match?.[1] ?? "recovery";
       if (index === artifactIndex)
         same(kind, "artifact", "CHECKPOINT_PARENT", "Final artifact subject must be artifact");
       if (index === metadataIndex)

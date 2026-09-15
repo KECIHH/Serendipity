@@ -47,6 +47,8 @@ export type ProviderResult = ProviderSuccess | ProviderFailure;
 export interface ProviderCallContext {
   readonly signal: AbortSignal;
   readonly deadlineAt: number;
+  /** Best-effort display only. A chunk is never a validated final response. */
+  readonly onDelta?: (text: string) => Promise<void>;
 }
 
 export interface ProviderAdapter {

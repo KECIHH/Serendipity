@@ -100,9 +100,12 @@ export function scanSensitiveText(value, label = "output") {
     ["ENCRYPTED_ENVELOPE", /["']?ciphertext["']?\s*:\s*["'][A-Za-z0-9+/]{2,}={0,2}["']/.test(unescaped)],
     ["DATABASE_CREDENTIAL", /postgres(?:ql)?:\/\/[^\s"'<>]+:[^\s"'<>]+@/i.test(text)],
   ];
+  const allowlistFile=path.join(root,"tests/phase016/source-scan-allowlist.json");
+  const exception=fs.existsSync(allowlistFile)?JSON.parse(fs.readFileSync(allowlistFile,"utf8")).fixtures
+    .find(row=>row.path===label && row.sha256===sha(Buffer.from(text))):undefined;
   const violation = secrets.some((secret) => secret && text.includes(secret))
     ? "SYNTHETIC_CREDENTIAL"
-    : patterns.find(([, matched]) => matched)?.[0];
+    : patterns.find(([rule, matched]) => matched && !exception?.rules.includes(rule))?.[0];
   if (violation) {
     const error = new Error(`SECRET_SCAN_REJECTED: ${violation}`);
     error.safeLabel = label;
@@ -123,13 +126,12 @@ export function safeDiagnostics(value) {
 export function ensureFullDatabaseConfig() {
   const minimal = json(minimalDatabasePath);
   const legacy = json(".scaffold/phase014/database.json");
-  const appUrl = new URL(legacy.appUrl);
-  appUrl.port = new URL(minimal.appUrl).port;
+  const appUrl = new URL(minimal.appUrl);
   const config = {
     phase: "016",
     runId: legacy.runId,
     database: minimal.database,
-    user: legacy.user,
+    user: minimal.user ?? legacy.user,
     appUser: minimal.appUser,
     password: legacy.password,
     appPassword: minimal.appPassword,
@@ -156,6 +158,10 @@ export function ensureFullDatabaseConfig() {
 
 export function testEnvironment(fixturePath) {
   const config = json(fullDatabasePath);
+  const regression = json(".scaffold/phase015/full-database.json");
+  const regressionPath = path.resolve(root, ".scaffold/phase015/full-database.json");
+  assert.equal(config.authSecret, regression.authSecret);
+  assert.equal(config.encryptionKey, regression.encryptionKey);
   return {
     DATABASE_URL: config.appUrl,
     AUTH_SECRET: config.authSecret,
@@ -165,29 +171,31 @@ export function testEnvironment(fixturePath) {
     AI_MOCK: "true",
     AI_TIMEOUT_MS: "60000",
     AI_DAILY_COST_LIMIT: "5",
-    PHASE007_DATABASE_URL: config.url,
-    PHASE008_DATABASE_URL: config.url,
-    PHASE009_DATABASE_URL: config.url,
-    PHASE009_RUNTIME_DATABASE_URL: config.appUrl,
-    PHASE010_FIXTURE_CONFIG: fixturePath,
-    PHASE011_FIXTURE_CONFIG: fixturePath,
-    PHASE012_FIXTURE_CONFIG: fixturePath,
-    PHASE013_FIXTURE_CONFIG: fixturePath,
-    PHASE014_FIXTURE_CONFIG: fixturePath,
-    PHASE015_FIXTURE_CONFIG: fixturePath,
+    PHASE007_DATABASE_URL: regression.url,
+    PHASE008_DATABASE_URL: regression.url,
+    PHASE009_DATABASE_URL: regression.url,
+    PHASE009_RUNTIME_DATABASE_URL: regression.appUrl,
+    PHASE010_FIXTURE_CONFIG: regressionPath,
+    PHASE011_FIXTURE_CONFIG: regressionPath,
+    PHASE012_FIXTURE_CONFIG: regressionPath,
+    PHASE013_FIXTURE_CONFIG: regressionPath,
+    PHASE014_FIXTURE_CONFIG: regressionPath,
+    PHASE015_FIXTURE_CONFIG: regressionPath,
     PHASE016_FIXTURE_CONFIG: fixturePath,
-    PHASE012_DATABASE_URL: config.url,
-    PHASE012_RUNTIME_DATABASE_URL: config.appUrl,
-    PHASE013_DATABASE_URL: config.url,
-    PHASE013_RUNTIME_DATABASE_URL: config.appUrl,
+    PHASE012_DATABASE_URL: regression.url,
+    PHASE012_RUNTIME_DATABASE_URL: regression.appUrl,
+    PHASE013_DATABASE_URL: regression.url,
+    PHASE013_RUNTIME_DATABASE_URL: regression.appUrl,
     NEXT_TELEMETRY_DISABLED: "1",
   };
 }
 
-export function resetDatabase(cwd = root) {
-  const config = json(fullDatabasePath);
-  assert.match(config.database, /^phase016_disposable_[a-f0-9]{12}$/);
-  assert.equal(config.database, `phase016_disposable_${config.runId}`);
+export function resetDatabase(cwd = root, regression = false) {
+  const config = json(regression ? ".scaffold/phase015/full-database.json" : fullDatabasePath);
+  config.containerId ??= json(".scaffold/phase014/database.json").containerId;
+  const phase = regression ? "015" : "016";
+  assert.match(config.database, /^phase01[56]_disposable_[a-f0-9]{12}$/);
+  assert.equal(config.database, `phase${phase}_disposable_${config.runId}`);
   assert.equal(new URL(config.url).hostname, "127.0.0.1");
   assert.equal(new URL(config.url).pathname, `/${config.database}`);
   const identity = command(
@@ -198,7 +206,7 @@ export function resetDatabase(cwd = root) {
   assert.equal(identity.exitCode, 0, "DATABASE_IDENTITY_QUERY");
   assert.equal(
     identity.stdout.trim(),
-    `${config.database}|serendipity-phase016-disposable:${config.runId}`,
+    `${config.database}|serendipity-phase${phase}-disposable:${config.runId}`,
     "DATABASE_IDENTITY_MISMATCH",
   );
   const migration = command(
@@ -211,12 +219,16 @@ export function resetDatabase(cwd = root) {
     "REVOKE CREATE ON SCHEMA public FROM PUBLIC",
     `GRANT USAGE ON SCHEMA public TO ${config.appUser}`,
     `GRANT SELECT,INSERT,UPDATE,DELETE ON TABLE "User","SystemConfig","TravelRecord","ChatMessage","ApiKeyConfig","ChatCommand","CommandIdempotency","DurableTask","Outbox" TO ${config.appUser}`,
-    `GRANT SELECT,INSERT,UPDATE ON TABLE "ChatCommandEvent","TaskPayload" TO ${config.appUser}`,
-    `GRANT SELECT,INSERT ON TABLE "AiOutputRecord","AiUsageReservation","AdminCommandReceipt","KeyRotationRun" TO ${config.appUser}`,
-    `GRANT SELECT ON TABLE "PromptDefinition","PromptVersion","PlanningPolicyVersion","ProviderConfigVersion","ModelDeployment","PromptActivation","PromptModelActivation","PlanningPolicyActivation" TO ${config.appUser}`,
+    `GRANT SELECT,INSERT ON TABLE "ChatCommandEvent","AiOutputRecord","AuditLog","AuthSession","AuthLoginAttempt" TO ${config.appUser}`,
+    `GRANT SELECT,INSERT,DELETE ON TABLE "TaskPayload" TO ${config.appUser}`,
+    `GRANT UPDATE(id) ON TABLE "TaskPayload" TO ${config.appUser}`,
+    `GRANT SELECT,INSERT,UPDATE ON TABLE "AiUsageReservation","AdminCommandReceipt","KeyRotationRun","PromptActivation","PromptModelActivation","PlanningPolicyActivation" TO ${config.appUser}`,
+    `GRANT SELECT,INSERT ON TABLE "PromptDefinition","PromptVersion","PlanningPolicyVersion","ProviderConfigVersion","ModelDeployment" TO ${config.appUser}`,
+    `GRANT UPDATE(status,"lastSeenAt","revokedAt") ON "AuthSession" TO ${config.appUser}`,
+    `GRANT UPDATE(status,"completedAt") ON "AuthLoginAttempt" TO ${config.appUser}`,
+    `GRANT EXECUTE ON FUNCTION public.auth_now() TO ${config.appUser}`,
     'GRANT SELECT ON "_prisma_migrations" TO ' + config.appUser,
-    `GRANT SELECT,UPDATE ON SEQUENCE "ChatCommandEvent_sequence_seq" TO ${config.appUser}`,
-    `COMMENT ON DATABASE "${config.database}" IS 'serendipity-phase016-disposable:${config.runId}';`,
+    `COMMENT ON DATABASE "${config.database}" IS 'serendipity-phase${phase}-disposable:${config.runId}';`,
   ].join(";\n");
   const marked = command(
     "docker",
@@ -229,7 +241,7 @@ export function resetDatabase(cwd = root) {
     stdout: `${migration.stdout}\n${marked.stdout}`,
     stderr: `${migration.stderr}\n${marked.stderr}`,
     durationMs: migration.durationMs + marked.durationMs,
-    databaseMarker: `serendipity-phase016-disposable:${config.runId}`,
+    databaseMarker: `serendipity-phase${phase}-disposable:${config.runId}`,
     steps: [identity, migration, marked],
   };
 }

@@ -252,14 +252,19 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
     const includesAiGovernance = Prisma.dmmf.datamodel.models.some(
       ({ name }) => name === "PromptDefinition",
     );
+    const includesChatCommands = Prisma.dmmf.datamodel.models.some(
+      ({ name }) => name === "ChatCommand",
+    );
     const includesRotationContract = readdirSync("prisma/migrations").some((name) =>
       /^\d{14}_key_rotation_contract$/.test(name),
     );
     expect(migrations).toHaveLength(
       (includesAdminCommands ? 7 : includesAuth ? 6 : includesApiKey ? 5 : includesAudit ? 4 : 3) +
         Number(includesRotationContract) +
-        Number(includesAiGovernance),
+        Number(includesAiGovernance) +
+        Number(includesChatCommands),
     );
+    if (includesChatCommands) expect(migrations[9].name).toBe("20260914165140_chat_command_events");
     if (includesAiGovernance) expect(migrations[8].name).toMatch(/^\d{14}_ai_governance$/);
     if (includesRotationContract)
       expect(migrations[7].name).toMatch(/^\d{14}_key_rotation_contract$/);
@@ -307,6 +312,16 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
       ...authModels,
       ...adminModels,
       ...aiGovernanceModels,
+      ...(models.some(({ name }) => name === "ChatCommand")
+        ? [
+            "ChatCommand",
+            "ChatCommandEvent",
+            "CommandIdempotency",
+            "DurableTask",
+            "TaskPayload",
+            "Outbox",
+          ]
+        : []),
       "ChatMessage",
       "SystemConfig",
       "TravelRecord",
@@ -390,6 +405,9 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
     const includesAiGovernance = Prisma.dmmf.datamodel.models.some(
       ({ name }) => name === "PromptDefinition",
     );
+    const includesChatCommands = Prisma.dmmf.datamodel.models.some(
+      ({ name }) => name === "ChatCommand",
+    );
     expect([...new Set(rows.map(({ name }) => name))]).toEqual([
       ...(includesAdminCommands ? ["AdminCommandStatus"] : []),
       ...(includesAiGovernance
@@ -397,15 +415,37 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
         : []),
       ...(includesApiKey ? ["ApiKeyStatus"] : []),
       ...(includesAuth ? ["AuthLoginAttemptStatus", "AuthSessionStatus"] : []),
+      ...(includesChatCommands ? ["ChatCommandKind", "ChatCommandStatus"] : []),
       "ChatMessageKind",
       ...(includesAiGovernance ? ["CredentialRequirement"] : []),
       ...(includesAdminCommands ? ["KeyRotationStage"] : []),
       "MessageRole",
+      ...(includesChatCommands ? ["OutboxStatus"] : []),
       ...(includesAiGovernance ? ["PromptModelActivationStatus", "ProviderMode"] : []),
       "Role",
+      ...(includesChatCommands ? ["TaskStatus"] : []),
       "TravelStatus",
       "UserStatus",
     ]);
+    if (includesChatCommands) {
+      expect(
+        rows.filter(({ name }) => name === "ChatCommandKind").map(({ value }) => value),
+      ).toEqual(["CHAT_MESSAGE", "PLAN_DRAFT"]);
+      expect(
+        rows.filter(({ name }) => name === "ChatCommandStatus").map(({ value }) => value),
+      ).toEqual(["PENDING", "RUNNING", "COMPLETED", "FAILED", "CANCELLED"]);
+      expect(rows.filter(({ name }) => name === "TaskStatus").map(({ value }) => value)).toEqual([
+        "PENDING",
+        "RUNNING",
+        "SUCCEEDED",
+        "FAILED",
+        "CANCELLED",
+      ]);
+      expect(rows.filter(({ name }) => name === "OutboxStatus").map(({ value }) => value)).toEqual([
+        "PENDING",
+        "DELIVERED",
+      ]);
+    }
     if (includesApiKey)
       expect(rows.filter(({ name }) => name === "ApiKeyStatus").map(({ value }) => value)).toEqual([
         "ACTIVE",

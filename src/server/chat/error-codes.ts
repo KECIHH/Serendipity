@@ -1,9 +1,5 @@
 import "server-only";
 
-/**
- * Registry of ChatCommand error codes. Every ChatCommand.errorCode must come from this
- * closed set; ChatCommand never uses BLOCKED/ACTIVE or other unregistered statuses.
- */
 export const CHAT_ERROR_CODES = [
   "VALIDATION_ERROR",
   "NOT_FOUND",
@@ -16,13 +12,11 @@ export const CHAT_ERROR_CODES = [
   "PROVIDER_TIMEOUT",
   "PROVIDER_UNAVAILABLE",
   "CANCELLED",
-  "INVALID_RESULT",
-  "REPLAY_WINDOW_EXCEEDED",
+  "RESYNC_REQUIRED",
+  "INTERNAL_ERROR",
 ] as const;
-
 export type ChatErrorCode = (typeof CHAT_ERROR_CODES)[number];
-
-const errorMessages: Record<ChatErrorCode, string> = {
+const messages: Record<ChatErrorCode, string> = {
   VALIDATION_ERROR: "The command input is invalid.",
   NOT_FOUND: "The requested command or record was not found.",
   AUTH_REQUIRED: "An authenticated owner is required.",
@@ -34,26 +28,22 @@ const errorMessages: Record<ChatErrorCode, string> = {
   PROVIDER_TIMEOUT: "The AI provider timed out.",
   PROVIDER_UNAVAILABLE: "The AI provider is unavailable.",
   CANCELLED: "The command was cancelled.",
-  INVALID_RESULT: "The provider returned an invalid result.",
-  REPLAY_WINDOW_EXCEEDED: "The replay window has been exceeded.",
+  RESYNC_REQUIRED: "Reload persistent messages and command status.",
+  INTERNAL_ERROR: "The command could not be processed.",
 };
-
 export function isChatErrorCode(value: string): value is ChatErrorCode {
   return (CHAT_ERROR_CODES as readonly string[]).includes(value);
 }
-
 export function chatErrorMessage(code: ChatErrorCode): string {
-  return errorMessages[code];
+  return messages[code];
 }
-
 export class ChatCommandError extends Error {
-  readonly code: ChatErrorCode;
-  readonly status: number;
-
-  constructor(code: ChatErrorCode, status = 400) {
-    super(`${code}: ${errorMessages[code]}`);
+  constructor(
+    readonly code: ChatErrorCode,
+    readonly status = 400,
+    readonly details?: Record<string, string>,
+  ) {
+    super(code + ": " + messages[code]);
     this.name = "ChatCommandError";
-    this.code = code;
-    this.status = status;
   }
 }

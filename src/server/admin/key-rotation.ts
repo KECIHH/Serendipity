@@ -35,6 +35,7 @@ import {
 } from "@/server/admin/key-reference";
 import { AuditLogError, type AuditRequestContext } from "@/server/audit-log";
 import { readAuthClock } from "@/server/auth/clock";
+import { assertTaskLease, heartbeatTask, type TaskLease } from "@/server/tasks/durable-task";
 import { readAdminApiKey } from "@/server/projections/admin-api-key";
 import {
   decryptSecret,
@@ -85,11 +86,13 @@ export function createKeyRotationCoordinator(options: CoordinatorOptions) {
   async function transaction<T>(
     operation: (tx: Prisma.TransactionClient) => Promise<T>,
   ): Promise<T> {
-    return client.$transaction(operation, {
-      isolationLevel: Prisma.TransactionIsolationLevel.Serializable,
-      maxWait: 5_000,
-      timeout: 15_000,
-    });
+    return boundedRetry(() =>
+      client.$transaction(operation, {
+        isolationLevel: Prisma.TransactionIsolationLevel.Serializable,
+        maxWait: 5_000,
+        timeout: 15_000,
+      }),
+    );
   }
   async function boundedRetry<T>(operation: () => Promise<T>): Promise<T> {
     for (let attempt = 0; attempt < 4; attempt++) {
@@ -99,7 +102,8 @@ export function createKeyRotationCoordinator(options: CoordinatorOptions) {
         const retry =
           error instanceof AuditTransactionConflictError ||
           (error instanceof Prisma.PrismaClientKnownRequestError &&
-            ["P2034", "P2002"].includes(error.code));
+            (["P2034", "P2002"].includes(error.code) ||
+              (error.code === "P2010" && ["40001", "40P01"].includes(String(error.meta?.code)))));
         if (!retry || attempt === 3) throw error;
         await delay(15 * (attempt + 1));
       }
@@ -433,9 +437,9 @@ export function createKeyRotationCoordinator(options: CoordinatorOptions) {
     if (failure.status === 401 || failure.status === 403) throw failure;
     return transaction(async (tx) => {
       await scope.authorize(tx);
-      await assertAdminCommandClaim(tx, prepared.claim);
+      const { task } = await assertAdminCommandClaim(tx, prepared.claim);
       const run = await tx.keyRotationRun.findUniqueOrThrow({ where: { id: prepared.run.id } });
-      const aborted = failure.status === 409;
+      const aborted = failure.status === 409 || task.attemptCount >= task.maxAttempts;
       const stage = aborted ? "ABORTED" : run.stage === "READY" ? "READY" : "TESTING";
       const checkpoint = await saveKeyRotationCheckpoint(tx, {
         claim: prepared.claim,
@@ -445,10 +449,56 @@ export function createKeyRotationCoordinator(options: CoordinatorOptions) {
         errorCode: failure.publicCode,
       });
       const response = await snapshot(tx, checkpoint, false);
-      if (aborted) await finishKeyRotationCommand(tx, prepared.claim, response, "VERSION_CONFLICT");
+      if (aborted)
+        await finishKeyRotationCommand(
+          tx,
+          prepared.claim,
+          response,
+          failure.status === 409 ? "VERSION_CONFLICT" : "INTERNAL_ERROR",
+        );
       else await releaseKeyRotationCommand(tx, prepared.claim);
       return response;
     });
+  }
+  async function execute(prepared: PreparedRun, scope: CommandScope): Promise<KeyRotationReceipt> {
+    let heartbeat: Promise<void> | undefined;
+    const timer = setInterval(() => {
+      if (heartbeat) return;
+      heartbeat = transaction(async (tx) => {
+        await scope.authorize(tx);
+        await heartbeatTask(tx, { ...prepared.claim, leaseMs: 60000 });
+      })
+        .catch(() => {})
+        .finally(() => {
+          heartbeat = undefined;
+        });
+    }, 10000);
+    try {
+      const proof = await test(prepared, scope);
+      return await activate(prepared, proof, scope);
+    } catch (error) {
+      let response: KeyRotationReceipt;
+      try {
+        response = await recordFailure(prepared, scope, error);
+      } catch (recordError) {
+        if (recordError instanceof KeyLifecycleError) throw recordError;
+        if (recordError instanceof AdminCommandError && recordError.kind === "CLAIM_LOST")
+          throw new KeyLifecycleError(409, "VERSION_CONFLICT");
+        throw new KeyLifecycleError(503, "INTERNAL_ERROR");
+      }
+      if (response.stage === "ABORTED")
+        throw new KeyLifecycleError(409, "VERSION_CONFLICT", { rotation: response });
+      if (
+        response.errorCode === "PROVIDER_UNAVAILABLE" ||
+        response.errorCode === "PROVIDER_TIMEOUT" ||
+        response.errorCode === "CONFIG_ERROR"
+      )
+        return response;
+      throw new KeyLifecycleError(503, "INTERNAL_ERROR", { rotation: response });
+    } finally {
+      clearInterval(timer);
+      if (heartbeat) await heartbeat;
+    }
   }
   return Object.freeze({
     async rotate(
@@ -457,30 +507,27 @@ export function createKeyRotationCoordinator(options: CoordinatorOptions) {
       scope: CommandScope,
     ): Promise<KeyRotationReceipt> {
       const prepared = await prepare(command, input, scope);
-      if (!("claim" in prepared)) return prepared;
-      try {
-        const proof = await test(prepared, scope);
-        return await activate(prepared, proof, scope);
-      } catch (error) {
-        let response: KeyRotationReceipt;
-        try {
-          response = await recordFailure(prepared, scope, error);
-        } catch (recordError) {
-          if (recordError instanceof KeyLifecycleError) throw recordError;
-          if (recordError instanceof AdminCommandError && recordError.kind === "CLAIM_LOST")
-            throw new KeyLifecycleError(409, "VERSION_CONFLICT");
-          throw new KeyLifecycleError(503, "INTERNAL_ERROR");
-        }
-        if (response.stage === "ABORTED")
-          throw new KeyLifecycleError(409, "VERSION_CONFLICT", { rotation: response });
-        if (
-          response.errorCode === "PROVIDER_UNAVAILABLE" ||
-          response.errorCode === "PROVIDER_TIMEOUT" ||
-          response.errorCode === "CONFIG_ERROR"
-        )
-          return response;
-        throw new KeyLifecycleError(503, "INTERNAL_ERROR", { rotation: response });
-      }
+      return "claim" in prepared ? execute(prepared, scope) : prepared;
+    },
+    async resume(lease: TaskLease, scope: CommandScope): Promise<KeyRotationReceipt> {
+      const prepared = await transaction(async (tx) => {
+        await scope.authorize(tx);
+        const task = await assertTaskLease(tx, lease);
+        if (task.kind !== "ADMIN_KEY_ROTATION" || !task.adminReceiptId)
+          throw new KeyLifecycleError(404, "NOT_FOUND");
+        const receipt = await tx.adminCommandReceipt.findUniqueOrThrow({
+          where: { id: task.adminReceiptId },
+        });
+        if (receipt.status === "SUCCEEDED" || receipt.status === "FAILED")
+          return readTerminalRotationReceipt(receipt);
+        await tx.adminCommandReceipt.update({
+          where: { id: receipt.id },
+          data: { status: "RUNNING" },
+        });
+        const run = await tx.keyRotationRun.findUniqueOrThrow({ where: { receiptId: receipt.id } });
+        return { run, claim: { ...lease, receiptId: receipt.id, leaseUntil: task.leaseUntil! } };
+      });
+      return "claim" in prepared ? execute(prepared, scope) : prepared;
     },
   });
 }

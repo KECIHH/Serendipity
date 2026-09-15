@@ -1,16 +1,17 @@
 import assert from "node:assert/strict";
 import path from "node:path";
 import { createHash } from "node:crypto";
+import { validatePhase016Recovery, phase016RecoveredCommits } from "../../scripts/phase016-recovery.mjs";
 
-export const startCommit = "77592c56b748682fbcc1e664741aab11fc51a1f4";
+export const startCommit = "cbd1c983d88d705be9e087694faaef4d6610abd6";
 export const caseTags = {
-  "Phase016:first-accept": "[first-accept]",
-  "Phase016:owner-resume": "[owner-resume]",
-  "Phase016:idempotency": "[idempotency]",
-  "Phase016:replay": "[replay]",
-  "Phase016:transient-delta": "[transient-delta]",
-  "Phase016:cancel-race": "[cancel-race]",
-  "Phase016:provider-failure": "[provider-failure]",
+  "Phase016:first-accept": "first-accept:",
+  "Phase016:owner-resume": "owner-resume:",
+  "Phase016:idempotency": "idempotency:",
+  "Phase016:replay": "replay:",
+  "Phase016:transient-delta": "transient-delta:",
+  "Phase016:cancel-race": "cancel-race:",
+  "Phase016:provider-failure": "provider-failure:",
 };
 export const caseIds = [...Object.keys(caseTags), "Phase016:mutation"];
 const digest = (bytes) => createHash("sha256").update(bytes).digest("hex");
@@ -19,21 +20,24 @@ export const negativeDefinitions = [
     id: "terminal-cas",
     file: "src/server/chat/command-state.ts",
     testFile: "tests/phase016/chat-session.test.ts",
-    pattern: "[cancel-race] only one winner (CANCELLED or COMPLETED) and no duplicate terminal",
+    pattern: "cancel-race: cancelled winner rejects a late completion and completed winner is replayed by cancel",
+    witness: "Command identity and terminal state are immutable",
     caseId: "Phase016:cancel-race",
   },
   {
     id: "event-unique",
-    file: "src/server/chat/command-service.ts",
+    file: "prisma/migrations/20260914165140_chat_command_events/migration.sql",
     testFile: "tests/phase016/chat-session.test.ts",
-    pattern: "[replay] events replay in sequence order without gaps or duplicates; window exceeded returns resync",
+    pattern: "replay: database event uniqueness and append-only rules reject duplicate facts and unauthorized writes",
+    witness: "persistent event uniqueness must reject a duplicate accepted sequence",
     caseId: "Phase016:replay",
   },
   {
     id: "delta-persisted",
-    file: "src/server/chat/sse.ts",
+    file: "src/server/chat/events.ts",
     testFile: "tests/phase016/chat-session.test.ts",
-    pattern: "[transient-delta] delta frames are not persisted, and replay omits them",
+    pattern: "transient-delta: real HTTP chunks are visible only live and disconnect leaves one complete reconciled final message",
+    witness: "expected 1 to be +0",
     caseId: "Phase016:transient-delta",
   },
 ];
@@ -51,7 +55,7 @@ export function executionPaths(pkg) {
     "node_modules/tsx/dist/cli.mjs",
   ].sort();
 }
-export function requirePlan(plan, { hashFile, readJson, allowUnwrittenDiscovery = false }) {
+export function requirePlan(plan, { hashFile, readJson, readBytes, git, allowUnwrittenDiscovery = false }) {
   assert.equal(plan.phase, 16);
   assert.match(plan.attemptId, /^attempt-[1-9]\d*$/);
   assert.equal(plan.testMode, "full");
@@ -94,7 +98,7 @@ export function requirePlan(plan, { hashFile, readJson, allowUnwrittenDiscovery 
     assert(["FAIL", "BLOCKED"].includes(failure.status));
     if (index > 0) assert.equal(failure.planHash, previous.planHash);
     assert(
-      previous.sourcePaths.every((file) => plan.sourcePaths.includes(file)),
+      previous.sourcePaths.every((file) => plan.sourcePaths.includes(file) || plan.deletedSources?.some(row=>row.path===file)),
       "RETRY_DROPPED_SOURCE",
     );
     assert(
@@ -103,6 +107,9 @@ export function requirePlan(plan, { hashFile, readJson, allowUnwrittenDiscovery 
     );
   }
   for (const item of plan.cases) {
+    assert.equal(item.command, item.testCaseId === "Phase016:mutation"
+      ? "node docs/phase-plans/verify-phase016.mjs --negative-controls"
+      : "npm run test -- chat-session sse replay cancel", "FROZEN_COMMAND");
     assert.equal(item.denominator, 1);
     assert(plan.sourcePaths.includes(item.inputPath));
     assert.equal(
@@ -125,6 +132,15 @@ export function requirePlan(plan, { hashFile, readJson, allowUnwrittenDiscovery 
     plan.discoverySnapshot.path,
     `docs/evidence/attempts/Phase016/${plan.attemptId}/frozen-discovery.json`,
   );
+  if (!allowUnwrittenDiscovery) assert.equal(hashFile(plan.discoverySnapshot.path),plan.discoverySnapshot.sha256,"DISCOVERY_HASH");
+  for(const row of plan.deletedSources??[]){
+    assert(!plan.sourcePaths.includes(row.path),"DELETED_SOURCE_PRESENT");
+    assert.equal(digest(git(["show",`${row.commit}:${row.path}`],null)),row.sha256,"DELETED_SOURCE_HASH");
+    assert.throws(()=>hashFile(row.path),"DELETED_SOURCE_REAPPEARED");
+  }
+  validatePhase016Recovery({plan,inputReceipt:readJson("docs/phase-plans/Phase016-inputs.json"),
+    recoveryBytes:readBytes(plan.recoveryReceipt.path),recoveryCommits:phase016RecoveredCommits,
+    git:args=>git(args,null)});
   return plan;
 }
 export function requireInputs(receipt, { hashFile, readJson, git }) {
@@ -145,7 +161,7 @@ export function requireInputs(receipt, { hashFile, readJson, git }) {
   assert.equal(previous.phase, 15);
   assert.equal(previous.metadataCommit, startCommit);
   assert.equal(previous.artifactCommit, checkpoint.artifactCommit);
-  assert.equal(git(["rev-parse", `${startCommit}^`]).trim(), previous.artifactCommit);
+  assert.equal(git(["merge-base", previous.artifactCommit, startCommit]).trim(), previous.artifactCommit);
   assert.equal(previous.evidencePath, checkpoint.evidencePath);
   assert.equal(previous.evidenceHash, checkpoint.evidenceHash);
   assert.equal(hashFile(previous.evidencePath), previous.evidenceHash);
@@ -188,6 +204,11 @@ export function requireVitest(
     "DUPLICATE_TEST",
   );
   assert.equal(raw.numTotalTests, rows.length, "TEST_COUNTER");
+  assert.equal(raw.numPassedTests, rows.filter(x=>x.status==="passed").length,"PASSED_COUNTER");
+  assert.equal(raw.numFailedTests, rows.filter(x=>x.status==="failed").length,"FAILED_COUNTER");
+  assert.equal(raw.numPendingTests, rows.filter(x=>["skipped","pending"].includes(x.status)).length,"PENDING_COUNTER");
+  assert.equal(raw.numTodoTests??0,rows.filter(x=>x.status==="todo").length,"TODO_COUNTER");
+  assert.equal(raw.numRuntimeErrors??0,0,"RUNTIME_ERRORS");
   if (expectedFailure) {
     assert.equal(raw.success, false, "NEGATIVE_UNEXPECTEDLY_GREEN");
     assert.equal(raw.numFailedTests, 1, "NEGATIVE_FAILURE_COUNT");
@@ -237,22 +258,19 @@ export function mutate(id, original) {
     return original.slice(0, index) + replacement + original.slice(index + search.length);
   };
   if (id === "terminal-cas")
-    // Remove the RUNNING CAS guard so two completions can both win (duplicate terminal).
     return once(
-      "if (updated.count !== 1) throw new Error(\"COMMAND_NOT_CLAIMABLE\");\n  await tx.commandIdempotency.updateMany({",
-      "await tx.commandIdempotency.updateMany({",
+      'where: { id: command.id, status: "RUNNING" },',
+      'where: { id: command.id },',
     );
-  if (id === "event-unique")
-    // Drop the (aggregateId, sequence) uniqueness so duplicate terminal events can be written.
-    return once(
-      "  @@unique([aggregateId, sequence])\n}",
-      "}",
-    );
+  if (id === "event-unique") {
+    const names=["ChatCommandEvent_aggregateId_sequence_key","ChatCommandEvent_one_accept"];
+    for(const name of names)assert.equal(original.split(`CREATE UNIQUE INDEX "${name}"`).length,2,"EVENT_UNIQUE_ANCHOR");
+    return original.split("\n").filter(line=>!names.some(name=>line.startsWith(`CREATE UNIQUE INDEX "${name}"`))).join("\n");
+  }
   if (id === "delta-persisted")
-    // Persist a delta row so the transient-delta invariant is broken.
     return once(
-      'return { events: rendered, cursor: last ? last.sequence : cursor?.toString() ?? null, windowExceeded: false };',
-      'return { events: rendered, cursor: last ? last.sequence : cursor?.toString() ?? null, windowExceeded: false } as never;',
+      'const notice = JSON.stringify({ kind: "delta", event });',
+      'await tx.outbox.create({data:{aggregateId:event.aggregateId,type:event.type,eventId:event.eventId,payloadHash:canonicalHash(event),payloadJson:event as unknown as Prisma.InputJsonObject}});\n  const notice = JSON.stringify({ kind: "delta", event });',
     );
   throw new Error("UNKNOWN_MUTATION");
 }
@@ -262,6 +280,7 @@ export function requireNegative(raw, definition, base) {
   assert.equal(target.file, definition.testFile, "NEGATIVE_WRONG_FILE");
   assert(target.fullName.includes(definition.pattern), "NEGATIVE_WRONG_ASSERTION");
   assert(target.failureMessages.length > 0, "NEGATIVE_NO_FAILURE");
+  assert(target.failureMessages.join("\n").includes(definition.witness),"NEGATIVE_BUSINESS_WITNESS");
   assert(
     !/Cannot find module|Failed to resolve import|Transform failed|SyntaxError:/.test(
       target.failureMessages.join("\n"),
@@ -280,6 +299,10 @@ export function requireCaseExecution(item, execution, npmCli) {
   assert.equal(execution.logicalCommand, item.command);
   assert.equal(execution.result.exitCode, 0);
   assert.equal(execution.result.timedOut, false);
+  if(item.testCaseId==="Phase016:mutation"){
+    assert.deepEqual(execution.result.arguments,["docs/phase-plans/verify-phase016.mjs","--negative-controls"],"MUTATION_COMMAND_NOT_EXECUTED");
+    assert.equal(execution.reportHash.length,64);return;
+  }
   const prefix = [npmCli, "run", "test", ...item.command.split(" ").slice(3)];
   assert.deepEqual(
     execution.result.arguments.slice(0, prefix.length),

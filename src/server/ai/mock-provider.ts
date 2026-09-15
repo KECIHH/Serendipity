@@ -101,6 +101,19 @@ export class MockAiProvider implements ProviderAdapter {
     const output =
       this.options.output ??
       `{"ok":true,"chunks":${this.options.chunkCount ?? 1},"prompt":"${request.system.length}"}${" ".repeat(0)}`;
+    const characters = Array.from(output);
+    const chunkSize = Math.max(1, Math.ceil(characters.length / (this.options.chunkCount ?? 3)));
+    for (let at = 0; at < characters.length; at += chunkSize) {
+      if (context.signal.aborted)
+        return {
+          ok: false,
+          errorCode: "CANCELLED",
+          retryable: false,
+          receivedByte: at > 0,
+          durationMs,
+        };
+      await context.onDelta?.(characters.slice(at, at + chunkSize).join(""));
+    }
     return {
       ok: true,
       output,

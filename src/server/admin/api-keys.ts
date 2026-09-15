@@ -31,6 +31,7 @@ import { createProviderKeyCandidateClient } from "@/server/ai/key-candidate-clie
 import { ProviderConfigKeyReferenceAdapter } from "@/server/ai/provider-key-reference-adapter";
 import { KeyLifecycleError, type KeyReferenceAdapter } from "@/server/admin/key-reference";
 import { createKeyRotationCoordinator } from "@/server/admin/key-rotation";
+import { assertTaskLease, type TaskLease } from "@/server/tasks/durable-task";
 import { AuditLogError, createAuditContext, type AuditRequestContext } from "@/server/audit-log";
 import { readAuthClock } from "@/server/auth/clock";
 import { assertCookieMutation, CookieRequestError, readAuthCookie } from "@/server/auth/cookie";
@@ -511,6 +512,39 @@ export function createAdminApiKeysService(options: AdminApiKeysServiceOptions = 
       } catch (error) {
         throw safeFailure(error);
       }
+    },
+    async resumeRotation(lease: TaskLease) {
+      return rotation.resume(lease, {
+        context: createAuditContext(),
+        authorize: async (tx) => {
+          await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtextextended('serendipity:admin-users:v1',0::bigint))`;
+          const task = await assertTaskLease(tx, lease);
+          const receipt =
+            task.adminReceiptId &&
+            (await tx.adminCommandReceipt.findUnique({ where: { id: task.adminReceiptId } }));
+          const authorization = (task.checkpointJson as Prisma.JsonObject).authorization as
+            | Prisma.JsonObject
+            | undefined;
+          if (
+            !receipt ||
+            receipt.operationId !== "post.admin.api-keys.id.rotate" ||
+            !authorization ||
+            authorization.ownerUserId !== receipt.ownerUserId
+          )
+            throw new KeyLifecycleError(401, "AUTH_REQUIRED");
+          await tx.$queryRaw`SELECT id FROM "User" WHERE id=${receipt.ownerUserId} FOR UPDATE`;
+          const actor = await tx.user.findUnique({ where: { id: receipt.ownerUserId } });
+          if (
+            !actor ||
+            actor.role !== "ADMIN" ||
+            actor.status !== "ACTIVE" ||
+            actor.sessionVersion !== authorization.sessionVersion
+          )
+            throw new KeyLifecycleError(401, "AUTH_REQUIRED");
+          await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtextextended('serendipity:api-keys:v1',0::bigint))`;
+          return { id: actor.id, email: actor.email };
+        },
+      });
     },
     async disconnect() {
       await Promise.all([client.$disconnect(), sessions.disconnect(), audited.disconnect()]);

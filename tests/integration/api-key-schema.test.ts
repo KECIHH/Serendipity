@@ -223,6 +223,15 @@ describe.skipIf(!process.env.PHASE010_FIXTURE_CONFIG)("api-key-schema PostgreSQL
         "PromptVersion",
         "ProviderConfigVersion",
       );
+    if (Prisma.dmmf.datamodel.models.some(({ name }) => name === "ChatCommand"))
+      expected.push(
+        "ChatCommand",
+        "ChatCommandEvent",
+        "CommandIdempotency",
+        "DurableTask",
+        "TaskPayload",
+        "Outbox",
+      );
     expected.sort();
     expect(Prisma.dmmf.datamodel.models.map((model) => model.name).sort()).toEqual(expected);
     await withSeedDatabase(async ({ app }) => {

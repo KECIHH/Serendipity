@@ -116,11 +116,13 @@ async function readBody(
   limit: number,
   signal: AbortSignal,
   onBytes: () => void,
+  onText?: (text: string) => Promise<void>,
 ): Promise<string> {
   if (!body) return "";
   const reader = body.getReader();
   const chunks: Uint8Array[] = [];
   let total = 0;
+  const decoder = new TextDecoder("utf-8", { fatal: true });
   const abort = () => {
     void reader.cancel().catch(() => {});
   };
@@ -135,7 +137,9 @@ async function readBody(
       total += value.byteLength;
       if (total > limit) throw new Error("RESPONSE_SIZE");
       chunks.push(value);
+      if (onText) await onText(decoder.decode(value, { stream: true }));
     }
+    if (onText) await onText(decoder.decode());
     return new TextDecoder("utf-8", { fatal: true }).decode(Buffer.concat(chunks));
   } finally {
     signal.removeEventListener("abort", abort);
@@ -326,6 +330,10 @@ export class DeepSeekProvider implements ProviderAdapter {
           endpoint = next;
           continue;
         }
+        const streaming =
+          response.headers.get("content-type")?.includes("text/event-stream") ?? false;
+        let pendingFrame = "",
+          streamDone = false;
         const body = await readBody(
           response.body,
           Math.min(this.options.maxResponseBytes ?? MAX_RESPONSE_BYTES, MAX_RESPONSE_BYTES),
@@ -333,6 +341,35 @@ export class DeepSeekProvider implements ProviderAdapter {
           () => {
             receivedByte = true;
           },
+          streaming && response.status >= 200 && response.status < 300 && context.onDelta
+            ? async (chunk) => {
+                pendingFrame += chunk;
+                for (;;) {
+                  const match = /\r?\n\r?\n/.exec(pendingFrame);
+                  if (!match) break;
+                  const frame = pendingFrame.slice(0, match.index);
+                  pendingFrame = pendingFrame.slice(match.index + match[0].length);
+                  const data = frame
+                    .split(/\r?\n/)
+                    .filter((line) => line.startsWith("data:"))
+                    .map((line) => line.slice(5).trimStart())
+                    .join("\n");
+                  if (!data) continue;
+                  if (data === "[DONE]") {
+                    streamDone = true;
+                    continue;
+                  }
+                  if (streamDone) throw new Error("INVALID_JSON");
+                  const decoded = JSON.parse(data);
+                  if (decoded.error) throw new Error("PROVIDER_RESPONSE");
+                  const text = decoded.choices?.[0]?.delta?.content;
+                  if (text !== undefined && text !== null) {
+                    if (typeof text !== "string") throw new Error("INVALID_JSON");
+                    await context.onDelta!(text);
+                  }
+                }
+              }
+            : undefined,
         );
         if (response.status < 200 || response.status >= 300)
           return failure(
@@ -342,15 +379,13 @@ export class DeepSeekProvider implements ProviderAdapter {
           );
         let parsed;
         try {
-          parsed = parseCompletion(
-            body,
-            response.headers.get("content-type")?.includes("text/event-stream") ?? false,
-          );
+          parsed = parseCompletion(body, streaming);
         } catch {
           return failure("PROVIDER_UNAVAILABLE", false, { internalCode: "INVALID_JSON" });
         }
         if (parsed.usage.outputTokens > request.maxOutputTokens)
           return failure("PROVIDER_UNAVAILABLE");
+        if (!streaming) await context.onDelta?.(parsed.output);
         return {
           ok: true,
           output: parsed.output,

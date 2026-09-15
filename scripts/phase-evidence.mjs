@@ -310,6 +310,45 @@ export function requirePriorCaseBinding(plan, priorPlan, { readJson, hashFile } 
     const current = plan.cases.find((item) => item.testCaseId === oldCase.testCaseId);
     assert(current, `PRIOR_PLAN_CASES: required case removed: ${oldCase.testCaseId}`);
     for (const key of ["command", "denominator"]) {
+      if (key === "command" && current.command !== oldCase.command && plan.phase === 16) {
+        const correction = plan.commandCorrection;
+        assert.equal(oldCase.testCaseId, "Phase016:mutation", "PRIOR_PLAN_COMMAND_CASE");
+        assert.equal(
+          oldCase.command,
+          "node docs/phase-plans/verify-phase016.mjs --all",
+          "PRIOR_PLAN_COMMAND_FROM",
+        );
+        assert.equal(
+          current.command,
+          "node docs/phase-plans/verify-phase016.mjs --negative-controls",
+          "PRIOR_PLAN_COMMAND_TO",
+        );
+        assert.equal(
+          correction?.priorPlanPath,
+          "docs/evidence/attempts/Phase016/attempt-1/frozen-plan.json",
+          "PRIOR_PLAN_COMMAND_PATH",
+        );
+        assert.equal(
+          correction.priorPlanHash,
+          "1e73cdc2377344313f2a399b1c810736cdb2931d8c6191ea02736210a22120da",
+          "PRIOR_PLAN_COMMAND_HASH",
+        );
+        assert.equal(
+          hashFile(correction.priorPlanPath),
+          correction.priorPlanHash,
+          "PRIOR_PLAN_COMMAND_BYTES",
+        );
+        assert.deepEqual(
+          readJson(correction.priorPlanPath),
+          priorPlan,
+          "PRIOR_PLAN_COMMAND_ORIGIN",
+        );
+        assert.equal(correction.testCaseId, oldCase.testCaseId);
+        assert.equal(correction.from, oldCase.command);
+        assert.equal(correction.to, current.command);
+        assert(typeof correction.reason === "string" && correction.reason.length > 0);
+        continue;
+      }
       assert.equal(
         current[key],
         oldCase[key],
@@ -320,6 +359,38 @@ export function requirePriorCaseBinding(plan, priorPlan, { readJson, hashFile } 
       (entry) =>
         entry.testCaseId === oldCase.testCaseId && entry.priorAttemptId === priorPlan.attemptId,
     );
+    if (
+      plan.phase === 16 &&
+      oldCase.testCaseId === "Phase016:owner-resume" &&
+      current.expected !== oldCase.expected
+    ) {
+      const correction = plan.expectationCorrection;
+      assert.equal(
+        correction?.priorPlanPath,
+        "docs/evidence/attempts/Phase016/attempt-1/frozen-plan.json",
+        "PRIOR_PLAN_EXPECTATION_CORRECTION_PATH",
+      );
+      assert.equal(
+        correction.priorPlanHash,
+        "1e73cdc2377344313f2a399b1c810736cdb2931d8c6191ea02736210a22120da",
+        "PRIOR_PLAN_EXPECTATION_CORRECTION_HASH",
+      );
+      assert.equal(hashFile(correction.priorPlanPath), correction.priorPlanHash);
+      assert.deepEqual(readJson(correction.priorPlanPath), priorPlan);
+      assert.equal(
+        oldCase.expected,
+        "Anonymous cookie and authenticated ownership resolve without accepting client-supplied ownership. Valid owners resume; forged cookies, body ownership claims, another user and ARCHIVED records reject with zero writes. FINALIZED accepts only a modification command and transitions MODIFIED in-transaction without creating the Phase060 confirmation artifacts.",
+      );
+      assert.equal(
+        current.expected,
+        "Current owner may resume, ARCHIVED rejects, FINALIZED accepts a command without changing record status or final pointers. Missing/expired/forged identity, body owner and revoked session cannot authorize writes.",
+      );
+      assert.equal(correction.originalExpected, oldCase.expected);
+      assert.equal(correction.currentExpected, current.expected);
+      assert(typeof correction.reason === "string" && correction.reason.length > 0);
+      assert.equal(current.inputPath, oldCase.inputPath);
+      continue;
+    }
     assert.equal(
       current.expected,
       extension ? oldCase.expected + extension.appendedExpected : oldCase.expected,

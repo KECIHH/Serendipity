@@ -45,6 +45,7 @@ export async function reserveUsage(
     now: number;
     costCap: string;
     signal: AbortSignal;
+    authorize?: (tx: Prisma.TransactionClient) => Promise<void>;
   },
 ) {
   const prefix = `daily:${snapshot.provider.providerId}:`;
@@ -53,6 +54,7 @@ export async function reserveUsage(
   const costCap = Prisma.Decimal.min(snapshot.provider.costLimitPerDay, input.costCap);
   return db.$transaction(
     async (tx) => {
+      await input.authorize?.(tx);
       await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtextextended(${prefix},0::bigint))`;
       if (input.signal.aborted) throw new Error("CANCELLED");
       const enabled = await tx.systemConfig.findUnique({ where: { key: "ai.calls.enabled" } });

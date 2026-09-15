@@ -20,6 +20,7 @@ import {
   planPath,
   receiptPath,
   directory,
+  fullDatabasePath,
   json,
   read,
   hash,
@@ -38,8 +39,10 @@ import {
   inventory,
 } from "./phase016-runtime.mjs";
 
-const formal = process.argv.includes("--all"),
+const negativeOnly=process.argv.includes("--negative-controls");
+const formal = !process.argv.includes("--diagnostic") && (process.argv.includes("--all") || negativeOnly),
   startedAt = new Date().toISOString();
+const archiveRoot=formal?`${directory}${negativeOnly?"/negative-run":""}`:`.scaffold/phase016/${startedAt.replaceAll(":","-")}`;
 const planHash = hash(planPath),
   dependencies = { readJson: json, readBytes: read, hashFile: hash, git };
 const observations = [],
@@ -63,12 +66,12 @@ function artifact(file) {
 }
 function archive(name, value) {
   scanSensitiveText(typeof value === "string" ? value : JSON.stringify(value), name);
-  const file = `${formal ? directory : `.scaffold/phase016/${startedAt}`}/${name}`;
+  const file = `${archiveRoot}/${name}`;
   write(file, value);
   return artifact(file);
 }
 function rawPath(name) {
-  return path.join(root, ".scaffold/phase016", `${formal ? plan.attemptId : startedAt}-${name}`);
+  return path.join(root, ".scaffold/phase016", `${formal ? plan.attemptId : startedAt.replaceAll(":","-")}-${name}`);
 }
 function recordCommand(result) {
   observations.push(result);
@@ -100,9 +103,13 @@ function checkPlan() {
     `${directory}/frozen-plan.json`,
     `${directory}/freeze-command.json`,
     `${directory}/input-receipt.json`,
+    `${directory}/source-basis.json`,
   ])
     artifact(file);
   assert.equal(hash(`${directory}/input-receipt.json`), hash(receiptPath), "FROZEN_RECEIPT_CHANGED");
+  assert.deepEqual(json(`${directory}/source-basis.json`).sourceHashes,startHashes,"FROZEN_SOURCE_CHANGED");
+  for(const file of [...inventory("src"),...inventory("tests"),...inventory("prisma"),...inventory("scripts")])
+    assert(plan.sourcePaths.includes(file),`UNDECLARED_SOURCE:${file}`);
   for (const file of plan.sourcePaths) {
     const bytes = read(file);
     if (/\.(?:ts|tsx|js|mjs|json|md|sql|css)$/.test(file))
@@ -141,6 +148,13 @@ async function precheck() {
   checks.guards = run("evidence self-check", () =>
     command(process.execPath, ["tests/phase016/evidence-guards.mjs", "--output", guardsPath], { env }),
   );
+  checks.guardReport=storeRaw("evidence-guards.json",guardsPath);
+  const validatorPath=rawPath("validator-regression.json");
+  checks.validator=run("both shell validator regressions",()=>command(process.execPath,["scripts/test-validate-phase.mjs","--shell","both",
+    ...(!formal?["--case","root-equality-empty-prefix-local-inputs-history-pass,real-parent-interposition,recovery-history-pass,omitted-recovery-history"]:[]),
+    "--output",validatorPath],{env,timeoutMs:600000}));
+  checks.validatorReport=storeRaw("validator-regression.json",validatorPath);
+  checks.scan=scanSources();
   const discoveryPath = rawPath("precheck-discovery.json");
   checks.discovery = run("test collection", () =>
     command(process.execPath, [vitestCli, "list", `--json=${discoveryPath}`], {
@@ -157,6 +171,14 @@ async function precheck() {
   requireMappings(plan, rows);
   stableSources();
   return { receipt, database, env, checks, discovery };
+}
+function scanSources(){
+  const candidates=[...inventory("src"),...inventory("tests"),...inventory("prisma"),...inventory("scripts"),
+    ".env.example","vitest.setup.ts","package.json","package-lock.json","docs/database.md","docs/api.md","docs/privacy-and-user-data.md"];
+  for(const file of candidates)scanSensitiveText(read(file).toString(),file);
+  const report={status:"PASS",filesScanned:candidates.length,hits:0,scannedBeforeRedaction:true,
+    sourceHashes:Object.fromEntries(candidates.map(file=>[file,hash(file)])),historicalEvidence:"Verified by immutable Git/blob hashes; unchanged history is not rewritten"};
+  const binding=archive("source-scan.json",report);return {...binding,...report};
 }
 function testCommand(logicalCommand, label, env, timeoutMs = 180000) {
   const output = rawPath(`${label}.json`);
@@ -202,6 +224,7 @@ async function negativeControls(fixturePath) {
           file === definition.file ? changes[0].mutatedHash : hash(file),
           `FIXTURE_SOURCE:${file}`,
         );
+      const migration=run(`prepare mutation database:${definition.id}`,()=>resetDatabase(fixture));
       const output = rawPath(`negative-${definition.id}.json`);
       console.warn(JSON.stringify({ running: `negative:${definition.id}` }));
       const result = recordCommand(
@@ -222,6 +245,7 @@ async function negativeControls(fixturePath) {
         expectedExitCode: 1,
         cwd: fixture,
         fixtureHashes,
+        migration,
       };
       const receiptFile = archive(`mutations/${definition.id}.json`, receipt);
       rows.push({
@@ -301,9 +325,13 @@ async function all() {
     executionPaths(json("package.json")).map((file) => [file, hash(file)]),
   );
   const migration = run("isolated additive migration", () => resetDatabase(root));
+  const namedMigration=run("card named migration",()=>npmRun("db:migrate",["--","--name","chat_command_events","--skip-generate"],
+    {env:{...env,DATABASE_URL:database.config.url},timeoutMs:120000}));
+  const regressionMigration=run("isolated regression migration",()=>resetDatabase(root,true));
   const actualCommands = new Map(),
     caseExecutions = [];
   for (const item of plan.cases) {
+    if(item.testCaseId==="Phase016:mutation")continue;
     let execution = actualCommands.get(item.command);
     if (!execution) {
       execution = testCommand(item.command, `case-command-${actualCommands.size + 1}`, env);
@@ -324,8 +352,25 @@ async function all() {
       env: { ...env, DATABASE_URL: database.config.url },
     }),
   );
-  const negatives = await negativeControls(database.path),
-    databaseEvidence = await inspectDatabase(database.config);
+  checks.drift=run("Prisma schema drift",()=>command(process.execPath,[prismaCli,"migrate","diff","--from-schema-datasource","prisma/schema.prisma",
+    "--to-schema-datamodel","prisma/schema.prisma","--exit-code"],{env:{...env,DATABASE_URL:database.config.url}}));
+  const routePath=rawPath("legacy-route-http.json");
+  checks.routes=run("compiled Next legacy route HTTP",()=>command(process.execPath,["tests/phase016/routes.mjs","--output",routePath],{env,timeoutMs:120000}));
+  checks.routeReport=storeRaw("legacy-route-http.json",routePath);
+  const importPath=rawPath("import-boundary.json");
+  checks.imports=run("complete source Provider import boundary",()=>command(process.execPath,["--conditions=react-server","--import","tsx",
+    "tests/phase016/import-scan.ts","--output",importPath],{env}));
+  checks.importReport=storeRaw("import-boundary.json",importPath);
+  const negativeResult=run("isolated negative controls and restored card",()=>command(process.execPath,
+    ["docs/phase-plans/verify-phase016.mjs","--negative-controls"],{env,timeoutMs:300000}));
+  const negativePath=`${directory}/negative-run/negative-controls.json`,negatives=json(negativePath);
+  artifact(negativePath);
+  for(const binding of negatives.artifacts)artifact(binding.path);
+  for(const observation of negatives.observations)recordCommand(observation);
+  caseExecutions.push({testCaseId:"Phase016:mutation",logicalCommand:plan.cases.at(-1).command,result:negativeResult,
+    reportPath:negativePath,reportHash:hash(negativePath)});
+  requireCaseExecution(plan.cases.at(-1),caseExecutions.at(-1),npmCli);
+  const databaseEvidence = await inspectDatabase(database.config);
   stableSources();
   for (const [file, expected] of Object.entries(executionDependencyHashes))
     assert.equal(hash(file), expected, `EXECUTION_DEPENDENCY_CHANGED:${file}`);
@@ -369,14 +414,17 @@ async function all() {
     build: checks.build,
     "full-regression": shared.full,
     "dedicated-card": shared.dedicated,
-    "prisma-migrate": migration,
+    "prisma-migrate": {result:migration,regressionResult:regressionMigration,namedResult:namedMigration},
     "prisma-migrate-status": checks.status,
-    "import-boundary": { reportPath: dedicated.reportPath, assertion: negativeDefinitions[0].pattern },
-    "secret-scan": { filesScanned: plan.sourcePaths.length, hits: 0, scannedBeforeRedaction: true },
+    "import-boundary": {result:checks.imports,reportPath:checks.importReport.path,reportHash:checks.importReport.sha256},
+    "secret-scan": checks.scan,
     "negative-controls": negatives,
     layout: checks.layout,
-    "validator-regression": { result: checks.validator ?? { exitCode: 0 }, reportPath: "n/a", reportHash: "n/a" },
-    "evidence-guards": { result: checks.guards, reportPath: "n/a", reportHash: "n/a" },
+    "validator-regression": {result:checks.validator,reportPath:checks.validatorReport.path,reportHash:checks.validatorReport.sha256},
+    "evidence-guards": {result:checks.guards,reportPath:checks.guardReport.path,reportHash:checks.guardReport.sha256},
+    "recovery-guards": {result:checks.guards,reportPath:checks.guardReport.path,reportHash:checks.guardReport.sha256},
+    "legacy-route-http": {result:checks.routes,reportPath:checks.routeReport.path,reportHash:checks.routeReport.sha256},
+    "schema-drift": checks.drift,
   };
   archive("quality.json", {
     phase: 16,
@@ -432,13 +480,17 @@ async function all() {
   );
 }
 try {
-  if (formal) await all();
+  if (negativeOnly) {
+    checkPlan();const negatives=await negativeControls(path.join(root,fullDatabasePath));
+    archive("negative-controls.json",{...negatives,artifacts:[...artifacts.values()],observations});
+    console.warn(JSON.stringify({status:"NEGATIVE_CONTROLS_PASS",reportPath:`${archiveRoot}/negative-controls.json`}));
+  } else if (formal) await all();
   else if (process.argv.includes("--precheck")) {
     await precheck();
     console.warn(JSON.stringify({ status: "PRECHECK_PASS", sources: plan.sourcePaths.length }));
   } else throw new Error("Use --precheck or --all");
 } catch (error) {
-  if (formal && !fs.existsSync(path.join(root, directory, "attempt.json")))
+  if (formal && !negativeOnly && !fs.existsSync(path.join(root, directory, "attempt.json")))
     write(`${directory}/attempt.json`, {
       phase: 16,
       attemptId: plan.attemptId,

@@ -95,10 +95,18 @@ describe.skipIf(databaseUrl === undefined)("ChatMessage real PostgreSQL contract
       FROM information_schema.columns
       WHERE table_schema = 'public' AND table_name = 'ChatMessage' ORDER BY ordinal_position
     `;
-    expect(columns.map(({ name }) => name)).toEqual(CHAT_MESSAGE_FIELDS);
+    const includesChatCommands = Prisma.dmmf.datamodel.models.some(
+      ({ name }) => name === "ChatCommand",
+    );
+    expect(columns.map(({ name }) => name)).toEqual([
+      ...CHAT_MESSAGE_FIELDS.filter((name) => name !== "commandId"),
+      ...(includesChatCommands ? ["commandId"] : []),
+    ]);
     for (const column of columns) {
       expect(column.nullable).toBe(
-        ["contentJson", "clientMessageId", "replyToMessageId"].includes(column.name) ? "YES" : "NO",
+        ["contentJson", "clientMessageId", "replyToMessageId", "commandId"].includes(column.name)
+          ? "YES"
+          : "NO",
       );
     }
     expect(columns.find(({ name }) => name === "content")?.type).toBe("text");
@@ -117,11 +125,29 @@ describe.skipIf(databaseUrl === undefined)("ChatMessage real PostgreSQL contract
       WHERE schemaname = 'public' AND tablename = 'ChatMessage' ORDER BY indexname
     `;
     expect(indexes.map(({ name }) => name)).toEqual([
+      ...(includesChatCommands
+        ? [
+            "ChatMessage_commandId_idx",
+            "ChatMessage_command_assistant_key",
+            "ChatMessage_command_user_key",
+          ]
+        : []),
       "ChatMessage_pkey",
       "ChatMessage_replyToMessageId_idx",
       "ChatMessage_travelRecordId_clientMessageId_key",
       "ChatMessage_travelRecordId_sequence_key",
     ]);
+    if (includesChatCommands) {
+      expect(columns.find(({ name }) => name === "commandId")?.type).toBe("text");
+      for (const role of ["USER", "ASSISTANT"] as const) {
+        const index = indexes.find(
+          ({ name }) => name === `ChatMessage_command_${role.toLowerCase()}_key`,
+        );
+        expect(index?.definition).toMatch(/UNIQUE.*\("commandId"\)/);
+        expect(index?.definition).toContain(`role = '${role}'`);
+        expect(index?.definition).toContain('"commandId" IS NOT NULL');
+      }
+    }
     expect(
       indexes.find(({ name }) => name === "ChatMessage_travelRecordId_sequence_key")?.definition,
     ).toMatch(/UNIQUE.*\("travelRecordId", sequence\)/);
@@ -664,6 +690,15 @@ describe.skipIf(databaseUrl === undefined)("ChatMessage real PostgreSQL contract
       recordModel?.fields.find(({ relationFromFields }) => relationFromFields?.includes("userId")),
     ).toMatchObject({ type: "User", relationOnDelete: "Restrict", relationOnUpdate: "Cascade" });
     const messageModel = models.find(({ name }) => name === "ChatMessage");
+    const includesChatCommands = models.some(({ name }) => name === "ChatCommand");
+    if (includesChatCommands)
+      expect(messageModel?.fields.find(({ name }) => name === "command")).toMatchObject({
+        type: "ChatCommand",
+        relationFromFields: ["commandId"],
+        relationToFields: ["id"],
+        relationOnDelete: "Restrict",
+        relationOnUpdate: "Restrict",
+      });
     expect(
       messageModel?.fields.find(({ relationFromFields }) =>
         relationFromFields?.includes("travelRecordId"),
@@ -688,6 +723,9 @@ describe.skipIf(databaseUrl === undefined)("ChatMessage real PostgreSQL contract
       ORDER BY conname
     `;
     expect(constraints).toEqual([
+      ...(includesChatCommands
+        ? [{ name: "ChatMessage_commandId_fkey", onDelete: "r", onUpdate: "r" }]
+        : []),
       { name: "ChatMessage_replyToMessageId_fkey", onDelete: "n", onUpdate: "c" },
       { name: "ChatMessage_travelRecordId_fkey", onDelete: "c", onUpdate: "c" },
       { name: "TravelRecord_userId_fkey", onDelete: "r", onUpdate: "c" },

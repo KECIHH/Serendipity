@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "phase": 16,
+  "phaseStartCommit": "cbd1c983d88d705be9e087694faaef4d6610abd6",
+  "observedHead": "5e5e303d87efd4424181c332c51067486f5bfb34",
+  "reason": "Resume the three existing ordinary Phase016 commits without rewriting user history. All changes remain in the current verification closure.",
+  "commits": [
+    {
+      "commit": "ad3079dae3fd0f26f1b028584dfc79547d1155af",
+      "parent": "cbd1c983d88d705be9e087694faaef4d6610abd6",
+      "tree": "e2fdbdd999b89037928f0959581e88cec548f84e",
+      "subject": "feat: Phase016 chat session command/event foundation - core implementation",
+      "files": [
+        {
+          "path": "docs/phase-plans/phase016-runtime.mjs",
+          "sha256": "a3858ce4ec038f277cd867f21a70ba91e08ae13445b24299d418d7aea5c2f72d"
+        },
+        {
+          "path": "package.json",
+          "sha256": "db52c2e009232e4fb811f6174ceac706fc85c402c046b2ed99cd8ee73c01a6ec"
+        },
+        {
+          "path": "prisma/migrations/20260914165140_chat_command_events/migration.sql",
+          "sha256": "4af9404c731770f189673fc4b1511817c136d2dd14a60615140211f5efc97e83"
+        },
+        {
+          "path": "prisma/schema.prisma",
+          "sha256": "716ab7e677f3408f27460f29f7d0eb7769bafb7fc2fec422cc34286278be8968"
+        },
+        {
+          "path": "scripts/worker.ts",
+          "sha256": "33b6a82d0c1ab139ec1bcf817287263bbf510e5662e3ac1e6a9acb9c10650a5e"
+        },
+        {
+          "path": "src/app/api/session/anonymous/route.ts",
+          "sha256": "a5e4d99c2f58fa79f7cf60dbde87d02cda5273ad068eef7dc305470084638351"
+        },
+        {
+          "path": "src/app/api/travel-records/[id]/commands/route.ts",
+          "sha256": "3633401d69dfe21bb507178c16fdde42d93f3200ea6b0a3e34e51bde7db5d929"
+        },
+        {
+          "path": "src/server/chat/command-service.ts",
+          "sha256": "58f43d63bf4527cce237e94ff2dfa68fb3cb312d1e426f276217d7687ade3147"
+        },
+        {
+          "path": "src/server/chat/command-state.ts",
+          "sha256": "a2e23dcf1a69a7ec97b87d0e15ce02317678578706b81ceb6c038361713461a6"
+        },
+        {
+          "path": "src/server/chat/error-codes.ts",
+          "sha256": "30aa667e13578a7c46c0e537e714b2a883c14214f6ef9e345386356a06e96153"
+        },
+        {
+          "path": "src/server/chat/owner.ts",
+          "sha256": "0576226d00a5c969db040e864b37691ec3e18ab89aa469ceafb438e7836463c1"
+        },
+        {
+          "path": "src/server/chat/process-task.ts",
+          "sha256": "0b99488a5df67fc62111125a57a8eab99e678a19da1b07484b489d7975ec2b30"
+        },
+        {
+          "path": "src/server/chat/sse.ts",
+          "sha256": "b1eaa66191fa7b13ca1b4c86fa45d8bf8609a4ce4c7d0c675cc594508c188b60"
+        },
+        {
+          "path": "src/server/tasks/dispatcher.ts",
+          "sha256": "1654186aa788dbdf3d39a20ec38abcb28fde8936bb1e27d6d5a98d4a4c77fc37"
+        },
+        {
+          "path": "src/server/tasks/durable-task.ts",
+          "sha256": "66fbbd89fa66550aec52b94d4688c48aabcdcb8f045e8e7e7163df93441f097c"
+        },
+        {
+          "path": "src/server/tasks/outbox.ts",
+          "sha256": "212262ad3ea242396de0c8bf072ca2ae9164b5926256ff55c97bb265949fa284"
+        },
+        {
+          "path": "tests/phase016/chat-session.test.ts",
+          "sha256": "3230df6b8058e0903224d7162f177f2437ec3d514d0447843a031fe3671f8505"
+        },
+        {
+          "path": "tests/phase016/fixture.ts",
+          "sha256": "b85d87ef5b42a31e99d696542c30306fae6528339bc00fca2314ff9c16116330"
+        }
+      ]
+    },
+    {
+      "commit": "c8cea8af11d121432e94e5af53dc01348e2c9547",
+      "parent": "ad3079dae3fd0f26f1b028584dfc79547d1155af",
+      "tree": "b841de4deb1e43b30f20a9f67a6010cf211cf33a",
+      "subject": "feat: Phase016 evidence helpers and verification runner",
+      "files": [
+        {
+          "path": "docs/phase-plans/phase016-evidence.mjs",
+          "sha256": "d833cce69a9de8801be42def5d7886bd0ef15d21755eecffecef9094c28daa54"
+        },
+        {
+          "path": "docs/phase-plans/verify-phase016.mjs",
+          "sha256": "d63b41663eca7e98edd7ba345141ea7fbb054900b42ce92231009382f54876c5"
+        }
+      ]
+    },
+    {
+      "commit": "5e5e303d87efd4424181c332c51067486f5bfb34",
+      "parent": "c8cea8af11d121432e94e5af53dc01348e2c9547",
+      "tree": "62e7d2de0c6a77f578447a3f27c119e83db25fc8",
+      "subject": "feat: Phase016 gate/metadata generation script",
+      "files": [
+        {
+          "path": "docs/phase-plans/complete-phase016.mjs",
+          "sha256": "4288eb196ae698eb34e7908d0150330d226168b372f495808b10c9044fbfe879"
+        }
+      ]
+    }
+  ]
+}

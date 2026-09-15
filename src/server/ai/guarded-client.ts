@@ -2,6 +2,8 @@ import "server-only";
 import { setTimeout as delay } from "node:timers/promises";
 import { Prisma, type PrismaClient, type AiUsageReservation } from "@prisma/client";
 import { env } from "@/lib/env";
+import { authorizeWorkerCommand } from "@/server/chat/ownership";
+import { assertTaskLease, type TaskLease } from "@/server/tasks/durable-task";
 import type { AiErrorCode, ProviderResult, ProviderRequest } from "@/lib/ai/provider";
 import {
   canonicalHash,
@@ -29,6 +31,9 @@ export interface GuardedAiCallInput {
   readonly traceId: string;
   readonly travelRecordId?: string;
   readonly signal?: AbortSignal;
+  readonly commandId?: string;
+  readonly attemptNo?: number;
+  readonly onDelta?: (text: string) => Promise<void>;
 }
 export type GuardedAiCallResult =
   | {
@@ -51,6 +56,7 @@ export type GuardedAiCallResult =
     };
 export type AiOwnerContext =
   | { readonly kind: "SYNTHETIC"; readonly runId: string }
+  | { readonly kind: "COMMAND"; readonly commandId: string; readonly lease: TaskLease }
   | { readonly kind: "USER"; readonly userId: string; readonly privateInputAllowed: boolean };
 export interface GuardedAiClientOptions extends ProviderRegistryOptions {
   readonly db: PrismaClient;
@@ -60,6 +66,28 @@ export interface GuardedAiClientOptions extends ProviderRegistryOptions {
   readonly maxOutputBytes?: number;
   readonly jitter?: () => number;
   readonly costCap?: string;
+  readonly validateOutput?: (output: unknown) => unknown;
+}
+
+async function authorizeCommandCall(
+  tx: Prisma.TransactionClient,
+  input: GuardedAiCallInput,
+  options: GuardedAiClientOptions,
+) {
+  if (options.owner?.kind !== "COMMAND") {
+    if (input.commandId) throw new Error("CONFIG_ERROR");
+    return;
+  }
+  const { command } = await authorizeWorkerCommand(tx, options.owner.commandId);
+  const task = await assertTaskLease(tx, options.owner.lease);
+  if (
+    input.commandId !== command.id ||
+    input.travelRecordId !== command.travelRecordId ||
+    input.traceId !== command.traceId ||
+    command.status !== "RUNNING" ||
+    task.commandId !== command.id
+  )
+    throw new Error("CONFIG_ERROR");
 }
 function safeError(
   errorCode: AiErrorCode,
@@ -89,7 +117,21 @@ async function authorizeOwner(
 ) {
   const owner = options.owner;
   if (!owner) throw new Error("CONFIG_ERROR");
-  if (owner.kind === "SYNTHETIC") {
+  if (owner.kind === "COMMAND") {
+    await options.db.$transaction((tx) => authorizeCommandCall(tx, input, options));
+    // The current bootstrap policy permits synthetic data only. Owning a command does
+    // not turn private production input into synthetic input or bypass that policy.
+    const [identity] = await options.db.$queryRaw<Array<{ name: string; marker: string | null }>>`
+      SELECT current_database() AS name,shobj_description(oid,'pg_database') AS marker
+      FROM pg_database WHERE datname=current_database()`;
+    if (
+      snapshot.planningPolicy.scope === "SYNTHETIC_ONLY" &&
+      (!/^phase\d{3}_disposable_[a-f0-9]{12}$/.test(identity.name) ||
+        identity.marker !==
+          `serendipity-phase${identity.name.slice(5, 8)}-disposable:${identity.name.slice(-12)}`)
+    )
+      throw new Error("CONFIG_ERROR");
+  } else if (owner.kind === "SYNTHETIC") {
     if (
       !/^phase\d{3}_disposable_[a-f0-9]{12}$/.test(owner.runId) ||
       snapshot.planningPolicy.scope !== "SYNTHETIC_ONLY"
@@ -154,8 +196,10 @@ async function markSubmitted(
   snapshot: PromptModelSnapshot,
   signal: AbortSignal,
   candidate?: GuardedKeyCandidate,
+  input?: GuardedAiCallInput,
 ) {
   await options.db.$transaction(async (tx) => {
+    if (input) await authorizeCommandCall(tx, input, options);
     await tx.$queryRaw`SELECT id FROM "SystemConfig" WHERE key='ai.calls.enabled' FOR SHARE`;
     if (signal.aborted) throw new Error("CANCELLED");
     if (
@@ -187,6 +231,7 @@ async function persist(
 ) {
   const success = result.ok && !internalCode;
   await options.db.$transaction(async (tx) => {
+    await authorizeCommandCall(tx, input, options);
     const actualTokens = result.ok
       ? result.usage.inputTokens + result.usage.outputTokens
       : undefined;
@@ -216,6 +261,7 @@ async function persist(
     await tx.aiOutputRecord.create({
       data: {
         travelRecordId: input.travelRecordId ?? null,
+        commandId: input.commandId ?? null,
         traceId: input.traceId,
         attemptNo: reservation.attemptNo,
         promptVersionId: snapshot.promptVersionId,
@@ -246,6 +292,44 @@ async function persist(
         inputTokens: result.ok ? result.usage.inputTokens : null,
         outputTokens: result.ok ? result.usage.outputTokens : null,
         durationMs: Math.max(0, Math.round(result.durationMs)),
+      },
+    });
+  });
+}
+
+async function persistAdmissionFailure(
+  options: GuardedAiClientOptions,
+  input: GuardedAiCallInput,
+  snapshot: PromptModelSnapshot,
+  request: ProviderRequest,
+  attemptNo: number,
+  errorCode: string,
+  started: number,
+) {
+  if (options.owner?.kind !== "COMMAND") return;
+  await options.db.$transaction(async (tx) => {
+    await authorizeCommandCall(tx, input, options);
+    await tx.aiOutputRecord.create({
+      data: {
+        commandId: input.commandId,
+        travelRecordId: input.travelRecordId,
+        traceId: input.traceId,
+        attemptNo,
+        promptVersionId: snapshot.promptVersionId,
+        activationRevision: snapshot.activationRevision,
+        planningPolicyVersionId: snapshot.planningPolicyVersionId,
+        deploymentId: snapshot.model.deploymentId,
+        deploymentConfigVersion: snapshot.model.deploymentConfigVersion,
+        providerId: snapshot.provider.providerId,
+        providerConfigVersion: snapshot.provider.configVersion,
+        inputHash: canonicalHash(request),
+        outputHash: canonicalHash({ errorCode }),
+        rawOutput: null,
+        parsedOk: false,
+        status: "FAILED",
+        errorCode,
+        errorMessage: "Provider attempt was not sent.",
+        durationMs: Math.max(0, Date.now() - started),
       },
     });
   });
@@ -304,9 +388,11 @@ async function executeGuardedAi(
     timer = setTimeout(abort, deadlineAt - Date.now());
     const context = { signal: controller.signal, deadlineAt };
     let mockAttempt = 0;
+    const firstAttempt = input.attemptNo ?? 1;
+    if (!Number.isSafeInteger(firstAttempt) || firstAttempt < 1) throw new Error("CONFIG_ERROR");
     for (
-      let attemptNo = 1;
-      attemptNo <= 1 + Math.min(1, snapshot.provider.maxRetries);
+      let attemptNo = firstAttempt;
+      attemptNo <= firstAttempt + Math.min(1, snapshot.provider.maxRetries);
       attemptNo++
     ) {
       if (controller.signal.aborted) return safeError(codeForAbort(), input.traceId);
@@ -325,19 +411,36 @@ async function executeGuardedAi(
       );
       await resolution.adapter.prepare?.(context);
       if (controller.signal.aborted) return safeError(codeForAbort(), input.traceId);
-      const reservation = await reserveUsage(options.db, snapshot, {
-        traceId: input.traceId,
-        attemptNo,
-        requestBytes,
-        now: options.clock?.() ?? Date.now(),
-        costCap: Prisma.Decimal.min(
-          String(env.AI_DAILY_COST_LIMIT),
-          options.costCap ?? String(env.AI_DAILY_COST_LIMIT),
-        ).toString(),
-        signal: controller.signal,
-      });
+      let reservation: AiUsageReservation;
       try {
-        await markSubmitted(options, reservation, snapshot, controller.signal, candidate);
+        reservation = await reserveUsage(options.db, snapshot, {
+          traceId: input.traceId,
+          attemptNo,
+          requestBytes,
+          now: options.clock?.() ?? Date.now(),
+          costCap: Prisma.Decimal.min(
+            String(env.AI_DAILY_COST_LIMIT),
+            options.costCap ?? String(env.AI_DAILY_COST_LIMIT),
+          ).toString(),
+          signal: controller.signal,
+          authorize: (tx) => authorizeCommandCall(tx, input, options),
+        });
+      } catch (error) {
+        const code = error instanceof Error ? error.message : "CONFIG_ERROR";
+        if (["COST_LIMIT", "RATE_LIMITED"].includes(code))
+          await persistAdmissionFailure(
+            options,
+            input,
+            snapshot,
+            request,
+            attemptNo,
+            code,
+            realStart,
+          );
+        throw error;
+      }
+      try {
+        await markSubmitted(options, reservation, snapshot, controller.signal, candidate, input);
       } catch (error) {
         await persist(
           options,
@@ -363,6 +466,18 @@ async function executeGuardedAi(
         result = await resolution.adapter.complete(request, {
           signal: controller.signal,
           deadlineAt,
+          onDelta: input.onDelta
+            ? async (text) => {
+                if (controller.signal.aborted) return;
+                if (
+                  typeof text !== "string" ||
+                  !text.isWellFormed() ||
+                  Buffer.byteLength(text) > 262144
+                )
+                  throw new Error("SCHEMA_MISMATCH");
+                await input.onDelta!(text);
+              }
+            : undefined,
         });
       } catch {
         result = {
@@ -396,6 +511,7 @@ async function executeGuardedAi(
           )
             throw new Error("SCHEMA_MISMATCH");
           output = parsePromptResponse(input.promptKey, result.output);
+          if (options.validateOutput) output = options.validateOutput(output);
         } catch (error) {
           internalCode =
             error instanceof Error && ["INVALID_JSON", "SCHEMA_MISMATCH"].includes(error.message)
@@ -406,12 +522,13 @@ async function executeGuardedAi(
       try {
         await persist(options, input, snapshot, reservation, request, result, internalCode);
       } catch {
-        await options.db.aiUsageReservation
-          .updateMany({
-            where: { id: reservation.id, status: "RESERVED" },
-            data: { status: "RECONCILING" },
-          })
-          .catch(() => {});
+        if (options.owner?.kind !== "COMMAND")
+          await options.db.aiUsageReservation
+            .updateMany({
+              where: { id: reservation.id, status: "RESERVED" },
+              data: { status: "RECONCILING" },
+            })
+            .catch(() => {});
         return safeError("PROVIDER_UNAVAILABLE", input.traceId);
       }
       if (result.ok)
@@ -429,7 +546,7 @@ async function executeGuardedAi(
               safeMessage: "AI call completed.",
             };
       const retry =
-        attemptNo === 1 &&
+        attemptNo === firstAttempt &&
         snapshot.provider.maxRetries > 0 &&
         result.retryable &&
         !result.receivedByte &&

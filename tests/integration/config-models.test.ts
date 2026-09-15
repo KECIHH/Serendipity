@@ -120,6 +120,9 @@ describe.skipIf(databaseUrl === undefined)("SystemConfig real PostgreSQL contrac
     const includesAiGovernance = Prisma.dmmf.datamodel.models.some(
       ({ name }) => name === "PromptDefinition",
     );
+    const includesChatCommands = Prisma.dmmf.datamodel.models.some(
+      ({ name }) => name === "ChatCommand",
+    );
     const includesRotationContract = readdirSync("prisma/migrations").some((name) =>
       /^\d{14}_key_rotation_contract$/.test(name),
     );
@@ -136,8 +139,10 @@ describe.skipIf(databaseUrl === undefined)("SystemConfig real PostgreSQL contrac
                 ? 3
                 : 2) +
         Number(includesRotationContract) +
-        Number(includesAiGovernance),
+        Number(includesAiGovernance) +
+        Number(includesChatCommands),
     );
+    if (includesChatCommands) expect(migrations[9].name).toBe("20260914165140_chat_command_events");
     if (includesAiGovernance) expect(migrations[8].name).toMatch(/^\d{14}_ai_governance$/);
     if (includesRotationContract)
       expect(migrations[7].name).toMatch(/^\d{14}_key_rotation_contract$/);
@@ -180,6 +185,15 @@ describe.skipIf(databaseUrl === undefined)("SystemConfig real PostgreSQL contrac
         "PromptModelActivation",
         "PromptVersion",
         "ProviderConfigVersion",
+      );
+    if (models.some(({ name }) => name === "ChatCommand"))
+      expectedModels.push(
+        "ChatCommand",
+        "ChatCommandEvent",
+        "CommandIdempotency",
+        "DurableTask",
+        "TaskPayload",
+        "Outbox",
       );
     expectedModels.sort();
     expect(models.map(({ name }) => name).sort()).toEqual(expectedModels);

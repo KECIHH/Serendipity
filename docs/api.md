@@ -561,3 +561,15 @@ API检查逐项验证100/100 operation映射、完整生成区、字段闭合/�
 ## Phase014 实现说明
 
 管理设置 GET/PATCH、Dashboard stats 与公开配置 GET 已实现；端点和 exact DTO 仍以本文件生成区为准。设置更新的 key 仅取 URL，expectedVersion 比较 revision，Idempotency-Replayed 响应头标识原安全结果重放。公开 ETag 只依赖公开投影；管理响应 no-store。Dashboard 逐 widget 返回 ok/error，前置迁移漂移或服务整体故障503。实现边界和新增配置流程见 [管理指南](admin.md) 与 [Phase014](phase014.md)。
+
+## Phase016 内部会话基础
+
+此卡提供内部 `issueOrReuseAnonymousSession`、`resolveExistingOwner`、`insertInitialPlanDraftCommand`、`createOrResumeChatCommand`、`cancelChatCommand`、`openChatEventStream` 与 `reconcileCommand`。公开路由仍按 registry 的 producer 阶段创建；`/api/chat`、`/api/nlu/parse`、`/api/nlu/extract`、`/api/plan/generate` 均为 404，匿名 bootstrap 和 commands 路由也尚未公开。
+
+接受服务只接收服务端验证的 owner、必填 travelRecordId、message、UUID clientMessageId、幂等请求头值和 traceId；拒绝多余 owner/status/sequence/commandId 字段。返回 exact `{travelRecordId,commandId,userMessageId,replayed,ownerType}`。同 owner+kind+幂等键哈希及相同请求重放原 IDs，不同请求 409；不存在与越权统一 404。登录会话优先且在事务内重验撤销、sessionVersion 和用户状态，匿名 helper 只复用有效签名身份，业务接受不隐式签发 Cookie。
+
+持久 SSE 信封固定九键 `eventId/sequence/aggregateId/traceId/type/status/occurredAt/payloadVersion/payload`；id 行等于 eventId。接受事件的 status 记录提交时的 PENDING，唯一终态另写 assistant.completed/command.failed/command.cancelled。持久终态 payload 包含 conversationCursor；成功消息内容必须通过封闭 MESSAGE/NEEDS_INFORMATION schema。取消与完成只允许一个数据库胜者，输方重放实际终态。
+
+`Last-Event-ID` 查回所属 aggregate 的持久 sequence；与 afterSequence 同时提供时必须一致。非法/越权游标拒绝，丢失或过期窗口内部原因 REPLAY_WINDOW_EXCEEDED，内部适配器返回 `410 {error:{code:"RESYNC_REQUIRED",action:"RECONCILE_MESSAGES"}}`，未来 HTTP producer 负责包装统一 API 信封。增量按 sequence 排序并核对连续性，最多 1000 帧/256 KiB/24 小时；连接最多 60 秒，内部调用只能缩短时限。对账返回持久消息、真实 command.status 及最后持久 checkpoint。
+
+delta 的 payload 只含 commandId/deltaIndex/text，经受控 Provider 的真实分块产生。它不推进持久 checkpoint；断线只关闭传输，原任务继续，重连先重放持久事件再对账。当前内部验证链路使用已有 conversation.modify schema 的 explanation 作为 MESSAGE，不执行 mutation、NLU 或 Planner；仍受 SYNTHETIC_ONLY 治理政策约束。

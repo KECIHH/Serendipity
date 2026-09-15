@@ -1,0 +1,94 @@
+{
+  "phase": 16,
+  "attemptId": "attempt-4",
+  "planPath": "docs/phase-plans/Phase016.json",
+  "planHash": "9eee72c2491a097ba2a02c1f7e12893fc799721663dd668ae74b70262cf6b4e2",
+  "status": "PASS",
+  "createdAt": "2026-09-15T13:15:13.732Z",
+  "policy": {
+    "path": "docs/development-execution-policy.md",
+    "sha256": "58b4eaef7fda2a45c69e41feb766d04893d44a7092117410d7e707bc5e7b9320",
+    "section": "2",
+    "requirement": "历史原始证据的空白问题按精确路径及既有规则处理，不改写其字节。"
+  },
+  "preserved": {
+    "path": "docs/evidence/attempts/Phase016/attempt-1/freeze-command.json",
+    "sha256": "e479f87cef0b100bf183e509a60dffae1b31ec5da3febd5a906a64cd3519ae25",
+    "byteLength": 621,
+    "originalBytesUnchanged": true,
+    "inCurrentSourcePaths": false
+  },
+  "scopedAttributes": {
+    "path": "docs/evidence/attempts/Phase016/attempt-1/.gitattributes",
+    "sha256": "2e46a6823be863ed131cca62fff4eebfdaa6e6ae8aadfa66f77818f5dfc76071",
+    "onlyAffectedPath": "docs/evidence/attempts/Phase016/attempt-1/freeze-command.json",
+    "inCurrentSourcePaths": false,
+    "normalCheck": "git diff --cached --check",
+    "noLocalGitConfigRequired": true
+  },
+  "previousDiagnostic": {
+    "path": "docs/evidence/attempts/Phase016/attempt-4/archival-byte-check.json",
+    "sha256": "d61096bc5f8259c20d2e06c3d70290f08d211c7cb14767ea4896e82700cf8089",
+    "purpose": "Prior isolated command-scoped whitespace checks; the versioned exact-path attribute makes the ordinary validator command reproducible."
+  },
+  "isolatedFixture": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\archive-attributes-99rF8j",
+  "checks": [
+    {
+      "id": "default-all-paths-check-accepts-preserved-bytes",
+      "args": [
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "id": "reject-trailing-space",
+      "args": [
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exitCode": 2,
+      "stdout": "docs/evidence/attempts/Phase016/attempt-1/freeze-command.json:1: trailing whitespace.\n+text \r\n",
+      "stderr": ""
+    },
+    {
+      "id": "reject-blank-final-line",
+      "args": [
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exitCode": 2,
+      "stdout": "docs/evidence/attempts/Phase016/attempt-1/freeze-command.json:2: new blank line at EOF.\n",
+      "stderr": ""
+    },
+    {
+      "id": "reject-space-before-tab",
+      "args": [
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exitCode": 2,
+      "stdout": "docs/evidence/attempts/Phase016/attempt-1/freeze-command.json:1: space before tab in indent.\n+ \ttext\r\n",
+      "stderr": ""
+    },
+    {
+      "id": "unlisted-neighbor-remains-subject-to-normal-crlf-check",
+      "args": [
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exitCode": 2,
+      "stdout": "docs/evidence/attempts/Phase016/attempt-1/unlisted.json:1: trailing whitespace.\n+{}\r\n",
+      "stderr": ""
+    }
+  ],
+  "currentSourcesUnchanged": 2890,
+  "classification": "Archival handling of the original failed-attempt record only; root attributes, all frozen sources, plan and product reports are unchanged."
+}
