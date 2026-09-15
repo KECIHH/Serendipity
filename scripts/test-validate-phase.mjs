@@ -729,6 +729,51 @@ try {
     writeMetadata(root, second, { recovery: [first.artifact, first.metadata, recovery] });
     validate(root, "recovery-history-pass");
   });
+  runCase("large-blob-batch-pass", () => {
+    const root = newFixture("large-blob-batch-pass");
+    const files = Array.from(
+      { length: 9 },
+      (_, index) => `docs/evidence/attempts/Phase001/protocol-fixture/large-${index}.bin`,
+    );
+    const info = writeArtifact(root, "large-batch-fixture", (candidate) => {
+      for (const [index, file] of files.entries()) {
+        const bytes = Buffer.alloc(4 * 1024 * 1024, index + 1);
+        bytes[0] = 0;
+        write(candidate, file, bytes);
+      }
+      mutateJson(candidate, planPath, (plan) => {
+        plan.sourcePaths.push(...files);
+      });
+      const plan = json(candidate, planPath);
+      for (const file of [fixtureOutput, fixtureReview])
+        mutateJson(candidate, file, (report) => {
+          report.planHash = hash(candidate, planPath);
+          report.sourceHashes = Object.fromEntries(
+            plan.sourcePaths.map((source) => [source, hash(candidate, source)]),
+          );
+        });
+      mutateJson(candidate, fixtureReview, (review) => {
+        review.reportHashes[fixtureOutput] = hash(candidate, fixtureOutput);
+      });
+    });
+    writeMetadata(root, info, {
+      changeGate: (gate) => {
+        gate.inputs.push(...files.map((file) => ({ path: file, sha256: hash(root, file) })));
+      },
+    });
+    validate(root, "large-blob-batch-pass");
+    // An input mismatch after the first output batch must still be rejected.
+    mutateJson(root, gatePath, (gate) => {
+      gate.inputs.find((entry) => entry.path === files.at(-1)).sha256 = "0".repeat(64);
+    });
+    mutateJson(root, runPath, (state) => {
+      state.checkpoints[0].evidenceHash = hash(root, gatePath);
+      state.currentLayoutPhaseSeal.evidenceHash = hash(root, gatePath);
+    });
+    git(root, ["add", gatePath, runPath]);
+    git(root, ["commit", "--amend", "--no-edit"]);
+    validate(root, "large-blob-batch-late-hash-rejected", "INPUT_HASH");
+  });
   runCase("omitted-recovery-history", () => {
     const root = newFixture("omitted-recovery-history");
     writeMetadata(root, writeArtifact(root, "unsealed-fixture"));

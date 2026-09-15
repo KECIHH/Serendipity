@@ -1,0 +1,25 @@
+{
+  "head": "cdbf24c6181e8a4ed9d9a6517b8e6ed084dacdaf",
+  "command": "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/validate-phase.ps1 -CompletedThrough 16 -Strict -Json",
+  "executable": "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+  "arguments": [
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "scripts/validate-phase.ps1",
+    "-CompletedThrough",
+    "16",
+    "-Strict",
+    "-Json"
+  ],
+  "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+  "startedAt": "2026-09-15T13:34:05.936Z",
+  "finishedAt": "2026-09-15T13:34:33.714Z",
+  "exitCode": 1,
+  "signal": null,
+  "timedOut": false,
+  "stdout": "",
+  "stderr": "{\n  \"status\": \"FAIL\",\n  \"error\": \"spawnSync git ENOBUFS\",\n  \"networkPushEvaluated\": false\n}\n",
+  "durationMs": 27778
+}

@@ -18,6 +18,7 @@ import {
   mutate,
   executionPaths,
   requireCaseExecution,
+  requireSealRecovery,
 } from "./phase016-evidence.mjs";
 import {
   root,
@@ -264,6 +265,10 @@ function audit(withReview = true) {
 
 function metadata() {
   const { receipt, reports, quality, review } = audit(true);
+  const sealRecovery = requireSealRecovery(plan, dependencies);
+  if (sealRecovery)
+    for (const file of sealRecovery.metadataFiles)
+      assert.equal(hash(file.path), file.sha256, `UNSEALED_METADATA_CHANGED:${file.path}`);
   assert(review, "INDEPENDENT_REVIEW_REQUIRED");
   const artifactCommit = git(["rev-parse", "HEAD"]).trim();
   assert.equal(
@@ -340,6 +345,7 @@ function metadata() {
       reviewReportPath: reviewPath,
       reviewReportHash: hash(reviewPath),
       recoveryCommits: recovery,
+      ...(sealRecovery ? { sealRecovery } : {}),
       originalThreshold: 7,
       automatedThreshold: 7,
       waived: false,
@@ -371,14 +377,18 @@ function metadata() {
     },
   };
   scanSensitiveText(JSON.stringify(gate), "final Gate before archival");
-  write(gatePath, gate);
+  write(gatePath, gate, !sealRecovery);
   const checkpoint = {
     phase: 16,
     artifactCommit,
     evidencePath: gatePath,
     evidenceHash: hash(gatePath),
   };
-  const state = json("docs/roadmap-run.json");
+  const state = sealRecovery
+    ? JSON.parse(git(["show", `${receipt.phaseStartCommit}:docs/roadmap-run.json`]))
+    : json("docs/roadmap-run.json");
+  assert.equal(state.completedThrough, 15);
+  assert.equal(state.currentPhase, 16);
   state.completedThrough = 16;
   state.currentPhase = 17;
   state.nextPhaseExecutionAuthorized = false;
@@ -386,7 +396,9 @@ function metadata() {
   state.currentLayoutPhaseSeal = checkpoint;
   state.checkpoints.push(checkpoint);
   write("docs/roadmap-run.json", state, false);
-  const log = read("docs/phase-completion-log.md").toString().trimEnd();
+  const log = (sealRecovery
+    ? git(["show", `${receipt.phaseStartCommit}:docs/phase-completion-log.md`])
+    : read("docs/phase-completion-log.md").toString()).trimEnd();
   assert(!log.includes("| Phase016 |"));
   write(
     "docs/phase-completion-log.md",

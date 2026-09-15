@@ -262,12 +262,13 @@ export function validatePhase({
       (key) => !blobCache.has(key),
     );
     if (keys.length === 0) return;
-    const bytes = git(["cat-file", "--batch"], `${keys.join("\n")}\n`);
-    let offset = 0;
-    for (const key of keys) {
-      const newline = bytes.indexOf(10, offset);
-      ensure(newline >= offset, "GIT_BLOB", `Missing batch header: ${key}`);
-      const header = bytes.subarray(offset, newline).toString("utf8").split(" ");
+    const headers = git(["cat-file", "--batch-check"], `${keys.join("\n")}\n`)
+      .toString("utf8")
+      .trimEnd()
+      .split("\n");
+    ensure(headers.length === keys.length, "GIT_BLOB", "Incomplete batch size inventory");
+    const entries = keys.map((key, index) => {
+      const header = headers[index].split(" ");
       ensure(
         header.length === 3 && header[1] === "blob",
         "GIT_BLOB",
@@ -275,11 +276,51 @@ export function validatePhase({
       );
       const size = Number(header[2]);
       ensure(Number.isSafeInteger(size) && size >= 0, "GIT_BLOB", `Invalid blob length: ${key}`);
-      offset = newline + 1;
-      blobCache.set(key, bytes.subarray(offset, offset + size));
-      offset += size + 1;
+      return { key, header: headers[index], size };
+    });
+    // Bound aggregate output independently of the number of historical evidence files.
+    const batchLimit = 8 * 1024 * 1024;
+    let batch = [],
+      batchBytes = 0;
+    const flush = () => {
+      if (batch.length === 0) return;
+      const bytes = git(["cat-file", "--batch"], `${batch.map((entry) => entry.key).join("\n")}\n`);
+      let offset = 0;
+      for (const entry of batch) {
+        const newline = bytes.indexOf(10, offset);
+        ensure(newline >= offset, "GIT_BLOB", `Missing batch header: ${entry.key}`);
+        same(
+          bytes.subarray(offset, newline).toString("utf8"),
+          entry.header,
+          "GIT_BLOB",
+          `Changed batch header: ${entry.key}`,
+        );
+        offset = newline + 1;
+        ensure(
+          offset + entry.size < bytes.length && bytes[offset + entry.size] === 10,
+          "GIT_BLOB",
+          `Truncated batch data: ${entry.key}`,
+        );
+        blobCache.set(entry.key, bytes.subarray(offset, offset + entry.size));
+        offset += entry.size + 1;
+      }
+      ensure(offset === bytes.length, "GIT_BLOB", "Unexpected trailing batch data");
+      batch = [];
+      batchBytes = 0;
+    };
+    for (const entry of entries) {
+      const bytes = entry.size + Buffer.byteLength(entry.header) + 2;
+      if (batchBytes + bytes > batchLimit) flush();
+      if (bytes > batchLimit) {
+        const value = git(["cat-file", "blob", entry.key]);
+        same(value.length, entry.size, "GIT_BLOB", `Changed blob length: ${entry.key}`);
+        blobCache.set(entry.key, value);
+      } else {
+        batch.push(entry);
+        batchBytes += bytes;
+      }
     }
-    ensure(offset === bytes.length, "GIT_BLOB", "Unexpected trailing batch data");
+    flush();
   }
   const blobJson = (commit, relative) => parseJson(blob(commit, relative));
   const commitId = (value, label) => {

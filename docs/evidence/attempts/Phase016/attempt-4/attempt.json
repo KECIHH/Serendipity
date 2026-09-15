@@ -1,0 +1,57 @@
+{
+  "phase": 16,
+  "attemptId": "attempt-4",
+  "status": "FAIL",
+  "stage": "DUAL_SHELL_SEAL",
+  "planHash": "9eee72c2491a097ba2a02c1f7e12893fc799721663dd668ae74b70262cf6b4e2",
+  "observedAt": "2026-09-15T13:54:55.323Z",
+  "artifactCommit": "b1fb765aefd30c478ab408db87d273d406edb890",
+  "metadataCommit": "cdbf24c6181e8a4ed9d9a6517b8e6ed084dacdaf",
+  "error": "spawnSync git ENOBUFS",
+  "reason": "Unbounded git cat-file --batch output exceeded the validator's 32 MiB synchronous output buffer.",
+  "sealRecords": [
+    {
+      "shell": "ps51",
+      "path": "docs/evidence/attempts/Phase016/attempt-4/seal-ps51.json",
+      "sha256": "24aa804b0b4b6f956c5384bf4c5fad5d913f1aebe415032f7e23fa61787e860c"
+    },
+    {
+      "shell": "ps7",
+      "path": "docs/evidence/attempts/Phase016/attempt-4/seal-ps7.json",
+      "sha256": "20ef064778ae6ff10f549784430fc8fad5b9b32d0c818d373ce693d32e244d8e"
+    }
+  ],
+  "metadataFiles": [
+    {
+      "path": "docs/evidence/Phase016-gate.json",
+      "archivedPath": "docs/evidence/attempts/Phase016/attempt-4/unsealed-gate.json",
+      "sha256": "b0d6aa2997b13db1646cf5205721a273578ad20a5922142ad58556917175d354"
+    },
+    {
+      "path": "docs/roadmap-run.json",
+      "archivedPath": "docs/evidence/attempts/Phase016/attempt-4/unsealed-state.json",
+      "sha256": "8bcd9b41f7cb879816a7f2e5e9f13b6084f221d11c51ca268b221914d743c493"
+    },
+    {
+      "path": "docs/phase-completion-log.md",
+      "archivedPath": "docs/evidence/attempts/Phase016/attempt-4/unsealed-log.md",
+      "sha256": "f415c5b752e703e22919f8c33deeda85bb824ba96cc36d1eac7e1457ec51ade5"
+    }
+  ],
+  "productChecks": {
+    "status": "PASS",
+    "path": "docs/evidence/attempts/Phase016/attempt-4/quality.json",
+    "sha256": "120a97d517fb04968673dca705f4e6274de7d33c256f5d7027ab4bc3938877d4"
+  },
+  "independentReview": {
+    "decision": "PASS",
+    "path": "docs/evidence/attempts/Phase016/attempt-4/review.json",
+    "sha256": "507c8d03d6608753eb4e6ad8a89f41f0650e0552d65a0b3778d62dcda6c5a664"
+  },
+  "publication": {
+    "pushed": false,
+    "sealed": false,
+    "remoteMetadataStillPhase015": true
+  },
+  "recovery": "Preserve both commits and all raw records. Change the validator and create a new attempt with complete verification; no cross-attempt product result reuse."
+}

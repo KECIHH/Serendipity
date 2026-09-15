@@ -1,0 +1,190 @@
+{
+  "phase": 16,
+  "status": "PASS",
+  "caseCount": 43,
+  "results": [
+    {
+      "name": "unsealed checkpoint recovery binds original bytes and both failed shells",
+      "status": "PASS"
+    },
+    {
+      "name": "wrong seal failure hash",
+      "status": "PASS"
+    },
+    {
+      "name": "wrong unsealed metadata parent",
+      "status": "PASS"
+    },
+    {
+      "name": "omitted unsealed metadata path",
+      "status": "PASS"
+    },
+    {
+      "name": "changed unsealed archive hash",
+      "status": "PASS"
+    },
+    {
+      "name": "unrelated unsealed metadata path",
+      "status": "PASS"
+    },
+    {
+      "name": "missing second failed shell record",
+      "status": "PASS"
+    },
+    {
+      "name": "successful shell cannot be claimed as failed recovery",
+      "status": "PASS"
+    },
+    {
+      "name": "current plan and restored baseline input binding",
+      "status": "PASS"
+    },
+    {
+      "name": "current assertion and collection maps",
+      "status": "PASS"
+    },
+    {
+      "name": "missing required local input",
+      "status": "PASS"
+    },
+    {
+      "name": "wrong previous metadata commit",
+      "status": "PASS"
+    },
+    {
+      "name": "removed frozen case",
+      "status": "PASS"
+    },
+    {
+      "name": "changed previous frozen command",
+      "status": "PASS"
+    },
+    {
+      "name": "omitted assertion despite overall passing summary",
+      "status": "PASS"
+    },
+    {
+      "name": "tampered aggregate count",
+      "status": "PASS"
+    },
+    {
+      "name": "duplicate raw assertion",
+      "status": "PASS"
+    },
+    {
+      "name": "silently skipped assertion",
+      "status": "PASS"
+    },
+    {
+      "name": "foreign report source",
+      "status": "PASS"
+    },
+    {
+      "name": "missing discovery leaf",
+      "status": "PASS"
+    },
+    {
+      "name": "exact report bindings",
+      "status": "PASS"
+    },
+    {
+      "name": "stale report source",
+      "status": "PASS"
+    },
+    {
+      "name": "unexecuted command alias",
+      "status": "PASS"
+    },
+    {
+      "name": "literal mutation filters and unique source anchors",
+      "status": "PASS"
+    },
+    {
+      "name": "wrong mutation failed assertion",
+      "status": "PASS"
+    },
+    {
+      "name": "mutation import failure is not a business witness",
+      "status": "PASS"
+    },
+    {
+      "name": "reviewed source placeholders require exact path and bytes",
+      "status": "PASS"
+    },
+    {
+      "name": "changed placeholder bytes do not inherit a scan exception",
+      "status": "PASS"
+    },
+    {
+      "name": "output cannot reuse a source scan exception",
+      "status": "PASS"
+    },
+    {
+      "name": "generated run secrets are never exempt",
+      "status": "PASS"
+    },
+    {
+      "name": "prior frozen cases and exact documented corrections",
+      "status": "PASS"
+    },
+    {
+      "name": "missing command correction cannot change a frozen command",
+      "status": "PASS"
+    },
+    {
+      "name": "missing expectation correction cannot change a frozen requirement",
+      "status": "PASS"
+    },
+    {
+      "name": "unrelated requirement cannot inherit the narrow correction",
+      "status": "PASS"
+    },
+    {
+      "name": "exact existing recovery history is accepted",
+      "status": "PASS"
+    },
+    {
+      "name": "missing recovered commit",
+      "status": "PASS"
+    },
+    {
+      "name": "forged recovered commit",
+      "status": "PASS"
+    },
+    {
+      "name": "wrong parent",
+      "status": "PASS"
+    },
+    {
+      "name": "wrong tree",
+      "status": "PASS"
+    },
+    {
+      "name": "forged subject",
+      "status": "PASS"
+    },
+    {
+      "name": "omitted changed file",
+      "status": "PASS"
+    },
+    {
+      "name": "tampered recovered blob",
+      "status": "PASS"
+    },
+    {
+      "name": "wrong recovery ancestry",
+      "status": "PASS"
+    }
+  ],
+  "testedSourceHashes": {
+    "docs/phase-plans/phase016-evidence.mjs": "06ea29397f1ca1d7511600053eedf8c2bb8928c9e6483c9b6cf0177dd056b8f6",
+    "docs/phase-plans/phase016-runtime.mjs": "394d3d03099ffc92eca119d7935727c71b3925b2f36d4c646a50b7947a138f12",
+    "docs/phase-plans/verify-phase016.mjs": "76163ededc26d5f59af9c9b2a828784a96d551eaa94c39c7b253494fe9e92b4f",
+    "docs/phase-plans/complete-phase016.mjs": "84c4e1aca14fe2af794162bbf60ae01daccc21b416cbb96a90270c1edd2c18ae",
+    "scripts/phase-evidence.mjs": "ba47a0256d9222c8b82c09cf4a4f1b9cdec99fb9070f5026845c77eb06b2d9bc",
+    "scripts/phase016-recovery.mjs": "cb2daff903f20bba4147563771b0414c26f69268a9400d6cc1302b4a33e8d711",
+    "tests/phase016/evidence-guards.mjs": "3e7a46cc9861d99546bedf7bd1cefd000ae27988789f8f338b6b72ec93de93c9"
+  },
+  "startedAt": "2026-09-15T14:02:19.302Z",
+  "finishedAt": "2026-09-15T14:02:23.709Z"
+}

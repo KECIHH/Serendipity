@@ -1,0 +1,160 @@
+{
+  "stateVersion": 2,
+  "layoutVersion": 2,
+  "roadmapId": "traceme-roadmap-v2-new-build",
+  "executionMode": "NEW_BUILD",
+  "operatorMode": "AGENT_ONLY_AUTOMATED_NEW_BUILD",
+  "pathsRelativeTo": "repositoryRoot",
+  "repositoryRoot": ".",
+  "projectRoot": ".",
+  "roadmapRoot": "Serendipity · 际遇",
+  "completedThrough": 16,
+  "currentPhase": 17,
+  "progressSource": "CURRENT_LAYOUT_CHECKPOINT",
+  "nextPhaseExecutionAuthorized": false,
+  "currentLayoutPhaseSeal": {
+    "phase": 16,
+    "artifactCommit": "b1fb765aefd30c478ab408db87d273d406edb890",
+    "evidencePath": "docs/evidence/Phase016-gate.json",
+    "evidenceHash": "b0d6aa2997b13db1646cf5205721a273578ad20a5922142ad58556917175d354"
+  },
+  "historicalCheckpoint": {
+    "phase": 0,
+    "appliesToLayoutVersion": 1,
+    "baselineCommit": "af3169f81cce66981d4e67a3c42a8fc6c405f77e",
+    "artifactCommit": "ab7f2b957b0cd4ba142c46d64643945ceabc8684",
+    "metadataCommit": "919b82cfbd9f70622a11b60d119f070f50248c93",
+    "projectGitPrefix": "Serendipity · 际遇/project/",
+    "archiveRoot": "docs/history/Phase000",
+    "runStatePath": "docs/history/Phase000/docs/roadmap-run.json",
+    "evidencePath": "docs/history/Phase000/docs/evidence/Phase000-gate.json",
+    "evidenceHash": "a5de7e87d888da777e61eb0421c6430e339c95a39cdcff20e1ecae005866c3d3"
+  },
+  "nextRun": {
+    "startPhase": 1,
+    "requiresRootAwareRunner": true,
+    "baselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+    "baselinePolicy": "CAPTURE_SYNCED_HEAD_AT_AUTHORIZED_PHASE_START",
+    "pinnedInputPolicy": "LOCAL_FILES_WITH_RECORDED_SHA256",
+    "legacyValidator": "HISTORICAL_LAYOUT_ONLY",
+    "admissionContract": "docs/agent-execution-contract.md"
+  },
+  "baselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+  "executionBaselineCommit": "10d5f9554ade36fc94cdbf6c2c9fdff5582e28da",
+  "manifestHash": "497689843e4576c5f8e8a6636d29b04023ac997309a3ffab83cc67d90ea7bf3e",
+  "contractHashes": {
+    "product-requirements": "320583e7baa5c0b3ee15b13ce0bc4f264e8ff1ae531feb94eb71e1102040854b",
+    "canonical-contract": "06d0ccdb218482a5688d78a9f69a88a0183cedc9d5eac5d0553e224b8d6e27e5",
+    "terminology": "403f21a6063aac79a3a93554156b06d9aff9277e6267c8f9ec17109cff4aff9f",
+    "state-machines": "3dab632bd549b26908312b09b166947b2a26128a0298749ba1c7efc6d3d6717a",
+    "testing-strategy": "36d90b927e90916a3dcfd0105022884c8f3c64cb04e22996da4cb4299acc93a5",
+    "personal-project-waivers": "d96657b9165dc737a89da1be92e6e15c04b63480ceb6199e3110061d91463644",
+    "agent-only-execution": "032bfac53bce2dff89cb7470ae809f0a802ecf1fdf9f2fc266b465a37f838eff",
+    "phase-gate-schema": "e5c42fa3d46e1d6209f471d0bd6b249c2435c3ccf809dc4c73f4ef4b5f962633"
+  },
+  "lastArtifactCommit": "b1fb765aefd30c478ab408db87d273d406edb890",
+  "checkpoints": [
+    {
+      "phase": 1,
+      "artifactCommit": "f0d416e296c9ca258d2907750f4fb933e15567a6",
+      "evidencePath": "docs/evidence/Phase001-gate.json",
+      "evidenceHash": "2b91df15a8cc734fc202d3f0dae606445d7e1da119a3623cce1b2d557d949fec"
+    },
+    {
+      "phase": 2,
+      "artifactCommit": "5b5378f092455226b9bf20cc00f07aa95a69fd01",
+      "evidencePath": "docs/evidence/Phase002-gate.json",
+      "evidenceHash": "44583e5ea20bf0e8a0f01fe07aaa09b500eb324355e0903726674862bf236430"
+    },
+    {
+      "phase": 3,
+      "artifactCommit": "8e50df6bbb188301186ca87f3e6c74cc0f41c135",
+      "evidencePath": "docs/evidence/Phase003-gate.json",
+      "evidenceHash": "b287754d531518074efe00591d001df8efaa23a1a5bc6dab181a6c889c077f55"
+    },
+    {
+      "phase": 4,
+      "artifactCommit": "3c91eb97a2c4e8fdd850f9647e1cf445390555e2",
+      "evidencePath": "docs/evidence/Phase004-gate.json",
+      "evidenceHash": "6b9c2553be937924eac8f1de514b9b5485acd4a0461d5dc876f6bef55c7c202d"
+    },
+    {
+      "phase": 5,
+      "artifactCommit": "c69b7a15f992382002f6541307d2d016315f2edf",
+      "evidencePath": "docs/evidence/Phase005-gate.json",
+      "evidenceHash": "3046d96f8d7cad0afbc02fdc210e91ea88a55e3bbb34d292b5b110f8da420596"
+    },
+    {
+      "phase": 6,
+      "artifactCommit": "2a10abc0a0628dd2d7e900804962dad7d24ca4c8",
+      "evidencePath": "docs/evidence/Phase006-gate.json",
+      "evidenceHash": "64800d2ee4c5150f9362ab5655cceef4e6a8a074636bb8b370647365d5323420"
+    },
+    {
+      "phase": 7,
+      "artifactCommit": "3925e8f451bdcbd24d19a04904d385859045ae91",
+      "evidencePath": "docs/evidence/Phase007-gate.json",
+      "evidenceHash": "cb99a2986958d124285f522a99bdd9b32bcebe8e34abd95401cf6a35720a9d69"
+    },
+    {
+      "phase": 8,
+      "artifactCommit": "1722065dc39a4e6e68c9d0bb29a002b21c3a319c",
+      "evidencePath": "docs/evidence/Phase008-gate.json",
+      "evidenceHash": "15327dcc78d77635a4892f690136cc357e8e6bcd74b24ed502c39b818a6461fe"
+    },
+    {
+      "phase": 9,
+      "artifactCommit": "e58842f494433aca60c15a684fca35fc98ae2ebb",
+      "evidencePath": "docs/evidence/Phase009-gate.json",
+      "evidenceHash": "081cdf9b406a8a996c1138ebf4bae64102db41b1e0cccee92031e14e6e5a7558"
+    },
+    {
+      "phase": 10,
+      "artifactCommit": "0d2a5eb5c7d3c7cfe33720628598d203c6da527f",
+      "evidencePath": "docs/evidence/Phase010-gate.json",
+      "evidenceHash": "77f4a5e5f13ee86b6f55d34950c85eacf1d7daaf82cf2ab08fc1136529764867"
+    },
+    {
+      "phase": 11,
+      "artifactCommit": "c979effd5dc15c9f8a47d1667a111db6463b4621",
+      "evidencePath": "docs/evidence/Phase011-gate.json",
+      "evidenceHash": "d2911be8366337612f3d6696dd2e3125af3e98859faba1a46ae5049f6a68968c"
+    },
+    {
+      "phase": 12,
+      "artifactCommit": "171025ef44f194b6417e9bf091c0d635d9741e2b",
+      "evidencePath": "docs/evidence/Phase012-gate.json",
+      "evidenceHash": "ca1b9bafe22db09e3122203c0839b14ef3a118dee31d10d5ca70d59ca3cbb89a"
+    },
+    {
+      "phase": 13,
+      "artifactCommit": "1ddff2e0d3c89492cb50268ffcc5cb4673a69a31",
+      "evidencePath": "docs/evidence/Phase013-gate.json",
+      "evidenceHash": "0d3518223c710bf6fd9529d2f60cf2dcedffb87d259356066b3bae3c144af238"
+    },
+    {
+      "phase": 14,
+      "artifactCommit": "8340f3df1884f85f4c5bae0d1d5606b4b3df89ec",
+      "evidencePath": "docs/evidence/Phase014-gate.json",
+      "evidenceHash": "ac30a81f76fc8b0de7ac80d4827b0b950948a8e1e395f1c24429a8d1d305f735"
+    },
+    {
+      "phase": 15,
+      "artifactCommit": "77592c56b748682fbcc1e664741aab11fc51a1f4",
+      "evidencePath": "docs/evidence/Phase015-gate.json",
+      "evidenceHash": "6ffbb7ac1355469e4b9ffdb8359f0044d7f1b0dc753cf43a2ee977bab0865543"
+    },
+    {
+      "phase": 16,
+      "artifactCommit": "b1fb765aefd30c478ab408db87d273d406edb890",
+      "evidencePath": "docs/evidence/Phase016-gate.json",
+      "evidenceHash": "b0d6aa2997b13db1646cf5205721a273578ad20a5922142ad58556917175d354"
+    }
+  ],
+  "checkpointMigration": {
+    "path": "docs/checkpoint-migrations/history-20260909.json",
+    "sha256": "45bc0742f7b12506a007c84a0f3f9808f2f9b9e8d292a60fab345f4966e1d5b4",
+    "continuationBaselineCommit": "8c5eb222b62c304f00d4b26b1c5f192db13491b9",
+    "importedThrough": 2
+  }
+}

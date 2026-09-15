@@ -120,6 +120,11 @@ function checkPlan() {
     ...git(["ls-files", "--others", "--exclude-standard"]).trim().split(/\r?\n/),
   ].filter(Boolean);
   for (const file of changed) {
+    const preserved = plan.sealRecovery?.metadataFiles.find(row => row.path === file);
+    if (preserved) {
+      assert.equal(hash(file), preserved.sha256, `UNSEALED_METADATA_CHANGED:${file}`);
+      continue;
+    }
     assert(
       plan.modificationScope.some(
         (scope) => file === scope || (scope.endsWith("/") && file.startsWith(scope)),

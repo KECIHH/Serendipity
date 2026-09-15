@@ -9,6 +9,7 @@ import {
 } from "../../scripts/phase016-recovery.mjs";
 import {
   requireInputs,
+  requireSealRecovery,
   requirePlan,
   requireVitest,
   requireMappings,
@@ -91,6 +92,25 @@ function raw(rows) {
 }
 const rows = Object.values(plan.assertionBindings).flat(),
   valid = raw(rows);
+if (plan.sealRecovery) {
+  check("unsealed checkpoint recovery binds original bytes and both failed shells", () => requireSealRecovery(plan, dependencies));
+  for (const [name, mutation] of [
+    ["wrong seal failure hash", p => { p.sealRecovery.failure.sha256 = "0".repeat(64); }],
+    ["wrong unsealed metadata parent", p => { p.sealRecovery.metadataCommit = p.sealRecovery.artifactCommit; }],
+    ["omitted unsealed metadata path", p => { p.sealRecovery.metadataFiles.pop(); }],
+    ["changed unsealed archive hash", p => { p.sealRecovery.metadataFiles[0].sha256 = "0".repeat(64); }],
+    ["unrelated unsealed metadata path", p => { p.sealRecovery.metadataFiles[0].path = "docs/unrelated.json"; }],
+  ]) rejected(name, () => { const candidate = structuredClone(plan); mutation(candidate); requireSealRecovery(candidate, dependencies); });
+  const failure = json(plan.sealRecovery.failure.path);
+  rejected("missing second failed shell record", () => requireSealRecovery(plan, {
+    ...dependencies,
+    readJson: file => file === plan.sealRecovery.failure.path ? { ...failure, sealRecords: failure.sealRecords.slice(0, 1) } : json(file),
+  }));
+  rejected("successful shell cannot be claimed as failed recovery", () => requireSealRecovery(plan, {
+    ...dependencies,
+    readJson: file => file === failure.sealRecords[0].path ? { ...json(file), exitCode: 0 } : json(file),
+  }));
+}
 check("current plan and restored baseline input binding", () => {
   requirePlan(plan, dependencies);
   requireInputs(json(receiptPath), dependencies);

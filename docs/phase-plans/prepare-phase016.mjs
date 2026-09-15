@@ -2,12 +2,13 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import { root, planPath, receiptPath, read, json, hash, sha, git, command, write, inventory, testEnvironment, fullDatabasePath } from "./phase016-runtime.mjs";
-import { caseTags, requirePlan } from "./phase016-evidence.mjs";
+import { caseTags, requirePlan, requireSealRecovery } from "./phase016-evidence.mjs";
 import { phase016RecoveryPath, phase016RecoveredCommits } from "../../scripts/phase016-recovery.mjs";
 
 const plan=json(planPath),directory=`docs/evidence/attempts/Phase016/${plan.attemptId}`;
 assert(!fs.existsSync(path.join(root,directory,"quality.json"))&&!fs.existsSync(path.join(root,directory,"attempt.json")),"ATTEMPT_ALREADY_EXECUTED");
-assert.equal(git(["rev-parse","HEAD"]).trim(),phase016RecoveredCommits.at(-1),"PREPARE_RECOVERY_HEAD");
+const sealRecovery = requireSealRecovery(plan, { hashFile: hash, readJson: json, git });
+assert.equal(git(["rev-parse","HEAD"]).trim(),sealRecovery?.metadataCommit ?? phase016RecoveredCommits.at(-1),"PREPARE_RECOVERY_HEAD");
 if(process.argv.includes("--refresh-sources")){
   const previous=json(`${directory}/source-basis.json`);
   for(const file of [...inventory("tests"),...inventory("src").filter(file=>file.includes(".test.")),

@@ -1,0 +1,74 @@
+{
+  "phase": 16,
+  "status": "PASS",
+  "startedAt": "2026-09-15T14:21:40.118Z",
+  "finishedAt": "2026-09-15T14:21:42.659Z",
+  "realNextHttp": true,
+  "synthetic": true,
+  "productionTraffic": false,
+  "requests": 12,
+  "legacyRoutes": 0,
+  "prematureRoutes": 0,
+  "rows": [
+    {
+      "method": "GET",
+      "path": "/api/chat",
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/api/chat",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/api/nlu/parse",
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/api/nlu/parse",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/api/nlu/extract",
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/api/nlu/extract",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/api/plan/generate",
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/api/plan/generate",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/api/session/anonymous",
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/api/session/anonymous",
+      "status": 404
+    },
+    {
+      "method": "GET",
+      "path": "/api/travel-records/synthetic/commands",
+      "status": 404
+    },
+    {
+      "method": "POST",
+      "path": "/api/travel-records/synthetic/commands",
+      "status": 404
+    }
+  ]
+}

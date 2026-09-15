@@ -55,6 +55,41 @@ export function executionPaths(pkg) {
     "node_modules/tsx/dist/cli.mjs",
   ].sort();
 }
+export function requireSealRecovery(plan, { hashFile, readJson, git }) {
+  const recovery = plan.sealRecovery;
+  if (!recovery) return null;
+  assert.equal(hashFile(recovery.failure.path), recovery.failure.sha256, "SEAL_FAILURE_HASH");
+  const failure = readJson(recovery.failure.path);
+  assert.equal(failure.phase, 16);
+  assert.equal(failure.status, "FAIL");
+  assert.equal(failure.stage, "DUAL_SHELL_SEAL");
+  assert.equal(failure.metadataCommit, recovery.metadataCommit);
+  assert.equal(failure.artifactCommit, recovery.artifactCommit);
+  assert(plan.previousAttempts.some(row => row.attemptId === failure.attemptId && row.planHash === failure.planHash), "SEAL_PRIOR_PLAN");
+  const text = args => git(args).toString("utf8").trim();
+  assert.deepEqual(text(["show", "-s", "--format=%H%n%P%n%s", recovery.metadataCommit]).split("\n"), [recovery.metadataCommit, recovery.artifactCommit, "phase(016): metadata"], "SEAL_METADATA_PARENT");
+  assert.equal(text(["show", "-s", "--format=%s", recovery.artifactCommit]), "phase(016): artifact");
+  assert.equal(digest(git(["show", `${recovery.artifactCommit}:docs/phase-plans/Phase016.json`], null)), failure.planHash, "SEAL_ARTIFACT_PLAN");
+  assert.deepEqual(recovery.metadataFiles.map(row => row.path).sort(), ["docs/evidence/Phase016-gate.json", "docs/phase-completion-log.md", "docs/roadmap-run.json"]);
+  assert.deepEqual(failure.metadataFiles, recovery.metadataFiles);
+  for (const file of recovery.metadataFiles) {
+    assert(plan.sourcePaths.includes(file.archivedPath), "SEAL_ARCHIVE_SOURCE");
+    assert.equal(hashFile(file.archivedPath), file.sha256, "SEAL_ARCHIVE_HASH");
+    assert.equal(digest(git(["show", `${recovery.metadataCommit}:${file.path}`], null)), file.sha256, "SEAL_COMMITTED_BYTES");
+  }
+  assert.deepEqual(failure.sealRecords.map(row => row.shell).sort(), ["ps51", "ps7"]);
+  for (const file of failure.sealRecords) {
+    assert(plan.sourcePaths.includes(file.path), "SEAL_RECORD_SOURCE");
+    assert.equal(hashFile(file.path), file.sha256, "SEAL_RECORD_HASH");
+    const result = readJson(file.path);
+    assert.equal(result.head, recovery.metadataCommit);
+    assert.equal(result.exitCode, 1);
+    assert.equal(JSON.parse(result.stdout || result.stderr).status, "FAIL");
+    assert(result.arguments.includes("-CompletedThrough") && result.arguments.includes("16"));
+  }
+  assert(plan.sourcePaths.includes(recovery.failure.path), "SEAL_FAILURE_SOURCE");
+  return recovery;
+}
 export function requirePlan(plan, { hashFile, readJson, readBytes, git, allowUnwrittenDiscovery = false }) {
   assert.equal(plan.phase, 16);
   assert.match(plan.attemptId, /^attempt-[1-9]\d*$/);
@@ -141,6 +176,7 @@ export function requirePlan(plan, { hashFile, readJson, readBytes, git, allowUnw
   validatePhase016Recovery({plan,inputReceipt:readJson("docs/phase-plans/Phase016-inputs.json"),
     recoveryBytes:readBytes(plan.recoveryReceipt.path),recoveryCommits:phase016RecoveredCommits,
     git:args=>git(args,null)});
+  requireSealRecovery(plan, { hashFile, readJson, git });
   return plan;
 }
 export function requireInputs(receipt, { hashFile, readJson, git }) {
