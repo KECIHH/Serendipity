@@ -75,3 +75,6 @@ Phase014 计划：docs/phase-plans/Phase014.json；唯一 Gate：docs/evidence/P
 | Phase015 | 最终AI治理、Provider与调用护栏 | 十个治理模型、幂等bootstrap、版本解析、SSRF/超时/重试、持久配额、无rawOutput证据、kill switch与Phase013引用adapter；完整路径/hash见Gate | 固定8/8；Vitest 597/597；专用50断言；6项反向控制及恢复后全卡重跑；PostgreSQL17；lint/typecheck/format/build/layout/validator通过；独立Agent复核；artifactCommit=77592c56b748682fbcc1e664741aab11fc51a1f4；attemptId=attempt-14 | 无生产流量、真实凭据、真实Provider调用或治理UI；策略仅合成环境；未执行Phase016 | metadata后双shell seal、clean和GitHub同步；授权止于015 |
 
 Phase015 计划：docs/phase-plans/Phase015.json；唯一 Gate：docs/evidence/Phase015-gate.json；原始报告与独立复核：docs/evidence/attempts/Phase015/。
+| Phase016 | 会话命令、持久事件与 SSE 基础 | ChatCommand/ChatCommandEvent/CommandIdempotency 模型、DurableTask/Outbox worker、owner resolver、事务原语、guarded client 集成、SSE 重放、取消竞态与 7 组 fixture；完整路径/hash 见 Gate | 固定 7/7；Vitest 625/625；专用28断言；3项反向控制及恢复后全卡重跑；PostgreSQL 17；lint/typecheck/format/build/layout 通过；独立 Agent 复核；artifactCommit=b1fb765aefd30c478ab408db87d273d406edb890；attemptId=attempt-4 | 无生产流量、真实凭据、真实Provider调用或规划UI；未执行Phase017 | metadata后双shell seal、clean和GitHub同步；授权止于016 |
+
+Phase016 计划：docs/phase-plans/Phase016.json；唯一 Gate：docs/evidence/Phase016-gate.json；原始报告与独立复核：docs/evidence/attempts/Phase016/。
