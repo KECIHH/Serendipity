@@ -78,3 +78,6 @@ Phase015 计划：docs/phase-plans/Phase015.json；唯一 Gate：docs/evidence/P
 | Phase016 | 会话命令、持久事件与 SSE 基础 | ChatCommand/ChatCommandEvent/CommandIdempotency 模型、DurableTask/Outbox worker、owner resolver、事务原语、guarded client 集成、SSE 重放、取消竞态与 7 组 fixture；完整路径/hash 见 Gate | 固定 7/7；Vitest 625/625；专用28断言；3项反向控制及恢复后全卡重跑；PostgreSQL 17；lint/typecheck/format/build/layout 通过；独立 Agent 复核；artifactCommit=fe007e2dea79d708c95198e4e58085ed85c43a3e；attemptId=attempt-5 | 无生产流量、真实凭据、真实Provider调用或规划UI；未执行Phase017 | metadata后双shell seal、clean和GitHub同步；授权止于016 |
 
 Phase016 计划：docs/phase-plans/Phase016.json；唯一 Gate：docs/evidence/Phase016-gate.json；原始报告与独立复核：docs/evidence/attempts/Phase016/。
+| Phase017 | AI 输出解析与容错 | 固定需求/概要及8个Prompt Schema、纯parser、实例绑定NluContext、最多两次保守语法修复、上下文限长、owner history；完整路径/hash见Gate | 固定6/6；Vitest 703/703；专用78断言；5项反向控制及恢复后全卡；真实PostgreSQL17/10份原迁移；lint/typecheck/format/build/layout/证据自检；独立Agent复核；artifactCommit=879534806f76121c0e77b5252940467f4dc307c3；attemptId=attempt-2 | 未执行正式方案版本、生产流量、真实凭据或Phase018；rawOutput维持数据库强制null，debug只在临时内存 | metadata后双shell seal、clean和GitHub同步；授权止于017 |
+
+Phase017 计划：docs/phase-plans/Phase017.json；唯一Gate：docs/evidence/Phase017-gate.json；原始报告与独立复核：docs/evidence/attempts/Phase017/。
