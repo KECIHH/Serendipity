@@ -1,7 +1,7 @@
 {
   "schemaVersion": "agent-gate-v1",
   "phase": 16,
-  "attemptId": "attempt-4",
+  "attemptId": "attempt-5",
   "status": "PASS",
   "simulation": true,
   "operatorMode": "AGENT_ONLY_AUTOMATED_NEW_BUILD",
@@ -11,7 +11,7 @@
     "providerMode": "local-adapter",
     "productionTraffic": false
   },
-  "artifactCommit": "b1fb765aefd30c478ab408db87d273d406edb890",
+  "artifactCommit": "fe007e2dea79d708c95198e4e58085ed85c43a3e",
   "requiredCaseIds": [
     "Phase016:first-accept",
     "Phase016:owner-resume",
@@ -30,11 +30,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:ae751b7fb9c5df7d61d07eee0d5d8731dda91de4d59ba19980e595fde0f87d2d",
-      "outputHash": "sha256:eed51241e236ae6618dbd061525e2692f3c2c5120337405444cd67438b6d2c16",
+      "outputHash": "sha256:932cfe57803b7e056582e2d6eb2e0f3aa549e9f16142c3a7e67e2a341c9aa200",
       "status": "PASS",
       "details": {
         "inputPath": "tests/phase016/fixture.ts",
-        "outputPath": "docs/evidence/attempts/Phase016/attempt-4/first-accept.json"
+        "outputPath": "docs/evidence/attempts/Phase016/attempt-5/first-accept.json"
       }
     },
     {
@@ -44,11 +44,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:a2190ab7efa5dfaa0d153c9733e7523d1569c56328615600d7c712611ac5a3aa",
-      "outputHash": "sha256:5b25d6e41673c70f063b3a2693370ca7dca8e97db5007b9c7a78b48586d66a44",
+      "outputHash": "sha256:75a316bb895d38a22598b3564396f5e97b63992fe5a8f970a7a5a55e17360f35",
       "status": "PASS",
       "details": {
         "inputPath": "src/server/chat/owner.ts",
-        "outputPath": "docs/evidence/attempts/Phase016/attempt-4/owner-resume.json"
+        "outputPath": "docs/evidence/attempts/Phase016/attempt-5/owner-resume.json"
       }
     },
     {
@@ -58,11 +58,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:ee111fea9cd94435df60844cc0250767acbae8232783490aeade784e181e6e19",
-      "outputHash": "sha256:980085a2ec99d2dd7a85397c4d0451fb54fe41b35b7f64d4a471a0898b4e3fed",
+      "outputHash": "sha256:4b4f62b148577dfba3c5fdee7a297e807726a97cb30f297490d74e18aef3bab0",
       "status": "PASS",
       "details": {
         "inputPath": "src/server/chat/command-service.ts",
-        "outputPath": "docs/evidence/attempts/Phase016/attempt-4/idempotency.json"
+        "outputPath": "docs/evidence/attempts/Phase016/attempt-5/idempotency.json"
       }
     },
     {
@@ -72,11 +72,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:623aea090edd74f49f3fb46d6e4440a9cdd7e29c4516dba944d8486979c5a255",
-      "outputHash": "sha256:b0ed2174a49f48333c87b3a08e4ed0db4e5d3db17b8a3fb0074126460d61e872",
+      "outputHash": "sha256:ce0382cb5f676f95f678b6b34baf49f2e0775372b1ef1b57391afbc202d8afc1",
       "status": "PASS",
       "details": {
         "inputPath": "src/server/chat/sse.ts",
-        "outputPath": "docs/evidence/attempts/Phase016/attempt-4/replay.json"
+        "outputPath": "docs/evidence/attempts/Phase016/attempt-5/replay.json"
       }
     },
     {
@@ -86,11 +86,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:623aea090edd74f49f3fb46d6e4440a9cdd7e29c4516dba944d8486979c5a255",
-      "outputHash": "sha256:b88c13e0da3008fae76b09984e62a20b3ea31bde9bdaffbb9e433c1d44b16fca",
+      "outputHash": "sha256:d6cab57a19bc87477339ce44f7f50c8832c6d9d70ede3cc6392ed8599a1683da",
       "status": "PASS",
       "details": {
         "inputPath": "src/server/chat/sse.ts",
-        "outputPath": "docs/evidence/attempts/Phase016/attempt-4/transient-delta.json"
+        "outputPath": "docs/evidence/attempts/Phase016/attempt-5/transient-delta.json"
       }
     },
     {
@@ -100,11 +100,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:15959f5f9c62ee2bb3d4dd1e34e9b21fc9c701a5cd997313e225f964c367ca7d",
-      "outputHash": "sha256:1c1d620ee9298f30b393fe3bbd228bb48a10b1b53a89aa3f281ae07adbc78e88",
+      "outputHash": "sha256:59d29feec99641962c52fff0e05aaa9ea5a6aeafbdeaef6a7c95558a0df135e2",
       "status": "PASS",
       "details": {
         "inputPath": "src/server/chat/command-state.ts",
-        "outputPath": "docs/evidence/attempts/Phase016/attempt-4/cancel-race.json"
+        "outputPath": "docs/evidence/attempts/Phase016/attempt-5/cancel-race.json"
       }
     },
     {
@@ -114,11 +114,11 @@
       "numerator": 1,
       "denominator": 1,
       "inputHash": "sha256:ef594133eb6f6a7565b8c4083774dd37569c0ceca65077e0012706dd6ee28470",
-      "outputHash": "sha256:46853cb76f34594160ae228a117b80241b0642133b30d609b1874e903a6dba5a",
+      "outputHash": "sha256:77cf881265425c9dd941bcab0370b2809f716501f64d7604f702c7206d82cc52",
       "status": "PASS",
       "details": {
         "inputPath": "src/server/chat/process-task.ts",
-        "outputPath": "docs/evidence/attempts/Phase016/attempt-4/provider-failure.json"
+        "outputPath": "docs/evidence/attempts/Phase016/attempt-5/provider-failure.json"
       }
     },
     {
@@ -127,12 +127,12 @@
       "exitCode": 0,
       "numerator": 1,
       "denominator": 1,
-      "inputHash": "sha256:194de8d948bf114383b2a47d10f4877c892fe10a21d384b1bcb85a0d3a6b52c6",
-      "outputHash": "sha256:969041a524fb2219a7bd88ba0a4cba148edba854ca4f3f2d37a47d10a81edf0f",
+      "inputHash": "sha256:06ea29397f1ca1d7511600053eedf8c2bb8928c9e6483c9b6cf0177dd056b8f6",
+      "outputHash": "sha256:1a0d4862e489426efacc0c2254dc011f24b269266dcb3e31899172b5f21eb0fe",
       "status": "PASS",
       "details": {
         "inputPath": "docs/phase-plans/phase016-evidence.mjs",
-        "outputPath": "docs/evidence/attempts/Phase016/attempt-4/mutation.json"
+        "outputPath": "docs/evidence/attempts/Phase016/attempt-5/mutation.json"
       }
     }
   ],
@@ -173,7 +173,7 @@
   "inputs": [
     {
       "path": "docs/phase-plans/Phase016.json",
-      "sha256": "9eee72c2491a097ba2a02c1f7e12893fc799721663dd668ae74b70262cf6b4e2"
+      "sha256": "43622cea95a53cce67a4d02cd4119bb04e8fc578faf19de208dd9dff76ed7e47"
     },
     {
       "path": ".env.example",
@@ -9792,6 +9792,306 @@
       "sha256": "852e2546572396816f1ec8659ebbf3e3c7e70f35af027fabb843dd28af18d062"
     },
     {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/archival-byte-check-v2.json",
+      "sha256": "1e89699e0e45e1e1317c10a774d3a779dcf31055f0202c3070fcc66324b464ad"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/archival-byte-check.json",
+      "sha256": "d61096bc5f8259c20d2e06c3d70290f08d211c7cb14767ea4896e82700cf8089"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/attempt.json",
+      "sha256": "16cb1612088958485ed6cd56e5ee6b8619c47ac252c57b65437aef1e083b4afd"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/cancel-race.json",
+      "sha256": "1c1d620ee9298f30b393fe3bbd228bb48a10b1b53a89aa3f281ae07adbc78e88"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/case-command-1.json",
+      "sha256": "b085d539e214efe6b004cc0a6736d9bc32950e893134b34a95e970ca53e1edc9"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/001.json",
+      "sha256": "499c9faf8c1b233bac0a6987e6ba0c49d416f1ab53106aed46aebc84208892dc"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/002.json",
+      "sha256": "f8a996866d46b618e6e5faf9baa5270bd6e33045a8e761fc2dc2b298d7ade9f4"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/003.json",
+      "sha256": "5091fe5cac2251fdc53fff5945723169d45dafb9ac913dd7123e39f49146187d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/004.json",
+      "sha256": "5a2e79bf685217d42425e7715f0bfe74bad2f599daf30ba407f24f5bba345b86"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/005.json",
+      "sha256": "bb88dfdff7542586aef88e9514757860a16c80437909c12d41b15c6bb4a589b0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/006.json",
+      "sha256": "4467117c63f7c17015a7f818f2979b59c44b971e66130a24c561945f2944a002"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/007.json",
+      "sha256": "6fb944f5d35fd9fbef03e7324419249f4802eff288321431e0013cc2b1522898"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/008.json",
+      "sha256": "b25073f1d45d726e225e566071e6ab03367f8bd06b8ba1c5e9d497d003ed3374"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/009.json",
+      "sha256": "ae02b049f40e0e8d41e52d8540d44aa526d143e1688576a66b3917386e34e677"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/010.json",
+      "sha256": "f033157880c8ee05ba43f652f974d8c72321b7278db8e984bd54be168f370954"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/011.json",
+      "sha256": "f5aaf087a003e0f01840513f15b16a10fcf446c4785995ebb9bfad0c1422165a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/012.json",
+      "sha256": "18961213b759632af775a5a684e8868aea4e2ee76eb7023c9fc30231e864615d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/013.json",
+      "sha256": "a25c9f68aef76014fab9fab600baf5870a440503ee4ca0eb3063ba4fb5fd3737"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/014.json",
+      "sha256": "361f1936f3f32a2b33d82e5d45f271b7dcdf6ec7554d579b19a90eb4e6423d9e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/015.json",
+      "sha256": "737a4f2cf74b0eb31c378381f6272b954689dd8601fbd13d76ae9105995b0c11"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/016.json",
+      "sha256": "0bb003f6d0285b1ddd6630a7e0e886238957d9045a89d52de71831f56b043ac8"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/017.json",
+      "sha256": "6a1ef170be84497f2ed0ba70d2c10434d247eef0991d5b07118b3c3c80ee282c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/018.json",
+      "sha256": "62aac987cb154de8532641f00f815e8508805472f64ef7026ab096d61a59be5a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/019.json",
+      "sha256": "dbbace421e674466a4255e70389ab48f0ed6d86a3533de633f2ef1e273fe6d96"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/020.json",
+      "sha256": "1a0b23e4c83529da43b0428d3a159c37807af70bb6c6ed1d27d2c162a6fc11be"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/021.json",
+      "sha256": "4239258a3b79ac3596b7d66bb329f979a8af5d8814f63c034c9e48d908375815"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/022.json",
+      "sha256": "7a33648fefb8081c12b13335ef9f7564e66447744cf50fb7633283192ac77fc2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/023.json",
+      "sha256": "5cb86cac729bc746d2dc5f9bb8b3ed11a3edee79332027ec06fa311ece3e7454"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/024.json",
+      "sha256": "ee98ceea3ff8d9047f2d1041dc1dd32aef0749470af73e19b57327473b6556b6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/025.json",
+      "sha256": "d97fb47bae4f9627cbed79b71cf5d962982bc023edd1bffeaf5d2860424d9fbe"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/026.json",
+      "sha256": "4885e96ee2325424f83904dc8011cc1104066e936f0e911f2f2c12a862e7cf59"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/027.json",
+      "sha256": "319f099c5d09d68c976601365ac987c1cd9915e506e6097bc0927123e0b060eb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/evidence-guards.json",
+      "sha256": "b7f134f4b9d1245093c2fe28f90d6fb3543cd848f40bc31a5769928eaf2d0ea5"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/first-accept.json",
+      "sha256": "eed51241e236ae6618dbd061525e2692f3c2c5120337405444cd67438b6d2c16"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/freeze-command.json",
+      "sha256": "163bb34ae4b0028849664ab7fb73b9713fb6c0eedf9c9815bca3200809b03b3f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/frozen-discovery.json",
+      "sha256": "946985e227b17e5a7c07811a81bcf48ee728ade3470c412cf440510cbc701229"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/frozen-plan.json",
+      "sha256": "9eee72c2491a097ba2a02c1f7e12893fc799721663dd668ae74b70262cf6b4e2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/full-regression.json",
+      "sha256": "c14dce9b968881034886eecc4f0d376229b5038b122e67492c5cf90fc0e41e01"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/idempotency.json",
+      "sha256": "980085a2ec99d2dd7a85397c4d0451fb54fe41b35b7f64d4a471a0898b4e3fed"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/import-boundary.json",
+      "sha256": "aec6af4100bb7a1acfb3b9cb367ce136be60a7df53dbb83d67490db771f3596b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/input-receipt.json",
+      "sha256": "a68fd9a86eeb9b386af6383b8b68b7586484ecc0b7b3120fc96f7f2c6567d6d3"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/legacy-route-http.json",
+      "sha256": "01c506eba58d8a6f7e67503c41b03d2735541a958060b2f2a58f3afa2b13be78"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/mutation.json",
+      "sha256": "969041a524fb2219a7bd88ba0a4cba148edba854ca4f3f2d37a47d10a81edf0f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/commands/001.json",
+      "sha256": "1a0b23e4c83529da43b0428d3a159c37807af70bb6c6ed1d27d2c162a6fc11be"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/commands/002.json",
+      "sha256": "4239258a3b79ac3596b7d66bb329f979a8af5d8814f63c034c9e48d908375815"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/commands/003.json",
+      "sha256": "7a33648fefb8081c12b13335ef9f7564e66447744cf50fb7633283192ac77fc2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/commands/004.json",
+      "sha256": "5cb86cac729bc746d2dc5f9bb8b3ed11a3edee79332027ec06fa311ece3e7454"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/commands/005.json",
+      "sha256": "ee98ceea3ff8d9047f2d1041dc1dd32aef0749470af73e19b57327473b6556b6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/commands/006.json",
+      "sha256": "d97fb47bae4f9627cbed79b71cf5d962982bc023edd1bffeaf5d2860424d9fbe"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/commands/007.json",
+      "sha256": "4885e96ee2325424f83904dc8011cc1104066e936f0e911f2f2c12a862e7cf59"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/commands/008.json",
+      "sha256": "319f099c5d09d68c976601365ac987c1cd9915e506e6097bc0927123e0b060eb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/mutations/delta-persisted-report.json",
+      "sha256": "1300db403a18f7db5a026345f971f6c7adb92a29b581609ba03c9b513235491e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/mutations/delta-persisted.json",
+      "sha256": "545a3e26843695ede2a509f0f9852820221f74cc7ddc13a32f9d10cc0a0e2c25"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/mutations/event-unique-report.json",
+      "sha256": "9b00b1ddb11f4c3dcc3d2086506ef2177628d00d783972d1d87c611412559c0e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/mutations/event-unique.json",
+      "sha256": "8f87ea42073ec4a1b66ee3ba7f3e19dfb3a99c9bddc370e937495673875b3366"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/mutations/terminal-cas-report.json",
+      "sha256": "94d76afeef4a9c91e00ad07435c325e0451d4c081ac24a317a7faa723ec5f4c3"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/mutations/terminal-cas.json",
+      "sha256": "9724af3c93289b03c6163cd7c7945591016747bfe720287252f17e8ac0cfec2c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/negative-controls.json",
+      "sha256": "d9615d2d8b6d90123b43cc1628e331b35dae54e8fa51595f4732bd4f437f5b7e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/restored-card.json",
+      "sha256": "f6423c06480e7a404146931f579964c6d23eea5f84f3ea4dcf4cb0fd46f0db3c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/owner-resume.json",
+      "sha256": "5b25d6e41673c70f063b3a2693370ca7dca8e97db5007b9c7a78b48586d66a44"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/precheck-discovery.json",
+      "sha256": "0da342e86eb8b5fa679f2dd229bf1a204cf0dc4e96b654539c056690a5058171"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/provider-failure.json",
+      "sha256": "46853cb76f34594160ae228a117b80241b0642133b30d609b1874e903a6dba5a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/quality.json",
+      "sha256": "120a97d517fb04968673dca705f4e6274de7d33c256f5d7027ab4bc3938877d4"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/replay.json",
+      "sha256": "b0ed2174a49f48333c87b3a08e4ed0db4e5d3db17b8a3fb0074126460d61e872"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/requirements-freeze.json",
+      "sha256": "c3a8a8533cd690cff97302353a12d82138533bc0e7929270ead5ef33410640cf"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/review.json",
+      "sha256": "507c8d03d6608753eb4e6ad8a89f41f0650e0552d65a0b3778d62dcda6c5a664"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/seal-ps51.json",
+      "sha256": "24aa804b0b4b6f956c5384bf4c5fad5d913f1aebe415032f7e23fa61787e860c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/seal-ps7.json",
+      "sha256": "20ef064778ae6ff10f549784430fc8fad5b9b32d0c818d373ce693d32e244d8e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/source-basis.json",
+      "sha256": "c860ddc92e60b6c162462535c35fd17f5faa93535e592f38724ff4d494719263"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/source-scan.json",
+      "sha256": "02c0066a77cce2d4b70c9d342210bec843e2ed3e4043bb095f289c315ef5c9af"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/transient-delta.json",
+      "sha256": "b88c13e0da3008fae76b09984e62a20b3ea31bde9bdaffbb9e433c1d44b16fca"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/unsealed-gate.json",
+      "sha256": "b0d6aa2997b13db1646cf5205721a273578ad20a5922142ad58556917175d354"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/unsealed-log.md",
+      "sha256": "f415c5b752e703e22919f8c33deeda85bb824ba96cc36d1eac7e1457ec51ade5"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/unsealed-state.json",
+      "sha256": "8bcd9b41f7cb879816a7f2e5e9f13b6084f221d11c51ca268b221914d743c493"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase016/attempt-4/validator-regression.json",
+      "sha256": "9df458935a625c898c2f04a986e119f65e33e4d67140053005f06a1303047cbb"
+    },
+    {
       "path": "docs/git-workflow.md",
       "sha256": "ddf33176a55ff215b8d48d95e315819a7113be57f8cd0ef6506341a6a9c94a2b"
     },
@@ -9985,7 +10285,7 @@
     },
     {
       "path": "docs/phase-completion-log.md",
-      "sha256": "d0b26bd271ec6b0c08ee32b862e5c7bdc13c4d8b94f3ad5a8d03c2891b414e93"
+      "sha256": "f415c5b752e703e22919f8c33deeda85bb824ba96cc36d1eac7e1457ec51ade5"
     },
     {
       "path": "docs/phase-plans/Phase001-inputs.json",
@@ -10205,7 +10505,7 @@
     },
     {
       "path": "docs/phase-plans/complete-phase016.mjs",
-      "sha256": "182b997f972e9b9a8514049d93c3ad20970f33446a2ea1bda8f506ec8f62b2d7"
+      "sha256": "84c4e1aca14fe2af794162bbf60ae01daccc21b416cbb96a90270c1edd2c18ae"
     },
     {
       "path": "docs/phase-plans/key-rotation-protection.sql",
@@ -10289,7 +10589,7 @@
     },
     {
       "path": "docs/phase-plans/phase016-evidence.mjs",
-      "sha256": "194de8d948bf114383b2a47d10f4877c892fe10a21d384b1bcb85a0d3a6b52c6"
+      "sha256": "06ea29397f1ca1d7511600053eedf8c2bb8928c9e6483c9b6cf0177dd056b8f6"
     },
     {
       "path": "docs/phase-plans/phase016-runtime.mjs",
@@ -10337,7 +10637,7 @@
     },
     {
       "path": "docs/phase-plans/prepare-phase016.mjs",
-      "sha256": "af71a35d81f4d2386f6d00cc8abe8c3a4115450fcb439d1036f1464cf6c37e4e"
+      "sha256": "b59c139052385b023124d34e77524b410d53aade56d19abc75bf731783823847"
     },
     {
       "path": "docs/phase-plans/replay-historical-phase.ps1",
@@ -10445,7 +10745,7 @@
     },
     {
       "path": "docs/phase-plans/verify-phase016.mjs",
-      "sha256": "d200ddb3de3d7ffce99b6624d8645d898bf1d7623e4daacefe295ef29c4e564e"
+      "sha256": "76163ededc26d5f59af9c9b2a828784a96d551eaa94c39c7b253494fe9e92b4f"
     },
     {
       "path": "docs/phase006.md",
@@ -10509,7 +10809,7 @@
     },
     {
       "path": "docs/roadmap-run.json",
-      "sha256": "d16bc8035110a4ef850e9ea1d4d6b65646d24d83bfee9867fe8f140abd13aced"
+      "sha256": "8bcd9b41f7cb879816a7f2e5e9f13b6084f221d11c51ca268b221914d743c493"
     },
     {
       "path": "docs/runtime-baseline.json",
@@ -10693,11 +10993,11 @@
     },
     {
       "path": "scripts/test-validate-phase.mjs",
-      "sha256": "671061ffb61e735ef9e76d288da63b314d59545a5f1d41b53350d595409642fc"
+      "sha256": "c03976ce4eeed35e033a82a9fa92a48f21e5c52dcb40d043dc3711dd855c3569"
     },
     {
       "path": "scripts/validate-phase.mjs",
-      "sha256": "df241d6998f2ad7c13b43812ab218afce2b0b060e308a4533d6bb2d06a9c0ac0"
+      "sha256": "db41adca3f2a96ce76d2bcb97d165fadb6cedf8494bb0ae53a9fdd078c98fc93"
     },
     {
       "path": "scripts/validate-phase.ps1",
@@ -11697,7 +11997,7 @@
     },
     {
       "path": "tests/phase016/evidence-guards.mjs",
-      "sha256": "a2a589f2a592516738f538f38047a497b68081914ae69a5c4b508f70757ca815"
+      "sha256": "3e7a46cc9861d99546bedf7bd1cefd000ae27988789f8f338b6b72ec93de93c9"
     },
     {
       "path": "tests/phase016/fixture.ts",
@@ -11736,292 +12036,319 @@
       "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/first-accept.json",
-      "sha256": "eed51241e236ae6618dbd061525e2692f3c2c5120337405444cd67438b6d2c16"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/first-accept.json",
+      "sha256": "932cfe57803b7e056582e2d6eb2e0f3aa549e9f16142c3a7e67e2a341c9aa200"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/owner-resume.json",
-      "sha256": "5b25d6e41673c70f063b3a2693370ca7dca8e97db5007b9c7a78b48586d66a44"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/owner-resume.json",
+      "sha256": "75a316bb895d38a22598b3564396f5e97b63992fe5a8f970a7a5a55e17360f35"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/idempotency.json",
-      "sha256": "980085a2ec99d2dd7a85397c4d0451fb54fe41b35b7f64d4a471a0898b4e3fed"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/idempotency.json",
+      "sha256": "4b4f62b148577dfba3c5fdee7a297e807726a97cb30f297490d74e18aef3bab0"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/replay.json",
-      "sha256": "b0ed2174a49f48333c87b3a08e4ed0db4e5d3db17b8a3fb0074126460d61e872"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/replay.json",
+      "sha256": "ce0382cb5f676f95f678b6b34baf49f2e0775372b1ef1b57391afbc202d8afc1"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/transient-delta.json",
-      "sha256": "b88c13e0da3008fae76b09984e62a20b3ea31bde9bdaffbb9e433c1d44b16fca"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/transient-delta.json",
+      "sha256": "d6cab57a19bc87477339ce44f7f50c8832c6d9d70ede3cc6392ed8599a1683da"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/cancel-race.json",
-      "sha256": "1c1d620ee9298f30b393fe3bbd228bb48a10b1b53a89aa3f281ae07adbc78e88"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/cancel-race.json",
+      "sha256": "59d29feec99641962c52fff0e05aaa9ea5a6aeafbdeaef6a7c95558a0df135e2"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/provider-failure.json",
-      "sha256": "46853cb76f34594160ae228a117b80241b0642133b30d609b1874e903a6dba5a"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/provider-failure.json",
+      "sha256": "77cf881265425c9dd941bcab0370b2809f716501f64d7604f702c7206d82cc52"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/mutation.json",
-      "sha256": "969041a524fb2219a7bd88ba0a4cba148edba854ca4f3f2d37a47d10a81edf0f"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/mutation.json",
+      "sha256": "1a0d4862e489426efacc0c2254dc011f24b269266dcb3e31899172b5f21eb0fe"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/review.json",
-      "sha256": "507c8d03d6608753eb4e6ad8a89f41f0650e0552d65a0b3778d62dcda6c5a664"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/review.json",
+      "sha256": "ce0de64c199f5780e5f3bd3ff99dd7c3d94eeb7b17a411b846a46624d006427b"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/quality.json",
-      "sha256": "120a97d517fb04968673dca705f4e6274de7d33c256f5d7027ab4bc3938877d4"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/quality.json",
+      "sha256": "fe03049d821c2d19372e514020e0a0a9b87388c7eaa1792af7afed4248d7ee09"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/frozen-discovery.json",
-      "sha256": "946985e227b17e5a7c07811a81bcf48ee728ade3470c412cf440510cbc701229"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/frozen-discovery.json",
+      "sha256": "527c56a02aacc5f4a2420d9a40130eac722499e262c410e5b478abc43f1fc04f"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/frozen-plan.json",
-      "sha256": "9eee72c2491a097ba2a02c1f7e12893fc799721663dd668ae74b70262cf6b4e2"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/frozen-plan.json",
+      "sha256": "43622cea95a53cce67a4d02cd4119bb04e8fc578faf19de208dd9dff76ed7e47"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/freeze-command.json",
-      "sha256": "163bb34ae4b0028849664ab7fb73b9713fb6c0eedf9c9815bca3200809b03b3f"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/freeze-command.json",
+      "sha256": "bbacd2e930327d2f832bb497bdbe79c72279ee1b756ffc2984f5c7d8a11828bc"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/input-receipt.json",
+      "path": "docs/evidence/attempts/Phase016/attempt-5/input-receipt.json",
       "sha256": "a68fd9a86eeb9b386af6383b8b68b7586484ecc0b7b3120fc96f7f2c6567d6d3"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/source-basis.json",
-      "sha256": "c860ddc92e60b6c162462535c35fd17f5faa93535e592f38724ff4d494719263"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/source-basis.json",
+      "sha256": "198554c70055e892b5908f342784cd4adcd9082a607516126a0f1938f4c913f8"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/001.json",
-      "sha256": "499c9faf8c1b233bac0a6987e6ba0c49d416f1ab53106aed46aebc84208892dc"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/001.json",
+      "sha256": "f40c4ca0fa75c7df787b047ff185ddfdbc5055d74afb43ed55bbff69f966882b"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/002.json",
-      "sha256": "f8a996866d46b618e6e5faf9baa5270bd6e33045a8e761fc2dc2b298d7ade9f4"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/002.json",
+      "sha256": "86413a298f9ca26279ceea45ce9f81c75ad8f9053e4d7b84b22c7a2ca365eede"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/003.json",
-      "sha256": "5091fe5cac2251fdc53fff5945723169d45dafb9ac913dd7123e39f49146187d"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/003.json",
+      "sha256": "4575e46009c5c5fe036917530dd8ae7bcca840b4998cd217ff1467ac526b4aea"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/004.json",
-      "sha256": "5a2e79bf685217d42425e7715f0bfe74bad2f599daf30ba407f24f5bba345b86"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/004.json",
+      "sha256": "23c931025e01275d9983fe1533f43e580bd9afccb8a4338c37119f21bb04a644"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/005.json",
-      "sha256": "bb88dfdff7542586aef88e9514757860a16c80437909c12d41b15c6bb4a589b0"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/005.json",
+      "sha256": "d072c43c495add9c7f74d6edfe335fe7b1635ec68a37caca02b25f424aa4733a"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/006.json",
-      "sha256": "4467117c63f7c17015a7f818f2979b59c44b971e66130a24c561945f2944a002"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/006.json",
+      "sha256": "a765648dbfc9ccbad6688de200d61a68a4eeb0ea3c7faf4cd352af38dc5297a0"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/evidence-guards.json",
-      "sha256": "b7f134f4b9d1245093c2fe28f90d6fb3543cd848f40bc31a5769928eaf2d0ea5"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/evidence-guards.json",
+      "sha256": "a74c9ebc06463aa7b72d80ed339e297331917535108815870cc4a50da64f811b"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/007.json",
-      "sha256": "6fb944f5d35fd9fbef03e7324419249f4802eff288321431e0013cc2b1522898"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/007.json",
+      "sha256": "4abb8153199e58e7369a1fddd78531cad608be561bb9655e29d880d69e2d94ba"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/validator-regression.json",
-      "sha256": "9df458935a625c898c2f04a986e119f65e33e4d67140053005f06a1303047cbb"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/validator-regression.json",
+      "sha256": "1430ac01dc4cc52a13e2231a2f9bfa857d3c48d1aca424c4905866eb717382dc"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/source-scan.json",
-      "sha256": "02c0066a77cce2d4b70c9d342210bec843e2ed3e4043bb095f289c315ef5c9af"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/source-scan.json",
+      "sha256": "1872bc7fd0ba1f43081d2d09e5d9141dfd9f1e61cea3b6fb672c2a06bb65de9f"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/008.json",
-      "sha256": "b25073f1d45d726e225e566071e6ab03367f8bd06b8ba1c5e9d497d003ed3374"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/008.json",
+      "sha256": "d69b45c1f6aee517f653a6f970b45f306af080c142d6a6ed529e1a55e32aac2c"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/precheck-discovery.json",
-      "sha256": "0da342e86eb8b5fa679f2dd229bf1a204cf0dc4e96b654539c056690a5058171"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/precheck-discovery.json",
+      "sha256": "5d560306c1cba6e627419ed838a8a25ebe6897c3b0a4b69c8bff8566a862d588"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/009.json",
-      "sha256": "ae02b049f40e0e8d41e52d8540d44aa526d143e1688576a66b3917386e34e677"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/009.json",
+      "sha256": "2521b632e9b705b989e65b636d7a31c5cf2070d6da56d337bd25414dde241cfb"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/010.json",
-      "sha256": "f033157880c8ee05ba43f652f974d8c72321b7278db8e984bd54be168f370954"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/010.json",
+      "sha256": "61254fc849ca49dceff252750b18efb1655cc1ba783600f11b010eba4ffdb0d5"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/011.json",
-      "sha256": "f5aaf087a003e0f01840513f15b16a10fcf446c4785995ebb9bfad0c1422165a"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/011.json",
+      "sha256": "ac5007d4cb85fde5db98766939605cb9dd48ab983706da07fb0b6c3b0f52ed88"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/012.json",
-      "sha256": "18961213b759632af775a5a684e8868aea4e2ee76eb7023c9fc30231e864615d"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/012.json",
+      "sha256": "aa34d06480023a624ba715bcea256a92ec998c2c7e1a3e9202d45e1db9ead270"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/case-command-1.json",
-      "sha256": "b085d539e214efe6b004cc0a6736d9bc32950e893134b34a95e970ca53e1edc9"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/case-command-1.json",
+      "sha256": "9b01f7c231a4dbf86bd43674409250afa13c2d77214d7c68245fd4aef741315b"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/013.json",
-      "sha256": "a25c9f68aef76014fab9fab600baf5870a440503ee4ca0eb3063ba4fb5fd3737"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/013.json",
+      "sha256": "04613710eefc807f8d4c36b4aa3af06ebb9f97749513d051937f22109be56671"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/full-regression.json",
-      "sha256": "c14dce9b968881034886eecc4f0d376229b5038b122e67492c5cf90fc0e41e01"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/full-regression.json",
+      "sha256": "3078a2ce52e473274e0b7d32a0a0bec2369dc0c0675b23463cfbcc3dd6b95ef9"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/014.json",
-      "sha256": "361f1936f3f32a2b33d82e5d45f271b7dcdf6ec7554d579b19a90eb4e6423d9e"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/014.json",
+      "sha256": "9e7b497f7d34cc50971b000468e298f8b12b3051ba66445462032413ac96d24b"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/015.json",
-      "sha256": "737a4f2cf74b0eb31c378381f6272b954689dd8601fbd13d76ae9105995b0c11"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/015.json",
+      "sha256": "cdbcd22632be514bc4495117f2e4d187fb5eb05ba4323d554007d81cb057a870"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/016.json",
-      "sha256": "0bb003f6d0285b1ddd6630a7e0e886238957d9045a89d52de71831f56b043ac8"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/016.json",
+      "sha256": "439d12ac000dfa92311e1a372a056552aa427e76f60dec2e44d8b74ed65a701f"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/017.json",
-      "sha256": "6a1ef170be84497f2ed0ba70d2c10434d247eef0991d5b07118b3c3c80ee282c"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/017.json",
+      "sha256": "7e74bef1d59d275fab23293e78c2b661e086bded4e003b9fd75ec1ac243ea232"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/legacy-route-http.json",
-      "sha256": "01c506eba58d8a6f7e67503c41b03d2735541a958060b2f2a58f3afa2b13be78"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/legacy-route-http.json",
+      "sha256": "60573ad45dfe0bb2ac424820c71e159843b4cb74ca733c9c7f648e1a61af31c7"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/018.json",
-      "sha256": "62aac987cb154de8532641f00f815e8508805472f64ef7026ab096d61a59be5a"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/018.json",
+      "sha256": "952823f31872ef108865261f61a9f043ebaa8432353a95cbd6bc7f9ba6d84697"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/import-boundary.json",
+      "path": "docs/evidence/attempts/Phase016/attempt-5/import-boundary.json",
       "sha256": "aec6af4100bb7a1acfb3b9cb367ce136be60a7df53dbb83d67490db771f3596b"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/019.json",
-      "sha256": "dbbace421e674466a4255e70389ab48f0ed6d86a3533de633f2ef1e273fe6d96"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/019.json",
+      "sha256": "bc895bec042a9ed1d36a96d1914d6b8f74d178c0d8836b451c31ba3e8ec83bd6"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/negative-controls.json",
-      "sha256": "d9615d2d8b6d90123b43cc1628e331b35dae54e8fa51595f4732bd4f437f5b7e"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/negative-run/negative-controls.json",
+      "sha256": "b95796b5e8dc50e11114d80545e9ec1348ac3aad8ed71dc37e8df8477183b726"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/commands/001.json",
-      "sha256": "1a0b23e4c83529da43b0428d3a159c37807af70bb6c6ed1d27d2c162a6fc11be"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/negative-run/commands/001.json",
+      "sha256": "373e72037a1a054c7aaa9423c0b19bb9453094d05bde0578df1e61cde3af39f0"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/commands/002.json",
-      "sha256": "4239258a3b79ac3596b7d66bb329f979a8af5d8814f63c034c9e48d908375815"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/negative-run/commands/002.json",
+      "sha256": "e03fb659b773f45c239ec20df811d8cfdc6a6373e8eefc442e58b09c90f69f95"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/mutations/terminal-cas-report.json",
-      "sha256": "94d76afeef4a9c91e00ad07435c325e0451d4c081ac24a317a7faa723ec5f4c3"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/negative-run/mutations/terminal-cas-report.json",
+      "sha256": "8dae3533e9271b608857c757b4c5b7e88bed22171dccbede8e4f9f2d3d777136"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/mutations/terminal-cas.json",
-      "sha256": "9724af3c93289b03c6163cd7c7945591016747bfe720287252f17e8ac0cfec2c"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/negative-run/mutations/terminal-cas.json",
+      "sha256": "4eebfe9c7c5473b3a6827d65dbcc37ff3f3d1c297db7319639e2c90fb5e1af75"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/commands/003.json",
-      "sha256": "7a33648fefb8081c12b13335ef9f7564e66447744cf50fb7633283192ac77fc2"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/negative-run/commands/003.json",
+      "sha256": "e27c0d3cd0262a00ebd126dccf2d109037a2ef07d95df3332b4016db66d8ffd1"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/commands/004.json",
-      "sha256": "5cb86cac729bc746d2dc5f9bb8b3ed11a3edee79332027ec06fa311ece3e7454"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/negative-run/commands/004.json",
+      "sha256": "605cf53fec1be7266baf301c71fa2832aac08c8b4b033928aa546f21109495ac"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/mutations/event-unique-report.json",
-      "sha256": "9b00b1ddb11f4c3dcc3d2086506ef2177628d00d783972d1d87c611412559c0e"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/negative-run/mutations/event-unique-report.json",
+      "sha256": "ffbbed79bdf6893c70cef8e07003b955d709a2084c35b50d3763e55ce8976794"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/mutations/event-unique.json",
-      "sha256": "8f87ea42073ec4a1b66ee3ba7f3e19dfb3a99c9bddc370e937495673875b3366"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/negative-run/mutations/event-unique.json",
+      "sha256": "887b01a413caec2ff1d45f674639b75a7aec8f01226eecc27b310d5ce8cffbf5"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/commands/005.json",
-      "sha256": "ee98ceea3ff8d9047f2d1041dc1dd32aef0749470af73e19b57327473b6556b6"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/negative-run/commands/005.json",
+      "sha256": "d1dced83f3e546e4bc80c9d97e99d2980c37c4ae783d9cee00fe9455a94bf9b7"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/commands/006.json",
-      "sha256": "d97fb47bae4f9627cbed79b71cf5d962982bc023edd1bffeaf5d2860424d9fbe"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/negative-run/commands/006.json",
+      "sha256": "455ad41e28934ab3b16b8cbf82f5c115d909dc47c39f951574bb5256b9ca6331"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/mutations/delta-persisted-report.json",
-      "sha256": "1300db403a18f7db5a026345f971f6c7adb92a29b581609ba03c9b513235491e"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/negative-run/mutations/delta-persisted-report.json",
+      "sha256": "3a90eeca49da22b393861ff2c06db36b210127df4303402fcc040d0f168c53ec"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/mutations/delta-persisted.json",
-      "sha256": "545a3e26843695ede2a509f0f9852820221f74cc7ddc13a32f9d10cc0a0e2c25"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/negative-run/mutations/delta-persisted.json",
+      "sha256": "4576f1727345d882e4178574ad378682d916a93069f8057b3f08305b02c3998c"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/commands/007.json",
-      "sha256": "4885e96ee2325424f83904dc8011cc1104066e936f0e911f2f2c12a862e7cf59"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/negative-run/commands/007.json",
+      "sha256": "af894b2285059cedf0593f201257bfdfb04f7c47fc7ceb022bece7b387353527"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/commands/008.json",
-      "sha256": "319f099c5d09d68c976601365ac987c1cd9915e506e6097bc0927123e0b060eb"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/negative-run/commands/008.json",
+      "sha256": "7cf60819230230d8268394b7aff0d13327c282dfe2ec30975d339f0875b5c4e1"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/negative-run/restored-card.json",
-      "sha256": "f6423c06480e7a404146931f579964c6d23eea5f84f3ea4dcf4cb0fd46f0db3c"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/negative-run/restored-card.json",
+      "sha256": "69270f358ee8b639927cbf8800c12b6db067bc11e80c7a775c06aa2e00065825"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/020.json",
-      "sha256": "1a0b23e4c83529da43b0428d3a159c37807af70bb6c6ed1d27d2c162a6fc11be"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/020.json",
+      "sha256": "373e72037a1a054c7aaa9423c0b19bb9453094d05bde0578df1e61cde3af39f0"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/021.json",
-      "sha256": "4239258a3b79ac3596b7d66bb329f979a8af5d8814f63c034c9e48d908375815"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/021.json",
+      "sha256": "e03fb659b773f45c239ec20df811d8cfdc6a6373e8eefc442e58b09c90f69f95"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/022.json",
-      "sha256": "7a33648fefb8081c12b13335ef9f7564e66447744cf50fb7633283192ac77fc2"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/022.json",
+      "sha256": "e27c0d3cd0262a00ebd126dccf2d109037a2ef07d95df3332b4016db66d8ffd1"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/023.json",
-      "sha256": "5cb86cac729bc746d2dc5f9bb8b3ed11a3edee79332027ec06fa311ece3e7454"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/023.json",
+      "sha256": "605cf53fec1be7266baf301c71fa2832aac08c8b4b033928aa546f21109495ac"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/024.json",
-      "sha256": "ee98ceea3ff8d9047f2d1041dc1dd32aef0749470af73e19b57327473b6556b6"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/024.json",
+      "sha256": "d1dced83f3e546e4bc80c9d97e99d2980c37c4ae783d9cee00fe9455a94bf9b7"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/025.json",
-      "sha256": "d97fb47bae4f9627cbed79b71cf5d962982bc023edd1bffeaf5d2860424d9fbe"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/025.json",
+      "sha256": "455ad41e28934ab3b16b8cbf82f5c115d909dc47c39f951574bb5256b9ca6331"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/026.json",
-      "sha256": "4885e96ee2325424f83904dc8011cc1104066e936f0e911f2f2c12a862e7cf59"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/026.json",
+      "sha256": "af894b2285059cedf0593f201257bfdfb04f7c47fc7ceb022bece7b387353527"
     },
     {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/commands/027.json",
-      "sha256": "319f099c5d09d68c976601365ac987c1cd9915e506e6097bc0927123e0b060eb"
+      "path": "docs/evidence/attempts/Phase016/attempt-5/commands/027.json",
+      "sha256": "7cf60819230230d8268394b7aff0d13327c282dfe2ec30975d339f0875b5c4e1"
     }
   ],
   "failures": [],
-  "generatedAt": "2026-09-15T13:28:00.638Z",
+  "generatedAt": "2026-09-15T14:47:52.578Z",
   "details": {
     "planPath": "docs/phase-plans/Phase016.json",
-    "planHash": "9eee72c2491a097ba2a02c1f7e12893fc799721663dd668ae74b70262cf6b4e2",
-    "testedTree": "7140d2d0f00e5ab7e46882f9aeb4ccb0f21aa811",
-    "reviewerRunId": "phase016-independent-final-20260915T130100Z",
-    "reviewReportPath": "docs/evidence/attempts/Phase016/attempt-4/review.json",
-    "reviewReportHash": "507c8d03d6608753eb4e6ad8a89f41f0650e0552d65a0b3778d62dcda6c5a664",
+    "planHash": "43622cea95a53cce67a4d02cd4119bb04e8fc578faf19de208dd9dff76ed7e47",
+    "testedTree": "5a4059ba1b8dea614b5ffbceb050b90f609984b1",
+    "reviewerRunId": "phase016-independent-seal-recovery-20260915T140823Z",
+    "reviewReportPath": "docs/evidence/attempts/Phase016/attempt-5/review.json",
+    "reviewReportHash": "ce0de64c199f5780e5f3bd3ff99dd7c3d94eeb7b17a411b846a46624d006427b",
     "recoveryCommits": [
       "ad3079dae3fd0f26f1b028584dfc79547d1155af",
       "c8cea8af11d121432e94e5af53dc01348e2c9547",
-      "5e5e303d87efd4424181c332c51067486f5bfb34"
+      "5e5e303d87efd4424181c332c51067486f5bfb34",
+      "b1fb765aefd30c478ab408db87d273d406edb890",
+      "cdbf24c6181e8a4ed9d9a6517b8e6ed084dacdaf"
     ],
+    "sealRecovery": {
+      "artifactCommit": "b1fb765aefd30c478ab408db87d273d406edb890",
+      "metadataCommit": "cdbf24c6181e8a4ed9d9a6517b8e6ed084dacdaf",
+      "failure": {
+        "path": "docs/evidence/attempts/Phase016/attempt-4/attempt.json",
+        "sha256": "16cb1612088958485ed6cd56e5ee6b8619c47ac252c57b65437aef1e083b4afd"
+      },
+      "metadataFiles": [
+        {
+          "path": "docs/evidence/Phase016-gate.json",
+          "archivedPath": "docs/evidence/attempts/Phase016/attempt-4/unsealed-gate.json",
+          "sha256": "b0d6aa2997b13db1646cf5205721a273578ad20a5922142ad58556917175d354"
+        },
+        {
+          "path": "docs/roadmap-run.json",
+          "archivedPath": "docs/evidence/attempts/Phase016/attempt-4/unsealed-state.json",
+          "sha256": "8bcd9b41f7cb879816a7f2e5e9f13b6084f221d11c51ca268b221914d743c493"
+        },
+        {
+          "path": "docs/phase-completion-log.md",
+          "archivedPath": "docs/evidence/attempts/Phase016/attempt-4/unsealed-log.md",
+          "sha256": "f415c5b752e703e22919f8c33deeda85bb824ba96cc36d1eac7e1457ec51ade5"
+        }
+      ]
+    },
     "originalThreshold": 7,
     "automatedThreshold": 7,
     "waived": false,
     "requestedThrough": 16,
     "nextPhaseExecutionAuthorized": false,
     "milestone": "M4_SESSION_FOUNDATION",
-    "qualityReportPath": "docs/evidence/attempts/Phase016/attempt-4/quality.json",
-    "qualityReportHash": "120a97d517fb04968673dca705f4e6274de7d33c256f5d7027ab4bc3938877d4",
+    "qualityReportPath": "docs/evidence/attempts/Phase016/attempt-5/quality.json",
+    "qualityReportHash": "fe03049d821c2d19372e514020e0a0a9b87388c7eaa1792af7afed4248d7ee09",
     "manifestHash": "497689843e4576c5f8e8a6636d29b04023ac997309a3ffab83cc67d90ea7bf3e",
     "schemaPath": "prisma/schema.prisma",
     "schemaHash": "39010b6e4762e2cdc4c5294d1098c2102ad5205833efe3245692795881a22bd3",
@@ -12130,17 +12457,17 @@
         "timedOut": false
       },
       {
-        "command": "C:\\Program Files\\nodejs\\node.exe tests/phase016/evidence-guards.mjs --output C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\attempt-4-evidence-guards.json",
+        "command": "C:\\Program Files\\nodejs\\node.exe tests/phase016/evidence-guards.mjs --output C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\attempt-5-evidence-guards.json",
         "exitCode": 0,
         "timedOut": false
       },
       {
-        "command": "C:\\Program Files\\nodejs\\node.exe scripts/test-validate-phase.mjs --shell both --output C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\attempt-4-validator-regression.json",
+        "command": "C:\\Program Files\\nodejs\\node.exe scripts/test-validate-phase.mjs --shell both --output C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\attempt-5-validator-regression.json",
         "exitCode": 0,
         "timedOut": false
       },
       {
-        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\node_modules\\vitest\\vitest.mjs list --json=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\attempt-4-precheck-discovery.json",
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\node_modules\\vitest\\vitest.mjs list --json=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\attempt-5-precheck-discovery.json",
         "exitCode": 0,
         "timedOut": false
       },
@@ -12160,12 +12487,12 @@
         "timedOut": false
       },
       {
-        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- chat-session sse replay cancel --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\attempt-4-case-command-1.json",
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- chat-session sse replay cancel --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\attempt-5-case-command-1.json",
         "exitCode": 0,
         "timedOut": false
       },
       {
-        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\attempt-4-full-regression.json",
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\attempt-5-full-regression.json",
         "exitCode": 0,
         "timedOut": false
       },
@@ -12185,12 +12512,12 @@
         "timedOut": false
       },
       {
-        "command": "C:\\Program Files\\nodejs\\node.exe tests/phase016/routes.mjs --output C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\attempt-4-legacy-route-http.json",
+        "command": "C:\\Program Files\\nodejs\\node.exe tests/phase016/routes.mjs --output C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\attempt-5-legacy-route-http.json",
         "exitCode": 0,
         "timedOut": false
       },
       {
-        "command": "C:\\Program Files\\nodejs\\node.exe --conditions=react-server --import tsx tests/phase016/import-scan.ts --output C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\attempt-4-import-boundary.json",
+        "command": "C:\\Program Files\\nodejs\\node.exe --conditions=react-server --import tsx tests/phase016/import-scan.ts --output C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\attempt-5-import-boundary.json",
         "exitCode": 0,
         "timedOut": false
       },
@@ -12205,7 +12532,7 @@
         "timedOut": false
       },
       {
-        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase016/chat-session.test.ts -t cancel-race: cancelled winner rejects a late completion and completed winner is replayed by cancel --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\attempt-4-negative-terminal-cas.json",
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase016/chat-session.test.ts -t cancel-race: cancelled winner rejects a late completion and completed winner is replayed by cancel --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\attempt-5-negative-terminal-cas.json",
         "exitCode": 1,
         "timedOut": false
       },
@@ -12215,7 +12542,7 @@
         "timedOut": false
       },
       {
-        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase016/chat-session.test.ts -t replay: database event uniqueness and append-only rules reject duplicate facts and unauthorized writes --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\attempt-4-negative-event-unique.json",
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase016/chat-session.test.ts -t replay: database event uniqueness and append-only rules reject duplicate facts and unauthorized writes --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\attempt-5-negative-event-unique.json",
         "exitCode": 1,
         "timedOut": false
       },
@@ -12225,7 +12552,7 @@
         "timedOut": false
       },
       {
-        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase016/chat-session.test.ts -t transient-delta: real HTTP chunks are visible only live and disconnect leaves one complete reconciled final message --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\attempt-4-negative-delta-persisted.json",
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase016/chat-session.test.ts -t transient-delta: real HTTP chunks are visible only live and disconnect leaves one complete reconciled final message --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\attempt-5-negative-delta-persisted.json",
         "exitCode": 1,
         "timedOut": false
       },
@@ -12235,14 +12562,14 @@
         "timedOut": false
       },
       {
-        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- chat-session sse replay cancel --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\attempt-4-restored-card.json",
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- chat-session sse replay cancel --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase016\\attempt-5-restored-card.json",
         "exitCode": 0,
         "timedOut": false
       }
     ],
     "secretScan": {
-      "path": "docs/evidence/attempts/Phase016/attempt-4/source-scan.json",
-      "sha256": "02c0066a77cce2d4b70c9d342210bec843e2ed3e4043bb095f289c315ef5c9af",
+      "path": "docs/evidence/attempts/Phase016/attempt-5/source-scan.json",
+      "sha256": "1872bc7fd0ba1f43081d2d09e5d9141dfd9f1e61cea3b6fb672c2a06bb65de9f",
       "status": "PASS",
       "filesScanned": 293,
       "hits": 0,
@@ -12494,7 +12821,7 @@
         "tests/phase015/source-scan-allowlist.json": "88a26a2ba5747da1e6c8b220472f37d23f0ad92118396ec9ff806560f6cd28d1",
         "tests/phase015/worker.ts": "33c4964ca6c49884f3060f84ebdb92313944698ddd8c50c54ddba5e98c052ce5",
         "tests/phase016/chat-session.test.ts": "228e2800ad9672a3a118d3dce783f5d846589b311bc4b641f0f641c6194576e7",
-        "tests/phase016/evidence-guards.mjs": "a2a589f2a592516738f538f38047a497b68081914ae69a5c4b508f70757ca815",
+        "tests/phase016/evidence-guards.mjs": "3e7a46cc9861d99546bedf7bd1cefd000ae27988789f8f338b6b72ec93de93c9",
         "tests/phase016/fixture.ts": "ae751b7fb9c5df7d61d07eee0d5d8731dda91de4d59ba19980e595fde0f87d2d",
         "tests/phase016/import-scan.ts": "42ab2c47ef5b9bae007a096fe45c49910d844797ca40b18cce9aa33c14a4fc79",
         "tests/phase016/routes.mjs": "c69048e1d8f525e5a84839507a8266430f44ce2f2533386bacf56cd05b6b84f0",
@@ -12529,8 +12856,8 @@
         "scripts/test-checkpoint-import.mjs": "9b0d18dda79e9cb8602727a72555ca392b9558b2dcc1360349f73c89560a8e11",
         "scripts/test-checkpoint-maintenance.mjs": "69ce62d465b2996b9a80b8b68898351e8e3259d93daeaaacfe0df7d832005f58",
         "scripts/test-phase-input-paths.mjs": "ce18f4dbde62c19eba879e3354af7a6d92d2ee71a191ba89bf6dd10dbddce1c5",
-        "scripts/test-validate-phase.mjs": "671061ffb61e735ef9e76d288da63b314d59545a5f1d41b53350d595409642fc",
-        "scripts/validate-phase.mjs": "df241d6998f2ad7c13b43812ab218afce2b0b060e308a4533d6bb2d06a9c0ac0",
+        "scripts/test-validate-phase.mjs": "c03976ce4eeed35e033a82a9fa92a48f21e5c52dcb40d043dc3711dd855c3569",
+        "scripts/validate-phase.mjs": "db41adca3f2a96ce76d2bcb97d165fadb6cedf8494bb0ae53a9fdd078c98fc93",
         "scripts/validate-phase.ps1": "7c6953e16afc1b54386eafadd7293d08abc75ead8bf78e8c643f0ce5cf20a319",
         "scripts/verify-phase003.mjs": "f3b77a187709cab823dcd7a6fc84b1644dacdf3f0c5a728b4202aca357510955",
         "scripts/worker.ts": "d2bec8619b79e2c3b29b3df1cd64935d3fb462f0e68205881df0dafe1d843a14",
@@ -12545,9 +12872,9 @@
       "historicalEvidence": "Verified by immutable Git/blob hashes; unchanged history is not rewritten"
     },
     "costAccounting": {
-      "startedAt": "2026-09-15T12:49:40.174Z",
-      "finishedAt": "2026-09-15T13:09:40.077Z",
-      "durationMs": 1199903,
+      "startedAt": "2026-09-15T14:01:56.993Z",
+      "finishedAt": "2026-09-15T14:22:47.038Z",
+      "durationMs": 1250045,
       "actualCommands": 27,
       "logicalCaseCommands": 1,
       "fullRegressionExecutions": 1,
