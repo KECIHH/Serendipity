@@ -1,0 +1,17 @@
+{
+  "command": "C:\\Program Files\\nodejs\\node.exe docs/phase-plans/verify-phase018.mjs --negative-controls",
+  "executable": "C:\\Program Files\\nodejs\\node.exe",
+  "arguments": [
+    "docs/phase-plans/verify-phase018.mjs",
+    "--negative-controls"
+  ],
+  "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+  "exitCode": 1,
+  "signal": null,
+  "timedOut": false,
+  "startedAt": "2026-09-18T10:57:15.961Z",
+  "finishedAt": "2026-09-18T10:57:22.083Z",
+  "durationMs": 6122,
+  "stdout": "",
+  "stderr": "{\"running\":\"negative:admin-guard\"}\nAssertionError [ERR_ASSERTION]: NEGATIVE_BUSINESS_WITNESS\n    at requireNegative (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/phase018-evidence.mjs:231:3)\n    at negativeControls (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase018.mjs:263:31)\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase018.mjs:525:29\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n"
+}

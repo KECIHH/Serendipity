@@ -1,7 +1,7 @@
 {
   "phase": 18,
-  "attemptId": "attempt-24",
-  "frozenAt": "2026-09-18T10:16:00.570Z",
+  "attemptId": "attempt-27",
+  "frozenAt": "2026-09-18T11:02:15.428Z",
   "phaseStartCommit": "de741a4580cdd2b80e28cb7075fa1160f2696783",
   "scope": "Extend the single Phase015 MockAiProvider with fixed failure fixtures, add the administrator AI debug workbench (page, three Route Handlers, AiDebugRun persistence and the AI_DEBUG durable task) and seal the M4 failure-injection matrix. Debug output is tracked by AiOutputRecord only; no formal plan version, travel record or ChatCommandEvent is written.",
   "requiredCaseIds": [
@@ -21,7 +21,7 @@
       "command": "npm run test -- mock-provider ai-debug-api ai-e2e",
       "denominator": 1,
       "inputPath": "tests/phase018/fixtures.json",
-      "outputPath": "docs/evidence/attempts/Phase018/attempt-24/success.json",
+      "outputPath": "docs/evidence/attempts/Phase018/attempt-27/success.json",
       "expected": "A fixed Mock success reaches SUCCEEDED through the persisted run with exactly one AiOutputRecord attempt (travelRecordId and commandId null, rawOutput null), zero formal plan writes and zero ChatCommandEvent rows."
     },
     {
@@ -29,7 +29,7 @@
       "command": "npm run test -- mock-provider ai-debug-api ai-e2e",
       "denominator": 1,
       "inputPath": "tests/phase018/fixtures.json",
-      "outputPath": "docs/evidence/attempts/Phase018/attempt-24/timeout.json",
+      "outputPath": "docs/evidence/attempts/Phase018/attempt-27/timeout.json",
       "expected": "A fixed Mock timeout fails the run with the structured PROVIDER_TIMEOUT code and a FAILED attempt, records no success summary and never emits a success event."
     },
     {
@@ -37,7 +37,7 @@
       "command": "npm run test -- mock-provider ai-debug-api ai-e2e",
       "denominator": 1,
       "inputPath": "tests/phase018/fixtures.json",
-      "outputPath": "docs/evidence/attempts/Phase018/attempt-24/invalid-json.json",
+      "outputPath": "docs/evidence/attempts/Phase018/attempt-27/invalid-json.json",
       "expected": "A truncated Mock body is classified INVALID_JSON only inside the ADMIN-authorized diagnostic payload and attempt classification; the public error projection stays PROVIDER_UNAVAILABLE and the database rawOutput stays null."
     },
     {
@@ -45,7 +45,7 @@
       "command": "npm run test -- mock-provider ai-debug-api ai-e2e",
       "denominator": 1,
       "inputPath": "tests/phase018/fixtures.json",
-      "outputPath": "docs/evidence/attempts/Phase018/attempt-24/schema-mismatch.json",
+      "outputPath": "docs/evidence/attempts/Phase018/attempt-27/schema-mismatch.json",
       "expected": "A well-formed but non-conforming Mock body is classified SCHEMA_MISMATCH, the attempt records parsedOk false and the run fails without a success summary."
     },
     {
@@ -53,7 +53,7 @@
       "command": "npm run test -- mock-provider ai-debug-api ai-e2e",
       "denominator": 1,
       "inputPath": "tests/phase018/fixtures.json",
-      "outputPath": "docs/evidence/attempts/Phase018/attempt-24/repair.json",
+      "outputPath": "docs/evidence/attempts/Phase018/attempt-27/repair.json",
       "expected": "A broken body is repaired through the frozen planner.repair_json Prompt using the same immutable NluContext, appending attempt 1 (INVALID_JSON) and attempt 2 (SUCCEEDED) with exact governance versions and no formal write."
     },
     {
@@ -61,7 +61,7 @@
       "command": "npm run test -- mock-provider ai-debug-api ai-e2e",
       "denominator": 1,
       "inputPath": "tests/phase018/fixtures.json",
-      "outputPath": "docs/evidence/attempts/Phase018/attempt-24/stream-interruption.json",
+      "outputPath": "docs/evidence/attempts/Phase018/attempt-27/stream-interruption.json",
       "expected": "Stream deltas stay transient (zero ChatCommandEvent and Outbox rows); a lost first response leaves the run resumable, a restarted worker completes it and GET recovers the identical final aggregate with zero Provider calls."
     },
     {
@@ -69,7 +69,7 @@
       "command": "npm run test -- mock-provider ai-debug-api ai-e2e",
       "denominator": 1,
       "inputPath": "tests/phase018/fixtures.json",
-      "outputPath": "docs/evidence/attempts/Phase018/attempt-24/cost.json",
+      "outputPath": "docs/evidence/attempts/Phase018/attempt-27/cost.json",
       "expected": "An exhausted shared NluContext token/cost budget fails the run with COST_LIMIT before any egress: zero Mock calls, zero attempts, zero formal writes."
     },
     {
@@ -77,7 +77,7 @@
       "command": "npm run test -- mock-provider ai-debug-api ai-e2e",
       "denominator": 1,
       "inputPath": "tests/phase018/fixtures.json",
-      "outputPath": "docs/evidence/attempts/Phase018/attempt-24/authorization.json",
+      "outputPath": "docs/evidence/attempts/Phase018/attempt-27/authorization.json",
       "expected": "Anonymous, USER, DISABLED, expired and stale-session callers are refused by the real requireAdmin guard with AUTH_REQUIRED/FORBIDDEN, zero AiDebugRun/DurableTask/TaskPayload writes and zero Mock calls; a foreign origin or missing CSRF is refused with 403."
     },
     {
@@ -85,7 +85,7 @@
       "command": "node docs/phase-plans/verify-phase018.mjs --negative-controls",
       "denominator": 5,
       "inputPath": "tests/phase018/fixtures.json",
-      "outputPath": "docs/evidence/attempts/Phase018/attempt-24/negative-controls.json",
+      "outputPath": "docs/evidence/attempts/Phase018/attempt-27/negative-controls.json",
       "expected": "Temporary removal of the admin guard, Mock determinism, strict schema parsing, the formal-write boundary or delta transience must fail the exact targeted assertion; restore bytes and rerun the eight fixtures."
     }
   ],

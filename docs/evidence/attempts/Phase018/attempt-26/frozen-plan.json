@@ -1,6 +1,6 @@
 {
   "phase": 18,
-  "attemptId": "attempt-27",
+  "attemptId": "attempt-26",
   "producer": "Phase018",
   "consumers": [
     "Phase019",
@@ -41,7 +41,7 @@
       "command": "npm run test -- mock-provider ai-debug-api ai-e2e",
       "denominator": 1,
       "inputPath": "tests/phase018/fixtures.json",
-      "outputPath": "docs/evidence/attempts/Phase018/attempt-27/success.json",
+      "outputPath": "docs/evidence/attempts/Phase018/attempt-26/success.json",
       "expected": "A fixed Mock success reaches SUCCEEDED through the persisted run with exactly one AiOutputRecord attempt (travelRecordId and commandId null, rawOutput null), zero formal plan writes and zero ChatCommandEvent rows."
     },
     {
@@ -49,7 +49,7 @@
       "command": "npm run test -- mock-provider ai-debug-api ai-e2e",
       "denominator": 1,
       "inputPath": "tests/phase018/fixtures.json",
-      "outputPath": "docs/evidence/attempts/Phase018/attempt-27/timeout.json",
+      "outputPath": "docs/evidence/attempts/Phase018/attempt-26/timeout.json",
       "expected": "A fixed Mock timeout fails the run with the structured PROVIDER_TIMEOUT code and a FAILED attempt, records no success summary and never emits a success event."
     },
     {
@@ -57,7 +57,7 @@
       "command": "npm run test -- mock-provider ai-debug-api ai-e2e",
       "denominator": 1,
       "inputPath": "tests/phase018/fixtures.json",
-      "outputPath": "docs/evidence/attempts/Phase018/attempt-27/invalid-json.json",
+      "outputPath": "docs/evidence/attempts/Phase018/attempt-26/invalid-json.json",
       "expected": "A truncated Mock body is classified INVALID_JSON only inside the ADMIN-authorized diagnostic payload and attempt classification; the public error projection stays PROVIDER_UNAVAILABLE and the database rawOutput stays null."
     },
     {
@@ -65,7 +65,7 @@
       "command": "npm run test -- mock-provider ai-debug-api ai-e2e",
       "denominator": 1,
       "inputPath": "tests/phase018/fixtures.json",
-      "outputPath": "docs/evidence/attempts/Phase018/attempt-27/schema-mismatch.json",
+      "outputPath": "docs/evidence/attempts/Phase018/attempt-26/schema-mismatch.json",
       "expected": "A well-formed but non-conforming Mock body is classified SCHEMA_MISMATCH, the attempt records parsedOk false and the run fails without a success summary."
     },
     {
@@ -73,7 +73,7 @@
       "command": "npm run test -- mock-provider ai-debug-api ai-e2e",
       "denominator": 1,
       "inputPath": "tests/phase018/fixtures.json",
-      "outputPath": "docs/evidence/attempts/Phase018/attempt-27/repair.json",
+      "outputPath": "docs/evidence/attempts/Phase018/attempt-26/repair.json",
       "expected": "A broken body is repaired through the frozen planner.repair_json Prompt using the same immutable NluContext, appending attempt 1 (INVALID_JSON) and attempt 2 (SUCCEEDED) with exact governance versions and no formal write."
     },
     {
@@ -81,7 +81,7 @@
       "command": "npm run test -- mock-provider ai-debug-api ai-e2e",
       "denominator": 1,
       "inputPath": "tests/phase018/fixtures.json",
-      "outputPath": "docs/evidence/attempts/Phase018/attempt-27/stream-interruption.json",
+      "outputPath": "docs/evidence/attempts/Phase018/attempt-26/stream-interruption.json",
       "expected": "Stream deltas stay transient (zero ChatCommandEvent and Outbox rows); a lost first response leaves the run resumable, a restarted worker completes it and GET recovers the identical final aggregate with zero Provider calls."
     },
     {
@@ -89,7 +89,7 @@
       "command": "npm run test -- mock-provider ai-debug-api ai-e2e",
       "denominator": 1,
       "inputPath": "tests/phase018/fixtures.json",
-      "outputPath": "docs/evidence/attempts/Phase018/attempt-27/cost.json",
+      "outputPath": "docs/evidence/attempts/Phase018/attempt-26/cost.json",
       "expected": "An exhausted shared NluContext token/cost budget fails the run with COST_LIMIT before any egress: zero Mock calls, zero attempts, zero formal writes."
     },
     {
@@ -97,7 +97,7 @@
       "command": "npm run test -- mock-provider ai-debug-api ai-e2e",
       "denominator": 1,
       "inputPath": "tests/phase018/fixtures.json",
-      "outputPath": "docs/evidence/attempts/Phase018/attempt-27/authorization.json",
+      "outputPath": "docs/evidence/attempts/Phase018/attempt-26/authorization.json",
       "expected": "Anonymous, USER, DISABLED, expired and stale-session callers are refused by the real requireAdmin guard with AUTH_REQUIRED/FORBIDDEN, zero AiDebugRun/DurableTask/TaskPayload writes and zero Mock calls; a foreign origin or missing CSRF is refused with 403."
     },
     {
@@ -105,7 +105,7 @@
       "command": "node docs/phase-plans/verify-phase018.mjs --negative-controls",
       "denominator": 5,
       "inputPath": "tests/phase018/fixtures.json",
-      "outputPath": "docs/evidence/attempts/Phase018/attempt-27/negative-controls.json",
+      "outputPath": "docs/evidence/attempts/Phase018/attempt-26/negative-controls.json",
       "expected": "Temporary removal of the admin guard, Mock determinism, strict schema parsing, the formal-write boundary or delta transience must fail the exact targeted assertion; restore bytes and rerun the eight fixtures."
     }
   ],
@@ -1078,14 +1078,6 @@
       "blockedCategory": "VERIFICATION",
       "planPath": "docs/evidence/attempts/Phase018/attempt-25/frozen-plan.json",
       "planHash": "074a5b3bd90711293b149d967242319df921cad3da4fd0e9c4c51d73bbc95392"
-    },
-    {
-      "attemptId": "attempt-26",
-      "status": "FAIL",
-      "path": "docs/evidence/attempts/Phase018/attempt-26/attempt.json",
-      "blockedCategory": "VERIFICATION",
-      "planPath": "docs/evidence/attempts/Phase018/attempt-26/frozen-plan.json",
-      "planHash": "d5598236906a3d855c11a44dc2825726ae2149fbc28124fba45afef31b291388"
     }
   ],
   "assertionBindings": {
@@ -1139,23 +1131,23 @@
     ]
   },
   "discoverySnapshot": {
-    "path": "docs/evidence/attempts/Phase018/attempt-27/frozen-discovery.json",
-    "sha256": "98d312efd38bf84a6ff8a08d441d152fac65c253bdfa87bbf9cc9b285fba938a",
+    "path": "docs/evidence/attempts/Phase018/attempt-26/frozen-discovery.json",
+    "sha256": "2e1ef2bd0a80d13f86dbfe1669ade07fc2daf41c212eafe446bf3824f0b8ae3d",
     "discovered": 723
   },
   "notApplicable": [
     "Formal TravelPlanV2/TravelPlanVersion and the real Provider adapter remain future Phase024/025/028 work. No real traffic, private credential or manual approval is required or performed."
   ],
   "costAccounting": {
-    "implementationStartedAt": "2026-09-18T11:02:15.428Z",
+    "implementationStartedAt": "2026-09-18T10:47:05.277Z",
     "reviewBudgetMinutes": 45,
     "measuredIn": "command records and review timestamps",
     "crossAttemptReuse": "disabled"
   },
   "executionFreeze": {
-    "frozenAt": "2026-09-18T11:02:15.428Z",
+    "frozenAt": "2026-09-18T10:47:05.277Z",
     "requirementsPath": "docs/evidence/attempts/Phase018/attempt-1/requirements-freeze.json",
-    "requirementsHash": "5ca749ab809c03225528f971b572c570cd50e55bc7907a4f58be3c07409c034b",
+    "requirementsHash": "4bc595f47431efa35f134aba2d1ef8896a8b67f49266e5dc682821e152051bd9",
     "crossAttemptReuse": "disabled"
   }
 }

@@ -195,9 +195,15 @@ function metadata() {
   const existingPhase018 = log.indexOf(phase018Marker);
   const phase018Entry = `| Phase018 | Mock Provider、AI 调试与 M4 Gate | 唯一 MockAiProvider 固定故障矩阵、AiDebugRun 迁移、AI_DEBUG 任务、管理员调试页与三个 Route Handler、安全调试 DTO、八组故障注入与五项反向控制；完整路径/hash 见 Gate | 固定 8/8；Vitest ${quality.testCount}/${quality.testCount}；专用 ${quality.dedicatedCount} 断言；5 项反向控制及恢复后八组重跑；真实 PostgreSQL 17/11 份迁移；debug 正式计划写入 0、Mock 网络调用 0；lint/typecheck/format/build/layout/证据自检/路由扫描；独立 Agent 复核；artifactCommit=${artifactCommit}；attemptId=${plan.attemptId} | 未执行正式方案版本、真实 Provider 适配器、生产流量或真实凭据；rawOutput 维持数据库强制 null，调试捕获只在受限内存与安全 DTO 中 | metadata 后双 shell seal、clean 和 GitHub 同步；授权止于 018 |\n\nPhase018 计划：${planPath}；唯一 Gate：${gatePath}；原始报告与独立复核：docs/evidence/attempts/Phase018/。\n`;
   if (existingPhase018 >= 0) {
+    const loggedArtifact = /artifactCommit=([0-9a-f]{40})/.exec(log)?.[1];
+    const loggedAttempt = /attemptId=(attempt-[0-9]+)/.exec(log)?.[1];
     assert(
-      log.includes("artifactCommit=c605ddb06e12927ca67614ac2a6b100c27e03e48") &&
-        log.includes("attemptId=attempt-16"),
+      plan.previousAttempts.some(
+        (attempt) =>
+          attempt.artifactCommit === loggedArtifact &&
+          attempt.attemptId === loggedAttempt &&
+          attempt.metadataCommit,
+      ),
       "COMPLETION_LOG_MUST_BE_FAILED_SEAL",
     );
   }
