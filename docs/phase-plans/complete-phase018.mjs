@@ -162,7 +162,7 @@ function metadata() {
   if (recoveringFailedSeal) {
     assert.equal(state.nextPhaseExecutionAuthorized, false);
     assert.equal(state.currentLayoutPhaseSeal.phase, 18);
-    assert.equal(state.checkpoints.at(-1), state.currentLayoutPhaseSeal);
+    assert.deepEqual(state.checkpoints.at(-1), state.currentLayoutPhaseSeal);
     assert(
       plan.previousAttempts.some(
         (attempt) =>
