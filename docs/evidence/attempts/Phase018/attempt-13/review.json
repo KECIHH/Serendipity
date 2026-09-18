@@ -1,0 +1,33 @@
+{
+  "phase": 18,
+  "attemptId": "attempt-13",
+  "planPath": "docs/phase-plans/Phase018.json",
+  "planHash": "cd8a3a958aa8cc79768a60211bd5aa2e62176853a8435544d598499ca5adfd97",
+  "decision": "FAIL",
+  "implementationContextId": "codex-native-root-phase018-20260916",
+  "contextId": "codex-independent-root-phase018-review-20260918",
+  "reviewerRunId": "review-phase018-attempt-13-20260918",
+  "generatedBy": "Codex",
+  "runnerIdentity": {
+    "kind": "INDEPENDENT_CODEX_AGENT",
+    "implementationAuthored": false
+  },
+  "sourceBasisPath": "docs/evidence/attempts/Phase018/attempt-13/source-basis.json",
+  "sourceBasisHash": "7de7a63c50688b7a3bac5292776da223817f0d14b119c6d6720c1060adf79f73",
+  "qualityReportPath": "docs/evidence/attempts/Phase018/attempt-13/quality.json",
+  "qualityReportHash": "747e3b58c90819b124cfb0880e1358b88e1dcf1a07df072b977283bf0e4ec051",
+  "reviewedAt": "2026-09-18T02:05:00.000Z",
+  "issues": [
+    {
+      "id": "PHASE018-SSE-ID",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "file": "src/app/api/admin/ai-debug/stream/route.ts",
+      "line": 32,
+      "summary": "The final SSE EventEnvelope omits the required id line. docs/api.md requires the SSE id to equal eventId for every EventEnvelope frame.",
+      "evidence": "The stream helper emits only event and data fields. Automated checks verified the envelope payload but did not assert the SSE id line.",
+      "requiredFix": "Emit id equal to the final envelope eventId and bind a dedicated stream-interruption assertion to the exact frame contract."
+    }
+  ],
+  "dispositions": []
+}

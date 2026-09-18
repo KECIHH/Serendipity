@@ -255,6 +255,9 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
     const includesChatCommands = Prisma.dmmf.datamodel.models.some(
       ({ name }) => name === "ChatCommand",
     );
+    const includesAiDebugRun = Prisma.dmmf.datamodel.models.some(
+      ({ name }) => name === "AiDebugRun",
+    );
     const includesRotationContract = readdirSync("prisma/migrations").some((name) =>
       /^\d{14}_key_rotation_contract$/.test(name),
     );
@@ -262,9 +265,11 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
       (includesAdminCommands ? 7 : includesAuth ? 6 : includesApiKey ? 5 : includesAudit ? 4 : 3) +
         Number(includesRotationContract) +
         Number(includesAiGovernance) +
-        Number(includesChatCommands),
+        Number(includesChatCommands) +
+        Number(includesAiDebugRun),
     );
     if (includesChatCommands) expect(migrations[9].name).toBe("20260914165140_chat_command_events");
+    if (includesAiDebugRun) expect(migrations[10].name).toMatch(/^\d{14}_ai_debug_run$/);
     if (includesAiGovernance) expect(migrations[8].name).toMatch(/^\d{14}_ai_governance$/);
     if (includesRotationContract)
       expect(migrations[7].name).toMatch(/^\d{14}_key_rotation_contract$/);
@@ -322,6 +327,7 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
             "Outbox",
           ]
         : []),
+      ...(models.some(({ name }) => name === "AiDebugRun") ? ["AiDebugRun"] : []),
       "ChatMessage",
       "SystemConfig",
       "TravelRecord",
@@ -408,8 +414,12 @@ describe.skipIf(databaseUrl === undefined)("TravelRecord real PostgreSQL contrac
     const includesChatCommands = Prisma.dmmf.datamodel.models.some(
       ({ name }) => name === "ChatCommand",
     );
+    const includesAiDebugRun = Prisma.dmmf.datamodel.models.some(
+      ({ name }) => name === "AiDebugRun",
+    );
     expect([...new Set(rows.map(({ name }) => name))]).toEqual([
       ...(includesAdminCommands ? ["AdminCommandStatus"] : []),
+      ...(includesAiDebugRun ? ["AiDebugRunStatus"] : []),
       ...(includesAiGovernance
         ? ["AiOutputStatus", "AiReservationStatus", "AiSubmissionState"]
         : []),

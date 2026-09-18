@@ -1,0 +1,732 @@
+{
+  "rows": [
+    {
+      "id": "admin-guard",
+      "originalCase": "Phase018:authorization",
+      "exitCode": 1,
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\fixtures\\admin-guard-ibrc3h",
+      "changes": [
+        {
+          "sourcePath": "src/app/api/admin/ai-debug/test/route.ts",
+          "originalHash": "4709513b2bc13a63aea7ae194a112c33e8c81495cc4bbd6c013954d96e50f84f",
+          "mutatedHash": "5af4f231ff72f4b96762dc1d19f6123b7fa5ec17c396ded377a8bd251f31d950"
+        }
+      ],
+      "testSourceHash": "4c0f5e394fcccbad1af0804f0c3493172b102562c4c8ad9ca2a87225b57bd130",
+      "reportPath": "docs/evidence/attempts/Phase018/attempt-14/negative-run/mutations/admin-guard-report.json",
+      "reportHash": "a2e7807ff0ab3af354adfb72f0487a960b4deb0df59c23e1bd238b1b7695cabf",
+      "receiptPath": "docs/evidence/attempts/Phase018/attempt-14/negative-run/mutations/admin-guard.json",
+      "receiptHash": "651f8f3c57c7e87114c8a5de065e50b385ac874f24d39a6983958e2461a97b90",
+      "failureEvidence": {
+        "id": "admin-guard",
+        "file": "src/app/api/admin/ai-debug/test/route.ts",
+        "testFile": "tests/phase018/ai-debug-api.test.ts",
+        "assertion": "administrator AI debug API ai-debug-api: anonymous, non-admin, disabled and invalidated sessions write nothing",
+        "signal": "AssertionError: ADMIN_GUARD_REQUIRED:anonymous: expected 500 to be 401 // Object.is equality\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase018/fixtures/admin-guard-ibrc3h/tests/phase018/ai-debug-api.test.ts:195:64\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+      },
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase018/ai-debug-api.test.ts -t ai-debug-api: anonymous, non-admin, disabled and invalidated sessions write nothing --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700663170-negative-admin-guard.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "tests/phase018/ai-debug-api.test.ts",
+          "-t",
+          "ai-debug-api: anonymous, non-admin, disabled and invalidated sessions write nothing",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700663170-negative-admin-guard.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\fixtures\\admin-guard-ibrc3h",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-18T03:04:23.171Z",
+        "finishedAt": "2026-09-18T03:04:26.339Z",
+        "durationMs": 3168,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/phase018/ai-debug-api.test.ts -t ai-debug-api: anonymous, non-admin, disabled and invalidated sessions write nothing --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700663170-negative-admin-guard.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase018/attempt-14-1789700663170-negative-admin-guard.json\n",
+        "stderr": ""
+      }
+    },
+    {
+      "id": "mock-determinism",
+      "originalCase": "Phase018:success",
+      "exitCode": 1,
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\fixtures\\mock-determinism-b2QIKG",
+      "changes": [
+        {
+          "sourcePath": "src/server/ai/mock-provider.ts",
+          "originalHash": "6b22832a502785294833b72d47bd717e03615b41cac6078bfe6fb97d2dca26b0",
+          "mutatedHash": "a270439c034a4fb9eae10d97e58f84c38d85a8679ab000ea46dd8395a1fd6f5c"
+        }
+      ],
+      "testSourceHash": "ac0246dbe9a4552b05dd33af674e848671eb06f30453ad79147381a62536d9a3",
+      "reportPath": "docs/evidence/attempts/Phase018/attempt-14/negative-run/mutations/mock-determinism-report.json",
+      "reportHash": "5a25563fa89a90cd8d1107d2261a71129a82b82268b1721ce60e3898042451d0",
+      "receiptPath": "docs/evidence/attempts/Phase018/attempt-14/negative-run/mutations/mock-determinism.json",
+      "receiptHash": "263a756574793e65a6b2ece1af53763114bab0ecbd6ee055f9ea55f24d703bc6",
+      "failureEvidence": {
+        "id": "mock-determinism",
+        "file": "src/server/ai/mock-provider.ts",
+        "testFile": "tests/phase018/mock-provider.test.ts",
+        "assertion": "single Mock provider failure fixtures mock-provider: success, clock, usage, chunk boundaries and trace are caller supplied",
+        "signal": "AssertionError: MOCK_DETERMINISM_REQUIRED: expected '{\"schemaVersion\":1,\"candidates\":[{\"fi…' to be '{\"schemaVersion\":1,\"candidates\":[{\"fi…' // Object.is equality\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase018/fixtures/mock-determinism-b2QIKG/tests/phase018/mock-provider.test.ts:105:56\n    at processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-a"
+      },
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase018/mock-provider.test.ts -t mock-provider: success, clock, usage, chunk boundaries and trace are caller supplied --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700667342-negative-mock-determinism.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "tests/phase018/mock-provider.test.ts",
+          "-t",
+          "mock-provider: success, clock, usage, chunk boundaries and trace are caller supplied",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700667342-negative-mock-determinism.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\fixtures\\mock-determinism-b2QIKG",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-18T03:04:27.342Z",
+        "finishedAt": "2026-09-18T03:04:28.811Z",
+        "durationMs": 1469,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/phase018/mock-provider.test.ts -t mock-provider: success, clock, usage, chunk boundaries and trace are caller supplied --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700667342-negative-mock-determinism.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase018/attempt-14-1789700667342-negative-mock-determinism.json\n",
+        "stderr": ""
+      }
+    },
+    {
+      "id": "schema-parse",
+      "originalCase": "Phase018:schema-mismatch",
+      "exitCode": 1,
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\fixtures\\schema-parse-CW8tW0",
+      "changes": [
+        {
+          "sourcePath": "src/lib/ai/json-parser.ts",
+          "originalHash": "cc260d3954f18a64356522a5b01c9158ed9878e8c21aa99e771523b3cf968398",
+          "mutatedHash": "93a9ad96c280a3a4c19651dcb9d14a93b857926102a5f7f81e9dd0cea0cf5d43"
+        }
+      ],
+      "testSourceHash": "feb8b5905f0a94b4ade87c2176a61d1ccae00d13482d29fd1c23c290539c8ebb",
+      "reportPath": "docs/evidence/attempts/Phase018/attempt-14/negative-run/mutations/schema-parse-report.json",
+      "reportHash": "36a48085310a6f529371b89b123516fc46bab37597a61e9fc361f1a105275b38",
+      "receiptPath": "docs/evidence/attempts/Phase018/attempt-14/negative-run/mutations/schema-parse.json",
+      "receiptHash": "aaf6234abda3b76339cbf464633ce2835b099e5312b5bfa9fb436f8021c0f1ae",
+      "failureEvidence": {
+        "id": "schema-parse",
+        "file": "src/lib/ai/json-parser.ts",
+        "testFile": "tests/integration/ai-e2e.test.ts",
+        "assertion": "phase018 M4 failure-injection matrix schema-mismatch: well-formed but non-conforming JSON is classified SCHEMA_MISMATCH",
+        "signal": "AssertionError: SCHEMA_MISMATCH_REQUIRED: expected 'SUCCEEDED' to be 'FAILED' // Object.is equality\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase018/fixtures/schema-parse-CW8tW0/tests/integration/ai-e2e.test.ts:237:57\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+      },
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/integration/ai-e2e.test.ts -t schema-mismatch: well-formed but non-conforming JSON is classified SCHEMA_MISMATCH --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700669809-negative-schema-parse.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "tests/integration/ai-e2e.test.ts",
+          "-t",
+          "schema-mismatch: well-formed but non-conforming JSON is classified SCHEMA_MISMATCH",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700669809-negative-schema-parse.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\fixtures\\schema-parse-CW8tW0",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-18T03:04:29.809Z",
+        "finishedAt": "2026-09-18T03:04:33.157Z",
+        "durationMs": 3348,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/integration/ai-e2e.test.ts -t schema-mismatch: well-formed but non-conforming JSON is classified SCHEMA_MISMATCH --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700669809-negative-schema-parse.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase018/attempt-14-1789700669809-negative-schema-parse.json\n",
+        "stderr": ""
+      }
+    },
+    {
+      "id": "formal-write",
+      "originalCase": "Phase018:success",
+      "exitCode": 1,
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\fixtures\\formal-write-IrUPcx",
+      "changes": [
+        {
+          "sourcePath": "src/server/ai/debug-runner.ts",
+          "originalHash": "1923a1ce75535dad3c279767133eb56268a0435c56a0a1f4843196a0070d1799",
+          "mutatedHash": "9cb1ed9e55b3269eca50eaa836778e77fecf56dea98d22fc0287f25a4548e5f9"
+        }
+      ],
+      "testSourceHash": "feb8b5905f0a94b4ade87c2176a61d1ccae00d13482d29fd1c23c290539c8ebb",
+      "reportPath": "docs/evidence/attempts/Phase018/attempt-14/negative-run/mutations/formal-write-report.json",
+      "reportHash": "89b01e39aca0e0b66e4cc8a1ff14f79eca1a54d69af748479172a1e87f2d77b3",
+      "receiptPath": "docs/evidence/attempts/Phase018/attempt-14/negative-run/mutations/formal-write.json",
+      "receiptHash": "bb931023e677195b44d5ed84c05f0f91cfb80eadfd115e3f20ebfa4c78604778",
+      "failureEvidence": {
+        "id": "formal-write",
+        "file": "src/server/ai/debug-runner.ts",
+        "testFile": "tests/integration/ai-e2e.test.ts",
+        "assertion": "phase018 M4 failure-injection matrix success: a Mock success reaches SUCCEEDED with one attempt and no formal plan write",
+        "signal": "AssertionError: FORMAL_PLAN_WRITE_BOUNDARY_REQUIRED: expected 'RETRYING' to be 'COMPLETED' // Object.is equality\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase018/fixtures/formal-write-IrUPcx/tests/integration/ai-e2e.test.ts:139:86\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+      },
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/integration/ai-e2e.test.ts -t success: a Mock success reaches SUCCEEDED with one attempt and no formal plan write --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700674229-negative-formal-write.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "tests/integration/ai-e2e.test.ts",
+          "-t",
+          "success: a Mock success reaches SUCCEEDED with one attempt and no formal plan write",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700674229-negative-formal-write.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\fixtures\\formal-write-IrUPcx",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-18T03:04:34.229Z",
+        "finishedAt": "2026-09-18T03:04:37.608Z",
+        "durationMs": 3379,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/integration/ai-e2e.test.ts -t success: a Mock success reaches SUCCEEDED with one attempt and no formal plan write --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700674229-negative-formal-write.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase018/attempt-14-1789700674229-negative-formal-write.json\n",
+        "stderr": ""
+      }
+    },
+    {
+      "id": "delta-persistence",
+      "originalCase": "Phase018:stream-interruption",
+      "exitCode": 1,
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\fixtures\\delta-persistence-UVm1TS",
+      "changes": [
+        {
+          "sourcePath": "src/app/api/admin/ai-debug/stream/route.ts",
+          "originalHash": "3c190a540717a25d191305db8d4ba98f1d1c82131541cd3e27fa9af5f9afefc5",
+          "mutatedHash": "51527e27f6831c379a3e1c5f7b8084d31496de42e9ac5f85b79c88b9727ccd0a"
+        }
+      ],
+      "testSourceHash": "feb8b5905f0a94b4ade87c2176a61d1ccae00d13482d29fd1c23c290539c8ebb",
+      "reportPath": "docs/evidence/attempts/Phase018/attempt-14/negative-run/mutations/delta-persistence-report.json",
+      "reportHash": "bd7dfbf4e450d01950a9fb93086846620e4865d81f343fe1fe1e59974e2f3be3",
+      "receiptPath": "docs/evidence/attempts/Phase018/attempt-14/negative-run/mutations/delta-persistence.json",
+      "receiptHash": "e33b1be897c540e0093cf778c70c6598e0678ecd531b0fdebaf6410ebdcccec2",
+      "failureEvidence": {
+        "id": "delta-persistence",
+        "file": "src/app/api/admin/ai-debug/stream/route.ts",
+        "testFile": "tests/integration/ai-e2e.test.ts",
+        "assertion": "phase018 M4 failure-injection matrix stream-interruption: deltas stay transient, a lost first response resumes and GET recovers with zero calls",
+        "signal": "AssertionError: TRANSIENT_DELTA_REQUIRED: expected 3 to be +0 // Object.is equality\n    at C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase018/fixtures/delta-persistence-UVm1TS/tests/integration/ai-e2e.test.ts:319:67\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:20"
+      },
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/integration/ai-e2e.test.ts -t stream-interruption: deltas stay transient, a lost first response resumes and GET recovers with zero calls --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700678615-negative-delta-persistence.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "tests/integration/ai-e2e.test.ts",
+          "-t",
+          "stream-interruption: deltas stay transient, a lost first response resumes and GET recovers with zero calls",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700678615-negative-delta-persistence.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\fixtures\\delta-persistence-UVm1TS",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-18T03:04:38.616Z",
+        "finishedAt": "2026-09-18T03:04:41.993Z",
+        "durationMs": 3377,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/integration/ai-e2e.test.ts -t stream-interruption: deltas stay transient, a lost first response resumes and GET recovers with zero calls --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700678615-negative-delta-persistence.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase018/attempt-14-1789700678615-negative-delta-persistence.json\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "sourceUnchanged": true,
+  "restored": {
+    "logicalCommand": "npm run test -- mock-provider ai-debug-api ai-e2e",
+    "result": {
+      "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- mock-provider ai-debug-api ai-e2e --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700683873-restored-card.json",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test",
+        "--",
+        "mock-provider",
+        "ai-debug-api",
+        "ai-e2e",
+        "--reporter=json",
+        "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700683873-restored-card.json"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "startedAt": "2026-09-18T03:04:43.874Z",
+      "finishedAt": "2026-09-18T03:04:53.932Z",
+      "durationMs": 10058,
+      "stdout": "\n> serendipity@0.1.0 test\n> vitest run mock-provider ai-debug-api ai-e2e --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700683873-restored-card.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase018/attempt-14-1789700683873-restored-card.json\n",
+      "stderr": ""
+    },
+    "reportPath": "docs/evidence/attempts/Phase018/attempt-14/negative-run/restored-card.json",
+    "reportHash": "20f43eb56a374261ce9fd0ef42ebb3eef112ca2b7b4972af709ff9ca1bff34ea",
+    "attemptAudit": {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/negative-run/restored-card-attempt-audit.json",
+      "sha256": "5271a5e87f9bf45e962aa505f9b8fb2a5a190f24af083b187cf83b34f32423e6"
+    },
+    "attempts": [
+      {
+        "fixture": "success",
+        "status": "SUCCEEDED",
+        "attempts": 1,
+        "formalWrites": 0,
+        "persistedEvents": 0,
+        "mockCalls": 1
+      },
+      {
+        "fixture": "timeout",
+        "status": "FAILED",
+        "errorCode": "PROVIDER_TIMEOUT",
+        "formalWrites": 0,
+        "persistedEvents": 0,
+        "mockCalls": 1
+      },
+      {
+        "fixture": "invalid-json",
+        "status": "FAILED",
+        "errorCode": "INVALID_JSON",
+        "formalWrites": 0,
+        "persistedEvents": 0,
+        "mockCalls": 1
+      },
+      {
+        "fixture": "schema-mismatch",
+        "status": "FAILED",
+        "errorCode": "SCHEMA_MISMATCH",
+        "formalWrites": 0,
+        "persistedEvents": 0,
+        "mockCalls": 1
+      },
+      {
+        "fixture": "repair",
+        "status": "SUCCEEDED",
+        "attempts": 2,
+        "repairAttempt": 2,
+        "formalWrites": 0,
+        "persistedEvents": 0,
+        "mockCalls": 2
+      },
+      {
+        "fixture": "stream-interruption",
+        "status": "SUCCEEDED",
+        "attempts": 1,
+        "providerCallsDuringGet": 0,
+        "persistedDeltas": 0,
+        "formalWrites": 0,
+        "persistedEvents": 0,
+        "mockCalls": 2
+      },
+      {
+        "fixture": "cost",
+        "status": "FAILED",
+        "errorCode": "COST_LIMIT",
+        "formalWrites": 0,
+        "persistedEvents": 0,
+        "mockCalls": 0
+      },
+      {
+        "fixture": "authorization",
+        "anonymous": 401,
+        "user": 403,
+        "writes": 0,
+        "formalWrites": 0,
+        "persistedEvents": 0,
+        "mockCalls": 0
+      }
+    ],
+    "mappings": [
+      {
+        "testCaseId": "Phase018:success",
+        "tag": "success:",
+        "assertions": [
+          {
+            "file": "tests/integration/ai-e2e.test.ts",
+            "fullName": "phase018 M4 failure-injection matrix success: a Mock success reaches SUCCEEDED with one attempt and no formal plan write"
+          }
+        ]
+      },
+      {
+        "testCaseId": "Phase018:timeout",
+        "tag": "timeout:",
+        "assertions": [
+          {
+            "file": "tests/integration/ai-e2e.test.ts",
+            "fullName": "phase018 M4 failure-injection matrix timeout: a Mock timeout fails the run with a structured error and no success event"
+          }
+        ]
+      },
+      {
+        "testCaseId": "Phase018:invalid-json",
+        "tag": "invalid-json:",
+        "assertions": [
+          {
+            "file": "tests/integration/ai-e2e.test.ts",
+            "fullName": "phase018 M4 failure-injection matrix invalid-json: a malformed body is classified INVALID_JSON in the bounded diagnostic payload"
+          }
+        ]
+      },
+      {
+        "testCaseId": "Phase018:schema-mismatch",
+        "tag": "schema-mismatch:",
+        "assertions": [
+          {
+            "file": "tests/integration/ai-e2e.test.ts",
+            "fullName": "phase018 M4 failure-injection matrix schema-mismatch: well-formed but non-conforming JSON is classified SCHEMA_MISMATCH"
+          }
+        ]
+      },
+      {
+        "testCaseId": "Phase018:repair",
+        "tag": "repair:",
+        "assertions": [
+          {
+            "file": "tests/integration/ai-e2e.test.ts",
+            "fullName": "phase018 M4 failure-injection matrix repair: a broken body is repaired through the frozen repair Prompt and appends both attempts"
+          }
+        ]
+      },
+      {
+        "testCaseId": "Phase018:stream-interruption",
+        "tag": "stream-interruption:",
+        "assertions": [
+          {
+            "file": "tests/integration/ai-e2e.test.ts",
+            "fullName": "phase018 M4 failure-injection matrix stream-interruption: deltas stay transient, a lost first response resumes and GET recovers with zero calls"
+          }
+        ]
+      },
+      {
+        "testCaseId": "Phase018:cost",
+        "tag": "cost:",
+        "assertions": [
+          {
+            "file": "tests/integration/ai-e2e.test.ts",
+            "fullName": "phase018 M4 failure-injection matrix cost: an exhausted shared budget fails the run with COST_LIMIT and zero egress"
+          }
+        ]
+      },
+      {
+        "testCaseId": "Phase018:authorization",
+        "tag": "authorization:",
+        "assertions": [
+          {
+            "file": "tests/integration/ai-e2e.test.ts",
+            "fullName": "phase018 M4 failure-injection matrix authorization: non-admin callers are refused with zero writes and zero egress"
+          }
+        ]
+      },
+      {
+        "testCaseId": "Phase018:negative-controls",
+        "observedIn": "five-mutations-and-restored-eight-fixtures"
+      }
+    ]
+  },
+  "artifacts": [
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/frozen-discovery.json",
+      "sha256": "cee69828bd413fe19f0194764143ee6b30845df45e36c1620af2bed4b948660d"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/frozen-plan.json",
+      "sha256": "81014a1467f37906ee6e46a121a83ac5d6460f8094430c34389e782b9fd8ed8b"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/freeze-command.json",
+      "sha256": "9fce7b45369a2566a79db801cf1aa6bdc8bef43f6341c05259fca1f5c14dff06"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/source-basis.json",
+      "sha256": "e71da937df24453879a1fce25b642725a39296633f11c70bf505b5c96a9ca01e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/input-receipt.json",
+      "sha256": "d92aa48cace410411f12f07cde7888b20658aa0b951f7240f4abdde02851b678"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-1/requirements-freeze.json",
+      "sha256": "3bcc85db8ab4c8cba7774148b6fd27bdf81d48bac81ebb1d69a1e6507ea6a2d5"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/negative-run/commands/001.json",
+      "sha256": "9752cd22c12d2bb76e0e17bedf0fe9f22185800162df6ed3c748963b57e9e00e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/negative-run/mutations/admin-guard-report.json",
+      "sha256": "a2e7807ff0ab3af354adfb72f0487a960b4deb0df59c23e1bd238b1b7695cabf"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/negative-run/mutations/admin-guard.json",
+      "sha256": "651f8f3c57c7e87114c8a5de065e50b385ac874f24d39a6983958e2461a97b90"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/negative-run/commands/002.json",
+      "sha256": "fe1836982896328e20db3b378ca13a5d59dbb6e5e9faa8df879a2f5824bbc2f6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/negative-run/mutations/mock-determinism-report.json",
+      "sha256": "5a25563fa89a90cd8d1107d2261a71129a82b82268b1721ce60e3898042451d0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/negative-run/mutations/mock-determinism.json",
+      "sha256": "263a756574793e65a6b2ece1af53763114bab0ecbd6ee055f9ea55f24d703bc6"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/negative-run/commands/003.json",
+      "sha256": "feed5aedbdf66680f6a8dab9b48f29336ca20d73e8a405f486dc6a78eaf96a14"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/negative-run/mutations/schema-parse-report.json",
+      "sha256": "36a48085310a6f529371b89b123516fc46bab37597a61e9fc361f1a105275b38"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/negative-run/mutations/schema-parse.json",
+      "sha256": "aaf6234abda3b76339cbf464633ce2835b099e5312b5bfa9fb436f8021c0f1ae"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/negative-run/commands/004.json",
+      "sha256": "7707edf32f9cb8a51a7b0f625f42af2c9ef3eb4d59d11ab6fde15b8dcdde1bfb"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/negative-run/mutations/formal-write-report.json",
+      "sha256": "89b01e39aca0e0b66e4cc8a1ff14f79eca1a54d69af748479172a1e87f2d77b3"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/negative-run/mutations/formal-write.json",
+      "sha256": "bb931023e677195b44d5ed84c05f0f91cfb80eadfd115e3f20ebfa4c78604778"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/negative-run/commands/005.json",
+      "sha256": "484a2f1475ddf995f1c68e97db863c402bb4e05ccc36dee8c03c1fbecd9b3625"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/negative-run/mutations/delta-persistence-report.json",
+      "sha256": "bd7dfbf4e450d01950a9fb93086846620e4865d81f343fe1fe1e59974e2f3be3"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/negative-run/mutations/delta-persistence.json",
+      "sha256": "e33b1be897c540e0093cf778c70c6598e0678ecd531b0fdebaf6410ebdcccec2"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/negative-run/commands/006.json",
+      "sha256": "a2e4037d320ddd9e8c23b66bf9fa6a5ee436dc09284a4c475261cf23a5ca4e80"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/negative-run/commands/007.json",
+      "sha256": "f233a0cd14ca57afe37326a727d231fbe8a3307643977fc4d2e7a3e76239af6f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/negative-run/restored-card.json",
+      "sha256": "20f43eb56a374261ce9fd0ef42ebb3eef112ca2b7b4972af709ff9ca1bff34ea"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase018/attempt-14/negative-run/restored-card-attempt-audit.json",
+      "sha256": "5271a5e87f9bf45e962aa505f9b8fb2a5a190f24af083b187cf83b34f32423e6"
+    }
+  ],
+  "observations": [
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase018/ai-debug-api.test.ts -t ai-debug-api: anonymous, non-admin, disabled and invalidated sessions write nothing --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700663170-negative-admin-guard.json",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test",
+        "--",
+        "tests/phase018/ai-debug-api.test.ts",
+        "-t",
+        "ai-debug-api: anonymous, non-admin, disabled and invalidated sessions write nothing",
+        "--reporter=json",
+        "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700663170-negative-admin-guard.json"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\fixtures\\admin-guard-ibrc3h",
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "startedAt": "2026-09-18T03:04:23.171Z",
+      "finishedAt": "2026-09-18T03:04:26.339Z",
+      "durationMs": 3168,
+      "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/phase018/ai-debug-api.test.ts -t ai-debug-api: anonymous, non-admin, disabled and invalidated sessions write nothing --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700663170-negative-admin-guard.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase018/attempt-14-1789700663170-negative-admin-guard.json\n",
+      "stderr": ""
+    },
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/phase018/mock-provider.test.ts -t mock-provider: success, clock, usage, chunk boundaries and trace are caller supplied --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700667342-negative-mock-determinism.json",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test",
+        "--",
+        "tests/phase018/mock-provider.test.ts",
+        "-t",
+        "mock-provider: success, clock, usage, chunk boundaries and trace are caller supplied",
+        "--reporter=json",
+        "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700667342-negative-mock-determinism.json"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\fixtures\\mock-determinism-b2QIKG",
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "startedAt": "2026-09-18T03:04:27.342Z",
+      "finishedAt": "2026-09-18T03:04:28.811Z",
+      "durationMs": 1469,
+      "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/phase018/mock-provider.test.ts -t mock-provider: success, clock, usage, chunk boundaries and trace are caller supplied --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700667342-negative-mock-determinism.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase018/attempt-14-1789700667342-negative-mock-determinism.json\n",
+      "stderr": ""
+    },
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/integration/ai-e2e.test.ts -t schema-mismatch: well-formed but non-conforming JSON is classified SCHEMA_MISMATCH --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700669809-negative-schema-parse.json",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test",
+        "--",
+        "tests/integration/ai-e2e.test.ts",
+        "-t",
+        "schema-mismatch: well-formed but non-conforming JSON is classified SCHEMA_MISMATCH",
+        "--reporter=json",
+        "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700669809-negative-schema-parse.json"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\fixtures\\schema-parse-CW8tW0",
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "startedAt": "2026-09-18T03:04:29.809Z",
+      "finishedAt": "2026-09-18T03:04:33.157Z",
+      "durationMs": 3348,
+      "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/integration/ai-e2e.test.ts -t schema-mismatch: well-formed but non-conforming JSON is classified SCHEMA_MISMATCH --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700669809-negative-schema-parse.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase018/attempt-14-1789700669809-negative-schema-parse.json\n",
+      "stderr": ""
+    },
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/integration/ai-e2e.test.ts -t success: a Mock success reaches SUCCEEDED with one attempt and no formal plan write --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700674229-negative-formal-write.json",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test",
+        "--",
+        "tests/integration/ai-e2e.test.ts",
+        "-t",
+        "success: a Mock success reaches SUCCEEDED with one attempt and no formal plan write",
+        "--reporter=json",
+        "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700674229-negative-formal-write.json"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\fixtures\\formal-write-IrUPcx",
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "startedAt": "2026-09-18T03:04:34.229Z",
+      "finishedAt": "2026-09-18T03:04:37.608Z",
+      "durationMs": 3379,
+      "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/integration/ai-e2e.test.ts -t success: a Mock success reaches SUCCEEDED with one attempt and no formal plan write --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700674229-negative-formal-write.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase018/attempt-14-1789700674229-negative-formal-write.json\n",
+      "stderr": ""
+    },
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/integration/ai-e2e.test.ts -t stream-interruption: deltas stay transient, a lost first response resumes and GET recovers with zero calls --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700678615-negative-delta-persistence.json",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test",
+        "--",
+        "tests/integration/ai-e2e.test.ts",
+        "-t",
+        "stream-interruption: deltas stay transient, a lost first response resumes and GET recovers with zero calls",
+        "--reporter=json",
+        "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700678615-negative-delta-persistence.json"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\fixtures\\delta-persistence-UVm1TS",
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "startedAt": "2026-09-18T03:04:38.616Z",
+      "finishedAt": "2026-09-18T03:04:41.993Z",
+      "durationMs": 3377,
+      "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/integration/ai-e2e.test.ts -t stream-interruption: deltas stay transient, a lost first response resumes and GET recovers with zero calls --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700678615-negative-delta-persistence.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase018/attempt-14-1789700678615-negative-delta-persistence.json\n",
+      "stderr": ""
+    },
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\node_modules\\prisma\\build\\index.js migrate reset --force --skip-seed --skip-generate && psql privileges",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\node_modules\\prisma\\build\\index.js",
+        "migrate",
+        "reset",
+        "--force",
+        "--skip-seed",
+        "--skip-generate"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "startedAt": "2026-09-18T03:04:42.365Z",
+      "finishedAt": "2026-09-18T03:04:43.849Z",
+      "durationMs": 1484,
+      "stdout": "Prisma schema loaded from prisma\\schema.prisma\nDatasource \"db\": PostgreSQL database \"phase018_disposable_654a5753347a\", schema \"public\" at \"127.0.0.1:60891\"\n\nApplying migration `20260910000000_init_user`\nApplying migration `20260910172735_system_config`\nApplying migration `20260911002217_travel_record_chat_message`\nApplying migration `20260911042258_audit_log`\nApplying migration `20260911104017_api_key_config`\nApplying migration `20260911151715_auth_session_login_attempt`\nApplying migration `20260912013806_admin_commands`\nApplying migration `20260912061403_key_rotation_contract`\nApplying migration `20260913000000_ai_governance`\nApplying migration `20260914165140_chat_command_events`\nApplying migration `20260916000000_ai_debug_run`\n\nDatabase reset successful\n\nThe following migration(s) have been applied:\n\nmigrations/\n  └─ 20260910000000_init_user/\n    └─ migration.sql\n  └─ 20260910172735_system_config/\n    └─ migration.sql\n  └─ 20260911002217_travel_record_chat_message/\n    └─ migration.sql\n  └─ 20260911042258_audit_log/\n    └─ migration.sql\n  └─ 20260911104017_api_key_config/\n    └─ migration.sql\n  └─ 20260911151715_auth_session_login_attempt/\n    └─ migration.sql\n  └─ 20260912013806_admin_commands/\n    └─ migration.sql\n  └─ 20260912061403_key_rotation_contract/\n    └─ migration.sql\n  └─ 20260913000000_ai_governance/\n    └─ migration.sql\n  └─ 20260914165140_chat_command_events/\n    └─ migration.sql\n  └─ 20260916000000_ai_debug_run/\n    └─ migration.sql\n\n\n",
+      "stderr": "\n",
+      "databaseMarker": "serendipity-phase018-disposable:654a5753347a",
+      "steps": [
+        {
+          "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\node_modules\\prisma\\build\\index.js migrate reset --force --skip-seed --skip-generate",
+          "executable": "C:\\Program Files\\nodejs\\node.exe",
+          "arguments": [
+            "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\node_modules\\prisma\\build\\index.js",
+            "migrate",
+            "reset",
+            "--force",
+            "--skip-seed",
+            "--skip-generate"
+          ],
+          "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+          "exitCode": 0,
+          "signal": null,
+          "timedOut": false,
+          "startedAt": "2026-09-18T03:04:42.365Z",
+          "finishedAt": "2026-09-18T03:04:43.849Z",
+          "durationMs": 1484,
+          "stdout": "Prisma schema loaded from prisma\\schema.prisma\nDatasource \"db\": PostgreSQL database \"phase018_disposable_654a5753347a\", schema \"public\" at \"127.0.0.1:60891\"\n\nApplying migration `20260910000000_init_user`\nApplying migration `20260910172735_system_config`\nApplying migration `20260911002217_travel_record_chat_message`\nApplying migration `20260911042258_audit_log`\nApplying migration `20260911104017_api_key_config`\nApplying migration `20260911151715_auth_session_login_attempt`\nApplying migration `20260912013806_admin_commands`\nApplying migration `20260912061403_key_rotation_contract`\nApplying migration `20260913000000_ai_governance`\nApplying migration `20260914165140_chat_command_events`\nApplying migration `20260916000000_ai_debug_run`\n\nDatabase reset successful\n\nThe following migration(s) have been applied:\n\nmigrations/\n  └─ 20260910000000_init_user/\n    └─ migration.sql\n  └─ 20260910172735_system_config/\n    └─ migration.sql\n  └─ 20260911002217_travel_record_chat_message/\n    └─ migration.sql\n  └─ 20260911042258_audit_log/\n    └─ migration.sql\n  └─ 20260911104017_api_key_config/\n    └─ migration.sql\n  └─ 20260911151715_auth_session_login_attempt/\n    └─ migration.sql\n  └─ 20260912013806_admin_commands/\n    └─ migration.sql\n  └─ 20260912061403_key_rotation_contract/\n    └─ migration.sql\n  └─ 20260913000000_ai_governance/\n    └─ migration.sql\n  └─ 20260914165140_chat_command_events/\n    └─ migration.sql\n  └─ 20260916000000_ai_debug_run/\n    └─ migration.sql\n\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- mock-provider ai-debug-api ai-e2e --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700683873-restored-card.json",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test",
+        "--",
+        "mock-provider",
+        "ai-debug-api",
+        "ai-e2e",
+        "--reporter=json",
+        "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700683873-restored-card.json"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "startedAt": "2026-09-18T03:04:43.874Z",
+      "finishedAt": "2026-09-18T03:04:53.932Z",
+      "durationMs": 10058,
+      "stdout": "\n> serendipity@0.1.0 test\n> vitest run mock-provider ai-debug-api ai-e2e --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\attempt-14-1789700683873-restored-card.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase018/attempt-14-1789700683873-restored-card.json\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -133,6 +133,14 @@ enum AiSubmissionState {
   ACCEPTED
 }
 
+enum AiDebugRunStatus {
+  PENDING
+  RUNNING
+  SUCCEEDED
+  FAILED
+  CANCELLED
+}
+
 model User {
   id                        String                     @id @default(cuid())
   email                     String                     @unique
@@ -158,6 +166,7 @@ model User {
   promptActivations         PromptActivation[]
   promptModelActivations    PromptModelActivation[]
   planningPolicyActivations PlanningPolicyActivation[]
+  aiDebugRuns               AiDebugRun[]
 
   @@index([status])
   @@index([createdAt, id])
@@ -179,6 +188,30 @@ model SystemConfig {
 
   @@index([group, key])
   @@index([updatedBy])
+}
+
+model AiDebugRun {
+  id                   String           @id @default(cuid())
+  adminUserId          String
+  idempotencyReceiptId String           @unique
+  taskId               String           @unique
+  payloadRef           String           @db.VarChar(128)
+  payloadHash          String           @db.Char(64)
+  status               AiDebugRunStatus @default(PENDING)
+  traceId              String           @unique @db.VarChar(128)
+  attemptIdsJson       Json             @default("[]")
+  finalSummaryJson     Json?
+  errorCode            String?          @db.VarChar(64)
+  createdAt            DateTime         @default(now()) @db.Timestamptz(3)
+  updatedAt            DateTime         @updatedAt @db.Timestamptz(3)
+  completedAt          DateTime?        @db.Timestamptz(3)
+
+  adminUser User                @relation(fields: [adminUserId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  receipt   AdminCommandReceipt @relation(fields: [idempotencyReceiptId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  task      DurableTask         @relation("DebugRunTask", fields: [taskId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  @@index([adminUserId, createdAt, id])
+  @@index([status, createdAt, id])
 }
 
 model TravelRecord {
@@ -290,6 +323,7 @@ model AdminCommandReceipt {
   owner              User               @relation(fields: [ownerUserId], references: [id], onDelete: Restrict, onUpdate: Restrict)
   keyRotationRun     KeyRotationRun?
   task               DurableTask? @relation("ReceiptTask")
+  debugRun           AiDebugRun?
 
   @@unique([ownerUserId, operationId, resourceId, idempotencyKeyHash])
   @@index([status, availableAt, leaseUntil, id])
@@ -661,6 +695,7 @@ model DurableTask {
   command       ChatCommand?    @relation("CommandTask", fields: [commandId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   keyRotation   KeyRotationRun? @relation("RotationTask", fields: [rotationRunId], references: [id], onDelete: SetNull, onUpdate: Cascade)
   adminReceipt  AdminCommandReceipt? @relation("ReceiptTask", fields: [adminReceiptId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  debugRun      AiDebugRun?          @relation("DebugRunTask")
 
   @@unique([kind, aggregateId])
   @@index([status, availableAt, leaseUntil, id])

@@ -8,6 +8,7 @@ export const ADMIN_NAV = [
   { kind: "link", href: "/admin/users", label: "用户管理" },
   { kind: "link", href: "/admin/api-keys", label: "密钥管理" },
   { kind: "link", href: "/admin/logs", label: "审计日志" },
+  { kind: "link", href: "/admin/ai-debug", label: "AI 调试" },
   { kind: "link", href: "/admin/settings", label: "系统配置" },
   { kind: "action", action: "logout", label: "退出登录" },
 ] as const satisfies readonly AdminNavItem[];

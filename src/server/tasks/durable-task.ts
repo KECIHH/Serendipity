@@ -7,7 +7,7 @@ import { canonicalHash } from "@/server/ai/canonical-hash";
 
 export const DEFAULT_LEASE_MS = 30_000;
 export const DEFAULT_MAX_ATTEMPTS = 5;
-export const TASK_KINDS = ["CHAT_COMMAND", "ADMIN_KEY_ROTATION"] as const;
+export const TASK_KINDS = ["CHAT_COMMAND", "ADMIN_KEY_ROTATION", "AI_DEBUG"] as const;
 export type TaskKind = (typeof TASK_KINDS)[number];
 export interface TaskLease {
   taskId: string;
@@ -191,6 +191,27 @@ export async function enqueueTask(
   if (input.kind === "CHAT_COMMAND") {
     if (input.commandId !== input.aggregateId) throw new Error("TASK_AGGREGATE_INVALID");
     await readTaskPayload(tx, input);
+  } else if (input.kind === "AI_DEBUG") {
+    // The debug run owns a controlled encrypted payload and reuses the Phase012 receipt ledger.
+    const receipt =
+      input.adminReceiptId &&
+      (await tx.adminCommandReceipt.findUnique({ where: { id: input.adminReceiptId } }));
+    if (
+      !receipt ||
+      input.aggregateId !== receipt.id ||
+      !/^task-payload:[A-Za-z0-9_-]{1,100}$/.test(input.payloadRef) ||
+      !/^[a-f0-9]{64}$/.test(input.payloadHash)
+    )
+      throw new Error("PAYLOAD_REFERENCE_INVALID");
+    await readTaskPayload(tx, {
+      payloadRef: input.payloadRef,
+      payloadHash: input.payloadHash,
+      payloadSchemaVersion: input.payloadSchemaVersion,
+    });
+    const actor = await tx.user.findUnique({ where: { id: receipt.ownerUserId } });
+    if (!actor || actor.role !== "ADMIN" || actor.status !== "ACTIVE")
+      throw new Error("TASK_OWNER_INVALID");
+    authorization = { ownerUserId: actor.id, sessionVersion: actor.sessionVersion };
   } else {
     const receipt =
       input.adminReceiptId &&

@@ -1,0 +1,34 @@
+{
+  "phase": 18,
+  "status": "PASS",
+  "realNextHttp": false,
+  "synthetic": true,
+  "productionTraffic": false,
+  "caseCount": 5,
+  "legacyRoutes": 0,
+  "prematureRoutes": 0,
+  "duplicateMockImplementations": 0,
+  "results": [
+    {
+      "name": "no legacy src/pages router",
+      "status": "PASS"
+    },
+    {
+      "name": "exactly one admin ai-debug page and three registered handlers",
+      "status": "PASS"
+    },
+    {
+      "name": "forbidden legacy and premature routes stay absent",
+      "status": "PASS"
+    },
+    {
+      "name": "the Mock provider stays a single class and factory",
+      "status": "PASS"
+    },
+    {
+      "name": "the debug surface never selects a deployment, provider or secret from the client",
+      "status": "PASS"
+    }
+  ],
+  "finishedAt": "2026-09-18T05:14:54.338Z"
+}

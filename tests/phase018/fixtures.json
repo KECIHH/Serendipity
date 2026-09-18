@@ -1,0 +1,88 @@
+{
+  "phase": 18,
+  "promptKey": "nlu.extract",
+  "variables": {
+    "userText": "这周末从深圳去武功山",
+    "locale": "zh-CN",
+    "serverDate": "2026-09-15",
+    "timezone": "Asia/Shanghai",
+    "stage": "CORE"
+  },
+  "fixtures": [
+    {
+      "id": "success",
+      "failureProfile": "success",
+      "expectedStatus": "SUCCEEDED",
+      "expectedErrorCode": null,
+      "expectedAttempts": 1,
+      "expectedMockCalls": 1
+    },
+    {
+      "id": "timeout",
+      "failureProfile": "timeout",
+      "expectedStatus": "FAILED",
+      "expectedErrorCode": "PROVIDER_TIMEOUT",
+      "expectedAttempts": 1,
+      "expectedMockCalls": 1
+    },
+    {
+      "id": "invalid-json",
+      "failureProfile": "invalid_json",
+      "expectedStatus": "FAILED",
+      "expectedErrorCode": "INVALID_JSON",
+      "expectedAttempts": 1,
+      "expectedMockCalls": 1
+    },
+    {
+      "id": "schema-mismatch",
+      "failureProfile": "schema_mismatch",
+      "expectedStatus": "FAILED",
+      "expectedErrorCode": "SCHEMA_MISMATCH",
+      "expectedAttempts": 1,
+      "expectedMockCalls": 1
+    },
+    {
+      "id": "repair",
+      "failureProfile": "repair",
+      "expectedStatus": "SUCCEEDED",
+      "expectedErrorCode": null,
+      "expectedAttempts": 2,
+      "expectedMockCalls": 2
+    },
+    {
+      "id": "stream-interruption",
+      "failureProfile": "success",
+      "expectedStatus": "SUCCEEDED",
+      "expectedErrorCode": null,
+      "expectedAttempts": 1,
+      "expectedMockCalls": 1,
+      "expectedProviderCallsDuringGet": 0,
+      "expectedPersistedDeltas": 0
+    },
+    {
+      "id": "cost",
+      "failureProfile": "cost",
+      "expectedStatus": "FAILED",
+      "expectedErrorCode": "COST_LIMIT",
+      "expectedAttempts": 0,
+      "expectedMockCalls": 0
+    },
+    {
+      "id": "authorization",
+      "failureProfile": "success",
+      "expectedStatus": "REJECTED",
+      "expectedErrorCode": "AUTH_REQUIRED",
+      "expectedAttempts": 0,
+      "expectedMockCalls": 0
+    }
+  ],
+  "expectedFormalPlanWrites": 0,
+  "expectedMockNetworkCalls": 0,
+  "negativeControls": [
+    "admin-guard",
+    "mock-determinism",
+    "schema-parse",
+    "formal-write",
+    "delta-persistence"
+  ]
+}

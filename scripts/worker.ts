@@ -8,11 +8,13 @@ import {
   type TaskHandler,
 } from "../src/server/tasks/dispatcher";
 import { processChatCommandTask, processKeyRotationTask } from "../src/server/chat/process-task";
+import { processAiDebugTask } from "../src/server/ai/debug-runner";
 import { adminApiKeysService } from "../src/server/admin/api-keys";
 
 const handlers: Record<string, TaskHandler> = {
   CHAT_COMMAND: processChatCommandTask,
   ADMIN_KEY_ROTATION: processKeyRotationTask,
+  AI_DEBUG: processAiDebugTask,
 };
 const runId = "worker_" + randomUUID().replaceAll("-", "");
 let stopping = false;

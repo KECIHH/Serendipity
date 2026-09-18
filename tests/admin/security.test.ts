@@ -22,7 +22,7 @@ describe("admin/security common boundary and M3 inventory", () => {
     expect(response.status).toBe(401);
     expect(callbacks).toBe(0);
   });
-  it("[m3-regression] preserves Phase011–013 Gate hashes and exposes exactly five existing menus with one common component implementation", () => {
+  it("[m3-regression] preserves Phase011–013 Gate hashes and exposes exactly six existing menus with one common component implementation", () => {
     const state = JSON.parse(fs.readFileSync("docs/roadmap-run.json", "utf8"));
     for (const phase of [11, 12, 13]) {
       const checkpoint = state.checkpoints.find((item: { phase: number }) => item.phase === phase);
@@ -36,9 +36,10 @@ describe("admin/security common boundary and M3 inventory", () => {
       "/admin/users",
       "/admin/api-keys",
       "/admin/logs",
+      "/admin/ai-debug",
       "/admin/settings",
     ]);
-    for (const page of ["", "users/", "api-keys/", "logs/", "settings/"])
+    for (const page of ["", "users/", "api-keys/", "logs/", "ai-debug/", "settings/"])
       expect(fs.existsSync(`src/app/admin/(protected)/${page}page.tsx`)).toBe(true);
     for (const client of ["users", "api-keys", "logs", "settings", "dashboard"]) {
       const source = fs.readFileSync(`src/components/admin/${client}-client.tsx`, "utf8");

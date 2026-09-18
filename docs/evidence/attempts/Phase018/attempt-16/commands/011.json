@@ -1,0 +1,45 @@
+{
+  "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\node_modules\\prisma\\build\\index.js migrate reset --force --skip-seed --skip-generate && psql privileges",
+  "executable": "C:\\Program Files\\nodejs\\node.exe",
+  "arguments": [
+    "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\node_modules\\prisma\\build\\index.js",
+    "migrate",
+    "reset",
+    "--force",
+    "--skip-seed",
+    "--skip-generate"
+  ],
+  "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+  "exitCode": 0,
+  "signal": null,
+  "timedOut": false,
+  "startedAt": "2026-09-18T05:15:33.814Z",
+  "finishedAt": "2026-09-18T05:15:35.272Z",
+  "durationMs": 1458,
+  "stdout": "Prisma schema loaded from prisma\\schema.prisma\nDatasource \"db\": PostgreSQL database \"phase018_disposable_654a5753347a\", schema \"public\" at \"127.0.0.1:60891\"\n\nApplying migration `20260910000000_init_user`\nApplying migration `20260910172735_system_config`\nApplying migration `20260911002217_travel_record_chat_message`\nApplying migration `20260911042258_audit_log`\nApplying migration `20260911104017_api_key_config`\nApplying migration `20260911151715_auth_session_login_attempt`\nApplying migration `20260912013806_admin_commands`\nApplying migration `20260912061403_key_rotation_contract`\nApplying migration `20260913000000_ai_governance`\nApplying migration `20260914165140_chat_command_events`\nApplying migration `20260916000000_ai_debug_run`\n\nDatabase reset successful\n\nThe following migration(s) have been applied:\n\nmigrations/\n  └─ 20260910000000_init_user/\n    └─ migration.sql\n  └─ 20260910172735_system_config/\n    └─ migration.sql\n  └─ 20260911002217_travel_record_chat_message/\n    └─ migration.sql\n  └─ 20260911042258_audit_log/\n    └─ migration.sql\n  └─ 20260911104017_api_key_config/\n    └─ migration.sql\n  └─ 20260911151715_auth_session_login_attempt/\n    └─ migration.sql\n  └─ 20260912013806_admin_commands/\n    └─ migration.sql\n  └─ 20260912061403_key_rotation_contract/\n    └─ migration.sql\n  └─ 20260913000000_ai_governance/\n    └─ migration.sql\n  └─ 20260914165140_chat_command_events/\n    └─ migration.sql\n  └─ 20260916000000_ai_debug_run/\n    └─ migration.sql\n\n\n",
+  "stderr": "\n",
+  "databaseMarker": "serendipity-phase018-disposable:654a5753347a",
+  "steps": [
+    {
+      "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\node_modules\\prisma\\build\\index.js migrate reset --force --skip-seed --skip-generate",
+      "executable": "C:\\Program Files\\nodejs\\node.exe",
+      "arguments": [
+        "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\node_modules\\prisma\\build\\index.js",
+        "migrate",
+        "reset",
+        "--force",
+        "--skip-seed",
+        "--skip-generate"
+      ],
+      "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "startedAt": "2026-09-18T05:15:33.814Z",
+      "finishedAt": "2026-09-18T05:15:35.272Z",
+      "durationMs": 1458,
+      "stdout": "Prisma schema loaded from prisma\\schema.prisma\nDatasource \"db\": PostgreSQL database \"phase018_disposable_654a5753347a\", schema \"public\" at \"127.0.0.1:60891\"\n\nApplying migration `20260910000000_init_user`\nApplying migration `20260910172735_system_config`\nApplying migration `20260911002217_travel_record_chat_message`\nApplying migration `20260911042258_audit_log`\nApplying migration `20260911104017_api_key_config`\nApplying migration `20260911151715_auth_session_login_attempt`\nApplying migration `20260912013806_admin_commands`\nApplying migration `20260912061403_key_rotation_contract`\nApplying migration `20260913000000_ai_governance`\nApplying migration `20260914165140_chat_command_events`\nApplying migration `20260916000000_ai_debug_run`\n\nDatabase reset successful\n\nThe following migration(s) have been applied:\n\nmigrations/\n  └─ 20260910000000_init_user/\n    └─ migration.sql\n  └─ 20260910172735_system_config/\n    └─ migration.sql\n  └─ 20260911002217_travel_record_chat_message/\n    └─ migration.sql\n  └─ 20260911042258_audit_log/\n    └─ migration.sql\n  └─ 20260911104017_api_key_config/\n    └─ migration.sql\n  └─ 20260911151715_auth_session_login_attempt/\n    └─ migration.sql\n  └─ 20260912013806_admin_commands/\n    └─ migration.sql\n  └─ 20260912061403_key_rotation_contract/\n    └─ migration.sql\n  └─ 20260913000000_ai_governance/\n    └─ migration.sql\n  └─ 20260914165140_chat_command_events/\n    └─ migration.sql\n  └─ 20260916000000_ai_debug_run/\n    └─ migration.sql\n\n",
+      "stderr": ""
+    }
+  ]
+}

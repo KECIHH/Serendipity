@@ -1,0 +1,320 @@
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
+import { requireReportBinding, requireReviewIdentity } from "../../scripts/phase-evidence.mjs";
+import {
+  requireInputs,
+  requirePlan,
+  requireVitest,
+  requireMappings,
+  requireDiscovery,
+  requireNegative,
+  negativeDefinitions,
+  mutate,
+  regexEscape,
+  requireCaseExecution,
+  requireArtifactParent,
+  requireSupportingResults,
+  guardPaths,
+} from "../../docs/phase-plans/phase018-evidence.mjs";
+import {
+  root,
+  plan,
+  planPath,
+  receiptPath,
+  json,
+  read,
+  hash,
+  git,
+  npmCli,
+  scan,
+} from "../../docs/phase-plans/phase018-runtime.mjs";
+
+const output = process.argv[process.argv.indexOf("--output") + 1];
+assert(output && output !== process.argv[0]);
+const startedAt = new Date().toISOString();
+const results = [];
+const cache = new Map();
+const dependencies = {
+  readJson: json,
+  hashFile: hash,
+  git: (args, encoding) => {
+    const key = JSON.stringify([args, encoding]);
+    if (!cache.has(key)) cache.set(key, git(args, encoding));
+    return cache.get(key);
+  },
+};
+function check(name, operation) {
+  operation();
+  results.push({ name, status: "PASS" });
+}
+function rejected(name, operation) {
+  check(name, () => assert.throws(operation));
+}
+function raw(rows) {
+  const files = new Map();
+  for (const row of rows) {
+    const list = files.get(row.file) ?? [];
+    list.push({
+      fullName: row.fullName,
+      title: row.fullName,
+      ancestorTitles: [],
+      status: row.status ?? "passed",
+      failureMessages: row.failureMessages ?? [],
+    });
+    files.set(row.file, list);
+  }
+  return {
+    success: rows.every((row) => !row.status || row.status === "passed"),
+    numTotalTests: rows.length,
+    numPassedTests: rows.filter((row) => !row.status || row.status === "passed").length,
+    numFailedTests: rows.filter((row) => row.status === "failed").length,
+    numPendingTests: rows.filter((row) => row.status === "skipped").length,
+    numTodoTests: 0,
+    testResults: [...files].map(([file, assertionResults]) => ({
+      name: path.resolve(root, file),
+      assertionResults,
+    })),
+  };
+}
+
+const rows = Object.values(plan.assertionBindings).flat();
+const valid = raw(rows);
+
+check("current plan and immutable input chain", () => {
+  requirePlan(plan, dependencies);
+  requireInputs(json(receiptPath), dependencies);
+});
+check("exact assertion and discovery maps", () => {
+  const parsed = requireVitest(valid);
+  requireMappings(plan, parsed);
+  requireDiscovery(
+    rows.map((row) => ({ file: path.resolve(row.file), name: row.fullName })),
+    parsed,
+  );
+});
+rejected("missing required local input", () =>
+  requireInputs(json(receiptPath), {
+    ...dependencies,
+    hashFile: (file) => {
+      if (file === json(receiptPath).pinnedInputs[0].path) throw new Error("MISSING_INPUT");
+      return hash(file);
+    },
+  }),
+);
+rejected("changed frozen local input", () =>
+  requireInputs(json(receiptPath), {
+    ...dependencies,
+    hashFile: (file) =>
+      file === json(receiptPath).pinnedInputs[0].path ? "0".repeat(64) : hash(file),
+  }),
+);
+rejected("wrong predecessor commit", () => {
+  const changed = structuredClone(json(receiptPath));
+  changed.prerequisites.metadataCommit = "0".repeat(40);
+  requireInputs(changed, dependencies);
+});
+rejected("wrong predecessor parent", () =>
+  requireInputs(json(receiptPath), {
+    ...dependencies,
+    git: (args, encoding) =>
+      args[0] === "rev-parse" ? "0".repeat(40) : dependencies.git(args, encoding),
+  }),
+);
+rejected("removed frozen case", () => {
+  const changed = structuredClone(plan);
+  changed.cases.pop();
+  changed.requiredCaseIds.pop();
+  requirePlan(changed, dependencies);
+});
+rejected("changed business denominator", () => {
+  const changed = structuredClone(plan);
+  changed.cases[0].denominator = 2;
+  requirePlan(changed, dependencies);
+});
+rejected("changed dedicated command", () => {
+  const changed = structuredClone(plan);
+  changed.cases[0].command += " --passWithNoTests";
+  requirePlan(changed, dependencies);
+});
+rejected("removed supporting check", () => {
+  const changed = structuredClone(plan);
+  changed.supportingChecks.pop();
+  requirePlan(changed, dependencies);
+});
+rejected("waived M4 threshold", () => {
+  const changed = structuredClone(plan);
+  changed.threshold.waived = true;
+  requirePlan(changed, dependencies);
+});
+rejected("reduced M4 threshold", () => {
+  const changed = structuredClone(plan);
+  changed.threshold.originalThreshold = 7;
+  requirePlan(changed, dependencies);
+});
+rejected("omitted passing assertion", () => requireMappings(plan, requireVitest(raw(rows.slice(1)))));
+rejected("tampered report count", () => requireVitest({ ...valid, numPassedTests: valid.numPassedTests + 1 }));
+rejected("duplicate raw assertion", () => requireVitest(raw([...rows, rows[0]])));
+rejected("silent skipped assertion", () => requireVitest(raw([{ ...rows[0], status: "skipped" }])));
+rejected("zero matched tests", () => requireVitest(raw([])));
+rejected("foreign raw source", () => {
+  const changed = structuredClone(valid);
+  changed.testResults[0].name = path.resolve(root, "../foreign.test.ts");
+  requireVitest(changed);
+});
+rejected("missing discovery leaf", () =>
+  requireDiscovery(
+    rows.slice(1).map((row) => ({ file: path.resolve(row.file), name: row.fullName })),
+    requireVitest(valid),
+  ),
+);
+const item = plan.cases[0];
+const report = {
+  testCaseId: item.testCaseId,
+  command: item.command,
+  status: "PASS",
+  exitCode: 0,
+  numerator: item.denominator,
+  denominator: item.denominator,
+  inputPath: item.inputPath,
+  inputHash: hash(item.inputPath),
+  planHash: hash(planPath),
+  sourceHashes: Object.fromEntries(plan.sourcePaths.map((file) => [file, hash(file)])),
+};
+check("exact report binding", () => requireReportBinding(report, item, hash(planPath), plan.sourcePaths, hash));
+rejected("stale report source", () => {
+  const changed = structuredClone(report);
+  changed.sourceHashes[item.inputPath] = "0".repeat(64);
+  requireReportBinding(changed, item, hash(planPath), plan.sourcePaths, hash);
+});
+rejected("omitted report source", () => {
+  const changed = structuredClone(report);
+  delete changed.sourceHashes[item.inputPath];
+  requireReportBinding(changed, item, hash(planPath), plan.sourcePaths, hash);
+});
+rejected("unexecuted case alias", () =>
+  requireCaseExecution(
+    item,
+    {
+      logicalCommand: item.command,
+      result: {
+        exitCode: 0,
+        timedOut: false,
+        arguments: [npmCli, "run", "test", "--", "unrelated", "--reporter=json", "--outputFile=fixture"],
+      },
+      reportHash: "0".repeat(64),
+    },
+    npmCli,
+  ),
+);
+check("mutation anchors and literal selectors", () => {
+  for (const row of negativeDefinitions) {
+    assert.notEqual(mutate(row.id, read(row.file).toString()), read(row.file).toString());
+    assert(new RegExp(regexEscape(row.pattern)).test(row.pattern));
+  }
+});
+const definition = negativeDefinitions[0];
+const failed = (message) =>
+  raw([
+    {
+      file: definition.testFile,
+      fullName: definition.pattern,
+      status: "failed",
+      failureMessages: [message],
+    },
+  ]);
+check("business assertion witness accepted", () =>
+  requireNegative(failed(`AssertionError: ${definition.witness}`), definition, root),
+);
+rejected("wrong mutation assertion", () =>
+  requireNegative(
+    raw([
+      {
+        file: definition.testFile,
+        fullName: "unrelated",
+        status: "failed",
+        failureMessages: [`AssertionError: ${definition.witness}`],
+      },
+    ]),
+    definition,
+    root,
+  ),
+);
+rejected("same-diagnostic TypeError is rejected", () =>
+  requireNegative(failed(`TypeError: ${definition.witness}`), definition, root),
+);
+rejected("same-diagnostic import failure is rejected", () =>
+  requireNegative(failed(`Cannot find module: ${definition.witness}`), definition, root),
+);
+rejected("wrong artifact direct parent", () =>
+  requireArtifactParent(
+    { artifactCommit: "a".repeat(40), phaseStartCommit: plan.phaseStartCommit },
+    (args) => (args[0] === "show" ? "phase(018): artifact" : "0".repeat(40)),
+  ),
+);
+const supportingPlan = { supportingChecks: ["typecheck"] };
+const supportingResult = { arguments: [npmCli, "run", "typecheck"], exitCode: 0, timedOut: false };
+const quality = {
+  supportingChecks: ["typecheck"],
+  supportingResults: [{ checkId: "typecheck", status: "PASS", details: { result: supportingResult } }],
+  observations: [supportingResult],
+};
+check("actual supporting command accepted", () =>
+  requireSupportingResults(supportingPlan, quality, npmCli),
+);
+rejected("empty engineering evidence", () =>
+  requireSupportingResults(
+    supportingPlan,
+    { ...quality, supportingResults: [{ checkId: "typecheck", status: "PASS", details: {} }] },
+    npmCli,
+  ),
+);
+rejected("engineering command not recorded", () =>
+  requireSupportingResults(supportingPlan, { ...quality, observations: [] }, npmCli),
+);
+rejected("wrong engineering command", () =>
+  requireSupportingResults(
+    supportingPlan,
+    {
+      ...quality,
+      supportingResults: [
+        {
+          checkId: "typecheck",
+          status: "PASS",
+          details: { result: { ...supportingResult, arguments: [npmCli, "run", "lint"] } },
+        },
+      ],
+    },
+    npmCli,
+  ),
+);
+rejected("implementer cannot review own result", () =>
+  requireReviewIdentity(
+    { runnerIdentity: { kind: "INDEPENDENT_CODEX_AGENT", implementationAuthored: true } },
+    plan.implementationContextId,
+  ),
+);
+rejected("source allowlist does not apply to output", () => scan(read(".env.example").toString(), "output"));
+rejected("generated secrets cannot enter evidence", () =>
+  scan(json(".scaffold/phase018/database.json").appPassword),
+);
+check("guard paths stay inside the frozen source inventory", () => {
+  for (const file of guardPaths) assert(plan.sourcePaths.includes(file), `GUARD_SOURCE:${file}`);
+});
+check("no premature or duplicate route surface", () => {
+  assert.equal(fs.existsSync(path.join(root, "src/pages")), false);
+  assert.equal(fs.existsSync(path.join(root, "src/server/api")), false);
+});
+
+const evidence = {
+  phase: 18,
+  status: "PASS",
+  caseCount: results.length,
+  results,
+  testedSourceHashes: Object.fromEntries(guardPaths.map((file) => [file, hash(file)])),
+  startedAt,
+  finishedAt: new Date().toISOString(),
+};
+fs.mkdirSync(path.dirname(output), { recursive: true });
+fs.writeFileSync(output, JSON.stringify(evidence, null, 2) + "\n");
+console.log(JSON.stringify({ status: "PASS", caseCount: results.length }));

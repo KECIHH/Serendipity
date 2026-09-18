@@ -16,13 +16,36 @@ export type MockProviderEvent =
   | "invalid_json"
   | "cancel";
 
+/**
+ * Phase018 fixed failure profiles for the single Mock provider. Every profile is a pure
+ * function of its inputs: no random delay, no random content and no network egress.
+ */
+export const MOCK_FAILURE_MODES = [
+  "success",
+  "timeout",
+  "rate_limit",
+  "server_error",
+  "invalid_json",
+  "schema_mismatch",
+  "network_error",
+  "cancel",
+] as const;
+export type MockFailureMode = (typeof MOCK_FAILURE_MODES)[number];
+
+/** Truncated JSON: the parser classifies INVALID_JSON without inventing any field. */
+export const MOCK_INVALID_JSON_OUTPUT = '{"summary":"synthetic","status":';
+/** Well-formed JSON that cannot satisfy any registered prompt schema. */
+export const MOCK_SCHEMA_MISMATCH_OUTPUT = '{"unexpected":true}';
+
 export interface MockProviderOptions {
   readonly events?: readonly MockProviderEvent[];
+  readonly failureMode?: MockFailureMode;
   readonly clock?: () => number;
   readonly output?: string;
   readonly usage?: { inputTokens: number; outputTokens: number } | null;
   readonly chunkCount?: number;
   readonly delayMs?: number;
+  readonly requestId?: string;
 }
 
 export class MockAiProvider implements ProviderAdapter {
@@ -31,6 +54,23 @@ export class MockAiProvider implements ProviderAdapter {
   private nextEvent = 0;
 
   constructor(private readonly options: MockProviderOptions = {}) {}
+
+  private async emit(output: string, context: ProviderCallContext) {
+    const characters = Array.from(output);
+    const chunkSize = Math.max(1, Math.ceil(characters.length / (this.options.chunkCount ?? 3)));
+    for (let at = 0; at < characters.length; at += chunkSize) {
+      if (context.signal.aborted) return false;
+      await context.onDelta?.(characters.slice(at, at + chunkSize).join(""));
+    }
+    return true;
+  }
+
+  private fixtureOutput(request: ProviderRequest): string {
+    return (
+      this.options.output ??
+      `{"ok":true,"chunks":${this.options.chunkCount ?? 1},"prompt":"${request.system.length}"}${" ".repeat(0)}`
+    );
+  }
 
   async complete(request: ProviderRequest, context: ProviderCallContext): Promise<ProviderResult> {
     this.calls.push(request);
@@ -48,7 +88,8 @@ export class MockAiProvider implements ProviderAdapter {
         context.signal.addEventListener("abort", finish, { once: true });
       });
     const durationMs = Math.max(0, (this.options.clock?.() ?? started) - started);
-    if (context.signal.aborted || event === "cancel") {
+    const requestId = this.options.requestId ?? `mock-${this.calls.length}`;
+    if (context.signal.aborted || event === "cancel" || this.options.failureMode === "cancel") {
       return {
         ok: false,
         errorCode: "CANCELLED",
@@ -57,7 +98,33 @@ export class MockAiProvider implements ProviderAdapter {
         durationMs,
       };
     }
-    if (event === "timeout")
+    // A malformed but "returned" body keeps the parser boundary under test: the provider
+    // itself succeeds, and only the deterministic classifier may reject the payload.
+    const failureMode = this.options.failureMode;
+    if (failureMode === "invalid_json" || failureMode === "schema_mismatch") {
+      const output =
+        failureMode === "invalid_json" ? MOCK_INVALID_JSON_OUTPUT : MOCK_SCHEMA_MISMATCH_OUTPUT;
+      if (!(await this.emit(output, context)))
+        return {
+          ok: false,
+          errorCode: "CANCELLED",
+          retryable: false,
+          receivedByte: true,
+          durationMs,
+        };
+      return {
+        ok: true,
+        output,
+        usage:
+          this.options.usage === undefined
+            ? { inputTokens: 12, outputTokens: 24 }
+            : this.options.usage,
+        durationMs,
+        receivedByte: true,
+        providerRequestId: requestId,
+      };
+    }
+    if (failureMode === "timeout" || event === "timeout")
       return {
         ok: false,
         errorCode: "PROVIDER_TIMEOUT",
@@ -65,7 +132,7 @@ export class MockAiProvider implements ProviderAdapter {
         receivedByte: false,
         durationMs,
       };
-    if (event === "rate_limit")
+    if (failureMode === "rate_limit" || event === "rate_limit")
       return {
         ok: false,
         errorCode: "RATE_LIMITED",
@@ -74,7 +141,7 @@ export class MockAiProvider implements ProviderAdapter {
         durationMs,
         retryAfterMs: 25,
       };
-    if (event === "server_error")
+    if (failureMode === "server_error" || event === "server_error")
       return {
         ok: false,
         errorCode: "PROVIDER_UNAVAILABLE",
@@ -82,7 +149,7 @@ export class MockAiProvider implements ProviderAdapter {
         receivedByte: false,
         durationMs,
       };
-    if (event === "network_error")
+    if (failureMode === "network_error" || event === "network_error")
       return {
         ok: false,
         errorCode: "PROVIDER_UNAVAILABLE",
@@ -98,9 +165,7 @@ export class MockAiProvider implements ProviderAdapter {
         receivedByte: true,
         durationMs,
       };
-    const output =
-      this.options.output ??
-      `{"ok":true,"chunks":${this.options.chunkCount ?? 1},"prompt":"${request.system.length}"}${" ".repeat(0)}`;
+    const output = this.fixtureOutput(request);
     const characters = Array.from(output);
     const chunkSize = Math.max(1, Math.ceil(characters.length / (this.options.chunkCount ?? 3)));
     for (let at = 0; at < characters.length; at += chunkSize) {
@@ -123,7 +188,7 @@ export class MockAiProvider implements ProviderAdapter {
           : this.options.usage,
       durationMs,
       receivedByte: true,
-      providerRequestId: `mock-${this.calls.length}`,
+      providerRequestId: requestId,
     };
   }
 }

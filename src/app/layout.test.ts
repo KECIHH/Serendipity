@@ -78,7 +78,7 @@ describe("application layout boundaries", () => {
     expect(existsSync(resolve(repositoryRoot, "src/app/(site)/page.tsx"))).toBe(true);
   });
 
-  it("keeps public login separate from all five protected administration pages", () => {
+  it("keeps public login separate from all six protected administration pages", () => {
     const adminPages = sourceFiles(resolve(repositoryRoot, "src/app/admin")).filter((filePath) =>
       /[/\\]page\.[jt]sx?$/.test(filePath),
     );
@@ -86,6 +86,7 @@ describe("application layout boundaries", () => {
     expect(
       adminPages.map((filePath) => relative(repositoryRoot, filePath).replaceAll("\\", "/")).sort(),
     ).toEqual([
+      "src/app/admin/(protected)/ai-debug/page.tsx",
       "src/app/admin/(protected)/api-keys/page.tsx",
       "src/app/admin/(protected)/logs/page.tsx",
       "src/app/admin/(protected)/page.tsx",

@@ -1,0 +1,35 @@
+{
+  "phase": 18,
+  "attemptId": "attempt-14",
+  "planPath": "docs/phase-plans/Phase018.json",
+  "planHash": "81014a1467f37906ee6e46a121a83ac5d6460f8094430c34389e782b9fd8ed8b",
+  "decision": "FAIL",
+  "implementationContextId": "codex-native-root-phase018-20260916",
+  "contextId": "codex-independent-root-phase018-review-20260918",
+  "reviewerRunId": "review-phase018-attempt-14-20260918",
+  "generatedBy": "Codex",
+  "runnerIdentity": {
+    "kind": "INDEPENDENT_CODEX_AGENT",
+    "implementationAuthored": false
+  },
+  "sourceBasisPath": "docs/evidence/attempts/Phase018/attempt-14/source-basis.json",
+  "sourceBasisHash": "e71da937df24453879a1fce25b642725a39296633f11c70bf505b5c96a9ca01e",
+  "qualityReportPath": "docs/evidence/attempts/Phase018/attempt-14/quality.json",
+  "qualityReportHash": "776029a0e32ef3a38f1d6f834749eefa5938c909145553585f7aa05265e380e2",
+  "incompleteExternalReviewEventPath": ".scaffold/phase018/reviewer-attempt-14-run2-events.jsonl",
+  "incompleteExternalReviewEventHash": "177edb8a336279b2612043bbf1f766b20dd08aebebf5b2a4f73a9928058ba84f",
+  "reviewedAt": "2026-09-18T04:20:00.000Z",
+  "issues": [
+    {
+      "id": "PHASE018-EXPIRED-AUTH",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "file": "tests/integration/ai-e2e.test.ts",
+      "line": 353,
+      "summary": "The required authorization case expects an expired caller, but the Phase018 debug endpoint tests cover anonymous, USER, disabled, revoked and stale sessions without a directly expired session. Generic expired-session coverage elsewhere does not prove this debug route refuses it with zero writes.",
+      "evidence": "The attempt-14 authorization assertion checks anonymous and USER; the Phase018 API test covers disabled, revoked and stale but not an expiresAt in the past. No Phase018 assertion directly binds an expired caller to AUTH_REQUIRED and zero writes.",
+      "requiredFix": "Create a real AuthSession with expiresAt before now, call the debug endpoint through the real requireAdmin guard, assert AUTH_REQUIRED, and include it in the required authorization case's zero-write observation."
+    }
+  ],
+  "dispositions": []
+}

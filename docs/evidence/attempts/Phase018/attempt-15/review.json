@@ -1,0 +1,47 @@
+{
+  "phase": 18,
+  "attemptId": "attempt-15",
+  "decision": "FAIL",
+  "reviewerRunId": "codex-external-readonly-phase018-attempt-15",
+  "contextId": "codex-external-readonly-context-phase018",
+  "implementationContextId": "codex-native-root-phase018-20260916",
+  "generatedBy": "Codex CLI 0.155.0",
+  "runnerIdentity": {
+    "kind": "INDEPENDENT_CODEX_AGENT",
+    "implementationAuthored": false
+  },
+  "summary": "Differential review fails: the SSE id blocker is closed and attempt-15 evidence is coherent, but the expired-session blocker remains only partially fixed. The test creates and expires a real AuthSession, calls the route through the real guard, and verifies zero writes and zero egress, but it asserts only HTTP 401 rather than the required AUTH_REQUIRED response code.",
+  "checked": [
+    "Testing and development execution policies for differential-review scope",
+    "Attempt-15 plan, source basis, quality report, authorization report, stream-interruption report, and negative-controls report",
+    "Attempt-13 SSE id blocker against src/app/api/admin/ai-debug/stream/route.ts",
+    "Attempt-14 expired-session blocker against tests/integration/ai-e2e.test.ts and the real admin guard path",
+    "9/9 required case reports, full regression 723/723, dedicated 20/20, and negative controls 5/5",
+    "Zero formal debug writes, zero persisted debug deltas, zero rawOutput database writes, and zero secret-scan hits",
+    "Read-only command: node docs/phase-plans/complete-phase018.mjs --check --without-review, which returned PASS with 9 reports"
+  ],
+  "issues": [
+    {
+      "id": "PHASE018-EXPIRED-AUTH-CODE",
+      "severity": "BLOCKER",
+      "status": "OPEN",
+      "file": "tests/integration/ai-e2e.test.ts",
+      "line": 422,
+      "summary": "The expired-session authorization case does not directly assert AUTH_REQUIRED.",
+      "evidence": "The test creates a real AuthSession with a 1-second TTL, waits 1.1 seconds, and calls the debug endpoint through the real guard, but the direct assertion is expect(expired.status).toBe(401). The response body is not parsed and error.code is not checked. Since other failures could retain a 401 response while changing the error code, this does not directly bind the expired caller to AUTH_REQUIRED as required by the prior review.",
+      "requiredFix": "Parse the expired response envelope and assert error.code equals AUTH_REQUIRED, while retaining the 401 and zero-write/zero-egress assertions."
+    }
+  ],
+  "dispositions": [
+    {
+      "issueId": "PHASE018-SSE-ID",
+      "status": "CLOSED",
+      "evidence": "The stream route generates finalEventId and passes it to the SSE send helper, which emits id: <eventId> immediately before the final event frame."
+    },
+    {
+      "issueId": "PHASE018-EXPIRED-AUTH",
+      "status": "OPEN",
+      "evidence": "The real expired-session path and zero-write/zero-egress assertions are present, but AUTH_REQUIRED is not asserted."
+    }
+  ]
+}

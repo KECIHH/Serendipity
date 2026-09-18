@@ -265,6 +265,8 @@ describe.skipIf(!databaseUrl)("audit-log real PostgreSQL contract", () => {
         "TaskPayload",
         "Outbox",
       );
+    if (Prisma.dmmf.datamodel.models.some(({ name }) => name === "AiDebugRun"))
+      expectedModels.push("AiDebugRun");
     expectedModels.sort();
     expect(Prisma.dmmf.datamodel.models.map(({ name }) => name).sort()).toEqual(expectedModels);
     const columns = await admin.$queryRaw<

@@ -131,8 +131,12 @@ describe("layout shells", () => {
       "href",
       "/admin/settings",
     );
+    expect(within(navigation).getByRole("link", { name: "AI 调试" })).toHaveAttribute(
+      "href",
+      "/admin/ai-debug",
+    );
     expect(within(navigation).getByRole("button", { name: "退出登录" })).toBeEnabled();
-    expect(within(navigation).getAllByRole("link")).toHaveLength(5);
+    expect(within(navigation).getAllByRole("link")).toHaveLength(6);
     expect(within(navigation).queryByText("AI 配置")).not.toBeInTheDocument();
     expect(within(screen.getByRole("main")).getByRole("heading", { level: 1 })).toHaveTextContent(
       "后台内容",

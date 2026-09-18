@@ -11,7 +11,11 @@ import {
   type HttpTransport,
   type SecretRecord,
 } from "@/server/ai/deepseek-provider";
-import { MockAiProvider, type MockProviderEvent } from "@/server/ai/mock-provider";
+import {
+  MockAiProvider,
+  type MockFailureMode,
+  type MockProviderEvent,
+} from "@/server/ai/mock-provider";
 import {
   loadGuardedKeyCandidate,
   type GuardedKeyCandidate,
@@ -32,7 +36,27 @@ export interface ProviderRegistryOptions {
   readonly mockOutput?: string;
   readonly mockDelayMs?: number;
   readonly mockUsage?: { inputTokens: number; outputTokens: number } | null;
+  readonly mockFailureMode?: MockFailureMode;
+  readonly mockRequestId?: string;
+  /**
+   * Phase018 admin debug only. A caller may not simply assert isolation: the registry
+   * re-reads the live database identity and refuses any non-disposable database.
+   */
+  readonly mockProfileVerified?: boolean;
   readonly resolveSecret?: (record: SecretRecord) => string;
+}
+
+const SYNTHETIC_DATABASE = /^phase\d{3}_disposable_[a-f0-9]{12}$/;
+async function assertSyntheticMockDatabase(tx: Prisma.TransactionClient): Promise<void> {
+  const [identity] = await tx.$queryRaw<Array<{ name: string; marker: string | null }>>`
+    SELECT current_database() AS name,shobj_description(oid,'pg_database') AS marker
+    FROM pg_database WHERE datname=current_database()`;
+  if (
+    !SYNTHETIC_DATABASE.test(identity.name) ||
+    identity.marker !==
+      `serendipity-phase${identity.name.slice(5, 8)}-disposable:${identity.name.slice(-12)}`
+  )
+    throw new Error("CONFIG_ERROR");
 }
 export async function resolveProviderAdapter(
   tx: Prisma.TransactionClient,
@@ -88,26 +112,33 @@ export async function resolveProviderAdapter(
   if (config.mode === "MOCK") {
     if (config.credentialRequirement !== "NONE" || config.secretRef !== null)
       throw new Error("CONFIG_ERROR");
-    if (
-      process.env.NODE_ENV !== "test" &&
-      (options.mockEvents ||
-        options.mockClock ||
-        options.mockOutput ||
-        options.mockDelayMs ||
-        options.mockUsage !== undefined)
-    )
-      throw new Error("CONFIG_ERROR");
+    const overrides =
+      options.mockEvents !== undefined ||
+      options.mockClock !== undefined ||
+      options.mockOutput !== undefined ||
+      options.mockDelayMs !== undefined ||
+      options.mockUsage !== undefined ||
+      options.mockFailureMode !== undefined ||
+      options.mockRequestId !== undefined;
+    if (process.env.NODE_ENV !== "test" && overrides) {
+      // Deterministic mock profiles stay unavailable outside an isolated synthetic
+      // database even when a caller supplies the opt-in flag.
+      if (options.mockProfileVerified !== true) throw new Error("CONFIG_ERROR");
+      await assertSyntheticMockDatabase(tx);
+    }
     return {
       providerId: config.providerId,
       configVersion: config.configVersion,
       mode: "MOCK",
       adapter: new MockAiProvider({
         events: options.mockEvents,
+        failureMode: options.mockFailureMode,
         clock: options.mockClock,
         output:
           options.mockOutput ?? JSON.stringify(promptKeyContract(provider.promptKey).fixtureOutput),
         delayMs: options.mockDelayMs,
         usage: options.mockUsage,
+        requestId: options.mockRequestId,
       }),
     };
   }

@@ -68,6 +68,7 @@ describe("admin/layout navigation and route boundaries", () => {
       "/admin/users",
       "/admin/api-keys",
       "/admin/logs",
+      "/admin/ai-debug",
       "/admin/settings",
     ]);
     for (const item of links) expect(routes, `Missing page for ${item.href}`).toContain(item.href);
@@ -87,6 +88,7 @@ describe("admin/layout navigation and route boundaries", () => {
     ).toEqual([path.resolve("src/components/admin/admin-nav.ts")]);
     expect(routes.filter((href) => href.startsWith("/admin")).sort()).toEqual([
       "/admin",
+      "/admin/ai-debug",
       "/admin/api-keys",
       "/admin/login",
       "/admin/logs",

@@ -33,9 +33,12 @@ import {
   type KeyRotationReceipt,
 } from "@/lib/admin-api-keys";
 import { parseReferenceCandidates, type KeyReferenceCandidate } from "@/server/admin/key-reference";
+import { parseAiDebugRequest, type AiDebugRequest } from "@/lib/ai-debug";
 
 export const ADMIN_RECEIPT_MIN_RETENTION_MS = 86_400_000;
 export const ADMIN_USER_OPERATION = "patch.admin.users.id";
+export const AI_DEBUG_TEST_OPERATION = "post.admin.ai-debug.test";
+export const AI_DEBUG_STREAM_OPERATION = "post.admin.ai-debug.stream";
 
 export class AdminCommandError extends AuditLogError {
   constructor(
@@ -130,13 +133,32 @@ function fingerprintPayload(value: unknown): FingerprintPayload {
   return { expectedVersion: fields.expectedVersion, keyFingerprint: fields.keyFingerprint };
 }
 
+/** The debug request is normalized before hashing; nothing secret or unvalidated enters the row. */
+function aiDebugPayload(value: unknown) {
+  try {
+    const request = parseAiDebugRequest(value);
+    return {
+      promptKey: request.promptKey,
+      failureProfile: request.failureProfile,
+      variables: request.variables,
+    };
+  } catch {
+    throw new AdminCommandError("VALIDATION_ERROR");
+  }
+}
+
 /** The raw key and reason never enter a row; only hashes of validated non-secret payload fields do. */
 export function makeAdminCommandIdentity(input: {
   ownerUserId: string;
   operationId: string;
   resourceId: string;
   idempotencyKey: string;
-  payload: AdminUserPatch | FingerprintPayload | AdminKeyCommandPayload | SettingPatch;
+  payload:
+    | AdminUserPatch
+    | FingerprintPayload
+    | AdminKeyCommandPayload
+    | SettingPatch
+    | AiDebugRequest;
 }): AdminCommandIdentity {
   try {
     if (
@@ -151,13 +173,15 @@ export function makeAdminCommandIdentity(input: {
         ? parseSettingPatch(input.payload)
         : operationId === ADMIN_USER_OPERATION
           ? parseAdminUserPatch(input.payload)
-          : operationId === "post.admin.api-keys"
-            ? keyPayload(input.payload, false)
-            : operationId === "post.admin.api-keys.id.rotate"
-              ? keyPayload(input.payload, true)
-              : operationId === "patch.admin.api-keys.id"
-                ? parseApiKeyPatch(input.payload)
-                : fingerprintPayload(input.payload);
+          : operationId === AI_DEBUG_TEST_OPERATION || operationId === AI_DEBUG_STREAM_OPERATION
+            ? aiDebugPayload(input.payload)
+            : operationId === "post.admin.api-keys"
+              ? keyPayload(input.payload, false)
+              : operationId === "post.admin.api-keys.id.rotate"
+                ? keyPayload(input.payload, true)
+                : operationId === "patch.admin.api-keys.id"
+                  ? parseApiKeyPatch(input.payload)
+                  : fingerprintPayload(input.payload);
     return Object.freeze({
       ownerUserId: parseAdminUserId(input.ownerUserId),
       operationId,

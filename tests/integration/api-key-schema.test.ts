@@ -232,6 +232,8 @@ describe.skipIf(!process.env.PHASE010_FIXTURE_CONFIG)("api-key-schema PostgreSQL
         "TaskPayload",
         "Outbox",
       );
+    if (Prisma.dmmf.datamodel.models.some(({ name }) => name === "AiDebugRun"))
+      expected.push("AiDebugRun");
     expected.sort();
     expect(Prisma.dmmf.datamodel.models.map((model) => model.name).sort()).toEqual(expected);
     await withSeedDatabase(async ({ app }) => {

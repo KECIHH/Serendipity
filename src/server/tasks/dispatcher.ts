@@ -108,7 +108,7 @@ export async function runnableTasks(client: PrismaClient, take = 10) {
   return client.$queryRaw<
     Array<{ kind: TaskKind; aggregateId: string }>
   >`SELECT kind,"aggregateId" FROM "DurableTask"
-    WHERE kind IN ('CHAT_COMMAND','ADMIN_KEY_ROTATION') AND "availableAt"<=public.auth_now()
+    WHERE kind IN ('CHAT_COMMAND','ADMIN_KEY_ROTATION','AI_DEBUG') AND "availableAt"<=public.auth_now()
     AND ((status='PENDING' AND "attemptCount"<"maxAttempts") OR (status='RUNNING' AND "leaseUntil"<=public.auth_now()))
     ORDER BY "availableAt",id LIMIT ${take}`;
 }
