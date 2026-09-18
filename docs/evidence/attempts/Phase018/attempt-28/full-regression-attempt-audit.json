@@ -1,0 +1,71 @@
+[
+  {
+    "fixture": "success",
+    "status": "SUCCEEDED",
+    "attempts": 1,
+    "formalWrites": 0,
+    "persistedEvents": 0,
+    "mockCalls": 1
+  },
+  {
+    "fixture": "timeout",
+    "status": "FAILED",
+    "errorCode": "PROVIDER_TIMEOUT",
+    "formalWrites": 0,
+    "persistedEvents": 0,
+    "mockCalls": 1
+  },
+  {
+    "fixture": "invalid-json",
+    "status": "FAILED",
+    "errorCode": "INVALID_JSON",
+    "formalWrites": 0,
+    "persistedEvents": 0,
+    "mockCalls": 1
+  },
+  {
+    "fixture": "schema-mismatch",
+    "status": "FAILED",
+    "errorCode": "SCHEMA_MISMATCH",
+    "formalWrites": 0,
+    "persistedEvents": 0,
+    "mockCalls": 1
+  },
+  {
+    "fixture": "repair",
+    "status": "SUCCEEDED",
+    "attempts": 2,
+    "repairAttempt": 2,
+    "formalWrites": 0,
+    "persistedEvents": 0,
+    "mockCalls": 2
+  },
+  {
+    "fixture": "stream-interruption",
+    "status": "SUCCEEDED",
+    "attempts": 1,
+    "providerCallsDuringGet": 0,
+    "persistedDeltas": 0,
+    "formalWrites": 0,
+    "persistedEvents": 0,
+    "mockCalls": 2
+  },
+  {
+    "fixture": "cost",
+    "status": "FAILED",
+    "errorCode": "COST_LIMIT",
+    "formalWrites": 0,
+    "persistedEvents": 0,
+    "mockCalls": 0
+  },
+  {
+    "fixture": "authorization",
+    "anonymous": 401,
+    "user": 403,
+    "expired": 401,
+    "writes": 0,
+    "formalWrites": 0,
+    "persistedEvents": 0,
+    "mockCalls": 0
+  }
+]
