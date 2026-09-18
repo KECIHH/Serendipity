@@ -109,7 +109,7 @@ if (mode === "receipt") {
     "ATTEMPT_ALREADY_EXECUTED",
   );
   const recoveryHeads = plan.previousAttempts
-    .map((attempt) => attempt.metadataCommit)
+    .flatMap((attempt) => [attempt.artifactCommit, attempt.metadataCommit])
     .filter(Boolean);
   assert(
     [startCommit, ...recoveryHeads].includes(git(["rev-parse", "HEAD"]).trim()),

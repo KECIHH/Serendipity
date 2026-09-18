@@ -40,7 +40,7 @@ function metadata() {
       artifactCommit,
       phaseStartCommit: receipt.phaseStartCommit,
       recoveryParents: plan.previousAttempts
-        .map((attempt) => attempt.metadataCommit)
+        .flatMap((attempt) => [attempt.artifactCommit, attempt.metadataCommit])
         .filter(Boolean),
     },
     git,
@@ -134,7 +134,19 @@ function metadata() {
     },
   };
   scan(JSON.stringify(gate));
-  write(gatePath, gate);
+  const existingGatePath = path.join(root, gatePath);
+  if (fs.existsSync(existingGatePath)) {
+    const existingGate = json(gatePath);
+    assert.equal(existingGate.phase, 18);
+    assert(
+      plan.previousAttempts.some(
+        (attempt) =>
+          attempt.artifactCommit === existingGate.artifactCommit && attempt.metadataCommit,
+      ),
+      "REPLACED_GATE_MUST_BE_FAILED_ATTEMPT",
+    );
+  }
+  write(gatePath, gate, false);
   const checkpoint = { phase: 18, artifactCommit, evidencePath: gatePath, evidenceHash: hash(gatePath) };
   const state = json("docs/roadmap-run.json");
   assert.equal(state.completedThrough, 17);
