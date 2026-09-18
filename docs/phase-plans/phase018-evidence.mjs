@@ -389,10 +389,17 @@ export function requireCaseExecution(item, execution, npmCli) {
   assert(execution.result.arguments.at(-1).startsWith("--outputFile="));
 }
 
-export function requireArtifactParent({ artifactCommit, phaseStartCommit }, git) {
+export function requireArtifactParent(
+  { artifactCommit, phaseStartCommit, recoveryParents = [] },
+  git,
+) {
   assert.equal(phaseStartCommit, startCommit);
   assert.equal(git(["show", "-s", "--format=%s", artifactCommit]).trim(), "phase(018): artifact");
-  assert.equal(git(["rev-parse", `${artifactCommit}^`]).trim(), startCommit, "ARTIFACT_DIRECT_PARENT");
+  const parent = git(["rev-parse", `${artifactCommit}^`]).trim();
+  assert(
+    [startCommit, ...recoveryParents].includes(parent),
+    "ARTIFACT_DIRECT_PARENT",
+  );
 }
 
 export function requireSupportingResults(plan, quality, npmCli) {

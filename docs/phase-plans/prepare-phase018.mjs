@@ -108,7 +108,13 @@ if (mode === "receipt") {
       !fs.existsSync(path.join(root, directory, "attempt.json")),
     "ATTEMPT_ALREADY_EXECUTED",
   );
-  assert.equal(git(["rev-parse", "HEAD"]).trim(), startCommit, "PREPARE_HEAD");
+  const recoveryHeads = plan.previousAttempts
+    .map((attempt) => attempt.metadataCommit)
+    .filter(Boolean);
+  assert(
+    [startCommit, ...recoveryHeads].includes(git(["rev-parse", "HEAD"]).trim()),
+    "PREPARE_HEAD",
+  );
   requireInputs(json(receiptPath), { readJson: json, hashFile: hash, git });
   await ensureDatabase();
   const additions = [

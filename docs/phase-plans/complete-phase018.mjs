@@ -35,7 +35,16 @@ function metadata() {
   const { receipt, reports, quality, review } = audit();
   const artifactCommit = git(["rev-parse", "HEAD"]).trim();
   assert.equal(git(["status", "--porcelain=v1", "--untracked-files=all"]).trim(), "", "ARTIFACT_MUST_BE_CLEAN");
-  requireArtifactParent({ artifactCommit, phaseStartCommit: receipt.phaseStartCommit }, git);
+  requireArtifactParent(
+    {
+      artifactCommit,
+      phaseStartCommit: receipt.phaseStartCommit,
+      recoveryParents: plan.previousAttempts
+        .map((attempt) => attempt.metadataCommit)
+        .filter(Boolean),
+    },
+    git,
+  );
   const testedTree = git(["rev-parse", `${artifactCommit}^{tree}`]).trim();
   const inputPaths = [
     ...new Set([

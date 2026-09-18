@@ -106,7 +106,7 @@ function checkPlan() {
   for (const file of plan.sourcePaths)
     if (/\.(?:ts|tsx|mjs|js|json|md|sql|css)$/.test(file)) assert(!read(file).includes(13), `LF_REQUIRED:${file}`);
   const changed = [
-    ...git(["diff", "--name-only", plan.phaseStartCommit]).trim().split(/\r?\n/),
+    ...git(["diff", "--name-only"]).trim().split(/\r?\n/),
     ...git(["ls-files", "--others", "--exclude-standard"]).trim().split(/\r?\n/),
   ].filter(Boolean);
   for (const file of changed)
