@@ -91,8 +91,8 @@ export async function loginOwner(client: PrismaClient, role: "USER" | "ADMIN" = 
   const user = await client.user.create({
     data: { email: `fixture-${randomUUID()}@serendipity.invalid`, passwordHash: "synthetic", role },
   });
+  const [{ now }] = await client.$queryRaw<Array<{ now: Date }>>`SELECT public.auth_now() AS now`;
   const token = randomBytes(32).toString("base64url"),
-    now = new Date(),
     expiresAt = new Date(now.getTime() + 43200000);
   const session = await client.authSession.create({
     data: {

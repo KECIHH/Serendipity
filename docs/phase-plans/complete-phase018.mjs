@@ -46,6 +46,16 @@ function metadata() {
     git,
   );
   const testedTree = git(["rev-parse", `${artifactCommit}^{tree}`]).trim();
+  const recoveryCommits = git([
+    "log",
+    "--reverse",
+    "--topo-order",
+    "--format=%H",
+    `${receipt.phaseStartCommit}..${artifactCommit}^`,
+  ])
+    .trim()
+    .split(/\r?\n/)
+    .filter(Boolean);
   const inputPaths = [
     ...new Set([
       planPath,
@@ -98,7 +108,7 @@ function metadata() {
       reviewerRunId: review.reviewerRunId,
       reviewReportPath: reviewPath,
       reviewReportHash: hash(reviewPath),
-      recoveryCommits: [],
+      recoveryCommits,
       originalThreshold: 8,
       automatedThreshold: 8,
       waived: false,
