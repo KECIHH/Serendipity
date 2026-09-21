@@ -84,3 +84,6 @@ Phase017 计划：docs/phase-plans/Phase017.json；唯一Gate：docs/evidence/Ph
 | Phase018 | Mock Provider、AI 调试与 M4 Gate | 唯一 MockAiProvider 固定故障矩阵、AiDebugRun 迁移、AI_DEBUG 任务、管理员调试页与三个 Route Handler、安全调试 DTO、八组故障注入与五项反向控制；完整路径/hash 见 Gate | 固定 8/8；Vitest 723/723；专用 20 断言；5 项反向控制及恢复后八组重跑；真实 PostgreSQL 17/11 份迁移；debug 正式计划写入 0、Mock 网络调用 0；lint/typecheck/format/build/layout/证据自检/路由扫描；独立 Agent 复核；artifactCommit=66c1690cf5eef32ae53a351e193653ad23565994；attemptId=attempt-28 | 未执行正式方案版本、真实 Provider 适配器、生产流量或真实凭据；rawOutput 维持数据库强制 null，调试捕获只在受限内存与安全 DTO 中 | metadata 后双 shell seal、clean 和 GitHub 同步；授权止于 018 |
 
 Phase018 计划：docs/phase-plans/Phase018.json；唯一 Gate：docs/evidence/Phase018-gate.json；原始报告与独立复核：docs/evidence/attempts/Phase018/。
+| Phase019 | 意图识别与核心实体提取 | nlu.extract 注册绑定、受控核心实体服务、确定性日期解析、复用需求字段 Schema、实体与边界测试；完整路径/hash见Gate | 固定8/8；Vitest 755/755；专用32断言；3项隔离变异及恢复后全卡；PostgreSQL17；schema/typecheck/lint/format/build/layout及证据自检通过；独立Agent复核；artifactCommit=99fcdb3740300669df06e6b673cfb88d1b3b00af；attemptId=attempt-3 | 无API/UI、追问、合并、地图或生产Provider；未执行Phase020 | metadata后双shell seal、clean与GitHub同步；授权止于019 |
+
+Phase019计划：docs/phase-plans/Phase019.json；唯一Gate：docs/evidence/Phase019-gate.json；原始报告与独立复核：docs/evidence/attempts/Phase019/attempt-3/。
