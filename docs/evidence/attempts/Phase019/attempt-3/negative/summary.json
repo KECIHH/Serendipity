@@ -1,0 +1,142 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "id": "date-parser-removal",
+      "originalHash": "125c263413932520539abb47668f6ea52e3783d3b10df02345f5b601f60b27aa",
+      "mutatedHash": "0b8047a38679f45d4ee236906149528ce5e97c6f39f239f78877c4255117842a",
+      "testHash": "dad0decf057f531b121a405e63b8c05c9668c2a91200c29198b328f88b484162",
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/nlu/date-range.test.ts -t 将这周末锚定到 serverDate 所在周 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase019\\attempt-3-date-parser-removal.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "tests/nlu/date-range.test.ts",
+          "-t",
+          "将这周末锚定到 serverDate 所在周",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase019\\attempt-3-date-parser-removal.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\fixtures\\phase019-date-parser-removal-qnae9V",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-21T02:31:36.050Z",
+        "finishedAt": "2026-09-21T02:31:39.184Z",
+        "durationMs": 3134,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/nlu/date-range.test.ts -t 将这周末锚定到 serverDate 所在周 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase019\\attempt-3-date-parser-removal.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase019/attempt-3-date-parser-removal.json\n",
+        "stderr": ""
+      },
+      "reportPath": "docs/evidence/attempts/Phase019/attempt-3/negative/date-parser-removal.json",
+      "reportHash": "8999bc64d26e12893650646a242aa56eb8d9d04ead745829b74ca7abb3ecc800",
+      "failure": {
+        "file": "tests/nlu/date-range.test.ts",
+        "fullName": "core date range extraction 将这周末锚定到 serverDate 所在周",
+        "witness": "WEEKEND_CONVERSION_REQUIRED"
+      }
+    },
+    {
+      "id": "confidence-removal",
+      "originalHash": "b8d39937f680187ba5de21b376253d875bb73ca3f0f9b03920a01087a8d4f5d4",
+      "mutatedHash": "80faa94587e58da90b9347818c3e59517596add542d7c5c48e034e54bfb2b4d7",
+      "testHash": "1c2fa82844646131b42b4ceb11e6c4d6073433ba9889df03b153532acd9740dc",
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/nlu/origin.test.ts -t 识别从深圳出发 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase019\\attempt-3-confidence-removal.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "tests/nlu/origin.test.ts",
+          "-t",
+          "识别从深圳出发",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase019\\attempt-3-confidence-removal.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\fixtures\\phase019-confidence-removal-CyBwrX",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-21T02:31:40.236Z",
+        "finishedAt": "2026-09-21T02:31:42.057Z",
+        "durationMs": 1821,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/nlu/origin.test.ts -t 识别从深圳出发 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase019\\attempt-3-confidence-removal.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase019/attempt-3-confidence-removal.json\n",
+        "stderr": ""
+      },
+      "reportPath": "docs/evidence/attempts/Phase019/attempt-3/negative/confidence-removal.json",
+      "reportHash": "e44e74097b7f8f754e34f1d362ffec4d1ed7d98acb79489653e8bb0db50eeeef",
+      "failure": {
+        "file": "tests/nlu/origin.test.ts",
+        "fullName": "core origin extraction 识别从深圳出发",
+        "witness": "SCHEMA_MISMATCH"
+      }
+    },
+    {
+      "id": "destination-order",
+      "originalHash": "b8d39937f680187ba5de21b376253d875bb73ca3f0f9b03920a01087a8d4f5d4",
+      "mutatedHash": "972ce5729ee96057449595c44d676fe5c7484640ea15a6f8831d08e5cfbff7a6",
+      "testHash": "1b53f2ececa27acc3ee91742977f7de9dfd6fdfc8dd16f99abbea306b931182f",
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/nlu/destinations.test.ts -t 保留多目的地顺序 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase019\\attempt-3-destination-order.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "tests/nlu/destinations.test.ts",
+          "-t",
+          "保留多目的地顺序",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase019\\attempt-3-destination-order.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\fixtures\\phase019-destination-order-7SX1gW",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-21T02:31:43.071Z",
+        "finishedAt": "2026-09-21T02:31:44.944Z",
+        "durationMs": 1873,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/nlu/destinations.test.ts -t 保留多目的地顺序 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase019\\attempt-3-destination-order.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase019/attempt-3-destination-order.json\n",
+        "stderr": ""
+      },
+      "reportPath": "docs/evidence/attempts/Phase019/attempt-3/negative/destination-order.json",
+      "reportHash": "34fb447a5ce680f71d7a54f1dccee73a72646ae2231712d4d1f61a614b770257",
+      "failure": {
+        "file": "tests/nlu/destinations.test.ts",
+        "fullName": "core destination extraction 保留多目的地顺序",
+        "witness": "DESTINATION_ORDER_REQUIRED"
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/attempts/Phase019/attempt-3/negative/commands/001.json",
+      "sha256": "bf7ca28ae4b2ed5fe10e0ebe1c2db40a0640fc33aac0c883a280f9d20e871284"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase019/attempt-3/negative/date-parser-removal.json",
+      "sha256": "8999bc64d26e12893650646a242aa56eb8d9d04ead745829b74ca7abb3ecc800"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase019/attempt-3/negative/commands/002.json",
+      "sha256": "17846ffa95de31343eade4163801470ef4e018401d271f5302ee52adcf5470f3"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase019/attempt-3/negative/confidence-removal.json",
+      "sha256": "e44e74097b7f8f754e34f1d362ffec4d1ed7d98acb79489653e8bb0db50eeeef"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase019/attempt-3/negative/commands/003.json",
+      "sha256": "887a34802f4ed83eb623fa1784782ed2d065dff94b639e660d48f16da11ec208"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase019/attempt-3/negative/destination-order.json",
+      "sha256": "34fb447a5ce680f71d7a54f1dccee73a72646ae2231712d4d1f61a614b770257"
+    }
+  ]
+}

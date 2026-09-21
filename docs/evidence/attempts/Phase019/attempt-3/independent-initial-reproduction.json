@@ -1,0 +1,223 @@
+{
+  "reviewerRunId": "phase019-native-reviewer-20260921",
+  "capturedAt": "2026-09-21T02:08:48.221Z",
+  "command": "node --conditions=react-server --import tsx .scaffold/phase019-review/reproduce.ts",
+  "databaseConnections": 0,
+  "providerCalls": 0,
+  "sources": [
+    {
+      "path": "src/lib/ai/prompts/nlu-extract.ts",
+      "sha256": "9fb3a374d8f609fb944c5b5478a1a72ba4fda0402accbf78b79741d9d0c5557c"
+    },
+    {
+      "path": "src/server/services/nlu/extract-core-entities.ts",
+      "sha256": "45e94333319eba68e2e77028e246b6269ae0f720648c3a7bf761faf04db388b2"
+    },
+    {
+      "path": "src/server/services/nlu/date-parser.ts",
+      "sha256": "2bf26909d5e212a0c492bad8d7396e341c662badc3bcade618c852cec2d74b5a"
+    },
+    {
+      "path": "src/lib/ai/schema-types.ts",
+      "sha256": "e90db638a872d0919946c6c34eac357f4ca08a8764876659bc5c05415ed8e968"
+    },
+    {
+      "path": "src/lib/ai/schemas.ts",
+      "sha256": "70f47113b8b57ebcc80d6cb7e71ea7140ce12095735711ce33ae0e1cc44d1621"
+    },
+    {
+      "path": "src/lib/ai/schema-validation.ts",
+      "sha256": "e90d98635d5197f1159cbc0d367fbc0e23e026432433921b5720de7471eea53c"
+    },
+    {
+      "path": "src/lib/ai/requirement-validation.ts",
+      "sha256": "b0a60805fc5d0f041d2fe2f4cf6e02222aeb559ea5fa80152bfea7077c324188"
+    },
+    {
+      "path": "src/lib/ai/prompt-contract.json",
+      "sha256": "4fd9569bd3da7ee814322cc3900ec23f542ab5c4fcfab0ab5044613f93c3807c"
+    },
+    {
+      "path": "src/lib/ai/travel-contract.json",
+      "sha256": "cde655dabaf2cbce35dea3b329908ae1195cc4effd9f6cbcb7fcf94839bf4e91"
+    },
+    {
+      "path": "src/server/ai/nlu-context.ts",
+      "sha256": "bde4423cf4926b1af51beae9f289588e65aad96fdcaa8f270de8fc6db1ae04d4"
+    },
+    {
+      "path": "src/server/ai/guarded-client.ts",
+      "sha256": "4caf3c022a71a431832fc0d700ee0ada8269738bb831190550ccf0d729fb2079"
+    },
+    {
+      "path": "tests/nlu/fixtures.ts",
+      "sha256": "e588aff658636b13e590794d5ed4e8defd01bd56f3d4b96e7724c8e56897b76a"
+    },
+    {
+      "path": "tests/nlu/origin.test.ts",
+      "sha256": "c9b4ca9de35f02a3a83a61579048d15238bfa413344cd44f7fcb271bfbc61102"
+    },
+    {
+      "path": "tests/nlu/destinations.test.ts",
+      "sha256": "5c88282b03a4f68d1d74cb134395d81016d428833421b12a6cefd3508cca3a2d"
+    },
+    {
+      "path": "tests/nlu/date-range.test.ts",
+      "sha256": "1f3a25e6f4ebb74e061a0e85bc72d35b1c2796c0f517fff17386f06f81cc55ab"
+    },
+    {
+      "path": "docs/testing-execution-policy.md",
+      "sha256": "a1f2666b2a757bf7dccb016e997a60f33a0f91f7612add8d40411e30735f8532"
+    },
+    {
+      "path": "docs/development-execution-policy.md",
+      "sha256": "58b4eaef7fda2a45c69e41feb766d04893d44a7092117410d7e707bc5e7b9320"
+    },
+    {
+      "path": "Serendipity · 际遇/Phase019.md",
+      "sha256": "0efe0dde27bf0390c68a2cb2ef8358ce1dae2955c2f13bd8f5f24e2c9c5379ba"
+    }
+  ],
+  "results": [
+    {
+      "id": "single-city-conjunction",
+      "text": "去呼和浩特",
+      "candidates": [
+        {
+          "field": "destinations",
+          "text": "呼和浩特",
+          "confidence": 0.95
+        }
+      ],
+      "actual": {
+        "origin": null,
+        "destinations": [
+          {
+            "id": "destination-1-7b4b0bb68acf",
+            "name": "呼",
+            "city": null,
+            "country": null,
+            "type": "region",
+            "confidence": 0.95
+          },
+          {
+            "id": "destination-2-af4881485a8f",
+            "name": "浩特",
+            "city": null,
+            "country": null,
+            "type": "region",
+            "confidence": 0.95
+          }
+        ],
+        "dateRange": null
+      }
+    },
+    {
+      "id": "unrelated-historical-date",
+      "text": "我2025-01-01去过日本，这周末从深圳去武功山",
+      "candidates": [
+        {
+          "field": "dateRange",
+          "text": "这周末",
+          "confidence": 0.95
+        }
+      ],
+      "actual": {
+        "origin": null,
+        "destinations": [],
+        "dateRange": {
+          "startDate": "2025-01-01",
+          "endDate": "2025-01-01",
+          "text": "这周末",
+          "isFlexible": false,
+          "timezone": "Asia/Shanghai",
+          "confidence": 0.95
+        }
+      }
+    },
+    {
+      "id": "duration-without-start",
+      "text": "想去日本玩7天，时间未定",
+      "candidates": [
+        {
+          "field": "dateRange",
+          "text": "玩7天",
+          "confidence": 0.8
+        }
+      ],
+      "actual": {
+        "origin": null,
+        "destinations": [],
+        "dateRange": {
+          "startDate": "2026-09-03",
+          "endDate": "2026-09-09",
+          "text": "玩7天",
+          "isFlexible": true,
+          "timezone": "Asia/Shanghai",
+          "confidence": 0.8
+        }
+      }
+    },
+    {
+      "id": "model-reorders-user-destinations",
+      "text": "先去川西再去稻城",
+      "candidates": [
+        {
+          "field": "destinations",
+          "text": "稻城",
+          "confidence": 0.9
+        },
+        {
+          "field": "destinations",
+          "text": "川西",
+          "confidence": 0.9
+        }
+      ],
+      "actual": {
+        "origin": null,
+        "destinations": [
+          {
+            "id": "destination-1-557da80b1ae9",
+            "name": "稻城",
+            "city": null,
+            "country": null,
+            "type": "attraction",
+            "confidence": 0.9
+          },
+          {
+            "id": "destination-2-e78f48a8a66c",
+            "name": "川西",
+            "city": null,
+            "country": null,
+            "type": "province",
+            "confidence": 0.9
+          }
+        ],
+        "dateRange": null
+      }
+    },
+    {
+      "id": "explicit-date-range",
+      "text": "2026-09-10到2026-09-12去日本",
+      "candidates": [
+        {
+          "field": "dateRange",
+          "text": "2026-09-10到2026-09-12",
+          "confidence": 1
+        }
+      ],
+      "actual": {
+        "origin": null,
+        "destinations": [],
+        "dateRange": {
+          "startDate": "2026-09-10",
+          "endDate": "2026-09-10",
+          "text": "2026-09-10到2026-09-12",
+          "isFlexible": false,
+          "timezone": "Asia/Shanghai",
+          "confidence": 1
+        }
+      }
+    }
+  ]
+}

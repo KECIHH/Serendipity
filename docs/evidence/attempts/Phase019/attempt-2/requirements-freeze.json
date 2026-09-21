@@ -1,0 +1,33 @@
+{
+  "phase": 19,
+  "attemptId": "attempt-2",
+  "frozenAt": "2026-09-19T04:30:00.000Z",
+  "phaseStartCommit": "a3c1cdfe0640222d6d104dcee9530c2c395516af",
+  "scope": "从自然语言中提取 origin、destinations 和 dateRange，并以受控 Prompt 调用和确定性日期解析返回部分 TravelRequirement 实体。",
+  "requiredCaseIds": [
+    "Phase019:unit-origin",
+    "Phase019:unit-destinations",
+    "Phase019:unit-date-range",
+    "Phase019:call-weekend",
+    "Phase019:call-national-day",
+    "Phase019:negative-controls"
+  ],
+  "negativeControls": [
+    "date-parser-removal",
+    "confidence-removal",
+    "destination-order"
+  ],
+  "threshold": {
+    "originalThreshold": 8,
+    "automatedThreshold": 8,
+    "requiredPassRate": 1,
+    "waived": false
+  },
+  "testMode": "full",
+  "crossAttemptReuse": "disabled",
+  "engineeringRegression": {
+    "mode": "full",
+    "fullCommand": "npm run test",
+    "dedicatedCardCommand": "npm run test -- nlu/origin nlu/destinations nlu/date-range"
+  }
+}

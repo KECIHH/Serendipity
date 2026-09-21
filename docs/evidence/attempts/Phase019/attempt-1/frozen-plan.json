@@ -1,0 +1,46 @@
+{
+  "phase": 19,
+  "attemptId": "attempt-1",
+  "producer": "Phase019",
+  "consumers": ["Phase020", "Phase021", "Phase022", "Phase023", "Phase024"],
+  "scope": "从自然语言中提取 origin、destinations 和 dateRange，并以受控 Prompt 调用和确定性日期解析返回部分 TravelRequirement 实体。",
+  "implementationContextId": "codex-native-root-phase019-20260919",
+  "phaseStartCommit": "a3c1cdfe0640222d6d104dcee9530c2c395516af",
+  "testMode": "full",
+  "testModeReason": "新增 AI NLU 服务、Prompt 绑定和共享实体映射，动态 Provider/Prompt 依赖无法证明为独立模块，按政策执行仓库全量回归。",
+  "crossAttemptReuse": "disabled",
+  "engineeringRegression": {
+    "mode": "full",
+    "baseCommit": "a3c1cdfe0640222d6d104dcee9530c2c395516af",
+    "fullCommand": "npm run test",
+    "dedicatedCardCommand": "npm run test -- nlu/origin nlu/destinations nlu/date-range",
+    "discovery": "vitest list --json; exact file/fullName equality, no skipped or zero tests"
+  },
+  "requiredCaseIds": [
+    "Phase019:unit-origin",
+    "Phase019:unit-destinations",
+    "Phase019:unit-date-range",
+    "Phase019:call-weekend",
+    "Phase019:call-national-day",
+    "Phase019:negative-controls"
+  ],
+  "cases": [
+    {"testCaseId":"Phase019:unit-origin","command":"npm run test -- nlu/origin","denominator":1,"inputPath":"tests/nlu/origin.test.ts","outputPath":"docs/evidence/attempts/Phase019/attempt-1/origin.json","expected":"origin candidates preserve city and bounded confidence; missing origin is null."},
+    {"testCaseId":"Phase019:unit-destinations","command":"npm run test -- nlu/destinations","denominator":1,"inputPath":"tests/nlu/destinations.test.ts","outputPath":"docs/evidence/attempts/Phase019/attempt-1/destinations.json","expected":"country/province/fuzzy/multi-destination candidates preserve order and do not invent a city."},
+    {"testCaseId":"Phase019:unit-date-range","command":"npm run test -- nlu/date-range","denominator":1,"inputPath":"tests/nlu/date-range.test.ts","outputPath":"docs/evidence/attempts/Phase019/attempt-1/date-range.json","expected":"relative dates use serverDate and timezone; weekend, National Day, next month and unresolved time are covered."},
+    {"testCaseId":"Phase019:call-weekend","command":"npm run test -- nlu/date-range","denominator":1,"inputPath":"tests/nlu/date-range.test.ts","outputPath":"docs/evidence/attempts/Phase019/attempt-1/call-weekend.json","expected":"这周末从深圳去武功山 resolves to 2026-09-05 through 2026-09-06 for serverDate 2026-09-03."},
+    {"testCaseId":"Phase019:call-national-day","command":"npm run test -- nlu/date-range","denominator":1,"inputPath":"tests/nlu/date-range.test.ts","outputPath":"docs/evidence/attempts/Phase019/attempt-1/call-national-day.json","expected":"国庆去日本玩七天 resolves to 2026-10-01 through 2026-10-07."},
+    {"testCaseId":"Phase019:negative-controls","command":"node docs/phase-plans/verify-phase019.mjs --negative-controls","denominator":3,"inputPath":"tests/nlu","outputPath":"docs/evidence/attempts/Phase019/attempt-1/negative-controls.json","expected":"date parser removal, confidence removal and destination order mutation each make the targeted assertion fail, then restored tests pass."}
+  ],
+  "threshold": {"originalThreshold":8,"automatedThreshold":8,"requiredPassRate":1,"waived":false},
+  "negativeControls":["date-parser-removal","confidence-removal","destination-order"],
+  "sourcePaths":["src/lib/ai/prompts/nlu-extract.ts","src/server/services/nlu/date-parser.ts","src/server/services/nlu/extract-core-entities.ts","tests/nlu/origin.test.ts","tests/nlu/destinations.test.ts","tests/nlu/date-range.test.ts","tests/nlu/fixtures.ts","docs/testing-execution-policy.md","docs/development-execution-policy.md"],
+  "modificationScope":["src/lib/ai/prompts/nlu-extract.ts","src/server/services/nlu/date-parser.ts","src/server/services/nlu/extract-core-entities.ts","tests/nlu/","docs/phase-plans/Phase019.json","docs/phase-plans/verify-phase019.mjs","docs/evidence/attempts/Phase019/"],
+  "notApplicable":["real external provider credentials","production traffic","API route","database migration","browser UI"],
+  "previousAttempts":[],
+  "fixtureSourcePaths":["tests/nlu/fixtures.ts"],
+  "supportingChecks":["typecheck","lint","format:check","full-regression","dedicated-card","negative-controls","layout","secret-scan"],
+  "assertionBindings":{},
+  "discoverySnapshot":{"path":"docs/evidence/attempts/Phase019/attempt-1/frozen-discovery.json","sha256":"","discovered":0},
+  "executionFreeze":{"crossAttemptReuse":"disabled"}
+}

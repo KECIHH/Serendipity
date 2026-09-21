@@ -1,19 +1,10 @@
 import { validScalarFormat } from "@/lib/ai/schema-validation";
-import type { NluContext } from "@/server/ai/nlu-context";
+import type { DateRange } from "@/lib/ai/schema-types";
 
 export interface DateParserContext {
   readonly serverDate: string;
   readonly timezone: string;
   readonly locale: string;
-}
-
-export interface ParsedDateRange {
-  readonly startDate: string | null;
-  readonly endDate: string | null;
-  readonly text: string | null;
-  readonly isFlexible: boolean;
-  readonly timezone: string;
-  readonly confidence: number;
 }
 
 const DAY = 86_400_000;
@@ -25,7 +16,35 @@ function iso(value: Date): string {
   return value.toISOString().slice(0, 10);
 }
 function endOfMonth(year: number, month: number): Date {
-  return new Date(Date.UTC(year, month + 1, 0));
+  return calendarDate(year, month + 1, 0);
+}
+function calendarDate(year: number, month: number, day: number): Date {
+  const value = new Date(0);
+  value.setUTCFullYear(year, month, day);
+  return value;
+}
+function durationDays(text: string): number | null {
+  const match = text.match(/([0-9]+|[一二两三四五六七八九十]+)\s*天/u);
+  if (!match) return null;
+  const digits: Record<string, number> = {
+    一: 1,
+    二: 2,
+    两: 2,
+    三: 3,
+    四: 4,
+    五: 5,
+    六: 6,
+    七: 7,
+    八: 8,
+    九: 9,
+  };
+  const raw = match[1];
+  const value = /^\d+$/.test(raw)
+    ? Number(raw)
+    : /^[一二三四五六七八九]?十[一二三四五六七八九]?$/.test(raw)
+      ? (digits[raw.split("十")[0]] ?? 1) * 10 + (digits[raw.split("十")[1]] ?? 0)
+      : digits[raw];
+  return Number.isInteger(value) && value > 0 && value <= 365 ? value : 0;
 }
 function range(
   startDate: string,
@@ -33,27 +52,40 @@ function range(
   text: string,
   timezone: string,
   isFlexible = false,
-): ParsedDateRange {
+): DateRange | null {
+  if (
+    !validScalarFormat(startDate, "date") ||
+    !validScalarFormat(endDate, "date") ||
+    startDate > endDate
+  )
+    return null;
   return { startDate, endDate, text, isFlexible, timezone, confidence: 1 };
 }
 
 /** Resolve relative Chinese date phrases using only the certified server context. */
-export function parseRelativeDate(
-  text: string,
-  context: DateParserContext | Pick<NluContext, "serverDate" | "timezone" | "locale">,
-): ParsedDateRange | null {
+export function parseRelativeDate(text: string, context: DateParserContext): DateRange | null {
   const value = text.trim();
   if (!value) return null;
+  if (
+    !validScalarFormat(context.timezone, "iana-timezone") ||
+    !validScalarFormat(context.locale, "bcp47-locale")
+  )
+    throw new Error("CONFIG_ERROR");
   const base = dateAtUtc(context.serverDate);
   const timezone = context.timezone;
-  const exact = value.match(/\b(\d{4}-\d{2}-\d{2})\b/);
-  if (exact) return range(exact[1], exact[1], value, timezone);
+  const exact = [...value.matchAll(/(?<!\d)(\d{4}-\d{2}-\d{2})(?!\d)/g)].map((match) => match[1]);
+  if (exact.length) {
+    if (exact.length > 2 || exact.some((date) => !validScalarFormat(date, "date"))) return null;
+    return range(exact[0], exact.at(-1)!, value, timezone);
+  }
 
-  const duration = value.match(/(?:玩|旅行|游玩)?\s*(\d{1,3})\s*天/);
+  const duration = durationDays(value);
   if (/国庆/.test(value)) {
-    const year = base.getUTCFullYear();
-    const start = new Date(Date.UTC(year, 9, 1));
-    const days = duration ? Number(duration[1]) : 7;
+    const year =
+      context.serverDate.slice(5) > "10-07" ? base.getUTCFullYear() + 1 : base.getUTCFullYear();
+    const start = calendarDate(year, 9, 1);
+    const days = duration ?? 7;
+    if (!days) return null;
     return range(iso(start), iso(new Date(start.getTime() + (days - 1) * DAY)), value, timezone);
   }
   if (/这周末|本周末/.test(value)) {
@@ -62,15 +94,11 @@ export function parseRelativeDate(
     const monday = new Date(base.getTime() + mondayOffset * DAY);
     const saturday = new Date(monday.getTime() + 5 * DAY);
     const sunday = new Date(monday.getTime() + 6 * DAY);
-    // Sunday is treated as the just-finished weekend for planning, so the next
-    // weekend is selected; Saturday remains the current weekend start.
-    const start =
-      base > sunday ? new Date(saturday.getTime() + 7 * DAY) : base >= saturday ? base : saturday;
-    const end = new Date(start.getTime() + DAY);
-    return range(iso(start), iso(end), value, timezone);
+    const start = base >= saturday ? base : saturday;
+    return range(iso(start), iso(sunday), value, timezone);
   }
   if (/下个月/.test(value)) {
-    const start = new Date(Date.UTC(base.getUTCFullYear(), base.getUTCMonth() + 1, 1));
+    const start = calendarDate(base.getUTCFullYear(), base.getUTCMonth() + 1, 1);
     return range(
       iso(start),
       iso(endOfMonth(start.getUTCFullYear(), start.getUTCMonth())),
@@ -79,14 +107,6 @@ export function parseRelativeDate(
       true,
     );
   }
-  if (duration) {
-    return range(
-      iso(base),
-      iso(new Date(base.getTime() + (Number(duration[1]) - 1) * DAY)),
-      value,
-      timezone,
-      true,
-    );
-  }
+  // A duration alone supplies no departure date; later stages handle durationDays.
   return null;
 }

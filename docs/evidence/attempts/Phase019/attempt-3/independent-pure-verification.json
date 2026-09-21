@@ -1,0 +1,100 @@
+{
+  "reviewerRunId": "phase019-native-reviewer-20260921",
+  "generatedAt": "2026-09-21T02:17:21.634Z",
+  "status": "PASS",
+  "usage": "DIAGNOSTIC_NOT_GATE",
+  "databaseConnections": 0,
+  "providerCalls": 0,
+  "sourceHashes": {
+    "src/server/services/nlu/extract-core-entities.ts": "f99fdee7bac40b5d3d0559c2a020200912fe6e776138ff74bcd7a8d168a99680",
+    "src/server/services/nlu/date-parser.ts": "125c263413932520539abb47668f6ea52e3783d3b10df02345f5b601f60b27aa",
+    "src/lib/schemas/core-entities.ts": "879908c69d8d080048566ba47ba84c70d8cf17ac19741611ea7f366e508c60fe"
+  },
+  "checks": [
+    {
+      "id": "R1",
+      "actual": [
+        "呼和浩特"
+      ],
+      "expected": [
+        "呼和浩特"
+      ]
+    },
+    {
+      "id": "R2",
+      "actual": "2026-09-05",
+      "expected": "2026-09-05"
+    },
+    {
+      "id": "R3",
+      "actual": null,
+      "expected": null
+    },
+    {
+      "id": "R4",
+      "actual": [
+        "川西",
+        "稻城"
+      ],
+      "expected": [
+        "川西",
+        "稻城"
+      ]
+    },
+    {
+      "id": "R5",
+      "actual": "2026-09-12",
+      "expected": "2026-09-12"
+    },
+    {
+      "id": "R6",
+      "actual": false,
+      "expected": false
+    },
+    {
+      "id": "R7",
+      "actual": "2026-10-07",
+      "expected": "2026-10-07"
+    },
+    {
+      "id": "R8-city",
+      "actual": null,
+      "expected": null
+    },
+    {
+      "id": "R8-region",
+      "actual": "region",
+      "expected": "region"
+    },
+    {
+      "id": "K1",
+      "actual": "2026-09-06",
+      "expected": "2026-09-06"
+    },
+    {
+      "id": "K2",
+      "actual": "2026-10-01",
+      "expected": "2026-10-01"
+    },
+    {
+      "id": "K3",
+      "actual": null,
+      "expected": null
+    },
+    {
+      "id": "explicit-three-days",
+      "actual": "2026-10-03",
+      "expected": "2026-10-03"
+    },
+    {
+      "id": "year-rollover",
+      "actual": "2027-01-31",
+      "expected": "2027-01-31"
+    },
+    {
+      "id": "leap-year",
+      "actual": "2028-02-29",
+      "expected": "2028-02-29"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 // @vitest-environment node
 import { describe, expect, it } from "vitest";
 import { NluExtractOutputSchema } from "@/lib/ai/schemas";
+import { CoreEntitiesSchema } from "@/lib/schemas/core-entities";
 import { entities } from "./fixtures";
 
 describe("core origin extraction", () => {
@@ -9,6 +10,7 @@ describe("core origin extraction", () => {
     expect(value.origin?.city).toBe("深圳");
     expect(value.origin?.confidence).toBeGreaterThanOrEqual(0);
     expect(value.origin?.confidence).toBeLessThanOrEqual(1);
+    expect(CoreEntitiesSchema.safeParse(value).success, "CORE_CONFIDENCE_REQUIRED").toBe(true);
   });
   it("识别人在广州", () => {
     expect(
@@ -27,5 +29,17 @@ describe("core origin extraction", () => {
         candidates: [{ field: "origin", text: "深圳" }],
       }).success,
     ).toBe(false);
+  });
+  it("服务返回字段复用需求 Schema 且禁止缺失 confidence", () => {
+    const result = entities("北京过去", [{ field: "origin", text: "北京", confidence: 0.9 }]);
+    expect(result.origin?.city).toBe("北京");
+    expect(CoreEntitiesSchema.safeParse(result).success).toBe(true);
+    expect(
+      CoreEntitiesSchema.safeParse({ ...result, origin: { city: "北京", country: null } }).success,
+    ).toBe(false);
+  });
+  it("非词典城市仍可识别且不猜测国家", () => {
+    const result = entities("人在里昂", [{ field: "origin", text: "里昂", confidence: 0.7 }]);
+    expect(result.origin).toEqual({ city: "里昂", country: null, confidence: 0.7 });
   });
 });

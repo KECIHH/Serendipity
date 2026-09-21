@@ -1,0 +1,294 @@
+{
+  "schemaVersion": "phase019-independent-review-notes-v1",
+  "phase": 19,
+  "reviewerRunId": "phase019-native-reviewer-20260921",
+  "contextId": "/root/phase019_review",
+  "runtimeIdentity": "native independent sub-agent; no implementation, Git index, commit, full-suite, build or database mutation performed",
+  "generatedAt": "2026-09-21T02:11:02.604Z",
+  "scopeCompletion": "FULL_INITIAL_SEMANTIC_REVIEW_COMPLETE",
+  "decision": "FAIL",
+  "sourceSnapshot": {
+    "capturedAt": "2026-09-21T02:08:48.221Z",
+    "sources": [
+      {
+        "path": "src/lib/ai/prompts/nlu-extract.ts",
+        "sha256": "9fb3a374d8f609fb944c5b5478a1a72ba4fda0402accbf78b79741d9d0c5557c"
+      },
+      {
+        "path": "src/server/services/nlu/extract-core-entities.ts",
+        "sha256": "45e94333319eba68e2e77028e246b6269ae0f720648c3a7bf761faf04db388b2"
+      },
+      {
+        "path": "src/server/services/nlu/date-parser.ts",
+        "sha256": "2bf26909d5e212a0c492bad8d7396e341c662badc3bcade618c852cec2d74b5a"
+      },
+      {
+        "path": "src/lib/ai/schema-types.ts",
+        "sha256": "e90db638a872d0919946c6c34eac357f4ca08a8764876659bc5c05415ed8e968"
+      },
+      {
+        "path": "src/lib/ai/schemas.ts",
+        "sha256": "70f47113b8b57ebcc80d6cb7e71ea7140ce12095735711ce33ae0e1cc44d1621"
+      },
+      {
+        "path": "src/lib/ai/schema-validation.ts",
+        "sha256": "e90d98635d5197f1159cbc0d367fbc0e23e026432433921b5720de7471eea53c"
+      },
+      {
+        "path": "src/lib/ai/requirement-validation.ts",
+        "sha256": "b0a60805fc5d0f041d2fe2f4cf6e02222aeb559ea5fa80152bfea7077c324188"
+      },
+      {
+        "path": "src/lib/ai/prompt-contract.json",
+        "sha256": "4fd9569bd3da7ee814322cc3900ec23f542ab5c4fcfab0ab5044613f93c3807c"
+      },
+      {
+        "path": "src/lib/ai/travel-contract.json",
+        "sha256": "cde655dabaf2cbce35dea3b329908ae1195cc4effd9f6cbcb7fcf94839bf4e91"
+      },
+      {
+        "path": "src/server/ai/nlu-context.ts",
+        "sha256": "bde4423cf4926b1af51beae9f289588e65aad96fdcaa8f270de8fc6db1ae04d4"
+      },
+      {
+        "path": "src/server/ai/guarded-client.ts",
+        "sha256": "4caf3c022a71a431832fc0d700ee0ada8269738bb831190550ccf0d729fb2079"
+      },
+      {
+        "path": "tests/nlu/fixtures.ts",
+        "sha256": "e588aff658636b13e590794d5ed4e8defd01bd56f3d4b96e7724c8e56897b76a"
+      },
+      {
+        "path": "tests/nlu/origin.test.ts",
+        "sha256": "c9b4ca9de35f02a3a83a61579048d15238bfa413344cd44f7fcb271bfbc61102"
+      },
+      {
+        "path": "tests/nlu/destinations.test.ts",
+        "sha256": "5c88282b03a4f68d1d74cb134395d81016d428833421b12a6cefd3508cca3a2d"
+      },
+      {
+        "path": "tests/nlu/date-range.test.ts",
+        "sha256": "1f3a25e6f4ebb74e061a0e85bc72d35b1c2796c0f517fff17386f06f81cc55ab"
+      },
+      {
+        "path": "docs/testing-execution-policy.md",
+        "sha256": "a1f2666b2a757bf7dccb016e997a60f33a0f91f7612add8d40411e30735f8532"
+      },
+      {
+        "path": "docs/development-execution-policy.md",
+        "sha256": "58b4eaef7fda2a45c69e41feb766d04893d44a7092117410d7e707bc5e7b9320"
+      },
+      {
+        "path": "Serendipity · 际遇/Phase019.md",
+        "sha256": "0efe0dde27bf0390c68a2cb2ef8358ce1dae2955c2f13bd8f5f24e2c9c5379ba"
+      }
+    ],
+    "additionalUnchangedDependencies": [
+      {
+        "path": "src/server/services/prompt-service.ts",
+        "sha256": "ed76419e0140e9632392f89511a85ff22a2f3b1905f3b99980990737c7d513ee"
+      },
+      {
+        "path": "src/server/services/model-resolution-service.ts",
+        "sha256": "cf1ce2378788b6ab9337ccdfd07d7722cf8bc7592603348856a1224897997809"
+      },
+      {
+        "path": "src/server/ai/provider-registry.ts",
+        "sha256": "5aea9930ebafde02498a1a7b32aac1e181169cb03869807f733e272e986ac533"
+      },
+      {
+        "path": "src/server/ai/usage-reservations.ts",
+        "sha256": "f3998cede099f99b4ea563305a7b6e8b597cf6a8476257965b24de02e4e1ee8e"
+      },
+      {
+        "path": "docs/travel-plan-schema.md",
+        "sha256": "d3f0492c8d0d22e6de3b21e44368dbf4bb9a49018180e99adf8eb796badb40cd"
+      },
+      {
+        "path": "docs/prompt-design.md",
+        "sha256": "c241711892c658376bb6437c55511a55f249ffabe4421866113560668a83ed32"
+      },
+      {
+        "path": "docs/agent-execution-contract.md",
+        "sha256": "8692435b6b71dd7275a3f8f4c418a02168da845c332545c174dad28a47da1364"
+      },
+      {
+        "path": "docs/project-constitution.md",
+        "sha256": "8f1dd176e30e815a09502a91c5b0ef2722b7bb71d5e919fbfc70cfecf3e9dedd"
+      },
+      {
+        "path": "docs/database.md",
+        "sha256": "d3e310699f2c88f88ad49eeae5d7fa6916a81d85dc882f24d07537055ec81f04"
+      },
+      {
+        "path": "AGENTS.md",
+        "sha256": "15f13a3f5a19147ba3f9254cdddc1ecd6b44fc087e88810b0532c71215e171b4"
+      }
+    ]
+  },
+  "reproduction": {
+    "path": ".scaffold/phase019-review/initial-reproduction.json",
+    "sha256": "abeded02a404d4b0fda2b44dfc99cc2801c0d774631b48b72a4980c23850f762",
+    "command": "node --conditions=react-server --import tsx .scaffold/phase019-review/reproduce.ts",
+    "exitCode": 0,
+    "failedSetupAttempt": "first local script run rejected incomplete synthetic env; corrected only local synthetic config before successful pure-function execution"
+  },
+  "checked": [
+    "AGENTS, test/execution policies, Phase019 complete card and direct canonical requirement/prompt contracts",
+    "nlu-extract module: only key/variables/response binding, no system prompt body or version mutation",
+    "mapCoreCandidates: raw spans, origin null, destinations shape/order/id, date selection, confidence",
+    "date-parser: ISO date, calendar math/timezone, natural-week weekend, month rollover, holiday/year/duration, null failures",
+    "all existing tests/nlu assertions and fixtures; pre-existing negative script anchor/exit/restoration defects",
+    "Phase017 runtime Schema composition, confidence and date fields; full requirement validation belongs to merged future snapshot",
+    "NluContext brand, immutable clock-derived serverDate, signal/deadline/token/cost shared WeakMap state",
+    "guardedJsonChat -> executeGuardedAi -> resolvePromptSnapshot: active immutable PromptVersion content/hash/revision; input/response/reference checks; retry/timeout/cancel/cost accounting; errors throw in extraction",
+    "No NLU API route, prompt text, maps/recommendations/planning/multiturn merge added by initial patch"
+  ],
+  "findings": [
+    {
+      "id": "K1",
+      "severity": "P1",
+      "scope": "date-parser.ts",
+      "trigger": "serverDate=2026-09-06; text=这周末",
+      "observed": "endDate=2026-09-07",
+      "expected": "2026-09-06 through 2026-09-06",
+      "basis": "Phase019 当前自然周六至周日；周末内从当日开始",
+      "discoveredBy": "parent-before-review",
+      "status": "FIX_SEEN_AWAITING_CURRENT_TESTS"
+    },
+    {
+      "id": "K2",
+      "severity": "P1",
+      "scope": "date-parser.ts",
+      "trigger": "serverDate=2026-09-08; text=国庆",
+      "observed": "next year selected",
+      "expected": "2026-10-01 through 2026-10-07",
+      "basis": "Phase019 确定性节日年界",
+      "discoveredBy": "parent-before-review",
+      "status": "FIX_SEEN_AWAITING_CURRENT_TESTS"
+    },
+    {
+      "id": "K3",
+      "severity": "P1",
+      "scope": "date-parser.ts",
+      "trigger": "invalid raw ISO local date",
+      "observed": "unchecked date returned",
+      "expected": "reject or preserve unknown",
+      "basis": "Phase019 确定性计算并校验 ISO 日期",
+      "discoveredBy": "parent-before-review",
+      "status": "FIX_SEEN_AWAITING_CURRENT_TESTS"
+    },
+    {
+      "id": "K4",
+      "severity": "P1",
+      "scope": "verify-phase019.mjs",
+      "trigger": "missing mutation anchor; spawn npx fails on Windows; status=null",
+      "observed": "old script can count infrastructure failure as mutation PASS and claims restoredRun without restored execution",
+      "expected": "unique existing anchor, actual tested assertion nonzero, restore-run proof, isolated copy",
+      "basis": "测试政策与Phase019三项反向真实验证",
+      "discoveredBy": "parent-before-review",
+      "status": "OPEN_AWAITING_REPLACEMENT_RUNNER"
+    },
+    {
+      "id": "R1",
+      "severity": "P1",
+      "scope": "splitDestinations",
+      "trigger": "single-city-conjunction",
+      "observed": "呼和浩特 becomes [呼,浩特]",
+      "expected": "one unchanged place name",
+      "basis": "单目的地长度1，模型复制原始跨度",
+      "status": "FIX_SEEN_AWAITING_CURRENT_TESTS"
+    },
+    {
+      "id": "R2",
+      "severity": "P1",
+      "scope": "mapCoreCandidates date input",
+      "trigger": "unrelated-historical-date",
+      "observed": "date text=这周末 but values=2025-01-01",
+      "expected": "2026-09-05 through 2026-09-06 from selected candidate",
+      "basis": "日期原文跨度与serverDate唯一换算，不能用无关日期替换",
+      "status": "FIX_SEEN_AWAITING_CURRENT_TESTS"
+    },
+    {
+      "id": "R3",
+      "severity": "P1",
+      "scope": "parseRelativeDate duration-only fallback",
+      "trigger": "duration-without-start",
+      "observed": "unknown departure replaced with serverDate",
+      "expected": "unknown date; duration remains Phase020 scope",
+      "basis": "关键时间缺失时不编造",
+      "status": "FIX_SEEN_AWAITING_CURRENT_TESTS"
+    },
+    {
+      "id": "R4",
+      "severity": "P1",
+      "scope": "destination candidate ordering",
+      "trigger": "model-reorders-user-destinations",
+      "observed": "稻城 then 川西 despite opposite user order",
+      "expected": "川西 then 稻城",
+      "basis": "docs/travel-plan-schema.md destinations 按用户顺序保留",
+      "status": "FIX_SEEN_AWAITING_CURRENT_TESTS"
+    },
+    {
+      "id": "R5",
+      "severity": "P1",
+      "scope": "parseRelativeDate exact match",
+      "trigger": "explicit-date-range",
+      "observed": "explicit end date silently discarded",
+      "expected": "2026-09-10 through 2026-09-12",
+      "basis": "完整dateRange及具体日期验收",
+      "status": "FIX_SEEN_AWAITING_CURRENT_TESTS"
+    },
+    {
+      "id": "R6",
+      "severity": "P1",
+      "scope": "mapCoreCandidates output contract and origin test",
+      "trigger": "remove confidence from returned origin",
+      "observed": "initial code lacks returned-object Schema validation; existing negative check validates model candidate instead",
+      "expected": "returned partial fields reuse TravelRequirement contract and actual return mutation fails",
+      "basis": "本卡Schema校验与confidence返回值反向要求",
+      "status": "FIX_SEEN_AWAITING_CURRENT_TESTS"
+    },
+    {
+      "id": "R7",
+      "severity": "P2",
+      "scope": "holidaySpan",
+      "trigger": "国庆去日本,去年玩5天; date candidate 国庆",
+      "observed": "ASCII sentence boundary is crossed to borrow unrelated duration",
+      "expected": "stop before unrelated sentence and retain default holiday duration",
+      "basis": "AI选中的日期跨度不能被无关原文覆盖",
+      "status": "OPEN"
+    },
+    {
+      "id": "R8",
+      "severity": "P2",
+      "scope": "destination.type",
+      "trigger": "中山市; 川西",
+      "observed": "中山市 => attraction; 川西 => province",
+      "expected": "safe known exact normalization or unknown, 川西 region",
+      "basis": "不编造实体语义，确定性映射须有依据",
+      "status": "OPEN"
+    }
+  ],
+  "currentFixRead": {
+    "observed": "parent working-tree corrections for K1-K3/R1-R6",
+    "verifiedBy": "source diff review only, not current formal acceptance",
+    "requires": "new assertions, exact source hashes, final frozen plan and current raw reports"
+  },
+  "deferredIntegrationNotes": [
+    "COMMAND owner context requires commandId/travelRecordId in guardedJsonChat; extractCoreEntities currently does not provide them. No current product caller or Phase019 API is promised; preserve as Phase023 command integration note, not extra current Gate condition.",
+    "Unknown international place classification stays null unless a defensible mapping exists; do not expand a city dictionary into sole extraction method."
+  ],
+  "remaining": [
+    "R7/R8 fixes and their current assertions",
+    "complete frozen plan and source set/hash verification",
+    "current formal unit/integration/full/regression reports including timeout, non-JSON, cancelled/budget cases",
+    "all three true isolated mutations and restored complete acceptance with exact denominator8",
+    "final independent report binding current planHash, reviewerRunId and report/source hashes"
+  ],
+  "limitations": [
+    "This is a pre-evidence semantic review, not a Gate PASS",
+    "No screenshot applicable: this phase introduces no UI",
+    "Final reports and shell seal are not yet available"
+  ]
+}

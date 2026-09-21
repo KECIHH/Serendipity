@@ -26,10 +26,38 @@ describe("core destination extraction", () => {
     const value = entities("川西+稻城", [
       { field: "destinations", text: "川西+稻城", confidence: 0.9 },
     ]);
-    expect(value.destinations.map((item) => item.name)).toEqual(["川西", "稻城"]);
+    expect(
+      value.destinations.map((item) => item.name),
+      "DESTINATION_ORDER_REQUIRED",
+    ).toEqual(["川西", "稻城"]);
   });
   it("忽略不在用户原文中的模型候选", () => {
     const value = entities("去日本", [{ field: "destinations", text: "东京", confidence: 0.95 }]);
     expect(value.destinations).toEqual([]);
+  });
+  it("单地名中的和字不会拆成两个目的地", () => {
+    expect(
+      entities("去呼和浩特", [
+        { field: "destinations", text: "呼和浩特", confidence: 0.9 },
+      ]).destinations.map((item) => item.name),
+    ).toEqual(["呼和浩特"]);
+  });
+  it("模型逆序候选恢复用户原文顺序", () => {
+    expect(
+      entities("先去川西再去稻城", [
+        { field: "destinations", text: "稻城", confidence: 0.9 },
+        { field: "destinations", text: "川西", confidence: 0.9 },
+      ]).destinations.map((item) => item.name),
+    ).toEqual(["川西", "稻城"]);
+  });
+  it("缺失目的地保留空数组", () => {
+    expect(entities("时间未定", []).destinations).toEqual([]);
+  });
+  it("地区类型不因地名含山字而猜测为景点", () => {
+    const value = entities("川西+中山市", [
+      { field: "destinations", text: "川西+中山市", confidence: 0.9 },
+    ]);
+    expect(value.destinations[0].type).toBe("region");
+    expect(value.destinations[1].type).toBeNull();
   });
 });

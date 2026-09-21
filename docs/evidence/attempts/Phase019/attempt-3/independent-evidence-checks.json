@@ -1,0 +1,35 @@
+{
+  "reviewerRunId": "phase019-native-reviewer-20260921",
+  "generatedAt": "2026-09-21T02:24:38.231Z",
+  "planHash": "d0d534c37d926fd945c04f0599ac039810e44c2a15bff8c39cd59d400219750e",
+  "sourceCount": 365,
+  "sourceMismatches": [],
+  "mode": "READ_ONLY_ISOLATED_ARGUMENT_FIXTURES",
+  "results": [
+    {
+      "id": "missing-case",
+      "status": "PASS",
+      "observed": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n-   'Phase019:unit-origin',\n    'Phase019:unit-destinations',\n    'Phase019:unit-date-range',\n    'Phase019:call-weekend',\n    'Phase019:call-national-day',\n    'Phase019:negative-controls'\n"
+    },
+    {
+      "id": "wrong-denominator",
+      "status": "PASS",
+      "observed": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n    1,\n    1,\n    1,\n    1,\n    1,\n+   2\n-   3\n  ]\n"
+    },
+    {
+      "id": "wrong-required-case",
+      "status": "PASS",
+      "observed": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n-   'Phase019:unit-origin',\n    'Phase019:unit-destinations',\n    'Phase019:unit-date-range',\n    'Phase019:call-weekend',\n    'Phase019:call-national-day',\n    'Phase019:negative-controls'\n"
+    },
+    {
+      "id": "wrong-prerequisite-parent",
+      "status": "PASS",
+      "observed": "PREVIOUS_PARENT\n+ actual - expected\n\n+ '0000000000000000000000000000000000000000'\n- '66c1690cf5eef32ae53a351e193653ad23565994'\n"
+    },
+    {
+      "id": "wrong-prerequisite-hash",
+      "status": "PASS",
+      "observed": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '0000000000000000000000000000000000000000000000000000000000000000'\n- '457b1a585989ecabeb54389d729f921d3dd8a4310a1f1bf07edd0c3ba2fd5373'\n"
+    }
+  ]
+}
