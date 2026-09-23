@@ -1,0 +1,142 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "id": "amount-parser-removal",
+      "originalHash": "a21fe15d00dc431114899ecae5ca6e133881ebbf08b7442cfe8fcea60ebc8029",
+      "mutatedHash": "64d1f6f3b8262659d7598c5616644ac3f31be63c2e31eeee1514932c10c5c743",
+      "testHash": "deb9ef4e800c45015e37292ed07fc4aa08e6cbe7c9425ded52e32cc679b48841",
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/nlu/budget.test.ts -t 预算一万转为十进制字符串且不猜测币种 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase020\\attempt-6-amount-parser-removal.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "tests/nlu/budget.test.ts",
+          "-t",
+          "预算一万转为十进制字符串且不猜测币种",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase020\\attempt-6-amount-parser-removal.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\fixtures\\phase020-amount-parser-removal-0J52v2",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-23T10:33:06.358Z",
+        "finishedAt": "2026-09-23T10:33:08.295Z",
+        "durationMs": 1937,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/nlu/budget.test.ts -t 预算一万转为十进制字符串且不猜测币种 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase020\\attempt-6-amount-parser-removal.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase020/attempt-6-amount-parser-removal.json\n",
+        "stderr": ""
+      },
+      "reportPath": "docs/evidence/attempts/Phase020/attempt-6/negative/amount-parser-removal.json",
+      "reportHash": "080e9165403ee487bf0916632742f11c81cc8dd92bb78796705c7a5d5183c480",
+      "failure": {
+        "file": "tests/nlu/budget.test.ts",
+        "fullName": "travel parameter budget 预算一万转为十进制字符串且不猜测币种",
+        "witness": "CN_AMOUNT_REQUIRED"
+      }
+    },
+    {
+      "id": "elder-removal",
+      "originalHash": "be8ef33fb540c8795cec24d2713af9b9629d18b1702413cd6b96e510ee74d06c",
+      "mutatedHash": "997f6c2f3e9a990eaa744ed22c82c0a98bcb5f9297f20a63ed19e4df2ff622b4",
+      "testHash": "81f924cacf9f1615f899eeca8586311a81834acab4dc423755b11fdb55321da3",
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/nlu/travelers.test.ts -t 带爸妈不证明老人年龄 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase020\\attempt-6-elder-removal.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "tests/nlu/travelers.test.ts",
+          "-t",
+          "带爸妈不证明老人年龄",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase020\\attempt-6-elder-removal.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\fixtures\\phase020-elder-removal-f8zbfE",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-23T10:33:09.348Z",
+        "finishedAt": "2026-09-23T10:33:11.274Z",
+        "durationMs": 1926,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/nlu/travelers.test.ts -t 带爸妈不证明老人年龄 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase020\\attempt-6-elder-removal.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase020/attempt-6-elder-removal.json\n",
+        "stderr": ""
+      },
+      "reportPath": "docs/evidence/attempts/Phase020/attempt-6/negative/elder-removal.json",
+      "reportHash": "2d1d502b8250abb78c36182d181535af80c68c758a9dffc79d22b9601bdd5da5",
+      "failure": {
+        "file": "tests/nlu/travelers.test.ts",
+        "fullName": "travel parameter travelers 带爸妈不证明老人年龄",
+        "witness": "HAS_ELDER_REQUIRED"
+      }
+    },
+    {
+      "id": "avoid-removal",
+      "originalHash": "be8ef33fb540c8795cec24d2713af9b9629d18b1702413cd6b96e510ee74d06c",
+      "mutatedHash": "ba728c9dc044e4ad2861a78a44a33ecba68876f904f5fdb2b23719e2dc43a8ef",
+      "testHash": "4db1e775b5ded40fd1a368cdbe33254986b5b6c1166268c90dcac4bcad1e04a7",
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/nlu/preferences.test.ts -t 不想太累进入避免项 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase020\\attempt-6-avoid-removal.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "tests/nlu/preferences.test.ts",
+          "-t",
+          "不想太累进入避免项",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase020\\attempt-6-avoid-removal.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\fixtures\\phase020-avoid-removal-S87NE8",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-23T10:33:12.299Z",
+        "finishedAt": "2026-09-23T10:33:14.175Z",
+        "durationMs": 1876,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/nlu/preferences.test.ts -t 不想太累进入避免项 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase020\\attempt-6-avoid-removal.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase020/attempt-6-avoid-removal.json\n",
+        "stderr": ""
+      },
+      "reportPath": "docs/evidence/attempts/Phase020/attempt-6/negative/avoid-removal.json",
+      "reportHash": "75491db0fc6f00f903cc0c5e325d1091d6777f9811dac6e7767a9ceb833a2e6a",
+      "failure": {
+        "file": "tests/nlu/preferences.test.ts",
+        "fullName": "travel parameter preferences 不想太累进入避免项",
+        "witness": "AVOID_REQUIRED"
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/attempts/Phase020/attempt-6/negative/commands/001.json",
+      "sha256": "bd3b0b27ab459349e594c3ddead9ebfd366ccadc4fd3b740c2e58fb477ad8a07"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase020/attempt-6/negative/amount-parser-removal.json",
+      "sha256": "080e9165403ee487bf0916632742f11c81cc8dd92bb78796705c7a5d5183c480"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase020/attempt-6/negative/commands/002.json",
+      "sha256": "7eb08b9be2237825ab33cfec3284700e7b81b855ae3958e1cf80b64e9debcf52"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase020/attempt-6/negative/elder-removal.json",
+      "sha256": "2d1d502b8250abb78c36182d181535af80c68c758a9dffc79d22b9601bdd5da5"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase020/attempt-6/negative/commands/003.json",
+      "sha256": "ba71b6733332b6ab41464a85421a9328ae2fda04cb98983858f1805c14934cd3"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase020/attempt-6/negative/avoid-removal.json",
+      "sha256": "75491db0fc6f00f903cc0c5e325d1091d6777f9811dac6e7767a9ceb833a2e6a"
+    }
+  ]
+}

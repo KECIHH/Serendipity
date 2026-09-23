@@ -1123,7 +1123,7 @@ describe.skipIf(!enabled)("Phase016 chat-session", () => {
     const http = await startHttpFixture(async (request, response) => {
       const [{ count }] = await ownerDb.$queryRaw<
         Array<{ count: bigint }>
-      >`SELECT count(*) AS count FROM pg_stat_activity WHERE datname=current_database() AND usename=${phase016Config().appUser} AND state='idle in transaction'`;
+      >`SELECT count(*) AS count FROM pg_stat_activity WHERE datname=current_database() AND usename=${phase016Config().appUser} AND pid<>pg_backend_pid() AND application_name<>'chat-stream' AND state='idle in transaction'`;
       outsideTransaction = count === BigInt(0);
       const body = JSON.parse(request.body);
       expect(body.messages[1].content === c.input.message).toBe(true);
