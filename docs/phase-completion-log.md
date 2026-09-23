@@ -87,3 +87,6 @@ Phase018 计划：docs/phase-plans/Phase018.json；唯一 Gate：docs/evidence/P
 | Phase019 | 意图识别与核心实体提取 | nlu.extract 注册绑定、受控核心实体服务、确定性日期解析、复用需求字段 Schema、实体与边界测试；完整路径/hash见Gate | 固定8/8；Vitest 755/755；专用32断言；3项隔离变异及恢复后全卡；PostgreSQL17；schema/typecheck/lint/format/build/layout及证据自检通过；独立Agent复核；artifactCommit=99fcdb3740300669df06e6b673cfb88d1b3b00af；attemptId=attempt-3 | 无API/UI、追问、合并、地图或生产Provider；未执行Phase020 | metadata后双shell seal、clean与GitHub同步；授权止于019 |
 
 Phase019计划：docs/phase-plans/Phase019.json；唯一Gate：docs/evidence/Phase019-gate.json；原始报告与独立复核：docs/evidence/attempts/Phase019/attempt-3/。
+| Phase020 | 旅行参数与偏好提取 | 不可变 nlu.extract 参数版本、人数预算偏好确定性映射、中文金额规范化和受控调用测试；完整路径/hash见Gate | 固定12/12；Vitest 781/781；专用26断言；3项隔离变异及恢复后全卡；PostgreSQL17；schema/typecheck/lint/format/build/layout及证据自检通过；独立Agent复核；artifactCommit=82e6c9142dbec7eee38962f8cbd47ce9caf259e7；attemptId=attempt-7 | 无API/UI、需求合并、推荐、支付、实时价格或生产Provider；未执行Phase021 | metadata后双shell seal、clean与GitHub同步；授权止于020 |
+
+Phase020计划：docs/phase-plans/Phase020.json；唯一Gate：docs/evidence/Phase020-gate.json；原始报告与独立复核：docs/evidence/attempts/Phase020/attempt-7/。
