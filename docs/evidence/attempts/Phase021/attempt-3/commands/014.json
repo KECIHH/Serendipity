@@ -1,0 +1,17 @@
+{
+  "command": "C:\\Program Files\\nodejs\\node.exe docs/phase-plans/verify-phase021.mjs --negative-controls",
+  "executable": "C:\\Program Files\\nodejs\\node.exe",
+  "arguments": [
+    "docs/phase-plans/verify-phase021.mjs",
+    "--negative-controls"
+  ],
+  "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+  "exitCode": 1,
+  "signal": null,
+  "timedOut": false,
+  "startedAt": "2026-09-24T17:14:07.266Z",
+  "finishedAt": "2026-09-24T17:14:39.641Z",
+  "durationMs": 32375,
+  "stdout": "",
+  "stderr": "Error: EPERM: operation not permitted, symlink 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\node_modules' -> 'C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase018\\fixtures\\phase021-self-driving-removal-BkgK0y\\node_modules'\n    at Object.symlinkSync (node:fs:1938:11)\n    at copyFixture (file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/phase018-runtime.mjs:331:6)\n    at file:///C:/Users/11295/Desktop/Serendipity%20%C2%B7%20%E9%99%85%E9%81%87/docs/phase-plans/verify-phase021.mjs:52:23\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n"
+}

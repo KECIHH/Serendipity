@@ -24,6 +24,7 @@ export interface TravelParameters {
 type GuardedCallOptions = Omit<GuardedAiClientOptions, "db" | "owner" | "nluContext">;
 export interface ExtractTravelParametersOptions extends GuardedCallOptions {
   readonly db?: PrismaClient;
+  readonly attemptNo?: number;
 }
 
 type Interest = "摄影" | "美食" | "徒步" | "City Walk" | "滑雪" | "温泉" | "博物馆" | "自然风光";
@@ -239,6 +240,11 @@ async function ensureParameterPrompt(database: PrismaClient, ctx: NluContext): P
         throw new Error("CONFIG_ERROR");
       return;
     }
+    if (active.version > NLU_PARAMETER_PROMPT_VERSION) {
+      if (!active.content.includes("\nStage: PARAMETERS") || !sameVariables(active.variablesJson))
+        throw new Error("CONFIG_ERROR");
+      return;
+    }
     const content = `${active.content}\nStage: PARAMETERS`;
     const contentHash = canonicalHash(content);
     const byId = await tx.promptVersion.findUnique({
@@ -310,7 +316,7 @@ export async function extractTravelParameters(
   ctx: NluContext,
   options: ExtractTravelParametersOptions = {},
 ): Promise<TravelParameters> {
-  const { db: callerDb, ...guardedOptions } = options;
+  const { db: callerDb, attemptNo, ...guardedOptions } = options;
   const database = callerDb ?? db;
   try {
     await ensureParameterPrompt(database, ctx);
@@ -334,6 +340,7 @@ export async function extractTravelParameters(
       },
       userMessage: userInput,
       context: ctx,
+      ...(attemptNo ? { attemptNo } : {}),
     },
     { ...guardedOptions, db: database },
   );

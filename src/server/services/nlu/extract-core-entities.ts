@@ -18,6 +18,7 @@ type GuardedCallOptions = Omit<GuardedAiClientOptions, "db" | "owner" | "nluCont
 
 export interface ExtractCoreEntitiesOptions extends GuardedCallOptions {
   readonly db?: PrismaClient;
+  readonly attemptNo?: number;
 }
 
 const countryNames: Readonly<Record<string, string>> = {
@@ -127,7 +128,7 @@ export async function extractCoreEntities(
   ctx: NluContext,
   options: ExtractCoreEntitiesOptions = {},
 ): Promise<CoreEntities> {
-  const { db: callerDb, ...guardedOptions } = options;
+  const { db: callerDb, attemptNo, ...guardedOptions } = options;
   const result = await guardedJsonChat(
     {
       promptKey: NLU_EXTRACT_PROMPT_KEY,
@@ -140,6 +141,7 @@ export async function extractCoreEntities(
       },
       userMessage: userInput,
       context: ctx,
+      ...(attemptNo ? { attemptNo } : {}),
     },
     { ...guardedOptions, db: callerDb ?? db },
   );

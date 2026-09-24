@@ -1,0 +1,187 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "id": "self-driving-removal",
+      "originalHash": "ade6c9404ca297d1a76abe89a2019745a1868fc6faea856999be3587f2824c07",
+      "mutatedHash": "27508812da8725c4f613c09176e2612a66b475724c3a71e67e1f476f9a1cd2e8",
+      "testHash": "a9173cdc25e458d1a58eb87a3495d5cf8167272ce71f3640f739e09d954f1505",
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/nlu/constraints.test.ts -t 新疆自驾标记自驾且不猜测海外 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase021\\attempt-4-self-driving-removal.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "tests/nlu/constraints.test.ts",
+          "-t",
+          "新疆自驾标记自驾且不猜测海外",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase021\\attempt-4-self-driving-removal.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-24T17:34:02.431Z",
+        "finishedAt": "2026-09-24T17:34:04.016Z",
+        "durationMs": 1585,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/nlu/constraints.test.ts -t 新疆自驾标记自驾且不猜测海外 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase021\\attempt-4-self-driving-removal.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase021/attempt-4-self-driving-removal.json\n",
+        "stderr": ""
+      },
+      "reportPath": "docs/evidence/attempts/Phase021/attempt-4/negative/self-driving-removal.json",
+      "reportHash": "5dfe25aac4a07485d29e4c9b7d36529bc66ff38aca82018750acdf2d0ca89d49",
+      "failure": {
+        "file": "tests/nlu/constraints.test.ts",
+        "fullName": "travel constraints 新疆自驾标记自驾且不猜测海外",
+        "witness": "SELF_DRIVING_REQUIRED"
+      }
+    },
+    {
+      "id": "destination-blocking-removal",
+      "originalHash": "b9ab8e78d44cfab2f680993eb40ae31d8abef55f30c969095ed1da042648ed80",
+      "mutatedHash": "62a64725c3a5bfa5a9ce778ea9bc1ddcf3fa3b9089633d4ae0b994160a9997c2",
+      "testHash": "f813ddd7856abef8c6407781612172dce4b37426dd09a2a79b6de39651024b7a",
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/nlu/missing-fields.test.ts -t 缺少目的地是阻断项 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase021\\attempt-4-destination-blocking-removal.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "tests/nlu/missing-fields.test.ts",
+          "-t",
+          "缺少目的地是阻断项",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase021\\attempt-4-destination-blocking-removal.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-24T17:34:04.029Z",
+        "finishedAt": "2026-09-24T17:34:06.020Z",
+        "durationMs": 1991,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/nlu/missing-fields.test.ts -t 缺少目的地是阻断项 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase021\\attempt-4-destination-blocking-removal.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase021/attempt-4-destination-blocking-removal.json\n",
+        "stderr": ""
+      },
+      "reportPath": "docs/evidence/attempts/Phase021/attempt-4/negative/destination-blocking-removal.json",
+      "reportHash": "b549d3f706be018c369261e3e901866975a34b5f02c8b343c3f9b6e4ee30f71a",
+      "failure": {
+        "file": "tests/nlu/missing-fields.test.ts",
+        "fullName": "missing requirement fields 缺少目的地是阻断项",
+        "witness": "DESTINATION_BLOCKING_REQUIRED"
+      }
+    },
+    {
+      "id": "missing-recalc-removal",
+      "originalHash": "c316f223283b9f52350f5eb228bbd936b25af63a3e79b1ae671b284c5dc6d74d",
+      "mutatedHash": "754eb16e1affd6514e6a5d9e0b1bed96ca345f9b5c7b916b75ad5a229b05fbec",
+      "testHash": "041691f41282bfd8796e5e85e07ddbc703fc49f5dd70e495221c0fec9023f0c4",
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/nlu/merge.test.ts -t 第二轮补充时间 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase021\\attempt-4-missing-recalc-removal.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "tests/nlu/merge.test.ts",
+          "-t",
+          "第二轮补充时间",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase021\\attempt-4-missing-recalc-removal.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-24T17:34:06.032Z",
+        "finishedAt": "2026-09-24T17:34:08.050Z",
+        "durationMs": 2018,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/nlu/merge.test.ts -t 第二轮补充时间 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase021\\attempt-4-missing-recalc-removal.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase021/attempt-4-missing-recalc-removal.json\n",
+        "stderr": ""
+      },
+      "reportPath": "docs/evidence/attempts/Phase021/attempt-4/negative/missing-recalc-removal.json",
+      "reportHash": "71190a32e6b0c293b6c81111fec29bb043d8bc426f0229b74ea0807db0fa508f",
+      "failure": {
+        "file": "tests/nlu/merge.test.ts",
+        "fullName": "requirement merge 第二轮补充时间",
+        "witness": "MISSING_FIELDS_RECALCULATED"
+      }
+    },
+    {
+      "id": "question-limit-removal",
+      "originalHash": "dd1642f26ae10a4b88d08e05bac913140a85178d480a8ff7ff90913fb3c349f5",
+      "mutatedHash": "8601416e727ba25b27de352596885b49e09356e7066d87d5b8a8fb84b39f8c56",
+      "testHash": "aa07dd3d8171d6e3b3f11372073fa9725ca0bcb67319affdd14987d552289bbc",
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- tests/nlu/ask.test.ts -t 5个缺失只生成3个问题 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase021\\attempt-4-question-limit-removal.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "tests/nlu/ask.test.ts",
+          "-t",
+          "5个缺失只生成3个问题",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase021\\attempt-4-question-limit-removal.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-24T17:34:08.061Z",
+        "finishedAt": "2026-09-24T17:34:10.049Z",
+        "durationMs": 1988,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run tests/nlu/ask.test.ts -t 5个缺失只生成3个问题 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase021\\attempt-4-question-limit-removal.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase021/attempt-4-question-limit-removal.json\n",
+        "stderr": ""
+      },
+      "reportPath": "docs/evidence/attempts/Phase021/attempt-4/negative/question-limit-removal.json",
+      "reportHash": "6d8bc40128be4c78bd1d44e0ecde0c4b3e14006bfaf9da902c084c637bccce10",
+      "failure": {
+        "file": "tests/nlu/ask.test.ts",
+        "fullName": "missing field questions 5个缺失只生成3个问题",
+        "witness": "QUESTION_LIMIT_REQUIRED"
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/attempts/Phase021/attempt-4/negative/commands/001.json",
+      "sha256": "3f0442b9ca7c4f2e7b7c2009f1838b12c99ac782da71771d87ab5c58fb9f2ecd"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase021/attempt-4/negative/self-driving-removal.json",
+      "sha256": "5dfe25aac4a07485d29e4c9b7d36529bc66ff38aca82018750acdf2d0ca89d49"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase021/attempt-4/negative/commands/002.json",
+      "sha256": "936227fcf8ffe5452f7f489fa2b90d149c8bbf448828ca316fdbfc691b350043"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase021/attempt-4/negative/destination-blocking-removal.json",
+      "sha256": "b549d3f706be018c369261e3e901866975a34b5f02c8b343c3f9b6e4ee30f71a"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase021/attempt-4/negative/commands/003.json",
+      "sha256": "a4ef8ec4875f5a02076b5116a97dfe1ac63a0011f73a51f89fc187d63fe2ee58"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase021/attempt-4/negative/missing-recalc-removal.json",
+      "sha256": "71190a32e6b0c293b6c81111fec29bb043d8bc426f0229b74ea0807db0fa508f"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase021/attempt-4/negative/commands/004.json",
+      "sha256": "f1d4af357ed2814659b7f62be239ba5f7d687456d29d492fec4448e12fa2a091"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase021/attempt-4/negative/question-limit-removal.json",
+      "sha256": "6d8bc40128be4c78bd1d44e0ecde0c4b3e14006bfaf9da902c084c637bccce10"
+    }
+  ]
+}
