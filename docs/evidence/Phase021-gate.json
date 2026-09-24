@@ -11,7 +11,7 @@
     "providerMode": "mock",
     "productionTraffic": false
   },
-  "artifactCommit": "9b6c90b724c6e6ca6a87a506f373744980156d7a",
+  "artifactCommit": "b45c560d711d71ab328653c76e16228f86a65b6d",
   "requiredCaseIds": [
     "Phase021:constraints",
     "Phase021:missing",
@@ -299,7 +299,7 @@
     },
     {
       "path": "docs/evidence/attempts/Phase021/attempt-5/quality.json",
-      "sha256": "bd2664dd0d2d10452d3df2ea16f5f8731ab2595d7e525d01c8ee45389da3b24c"
+      "sha256": "919be93d7fb88224edad82a42029af51a1ab25d1cc2a8d8d5f64446dab493f13"
     },
     {
       "path": "docs/evidence/attempts/Phase021/attempt-5/restored-tests.json",
@@ -1839,22 +1839,29 @@
     }
   ],
   "failures": [],
-  "generatedAt": "2026-09-24T18:09:18.114Z",
+  "generatedAt": "2026-09-24T18:13:24.841Z",
   "details": {
     "planPath": "docs/phase-plans/Phase021.json",
     "planHash": "49720f083ae619b35fcfb72ef381335aaf57c56da4523e24af147e83a6a840b4",
-    "testedTree": "ca7f7530cc592b1ce07d47aa5f842e7f3fc1cbff",
+    "testedTree": "e899ad720b31e159b9c235fcf49e266794ce0f0d",
     "reviewerRunId": "phase021-independent-reviewer-20260924",
     "reviewReportPath": "docs/evidence/attempts/Phase021/attempt-5/review.json",
     "reviewReportHash": "7290c55c8aa83dd93ce2a918cc9093a11e8914f0d3c5fa2ff3e107914e1dff01",
-    "recoveryCommits": [],
+    "recoveryCommits": [
+      "6ef3a60dd0f8ca81324e33b7b88d54c72fff1cb5",
+      "9ed0aa76017819d2569aaa2ce90ce190209958fb",
+      "c306eb8f5f1aba63ca539e4afc883a4ea62bb803",
+      "10bf3d822f5f66b78a86169b46fe463989485352",
+      "9b6c90b724c6e6ca6a87a506f373744980156d7a",
+      "cde19783b7ad587bba1fe638445542167c13fa13"
+    ],
     "originalThreshold": 22,
     "automatedThreshold": 22,
     "waived": false,
     "requestedThrough": 21,
     "nextPhaseExecutionAuthorized": false,
     "qualityReportPath": "docs/evidence/attempts/Phase021/attempt-5/quality.json",
-    "qualityReportHash": "bd2664dd0d2d10452d3df2ea16f5f8731ab2595d7e525d01c8ee45389da3b24c",
+    "qualityReportHash": "919be93d7fb88224edad82a42029af51a1ab25d1cc2a8d8d5f64446dab493f13",
     "testMode": "full",
     "crossAttemptReuse": "disabled",
     "validationPolicy": {
