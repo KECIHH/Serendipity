@@ -90,6 +90,6 @@ Phase019计划：docs/phase-plans/Phase019.json；唯一Gate：docs/evidence/Pha
 | Phase020 | 旅行参数与偏好提取 | 不可变 nlu.extract 参数版本、人数预算偏好确定性映射、中文金额规范化和受控调用测试；完整路径/hash见Gate | 固定12/12；Vitest 781/781；专用26断言；3项隔离变异及恢复后全卡；PostgreSQL17；schema/typecheck/lint/format/build/layout及证据自检通过；独立Agent复核；artifactCommit=82e6c9142dbec7eee38962f8cbd47ce9caf259e7；attemptId=attempt-7 | 无API/UI、需求合并、推荐、支付、实时价格或生产Provider；未执行Phase021 | metadata后双shell seal、clean与GitHub同步；授权止于020 |
 
 Phase020计划：docs/phase-plans/Phase020.json；唯一Gate：docs/evidence/Phase020-gate.json；原始报告与独立复核：docs/evidence/attempts/Phase020/attempt-7/。
-| Phase021 | 约束识别与需求合并 | 交通与特殊标记、缺失判断、追问回退、不可变补丁合并和 NLU 编排；完整路径/hash见Gate | 固定22/22；Vitest 803/803；专用22断言；4项隔离变异及恢复后全卡；PostgreSQL17；schema/typecheck/lint/format/build/layout及证据自检通过；独立Agent复核；artifactCommit=6ef3a60dd0f8ca81324e33b7b88d54c72fff1cb5；attemptId=attempt-5 | 无NLU API、追问UI、行程方案、地图、实时交通、支付或生产Provider；未执行Phase022 | metadata后双shell seal、clean与GitHub同步；授权止于021 |
+| Phase021 | 约束识别与需求合并 | 交通与特殊标记、缺失判断、追问回退、不可变补丁合并和 NLU 编排；完整路径/hash见Gate | 固定22/22；Vitest 803/803；专用22断言；4项隔离变异及恢复后全卡；PostgreSQL17；schema/typecheck/lint/format/build/layout及证据自检通过；独立Agent复核；artifactCommit=c306eb8f5f1aba63ca539e4afc883a4ea62bb803；attemptId=attempt-5 | 无NLU API、追问UI、行程方案、地图、实时交通、支付或生产Provider；未执行Phase022 | metadata后双shell seal、clean与GitHub同步；授权止于021 |
 
 Phase021计划：docs/phase-plans/Phase021.json；唯一Gate：docs/evidence/Phase021-gate.json；原始报告与独立复核：docs/evidence/attempts/Phase021/attempt-5/。
