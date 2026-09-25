@@ -96,3 +96,6 @@ Phase021计划：docs/phase-plans/Phase021.json；唯一Gate：docs/evidence/Pha
 | Phase022 | 旅行概要与 Planner 交接 | TravelPlanSummaryDraft、显式假设和 handoff；时长与目的地由服务端绑定；完整路径/hash见Gate | 固定6/6；Vitest 813/813；专用10断言；4项隔离变异及恢复后全卡；PostgreSQL17；schema/typecheck/lint/format/build/layout通过；独立Agent复核；artifactCommit=b1966cdc7817dddc841dbe645f9023433cd5aaf9；attemptId=attempt-1 | 无每日行程、TravelPlanVersion、结果页、地图或生产Provider；未执行Phase023 | metadata后双shell seal、clean与GitHub同步；授权止于022 |
 
 Phase022计划：docs/phase-plans/Phase022.json；唯一Gate：docs/evidence/Phase022-gate.json；原始报告与独立复核：docs/evidence/attempts/Phase022/attempt-1/。
+| Phase023 | 匿名会话与唯一首稿入口 | POST /api/session/anonymous 与 POST /api/plan/draft；NLU 与 Phase022 摘要交接；完整路径/hash见Gate | 固定7/7；卡片命令退出0（11项测试）；tsc退出0；独立Agent复核；artifactCommit=27629e67796669da897fb90af62cd62e1e4352c7；attemptId=attempt-1 | 未把仓库全量 Vitest 记为通过：早期阶段夹具环境未在本次命令中全部注入；无 PlannerRun、正式版本、结果页或生产 Provider；未执行 Phase024 | metadata 后双 shell seal、clean 与 GitHub 同步；授权止于023 |
+
+Phase023计划：docs/phase-plans/Phase023.json；唯一Gate：docs/evidence/Phase023-gate.json；原始报告与独立复核：docs/evidence/attempts/Phase023/attempt-1/。

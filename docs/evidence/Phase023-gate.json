@@ -1,0 +1,178 @@
+{
+  "schemaVersion": "agent-gate-v1",
+  "phase": 23,
+  "attemptId": "attempt-1",
+  "status": "PASS",
+  "simulation": true,
+  "operatorMode": "AGENT_ONLY_AUTOMATED_NEW_BUILD",
+  "environment": {
+    "isolated": true,
+    "syntheticUsers": true,
+    "providerMode": "mock",
+    "productionTraffic": false
+  },
+  "artifactCommit": "27629e67796669da897fb90af62cd62e1e4352c7",
+  "requiredCaseIds": [
+    "Phase023:bootstrap",
+    "Phase023:missing-cookie",
+    "Phase023:anonymous-draft",
+    "Phase023:precise-missing",
+    "Phase023:replay",
+    "Phase023:conflict",
+    "Phase023:guardrails"
+  ],
+  "results": [
+    {
+      "testCaseId": "Phase023:bootstrap",
+      "command": "npm run test -- api/plan-draft api/plan-draft-guardrails api/plan-draft-e2e",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:9f1b8cfececedf381d298b71a20bb8c06719ec30fca42a919499d533cfa4a1a0",
+      "outputHash": "sha256:b4709dd282469c3c0d750adbee0ab021df8f3001f1cf57ab51d06d1ae89fb737",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/api/plan-draft.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase023/attempt-1/bootstrap.json"
+      }
+    },
+    {
+      "testCaseId": "Phase023:missing-cookie",
+      "command": "npm run test -- api/plan-draft api/plan-draft-guardrails api/plan-draft-e2e",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:9f1b8cfececedf381d298b71a20bb8c06719ec30fca42a919499d533cfa4a1a0",
+      "outputHash": "sha256:db12f700ae6e026caae449dc0f1441f020f3c7183f9979fba1769b5e9485d682",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/api/plan-draft.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase023/attempt-1/missing-cookie.json"
+      }
+    },
+    {
+      "testCaseId": "Phase023:anonymous-draft",
+      "command": "npm run test -- api/plan-draft api/plan-draft-guardrails api/plan-draft-e2e",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:9f1b8cfececedf381d298b71a20bb8c06719ec30fca42a919499d533cfa4a1a0",
+      "outputHash": "sha256:9073941f6626123bdfd35add25464c535a21d812896c693324cef4dc87e9ac82",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/api/plan-draft.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase023/attempt-1/anonymous-draft.json"
+      }
+    },
+    {
+      "testCaseId": "Phase023:precise-missing",
+      "command": "npm run test -- api/plan-draft api/plan-draft-guardrails api/plan-draft-e2e",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:1f5ff0c6ea52a40a1dc6d0b6c739520cd46fb8d848296b1e0116264f678b6cb5",
+      "outputHash": "sha256:bd22f7876ef7d35e9c8202acac5958068afeccc3a88556923cf6fc4eaeac76de",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/api/plan-draft-handoff.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase023/attempt-1/precise-missing.json"
+      }
+    },
+    {
+      "testCaseId": "Phase023:replay",
+      "command": "npm run test -- api/plan-draft api/plan-draft-guardrails api/plan-draft-e2e",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:9f1b8cfececedf381d298b71a20bb8c06719ec30fca42a919499d533cfa4a1a0",
+      "outputHash": "sha256:cb30f0a702e3248c0a58bc89cdf6e15b8ecb5adcdd6bc8b30406893a0a93274d",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/api/plan-draft.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase023/attempt-1/replay.json"
+      }
+    },
+    {
+      "testCaseId": "Phase023:conflict",
+      "command": "npm run test -- api/plan-draft api/plan-draft-guardrails api/plan-draft-e2e",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:9f1b8cfececedf381d298b71a20bb8c06719ec30fca42a919499d533cfa4a1a0",
+      "outputHash": "sha256:caa4ff187107e5802518d46cd49f3e7625312a9bb20fb2032f053936a21dce5d",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/api/plan-draft.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase023/attempt-1/conflict.json"
+      }
+    },
+    {
+      "testCaseId": "Phase023:guardrails",
+      "command": "npm run test -- api/plan-draft api/plan-draft-guardrails api/plan-draft-e2e",
+      "exitCode": 0,
+      "numerator": 1,
+      "denominator": 1,
+      "inputHash": "sha256:b69e1ca134044f8087801ce4c1bd47223a71d046afecd37f500fe0481a465101",
+      "outputHash": "sha256:cc1fab3bb50aff3a96d5647c0e4786d70ea52e00c47a77363830f97f7e96ba51",
+      "status": "PASS",
+      "details": {
+        "inputPath": "tests/api/plan-draft-guardrails.test.ts",
+        "outputPath": "docs/evidence/attempts/Phase023/attempt-1/guardrails.json"
+      }
+    }
+  ],
+  "commands": [
+    {
+      "command": "npm run test -- api/plan-draft api/plan-draft-guardrails api/plan-draft-e2e",
+      "exitCode": 0
+    },
+    {
+      "command": "npx tsc --noEmit --pretty false",
+      "exitCode": 0
+    }
+  ],
+  "inputs": [
+    {
+      "path": "docs/development-execution-policy.md",
+      "sha256": "58b4eaef7fda2a45c69e41feb766d04893d44a7092117410d7e707bc5e7b9320"
+    },
+    {
+      "path": "docs/phase-plans/Phase023-inputs.json",
+      "sha256": "026f0cffdcf1d1e7e461720108807a4a875856cb0debe6fd1b012bb39246965d"
+    },
+    {
+      "path": "docs/phase-plans/Phase023.json",
+      "sha256": "14698fd4ee83c0ecf055f67846249c9204c27991993905c4c0ea620726106326"
+    },
+    {
+      "path": "docs/testing-execution-policy.md",
+      "sha256": "a1f2666b2a757bf7dccb016e997a60f33a0f91f7612add8d40411e30735f8532"
+    },
+    {
+      "path": "tests/api/plan-draft-guardrails.test.ts",
+      "sha256": "b69e1ca134044f8087801ce4c1bd47223a71d046afecd37f500fe0481a465101"
+    },
+    {
+      "path": "tests/api/plan-draft-handoff.test.ts",
+      "sha256": "1f5ff0c6ea52a40a1dc6d0b6c739520cd46fb8d848296b1e0116264f678b6cb5"
+    },
+    {
+      "path": "tests/api/plan-draft.test.ts",
+      "sha256": "9f1b8cfececedf381d298b71a20bb8c06719ec30fca42a919499d533cfa4a1a0"
+    }
+  ],
+  "failures": [],
+  "generatedAt": "2026-09-25T04:16:30.000Z",
+  "details": {
+    "planPath": "docs/phase-plans/Phase023.json",
+    "planHash": "14698fd4ee83c0ecf055f67846249c9204c27991993905c4c0ea620726106326",
+    "testedTree": "55c54c0a384303b47e8e27dead0d1b42254daf1c",
+    "reviewerRunId": "phase023-independent-reviewer-20260925",
+    "reviewReportPath": "docs/evidence/attempts/Phase023/attempt-1/review.json",
+    "reviewReportHash": "15cbc738f951ef33368c6938a845c374ca007d2ed33d1d8e95dc3091e2a84f16",
+    "recoveryCommits": [],
+    "waived": false,
+    "originalThreshold": 7,
+    "automatedThreshold": 7
+  }
+}
