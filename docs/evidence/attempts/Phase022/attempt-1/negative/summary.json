@@ -1,0 +1,187 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "id": "empty-destination-removal",
+      "originalHash": "c6e96f02c71e1adfd7913015979a96e41b205d4098e1e24b082990b49929ce98",
+      "mutatedHash": "bb451c62c2a99b813307fb2269076b88465d2d096f872845bccea27591c6b443",
+      "testHash": "98c91e3c3fa62717a43b6b92be630729e710811a634f72dd1bafeed359702806",
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- src/server/services/planner-service.test.ts -t 反向：空目的地拒绝且不生成默认值 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase022\\attempt-1-empty-destination-removal.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "src/server/services/planner-service.test.ts",
+          "-t",
+          "反向：空目的地拒绝且不生成默认值",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase022\\attempt-1-empty-destination-removal.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-25T02:20:26.917Z",
+        "finishedAt": "2026-09-25T02:20:30.258Z",
+        "durationMs": 3341,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run src/server/services/planner-service.test.ts -t 反向：空目的地拒绝且不生成默认值 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase022\\attempt-1-empty-destination-removal.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase022/attempt-1-empty-destination-removal.json\n",
+        "stderr": ""
+      },
+      "reportPath": "docs/evidence/attempts/Phase022/attempt-1/negative/empty-destination-removal.json",
+      "reportHash": "8c0f65c3b4b43a17300db0160d9a42f497664212d1797edfbc8d9797ee2f7163",
+      "failure": {
+        "file": "src/server/services/planner-service.test.ts",
+        "fullName": "planner summary 反向：空目的地拒绝且不生成默认值",
+        "witness": "EMPTY_DESTINATIONS_REJECTED"
+      }
+    },
+    {
+      "id": "folded-destination-removal",
+      "originalHash": "c6e96f02c71e1adfd7913015979a96e41b205d4098e1e24b082990b49929ce98",
+      "mutatedHash": "a367c60d6f2803ad5239e316958da010798c42c31ce74c0fc3a085373792fb2b",
+      "testHash": "98c91e3c3fa62717a43b6b92be630729e710811a634f72dd1bafeed359702806",
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- src/server/services/planner-service.test.ts -t 反向：多目的地折叠成字符串时拒绝 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase022\\attempt-1-folded-destination-removal.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "src/server/services/planner-service.test.ts",
+          "-t",
+          "反向：多目的地折叠成字符串时拒绝",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase022\\attempt-1-folded-destination-removal.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-25T02:20:30.272Z",
+        "finishedAt": "2026-09-25T02:20:33.668Z",
+        "durationMs": 3396,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run src/server/services/planner-service.test.ts -t 反向：多目的地折叠成字符串时拒绝 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase022\\attempt-1-folded-destination-removal.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase022/attempt-1-folded-destination-removal.json\n",
+        "stderr": ""
+      },
+      "reportPath": "docs/evidence/attempts/Phase022/attempt-1/negative/folded-destination-removal.json",
+      "reportHash": "2aad1643a5aef0aac1ff70ee4b7b457715b0774558825bf0edd9a4b10c04e17e",
+      "failure": {
+        "file": "src/server/services/planner-service.test.ts",
+        "fullName": "planner summary 反向：多目的地折叠成字符串时拒绝",
+        "witness": "FOLDED_DESTINATION_REJECTED"
+      }
+    },
+    {
+      "id": "conflicting-preference-removal",
+      "originalHash": "c6e96f02c71e1adfd7913015979a96e41b205d4098e1e24b082990b49929ce98",
+      "mutatedHash": "1d8eaa1d302948879b1d75f6d3ca8219e6b4db1549654d3ed8351bef12622072",
+      "testHash": "98c91e3c3fa62717a43b6b92be630729e710811a634f72dd1bafeed359702806",
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- src/server/services/planner-service.test.ts -t 反向：与需求冲突的偏好不得进入概要 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase022\\attempt-1-conflicting-preference-removal.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "src/server/services/planner-service.test.ts",
+          "-t",
+          "反向：与需求冲突的偏好不得进入概要",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase022\\attempt-1-conflicting-preference-removal.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-25T02:20:33.681Z",
+        "finishedAt": "2026-09-25T02:20:37.075Z",
+        "durationMs": 3394,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run src/server/services/planner-service.test.ts -t 反向：与需求冲突的偏好不得进入概要 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase022\\attempt-1-conflicting-preference-removal.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase022/attempt-1-conflicting-preference-removal.json\n",
+        "stderr": ""
+      },
+      "reportPath": "docs/evidence/attempts/Phase022/attempt-1/negative/conflicting-preference-removal.json",
+      "reportHash": "c9344ddbd8faf5ac8f98d224b73602ac55763c1eddcaa50b5841b4dea84e5ea8",
+      "failure": {
+        "file": "src/server/services/planner-service.test.ts",
+        "fullName": "planner summary 反向：与需求冲突的偏好不得进入概要",
+        "witness": "CONFLICTING_PREFERENCE_REJECTED"
+      }
+    },
+    {
+      "id": "summary-schema-removal",
+      "originalHash": "c6e96f02c71e1adfd7913015979a96e41b205d4098e1e24b082990b49929ce98",
+      "mutatedHash": "9497eda6df591558ff3e0a3dc09303a61fac0098ad95cd4f40369e4f295299ec",
+      "testHash": "98c91e3c3fa62717a43b6b92be630729e710811a634f72dd1bafeed359702806",
+      "result": {
+        "command": "C:\\Program Files\\nodejs\\node.exe C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js run test -- src/server/services/planner-service.test.ts -t 反向：删除草稿必需字段时校验失败 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase022\\attempt-1-summary-schema-removal.json",
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "arguments": [
+          "C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\tools\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "test",
+          "--",
+          "src/server/services/planner-service.test.ts",
+          "-t",
+          "反向：删除草稿必需字段时校验失败",
+          "--reporter=json",
+          "--outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase022\\attempt-1-summary-schema-removal.json"
+        ],
+        "cwd": "C:\\Users\\11295\\Desktop\\Serendipity · 际遇",
+        "exitCode": 1,
+        "signal": null,
+        "timedOut": false,
+        "startedAt": "2026-09-25T02:20:37.088Z",
+        "finishedAt": "2026-09-25T02:20:40.451Z",
+        "durationMs": 3363,
+        "stdout": "\n> serendipity@0.1.0 test\n> vitest run src/server/services/planner-service.test.ts -t 反向：删除草稿必需字段时校验失败 --reporter=json --outputFile=C:\\Users\\11295\\Desktop\\Serendipity · 际遇\\.scaffold\\phase022\\attempt-1-summary-schema-removal.json\n\nJSON report written to C:/Users/11295/Desktop/Serendipity · 际遇/.scaffold/phase022/attempt-1-summary-schema-removal.json\n",
+        "stderr": ""
+      },
+      "reportPath": "docs/evidence/attempts/Phase022/attempt-1/negative/summary-schema-removal.json",
+      "reportHash": "57e3b4e564609be53a36357bdf2958b6736f50124ed757d102e40dd0a1feb5ea",
+      "failure": {
+        "file": "src/server/services/planner-service.test.ts",
+        "fullName": "planner summary 反向：删除草稿必需字段时校验失败",
+        "witness": "SUMMARY_SCHEMA_REQUIRED"
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/evidence/attempts/Phase022/attempt-1/negative/commands/001.json",
+      "sha256": "f2ae56fd6b34625b2e06f9c2e5fdbc755911e91f225cfadc426faa9ed962d896"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase022/attempt-1/negative/empty-destination-removal.json",
+      "sha256": "8c0f65c3b4b43a17300db0160d9a42f497664212d1797edfbc8d9797ee2f7163"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase022/attempt-1/negative/commands/002.json",
+      "sha256": "3c28dd3293264465a4663e0aca9d4cbede43d002e829b06307d511b5acb398a0"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase022/attempt-1/negative/folded-destination-removal.json",
+      "sha256": "2aad1643a5aef0aac1ff70ee4b7b457715b0774558825bf0edd9a4b10c04e17e"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase022/attempt-1/negative/commands/003.json",
+      "sha256": "f6616f3acb49a4797c430a824a4792ba04549807b18ad0bbe1dc64e85c2f7b50"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase022/attempt-1/negative/conflicting-preference-removal.json",
+      "sha256": "c9344ddbd8faf5ac8f98d224b73602ac55763c1eddcaa50b5841b4dea84e5ea8"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase022/attempt-1/negative/commands/004.json",
+      "sha256": "5333ed7f49756c10de20230dd62b03a7a94e244b1d64546c3adcf65dc29c0d2c"
+    },
+    {
+      "path": "docs/evidence/attempts/Phase022/attempt-1/negative/summary-schema-removal.json",
+      "sha256": "57e3b4e564609be53a36357bdf2958b6736f50124ed757d102e40dd0a1feb5ea"
+    }
+  ]
+}
