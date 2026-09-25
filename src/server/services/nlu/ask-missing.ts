@@ -4,6 +4,7 @@ import { NLU_ASK_MISSING_PROMPT_KEY } from "@/lib/ai/prompts/nlu-ask-missing";
 import { guardedJsonChat, type GuardedAiClientOptions } from "@/server/ai/guarded-client";
 import type { NluContext } from "@/server/ai/nlu-context";
 import { db } from "@/server/db";
+import { nluCommandBinding } from "./command-binding";
 import { fieldOrder } from "./constraint-mapping";
 import type { MissingFieldSpec } from "./detect-missing";
 
@@ -42,6 +43,8 @@ export async function askMissingFields(
   options: Omit<GuardedAiClientOptions, "db" | "owner" | "nluContext"> & {
     readonly db?: PrismaClient;
     readonly attemptNo?: number;
+    readonly travelRecordId?: string;
+    readonly failClosed?: boolean;
   } = {},
 ): Promise<{
   readonly missingFields: readonly MissingField[];
@@ -50,7 +53,8 @@ export async function askMissingFields(
   const all = ordered(specs).map(fallback);
   const selected = ordered(specs).slice(0, 3);
   if (!selected.length) return { missingFields: all, questions: [] };
-  const { db: callerDb, attemptNo, ...guarded } = options;
+  const { db: callerDb, attemptNo, travelRecordId, failClosed, ...guarded } = options;
+  const fatal = ["RATE_LIMITED", "COST_LIMIT", "PROVIDER_TIMEOUT", "CANCELLED"];
   let polished = new Map<FieldPath, string>();
   if (!ctx.signal.aborted) {
     try {
@@ -61,14 +65,20 @@ export async function askMissingFields(
           userMessage: JSON.stringify({ specs: selected }),
           context: ctx,
           ...(attemptNo ? { attemptNo } : {}),
+          ...nluCommandBinding(ctx, travelRecordId),
         },
         { ...guarded, db: callerDb ?? db },
       );
+      if (!result.ok && fatal.includes(result.errorCode)) throw new Error(result.errorCode);
+      if (!result.ok && failClosed && result.internalCode === "INVALID_JSON")
+        throw new Error(result.errorCode);
       if (result.ok) {
         const output = result.output as NluAskMissingOutput;
         polished = new Map(output.questions.map((item) => [item.field, item.question.trim()]));
       }
-    } catch {
+    } catch (error) {
+      const code = error instanceof Error ? error.message : "";
+      if (fatal.includes(code) || (failClosed && code === "PROVIDER_UNAVAILABLE")) throw error;
       polished = new Map();
     }
   }

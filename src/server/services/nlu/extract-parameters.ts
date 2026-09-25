@@ -11,6 +11,7 @@ import type { NluContext } from "@/server/ai/nlu-context";
 import { canonicalHash } from "@/server/ai/canonical-hash";
 import { activatePromptModelTuple } from "@/server/services/prompt-service";
 import { parseCnAmount, parseExplicitCurrency } from "./amount-parser";
+import { nluCommandBinding } from "./command-binding";
 
 export const NLU_PARAMETER_PROMPT_VERSION = 2;
 export const NLU_PARAMETER_PROMPT_VERSION_ID = "prompt-nlu-extract-v2";
@@ -25,6 +26,7 @@ type GuardedCallOptions = Omit<GuardedAiClientOptions, "db" | "owner" | "nluCont
 export interface ExtractTravelParametersOptions extends GuardedCallOptions {
   readonly db?: PrismaClient;
   readonly attemptNo?: number;
+  readonly travelRecordId?: string;
 }
 
 type Interest = "摄影" | "美食" | "徒步" | "City Walk" | "滑雪" | "温泉" | "博物馆" | "自然风光";
@@ -316,7 +318,7 @@ export async function extractTravelParameters(
   ctx: NluContext,
   options: ExtractTravelParametersOptions = {},
 ): Promise<TravelParameters> {
-  const { db: callerDb, attemptNo, ...guardedOptions } = options;
+  const { db: callerDb, attemptNo, travelRecordId, ...guardedOptions } = options;
   const database = callerDb ?? db;
   try {
     await ensureParameterPrompt(database, ctx);
@@ -341,6 +343,7 @@ export async function extractTravelParameters(
       userMessage: userInput,
       context: ctx,
       ...(attemptNo ? { attemptNo } : {}),
+      ...nluCommandBinding(ctx, travelRecordId),
     },
     { ...guardedOptions, db: database },
   );

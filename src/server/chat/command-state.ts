@@ -143,6 +143,67 @@ export async function completeCommand(
   await completeTask(tx, { ...input, resultRef: assistant.id });
   return { winner: "COMPLETED" as const, assistantMessageId: assistant.id };
 }
+/** Close a plan draft without a PlannerRun. The receipt is the only public payload. */
+export async function completePlanDraftCommand(
+  tx: Prisma.TransactionClient,
+  input: TaskLease & {
+    commandId: string;
+    recordStatus: "DRAFT" | "NEEDS_INFO";
+    requirement: Prisma.InputJsonValue;
+    assistantText: string;
+    receipt: Prisma.InputJsonValue;
+  },
+) {
+  const { command } = await authorizeWorkerCommand(tx, input.commandId);
+  const now = await readAuthClock(tx);
+  const changed = await tx.chatCommand.updateMany({
+    where: { id: command.id, status: "RUNNING" },
+    data: { status: "COMPLETED", completedAt: now },
+  });
+  if (changed.count !== 1) return winner(tx, command.id);
+  const task = await assertTaskLease(tx, input);
+  if (task.commandId !== command.id) throw new ChatCommandError("NOT_FOUND", 404);
+  const record = await tx.travelRecord.updateMany({
+    where: { id: command.travelRecordId, status: "DRAFT", version: 0 },
+    data: { status: input.recordStatus, requirementJson: input.requirement },
+  });
+  if (record.count !== 1) throw new ChatCommandError("INTERNAL_ERROR", 500);
+  const assistant = await tx.chatMessage.create({
+    data: {
+      travelRecordId: command.travelRecordId,
+      commandId: command.id,
+      role: "ASSISTANT",
+      kind: "STRUCTURED",
+      content: input.assistantText,
+      contentJson: input.receipt,
+      sequence: await nextMessageSequence(tx, command.travelRecordId),
+    },
+  });
+  await tx.chatCommand.update({
+    where: { id: command.id },
+    data: { assistantMessageId: assistant.id },
+  });
+  await appendCommandEvent(tx, {
+    commandId: command.id,
+    traceId: command.traceId,
+    type: "assistant.completed",
+    status: "COMPLETED",
+    payload: {
+      commandId: command.id,
+      message: {
+        id: assistant.id,
+        role: "ASSISTANT",
+        kind: "STRUCTURED",
+        sequence: assistant.sequence,
+      },
+      conversationCursor: { travelRecordId: command.travelRecordId, sequence: assistant.sequence },
+    },
+    now,
+  });
+  await updateReceipt(tx, command.id, "COMPLETED", input.receipt);
+  await completeTask(tx, { ...input, resultRef: assistant.id });
+  return { winner: "COMPLETED" as const, assistantMessageId: assistant.id };
+}
 export async function failCommand(
   tx: Prisma.TransactionClient,
   input: TaskLease & { commandId: string; errorCode: ChatErrorCode },

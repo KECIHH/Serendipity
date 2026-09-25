@@ -9,6 +9,7 @@ import type { NluContext } from "@/server/ai/nlu-context";
 import { db } from "@/server/db";
 import { activatePromptModelTuple } from "@/server/services/prompt-service";
 import { mapConstraints, type ConstraintExtraction } from "./constraint-mapping";
+import { nluCommandBinding } from "./command-binding";
 
 export const NLU_CONSTRAINT_PROMPT_VERSION = 3;
 export const NLU_CONSTRAINT_PROMPT_VERSION_ID = "prompt-nlu-extract-v3";
@@ -16,6 +17,7 @@ export const NLU_CONSTRAINT_STAGE = "\nStage: CONSTRAINTS";
 type Options = Omit<GuardedAiClientOptions, "db" | "owner" | "nluContext"> & {
   readonly db?: PrismaClient;
   readonly attemptNo?: number;
+  readonly travelRecordId?: string;
 };
 
 function sameVariables(value: unknown): boolean {
@@ -117,7 +119,7 @@ export async function extractConstraints(
   ctx: NluContext,
   options: Options = {},
 ): Promise<ConstraintExtraction> {
-  const { db: callerDb, attemptNo, ...guarded } = options;
+  const { db: callerDb, attemptNo, travelRecordId, ...guarded } = options;
   const database = callerDb ?? db;
   await ensureConstraintPrompt(database, ctx);
   const result = await guardedJsonChat(
@@ -133,6 +135,7 @@ export async function extractConstraints(
       userMessage: userInput,
       context: ctx,
       ...(attemptNo ? { attemptNo } : {}),
+      ...nluCommandBinding(ctx, travelRecordId),
     },
     { ...guarded, db: database },
   );

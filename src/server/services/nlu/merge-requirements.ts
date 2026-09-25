@@ -155,6 +155,8 @@ export async function mergeRequirements(
     readonly database?: Parameters<typeof readinessPolicy>[0];
     readonly skipMissing?: boolean;
     readonly attemptNo?: number;
+    readonly travelRecordId?: string;
+    readonly failClosed?: boolean;
   } = {},
 ): Promise<MergeResult> {
   if (patch.baseRevision !== current.revision)
@@ -265,6 +267,8 @@ export async function mergeRequirements(
   const asked = await askMissingFields(readiness.missingSpecs, ctx, {
     ...(options.database ? { db: options.database } : {}),
     ...(options.attemptNo ? { attemptNo: options.attemptNo } : {}),
+    ...(options.travelRecordId ? { travelRecordId: options.travelRecordId } : {}),
+    ...(options.failClosed ? { failClosed: true } : {}),
   });
   const requirement = { ...parsed.data, missingFields: asked.missingFields };
   const checked = TravelRequirementSchema.safeParse(requirement);

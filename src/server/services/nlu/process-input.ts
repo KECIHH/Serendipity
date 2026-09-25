@@ -34,6 +34,8 @@ type Options = Omit<GuardedAiClientOptions, "db" | "owner" | "nluContext"> & {
   readonly calls?: { count: number };
   readonly ledger?: PatchLedger;
   readonly stageOutputs?: Partial<Record<"CORE" | "PARAMETERS" | "CONSTRAINTS", string>>;
+  readonly travelRecordId?: string;
+  readonly failClosed?: boolean;
 };
 
 function meaningful(value: Json): boolean {
@@ -127,9 +129,9 @@ export async function processNLUInput(
   });
   const core = await extractCoreEntities(userInput, ctx, staged("CORE", 1));
   if (ctx.signal.aborted) throw new Error("CANCELLED");
-  const parameters = await extractTravelParameters(userInput, ctx, staged("PARAMETERS", 2));
+  const parameters = await extractTravelParameters(userInput, ctx, staged("PARAMETERS", 3));
   if (ctx.signal.aborted) throw new Error("CANCELLED");
-  const constraints = await extractConstraints(userInput, ctx, staged("CONSTRAINTS", 3));
+  const constraints = await extractConstraints(userInput, ctx, staged("CONSTRAINTS", 5));
   const extracted = emptyRequirement();
   const draft = {
     ...extracted,
@@ -151,7 +153,9 @@ export async function processNLUInput(
     capabilities: options.capabilities ?? defaultCapabilities,
     hash: inputHash(userInput),
     policy: await readinessPolicy(database, ctx),
-    attemptNo: 4,
+    attemptNo: 7,
+    travelRecordId: options.travelRecordId,
+    failClosed: options.failClosed,
   };
   const merged = options.ledger
     ? await replayOrMerge(options.ledger, current, patch, ctx, mergeOptions)

@@ -10,6 +10,7 @@ import { NLU_EXTRACT_PROMPT_KEY } from "@/lib/ai/prompts/nlu-extract";
 import { db } from "@/server/db";
 import { guardedJsonChat } from "@/server/ai/guarded-client";
 import type { NluContext } from "@/server/ai/nlu-context";
+import { nluCommandBinding } from "./command-binding";
 import { parseRelativeDate } from "./date-parser";
 
 export type { CoreEntities } from "@/lib/schemas/core-entities";
@@ -19,6 +20,7 @@ type GuardedCallOptions = Omit<GuardedAiClientOptions, "db" | "owner" | "nluCont
 export interface ExtractCoreEntitiesOptions extends GuardedCallOptions {
   readonly db?: PrismaClient;
   readonly attemptNo?: number;
+  readonly travelRecordId?: string;
 }
 
 const countryNames: Readonly<Record<string, string>> = {
@@ -128,7 +130,7 @@ export async function extractCoreEntities(
   ctx: NluContext,
   options: ExtractCoreEntitiesOptions = {},
 ): Promise<CoreEntities> {
-  const { db: callerDb, attemptNo, ...guardedOptions } = options;
+  const { db: callerDb, attemptNo, travelRecordId, ...guardedOptions } = options;
   const result = await guardedJsonChat(
     {
       promptKey: NLU_EXTRACT_PROMPT_KEY,
@@ -142,6 +144,7 @@ export async function extractCoreEntities(
       userMessage: userInput,
       context: ctx,
       ...(attemptNo ? { attemptNo } : {}),
+      ...nluCommandBinding(ctx, travelRecordId),
     },
     { ...guardedOptions, db: callerDb ?? db },
   );

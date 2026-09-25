@@ -23,6 +23,7 @@ import { guardedJsonChat, type GuardedAiClientOptions } from "@/server/ai/guarde
 import { assertNluContext, nluBudgetSnapshot, type NluContext } from "@/server/ai/nlu-context";
 import { validateSummaryBinding } from "@/server/ai/summary-binding";
 import { db } from "@/server/db";
+import { nluCommandBinding } from "@/server/services/nlu/command-binding";
 import {
   defaultCapabilities,
   evaluateRequirementReadiness,
@@ -114,6 +115,7 @@ type Options = Omit<GuardedAiClientOptions, "db" | "owner" | "nluContext"> & {
   readonly attemptNo?: number;
   readonly ledger?: SummaryLedger;
   readonly capabilities?: ModuleCapabilities;
+  readonly travelRecordId?: string;
 };
 
 const processLedger: SummaryLedger = new Map();
@@ -322,7 +324,14 @@ export async function generateTravelPlanSummary(
   if (!parsed.success) fail("VALIDATION_ERROR", "REQUIREMENT_SCHEMA");
   const snapshot = parsed.data;
   if (snapshot.destinations.length === 0) fail("VALIDATION_ERROR", "EMPTY_DESTINATIONS");
-  const { db: callerDb, attemptNo, ledger = processLedger, capabilities, ...guarded } = options;
+  const {
+    db: callerDb,
+    attemptNo,
+    ledger = processLedger,
+    capabilities,
+    travelRecordId,
+    ...guarded
+  } = options;
   const database = callerDb ?? db;
   const policy = await readinessPolicy(database, ctx);
   const readiness = evaluateRequirementReadiness(
@@ -351,6 +360,7 @@ export async function generateTravelPlanSummary(
         userMessage: canonicalJson({ requirement: projection, assumptionSummaries }),
         context: ctx,
         ...(attemptNo ? { attemptNo } : {}),
+        ...nluCommandBinding(ctx, travelRecordId),
       },
       { ...guarded, db: database },
     );

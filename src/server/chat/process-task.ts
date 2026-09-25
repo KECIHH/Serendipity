@@ -17,6 +17,7 @@ import {
 import { authorizeWorkerCommand } from "./ownership";
 import { publishChatDelta } from "./events";
 import { isChatErrorCode } from "./error-codes";
+import { executePlanDraftTask } from "@/server/plan/draft-service";
 
 export function createChatCommandHandler(
   options: {
@@ -24,7 +25,13 @@ export function createChatCommandHandler(
     onCheckpoint?: (stage: "CALLING" | "OUTPUT_READY") => Promise<void>;
   } = {},
 ): TaskHandler {
-  return async (client, { task, lease, signal }) => {
+  return async (client, input) => {
+    const draft = await client.chatCommand.findUnique({
+      where: { id: input.task.aggregateId },
+      select: { kind: true },
+    });
+    if (draft?.kind === "PLAN_DRAFT") return executePlanDraftTask(client, input);
+    const { task, lease, signal } = input;
     const controller = new AbortController(),
       abort = () => controller.abort();
     signal.addEventListener("abort", abort, { once: true });

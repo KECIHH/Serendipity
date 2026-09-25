@@ -21,6 +21,10 @@ export interface CreateOrResumeChatCommandInput {
   message: string;
   clientMessageId: string;
   traceId: string;
+  planningMode?: "quick" | "precise";
+  locale?: string;
+  timezone?: string;
+  rateDimension?: string;
 }
 export interface CreateOrResumeChatCommandResult {
   travelRecordId: string;
@@ -28,6 +32,21 @@ export interface CreateOrResumeChatCommandResult {
   userMessageId: string;
   replayed: boolean;
   ownerType: "USER" | "ANONYMOUS";
+}
+export function planDraftRequestHash(input: {
+  content: string;
+  planningMode: "quick" | "precise";
+  clientRequestId: string;
+  locale: string;
+  timezone: string;
+}): string {
+  return canonicalHash({
+    content: input.content,
+    planningMode: input.planningMode,
+    clientRequestId: input.clientRequestId,
+    locale: input.locale,
+    timezone: input.timezone,
+  });
 }
 export function parseCommandText(value: unknown): string {
   if (
@@ -43,7 +62,19 @@ export function parseCommandText(value: unknown): string {
 function parseInput(input: CreateOrResumeChatCommandInput, initial: boolean) {
   const row = readDataLayerObject(
     input,
-    ["owner", "travelRecordId", "kind", "idempotencyKey", "message", "clientMessageId", "traceId"],
+    [
+      "owner",
+      "travelRecordId",
+      "kind",
+      "idempotencyKey",
+      "message",
+      "clientMessageId",
+      "traceId",
+      "planningMode",
+      "locale",
+      "timezone",
+      "rateDimension",
+    ],
     ["owner", "travelRecordId", "idempotencyKey", "message", "clientMessageId", "traceId"],
   );
   const kind: CommandKind = initial ? "PLAN_DRAFT" : "CHAT_MESSAGE";
@@ -58,6 +89,22 @@ function parseInput(input: CreateOrResumeChatCommandInput, initial: boolean) {
     !/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(row.clientMessageId)
   )
     throw new ChatCommandError("VALIDATION_ERROR");
+  const draft =
+    row.planningMode !== undefined ||
+    row.locale !== undefined ||
+    row.timezone !== undefined ||
+    row.rateDimension !== undefined;
+  if (draft) {
+    if (
+      !initial ||
+      (row.planningMode !== "quick" && row.planningMode !== "precise") ||
+      typeof row.locale !== "string" ||
+      typeof row.timezone !== "string" ||
+      typeof row.rateDimension !== "string" ||
+      !/^[a-f0-9]{64}$/.test(row.rateDimension)
+    )
+      throw new ChatCommandError("VALIDATION_ERROR");
+  }
   return {
     owner: input.owner,
     kind,
@@ -66,6 +113,10 @@ function parseInput(input: CreateOrResumeChatCommandInput, initial: boolean) {
     clientMessageId: row.clientMessageId,
     traceId: parseDataIdentifier(row.traceId),
     idempotencyKeyHash: createHash("sha256").update(row.idempotencyKey).digest("hex"),
+    planningMode: draft ? (row.planningMode as "quick" | "precise") : undefined,
+    locale: draft ? (row.locale as string) : undefined,
+    timezone: draft ? (row.timezone as string) : undefined,
+    rateDimension: draft ? (row.rateDimension as string) : undefined,
   };
 }
 export async function nextMessageSequence(tx: Prisma.TransactionClient, travelRecordId: string) {
@@ -98,12 +149,20 @@ async function insertCommand(
     travelRecordId: parsed.travelRecordId,
     write: true,
   });
-  const requestHash = canonicalHash({
-    kind: parsed.kind,
-    travelRecordId: parsed.travelRecordId,
-    message: parsed.message,
-    clientMessageId: parsed.clientMessageId,
-  });
+  const requestHash = parsed.planningMode
+    ? planDraftRequestHash({
+        content: parsed.message,
+        planningMode: parsed.planningMode,
+        clientRequestId: parsed.clientMessageId,
+        locale: parsed.locale!,
+        timezone: parsed.timezone!,
+      })
+    : canonicalHash({
+        kind: parsed.kind,
+        travelRecordId: parsed.travelRecordId,
+        message: parsed.message,
+        clientMessageId: parsed.clientMessageId,
+      });
   const existing = await tx.commandIdempotency.findMany({
     where: {
       ownerKeyHash: { in: await ownerDomains(tx, parsed.owner) },
@@ -144,7 +203,17 @@ async function insertCommand(
     ownerKeyHash: ownerHash,
     schemaVersion: 1,
     now,
-    value: { schemaVersion: 1, message: parsed.message, locale: "zh-CN" },
+    value: parsed.planningMode
+      ? {
+          schemaVersion: 1,
+          message: parsed.message,
+          locale: parsed.locale,
+          timezone: parsed.timezone,
+          planningMode: parsed.planningMode,
+          clientRequestId: parsed.clientMessageId,
+          rateDimension: parsed.rateDimension,
+        }
+      : { schemaVersion: 1, message: parsed.message, locale: "zh-CN" },
   });
   const user = await tx.chatMessage.create({
     data: {

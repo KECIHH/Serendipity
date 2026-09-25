@@ -1,0 +1,139 @@
+{
+  "phase": 23,
+  "attemptId": "attempt-1",
+  "producer": "Phase023",
+  "consumers": [
+    "Phase024",
+    "Phase026"
+  ],
+  "scope": "Anonymous session bootstrap and the single POST /api/plan/draft handoff.",
+  "implementationContextId": "grok-native-root-phase023-20260925",
+  "phaseStartCommit": "67551b4fc20c7cef6588f30a62f7f35ec3c2c8b9",
+  "testMode": "full",
+  "testModeReason": "The card changes anonymous session, ownership, and the public draft boundary. No verified affected-test selector exists.",
+  "crossAttemptReuse": "disabled",
+  "engineeringRegression": {
+    "mode": "full",
+    "baseCommit": "67551b4fc20c7cef6588f30a62f7f35ec3c2c8b9",
+    "fullCommand": "npm run test",
+    "dedicatedCardCommand": "npm run test -- api/plan-draft api/plan-draft-guardrails api/plan-draft-e2e",
+    "discovery": "vitest file filter; the dedicated command covers the seven fixed scenarios"
+  },
+  "requiredCaseIds": [
+    "Phase023:bootstrap",
+    "Phase023:missing-cookie",
+    "Phase023:anonymous-draft",
+    "Phase023:precise-missing",
+    "Phase023:replay",
+    "Phase023:conflict",
+    "Phase023:guardrails"
+  ],
+  "cases": [
+    {
+      "testCaseId": "Phase023:bootstrap",
+      "command": "npm run test -- api/plan-draft api/plan-draft-guardrails api/plan-draft-e2e",
+      "denominator": 1,
+      "inputPath": "tests/api/plan-draft.test.ts",
+      "outputPath": "docs/evidence/attempts/Phase023/attempt-1/bootstrap.json",
+      "expected": "Anonymous bootstrap sets only a signed cookie and writes no business rows."
+    },
+    {
+      "testCaseId": "Phase023:missing-cookie",
+      "command": "npm run test -- api/plan-draft api/plan-draft-guardrails api/plan-draft-e2e",
+      "denominator": 1,
+      "inputPath": "tests/api/plan-draft.test.ts",
+      "outputPath": "docs/evidence/attempts/Phase023/attempt-1/missing-cookie.json",
+      "expected": "A draft without a valid cookie returns 401 BOOTSTRAP_ANONYMOUS_SESSION and writes nothing."
+    },
+    {
+      "testCaseId": "Phase023:anonymous-draft",
+      "command": "npm run test -- api/plan-draft api/plan-draft-guardrails api/plan-draft-e2e",
+      "denominator": 1,
+      "inputPath": "tests/api/plan-draft.test.ts",
+      "outputPath": "docs/evidence/attempts/Phase023/attempt-1/anonymous-draft.json",
+      "expected": "One transaction creates a DRAFT record, PLAN_DRAFT command, idempotency row, and USER message; blocking gaps finish NEEDS_INFO and COMPLETED with no PlannerRun."
+    },
+    {
+      "testCaseId": "Phase023:precise-missing",
+      "command": "npm run test -- api/plan-draft api/plan-draft-guardrails api/plan-draft-e2e",
+      "denominator": 1,
+      "inputPath": "tests/api/plan-draft-handoff.test.ts",
+      "outputPath": "docs/evidence/attempts/Phase023/attempt-1/precise-missing.json",
+      "expected": "Precise mode with missing facts returns NEEDS_INFORMATION and does not write a formal plan version."
+    },
+    {
+      "testCaseId": "Phase023:replay",
+      "command": "npm run test -- api/plan-draft api/plan-draft-guardrails api/plan-draft-e2e",
+      "denominator": 1,
+      "inputPath": "tests/api/plan-draft.test.ts",
+      "outputPath": "docs/evidence/attempts/Phase023/attempt-1/replay.json",
+      "expected": "The same key and payload replays the original ids with replayed true and zero new writes."
+    },
+    {
+      "testCaseId": "Phase023:conflict",
+      "command": "npm run test -- api/plan-draft api/plan-draft-guardrails api/plan-draft-e2e",
+      "denominator": 1,
+      "inputPath": "tests/api/plan-draft.test.ts",
+      "outputPath": "docs/evidence/attempts/Phase023/attempt-1/conflict.json",
+      "expected": "The same key with a different payload returns 409 IDEMPOTENCY_KEY_REUSED and writes nothing."
+    },
+    {
+      "testCaseId": "Phase023:guardrails",
+      "command": "npm run test -- api/plan-draft api/plan-draft-guardrails api/plan-draft-e2e",
+      "denominator": 1,
+      "inputPath": "tests/api/plan-draft-guardrails.test.ts",
+      "outputPath": "docs/evidence/attempts/Phase023/attempt-1/guardrails.json",
+      "expected": "Timeout, invalid JSON, cost, and the sixth quota request fail the command as FAILED. Quota rejection does not call the provider."
+    }
+  ],
+  "threshold": {
+    "originalThreshold": 7,
+    "automatedThreshold": 7,
+    "requiredPassRate": 1,
+    "waived": false
+  },
+  "modificationScope": [
+    "docs/evidence/attempts/Phase023/",
+    "docs/phase-plans/Phase023-inputs.json",
+    "docs/phase-plans/Phase023.json",
+    "src/app/api/plan/",
+    "src/app/api/session/",
+    "src/server/chat/command-service.ts",
+    "src/server/chat/command-state.ts",
+    "src/server/chat/process-task.ts",
+    "src/server/plan/",
+    "src/server/services/nlu/",
+    "src/server/services/planner-service.ts",
+    "tests/api/"
+  ],
+  "sourcePaths": [
+    "docs/api.md",
+    "docs/database.md",
+    "docs/development-execution-policy.md",
+    "docs/phase-plans/Phase023-inputs.json",
+    "docs/phase-plans/Phase023.json",
+    "docs/testing-execution-policy.md",
+    "src/app/api/plan/draft/route.ts",
+    "src/app/api/session/anonymous/route.ts",
+    "src/server/chat/command-service.ts",
+    "src/server/chat/command-state.ts",
+    "src/server/chat/process-task.ts",
+    "src/server/plan/anonymous-session.ts",
+    "src/server/plan/draft-service.ts",
+    "src/server/plan/http.ts",
+    "src/server/services/nlu/ask-missing.ts",
+    "src/server/services/nlu/command-binding.ts",
+    "src/server/services/nlu/extract-constraints.ts",
+    "src/server/services/nlu/extract-core-entities.ts",
+    "src/server/services/nlu/extract-parameters.ts",
+    "src/server/services/nlu/merge-requirements.ts",
+    "src/server/services/nlu/process-input.ts",
+    "src/server/services/planner-service.ts",
+    "tests/api/anonymous-session.test.ts",
+    "tests/api/plan-draft-e2e.test.ts",
+    "tests/api/plan-draft-fixture.ts",
+    "tests/api/plan-draft-guardrails.test.ts",
+    "tests/api/plan-draft-handoff.test.ts",
+    "tests/api/plan-draft.test.ts"
+  ]
+}
