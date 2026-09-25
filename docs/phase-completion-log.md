@@ -93,3 +93,6 @@ Phase020计划：docs/phase-plans/Phase020.json；唯一Gate：docs/evidence/Pha
 | Phase021 | 约束识别与需求合并 | 交通与特殊标记、缺失判断、追问回退、不可变补丁合并和 NLU 编排；完整路径/hash见Gate | 固定22/22；Vitest 803/803；专用22断言；4项隔离变异及恢复后全卡；PostgreSQL17；schema/typecheck/lint/format/build/layout及证据自检通过；独立Agent复核；artifactCommit=c306eb8f5f1aba63ca539e4afc883a4ea62bb803；attemptId=attempt-5 | 无NLU API、追问UI、行程方案、地图、实时交通、支付或生产Provider；未执行Phase022 | metadata后双shell seal、clean与GitHub同步；授权止于021 |
 
 Phase021计划：docs/phase-plans/Phase021.json；唯一Gate：docs/evidence/Phase021-gate.json；原始报告与独立复核：docs/evidence/attempts/Phase021/attempt-5/。
+| Phase022 | 旅行概要与 Planner 交接 | TravelPlanSummaryDraft、显式假设和 handoff；时长与目的地由服务端绑定；完整路径/hash见Gate | 固定6/6；Vitest 813/813；专用10断言；4项隔离变异及恢复后全卡；PostgreSQL17；schema/typecheck/lint/format/build/layout通过；独立Agent复核；artifactCommit=b1966cdc7817dddc841dbe645f9023433cd5aaf9；attemptId=attempt-1 | 无每日行程、TravelPlanVersion、结果页、地图或生产Provider；未执行Phase023 | metadata后双shell seal、clean与GitHub同步；授权止于022 |
+
+Phase022计划：docs/phase-plans/Phase022.json；唯一Gate：docs/evidence/Phase022-gate.json；原始报告与独立复核：docs/evidence/attempts/Phase022/attempt-1/。
